@@ -1,7 +1,7 @@
 {
  "video_id": "RcpANAiIFiM",
- "state": "error",
- "progress": "Bild 1/2",
+ "state": "done",
+ "progress": "fertig",
  "title": "Holding the Line",
  "youtube": {
   "title": "He Stood His Ground When Everything Shattered #shorts",
@@ -16,7 +16,16 @@
    "shorts"
   ]
  },
- "started_at": "2026-10-19T21:38:02Z",
- "error": "CUDA out of memory. Tried to allocate 78.00 MiB. GPU 0 has a total capacity of 44.42 GiB of which 80.81 MiB is free. Process 1 has 44.33 GiB memory in use. Of the allocated memory 42.32 GiB is allocated by PyTorch, and 1.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\nin _call_impl\n  File \"<ta-01M5B1R1ZBJY0GQ9VRZ317C11R>:/usr/local/lib/python3.11/site-packages/diffusers/models/attention.py\", line 1741, in forward\n  File \"<ta-01M5B1R1ZBJY0GQ9VRZ317C11R>:/usr/local/lib/python3.11/site-packages/torch/nn/modules/module.py\", line 1739, in _wrapped_call_impl\n  File \"<ta-01M5B1R1ZBJY0GQ9VRZ317C11R>:/usr/local/lib/python3.11/site-packages/torch/nn/modules/module.py\", line 1750, in _call_impl\n  File \"<ta-01M5B1R1ZBJY0GQ9VRZ317C11R>:/usr/local/lib/python3.11/site-packages/diffusers/models/activations.py\", line 117, in forward\n  File \"<ta-01M5B1R1ZBJY0GQ9VRZ317C11R>:/usr/local/lib/python3.11/site-packages/torch/nn/modules/module.py\", line 1739, in _wrapped_call_impl\n  File \"<ta-01M5B1R1ZBJY0GQ9VRZ317C11R>:/usr/local/lib/python3.11/site-packages/torch/nn/modules/module.py\", line 1750, in _call_impl\n  File \"<ta-01M5B1R1ZBJY0GQ9VRZ317C11R>:/usr/local/lib/python3.11/site-packages/torch/nn/modules/linear.py\", line 125, in forward\ntorch.OutOfMemoryError: CUDA out of memory. Tried to allocate 78.00 MiB. GPU 0 has a total capacity of 44.42 GiB of which 80.81 MiB is free. Process 1 has 44.33 GiB memory in use. Of the allocated memory 42.32 GiB is allocated by PyTorch, and 1.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\n",
- "updated_at": "2026-10-19T21:44:27Z"
+ "started_at": "2026-10-19T21:49:07Z",
+ "error": null,
+ "updated_at": "2026-10-19T22:29:51Z",
+ "gpu_seconds": 2400,
+ "video_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/RcpANAiIFiM.mp4",
+ "poster_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/poster.jpg",
+ "duration_s": 12.0,
+ "notes": [
+  "Stimmen: Kokoro",
+  "Musik: Freesound CC0"
+ ],
+ "finished_at": "2026-10-19T22:29:51Z"
 }
