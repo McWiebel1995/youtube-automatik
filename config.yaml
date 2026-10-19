@@ -1,0 +1,45 @@
+# ------------------------------------------------------------------
+# KI 1 – Viral Video Hunter: Einstellungen
+# ------------------------------------------------------------------
+
+window_hours: 72              # nur Videos der letzten X Stunden
+max_youtube_queries: 12       # pro Lauf (1 Suche = 100 Einheiten vom YouTube-Kontingent)
+max_analyses_per_run: 12      # Gemini-Videoanalysen pro Lauf (Gratis: max. 8 h Video/Tag)
+max_video_minutes: 12         # längere Videos werden nicht per KI analysiert
+min_views: 5000               # darunter uninteressant
+top_threshold: 85             # ab diesem Score = Top-Kandidat
+keep_days: 14                 # ältere Kandidaten fliegen aus dem Dashboard (außer freigegebene)
+
+# Gemini-Modelle, der Reihe nach probiert (falls eins nicht verfügbar ist)
+gemini_models: ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-2.5-flash"]
+
+# Regionen: GDELT-Ländercode (FIPS), Sprache, Städte, feste Suchbegriffe
+regions:
+  FR:
+    lang: fr
+    cities: [Paris, Marseille, Lyon, Toulouse, Nantes, Bordeaux, Lille]
+    gdelt: '(manifestation OR rassemblement OR mobilisation OR protestation)'
+    youtube: ["manifestation {city}", "rassemblement {city}", "vidéo manifestation"]
+  IT:
+    lang: it
+    cities: [Milano, Roma, Napoli, Torino, Bologna, Firenze]
+    gdelt: '(manifestazione OR protesta OR corteo)'
+    youtube: ["manifestazione {city}", "corteo {city} oggi", "proteste Italia"]
+  GM:   # Deutschland (FIPS-Code GM)
+    lang: de
+    cities: [Berlin, Hamburg, München, Köln, Frankfurt, Leipzig]
+    gdelt: '(Demonstration OR Kundgebung OR Protest)'
+    youtube: ["Demonstration {city}", "Kundgebung {city}", "Menschenmenge {city}"]
+  SP:   # Spanien (FIPS-Code SP)
+    lang: es
+    cities: [Madrid, Barcelona, Valencia, Sevilla, Bilbao]
+    gdelt: '(manifestación OR protesta OR concentración)'
+    youtube: ["manifestación {city}", "protesta {city} hoy"]
+  INT:
+    lang: en
+    cities: []
+    gdelt: '(protest OR demonstration OR rally) (crowd OR march)'
+    youtube: ["breaking protest footage", "eyewitness footage crowd", "emotional moment street", "people helping each other viral"]
+
+# Wörter, die einen Kandidaten sofort aussortieren (Clickbait, Fake-Hinweise, Gewalt-Fokus)
+exclude_words: ["ai generated", "ki generiert", "prank", "staged", "fake", "compilation", "gta", "game", "trailer", "music video"]
