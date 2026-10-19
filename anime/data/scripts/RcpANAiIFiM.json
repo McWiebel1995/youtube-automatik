@@ -248,8 +248,6 @@
   "overall_risk": "low",
   "_model": "gemini-3.8-flash"
  },
- "issues": [
-  "Gore-Begriff im Drehbuch: „gore“"
- ],
+ "issues": [],
  "model": "gemini-3.8-flash"
 }

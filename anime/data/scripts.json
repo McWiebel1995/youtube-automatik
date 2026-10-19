@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-19T21:13:10Z",
+ "updated_at": "2026-10-19T21:13:53Z",
  "scripts": [
   {
    "video_id": "RcpANAiIFiM",
@@ -234,9 +234,7 @@
     "overall_risk": "low",
     "_model": "gemini-3.8-flash"
    },
-   "issues": [
-    "Gore-Begriff im Drehbuch: „gore“"
-   ],
+   "issues": [],
    "source": {
     "video_url": "https://www.youtube.com/watch?v=RcpANAiIFiM",
     "event": "Vor einem Ladenlokal in einer Einkaufsstraße liegen Scherben und Gegenstände auf dem Boden. Ein Mann verteidigt den beschädigten Eingangsbereich eines Geschäfts, wird dabei von Passanten konfrontiert und körperlich angegriffen. Umstehende greifen deeskalierend ein und rufen zum Aufhören auf, woraufhin der Mann sichtbar mitgenommen im zerstörten Schaufensterrahmen stehen bleibt.",

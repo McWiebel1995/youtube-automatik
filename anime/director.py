@@ -103,7 +103,8 @@ def now():
 def static_checks(script):
     """Einfache, nicht-KI-Prüfungen: Gore-Wörter, Endtafel, Länge, Pflichtfelder."""
     issues = []
-    text = json.dumps(script, ensure_ascii=False).lower()
+    checked = {k: script.get(k) for k in ("shots", "characters", "setting", "youtube", "title", "logline")}
+    text = json.dumps(checked, ensure_ascii=False).lower()       # content_check_de enthält "kein_gore"
     for w in GORE_WORDS:
         if w in text:
             issues.append(f"Gore-Begriff im Drehbuch: „{w}“")
