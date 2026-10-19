@@ -1,0 +1,96 @@
+# ------------------------------------------------------------------
+# Relax channels (English, for a worldwide audience)
+# Each channel has its own sounds, scenes and texts,
+# so every video is genuinely different.
+# The keys (regen, kamin, wasserfall) stay as they are –
+# they are linked to the GitHub secrets.
+# ------------------------------------------------------------------
+
+defaults:
+  language: en
+  category_id: "10"            # 10 = Music (alternative 22 = People & Blogs)
+  privacy: private             # published automatically via publish_at
+  made_for_kids: false
+  durations_hours: [1, 2, 3]   # picked at random per video
+  publish_time_utc: "18:00"    # publish time (UTC) – evening in Europe, midday in the US
+  fade_seconds: 8
+
+channels:
+
+  regen:
+    name: "Calm Haven Rain"
+    token_secret: YT_REFRESH_TOKEN_REGEN
+    playlist_id: ""            # optional: playlist the new videos are added to
+    layers:
+      base:   { pattern: "rain_*",    gain_db: [-6, -2] }
+      extras:
+        - { pattern: "thunder_*", gain_db: [-18, -10], chance: 0.6 }
+        - { pattern: "wind_*",    gain_db: [-20, -14], chance: 0.4 }
+        - { pattern: "roof_*",    gain_db: [-14, -8],  chance: 0.5 }
+    title_templates:
+      - "{scene} – {hours} Hours of Rain Sounds for Sleeping"
+      - "Rain Sounds for Sleep | {scene} | {hours} Hours{extra_title}"
+      - "{hours} Hours of Gentle Rain – {scene}{extra_title}"
+      - "Fall Asleep Fast: {scene} ({hours} Hours of Rain)"
+    scenes:
+      - "Rain on Window"
+      - "Rain in the Forest"
+      - "Rainy Night in the City"
+      - "Rain on a Tent"
+      - "Rain on the Porch"
+    tags: ["rain sounds", "rain sounds for sleeping", "rain", "sleep sounds", "relaxing sounds",
+           "white noise", "study", "ASMR", "thunderstorm"]
+
+  kamin:
+    name: "Calm Haven Fireside"
+    token_secret: YT_REFRESH_TOKEN_KAMIN
+    playlist_id: ""
+    layers:
+      base:   { pattern: "fire_*",   gain_db: [-5, -2] }
+      extras:
+        - { pattern: "wind_*",   gain_db: [-22, -15], chance: 0.5 }
+        - { pattern: "rain_*",   gain_db: [-20, -14], chance: 0.4 }
+        - { pattern: "clock_*",  gain_db: [-26, -20], chance: 0.2 }
+    title_templates:
+      - "{scene} – {hours} Hours of Crackling Fireplace"
+      - "Cozy Fireplace | {scene} | {hours} Hours{extra_title}"
+      - "{hours} Hours of Crackling Fire Sounds – {scene}"
+      - "Relaxing Fireplace Ambience: {scene} ({hours} Hours)"
+    scenes:
+      - "Snowy Cabin Fireplace"
+      - "Country House Fireplace"
+      - "Campfire by the Lake"
+      - "Autumn Evening by the Fire"
+    tags: ["fireplace", "crackling fire", "fireplace sounds", "cozy", "fire sounds",
+           "relaxing", "sleep", "ambience", "hygge"]
+
+  wasserfall:
+    name: "Calm Haven Waters"
+    token_secret: YT_REFRESH_TOKEN_WASSERFALL
+    playlist_id: ""
+    layers:
+      base:   { pattern: "waterfall_*", gain_db: [-6, -2] }
+      extras:
+        - { pattern: "birds_*",  gain_db: [-20, -12], chance: 0.6 }
+        - { pattern: "stream_*", gain_db: [-14, -8],  chance: 0.5 }
+        - { pattern: "wind_*",   gain_db: [-22, -16], chance: 0.3 }
+    title_templates:
+      - "{scene} – {hours} Hours of Waterfall Sounds"
+      - "Waterfall Sounds for Sleep | {scene} | {hours} Hours{extra_title}"
+      - "{hours} Hours of {scene} – Nature Sounds{extra_title}"
+      - "Relaxing Waterfall: {scene} ({hours} Hours of White Noise)"
+    scenes:
+      - "Rainforest Waterfall"
+      - "Mountain Waterfall"
+      - "Misty Morning Waterfall"
+      - "Gentle Forest Stream"
+    tags: ["waterfall sounds", "nature sounds", "water sounds", "white noise", "sleep",
+           "meditation", "relaxing", "study", "stream"]
+
+# Extra title parts, depending on which extra layers were mixed in
+extra_titles:
+  thunder_: " with Thunder"
+  wind_:    " with Wind"
+  birds_:   " with Birdsong"
+  rain_:    " with Rain"
+  stream_:  " with Stream"
