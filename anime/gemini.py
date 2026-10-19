@@ -42,7 +42,7 @@ def ask_json(prompt, system=None, video_url=None, models=None, temperature=0.7, 
             last = f"{m}: überlastet"
             continue
         if r.status_code == 429:
-            raise QuotaError("Gemini-Gratis-Limit erreicht")
+            raise QuotaError(f"Gemini-Gratis-Limit erreicht ({m}): {r.text[:300]}")
         r.raise_for_status()
         resp = r.json()
         cand = (resp.get("candidates") or [{}])[0]

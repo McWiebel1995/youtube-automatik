@@ -189,6 +189,7 @@ def main():
     a = ap.parse_args()
     ids = [a.id] if a.id else [p.stem for p in sorted(HANDOFF.glob("*.json"))]
     errors = {}
+    print(f"KI 2: {len(ids)} Übergabepaket(e): {ids}")
     for vid in ids:
         if not re.fullmatch(r"[A-Za-z0-9_-]{6,20}", vid) or not (HANDOFF / f"{vid}.json").exists():
             print(f"  ⚠ kein Übergabepaket für {vid}")
@@ -197,6 +198,7 @@ def main():
             direct(vid, force=a.force)
         except gemini.QuotaError as e:
             print(f"  ⚠ {e} – nächster Versuch beim nächsten Lauf")
+            errors[vid] = {"at": now(), "error": f"Gemini-Limit: {e}"}
             break
         except Exception as e:  # noqa: BLE001
             print(f"  ⚠ {vid}: {e}")
