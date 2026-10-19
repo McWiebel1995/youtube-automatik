@@ -30,7 +30,7 @@ IMAGE_MODEL = "cagliostrolab/animagine-xl-4.0"
 VIDEO_MODEL = "Wan-AI/Wan2.2-TI2V-5B-Diffusers"
 WAN_NEG = ("static, blurry details, subtitles, text, watermark, logo, worst quality, low quality, jpeg artifacts, "
            "ugly, deformed, extra fingers, bad hands, bad face, fused fingers, messy background, three legs, "
-           "walking backwards, gore, dismemberment, 3d render, cgi")
+           "walking backwards, gore, dismemberment, 3d render, cgi, nsfw, cleavage, fanservice")
 
 
 @app.cls(gpu="L40S", image=image, volumes={"/models": models}, timeout=3600, scaledown_window=120)

@@ -81,6 +81,27 @@ def build_index():
 
 
 # ----------------------------------------------------------------- 1+2 GPU (Modal)
+SAFE_NEG = "nsfw, cleavage, fanservice, suggestive, revealing clothes, underwear, large breasts"
+
+
+def cast_tags(ids, chars, action=""):
+    """Animagine ist Tag-basiert: ohne klare Personen-Tags malt es gern Mädchen. Daher explizit."""
+    g = [profile_of(chars[c])["gender"] for c in ids if c in chars]
+    m, f = g.count("male"), g.count("female")
+    tags = []
+    if m:
+        tags.append("1boy" if m == 1 else f"{min(m, 6)}boys")
+    if f:
+        tags.append("1girl" if f == 1 else f"{min(f, 6)}girls")
+    if m and not f:
+        tags.append("male focus")
+    if not g:
+        crowd = any(w in action.lower() for w in ["crowd", "people", "riot", "rioters", "citizens", "police"])
+        tags.append("crowd, multiple boys, scenery" if crowd else "no humans, scenery")
+    neg = SAFE_NEG + ("" if f else ", 1girl, female, woman")
+    return ", ".join(tags), neg
+
+
 def gpu_shots(vid, sc, work, no_gpu=False):
     shots = sc["shots"]
     style = (sc.get("setting") or {}).get("art_style", "cinematic anime")
@@ -105,21 +126,23 @@ def gpu_shots(vid, sc, work, no_gpu=False):
         refs = {}
         for j, (cid, c) in enumerate(chars.items()):
             status(vid, state="running", progress=f"Figur {j + 1}/{len(chars)}")
+            tags, neg = cast_tags([cid], chars)
             res = studio.keyframe.remote(
-                f"{style}. character reference sheet, single character, full body, front view, standing, "
-                f"plain light background. {c.get('design_sheet', '')}"[:1800],
-                seed=base + 7 + j, width=832, height=1216)
+                f"{tags}, solo, full body, front view, standing, plain light background, character reference. "
+                f"{style}. {c.get('design_sheet', '')}"[:1800],
+                negative=neg, seed=base + 7 + j, width=832, height=1216)
             refs[cid] = res["png"]
             (work / f"ref_{cid}.png").write_bytes(res["png"])
             if res.get("note"):
                 notes.append(res["note"])
         for i, s in enumerate(shots):
             status(vid, state="running", progress=f"Bild {i + 1}/{len(shots)}")
-            prompt = f"{style}. {s.get('image_prompt', '')}. wide 16:9 anime frame"
             who = [c for c in (s.get("characters") or []) if c in refs] or \
                   [d.get("character") for d in (s.get("dialogue") or []) if d.get("character") in refs]
+            tags, neg = cast_tags(who, chars, s.get("action", ""))
+            prompt = f"{tags}. {style}. {s.get('image_prompt', '')}. wide 16:9 anime frame"
             ref = refs.get(who[0]) if who else b""
-            res = studio.keyframe.remote(prompt[:1800], seed=base + s["n"], ref_png=ref or b"",
+            res = studio.keyframe.remote(prompt[:1800], negative=neg, seed=base + s["n"], ref_png=ref or b"",
                                          ref_scale=0.45 if len(who) > 1 else 0.55)
             png = res["png"]
             (work / f"key_{s['n']:02d}.png").write_bytes(png)

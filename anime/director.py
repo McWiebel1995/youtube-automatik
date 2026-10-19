@@ -145,12 +145,18 @@ def direct(vid, force=False):
         audit = gemini.ask_json(
             AUDIT_TASK.format(characters=json.dumps(script.get("characters", []), ensure_ascii=False, indent=1)),
             video_url=url, temperature=0.1)
-        if audit.get("overall_risk") != "high":
+        n_shots = len(script.get("shots") or [])
+        if audit.get("overall_risk") != "high" and n_shots >= 12:
             break
-        changes = [c for ch in audit.get("characters", []) for c in ch.get("required_changes", [])]
-        revision = ("ÜBERARBEITUNG NÖTIG – die Figuren sind realen Personen zu ähnlich. "
-                    "Setze diese Änderungen um und behalte die Geschichte bei:\n- " + "\n- ".join(changes))
-        print("  ↻ Figuren zu ähnlich – überarbeite …")
+        revision = "ÜBERARBEITUNG NÖTIG:\n"
+        if audit.get("overall_risk") == "high":
+            changes = [c for ch in audit.get("characters", []) for c in ch.get("required_changes", [])]
+            revision += ("- Die Figuren sind realen Personen zu ähnlich. Setze diese Änderungen um:\n  - "
+                         + "\n  - ".join(changes) + "\n")
+        if n_shots < 12:
+            revision += (f"- Nur {n_shots} Shots. Schreibe 14–22 Shots à 2–4 Sekunden (schnelle Schnitte, "
+                         "mehr Dialog, mehr Eskalation).\n")
+        print("  ↻ überarbeite:", revision[:200])
 
     issues = static_checks(script)
     record = {
