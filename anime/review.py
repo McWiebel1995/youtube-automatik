@@ -20,11 +20,13 @@ DATA = HERE / "data"
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("action", choices=["approve", "reject"])
+    ap.add_argument("action", choices=["approve", "reject", "approve_script", "reject_script"])
     ap.add_argument("video_id")
     ap.add_argument("--note", default="")
     a = ap.parse_args()
 
+    if a.action.endswith("_script"):
+        return script_decision(a)
     db = json.loads((DATA / "db.json").read_text(encoding="utf-8"))
     v = db["videos"].get(a.video_id)
     if not v:
@@ -78,6 +80,21 @@ def main():
         c["stats"]["approved"] = sum(x.get("decision") == "approved" for x in c["candidates"])
         cand.write_text(json.dumps(c, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{a.video_id}: {v['decision']}")
+
+
+def script_decision(a):
+    f = DATA / "scripts" / f"{a.video_id}.json"
+    if not f.exists():
+        sys.exit(f"Kein Drehbuch für {a.video_id}.")
+    r = json.loads(f.read_text(encoding="utf-8"))
+    r["status"] = "approved" if a.action == "approve_script" else "rejected"
+    r["decided_at"] = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    r["decision_note"] = a.note
+    f.write_text(json.dumps(r, ensure_ascii=False, indent=1), encoding="utf-8")
+    sys.path.insert(0, str(HERE))
+    import director
+    director.build_index()
+    print(f"Drehbuch {a.video_id}: {r['status']}")
 
 
 if __name__ == "__main__":

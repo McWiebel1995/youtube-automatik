@@ -33,7 +33,9 @@ jobs:
           YT_REFRESH_TOKEN_HUNTER: ${{ secrets.YT_REFRESH_TOKEN_HUNTER }}
           YT_REFRESH_TOKEN_KAMIN: ${{ secrets.YT_REFRESH_TOKEN_KAMIN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python anime/hunter.py
+        run: |
+          python anime/hunter.py
+          python anime/director.py   # offene Drehbücher (z. B. nach Gemini-Limit) nachholen
 
       - name: Ergebnisse speichern
         run: |
@@ -47,7 +49,7 @@ jobs:
         run: |
           mkdir -p _site
           cp anime/dashboard/index.html _site/
-          cp anime/data/candidates.json _site/ 2>/dev/null || true
+          cp anime/data/candidates.json anime/data/scripts.json _site/ 2>/dev/null || true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

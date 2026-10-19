@@ -70,6 +70,11 @@
   .notes { margin-top: 16px; color: var(--muted); font-size: 13px; }
   .empty { color: var(--muted); padding: 30px 0; text-align: center; }
   .placeholder { color: var(--muted); }
+  .shots { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 6px; }
+  .shots td, .shots th { border-top: 1px solid var(--line); padding: 7px 6px; vertical-align: top; text-align: left; }
+  .shots th { color: var(--muted); font-weight: 600; font-size: 12px; }
+  .beat { font-size: 11px; font-weight: 700; color: var(--accent); }
+  @media (max-width: 720px) { .shots .hide-m { display: none; } }
   @media (max-width: 720px) {
     .stats { grid-template-columns: repeat(2, 1fr); }
     .item { grid-template-columns: 88px 1fr; gap: 12px; }
@@ -91,7 +96,7 @@
 
   <nav class="tabs">
     <div class="tab active" data-tab="hunter"><b>KI 1</b> — Viral Video Hunter</div>
-    <div class="tab" data-tab="story"><b>KI 2</b> — Anime Story Director <span class="soon">bald</span></div>
+    <div class="tab" data-tab="story"><b>KI 2</b> — Anime Story Director</div>
     <div class="tab" data-tab="prod"><b>KI 3</b> — Anime Production <span class="soon">bald</span></div>
   </nav>
 
@@ -119,9 +124,13 @@
   </section>
 
   <section id="story" class="card" hidden>
-    <div class="card-head"><h2>Anime Story Director</h2><span class="pill grey">in Arbeit</span></div>
-    <p class="placeholder">Hier erscheinen Drehbuch und Storyboard (Englisch) für jeden freigegebenen Kandidaten.
-      Freigegeben: <b id="story-count">0</b></p>
+    <div class="card-head"><h2>Anime Story Director</h2><span class="sub">Drehbuch & Storyboard (EN) · Figuren-Check</span></div>
+    <div class="stats">
+      <div class="stat"><div class="k">Wartet auf Drehbuch</div><div class="v" id="st-wait">–</div></div>
+      <div class="stat"><div class="k">Drehbücher</div><div class="v" id="st-total">–</div></div>
+      <div class="stat"><div class="k">Zur Prüfung</div><div class="v" id="st-draft">–</div></div>
+      <div class="stat"><div class="k">Bereit für KI 3</div><div class="v" id="st-ok">–</div></div>
+    </div>
     <div id="story-list"></div>
   </section>
 
@@ -151,6 +160,61 @@ const n = x => x == null ? "unbekannt" : x >= 1e6 ? (x / 1e6).toFixed(1).replace
 const ago = iso => { if (!iso) return "–"; const h = (Date.now() - new Date(iso)) / 36e5;
   return h < 1 ? "vor < 1 Std." : h < 48 ? `vor ${Math.round(h)} Std.` : `vor ${Math.round(h / 24)} Tagen`; };
 const list = a => (a && a.length) ? `<ul>${a.map(x => `<li>${esc(typeof x === "object" ? `${x.timecode || ""} ${x.beschreibung || x.title || ""}` : x)}</li>`).join("")}</ul>` : '<span class="placeholder">–</span>';
+
+function scriptIssue(action, sc) {
+  const title = `${action} ${sc.video_id}`;
+  const body = `Drehbuch „${sc.title}“\n\nNotiz (optional):\n`;
+  return `https://github.com/${REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+}
+const RISK = { low: ["Ähnlichkeit: gering", "green"], medium: ["Ähnlichkeit: mittel", "amber"], high: ["Ähnlichkeit: hoch", "red"] };
+function scriptCard(sc) {
+  const [rl, rc] = RISK[(sc.likeness || {}).overall_risk] || ["Ähnlichkeit: ?", "grey"];
+  const st = sc.status === "approved" ? '<span class="pill green">✓ Bereit für KI 3</span>' :
+             sc.status === "rejected" ? '<span class="pill red">Abgelehnt</span>' : '<span class="pill amber">Zur Prüfung</span>';
+  const chars = (sc.characters || []).map(ch => {
+    const aud = ((sc.likeness || {}).characters || []).find(a => a.id === ch.id) || {};
+    return `<div class="box"><h4 class="crea">${esc(ch.name)} · ${esc(ch.role)}</h4>
+      <div>${esc(ch.design_sheet)}</div>
+      <div class="meta" style="margin-top:6px"><b>Bewusst ähnlich:</b> ${esc((ch.inspired_by_scene_de || []).join(", ")) || "–"}</div>
+      <div class="meta"><b>Bewusst anders:</b> ${esc((ch.changed_de || []).join(", ")) || "–"}</div>
+      <div class="meta"><b>Prüfer fand ähnlich:</b> ${esc((aud.matching_features || []).join(", ")) || "–"} (${esc(aud.risk || "?")})</div></div>`;
+  }).join("");
+  const rows = (sc.shots || []).map(x => `<tr><td><span class="beat">${esc(x.beat)}</span><br>#${x.n} · ${x.duration_s}s</td>
+    <td class="hide-m">${esc(x.camera)}</td><td>${esc(x.action)}${(x.dialogue || []).map(d => `<br><i>„${esc(d.line)}“</i>`).join("")}${x.voiceover ? `<br><i>VO: ${esc(x.voiceover)}</i>` : ""}</td>
+    <td class="hide-m">${esc((x.sfx || []).join(", "))}</td></tr>`).join("");
+  return `<div class="item" style="grid-template-columns:1fr"><div>
+    <h3>${esc(sc.title)}</h3>
+    <div class="meta">${esc(sc.logline_de || sc.logline)} · ${sc.duration ?? "–"} s · ${esc((sc.setting || {}).location || "")}</div>
+    <div class="row"><span class="pill ${rc}">${rl}</span> ${st}
+      ${(sc.issues || []).length ? `<span class="pill amber">${sc.issues.length} Hinweis(e)</span>` : ""}</div>
+    <details><summary>Figuren, Storyboard & YouTube-Texte</summary>
+      ${(sc.issues || []).length ? `<div class="box" style="margin-top:10px"><h4>Hinweise</h4>${list(sc.issues)}</div>` : ""}
+      <div class="detail">${chars}</div>
+      <div class="box" style="margin-top:14px"><h4>Storyboard</h4>
+        <table class="shots"><tr><th>Beat</th><th class="hide-m">Kamera</th><th>Handlung / Dialog</th><th class="hide-m">Sound</th></tr>${rows}</table></div>
+      <div class="box" style="margin-top:14px"><h4>YouTube</h4><b>${esc((sc.youtube || {}).title)}</b>
+        <div style="white-space:pre-wrap;margin-top:6px">${esc((sc.youtube || {}).description)}</div></div>
+    </details>
+    <div class="actions">
+      ${sc.source?.video_url ? `<a class="btn" href="${esc(sc.source.video_url)}" target="_blank" rel="noopener">▶ Vorlage</a>` : ""}
+      ${sc.status === "draft" ? `<a class="btn ok" href="${scriptIssue("APPROVE_SCRIPT", sc)}" target="_blank" rel="noopener">✓ Drehbuch freigeben → KI 3</a>
+      <a class="btn no" href="${scriptIssue("REJECT_SCRIPT", sc)}" target="_blank" rel="noopener">✕ Ablehnen</a>` : ""}
+    </div></div></div>`;
+}
+let SCRIPTS = { scripts: [] };
+function renderStory() {
+  const scr = SCRIPTS.scripts || [];
+  const have = new Set(scr.map(x => x.video_id));
+  const waiting = (DATA?.candidates || []).filter(c => c.decision === "approved" && !have.has(c.video_id));
+  document.getElementById("st-wait").textContent = waiting.length;
+  document.getElementById("st-total").textContent = scr.length;
+  document.getElementById("st-draft").textContent = scr.filter(x => x.status === "draft").length;
+  document.getElementById("st-ok").textContent = scr.filter(x => x.status === "approved").length;
+  const wait = waiting.map(c => `<div class="item"><img class="thumb" src="${esc(c.thumbnail)}" alt="" onerror="this.style.visibility='hidden'">
+    <div><h3>${esc(c.anime_concept || c.title)}</h3><div class="meta">KI 2 schreibt das Drehbuch … (freigegeben ${ago(c.decided_at)})</div></div></div>`).join("");
+  document.getElementById("story-list").innerHTML = (wait + scr.map(scriptCard).join("")) ||
+    '<div class="empty">Noch keine freigegebenen Kandidaten. Gib im Hunter einen Kandidaten frei.</div>';
+}
 
 function issueUrl(action, c) {
   const title = `${action} ${c.video_id}`;
@@ -223,11 +287,7 @@ function render() {
   document.getElementById("list").innerHTML = items.length ? items.map(card).join("") :
     '<div class="empty">Keine Kandidaten in dieser Ansicht.</div>';
   document.getElementById("notes").innerHTML = (DATA.access_notes || []).map(x => `<li>${esc(x)}</li>`).join("");
-  const approved = DATA.candidates.filter(c => c.decision === "approved");
-  document.getElementById("story-count").textContent = approved.length;
-  document.getElementById("story-list").innerHTML = approved.map(c =>
-    `<div class="item"><img class="thumb" src="${esc(c.thumbnail)}" alt=""><div><h3>${esc(c.anime_concept || c.title)}</h3>
-     <div class="meta">wartet auf KI 2 · freigegeben ${ago(c.decided_at)}</div></div></div>`).join("");
+  renderStory();
 }
 
 document.getElementById("filters").addEventListener("click", e => {
@@ -241,6 +301,7 @@ document.querySelector(".tabs").addEventListener("click", e => {
   ["hunter", "story", "prod"].forEach(id => document.getElementById(id).hidden = id !== t.dataset.tab);
 });
 
+fetch("scripts.json?ts=" + Date.now()).then(r => r.json()).then(d => { SCRIPTS = d; if (DATA) renderStory(); }).catch(() => {});
 fetch("candidates.json?ts=" + Date.now()).then(r => r.json()).then(d => { DATA = d; render(); })
   .catch(() => { document.getElementById("updated").textContent = "Noch keine Daten – der erste Suchlauf läuft.";
                  document.getElementById("mode").className = "pill amber"; document.getElementById("mode").textContent = "● wartet";
