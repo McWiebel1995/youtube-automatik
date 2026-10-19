@@ -54,13 +54,15 @@ Antworte ausschließlich mit JSON nach diesem Schema:
     "design_sheet": "precise, reusable visual description for image prompts (face, hair, eyes, clothes, colors)",
     "inspired_by_scene_de": ["was bewusst ähnlich ist (Rolle, Körpersprache, Kleidungstyp, max. 2 Merkmale wie Brille/Bart in anderer Ausführung)"],
     "changed_de": ["was bewusst anders ist (Gesicht, Frisur, Haarfarbe, Logos, Name …)"],
-    "voice": "voice description (English)"
+    "voice": "voice description (English), like a classic 90s English anime dub actor",
+    "voice_profile": {{"gender": "male|female", "age": "teen|young|adult|old", "pitch": "low|mid|high",
+                      "texture": "gravelly|smooth|raspy|bright|breathy|nasal"}}
  }}],
  "shots": [{{
     "n": 1, "duration_s": 2-4, "characters": ["c1"], "beat": "HOOK|EINSTIEG|KONFLIKT|WENDEPUNKT|HÖHEPUNKT|NACHHALL",
     "camera": "shot size + angle + movement",
     "action": "what happens (English)",
-    "dialogue": [{{"character": "c1", "line": "..."}}],
+    "dialogue": [{{"character": "c1", "line": "...", "emotion": "shout|angry|determined|calm|whisper|crying|mocking|fearful"}}],
     "voiceover": "inner monologue or null",
     "sfx": ["..."], "music": "music cue for this shot",
     "on_screen_text": null,

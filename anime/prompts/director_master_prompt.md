@@ -77,6 +77,8 @@ Eigene Attacken und Figuren – keine bekannten Figuren, Attackennamen oder Pose
 - Konsistente Figuren: ein festes Character-Design-Sheet, das in JEDEM Bild-Prompt wiederholt wird;
   pro Shot angeben, welche Figuren zu sehen sind
 - Bild-Prompts auf Englisch im Stil: "1990s retro anime screencap, cel shading, ..."
-- Viel Dialog (Englisch), jede Zeile max. ~10 Wörter
+- Viel Dialog (Englisch), jede Zeile max. ~10 Wörter, jede Zeile mit Emotion (shout, angry, whisper …)
+- Jede Figur hat eine klar unterscheidbare Stimme (Alter, Tonlage, Klangfarbe) wie in einer 90er-Anime-Synchro:
+  der raue Held, der höhnische Gegenspieler, die entschlossene junge Frau usw.
 - Eine Schlagzeile für den Short (oben über dem Video), z. B.
   "AI turned Paris' latest riots into a 90s anime and it works way too well"

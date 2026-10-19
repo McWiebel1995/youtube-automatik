@@ -140,13 +140,62 @@ def gpu_shots(vid, sc, work, no_gpu=False):
 _tts = {}
 
 
-def voice_for(char):
+KOKORO_VOICES = {   # (Geschlecht, Tonlage) -> Kandidaten; jede Figur bekommt eine eigene
+    ("male", "low"): ["am_onyx", "bm_george", "am_fenrir", "am_michael"],
+    ("male", "mid"): ["am_michael", "am_eric", "bm_lewis", "am_adam", "am_fenrir"],
+    ("male", "high"): ["am_puck", "am_liam", "am_echo", "bm_daniel"],
+    ("female", "low"): ["af_nicole", "bf_isabella", "af_sarah", "af_heart"],
+    ("female", "mid"): ["af_heart", "af_sarah", "bf_emma", "af_nova"],
+    ("female", "high"): ["af_bella", "af_sky", "af_jessica", "af_nova"],
+}
+EMOTION = {   # Chatterbox: (exaggeration, cfg_weight, Lautstärke dB)
+    "shout": (1.05, 0.3, 2), "angry": (0.85, 0.35, 1), "mocking": (0.75, 0.4, 0), "determined": (0.7, 0.4, 0),
+    "crying": (0.8, 0.35, -1), "fearful": (0.7, 0.4, -1), "calm": (0.45, 0.5, -1), "whisper": (0.35, 0.5, -6),
+}
+REF_TEXT = ("I have waited a long time for this moment. Whatever happens tonight, "
+            "I will not run away again. Not this time.")
+
+
+def profile_of(char):
+    p = dict(char.get("voice_profile") or {})
     desc = f"{char.get('voice', '')} {char.get('role', '')} {char.get('design_sheet', '')}".lower()
-    female = any(w in desc for w in ["female", "woman", "girl", "she ", "her ", "mother", "lady"])
-    young = any(w in desc for w in ["teen", "boy", "girl", "young", "18", "17", "16"])
-    if female:
-        return "af_bella" if young else "af_heart"
-    return "am_puck" if young else "am_michael"
+    if p.get("gender") not in ("male", "female"):
+        p["gender"] = "female" if any(w in desc for w in ["female", "woman", "girl", "she ", "her ", "lady"]) else "male"
+    if p.get("pitch") not in ("low", "mid", "high"):
+        p["pitch"] = ("low" if any(w in desc for w in ["deep", "gravel", "old", "low"]) else
+                      "high" if any(w in desc for w in ["teen", "young", "boy", "girl", "bright"]) else "mid")
+    return p
+
+
+def assign_voices(characters):
+    """Jede Figur bekommt eine andere Kokoro-Grundstimme (Klangfarbe) + eigene Tonhöhen-Nuance."""
+    used, out = set(), {}
+    for i, c in enumerate(characters):
+        p = profile_of(c)
+        pool = KOKORO_VOICES[(p["gender"], p["pitch"])]
+        v = next((x for x in pool if x not in used), pool[i % len(pool)])
+        used.add(v)
+        out[c.get("id")] = v
+    return out
+
+
+def voice_for(char):   # Fallback, falls eine Figur fehlt
+    return "af_heart" if profile_of(char or {})["gender"] == "female" else "am_michael"
+
+
+def dub_fx(a, emotion):
+    """Leichte 90er-Synchro-Färbung: Bandbegrenzung, sanfte Kompression, bei Schreien etwas Raum."""
+    from scipy.signal import butter, sosfilt
+    a = sosfilt(butter(4, [90, 9000], btype="band", fs=SR, output="sos"), a).astype(np.float32)
+    a = np.tanh(a * 2.2) / np.tanh(2.2)
+    if emotion == "shout":
+        ir = np.zeros(int(0.25 * SR), np.float32)
+        for k, d in enumerate([0.023, 0.041, 0.067, 0.11, 0.16]):
+            ir[int(d * SR)] = 0.35 * 0.6 ** k
+        ir[0] = 1.0
+        a = np.convolve(a, ir)[: len(a) + int(0.2 * SR)].astype(np.float32)
+    peak = np.max(np.abs(a)) or 1.0
+    return (a / peak * 0.9).astype(np.float32)
 
 
 def tts(text, voice, out):
@@ -216,6 +265,45 @@ def ass_time(t):
     return f"{int(h)}:{int(m):02d}:{s:05.2f}"
 
 
+def render_lines(vid, jobs, chars, kvoice, work, no_gpu, notes):
+    """Gibt pro Shot eine Liste von Mono-Arrays (SR) zurück."""
+    def kokoro(cid, text):
+        return tts(text, kvoice.get(cid) or voice_for(chars.get(cid)), work / "tts.wav")
+
+    if no_gpu:
+        notes.add(f"Stimmen: {_tts.get('engine', 'Kokoro')} (ohne GPU)")
+        return [[kokoro(c, t) for c, t, _ in lines] for _, lines in jobs]
+    try:
+        import io as _io
+
+        import modal
+        from modal_app import Voice, app
+        refs = {}
+        for cid in {c for _, lines in jobs for c, _, _ in lines}:
+            a = kokoro(cid, REF_TEXT)
+            buf = _io.BytesIO()
+            wavfile.write(buf, SR, (np.clip(a, -1, 1) * 32767).astype(np.int16))
+            refs[cid] = buf.getvalue()
+        base = int(hashlib.sha1(vid.encode()).hexdigest()[:6], 16)
+        out = []
+        with modal.enable_output(), app.run():
+            v = Voice()
+            for i, (_, lines) in enumerate(jobs):
+                shot = []
+                for j, (cid, text, emo) in enumerate(lines):
+                    ex, cfg, _ = EMOTION.get(emo, EMOTION["determined"])
+                    wav = v.speak.remote(text, refs[cid], exaggeration=ex, cfg_weight=cfg, seed=base + i * 10 + j)
+                    sr, a = wavfile.read(_io.BytesIO(wav))
+                    a = a.astype(np.float32) / (32768 if a.dtype == np.int16 else 1)
+                    shot.append(resample_poly(a, SR, sr).astype(np.float32))
+                out.append(shot)
+        notes.add("Stimmen: Chatterbox (eigene Stimme pro Figur, Emotion pro Zeile)")
+        return out
+    except Exception as e:  # noqa: BLE001
+        notes.add(f"Stimmen: Kokoro-Fallback (Chatterbox-Fehler: {repr(e)[:160]})")
+        return [[kokoro(c, t) for c, t, _ in lines] for _, lines in jobs]
+
+
 def produce(vid, no_gpu=False, max_shots=None):
     rec = json.loads((SCRIPTS / f"{vid}.json").read_text(encoding="utf-8"))
     sc = rec["script"]
@@ -239,21 +327,26 @@ def produce(vid, no_gpu=False, max_shots=None):
     chars = {c.get("id"): c for c in sc.get("characters", [])}
     main_char = (sc.get("characters") or [{}])[0]
 
-    # Stimmen
+    # Stimmen: pro Figur eigene Stimme, pro Zeile eigene Emotion (Chatterbox auf Modal, Fallback Kokoro)
+    status(vid, state="running", progress="Synchronstimmen")
     vo = np.zeros(int(total * SR) + SR, np.float32)
-    subs = []
+    subs, voice_notes = [], set()
+    kvoice = assign_voices(sc.get("characters") or [])
+    jobs = []
     for s, st in zip(shots, starts):
-        cur = st + 0.35
-        lines = [(chars.get(d.get("character"), main_char), d.get("line")) for d in (s.get("dialogue") or [])]
+        lines = [(d.get("character"), d.get("line"), (d.get("emotion") or "determined").lower())
+                 for d in (s.get("dialogue") or [])]
         if s.get("voiceover"):
-            lines.append((main_char, s["voiceover"]))
-        for ch, text in lines:
-            if not text:
-                continue
-            a = tts(text, voice_for(ch or {}), work / "tts.wav")
+            lines.append((main_char.get("id"), s["voiceover"], "calm"))
+        jobs.append((st, [x for x in lines if x[1]]))
+    rendered = render_lines(vid, jobs, chars, kvoice, work, no_gpu, voice_notes)
+    for (st, lines), audios in zip(jobs, rendered):
+        cur = st + 0.25
+        for (cid, text, emo), a in zip(lines, audios):
+            a = dub_fx(a, emo) * (10 ** (EMOTION.get(emo, EMOTION["determined"])[2] / 20))
             place(vo, a, cur)
-            subs.append((cur, cur + len(a) / SR + 0.2, text))
-            cur += len(a) / SR + 0.25
+            subs.append((cur, cur + len(a) / SR + 0.15, text))
+            cur += len(a) / SR + 0.15
 
     # Geräusche + Musik
     cache = {}
@@ -337,7 +430,7 @@ def produce(vid, no_gpu=False, max_shots=None):
 
     # Ablage als GitHub-Release (öffentlicher Link fürs Dashboard und später für Instagram/TikTok)
     urls = upload_release(vid, sc.get("title") or vid, [final, poster])
-    notes = gpu["notes"] + [f"Stimmen: {_tts.get('engine', '–')}",
+    notes = gpu["notes"] + sorted(voice_notes) + [
                             "Musik: " + ("Freesound CC0" if music is not None else "keine gefunden")]
     status(vid, state="done", progress="fertig", video_url=urls.get(final.name), poster_url=urls.get(poster.name),
            duration_s=round(total, 1), notes=notes, finished_at=now())

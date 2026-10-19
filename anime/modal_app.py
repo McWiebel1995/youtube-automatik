@@ -137,3 +137,37 @@ class Studio:
         export_to_video(frames, path, fps=24)
         with open(path, "rb") as f:
             return {"mp4": f.read(), "mode": mode, "frames": num_frames, "note": note}
+
+
+# ----------------------------------------------------------------- Synchronstimmen
+# Chatterbox (Resemble AI, MIT-Lizenz): ausdrucksstarke Sprachausgabe mit regelbarer Emotion.
+# Jede Figur bekommt eine eigene, rein synthetische Stimme (Referenz kommt von Kokoro, nicht von echten Menschen).
+voice_image = (
+    modal.Image.debian_slim(python_version="3.11")
+    .apt_install("ffmpeg")
+    .pip_install("chatterbox-tts", "soundfile")
+    .env({"HF_HOME": "/models/hf"})
+)
+
+
+@app.cls(gpu="L4", image=voice_image, volumes={"/models": models}, timeout=1800, scaledown_window=120)
+class Voice:
+    @modal.enter()
+    def load(self):
+        from chatterbox.tts import ChatterboxTTS
+        self.model = ChatterboxTTS.from_pretrained(device="cuda")
+        models.commit()
+
+    @modal.method()
+    def speak(self, text: str, ref_wav: bytes, exaggeration: float = 0.6, cfg_weight: float = 0.4,
+              temperature: float = 0.8, seed: int = 0) -> bytes:
+        import soundfile as sf
+        import torch
+        torch.manual_seed(seed)
+        with open("/tmp/ref.wav", "wb") as f:
+            f.write(ref_wav)
+        wav = self.model.generate(text, audio_prompt_path="/tmp/ref.wav", exaggeration=exaggeration,
+                                  cfg_weight=cfg_weight, temperature=temperature)
+        buf = io.BytesIO()
+        sf.write(buf, wav.squeeze(0).cpu().numpy(), self.model.sr, format="WAV")
+        return buf.getvalue()
