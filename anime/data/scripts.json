@@ -1,91 +1,93 @@
 {
- "updated_at": "2026-10-19T22:48:49Z",
+ "updated_at": "2026-10-19T23:11:28Z",
  "scripts": [
   {
    "video_id": "RcpANAiIFiM",
-   "created_at": "2026-10-19T22:48:49Z",
+   "created_at": "2026-10-19T23:11:28Z",
    "status": "draft",
    "decided_at": null,
-   "title": "The Last Keeper of Dreams",
-   "logline": "When rioters assault a retro anime shop, a quiet shopkeeper unleashes an legendary power of resolve to protect his store.",
-   "logline_de": "Als Randalierer einen Retro-Anime-Laden angreifen, entfesselt ein ruhiger Ladenbesitzer legendäre Kraft, um seinen Zufluchtsort zu schützen.",
-   "duration": 50,
+   "title": "Anime Riot Archives",
+   "logline": "A devoted archivist protects his sanctuary of classic animation against a chaotic street riot, inspiring unexpected solidarity from local youths.",
+   "logline_de": "Ein hingebungsvoller Architekt verteidigt sein Refugium klassischer Animation gegen Straßenkrawalle und inspiriert unerwartete Solidarität.",
+   "duration": 48,
    "setting": {
-    "location": "Neon-lit retro arcade district in fictional Neo-Aura City",
-    "time": "Dusk / Night",
-    "weather": "Smoky haze with sparks in the air",
-    "color_palette": "Deep amber gold, neon violet, dark navy blue, crimson energy highlights",
-    "art_style": "1990s retro anime, hand-drawn cel style, visible film grain, intense shadow contrast, heavy speed-lines, dynamic impact frames"
+    "location": "Neo-Roma, fictional arcade district",
+    "time": "Dusk during civil unrest",
+    "weather": "Hazy, orange streetlights, drifting smoke",
+    "color_palette": "Desaturated gritty urban tones with vivid neon magazine hues",
+    "art_style": "1990s retro anime, cel shading, film grain, dramatic lighting, speed lines"
    },
    "characters": [
     {
      "id": "c1",
      "name": "Ren",
-     "role": "Ladenhüter / Beschützer",
+     "role": "Shopkeeper and archivist",
      "age_group": "30s",
-     "build": "Stocky, powerful heavy build",
-     "design_sheet": "Ren, 32yo stocky man with short spiky dark-blue hair, sharp amber eyes, thick brows, wearing a oversized dark maroon hoodie, black track pants, no logos, retro 90s anime cel shading style",
+     "build": "Sturdy, stocky build",
+     "design_sheet": "32-year-old male archivist, short messy dark hair, intense brown eyes, wearing a black oversized hoodie with a subtle green collar graphic and dark joggers, thick-rimmed square glasses, focused resolute expression",
      "inspired_by_scene_de": [
-      "Körperbau und Rolle als standhafter Ladenverteidiger",
-      "Dunkler Hoodie als allgemeiner Kleidungsstil",
-      "Steht schützend im zersplitterten Schaufensterrahmen neben Werbepostern"
+      "Rolle als Ladenverteidiger",
+      "Körperbau und grobe Statur",
+      "Schwarzer Hoodie und dunkle Hosen als Kleidungstyp",
+      "Eckige Brille in anderer Ausführung"
      ],
      "changed_de": [
-      "Völlig anderes Gesicht, spritzig-blaue Anime-Frisur statt Kahlkopf/Rasur",
-      "Keine Tattoos am Arm oder sichtbare Markenaufdrucke",
-      "Fiktiver Name 'Ren', keine realen Logos"
+      "Gesichtszüge und Haarschnitt komplett neu",
+      "Keine Tattoos oder Logos",
+      "Fiktiver Name und fiktiver Ort"
      ],
-     "voice": "Deep, gritty, defiant English anime dubbed voice"
+     "voice": "Gravelly, deep, resolute voice like a classic 90s English dub veteran",
+     "voice_profile": {
+      "gender": "male",
+      "age": "adult",
+      "pitch": "low",
+      "texture": "gravelly"
+     }
     },
     {
      "id": "c2",
-     "name": "Kael",
-     "role": "Aggressiver Angreifer",
-     "age_group": "20s",
-     "build": "Lean and fast",
-     "design_sheet": "Kael, 22yo lean man with wild spiky silver hair, dark face mask covering nose and mouth, wearing a dark green windbreaker jacket, glowing red outline aura",
+     "name": "Kaito",
+     "role": "Neighborhood youth stepping in",
+     "age_group": "Teens",
+     "build": "Slim, agile",
+     "design_sheet": "18-year-old male youth, messy white hair, sharp green eyes, wearing a white utility jacket and dark cargo pants, fierce determined expression",
      "inspired_by_scene_de": [
-      "Rolle des plötzlichen Angreifers, der nach vorne stürmt"
+      "Rolle als dazwischentretender Passant",
+      "Jugendliches Alter und lockere Kleidung"
      ],
      "changed_de": [
-      "Silberne Anime-Haare, Gesichtsmaske, ganz anderer Kleidungsstil ohne reale Marken"
+      "Weißes Haar und Gesichtszüge völlig anders",
+      "Keine realen Personen als Vorbild"
      ],
-     "voice": "Harsh, aggressive English anime villain voice"
-    },
-    {
-     "id": "c3",
-     "name": "Mina",
-     "role": "Mutige Passantin / Deeskalierende Helfende",
-     "age_group": "20s",
-     "build": "Slender, athletic",
-     "design_sheet": "Mina, 24yo woman with long dark brown hair in a high ponytail, bright hazel eyes, wearing a blue denim jacket over a white shirt, blue jeans",
-     "inspired_by_scene_de": [
-      "Rolle der Passantin, die sich dazwischenstellt und zum Aufhören aufruft"
-     ],
-     "changed_de": [
-      "Eigenes Anime-Character-Design, Pferdeschwanz, Denim-Jacke, fiktiver Name"
-     ],
-     "voice": "Clear, resolute, passionate female English voice"
+     "voice": "Energetic, bright teenage dub voice, slightly raspy",
+     "voice_profile": {
+      "gender": "male",
+      "age": "teen",
+      "pitch": "mid",
+      "texture": "raspy"
+     }
     }
    ],
    "shots": [
     {
      "n": 1,
      "duration_s": 3,
-     "characters": [],
+     "characters": [
+      "c1"
+     ],
      "beat": "HOOK",
-     "camera": "Low angle extreme close-up, panning fast",
-     "action": "Glass shatters in dramatic slow-motion; golden energy sparks fly across shattered glass panels.",
+     "camera": "Wide shot, low angle, fast push-in",
+     "action": "Shattered glass flies across the storefront while Ren stands firm inside the debris.",
      "dialogue": [],
      "voiceover": null,
      "sfx": [
-      "Loud glass shattering with echo",
-      "Low synth bass drone"
+      "Glass shattering",
+      "Distant sirens"
      ],
-     "music": "High tension synth pulse, heavy drums kick in",
-     "on_screen_text": null,
-     "image_prompt": "1990s retro anime screencap, cel shading, high contrast, low angle view of tempered glass shattering into glittering crystal shards, dark city street background, glowing golden sparks, hand-drawn look, heavy film grain, 16:9 ratio",
-     "motion_prompt": "Camera zooms violently into shattering glass, impact frames flick brightly with speed lines."
+     "music": "Heavy synth bass pulse starts",
+     "on_screen_text": "October 17",
+     "image_prompt": "1990s retro anime screencap, cel shading, wide shot of a ruined storefront, scattered debris and broken glass on the street, c1 Ren with short messy dark hair, black oversized hoodie, thick-rimmed square glasses, standing amid shattered glass, dramatic orange sunset lighting, film grain",
+     "motion_prompt": "Fast camera push-in toward the shattered doorway with flying glass shards and dynamic speed lines."
     },
     {
      "n": 2,
@@ -94,48 +96,43 @@
       "c1"
      ],
      "beat": "EINSTIEG",
-     "camera": "Medium shot, eye level, static",
-     "action": "Ren stands inside the broken store entrance, his maroon hoodie fluttering as smoke clears.",
+     "camera": "Medium close-up, Dutch angle",
+     "action": "Ren clenches his fists, looking out at the chaotic street with intense determination.",
      "dialogue": [
       {
        "character": "c1",
-       "line": "This sanctuary... I won't let you destroy it!"
+       "line": "You will not destroy this place!",
+       "emotion": "angry"
       }
      ],
      "voiceover": null,
      "sfx": [
-      "Wind howling",
-      "Distorted crowd shouting in background"
+      "Low bass drop"
      ],
-     "music": "Driving 90s shonen action beat with distorted electric bass",
+     "music": "Rhythmic 90s electronic beat kicks in",
      "on_screen_text": null,
-     "image_prompt": "1990s retro anime screencap, cel shading, Ren, 32yo stocky man with short spiky dark-blue hair, sharp amber eyes, thick brows, wearing a oversized dark maroon hoodie, black track pants, standing defiant inside a ruined retro anime collectibles shop with shattered glass floor, dark moody lighting, smoke haze, 16:9 ratio",
-     "motion_prompt": "Smoke wafts slowly around Ren while his hoodie and hair rustle in wind, fierce look on his face."
+     "image_prompt": "1990s retro anime screencap, cel shading, medium close-up of c1 Ren with short messy dark hair, black oversized hoodie, thick-rimmed square glasses, shouting angrily, sweat drop on temple, harsh neon reflections, film grain",
+     "motion_prompt": "Camera shakes slightly with impact frames and glowing aura lines around Ren's fists."
     },
     {
      "n": 3,
      "duration_s": 3,
      "characters": [
-      "c2"
+      "c1"
      ],
      "beat": "KONFLIKT",
-     "camera": "Dutch angle medium shot, tracking forward",
-     "action": "Kael charges forward out of the alleyway surrounded by angry shadows.",
-     "dialogue": [
-      {
-       "character": "c2",
-       "line": "Get out of the way, old man!"
-      }
-     ],
+     "camera": "Over-the-shoulder shot, fast pan",
+     "action": "Shadowy figures surge forward past the broken window frame, clashing against Ren's position.",
+     "dialogue": [],
      "voiceover": null,
      "sfx": [
-      "Footsteps sprinting",
-      "Aggressive shouting"
+      "Shouting crowd noise",
+      "Impact thud"
      ],
-     "music": "Aggressive distorted synth riffs",
+     "music": "Fast tempo synthwave",
      "on_screen_text": null,
-     "image_prompt": "1990s retro anime screencap, cel shading, Kael, 22yo lean man with wild spiky silver hair, dark face mask covering nose and mouth, wearing a dark green windbreaker jacket, sprinting aggressively towards camera, dark alley street background with neon sign reflections, dramatic shadow hatching, 16:9 ratio",
-     "motion_prompt": "Kael lunges towards camera with dynamic speed lines and dramatic hand-drawn motion trails."
+     "image_prompt": "1990s retro anime screencap, cel shading, over-the-shoulder view of c1 Ren in black hoodie facing anonymous hooded rioters in a debris-filled street, dramatic high-contrast shadows, cel-shaded highlights",
+     "motion_prompt": "Fast panning motion with motion blur on background figures rushing past."
     },
     {
      "n": 4,
@@ -145,223 +142,112 @@
       "c2"
      ],
      "beat": "KONFLIKT",
-     "camera": "Over-the-shoulder wide shot, fast push-in",
-     "action": "Kael strikes at Ren's guard from the side, causing a bright flash of impact energy.",
-     "dialogue": [],
+     "camera": "Medium shot, eye level, rapid cut",
+     "action": "Kaito steps directly into the fray, holding out his arms to shield Ren from the advancing crowd.",
+     "dialogue": [
+      {
+       "character": "c2",
+       "line": "Back off! Stop this right now!",
+       "emotion": "shout"
+      }
+     ],
      "voiceover": null,
      "sfx": [
-      "Heavy physical impact sound with energy clap"
+      "Sharp vocal shout"
      ],
-     "music": "Fast tempo battle theme",
+     "music": "Rising synth lead",
      "on_screen_text": null,
-     "image_prompt": "1990s retro anime screencap, cel shading, impact frame, Kael, 22yo lean man with wild spiky silver hair, launching a physical blow against Ren, 32yo stocky man with short spiky dark-blue hair wearing dark maroon hoodie, golden energy shockwave burst on impact, debris flying, 16:9 ratio",
-     "motion_prompt": "Instant white impact flash frame, dynamic camera shake on violent hit, debris flying sideways."
+     "image_prompt": "1990s retro anime screencap, cel shading, c2 Kaito with white hair, white utility jacket, standing protectively in front of c1 Ren, arms outstretched, street littered with paper and debris, dramatic backlighting",
+     "motion_prompt": "Fast zoom into Kaito's determined face with flying debris crossing the frame."
     },
     {
      "n": 5,
      "duration_s": 3,
      "characters": [
-      "c1"
-     ],
-     "beat": "WENDEPUNKT",
-     "camera": "Extreme close-up on Ren's face, dutch angle",
-     "action": "Ren grimaces, a tiny streak of blood on his lip, but his eyes ignite with fiery golden energy.",
-     "dialogue": [
-      {
-       "character": "c1",
-       "line": "I will not step back!"
-      }
-     ],
-     "voiceover": null,
-     "sfx": [
-      "Heartbeat thud sound effect",
-      "Energy surge hum"
-     ],
-     "music": "Music cuts out abruptly to silence, leaving only heartbeat and rising energy hum",
-     "on_screen_text": null,
-     "image_prompt": "1990s retro anime screencap, cel shading, extreme close-up of Ren's face, 32yo stocky man with short spiky dark-blue hair, sharp amber eyes glowing yellow, grit teeth, small drop of blood on lip, intense dramatic shadow lines across face, glowing anime eye flare, 16:9 ratio",
-     "motion_prompt": "Slow push in on eyes, yellow eye-glow flares brightly with subtle camera tremor."
-    },
-    {
-     "n": 6,
-     "duration_s": 3,
-     "characters": [
-      "c3",
+      "c1",
       "c2"
      ],
      "beat": "WENDEPUNKT",
-     "camera": "Medium wide shot, low angle, static",
-     "action": "Mina steps boldly into the middle, raising both hands to block Kael.",
+     "camera": "Extreme close-up on eyes, slow motion",
+     "action": "Ren's eyes widen in sudden surprise as he realizes neighborhood youths are standing up for him.",
+     "dialogue": [],
+     "voiceover": null,
+     "sfx": [
+      "Sudden silence, ringing tone"
+     ],
+     "music": "Music cuts to a soft, resonant synth chord",
+     "on_screen_text": null,
+     "image_prompt": "1990s retro anime screencap, cel shading, extreme close-up of c1 Ren's eyes behind thick-rimmed square glasses, reflection of glowing lights in pupils, emotional shock expression, dramatic anime shading",
+     "motion_prompt": "Slow zoom into the pupils with subtle light refraction and gentle pulsing glow."
+    },
+    {
+     "n": 6,
+     "duration_s": 4,
+     "characters": [
+      "c1",
+      "c2"
+     ],
+     "beat": "HÖHEPUNKT",
+     "camera": "Low angle wide shot, dramatic upward tilt",
+     "action": "A surge of protective energy flares around the group standing together in the broken storefront frame.",
      "dialogue": [
       {
-       "character": "c3",
-       "line": "Stop this right now! Leave him alone!"
+       "character": "c1",
+       "line": "We protect what matters!",
+       "emotion": "determined"
       }
      ],
      "voiceover": null,
      "sfx": [
-      "Echoing shout",
-      "Crowd gasps"
+      "Power-up energy hum",
+      "Deep bass impact"
      ],
-     "music": "Heroic emotional synth melody enters softly",
+     "music": "Triumphant 90s anime battle theme crescendo",
      "on_screen_text": null,
-     "image_prompt": "1990s retro anime screencap, cel shading, Mina, 24yo woman with long dark brown ponytail, wearing blue denim jacket, standing bravely between attacker Kael and shopkeeper Ren, outstretched arms, glowing light aura forming around her feet, broken store background, 16:9 ratio",
-     "motion_prompt": "Mina steps firmly forward, hair waving in wind burst as light aura blooms beneath her boots."
+     "image_prompt": "1990s retro anime screencap, cel shading, c1 Ren and c2 Kaito standing side-by-side in a ruined storefront, glowing yellow energy aura around them, vibrant pop-culture poster in the background, dramatic upward angle",
+     "motion_prompt": "Energy aura pulses outward with camera shaking and speed lines converging on the characters."
     },
     {
      "n": 7,
-     "duration_s": 3,
-     "characters": [
-      "c3"
-     ],
-     "beat": "HÖHEPUNKT",
-     "camera": "Close-up hero shot, low angle panning up",
-     "action": "More neighborhood citizens step up beside Mina, forming a united front.",
-     "dialogue": [
-      {
-       "character": "c3",
-       "line": "We stand together!"
-      }
-     ],
-     "voiceover": null,
-     "sfx": [
-      "Resonant power hum",
-      "Crowd murmur turning into roar"
-     ],
-     "music": "Full orchestral synth crescendo, triumphant battle theme",
-     "on_screen_text": null,
-     "image_prompt": "1990s retro anime screencap, cel shading, Mina, 24yo ponytail woman flanked by brave city youths standing side by side, bright shimmering defensive light barrier glowing before them, fierce determined eyes, dramatic rim lighting, 16:9 ratio",
-     "motion_prompt": "Light barrier flares bright, citizens step up into frame synchronized."
-    },
-    {
-     "n": 8,
      "duration_s": 4,
      "characters": [
       "c1"
      ],
-     "beat": "HÖHEPUNKT",
-     "camera": "Full body wide shot, tracking backwards slowly",
-     "action": "Ren rises to his full height, surrounded by a roaring golden power aura that pushes away all rioters.",
-     "dialogue": [
-      {
-       "character": "c1",
-       "line": "Lend me your courage... AURA SHIELD!"
-      }
-     ],
-     "voiceover": null,
-     "sfx": [
-      "Massive power energy blast roar",
-      "Glass vibrations sound"
-     ],
-     "music": "Maximum volume epic 90s anime climax theme",
-     "on_screen_text": null,
-     "image_prompt": "1990s retro anime screencap, cel shading, Ren, 32yo stocky man in dark maroon hoodie standing in store doorway, massive golden fiery energy aura erupting around him, power lines shooting into sky, shattered glass flying outward, legendary shonen transformation pose, 16:9 ratio",
-     "motion_prompt": "Golden energy aura surges and pulsates vigorously around Ren, shockwave expands outward pushing back darkness."
-    },
-    {
-     "n": 9,
-     "duration_s": 3,
-     "characters": [
-      "c2"
-     ],
-     "beat": "HÖHEPUNKT",
-     "camera": "Wide shot, bird's eye view",
-     "action": "The shockwave harmlessly pushes Kael and the attackers back down the street.",
+     "beat": "NACHHALL",
+     "camera": "Medium shot, static, slow fade",
+     "action": "Ren stands calmly inside the damaged doorway next to a retro poster, breathing steadily as calm returns.",
      "dialogue": [],
      "voiceover": null,
      "sfx": [
-      "Wind blast roaring",
-      "Footsteps retreating"
+      "Gentle wind blowing debris",
+      "Fading synth drone"
      ],
-     "music": "Triumphant energetic horns",
-     "on_screen_text": null,
-     "image_prompt": "1990s retro anime screencap, cel shading, wide street view, Kael and attackers shielding eyes as a golden radiant shockwave sweeps harmlessly down the littered street, smoke clearing, night street lit by golden aura, 16:9 ratio",
-     "motion_prompt": "Shockwave ring sweeps across street, blowing dust and debris back, rioters retreat in shock."
-    },
-    {
-     "n": 10,
-     "duration_s": 3,
-     "characters": [
-      "c1"
-     ],
-     "beat": "NACHHALL",
-     "camera": "Medium shot, eye level, slow zoom in",
-     "action": "Ren stands calmly in his broken storefront frame, right next to a torn retro hero anime poster on the wall.",
-     "dialogue": [],
-     "voiceover": "Courage is born when we protect what we love.",
-     "sfx": [
-      "Gentle wind chime synth",
-      "Distant quiet city sounds"
-     ],
-     "music": "Warm nostalgic 90s anime ending synth chord",
-     "on_screen_text": null,
-     "image_prompt": "1990s retro anime screencap, cel shading, Ren, 32yo stocky man in dark maroon hoodie standing standing calm and proud inside shattered glass shop window frame next to a large torn anime martial artist hero poster, soft warm golden twilight light, calm quiet expression, 16:9 ratio",
-     "motion_prompt": "Slow peaceful push in on Ren as warm light shines across his face, hair gently stirring."
-    },
-    {
-     "n": 11,
-     "duration_s": 3,
-     "characters": [
-      "c1",
-      "c3"
-     ],
-     "beat": "NACHHALL",
-     "camera": "Medium wide shot, low angle",
-     "action": "Mina offers a warm nod to Ren, who smiles subtly in return among the ruins.",
-     "dialogue": [
-      {
-       "character": "c3",
-       "line": "We'll rebuild it, together."
-      }
-     ],
-     "voiceover": null,
-     "sfx": [
-      "Soft step on pavement"
-     ],
-     "music": "Uplifting nostalgic melody fading gently",
-     "on_screen_text": null,
-     "image_prompt": "1990s retro anime screencap, cel shading, Mina, ponytail woman looking back with warm hopeful smile towards shopkeeper Ren standing in ruined store frame, gentle evening light, heartwarming 90s anime ending scene, 16:9 ratio",
-     "motion_prompt": "Mina smiles warm nod, camera gently pans to reveal whole peaceful scene."
-    },
-    {
-     "n": 12,
-     "duration_s": 3,
-     "characters": [],
-     "beat": "NACHHALL",
-     "camera": "Static cinematic title card shot",
-     "action": "The frame darkens slightly into an elegant end screen with text overlay.",
-     "dialogue": [],
-     "voiceover": null,
-     "sfx": [],
-     "music": "Final fading synth chord, gentle beat drop",
+     "music": "Melancholic synthesizer outro",
      "on_screen_text": "Fictional story inspired by real events.",
-     "image_prompt": "1990s retro anime screencap, dark moody atmospheric background of a quiet city street at night after storm, glowing soft street lamps, film grain overlay, clean aesthetic, 16:9 ratio",
-     "motion_prompt": "Static shot with subtle particle floating dust in streetlight beam."
+     "image_prompt": "1990s retro anime screencap, cel shading, medium shot of c1 Ren standing tall inside the shattered doorway next to a vibrant 90s hero poster, quiet twilight street, warm nostalgic lighting, film grain",
+     "motion_prompt": "Slow, subtle camera drift downward with gentle drifting paper scraps in the wind."
     }
    ],
    "music": {
-    "mood": "High-octane 90s shonen anime battle music transitioning into heroic synthwave and nostalgic warm finale",
-    "bpm": 128,
+    "mood": "Gritty retro synthwave transitioning to triumphant 90s shonen battle theme",
+    "bpm": 124,
     "instruments": [
-     "Distorted 90s electric guitar",
-     "FM synthesizer leads",
-     "Analog retro drums",
-     "Orchestral brass synth patch"
+     "analog synthesizer",
+     "heavy drum machine",
+     "electric guitar lead",
+     "atmospheric pads"
     ]
    },
-   "headline": "AI turned a real store riot into a 90s retro anime fight and it's insane!",
+   "headline": "AI turned a street riot into a 90s anime and it's too real",
    "youtube": {
-    "title": "When a real store riot becomes a epic 90s anime! 💥 #shorts",
-    "description": "An unassuming shopkeeper defends his retro sanctuary in full 90s anime style!\n\nFictional story inspired by real events.",
+    "title": "When a street riot turns into a 90s anime #shorts",
+    "description": "An intense 90s retro anime reimagining of a neighborhood clash, where local solidarity rises from the chaos. Fictional story inspired by real events.",
     "tags": [
-     "retroanime",
-     "90sanime",
      "anime",
+     "90sanime",
+     "retroanime",
      "animation",
-     "shorts",
-     "shonen",
-     "animeedit",
-     "celshading"
+     "shorts"
     ]
    },
    "end_card": "Fictional story inspired by real events.",
@@ -370,45 +256,33 @@
      {
       "id": "c1",
       "matching_features": [
-       "Körperbau und Rolle als Ladenverteidiger",
-       "Position vor beschädigter Ladenfront"
+       "Rolle als Verteidiger des Ladenlokals",
+       "Kräftige, stämmige Statur",
+       "Schwarze legere Freizeitkleidung (Hoodie und Jogginghose)",
+       "Brille als Accessoire (in abweichender Ausführung)"
       ],
-      "risk": "medium",
-      "required_changes": [
-       "Keine verbliebenen Tattoos oder sichtbaren Markenmuster übernehmen"
-      ]
+      "risk": "low",
+      "required_changes": []
      },
      {
       "id": "c2",
       "matching_features": [
-       "Rolle des Angreifers im öffentlichen Raum"
+       "Rolle als deeskalierender Jugendlicher",
+       "Schlanker Körperbau",
+       "Helle Jacke kombiniert mit dunkler Hose"
       ],
-      "risk": "medium",
-      "required_changes": [
-       "Aktionsabfolge im Skript weiter von realen Bewegungen entkoppeln"
-      ]
-     },
-     {
-      "id": "c3",
-      "matching_features": [
-       "Rolle der schlichtenden Passantin"
-      ],
-      "risk": "medium",
-      "required_changes": [
-       "Kleidungskombination individuell gestalten"
-      ]
+      "risk": "low",
+      "required_changes": []
      }
     ],
-    "brands_or_text_visible_in_script": [
-     "Micromania",
-     "Zing",
-     "Armand Thiery",
-     "Le Parisien"
-    ],
-    "overall_risk": "medium",
-    "_model": "gemini-3.6-flash"
+    "brands_or_text_visible_in_script": [],
+    "overall_risk": "low",
+    "_model": "gemini-3.8-flash"
    },
-   "issues": [],
+   "issues": [
+    "7 Shots (erwartet 14–22)",
+    "Gesamtlänge 23 s (erwartet 45–75 s)"
+   ],
    "source": {
     "video_url": "https://www.youtube.com/watch?v=RcpANAiIFiM",
     "event": "Vor einem Ladenlokal in einer Einkaufsstraße liegen Scherben und Gegenstände auf dem Boden. Ein Mann verteidigt den beschädigten Eingangsbereich eines Geschäfts, wird dabei von Passanten konfrontiert und körperlich angegriffen. Umstehende greifen deeskalierend ein und rufen zum Aufhören auf, woraufhin der Mann sichtbar mitgenommen im zerstörten Schaufensterrahmen stehen bleibt.",
