@@ -6,6 +6,7 @@ window_hours: 72              # nur Videos der letzten X Stunden
 max_youtube_queries: 12       # pro Lauf (1 Suche = 100 Einheiten vom YouTube-Kontingent)
 max_analyses_per_run: 12      # Gemini-Videoanalysen pro Lauf (Gratis: max. 8 h Video/Tag)
 max_video_minutes: 12         # längere Videos werden nicht per KI analysiert
+max_listing_minutes: 20       # längere Videos (Sendungen, Livestream-Aufzeichnungen) werden ignoriert
 min_views: 5000               # darunter uninteressant
 top_threshold: 85             # ab diesem Score = Top-Kandidat
 keep_days: 14                 # ältere Kandidaten fliegen aus dem Dashboard (außer freigegebene)
@@ -42,4 +43,4 @@ regions:
     youtube: ["breaking protest footage", "eyewitness footage crowd", "emotional moment street", "people helping each other viral"]
 
 # Wörter, die einen Kandidaten sofort aussortieren (Clickbait, Fake-Hinweise, Gewalt-Fokus)
-exclude_words: ["ai generated", "ki generiert", "prank", "staged", "fake", "compilation", "gta", "game", "trailer", "music video"]
+exclude_words: ["live:", "🔴", "livestream", "live stream", "en direct", "in diretta", "en directo", "ai generated", "ki generiert", "prank", "staged", "fake", "compilation", "gta", "game", "trailer", "music video"]

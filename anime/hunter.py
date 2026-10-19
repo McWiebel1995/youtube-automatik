@@ -91,15 +91,15 @@ def gdelt_articles(query, country, hours, notes):
               "mode": "artlist", "format": "json", "maxrecords": 200,
               "timespan": f"{hours}h", "sort": "hybridrel"}
     err = "zu viele Anfragen"
-    for _ in range(3):
+    for attempt in range(4):
         try:
             r = requests.get("https://api.gdeltproject.org/api/v2/doc/doc", params=params, timeout=40)
             if r.status_code == 429:
-                time.sleep(10)
+                time.sleep(20 * (attempt + 1))
                 continue
             r.raise_for_status()
             arts = (r.json() or {}).get("articles", []) if r.text.strip().startswith("{") else []
-            time.sleep(6)                      # GDELT: max. 1 Anfrage / 5 s
+            time.sleep(12)                     # GDELT: max. 1 Anfrage / 5 s – mit Sicherheitsabstand
             return arts
         except (requests.RequestException, ValueError) as e:
             err = e
@@ -287,19 +287,29 @@ def gemini_analyze(v, models, key, context_titles):
     }
     last = None
     for m in models:
-        r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
-                          headers={"x-goog-api-key": key}, json=body, timeout=240)
+        for attempt in range(3):
+            r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
+                              headers={"x-goog-api-key": key}, json=body, timeout=240)
+            if r.status_code in (500, 502, 503, 504):        # überlastet -> kurz warten, nochmal
+                time.sleep(20 * (attempt + 1))
+                continue
+            break
         if r.status_code in (404, 400) and "not found" in r.text.lower():
             last = f"{m}: nicht verfügbar"
             continue
+        if r.status_code in (500, 502, 503, 504):
+            last = f"{m}: überlastet ({r.status_code})"
+            continue
         if r.status_code == 429:
             raise RuntimeError("Gemini-Gratis-Limit erreicht")
+        if r.status_code == 403:
+            raise PermissionError("Video für die KI-Analyse gesperrt (z. B. Altersbeschränkung/Region)")
         r.raise_for_status()
         txt = "".join(p.get("text", "") for p in r.json()["candidates"][0]["content"]["parts"])
         data = json.loads(txt[txt.index("{"): txt.rindex("}") + 1])
         data["_model"] = m
         return data
-    raise RuntimeError(last or "kein Gemini-Modell verfügbar")
+    raise TimeoutError(last or "kein Gemini-Modell verfügbar")
 
 
 def apply_analysis(v, a):
@@ -403,6 +413,9 @@ def run(no_ai=False):
                 continue
             if num(st.get("viewCount")) is not None and num(st.get("viewCount")) < cfg["min_views"]:
                 continue
+            dur = iso_duration_seconds(cd.get("duration")) or 0
+            if sn.get("liveBroadcastContent", "none") != "none" or dur == 0 or dur > cfg["max_listing_minutes"] * 60:
+                continue                                    # Livestreams / lange Nachrichtensendungen
             code, query_city, q = found.get(vid, ("INT", None, None))
             # Stadt nur übernehmen, wenn sie im Titel/Text steht – der Suchbegriff allein ist kein Beleg
             city = next((c for r in cfg["regions"].values() for c in r["cities"] if c.lower() in text), None)
@@ -446,10 +459,15 @@ def run(no_ai=False):
                 apply_analysis(v, gemini_analyze(v, cfg["gemini_models"], key, ctx))
                 stats_run["analyzed"] += 1
                 print(f"  ✓ analysiert: {v['title'][:70]}")
-            except RuntimeError as e:
+            except RuntimeError as e:                 # Tageslimit -> nächster Lauf
                 notes.append(f"Gemini: {e}")
                 print(f"  ⚠ {e}")
                 break
+            except TimeoutError as e:                 # vorübergehend -> beim nächsten Lauf erneut
+                v["analysis_tries"] = v.get("analysis_tries", 0) + 1
+                if v["analysis_tries"] >= 3:
+                    v["analysis_failed"] = str(e)[:200]
+                print(f"  ⚠ später erneut ({v['video_id']}): {e}")
             except Exception as e:  # noqa: BLE001
                 v["analysis_failed"] = str(e)[:200]
                 print(f"  ⚠ Analyse fehlgeschlagen ({v['video_id']}): {e}")
