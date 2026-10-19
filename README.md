@@ -14,7 +14,9 @@ für ein weltweites Publikum und höhere Werbeeinnahmen. Die **Kinderkanäle sin
 Namen und Texte änderst du in `config/channels.yaml` bzw. `config/kids.yaml`.
 
 **Du musst keine Dateien erstellen.**
-- **Sounds:** werden komplett selbst erzeugt (eigenes Material → keine Lizenz- oder Content-ID-Probleme).
+- **Sounds:** **echte Natur-Aufnahmen** von Freesound.org (nur Lizenz CC0 = gemeinfrei), automatisch zu nahtlosen Loops geschnitten.
+  Dafür einen kostenlosen Schlüssel holen: <https://freesound.org/apiv2/apply> → Secret `FREESOUND_API_KEY`.
+  Ohne Schlüssel werden selbst erzeugte Sounds verwendet.
 - **Bilder:** **echte Natur-Videos** von Pixabay und/oder Pexels (kostenlos, kommerziell nutzbar),
   automatisch zu nahtlosen 1080p-Loops geschnitten. Dafür brauchst du nur einen kostenlosen API-Schlüssel.
   Ohne Schlüssel werden selbst gezeichnete Animationen verwendet.
@@ -163,6 +165,7 @@ Ergebnis liegt in `output/`.
 |---|---|
 | `scripts/gen_audio.py` | erzeugt Regen, Donner, Wind, Feuer, Wasserfall, Bach, Vögel, Uhr |
 | `scripts/gen_video.py` | erzeugt nahtlose Video-Loops für die drei Szenen |
+| `scripts/fetch_sounds.py` | echte Natur-Aufnahmen (Ton) von Freesound, nur CC0 |
 | `scripts/fetch_stock.py` | echte Videos von Pixabay/Pexels als nahtlose Loops (bis 60 s) |
 | `scripts/render.py` | mischt die Ebenen, normalisiert die Lautstärke, baut das Video |
 | `scripts/metadata.py` | Titel, Beschreibung, Tags |
