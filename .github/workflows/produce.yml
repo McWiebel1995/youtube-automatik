@@ -1,0 +1,111 @@
+name: Videos produzieren & hochladen
+
+on:
+  # Jeden Tag um 03:07 UTC: pro Kanal ein neues Video, veröffentlicht um publish_time_utc
+  schedule:
+    - cron: "7 3 * * *"
+  # Manuell starten (Actions -> "Run workflow")
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "Kanal (regen, kamin, wasserfall oder alle)"
+        default: "alle"
+      hours:
+        description: "Länge in Stunden (leer = zufällig)"
+        default: ""
+      dry_run:
+        description: "Nur Testlauf ohne Upload"
+        type: boolean
+        default: true
+
+concurrency:
+  group: produce
+  cancel-in-progress: false
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    env:
+      PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        channel: [regen, kamin, wasserfall]
+    steps:
+      - name: Kanal-Auswahl prüfen
+        id: sel
+        run: |
+          want="${{ github.event.inputs.channel || 'alle' }}"
+          if [ "$want" = "alle" ] || [ "$want" = "${{ matrix.channel }}" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.sel.outputs.run == 'true'
+
+      - uses: actions/setup-python@v5
+        if: steps.sel.outputs.run == 'true'
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Abhängigkeiten installieren
+        if: steps.sel.outputs.run == 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+          pip install -r requirements.txt
+
+      # Erzeugte Sounds/Videos zwischenspeichern, damit sie nicht jedes Mal neu entstehen
+      - name: Assets aus Cache laden
+        if: steps.sel.outputs.run == 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            assets/${{ matrix.channel }}/audio
+            assets/${{ matrix.channel }}/video
+          key: assets-${{ matrix.channel }}-${{ hashFiles('scripts/gen_audio.py', 'scripts/gen_video.py') }}-${{ github.run_id }}
+          restore-keys: |
+            assets-${{ matrix.channel }}-${{ hashFiles('scripts/gen_audio.py', 'scripts/gen_video.py') }}-
+
+      - name: Sounds & Video-Loops erzeugen (nur falls fehlend)
+        if: steps.sel.outputs.run == 'true'
+        run: |
+          python scripts/gen_audio.py --channels ${{ matrix.channel }} --variants 3 --seconds 180
+          python scripts/gen_video.py --channels ${{ matrix.channel }} --variants 3
+
+      - name: Echte Natur-Videos holen (Pixabay/Pexels, nur fehlende)
+        if: steps.sel.outputs.run == 'true' && (env.PIXABAY_API_KEY != '' || env.PEXELS_API_KEY != '')
+        run: python scripts/fetch_stock.py --channels ${{ matrix.channel }} --per-channel 8
+
+      - name: Video rendern & hochladen
+        if: steps.sel.outputs.run == 'true'
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_REGEN: ${{ secrets.YT_REFRESH_TOKEN_REGEN }}
+          YT_REFRESH_TOKEN_KAMIN: ${{ secrets.YT_REFRESH_TOKEN_KAMIN }}
+          YT_REFRESH_TOKEN_WASSERFALL: ${{ secrets.YT_REFRESH_TOKEN_WASSERFALL }}
+        run: |
+          ARGS="--channel ${{ matrix.channel }}"
+          if [ -n "${{ github.event.inputs.hours }}" ]; then ARGS="$ARGS --hours ${{ github.event.inputs.hours }}"; fi
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run --minutes 3"; fi
+          python scripts/pipeline.py $ARGS
+
+      # Thumbnail + Metadaten (und beim Testlauf das kurze Video) zum Ansehen ablegen
+      - name: Ergebnis speichern
+        if: steps.sel.outputs.run == 'true' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ergebnis-${{ matrix.channel }}
+          path: |
+            output/**/meta.json
+            output/**/thumbnail.jpg
+            ${{ github.event.inputs.dry_run == 'true' && 'output/**/video.mp4' || '' }}
+          retention-days: 14
+          if-no-files-found: ignore

@@ -1,0 +1,49 @@
+name: "🔑 Token holen (pro Kanal einmal)"
+
+# Am Handy: Actions -> "Token holen" -> Run workflow -> Kanal wählen -> Run.
+# Dann den laufenden Job öffnen, Schritt "Mit YouTube verbinden" aufklappen,
+# Code auf google.com/device eingeben und den passenden Kanal auswählen.
+
+on:
+  workflow_dispatch:
+    inputs:
+      kanal:
+        description: "Welcher Kanal?"
+        type: choice
+        options:
+          - "Calm Haven Rain"
+          - "Calm Haven Fireside"
+          - "Calm Haven Waters"
+          - "Mondmelodie"
+          - "Lernbärchen"
+          - "Gute-Nacht-Kiste"
+
+jobs:
+  token:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Secret-Namen bestimmen
+        id: map
+        run: |
+          case "${{ github.event.inputs.kanal }}" in
+            "Calm Haven Rain")     echo "name=YT_REFRESH_TOKEN_REGEN" >> "$GITHUB_OUTPUT" ;;
+            "Calm Haven Fireside") echo "name=YT_REFRESH_TOKEN_KAMIN" >> "$GITHUB_OUTPUT" ;;
+            "Calm Haven Waters")   echo "name=YT_REFRESH_TOKEN_WASSERFALL" >> "$GITHUB_OUTPUT" ;;
+            "Mondmelodie")         echo "name=YT_REFRESH_TOKEN_SCHLAF" >> "$GITHUB_OUTPUT" ;;
+            "Lernbärchen")         echo "name=YT_REFRESH_TOKEN_LERNEN" >> "$GITHUB_OUTPUT" ;;
+            "Gute-Nacht-Kiste")    echo "name=YT_REFRESH_TOKEN_GESCHICHTEN" >> "$GITHUB_OUTPUT" ;;
+          esac
+
+      - name: Mit YouTube verbinden  👈 HIER AUFKLAPPEN
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          SECRET_NAME: ${{ steps.map.outputs.name }}
+          CHANNEL_LABEL: ${{ github.event.inputs.kanal }}
+        run: |
+          pip install -q requests
+          python scripts/device_token.py

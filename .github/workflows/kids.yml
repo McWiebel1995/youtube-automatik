@@ -1,0 +1,128 @@
+name: Kinder-Videos produzieren
+
+# Alle Kinder-Videos werden PRIVAT hochgeladen.
+# Du prüfst sie in der YouTube-Studio-App und stellst sie auf "Öffentlich".
+
+on:
+  schedule:
+    - cron: "17 4 */2 * *"      # Schlafkanal: alle 2 Tage
+    - cron: "27 4 * * *"        # Lernkanal: täglich ein Short
+    - cron: "37 4 * * 1,4"      # Lernkanal: Mo + Do ein langes Video
+    - cron: "47 4 * * 0,2,5"    # Geschichten: So, Di, Fr
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "Was produzieren?"
+        type: choice
+        options: [schlaf, lernen-short, lernen-long, geschichten]
+        default: lernen-short
+      topic:
+        description: "Lernthema (leer = zufällig): zahlen, farben, formen"
+        default: ""
+      dry_run:
+        description: "Nur Testlauf ohne Upload"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write     # um verwendete Geschichten zu merken
+
+concurrency:
+  group: kids-${{ github.event.schedule || github.event.inputs.job }}
+  cancel-in-progress: false
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Auftrag bestimmen
+        id: job
+        run: |
+          case "${{ github.event.schedule }}" in
+            "17 4 */2 * *")   JOB=schlaf ;;
+            "27 4 * * *")     JOB=lernen-short ;;
+            "37 4 * * 1,4")   JOB=lernen-long ;;
+            "47 4 * * 0,2,5") JOB=geschichten ;;
+            *)                JOB="${{ github.event.inputs.job }}" ;;
+          esac
+          case "$JOB" in
+            schlaf)       ARGS="--channel schlaf" ;;
+            lernen-short) ARGS="--channel lernen --format short" ;;
+            lernen-long)  ARGS="--channel lernen --format long" ;;
+            geschichten)  ARGS="--channel geschichten" ;;
+          esac
+          if [ -n "${{ github.event.inputs.topic }}" ] && [[ "$JOB" == lernen* ]]; then
+            ARGS="$ARGS --topic ${{ github.event.inputs.topic }}"
+          fi
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+            [ "$JOB" = "schlaf" ] && ARGS="$ARGS --minutes 3"
+          fi
+          echo "name=$JOB" >> "$GITHUB_OUTPUT"
+          echo "args=$ARGS" >> "$GITHUB_OUTPUT"
+          echo "Auftrag: $JOB ($ARGS)"
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Abhängigkeiten installieren
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+          pip install -r requirements.txt -r requirements-kids.txt
+
+      - name: Stimmen, Schrift & Szenen aus Cache laden
+        uses: actions/cache@v4
+        with:
+          path: |
+            assets/voices
+            assets/fonts/Kids.ttf
+            assets/schlaf/video
+            assets/geschichten/video
+          key: kids-assets-${{ hashFiles('scripts/kids/visuals.py', 'config/kids.yaml') }}-${{ github.run_id }}
+          restore-keys: |
+            kids-assets-${{ hashFiles('scripts/kids/visuals.py', 'config/kids.yaml') }}-
+
+      - name: Kinderschrift laden (Fredoka, frei lizenziert)
+        run: |
+          if [ ! -s assets/fonts/Kids.ttf ]; then
+            curl -fsSL -o assets/fonts/Kids.ttf \
+              "https://raw.githubusercontent.com/google/fonts/main/ofl/fredoka/Fredoka%5Bwdth%2Cwght%5D.ttf" \
+              || echo "Schrift nicht geladen – nutze Standardschrift"
+          fi
+
+      - name: Video produzieren & hochladen
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_SCHLAF: ${{ secrets.YT_REFRESH_TOKEN_SCHLAF }}
+          YT_REFRESH_TOKEN_LERNEN: ${{ secrets.YT_REFRESH_TOKEN_LERNEN }}
+          YT_REFRESH_TOKEN_GESCHICHTEN: ${{ secrets.YT_REFRESH_TOKEN_GESCHICHTEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/kids/pipeline_kids.py ${{ steps.job.outputs.args }}
+
+      - name: Verwendete Geschichte merken
+        if: steps.job.outputs.name == 'geschichten' && github.event.inputs.dry_run != 'true'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add data/stories_used.json
+          git commit -m "Geschichte als verwendet markiert" || echo "nichts zu speichern"
+          git push
+
+      - name: Ergebnis speichern
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kinder-${{ steps.job.outputs.name }}
+          path: |
+            output/**/meta.json
+            output/**/thumbnail.jpg
+            ${{ github.event.inputs.dry_run == 'true' && 'output/**/video.mp4' || '' }}
+          retention-days: 14
+          if-no-files-found: ignore
