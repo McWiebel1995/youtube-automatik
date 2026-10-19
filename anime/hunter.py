@@ -285,7 +285,7 @@ def gemini_analyze(v, models, key, context_titles):
                                 {"text": ANALYSIS_TASK.format(facts=facts)}]}],
         "generationConfig": {"responseMimeType": "application/json", "temperature": 0.3},
     }
-    last = None
+    last, quota_hits = None, []
     for m in models:
         for attempt in range(3):
             r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
@@ -301,7 +301,9 @@ def gemini_analyze(v, models, key, context_titles):
             last = f"{m}: überlastet ({r.status_code})"
             continue
         if r.status_code == 429:
-            raise RuntimeError("Gemini-Gratis-Limit erreicht")
+            quota_hits.append(m)
+            last = f"{m}: Gratis-Limit erreicht"
+            continue
         if r.status_code == 403:
             raise PermissionError("Video für die KI-Analyse gesperrt (z. B. Altersbeschränkung/Region)")
         r.raise_for_status()
@@ -309,6 +311,8 @@ def gemini_analyze(v, models, key, context_titles):
         data = json.loads(txt[txt.index("{"): txt.rindex("}") + 1])
         data["_model"] = m
         return data
+    if quota_hits and len(quota_hits) == len(models):
+        raise RuntimeError("Gemini-Gratis-Limit bei allen Modellen erreicht")
     raise TimeoutError(last or "kein Gemini-Modell verfügbar")
 
 

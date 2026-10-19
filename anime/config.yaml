@@ -4,7 +4,7 @@
 
 window_hours: 72              # nur Videos der letzten X Stunden
 max_youtube_queries: 12       # pro Lauf (1 Suche = 100 Einheiten vom YouTube-Kontingent)
-max_analyses_per_run: 12      # Gemini-Videoanalysen pro Lauf (Gratis: max. 8 h Video/Tag)
+max_analyses_per_run: 8       # Gemini-Videoanalysen pro Lauf (Gratis-Limit schonen, KI 2 braucht auch welches)
 max_video_minutes: 12         # längere Videos werden nicht per KI analysiert
 max_listing_minutes: 20       # längere Videos (Sendungen, Livestream-Aufzeichnungen) werden ignoriert
 min_views: 5000               # darunter uninteressant
@@ -12,7 +12,7 @@ top_threshold: 85             # ab diesem Score = Top-Kandidat
 keep_days: 14                 # ältere Kandidaten fliegen aus dem Dashboard (außer freigegebene)
 
 # Gemini-Modelle, der Reihe nach probiert (falls eins nicht verfügbar ist)
-gemini_models: ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-2.5-flash"]
+gemini_models: ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash-lite", "gemini-2.5-flash"]
 
 # Regionen: GDELT-Ländercode (FIPS), Sprache, Städte, feste Suchbegriffe
 regions:

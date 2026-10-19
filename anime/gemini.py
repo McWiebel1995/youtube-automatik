@@ -5,7 +5,7 @@ import time
 
 import requests
 
-DEFAULT_MODELS = ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-2.5-flash"]
+DEFAULT_MODELS = ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash-lite", "gemini-2.5-flash"]
 
 
 class QuotaError(RuntimeError):
@@ -25,8 +25,9 @@ def ask_json(prompt, system=None, video_url=None, models=None, temperature=0.7, 
                                  "maxOutputTokens": 32768}}
     if system:
         body["systemInstruction"] = {"parts": [{"text": system}]}
-    last = None
-    for m in models or DEFAULT_MODELS:
+    last, quota_hits = None, []
+    models = models or DEFAULT_MODELS
+    for m in models:
         r = None
         for attempt in range(3):
             r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
@@ -41,8 +42,10 @@ def ask_json(prompt, system=None, video_url=None, models=None, temperature=0.7, 
         if r.status_code in (500, 502, 503, 504):
             last = f"{m}: überlastet"
             continue
-        if r.status_code == 429:
-            raise QuotaError(f"Gemini-Gratis-Limit erreicht ({m}): {r.text[:300]}")
+        if r.status_code == 429:                        # Limit gilt pro Modell -> nächstes probieren
+            quota_hits.append(m)
+            last = f"{m}: Gratis-Limit erreicht"
+            continue
         r.raise_for_status()
         resp = r.json()
         cand = (resp.get("candidates") or [{}])[0]
@@ -55,4 +58,6 @@ def ask_json(prompt, system=None, video_url=None, models=None, temperature=0.7, 
             raise RuntimeError(f"{m}: ungültiges JSON ({cand.get('finishReason')}): {e}; Anfang: {txt[:200]!r}") from e
         data["_model"] = m
         return data
+    if quota_hits and len(quota_hits) == len(models):
+        raise QuotaError("Gemini-Gratis-Limit bei allen Modellen erreicht – morgen geht es weiter")
     raise RuntimeError(last or "kein Gemini-Modell verfügbar")
