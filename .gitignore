@@ -1,0 +1,12 @@
+# erzeugte Dateien (werden in GitHub Actions neu erzeugt bzw. aus dem Cache geladen)
+output/
+assets/*/audio/*
+assets/*/video/*
+!assets/*/audio/.gitkeep
+!assets/*/video/.gitkeep
+__pycache__/
+*.pyc
+client_secret*.json
+.env
+assets/voices/
+assets/fonts/Kids.ttf
