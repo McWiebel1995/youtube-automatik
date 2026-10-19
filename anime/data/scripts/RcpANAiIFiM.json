@@ -1,0 +1,255 @@
+{
+ "video_id": "RcpANAiIFiM",
+ "created_at": "2026-10-19T21:13:10Z",
+ "status": "draft",
+ "source": {
+  "video_url": "https://www.youtube.com/watch?v=RcpANAiIFiM",
+  "event": "Vor einem Ladenlokal in einer Einkaufsstraße liegen Scherben und Gegenstände auf dem Boden. Ein Mann verteidigt den beschädigten Eingangsbereich eines Geschäfts, wird dabei von Passanten konfrontiert und körperlich angegriffen. Umstehende greifen deeskalierend ein und rufen zum Aufhören auf, woraufhin der Mann sichtbar mitgenommen im zerstörten Schaufensterrahmen stehen bleibt.",
+  "location": {
+   "city": "Roma",
+   "country": "Frankreich"
+  },
+  "anime_score": 84,
+  "authenticity_status": "UNVERIFIED"
+ },
+ "script": {
+  "title": "Holding the Line",
+  "logline": "When street unrest shatters a pop-culture store, a determined clerk defends his sanctuary until unexpected protectors step in.",
+  "logline_de": "Als Straßenschlachten einen Popkultur-Laden verwüsten, verteidigt ein standhafter Verkäufer sein Refugium, bis unerwartete Helfer eingreifen.",
+  "total_duration_s": 36,
+  "setting": {
+   "location": "Fictional urban district, arcade commercial street",
+   "time": "Dusk, streetlights turning on",
+   "weather": "Overcast, cool breeze blowing street debris",
+   "color_palette": "Desaturated slate grey, broken glass reflections, neon cyan and deep amber pops",
+   "art_style": "High-contrast cinematic anime, MAPPA-inspired, gritty line art, sharp rim lighting"
+  },
+  "characters": [
+   {
+    "id": "c1",
+    "name": "Ren",
+    "role": "Manga and game archive clerk",
+    "age_group": "Early 30s",
+    "build": "Broad-shouldered, sturdy stocky build",
+    "design_sheet": "Ren: 32yo man, stocky broad build, short messy navy-blue undercut hair, determined amber eyes, light neat stubble. Plain black oversized zip-up hoodie over charcoal shirt, dark cargo pants. Gritty anime aesthetic.",
+    "inspired_by_scene_de": [
+     "Rolle als Verteidiger des Ladenlokals",
+     "Kräftige Statur und abwehrende Körperhaltung",
+     "Schwarzer Hoodie / dunkle Alltagskleidung"
+    ],
+    "changed_de": [
+     "Vollständig fiktives Gesicht, kantiger Anime-Stil",
+     "Dunkelblaue Haare mit Undercut statt realer Frisur/Haarfarbe",
+     "Gepflegter kurzer Stoppelbart statt realer Gesichtsbehaarung",
+     "Keine Markenlogos oder reale Aufdrucke auf der Kleidung"
+    ],
+    "voice": "Deep, raspy, strained yet calm voice"
+   },
+   {
+    "id": "c2",
+    "name": "Kaito",
+    "role": "Intervening teenage bystander",
+    "age_group": "Late teens",
+    "build": "Tall, lean athletic frame",
+    "design_sheet": "Kaito: 18yo male, tall lean build, unruly ash-brown shaggy hair, sharp dark grey eyes. Off-white oversized windbreaker jacket, black track pants. Cinematic anime style.",
+    "inspired_by_scene_de": [
+     "Rolle des unbeteiligten Passanten, der schlichtend dazwischentritt",
+     "Helle Jacke",
+     "Deeskalierende, ausgebreitete Armhaltung"
+    ],
+    "changed_de": [
+     "Deutlich jüngeres, stilisiertes Anime-Design",
+     "Aschbraune Manga-Frisur",
+     "Neutrales weiß-graues Windbreaker-Design ohne reale Kennzeichen"
+    ],
+    "voice": "Urgent, firm youthful voice"
+   }
+  ],
+  "shots": [
+   {
+    "n": 1,
+    "duration_s": 4,
+    "beat": "HOOK",
+    "camera": "Low angle, medium close-up, Dutch tilt",
+    "action": "Ren stands defiantly inside a shattered shop entryway as glass fragments fall in slow motion.",
+    "dialogue": [],
+    "voiceover": "Some places are worth standing for.",
+    "sfx": [
+     "Glass shattering deep resonance",
+     "Muffled siren echo"
+    ],
+    "music": "Low sub-bass drone rising into tense strings",
+    "on_screen_text": null,
+    "image_prompt": "Ren, 32yo man, stocky broad build, messy navy-blue undercut hair, amber eyes, black oversized hoodie. Low angle Dutch tilt, broken shop doorway, floating glass shards, neon reflections, cinematic anime, gritty MAPPA style, 9:16 vertical.",
+    "motion_prompt": "Slow motion camera track-in, glass particles glitter and drop, character breath visible, sudden speed-up at end."
+   },
+   {
+    "n": 2,
+    "duration_s": 5,
+    "beat": "EINSTIEG",
+    "camera": "Over-the-shoulder, looking out into chaotic street",
+    "action": "Ren surveys the street filled with trash and fleeing crowds, standing right before the cracked glass threshold.",
+    "dialogue": [],
+    "voiceover": null,
+    "sfx": [
+     "Chaotic street shouting",
+     "Paper trash scraping on asphalt"
+    ],
+    "music": "Pulsing industrial synthesizer pulse",
+    "on_screen_text": null,
+    "image_prompt": "Over-the-shoulder shot behind Ren in black hoodie, looking outward at litter-covered city pavement, distant crowd silhouettes, broken shopfront framing, moody anime lighting, 9:16 vertical.",
+    "motion_prompt": "Handheld jitter camera, smoke and debris drift across foreground, Ren tenses his shoulders."
+   },
+   {
+    "n": 3,
+    "duration_s": 5,
+    "beat": "KONFLIKT",
+    "camera": "Dynamic side tracking shot, sudden crash zoom",
+    "action": "A masked rioter lunges and strikes Ren in the back; impact frames flash as Ren stumbles onto the sidewalk.",
+    "dialogue": [],
+    "voiceover": null,
+    "sfx": [
+     "Heavy blunt impact thud",
+     "Sharp breath gasp"
+    ],
+    "music": "Harsh distortion strike cutting the synth line",
+    "on_screen_text": null,
+    "image_prompt": "Action impact scene, masked silhouette striking Ren from behind, anime speed lines, black hoodie ripples, flying glass debris on pavement, high contrast lighting, 9:16 vertical.",
+    "motion_prompt": "Rapid lateral pan, black and white impact frames at contact, camera shake, Ren stumbles forward in slow motion recovery."
+   },
+   {
+    "n": 4,
+    "duration_s": 6,
+    "beat": "WENDEPUNKT",
+    "camera": "Frontal wide-angle, tracking back",
+    "action": "As the attacker moves forward again, Kaito and other youths rush in, spreading their arms wide to form a human wall.",
+    "dialogue": [
+     {
+      "character": "c2",
+      "line": "Stop! Back off, that's enough!"
+     }
+    ],
+    "voiceover": null,
+    "sfx": [
+     "Footsteps sliding on debris",
+     "Shouted plea echo"
+    ],
+    "music": "Sudden drop into solitary ringing frequency",
+    "on_screen_text": null,
+    "image_prompt": "Kaito, 18yo with ash-brown shaggy hair and light windbreaker, arms wide open shielding Ren, street crowd background, dramatic anime lighting, 9:16 vertical.",
+    "motion_prompt": "Quick forward step animation, arms snap outward, dust and trash kick up from asphalt, camera stabilizes."
+   },
+   {
+    "n": 5,
+    "duration_s": 6,
+    "beat": "HÖHEPUNKT",
+    "camera": "Extreme close-up on Ren's eyes, panning down to clenched fists",
+    "action": "Ren steadies his breathing, eyes narrowing with shock turning into resolve; the attacker hesitates and steps back.",
+    "dialogue": [],
+    "voiceover": null,
+    "sfx": [
+     "Heavy muffled heartbeat",
+     "Silence falling over street"
+    ],
+    "music": "Slow, emotional cello chord enters over sub-bass",
+    "on_screen_text": null,
+    "image_prompt": "Extreme close-up anime shot, Ren's intense amber eyes, tiny cut on cheekbone, sweat drop, reflection of standing protectors in pupil, high detail gritty anime style, 9:16 vertical.",
+    "motion_prompt": "Subtle pupil focus shift, slow camera tilt down to trembling clenched fist locking into a steady grip."
+   },
+   {
+    "n": 6,
+    "duration_s": 6,
+    "beat": "NACHHALL",
+    "camera": "Medium full shot, static, slight low angle",
+    "action": "Ren stands tall inside the ruined doorway beside a faded superhero poster, watching the street calm down.",
+    "dialogue": [],
+    "voiceover": "Even when everything shatters... we hold our ground.",
+    "sfx": [
+     "Distant siren fading",
+     "Gentle wind gust"
+    ],
+    "music": "Melancholic synthesizer melody resolving",
+    "on_screen_text": null,
+    "image_prompt": "Ren in black hoodie standing inside broken glass store frame, next to a colorful anime hero poster, dusk light hitting his face, peaceful determined expression, 9:16 vertical.",
+    "motion_prompt": "Static shot with wind blowing Ren's bangs and poster paper corner, soft ambient light flicker."
+   },
+   {
+    "n": 7,
+    "duration_s": 4,
+    "beat": "NACHHALL",
+    "camera": "Static wide street shot with centered typography",
+    "action": "Wide view of the glass-covered street at twilight as the end card displays.",
+    "dialogue": [],
+    "voiceover": null,
+    "sfx": [
+     "Soft wind whistle"
+    ],
+    "music": "Final ambient piano note decay",
+    "on_screen_text": "Fictional story inspired by real events.",
+    "image_prompt": "Dim neon street corner at dusk, broken glass reflecting streetlights on pavement, quiet atmosphere, cinematic anime, 9:16 vertical.",
+    "motion_prompt": "Slow fade to black, glowing end card text emerges in center screen."
+   }
+  ],
+  "music": {
+   "mood": "Tense, aggressive, shifting to emotional and grounded solidarity",
+   "bpm": 88,
+   "instruments": [
+    "Distorted sub-bass drone",
+    "Industrial percussion",
+    "Solo cello",
+    "Warm ambient synth pad"
+   ]
+  },
+  "end_card": "Fictional story inspired by real events.",
+  "content_check_de": {
+   "gewalt": "Schlag in den Rücken stilisiert mit Impact-Frames und Erschütterung dargestellt, keine blutigen Verletzungen.",
+   "kein_gore": true,
+   "politisch_neutral": true
+  },
+  "youtube": {
+   "title": "He Stood His Ground When Everything Shattered #shorts",
+   "description": "An archivist refuses to abandon his sanctuary during city unrest, finding unexpected allies in the chaos.\n\nFictional story inspired by real events.",
+   "tags": [
+    "anime",
+    "animedrama",
+    "animestory",
+    "actionanime",
+    "courage",
+    "urbanart",
+    "shorts"
+   ]
+  },
+  "_model": "gemini-3.8-flash"
+ },
+ "likeness_audit": {
+  "characters": [
+   {
+    "id": "c1",
+    "matching_features": [
+     "Kräftige, stämmige Statur",
+     "Verteidigende Rolle am Ladeneingang",
+     "Dunkle Alltagskleidung"
+    ],
+    "risk": "low",
+    "required_changes": []
+   },
+   {
+    "id": "c2",
+    "matching_features": [
+     "Schlichtende Geste mit ausgebreiteten Armen",
+     "Helle Jacke / Windbreaker",
+     "Schlanke, jugendliche Statur"
+    ],
+    "risk": "low",
+    "required_changes": []
+   }
+  ],
+  "brands_or_text_visible_in_script": [],
+  "overall_risk": "low",
+  "_model": "gemini-3.8-flash"
+ },
+ "issues": [
+  "Gore-Begriff im Drehbuch: „gore“"
+ ],
+ "model": "gemini-3.8-flash"
+}

@@ -1,6 +1,1 @@
-{
- "RcpANAiIFiM": {
-  "at": "2026-10-19T21:11:20Z",
-  "error": "Gemini-Limit: Gemini-Gratis-Limit erreicht (gemini-3.8-flash): {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota ex"
- }
-}
+{}
