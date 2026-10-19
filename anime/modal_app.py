@@ -22,7 +22,8 @@ image = (
         "diffusers>=0.35.0", "transformers>=4.51", "accelerate>=1.6", "safetensors",
         "sentencepiece", "ftfy", "imageio", "imageio-ffmpeg", "pillow", "numpy<2.3",
     )
-    .env({"HF_HOME": "/models/hf", "HF_HUB_ENABLE_HF_TRANSFER": "0"})
+    .env({"HF_HOME": "/models/hf", "HF_HUB_ENABLE_HF_TRANSFER": "0",
+          "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})
 )
 
 IMAGE_MODEL = "cagliostrolab/animagine-xl-4.0"
@@ -40,10 +41,16 @@ class Studio:
         from diffusers import AutoencoderKLWan, StableDiffusionXLPipeline, WanImageToVideoPipeline, WanPipeline
 
         self.torch = torch
+        # Alle Modelle bleiben im Arbeitsspeicher; auf die GPU kommt immer nur das gerade gebrauchte
+        # (sonst reicht der Grafikspeicher nicht für Bild- UND Videomodell).
         self.img = StableDiffusionXLPipeline.from_pretrained(
-            IMAGE_MODEL, torch_dtype=torch.float16, use_safetensors=True).to("cuda")
+            IMAGE_MODEL, torch_dtype=torch.float16, use_safetensors=True)
         vae = AutoencoderKLWan.from_pretrained(VIDEO_MODEL, subfolder="vae", torch_dtype=torch.float32)
-        self.t2v = WanPipeline.from_pretrained(VIDEO_MODEL, vae=vae, torch_dtype=torch.bfloat16).to("cuda")
+        self.t2v = WanPipeline.from_pretrained(VIDEO_MODEL, vae=vae, torch_dtype=torch.bfloat16)
+        try:
+            self.t2v.vae.enable_tiling()
+        except Exception:  # noqa: BLE001
+            pass
         self.i2v, self.i2v_ok, self.i2v_err = None, False, None
         for kwargs in ({"expand_timesteps": True}, {}):   # Bild-zu-Video mit denselben Gewichten
             try:
@@ -53,7 +60,18 @@ class Studio:
             except Exception as e:  # noqa: BLE001
                 self.i2v_err = repr(e)[:300]
         print("I2V verfügbar:", self.i2v_ok, self.i2v_err or "")
+        self.active = None
         models.commit()
+
+    def use(self, name):
+        """Genau eine Pipeline auf die GPU (per CPU-Offload), die anderen freigeben."""
+        if self.active == name:
+            return getattr(self, name)
+        pipe = getattr(self, name)
+        pipe.enable_model_cpu_offload()
+        self.active = name
+        self.torch.cuda.empty_cache()
+        return pipe
 
     @modal.method()
     def keyframe(self, prompt: str, negative: str = "", seed: int = 0,
@@ -63,7 +81,7 @@ class Studio:
                + prompt)
         neg = ("lowres, bad anatomy, bad hands, text, error, missing finger, extra digits, cropped, worst quality, "
                "low quality, jpeg artifacts, signature, watermark, logo, blurry, gore, " + negative)
-        out = self.img(prompt=pos, negative_prompt=neg, width=width, height=height,
+        out = self.use("img")(prompt=pos, negative_prompt=neg, width=width, height=height,
                        guidance_scale=5.0, num_inference_steps=28, generator=gen).images[0]
         buf = io.BytesIO()
         out.save(buf, format="PNG")
@@ -82,7 +100,7 @@ class Studio:
         if self.i2v_ok and image_png:
             try:
                 img = Image.open(io.BytesIO(image_png)).convert("RGB").resize((704, 1280))
-                frames = self.i2v(image=img, prompt=prompt, negative_prompt=WAN_NEG, height=1280, width=704,
+                frames = self.use("i2v")(image=img, prompt=prompt, negative_prompt=WAN_NEG, height=1280, width=704,
                                   num_frames=num_frames, guidance_scale=5.0, num_inference_steps=steps,
                                   generator=gen).frames[0]
             except Exception as e:  # noqa: BLE001
@@ -90,7 +108,7 @@ class Studio:
                 frames = None
         if frames is None:
             mode = "t2v"
-            frames = self.t2v(prompt=prompt, negative_prompt=WAN_NEG, height=1280, width=704,
+            frames = self.use("t2v")(prompt=prompt, negative_prompt=WAN_NEG, height=1280, width=704,
                               num_frames=num_frames, guidance_scale=5.0, num_inference_steps=steps,
                               generator=gen).frames[0]
         path = "/tmp/clip.mp4"
