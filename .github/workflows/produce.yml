@@ -29,6 +29,7 @@ jobs:
     env:
       PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
       PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+      FREESOUND_API_KEY: ${{ secrets.FREESOUND_API_KEY }}
     strategy:
       fail-fast: false
       max-parallel: 3
@@ -44,6 +45,12 @@ jobs:
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Speicherplatz freimachen (3-Stunden-Videos sind groß)
+        if: steps.sel.outputs.run == 'true'
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL || true
+          df -h /
 
       - uses: actions/checkout@v4
         if: steps.sel.outputs.run == 'true'
@@ -69,15 +76,19 @@ jobs:
           path: |
             assets/${{ matrix.channel }}/audio
             assets/${{ matrix.channel }}/video
-          key: assets-${{ matrix.channel }}-${{ hashFiles('scripts/gen_audio.py', 'scripts/gen_video.py') }}-${{ github.run_id }}
+          key: assets-${{ matrix.channel }}-${{ hashFiles('scripts/gen_audio.py', 'scripts/gen_video.py', 'scripts/fetch_stock.py', 'scripts/fetch_sounds.py') }}-${{ github.run_id }}
           restore-keys: |
-            assets-${{ matrix.channel }}-${{ hashFiles('scripts/gen_audio.py', 'scripts/gen_video.py') }}-
+            assets-${{ matrix.channel }}-${{ hashFiles('scripts/gen_audio.py', 'scripts/gen_video.py', 'scripts/fetch_stock.py', 'scripts/fetch_sounds.py') }}-
 
       - name: Sounds & Video-Loops erzeugen (nur falls fehlend)
         if: steps.sel.outputs.run == 'true'
         run: |
           python scripts/gen_audio.py --channels ${{ matrix.channel }} --variants 3 --seconds 180
           python scripts/gen_video.py --channels ${{ matrix.channel }} --variants 3
+
+      - name: Echte Natur-Aufnahmen (Ton) holen – Freesound CC0, nur fehlende
+        if: steps.sel.outputs.run == 'true' && env.FREESOUND_API_KEY != ''
+        run: python scripts/fetch_sounds.py --channels ${{ matrix.channel }} --per-sound 3
 
       - name: Echte Natur-Videos holen (Pixabay/Pexels, nur fehlende)
         if: steps.sel.outputs.run == 'true' && (env.PIXABAY_API_KEY != '' || env.PEXELS_API_KEY != '')

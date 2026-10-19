@@ -91,7 +91,7 @@ jobs:
       - name: Kinderschrift laden (Fredoka, frei lizenziert)
         run: |
           if [ ! -s assets/fonts/Kids.ttf ]; then
-            curl -fsSL -o assets/fonts/Kids.ttf \
+            curl -fsSL --create-dirs -o assets/fonts/Kids.ttf \
               "https://raw.githubusercontent.com/google/fonts/main/ofl/fredoka/Fredoka%5Bwdth%2Cwght%5D.ttf" \
               || echo "Schrift nicht geladen – nutze Standardschrift"
           fi
