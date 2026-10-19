@@ -1,35 +1,32 @@
 {
- "updated_at": "2026-10-19T23:07:09Z",
+ "updated_at": "2026-10-19T23:38:10Z",
  "productions": [
   {
    "video_id": "RcpANAiIFiM",
-   "title": "The Last Keeper of Dreams",
+   "title": "Anime Riot Archives",
    "state": "done",
    "progress": "fertig",
    "video_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/RcpANAiIFiM.mp4",
    "poster_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/poster.jpg",
-   "duration_s": 15.0,
-   "gpu_seconds": 867,
+   "duration_s": 18.0,
+   "gpu_seconds": 1202,
    "notes": [
-    "Stimmen: Kokoro",
+    "Stimmen: Chatterbox (eigene Stimme pro Figur, Emotion pro Zeile)",
     "Musik: Freesound CC0"
    ],
    "error": null,
-   "updated_at": "2026-10-19T23:07:09Z",
+   "updated_at": "2026-10-19T23:38:10Z",
    "decision": null,
    "decided_at": null,
    "youtube": {
-    "title": "When a real store riot becomes a epic 90s anime! 💥 #shorts",
-    "description": "An unassuming shopkeeper defends his retro sanctuary in full 90s anime style!\n\nFictional story inspired by real events.",
+    "title": "When a street riot turns into a 90s anime #shorts",
+    "description": "An intense 90s retro anime reimagining of a neighborhood clash, where local solidarity rises from the chaos. Fictional story inspired by real events.",
     "tags": [
-     "retroanime",
-     "90sanime",
      "anime",
+     "90sanime",
+     "retroanime",
      "animation",
-     "shorts",
-     "shonen",
-     "animeedit",
-     "celshading"
+     "shorts"
     ]
    }
   }
