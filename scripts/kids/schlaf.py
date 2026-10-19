@@ -27,7 +27,7 @@ def render_loop(scene_fn, seed, seconds, out, size=(1920, 1080)):
            "-s", f"{visuals.W}x{visuals.H}", "-r", str(FPS), "-i", "-",
            "-vf", f"scale={size[0]}:{size[1]}:flags=lanczos:force_original_aspect_ratio=increase,"
                   f"crop={size[0]}:{size[1]}",
-           "-c:v", "libx264", "-preset", "slow", "-crf", "22", "-pix_fmt", "yuv420p",
+           "-c:v", "libx264", "-profile:v", "high", "-level", "4.1", "-preset", "slow", "-crf", "22", "-pix_fmt", "yuv420p",
            "-g", str(FPS * 2), "-movflags", "+faststart", "-f", "mp4", str(out) + ".part"]
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     for i in range(int(seconds * FPS)):
@@ -86,8 +86,8 @@ def produce(ch, seconds, work: Path, rnd):
            "-c:a", "aac", "-b:a", "192k", audio)
 
     out = work / "video.mp4"
-    ffmpeg("-stream_loop", "-1", "-i", loop, "-i", audio, "-map", "0:v", "-map", "1:a",
-           "-c", "copy", "-t", seconds, "-movflags", "+faststart", out)
+    from render import concat_loop
+    concat_loop(loop, audio, seconds, out, work)
     block_wav.unlink(missing_ok=True)
     audio.unlink(missing_ok=True)
     return {"video_file": str(out), "loop": str(loop), "with_noise": with_noise, "songs": count}

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Lädt ECHTE Natur-Videos von Pixabay und/oder Pexels (beide kostenlos, kommerziell nutzbar,
-keine Namensnennung nötig) und macht daraus nahtlose 1080p-Loops (bis 60 s).
+keine Namensnennung nötig) und macht daraus nahtlose 1080p-Loops (bis 120 s, Schnitt an der ähnlichsten Stelle).
 
 Kostenlose API-Schlüssel (einer reicht, beide = mehr Auswahl):
   Pixabay: https://pixabay.com/api/docs/      -> Secret PIXABAY_API_KEY
@@ -44,26 +44,50 @@ QUERIES = {
         "forest creek": "Gentle Forest Stream", "waterfall mist": "Misty Morning Waterfall",
     },
 }
-MAX_LOOP = 60
-XFADE = 2
+MAX_LOOP = 120      # maximale Loop-Länge in Sekunden (länger = Wiederholung fällt weniger auf)
+MIN_CLIP = 15       # kürzere Clips werden gar nicht erst geladen
+XFADE = 0.6         # kurze Überblendung an der besten Schnittstelle
+MAX_DIFF = 14       # Clips, deren Ende nie zum Anfang passt (z. B. Kamerafahrt), werden verworfen
+
+
+def best_loop_point(src):
+    """Sucht die Stelle, an der das Bild dem ersten Bild am ähnlichsten ist -> unsichtbarer Schnitt."""
+    import subprocess
+
+    import numpy as np
+    raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(src), "-t", str(MAX_LOOP + 5),
+                          "-vf", "fps=10,scale=64:36,format=gray", "-f", "rawvideo", "-"],
+                         capture_output=True, check=True).stdout
+    f = np.frombuffer(raw, np.uint8).reshape(-1, 36, 64).astype(np.float32)
+    if len(f) < MIN_CLIP * 10:
+        raise ValueError("Clip zu kurz")
+    lo = max(int(len(f) * 0.5), 80)
+    cand = range(lo, len(f) - 2)
+    # Ähnlichkeit von Bild + Bewegung: zwei aufeinanderfolgende Bilder vergleichen
+    score = [np.abs(f[i] - f[0]).mean() + np.abs(f[i + 1] - f[1]).mean() for i in cand]
+    i = int(np.argmin(score))
+    best = score[i] / 2
+    if best > MAX_DIFF:
+        raise ValueError(f"kein sauberer Loop möglich (Abweichung {best:.1f})")
+    return (lo + i) / 10.0, best
 
 
 def make_loop(src, dst):
-    """Schneidet bis 60 s und überblendet Ende->Anfang -> nahtlose Wiederholung."""
-    total = duration(src)
-    d = min(MAX_LOOP + XFADE, total - 0.5)
-    if d < 8:
-        raise ValueError("Clip zu kurz")
+    """Schneidet an der besten Stelle und überblendet ganz kurz -> nahtlose Wiederholung."""
+    t_best, diff = best_loop_point(src)
     c = XFADE
+    d = min(t_best + c, duration(src) - 0.05)
     flt = (
         "[0:v]scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,fps=30,"
         "format=yuv420p,split[s1][s2];"
         f"[s1]trim={c}:{d},setpts=PTS-STARTPTS[a];"
         f"[s2]trim=0:{c},setpts=PTS-STARTPTS[b];"
-        f"[a][b]xfade=transition=fade:duration={c}:offset={d - 2 * c}[v]"
+        f"[a][b]xfade=transition=fade:duration={c}:offset={d - 2 * c},format=yuv420p[v]"
     )
-    ffmpeg("-i", src, "-filter_complex", flt, "-map", "[v]", "-an", "-c:v", "libx264",
-           "-preset", "slow", "-crf", "21", "-g", "60", "-movflags", "+faststart", dst)
+    ffmpeg("-i", src, "-filter_complex", flt, "-map", "[v]", "-an", "-c:v", "libx264", "-profile:v", "high",
+           "-level", "4.1", "-pix_fmt", "yuv420p", "-preset", "slow", "-crf", "23", "-maxrate", "4500k", "-bufsize", "9000k",
+           "-g", "60", "-movflags", "+faststart", dst)
+    return d - c, diff
 
 
 # ----------------------------------------------------------------- Quellen
@@ -71,7 +95,10 @@ def search_pixabay(key, q):
     r = requests.get("https://pixabay.com/api/videos/", timeout=30, params={
         "key": key, "q": q, "per_page": 30, "safesearch": "true", "order": "popular"})
     r.raise_for_status()
-    for hit in r.json().get("hits", []):
+    hits = sorted(r.json().get("hits", []), key=lambda h: -h.get("duration", 0))
+    for hit in hits:
+        if hit.get("duration", 0) < MIN_CLIP:
+            continue
         v = hit["videos"].get("large") or hit["videos"].get("medium") or {}
         if v.get("url") and v.get("width", 0) >= 1920:
             yield f"pixabay_{hit['id']}", v["url"], hit.get("user", "")
@@ -81,7 +108,10 @@ def search_pexels(key, q):
     r = requests.get("https://api.pexels.com/videos/search", timeout=30, headers={"Authorization": key},
                      params={"query": q, "per_page": 30, "orientation": "landscape", "size": "large"})
     r.raise_for_status()
-    for vid in r.json().get("videos", []):
+    vids = sorted(r.json().get("videos", []), key=lambda v: -v.get("duration", 0))
+    for vid in vids:
+        if vid.get("duration", 0) < MIN_CLIP:
+            continue
         files = [f for f in vid.get("video_files", []) if (f.get("width") or 0) >= 1920
                  and f.get("file_type") == "video/mp4"]
         if files:
@@ -132,7 +162,7 @@ def main():
                                     tmp.write(chunk)
                             tmp.flush()
                             part = dst.with_name(dst.name + ".part.mp4")
-                            make_loop(tmp.name, part)
+                            length, diff = make_loop(tmp.name, part)
                             part.replace(dst)
                         except Exception as e:  # noqa: BLE001
                             print(f"  übersprungen {clip_id}: {e}")
@@ -140,7 +170,7 @@ def main():
                             continue
                     dst.with_suffix(".json").write_text(json.dumps(
                         {"scene": scene, "query": q, "source": src_name, "author": author}, ensure_ascii=False))
-                    print(f"  ✓ {chan}: {clip_id} – {scene} ({src_name}, {author})")
+                    print(f"  ✓ {chan}: {clip_id} – {scene} ({src_name}, {author}) – Loop {length:.0f}s, Abweichung {diff:.1f}")
                     need -= 1
                     time.sleep(0.5)
                     break  # pro Suchbegriff und Quelle ein Clip -> mehr Abwechslung

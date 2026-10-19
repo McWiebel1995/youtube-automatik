@@ -83,6 +83,7 @@ def main():
         if not token:
             raise SystemExit(f"Secret {ch['token_secret']} fehlt.")
         yt = upload.service(token)
+        upload.check_channel(yt, ch)
         vid = upload.upload(yt, info["video_file"], meta, ch, publish_at)
         upload.set_thumbnail(yt, vid, thumb)
         upload.add_to_playlist(yt, vid, ch.get("playlist_id"))

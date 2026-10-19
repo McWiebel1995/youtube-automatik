@@ -287,7 +287,7 @@ def render(chan, variant, seconds, out):
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
            "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
            "-vf", "scale=1920:1080:flags=lanczos",
-           "-c:v", "libx264", "-preset", "slow", "-crf", "22", "-pix_fmt", "yuv420p",
+           "-c:v", "libx264", "-profile:v", "high", "-level", "4.1", "-preset", "slow", "-crf", "22", "-pix_fmt", "yuv420p",
            "-g", str(FPS * 2), "-movflags", "+faststart", "-f", "mp4", str(out) + ".part"]
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     for i in range(n):

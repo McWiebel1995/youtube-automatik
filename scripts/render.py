@@ -3,7 +3,7 @@ import json
 import random
 from pathlib import Path
 
-from common import ASSETS, ffmpeg
+from common import ASSETS, duration, ffmpeg
 
 
 def pick_layers(channel, rnd):
@@ -15,8 +15,11 @@ def pick_layers(channel, rnd):
         files = sorted(audio_dir.glob(spec["pattern"] + ".flac")) + sorted(audio_dir.glob(spec["pattern"] + ".wav"))
         if not files:
             return None
+        real = [f for f in files if f.stem.split("_", 1)[-1].startswith("fs")]   # echte Aufnahmen
+        synth = [f for f in files if f not in real]
+        pool = real if real and (not synth or rnd.random() < 0.9) else synth
         lo, hi = spec["gain_db"]
-        return {"file": rnd.choice(files), "gain_db": round(rnd.uniform(lo, hi), 1),
+        return {"file": rnd.choice(pool), "gain_db": round(rnd.uniform(lo, hi), 1),
                 "prefix": spec["pattern"].rstrip("*")}
 
     base = choose(channel["layers"]["base"])
@@ -66,9 +69,7 @@ def render(channel, seconds, workdir: Path, rnd: random.Random):
 
     # 2) Video-Loop ohne Neukodierung wiederholen und Ton dazulegen
     out = workdir / "video.mp4"
-    ffmpeg("-stream_loop", "-1", "-i", video, "-i", audio,
-           "-map", "0:v", "-map", "1:a", "-c", "copy", "-t", seconds,
-           "-movflags", "+faststart", out)
+    concat_loop(video, audio, seconds, out, workdir)
 
     scene = None
     side = video.with_suffix(".json")
@@ -81,3 +82,15 @@ def render(channel, seconds, workdir: Path, rnd: random.Random):
         "layers": [{"file": Path(l["file"]).name, "gain_db": l["gain_db"], "prefix": l["prefix"]}
                    for l in layers],
     }
+
+
+def concat_loop(video, audio, seconds, out, workdir):
+    """Wiederholt den Loop per concat-Liste (saubere Zeitstempel, läuft in allen Playern)."""
+    import math
+    reps = math.ceil(seconds / max(duration(video), 1)) + 1
+    lst = Path(workdir) / "loop.txt"
+    lst.write_text("".join(f"file '{Path(video).resolve().as_posix()}'\n" for _ in range(reps)))
+    ffmpeg("-f", "concat", "-safe", "0", "-i", lst, "-i", audio,
+           "-map", "0:v", "-map", "1:a", "-c", "copy", "-t", seconds,
+           "-tag:v", "avc1", "-movflags", "+faststart", out)
+    lst.unlink(missing_ok=True)

@@ -26,6 +26,17 @@ def service(refresh_token):
     return build("youtube", "v3", credentials=creds, cache_discovery=False)
 
 
+def check_channel(yt, channel):
+    """Sicherheitscheck: bricht ab, wenn das Token zu einem anderen Kanal gehört."""
+    res = yt.channels().list(part="snippet", mine=True).execute()
+    title = (res.get("items") or [{}])[0].get("snippet", {}).get("title", "")
+    norm = lambda s: "".join(ch for ch in s.lower() if ch.isalnum())  # noqa: E731
+    if not title or (norm(channel["name"]) not in norm(title) and norm(title) not in norm(channel["name"])):
+        raise SystemExit(f"❌ Abbruch: Token gehört zum Kanal »{title}«, erwartet »{channel['name']}«. "
+                         f"Bitte {channel['token_secret']} neu holen.")
+    print(f"  Kanal geprüft: {title}")
+
+
 def upload(yt, video_path, meta, channel, publish_at=None):
     status = {
         "privacyStatus": "private" if publish_at else channel.get("privacy", "private"),
