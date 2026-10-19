@@ -340,13 +340,17 @@ def produce(vid, no_gpu=False, max_shots=None):
             lines.append((main_char.get("id"), s["voiceover"], "calm"))
         jobs.append((st, [x for x in lines if x[1]]))
     rendered = render_lines(vid, jobs, chars, kvoice, work, no_gpu, voice_notes)
+    last_end = 0.0
     for (st, lines), audios in zip(jobs, rendered):
-        cur = st + 0.25
+        cur = max(st + 0.25, last_end)            # nie zwei Sätze übereinander
         for (cid, text, emo), a in zip(lines, audios):
             a = dub_fx(a, emo) * (10 ** (EMOTION.get(emo, EMOTION["determined"])[2] / 20))
             place(vo, a, cur)
+            if subs and subs[-1][1] > cur:
+                subs[-1] = (subs[-1][0], cur - 0.02, subs[-1][2])
             subs.append((cur, cur + len(a) / SR + 0.15, text))
             cur += len(a) / SR + 0.15
+        last_end = cur
 
     # Geräusche + Musik
     cache = {}
