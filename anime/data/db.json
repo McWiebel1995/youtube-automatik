@@ -65,14 +65,20 @@
      "views": 40283,
      "likes": 141,
      "comments": 92
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 40456,
+     "likes": 140,
+     "comments": 92
     }
    ],
-   "views": 40283,
-   "likes": 141,
+   "views": 40456,
+   "likes": 140,
    "comments": 92,
    "shares": null,
-   "engagement_rate": 0.58,
-   "views_velocity_per_hour": 1925,
+   "engagement_rate": 0.57,
+   "views_velocity_per_hour": 1907,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "PBB0H7tWleY",
@@ -109,14 +115,20 @@
      "views": 166550,
      "likes": null,
      "comments": 277
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 166749,
+     "likes": null,
+     "comments": 277
     }
    ],
-   "views": 166550,
+   "views": 166749,
    "likes": null,
    "comments": 277,
    "shares": null,
    "engagement_rate": 0.17,
-   "views_velocity_per_hour": 4594,
+   "views_velocity_per_hour": 4564,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "2zVWMFU2H0Y",
    "score_breakdown": {
@@ -136,13 +148,13 @@
    "city": null,
    "city_source": null,
    "found_by_query": "vidéo manifestation",
-   "event_description": null,
+   "event_description": "Zusammenschnitt von Protest- und Randalen-Szenen in Frankreich mit brennendem historischem Gebäude (Turm/Dachstuhl in Flammen), ausgebrannten Autowracks, dichtem Straßensmog und fliehenden Personen, kommentiert von einem Creator im Split-Screen-Format.",
    "event_date": null,
    "published_at": "2026-10-18T13:21:27Z",
    "collected_at": "2026-10-19T20:26:20Z",
    "language": "hi-Latn",
    "duration_seconds": 44,
-   "authenticity_status": "UNVERIFIED",
+   "authenticity_status": "MISLEADING",
    "verification_sources": [],
    "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
    "manual_review_required": true,
@@ -152,20 +164,146 @@
      "views": 178719,
      "likes": 8191,
      "comments": 226
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 178917,
+     "likes": 8202,
+     "comments": 227
     }
    ],
-   "views": 178719,
-   "likes": 8191,
-   "comments": 226,
+   "views": 178917,
+   "likes": 8202,
+   "comments": 227,
    "shares": null,
    "engagement_rate": 4.71,
-   "views_velocity_per_hour": 5750,
+   "views_velocity_per_hour": 5704,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "huWaUw82IWU",
    "score_breakdown": {
-    "social": 10
+    "social": 10,
+    "emotional": 14.0,
+    "transformation": 18.0,
+    "cinematic": 12.0,
+    "story": 14.0,
+    "originality": 7.0,
+    "technical": 3.0
    },
-   "anime_score": null
+   "anime_score": 78,
+   "analysis": {
+    "relevant": true,
+    "event_description": "Zusammenschnitt von Protest- und Randalen-Szenen in Frankreich mit brennendem historischem Gebäude (Turm/Dachstuhl in Flammen), ausgebrannten Autowracks, dichtem Straßensmog und fliehenden Personen, kommentiert von einem Creator im Split-Screen-Format.",
+    "city_guess": null,
+    "country_guess": "Frankreich",
+    "emotional_observations": [
+     "Hörbare Dringlichkeit und Aufregung in der Stimme des Kommentators",
+     "Hektische Flucht- und Ausweichbewegungen von Silhouetten im dichten Rauch",
+     "Spürbare Bedrohung und Verunsicherung im urbanen Raum"
+    ],
+    "visual_highlights": [
+     {
+      "timecode": "00:01",
+      "beschreibung": "Dachstuhl und Turmspitze eines historischen Gebäudes stehen nachts in lodernden Flammen."
+     },
+     {
+      "timecode": "00:05",
+      "beschreibung": "Ein Auto brennt mitten auf der Straße mit aufsteigender schwarzer Rauchwolke, eine dunkel gekleidete Person rennt vorbei."
+     },
+     {
+      "timecode": "00:22",
+      "beschreibung": "Ausgebrannte, rauchende Autowracks am Straßenrand vor Pariser Altbaufassaden."
+     },
+     {
+      "timecode": "00:25",
+      "beschreibung": "Einsame Silhouette wandert durch dichten, feuererleuchteten Straßenrauch."
+     }
+    ],
+    "story_potential": "Einstieg: Ein junger Fahrradkurier versucht während aufkeimender Straßensperren eine wichtige Sendung zuzustellen. → Konflikt: Sirenen heulen auf, Rauch schneidet die Straße ab und die Menge gerät in Panik. → Wendepunkt: Als ein brennendes Trümmerteil herabstürzt, rettet ihn ein fremder Passant im letzten Moment. → Höhepunkt: Gemeinsam bahnen sie sich einen Weg durch die brennende Gasse, während die Turmuhr im Funkenregen schlägt. → Nachhall: Im Morgengrauen blicken beide auf die rauchenden Ruinen, erschöpft, aber menschlich verbunden.",
+    "anime_concept": "Amidst an escalating urban night of blazing fires and tear gas, a young courier risks everything to guide a lost child through burning barricades to safety.",
+    "fictional_character": "Leo, a 19-year-old bicycle courier wearing a scuffed yellow jacket and dust goggles, observant and quietly resilient.",
+    "recommended_perspective": "Dritte Person, nah am Protagonisten (Over-the-shoulder)",
+    "anime_imagery": "High-contrast neo-noir anime aesthetics with Makoto Shinkai-inspired lighting. Rich ember particles drifting across wet asphalt, deep charcoal smoke plumes contrasted with warm amber flame reflections, intense eye close-ups mirroring dancing fire.",
+    "sound_ideas": [
+     "Distant muffled sirens fading into a deep, rhythmic heartbeat",
+     "Sudden sharp crackle of collapsing wooden roof beams",
+     "Muffled breathing through a fabric face cover",
+     "Subtle melancholic solo cello melody rising above ambient street rumble"
+    ],
+    "recommended_length_seconds": 45,
+    "scores": {
+     "emotional": 14,
+     "transformation": 18,
+     "cinematic": 12,
+     "story": 14,
+     "originality": 7,
+     "technical": 3
+    },
+    "synthetic_suspected": false,
+    "misleading_suspected": true,
+    "authenticity_concerns": [
+     "Die Einblendung '18 Oct 2026' ist ein zukünftiges Datum und dient offenbar als Clickbait-Kontextualisierung.",
+     "Das gezeigte Bildmaterial besteht aus recycelten Archivaufnahmen früherer Unruhen in Frankreich (u. a. Brandvorfälle aus den Jahren 2023)."
+    ],
+    "open_questions": [
+     "Genaue Herkunft und Entstehungsdaten der einzelnen Hintergrund-Clips",
+     "Identität des im Video gezeigten brennenden Rathauses/Gebäudes",
+     "Originalurheber der verwendeten Augenzeugenaufnahmen"
+    ],
+    "sensitive_content": [
+     "Schwere Brandstiftung an Gebäuden und Fahrzeugen",
+     "Gewaltsame Ausschreitungen im öffentlichen Raum"
+    ],
+    "_model": "gemini-3.8-flash"
+   },
+   "analyzed_at": "2026-10-19T20:59:54Z",
+   "emotional_observations": [
+    "Hörbare Dringlichkeit und Aufregung in der Stimme des Kommentators",
+    "Hektische Flucht- und Ausweichbewegungen von Silhouetten im dichten Rauch",
+    "Spürbare Bedrohung und Verunsicherung im urbanen Raum"
+   ],
+   "visual_highlights": [
+    {
+     "timecode": "00:01",
+     "beschreibung": "Dachstuhl und Turmspitze eines historischen Gebäudes stehen nachts in lodernden Flammen."
+    },
+    {
+     "timecode": "00:05",
+     "beschreibung": "Ein Auto brennt mitten auf der Straße mit aufsteigender schwarzer Rauchwolke, eine dunkel gekleidete Person rennt vorbei."
+    },
+    {
+     "timecode": "00:22",
+     "beschreibung": "Ausgebrannte, rauchende Autowracks am Straßenrand vor Pariser Altbaufassaden."
+    },
+    {
+     "timecode": "00:25",
+     "beschreibung": "Einsame Silhouette wandert durch dichten, feuererleuchteten Straßenrauch."
+    }
+   ],
+   "story_potential": "Einstieg: Ein junger Fahrradkurier versucht während aufkeimender Straßensperren eine wichtige Sendung zuzustellen. → Konflikt: Sirenen heulen auf, Rauch schneidet die Straße ab und die Menge gerät in Panik. → Wendepunkt: Als ein brennendes Trümmerteil herabstürzt, rettet ihn ein fremder Passant im letzten Moment. → Höhepunkt: Gemeinsam bahnen sie sich einen Weg durch die brennende Gasse, während die Turmuhr im Funkenregen schlägt. → Nachhall: Im Morgengrauen blicken beide auf die rauchenden Ruinen, erschöpft, aber menschlich verbunden.",
+   "anime_concept": "Amidst an escalating urban night of blazing fires and tear gas, a young courier risks everything to guide a lost child through burning barricades to safety.",
+   "fictional_character": "Leo, a 19-year-old bicycle courier wearing a scuffed yellow jacket and dust goggles, observant and quietly resilient.",
+   "recommended_perspective": "Dritte Person, nah am Protagonisten (Over-the-shoulder)",
+   "anime_imagery": "High-contrast neo-noir anime aesthetics with Makoto Shinkai-inspired lighting. Rich ember particles drifting across wet asphalt, deep charcoal smoke plumes contrasted with warm amber flame reflections, intense eye close-ups mirroring dancing fire.",
+   "sound_ideas": [
+    "Distant muffled sirens fading into a deep, rhythmic heartbeat",
+    "Sudden sharp crackle of collapsing wooden roof beams",
+    "Muffled breathing through a fabric face cover",
+    "Subtle melancholic solo cello melody rising above ambient street rumble"
+   ],
+   "recommended_length_seconds": 45,
+   "authenticity_concerns": [
+    "Die Einblendung '18 Oct 2026' ist ein zukünftiges Datum und dient offenbar als Clickbait-Kontextualisierung.",
+    "Das gezeigte Bildmaterial besteht aus recycelten Archivaufnahmen früherer Unruhen in Frankreich (u. a. Brandvorfälle aus den Jahren 2023)."
+   ],
+   "open_questions": [
+    "Genaue Herkunft und Entstehungsdaten der einzelnen Hintergrund-Clips",
+    "Identität des im Video gezeigten brennenden Rathauses/Gebäudes",
+    "Originalurheber der verwendeten Augenzeugenaufnahmen"
+   ],
+   "sensitive_content": [
+    "Schwere Brandstiftung an Gebäuden und Fahrzeugen",
+    "Gewaltsame Ausschreitungen im öffentlichen Raum"
+   ]
   },
   "bssWpbto850": {
    "video_id": "bssWpbto850",
@@ -195,14 +333,20 @@
      "views": 5204,
      "likes": 393,
      "comments": 3
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 5210,
+     "likes": 394,
+     "comments": 3
     }
    ],
-   "views": 5204,
-   "likes": 393,
+   "views": 5210,
+   "likes": 394,
    "comments": 3,
    "shares": null,
-   "engagement_rate": 7.61,
-   "views_velocity_per_hour": 79,
+   "engagement_rate": 7.62,
+   "views_velocity_per_hour": 78,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "bssWpbto850",
@@ -276,14 +420,20 @@
      "views": 46334,
      "likes": 1122,
      "comments": 278
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 46398,
+     "likes": 1121,
+     "comments": 278
     }
    ],
-   "views": 46334,
-   "likes": 1122,
+   "views": 46398,
+   "likes": 1121,
    "comments": 278,
    "shares": null,
    "engagement_rate": 3.02,
-   "views_velocity_per_hour": 818,
+   "views_velocity_per_hour": 815,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "2vCVl7D2MjU",
@@ -320,14 +470,20 @@
      "views": 42501,
      "likes": 279,
      "comments": 357
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 42702,
+     "likes": 279,
+     "comments": 361
     }
    ],
-   "views": 42501,
+   "views": 42702,
    "likes": 279,
-   "comments": 357,
+   "comments": 361,
    "shares": null,
    "engagement_rate": 1.5,
-   "views_velocity_per_hour": 810,
+   "views_velocity_per_hour": 809,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "C8fHYOOroj0",
@@ -364,14 +520,20 @@
      "views": 151621,
      "likes": 1800,
      "comments": 1298
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 156216,
+     "likes": 1831,
+     "comments": 1319
     }
    ],
-   "views": 151621,
-   "likes": 1800,
-   "comments": 1298,
+   "views": 156216,
+   "likes": 1831,
+   "comments": 1319,
    "shares": null,
-   "engagement_rate": 2.04,
-   "views_velocity_per_hour": 13770,
+   "engagement_rate": 2.02,
+   "views_velocity_per_hour": 13826,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "NFFvJ8D02G0",
@@ -408,14 +570,20 @@
      "views": 145332,
      "likes": 5739,
      "comments": 860
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 146029,
+     "likes": 5771,
+     "comments": 863
     }
    ],
-   "views": 145332,
-   "likes": 5739,
-   "comments": 860,
+   "views": 146029,
+   "likes": 5771,
+   "comments": 863,
    "shares": null,
    "engagement_rate": 4.54,
-   "views_velocity_per_hour": 4928,
+   "views_velocity_per_hour": 4904,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "xN4e8XiUDNo",
    "analysis": {
@@ -581,14 +749,20 @@
      "views": 16989,
      "likes": 517,
      "comments": 88
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 17259,
+     "likes": 520,
+     "comments": 88
     }
    ],
-   "views": 16989,
-   "likes": 517,
+   "views": 17259,
+   "likes": 520,
    "comments": 88,
    "shares": null,
-   "engagement_rate": 3.56,
-   "views_velocity_per_hour": 1945,
+   "engagement_rate": 3.52,
+   "views_velocity_per_hour": 1913,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "JCs-jLr0QG4",
@@ -625,14 +799,20 @@
      "views": 51591,
      "likes": 1939,
      "comments": 104
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 51933,
+     "likes": 1939,
+     "comments": 104
     }
    ],
-   "views": 51591,
+   "views": 51933,
    "likes": 1939,
    "comments": 104,
    "shares": null,
-   "engagement_rate": 3.96,
-   "views_velocity_per_hour": 927,
+   "engagement_rate": 3.93,
+   "views_velocity_per_hour": 929,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "Nzs3hxQoV-Y",
@@ -706,14 +886,20 @@
      "views": 681932,
      "likes": 4209,
      "comments": 3086
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 684429,
+     "likes": 4225,
+     "comments": 3094
     }
    ],
-   "views": 681932,
-   "likes": 4209,
-   "comments": 3086,
+   "views": 684429,
+   "likes": 4225,
+   "comments": 3094,
    "shares": null,
    "engagement_rate": 1.07,
-   "views_velocity_per_hour": 31097,
+   "views_velocity_per_hour": 30806,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "pozvqMsIKn8",
@@ -903,14 +1089,20 @@
      "views": 231161,
      "likes": 1041,
      "comments": 200
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 231491,
+     "likes": 1041,
+     "comments": 200
     }
    ],
-   "views": 231161,
+   "views": 231491,
    "likes": 1041,
    "comments": 200,
    "shares": null,
    "engagement_rate": 0.54,
-   "views_velocity_per_hour": 4218,
+   "views_velocity_per_hour": 4202,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "ZXd8I0gibK0",
@@ -984,14 +1176,20 @@
      "views": 316120,
      "likes": 2404,
      "comments": 498
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 316538,
+     "likes": 2405,
+     "comments": 498
     }
    ],
-   "views": 316120,
-   "likes": 2404,
+   "views": 316538,
+   "likes": 2405,
    "comments": 498,
    "shares": null,
    "engagement_rate": 0.92,
-   "views_velocity_per_hour": 5853,
+   "views_velocity_per_hour": 5830,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "FQ7-YQ-1Um8",
@@ -1065,14 +1263,20 @@
      "views": 234784,
      "likes": 7566,
      "comments": 186
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 234927,
+     "likes": 7569,
+     "comments": 186
     }
    ],
-   "views": 234784,
-   "likes": 7566,
+   "views": 234927,
+   "likes": 7569,
    "comments": 186,
    "shares": null,
    "engagement_rate": 3.3,
-   "views_velocity_per_hour": 4371,
+   "views_velocity_per_hour": 4350,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "NW4gG-b-9wg",
@@ -1109,14 +1313,20 @@
      "views": 103252,
      "likes": 105,
      "comments": 83
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 104919,
+     "likes": 105,
+     "comments": 83
     }
    ],
-   "views": 103252,
+   "views": 104919,
    "likes": 105,
    "comments": 83,
    "shares": null,
    "engagement_rate": 0.18,
-   "views_velocity_per_hour": 8454,
+   "views_velocity_per_hour": 8392,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "WHhG_0nVvhA",
    "score_breakdown": {
@@ -1189,14 +1399,20 @@
      "views": 111485,
      "likes": 699,
      "comments": 446
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 111596,
+     "likes": 699,
+     "comments": 446
     }
    ],
-   "views": 111485,
+   "views": 111596,
    "likes": 699,
    "comments": 446,
    "shares": null,
    "engagement_rate": 1.03,
-   "views_velocity_per_hour": 1899,
+   "views_velocity_per_hour": 1891,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "2vCVl7D2MjU",
@@ -1233,14 +1449,20 @@
      "views": 69911,
      "likes": 352,
      "comments": 374
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 70169,
+     "likes": 353,
+     "comments": 374
     }
    ],
-   "views": 69911,
-   "likes": 352,
+   "views": 70169,
+   "likes": 353,
    "comments": 374,
    "shares": null,
    "engagement_rate": 1.04,
-   "views_velocity_per_hour": 1353,
+   "views_velocity_per_hour": 1350,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "j8Rgax808Fs",
@@ -1314,14 +1536,20 @@
      "views": 158855,
      "likes": 772,
      "comments": 446
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 159188,
+     "likes": 774,
+     "comments": 447
     }
    ],
-   "views": 158855,
-   "likes": 772,
-   "comments": 446,
+   "views": 159188,
+   "likes": 774,
+   "comments": 447,
    "shares": null,
    "engagement_rate": 0.77,
-   "views_velocity_per_hour": 4400,
+   "views_velocity_per_hour": 4374,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "O6UIewr1W10",
@@ -1358,14 +1586,20 @@
      "views": 49815,
      "likes": 108,
      "comments": 166
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 50337,
+     "likes": 108,
+     "comments": 166
     }
    ],
-   "views": 49815,
+   "views": 50337,
    "likes": 108,
    "comments": 166,
    "shares": null,
-   "engagement_rate": 0.55,
-   "views_velocity_per_hour": 1004,
+   "engagement_rate": 0.54,
+   "views_velocity_per_hour": 1009,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "yLU8MYHx7eU",
@@ -1402,14 +1636,20 @@
      "views": 108996,
      "likes": 1498,
      "comments": 580
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 109519,
+     "likes": 1500,
+     "comments": 581
     }
    ],
-   "views": 108996,
-   "likes": 1498,
-   "comments": 580,
+   "views": 109519,
+   "likes": 1500,
+   "comments": 581,
    "shares": null,
-   "engagement_rate": 1.91,
-   "views_velocity_per_hour": 3095,
+   "engagement_rate": 1.9,
+   "views_velocity_per_hour": 3084,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "l1ll1AaZyQk",
@@ -1483,14 +1723,20 @@
      "views": 28931,
      "likes": 752,
      "comments": 74
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 29006,
+     "likes": 756,
+     "comments": 75
     }
    ],
-   "views": 28931,
-   "likes": 752,
-   "comments": 74,
+   "views": 29006,
+   "likes": 756,
+   "comments": 75,
    "shares": null,
    "engagement_rate": 2.86,
-   "views_velocity_per_hour": 574,
+   "views_velocity_per_hour": 572,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "mPRzIihMbnU",
@@ -1564,14 +1810,20 @@
      "views": 7549,
      "likes": 137,
      "comments": 33
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 7784,
+     "likes": 139,
+     "comments": 33
     }
    ],
-   "views": 7549,
-   "likes": 137,
+   "views": 7784,
+   "likes": 139,
    "comments": 33,
    "shares": null,
-   "engagement_rate": 2.25,
-   "views_velocity_per_hour": 1464,
+   "engagement_rate": 2.21,
+   "views_velocity_per_hour": 1429,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "U_0V8auS_TY",
@@ -1608,14 +1860,20 @@
      "views": 198193,
      "likes": 5913,
      "comments": 957
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 199482,
+     "likes": 5958,
+     "comments": 963
     }
    ],
-   "views": 198193,
-   "likes": 5913,
-   "comments": 957,
+   "views": 199482,
+   "likes": 5958,
+   "comments": 963,
    "shares": null,
    "engagement_rate": 3.47,
-   "views_velocity_per_hour": 5818,
+   "views_velocity_per_hour": 5807,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "eFoeP7Z-8ng",
@@ -1659,14 +1917,20 @@
      "views": 339519,
      "likes": 9594,
      "comments": 2090
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 339644,
+     "likes": 9605,
+     "comments": 2091
     }
    ],
-   "views": 339519,
-   "likes": 9594,
-   "comments": 2090,
+   "views": 339644,
+   "likes": 9605,
+   "comments": 2091,
    "shares": null,
    "engagement_rate": 3.44,
-   "views_velocity_per_hour": 6883,
+   "views_velocity_per_hour": 6846,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "rjbD7s61Bow",
@@ -1703,14 +1967,20 @@
      "views": 63638,
      "likes": 103,
      "comments": 214
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 64054,
+     "likes": 103,
+     "comments": 216
     }
    ],
-   "views": 63638,
+   "views": 64054,
    "likes": 103,
-   "comments": 214,
+   "comments": 216,
    "shares": null,
    "engagement_rate": 0.5,
-   "views_velocity_per_hour": 1236,
+   "views_velocity_per_hour": 1237,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "lZqOZSvhrW8",
@@ -1784,14 +2054,20 @@
      "views": 173177,
      "likes": 2711,
      "comments": 314
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 173278,
+     "likes": 2710,
+     "comments": 313
     }
    ],
-   "views": 173177,
-   "likes": 2711,
-   "comments": 314,
+   "views": 173278,
+   "likes": 2710,
+   "comments": 313,
    "shares": null,
-   "engagement_rate": 1.75,
-   "views_velocity_per_hour": 3227,
+   "engagement_rate": 1.74,
+   "views_velocity_per_hour": 3212,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "nutckpxgXuA",
@@ -1828,14 +2104,20 @@
      "views": 82233,
      "likes": 605,
      "comments": 362
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 82572,
+     "likes": 603,
+     "comments": 362
     }
    ],
-   "views": 82233,
-   "likes": 605,
+   "views": 82572,
+   "likes": 603,
    "comments": 362,
    "shares": null,
-   "engagement_rate": 1.18,
-   "views_velocity_per_hour": 2248,
+   "engagement_rate": 1.17,
+   "views_velocity_per_hour": 2240,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "B5tLlWx8d1w",
@@ -1872,13 +2154,19 @@
      "views": 8014,
      "likes": 220,
      "comments": 6
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 8034,
+     "likes": 219,
+     "comments": 6
     }
    ],
-   "views": 8014,
-   "likes": 220,
+   "views": 8034,
+   "likes": 219,
    "comments": 6,
    "shares": null,
-   "engagement_rate": 2.82,
+   "engagement_rate": 2.8,
    "views_velocity_per_hour": 135,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "ik_AuqfOCuU",
@@ -1952,14 +2240,20 @@
      "views": 23043,
      "likes": 227,
      "comments": 7
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 23071,
+     "likes": 227,
+     "comments": 7
     }
    ],
-   "views": 23043,
+   "views": 23071,
    "likes": 227,
    "comments": 7,
    "shares": null,
-   "engagement_rate": 1.02,
-   "views_velocity_per_hour": 737,
+   "engagement_rate": 1.01,
+   "views_velocity_per_hour": 731,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "QDG_QwXRMvU",
@@ -2033,14 +2327,20 @@
      "views": 748880,
      "likes": 3217,
      "comments": 1704
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 750391,
+     "likes": 3221,
+     "comments": 1704
     }
    ],
-   "views": 748880,
-   "likes": 3217,
+   "views": 750391,
+   "likes": 3221,
    "comments": 1704,
    "shares": null,
    "engagement_rate": 0.66,
-   "views_velocity_per_hour": 22886,
+   "views_velocity_per_hour": 22732,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "fEyAAGW2XJY",
@@ -2077,14 +2377,20 @@
      "views": 16497,
      "likes": 898,
      "comments": 72
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 16510,
+     "likes": 900,
+     "comments": 72
     }
    ],
-   "views": 16497,
-   "likes": 898,
+   "views": 16510,
+   "likes": 900,
    "comments": 72,
    "shares": null,
-   "engagement_rate": 5.88,
-   "views_velocity_per_hour": 377,
+   "engagement_rate": 5.89,
+   "views_velocity_per_hour": 375,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "2CMyyjOBfdo",
    "score_breakdown": {
@@ -2120,9 +2426,15 @@
      "views": 7618,
      "likes": 75,
      "comments": 3
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 7626,
+     "likes": 75,
+     "comments": 3
     }
    ],
-   "views": 7618,
+   "views": 7626,
    "likes": 75,
    "comments": 3,
    "shares": null,
@@ -2200,14 +2512,20 @@
      "views": 48192,
      "likes": 564,
      "comments": 65
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 48365,
+     "likes": 565,
+     "comments": 65
     }
    ],
-   "views": 48192,
-   "likes": 564,
+   "views": 48365,
+   "likes": 565,
    "comments": 65,
    "shares": null,
-   "engagement_rate": 1.31,
-   "views_velocity_per_hour": 1884,
+   "engagement_rate": 1.3,
+   "views_velocity_per_hour": 1869,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "-2u0K1oqTbs",
@@ -2244,14 +2562,20 @@
      "views": 234522,
      "likes": 7044,
      "comments": 68
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 234680,
+     "likes": 7044,
+     "comments": 68
     }
    ],
-   "views": 234522,
+   "views": 234680,
    "likes": 7044,
    "comments": 68,
    "shares": null,
    "engagement_rate": 3.03,
-   "views_velocity_per_hour": 6962,
+   "views_velocity_per_hour": 6908,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "hkdY4TXdFec",
    "score_breakdown": {
@@ -2324,14 +2648,20 @@
      "views": 204818,
      "likes": 888,
      "comments": 586
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 205303,
+     "likes": 889,
+     "comments": 580
     }
    ],
-   "views": 204818,
-   "likes": 888,
-   "comments": 586,
+   "views": 205303,
+   "likes": 889,
+   "comments": 580,
    "shares": null,
    "engagement_rate": 0.72,
-   "views_velocity_per_hour": 6287,
+   "views_velocity_per_hour": 6246,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "OaDTIYsMWOg",
@@ -2368,14 +2698,20 @@
      "views": 24614,
      "likes": 186,
      "comments": 279
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 24656,
+     "likes": 186,
+     "comments": 280
     }
    ],
-   "views": 24614,
+   "views": 24656,
    "likes": 186,
-   "comments": 279,
+   "comments": 280,
    "shares": null,
    "engagement_rate": 1.89,
-   "views_velocity_per_hour": 430,
+   "views_velocity_per_hour": 428,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "F2AhMoPh_CM",
@@ -2412,14 +2748,20 @@
      "views": 63472,
      "likes": 344,
      "comments": 584
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 63695,
+     "likes": 346,
+     "comments": 586
     }
    ],
-   "views": 63472,
-   "likes": 344,
-   "comments": 584,
+   "views": 63695,
+   "likes": 346,
+   "comments": 586,
    "shares": null,
    "engagement_rate": 1.46,
-   "views_velocity_per_hour": 1955,
+   "views_velocity_per_hour": 1945,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "PeYKOrDf334",
@@ -2456,14 +2798,20 @@
      "views": 120819,
      "likes": 5143,
      "comments": 527
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 121479,
+     "likes": 5174,
+     "comments": 528
     }
    ],
-   "views": 120819,
-   "likes": 5143,
-   "comments": 527,
+   "views": 121479,
+   "likes": 5174,
+   "comments": 528,
    "shares": null,
    "engagement_rate": 4.69,
-   "views_velocity_per_hour": 1967,
+   "views_velocity_per_hour": 1968,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "OEs9HUq6QCs",
    "score_breakdown": {
@@ -2490,7 +2838,14 @@
    "language": "en",
    "duration_seconds": 13,
    "authenticity_status": "UNVERIFIED",
-   "verification_sources": [],
+   "verification_sources": [
+    {
+     "domain": "tagesspiegel.de",
+     "title": "Kaum Jugendliche bei Schülerprotest : 250 Menschen versammeln sich zu Demo am Berliner Kleistpark",
+     "url": "https://www.tagesspiegel.de/berlin/kaum-jugendliche-bei-schulerprotest-250-menschen-versammeln-sich-zu-demo-am-berliner-kleistpark-16173250.html",
+     "seen": "20261017T144500Z"
+    }
+   ],
    "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
    "manual_review_required": true,
    "snapshots": [
@@ -2506,7 +2861,7 @@
    "comments": 24,
    "shares": null,
    "engagement_rate": 2.95,
-   "views_velocity_per_hour": 81,
+   "views_velocity_per_hour": 80,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "xNcc6eU7aMM",
@@ -2550,7 +2905,7 @@
    "comments": 93,
    "shares": null,
    "engagement_rate": 3.96,
-   "views_velocity_per_hour": 189,
+   "views_velocity_per_hour": 188,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "VQLciJZexXo",
    "score_breakdown": {
@@ -2586,14 +2941,20 @@
      "views": 411811,
      "likes": 1078,
      "comments": 1318
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 412408,
+     "likes": 1076,
+     "comments": 1318
     }
    ],
-   "views": 411811,
-   "likes": 1078,
+   "views": 412408,
+   "likes": 1076,
    "comments": 1318,
    "shares": null,
    "engagement_rate": 0.58,
-   "views_velocity_per_hour": 8502,
+   "views_velocity_per_hour": 8464,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "dCVcfA4nPm0",
    "score_breakdown": {
@@ -2666,14 +3027,20 @@
      "views": 12990,
      "likes": 107,
      "comments": 7
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 12987,
+     "likes": 107,
+     "comments": 7
     }
    ],
-   "views": 12990,
+   "views": 12987,
    "likes": 107,
    "comments": 7,
    "shares": null,
    "engagement_rate": 0.88,
-   "views_velocity_per_hour": 382,
+   "views_velocity_per_hour": 379,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "wVwyVJjYZhw",
@@ -2747,14 +3114,20 @@
      "views": 338276,
      "likes": 10192,
      "comments": 537
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 338580,
+     "likes": 10202,
+     "comments": 538
     }
    ],
-   "views": 338276,
-   "likes": 10192,
-   "comments": 537,
+   "views": 338580,
+   "likes": 10202,
+   "comments": 538,
    "shares": null,
    "engagement_rate": 3.17,
-   "views_velocity_per_hour": 5738,
+   "views_velocity_per_hour": 5715,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "zfBdkmxanmc",
@@ -2791,14 +3164,20 @@
      "views": 60118,
      "likes": 371,
      "comments": 604
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 61170,
+     "likes": 374,
+     "comments": 606
     }
    ],
-   "views": 60118,
-   "likes": 371,
-   "comments": 604,
+   "views": 61170,
+   "likes": 374,
+   "comments": 606,
    "shares": null,
-   "engagement_rate": 1.62,
-   "views_velocity_per_hour": 2361,
+   "engagement_rate": 1.6,
+   "views_velocity_per_hour": 2375,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "vl_kKuN1M5w",
@@ -2872,14 +3251,20 @@
      "views": 8289,
      "likes": 64,
      "comments": 38
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 8384,
+     "likes": 65,
+     "comments": 38
     }
    ],
-   "views": 8289,
-   "likes": 64,
+   "views": 8384,
+   "likes": 65,
    "comments": 38,
    "shares": null,
    "engagement_rate": 1.23,
-   "views_velocity_per_hour": 537,
+   "views_velocity_per_hour": 533,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "PqwomqaQM64",
@@ -2916,14 +3301,20 @@
      "views": 117296,
      "likes": 1375,
      "comments": 4
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 117448,
+     "likes": 1371,
+     "comments": 4
     }
    ],
-   "views": 117296,
-   "likes": 1375,
+   "views": 117448,
+   "likes": 1371,
    "comments": 4,
    "shares": null,
-   "engagement_rate": 1.18,
-   "views_velocity_per_hour": 2137,
+   "engagement_rate": 1.17,
+   "views_velocity_per_hour": 2128,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "waTuBFT1dIs",
    "score_breakdown": {
@@ -2959,14 +3350,20 @@
      "views": 42104,
      "likes": 118,
      "comments": 28
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 42207,
+     "likes": 118,
+     "comments": 28
     }
    ],
-   "views": 42104,
+   "views": 42207,
    "likes": 118,
    "comments": 28,
    "shares": null,
    "engagement_rate": 0.35,
-   "views_velocity_per_hour": 1081,
+   "views_velocity_per_hour": 1076,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "_Gn27MXFwRA",
    "score_breakdown": {
@@ -3002,14 +3399,20 @@
      "views": 321744,
      "likes": 510,
      "comments": 196
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 321847,
+     "likes": 510,
+     "comments": 196
     }
    ],
-   "views": 321744,
+   "views": 321847,
    "likes": 510,
    "comments": 196,
    "shares": null,
    "engagement_rate": 0.22,
-   "views_velocity_per_hour": 5550,
+   "views_velocity_per_hour": 5524,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "PU597sQCSuw",
    "score_breakdown": {
@@ -3089,7 +3492,7 @@
    "comments": 2,
    "shares": null,
    "engagement_rate": 1.0,
-   "views_velocity_per_hour": 230,
+   "views_velocity_per_hour": 228,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "wVwyVJjYZhw",
@@ -3126,14 +3529,20 @@
      "views": 20347,
      "likes": 40,
      "comments": 77
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 20397,
+     "likes": 40,
+     "comments": 77
     }
    ],
-   "views": 20347,
+   "views": 20397,
    "likes": 40,
    "comments": 77,
    "shares": null,
-   "engagement_rate": 0.58,
-   "views_velocity_per_hour": 413,
+   "engagement_rate": 0.57,
+   "views_velocity_per_hour": 411,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "XgDwOz28rn4",
@@ -3161,7 +3570,14 @@
    "language": "de",
    "duration_seconds": 232,
    "authenticity_status": "UNVERIFIED",
-   "verification_sources": [],
+   "verification_sources": [
+    {
+     "domain": "tagesspiegel.de",
+     "title": "Kaum Jugendliche bei Schülerprotest : 250 Menschen versammeln sich zu Demo am Berliner Kleistpark",
+     "url": "https://www.tagesspiegel.de/berlin/kaum-jugendliche-bei-schulerprotest-250-menschen-versammeln-sich-zu-demo-am-berliner-kleistpark-16173250.html",
+     "seen": "20261017T144500Z"
+    }
+   ],
    "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
    "manual_review_required": true,
    "snapshots": [
@@ -3170,14 +3586,20 @@
      "views": 6379,
      "likes": 286,
      "comments": 66
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 6392,
+     "likes": 286,
+     "comments": 66
     }
    ],
-   "views": 6379,
+   "views": 6392,
    "likes": 286,
    "comments": 66,
    "shares": null,
-   "engagement_rate": 5.52,
-   "views_velocity_per_hour": 205,
+   "engagement_rate": 5.51,
+   "views_velocity_per_hour": 204,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "L_Zk_v0ia00",
@@ -3214,14 +3636,20 @@
      "views": 29399,
      "likes": 425,
      "comments": 386
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 29457,
+     "likes": 428,
+     "comments": 390
     }
    ],
-   "views": 29399,
-   "likes": 425,
-   "comments": 386,
+   "views": 29457,
+   "likes": 428,
+   "comments": 390,
    "shares": null,
-   "engagement_rate": 2.76,
-   "views_velocity_per_hour": 785,
+   "engagement_rate": 2.78,
+   "views_velocity_per_hour": 781,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "Y8Dwg9IfpQ4",
@@ -3295,14 +3723,20 @@
      "views": 80506,
      "likes": 1271,
      "comments": 213
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 80531,
+     "likes": 1271,
+     "comments": 213
     }
    ],
-   "views": 80506,
+   "views": 80531,
    "likes": 1271,
    "comments": 213,
    "shares": null,
    "engagement_rate": 1.84,
-   "views_velocity_per_hour": 1565,
+   "views_velocity_per_hour": 1557,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "-aMJ4TrzyOk",
@@ -3376,14 +3810,20 @@
      "views": 87060,
      "likes": 486,
      "comments": 95
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 87198,
+     "likes": 485,
+     "comments": 95
     }
    ],
-   "views": 87060,
-   "likes": 486,
+   "views": 87198,
+   "likes": 485,
    "comments": 95,
    "shares": null,
    "engagement_rate": 0.67,
-   "views_velocity_per_hour": 3750,
+   "views_velocity_per_hour": 3710,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "Qh2Zoo25yiI",
@@ -3420,14 +3860,20 @@
      "views": 121731,
      "likes": 4103,
      "comments": 331
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 121890,
+     "likes": 4111,
+     "comments": 331
     }
    ],
-   "views": 121731,
-   "likes": 4103,
+   "views": 121890,
+   "likes": 4111,
    "comments": 331,
    "shares": null,
    "engagement_rate": 3.64,
-   "views_velocity_per_hour": 1728,
+   "views_velocity_per_hour": 1724,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "sXbjOE2euVk",
    "score_breakdown": {
@@ -3463,14 +3909,20 @@
      "views": 10808,
      "likes": null,
      "comments": 7
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 10856,
+     "likes": null,
+     "comments": 7
     }
    ],
-   "views": 10808,
+   "views": 10856,
    "likes": null,
    "comments": 7,
    "shares": null,
    "engagement_rate": 0.06,
-   "views_velocity_per_hour": 263,
+   "views_velocity_per_hour": 262,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "nrEVBfoUZ6A",
    "score_breakdown": {
@@ -3490,13 +3942,13 @@
    "city": "Paris",
    "city_source": "Titel/Beschreibung",
    "found_by_query": "vidéo manifestation",
-   "event_description": null,
+   "event_description": "Das Video ist ein fiktives bzw. spekulatives Zukunftsszenario des Nachrichtenkanals HugoDécrypte (datiert auf den 17. Oktober 2026), das mithilfe von realem Archivmaterial vergangener französischer Proteste (u. a. Gelbwesten, Rentenproteste) sowie inszenierten Elementen über angebliche Massenmobilisierungen, Ausschreitungen in Lyon/Paris und internationale Meldungen berichtet.",
    "event_date": null,
    "published_at": "2026-10-17T20:07:59Z",
    "collected_at": "2026-10-19T20:26:20Z",
    "language": "fr",
    "duration_seconds": 651,
-   "authenticity_status": "PARTIALLY_VERIFIED",
+   "authenticity_status": "MISLEADING",
    "verification_sources": [
     {
      "domain": "connexionfrance.com",
@@ -3543,21 +3995,156 @@
      "views": 1124217,
      "likes": 16634,
      "comments": 1450
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 1125954,
+     "likes": 16649,
+     "comments": 1451
     }
    ],
-   "views": 1124217,
-   "likes": 16634,
-   "comments": 1450,
+   "views": 1125954,
+   "likes": 16649,
+   "comments": 1451,
    "shares": null,
    "engagement_rate": 1.61,
-   "views_velocity_per_hour": 23273,
+   "views_velocity_per_hour": 23171,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "HFncBhBdP30",
    "score_breakdown": {
-    "social": 10
+    "social": 10,
+    "emotional": 14.0,
+    "transformation": 16.0,
+    "cinematic": 13.0,
+    "story": 12.0,
+    "originality": 8.0,
+    "technical": 4.0
    },
-   "anime_score": null
+   "anime_score": 77,
+   "analysis": {
+    "relevant": false,
+    "event_description": "Das Video ist ein fiktives bzw. spekulatives Zukunftsszenario des Nachrichtenkanals HugoDécrypte (datiert auf den 17. Oktober 2026), das mithilfe von realem Archivmaterial vergangener französischer Proteste (u. a. Gelbwesten, Rentenproteste) sowie inszenierten Elementen über angebliche Massenmobilisierungen, Ausschreitungen in Lyon/Paris und internationale Meldungen berichtet.",
+    "city_guess": "Paris",
+    "country_guess": "Frankreich",
+    "emotional_observations": [
+     "Sichtbare Entschlossenheit und Wut in den Demonstrationszügen",
+     "Lautstarke Sprechchöre und Trommeln junger Demonstranten",
+     "Aufregung und Hektik bei Tränengaseinsätzen und brennenden Barrikaden",
+     "Ruhige, besonnene Berichterstattung im Interview mit älteren Protestteilnehmern"
+    ],
+    "visual_highlights": [
+     {
+      "timecode": "00:08",
+      "beschreibung": "Dichte Vogelperspektive auf eine wogende Menschenmasse mit Schildern auf einem Boulevard."
+     },
+     {
+      "timecode": "01:24",
+      "beschreibung": "Jugendlicher schwenkt französische Flagge an einer Preisanzeige vor einer Tankstelle."
+     },
+     {
+      "timecode": "02:49",
+      "beschreibung": "Brennendes Fahrzeug auf offener Straße mit aufsteigender dichter schwarzer Rauchwolke."
+     },
+     {
+      "timecode": "03:55",
+      "beschreibung": "Nachtaufnahme eines brennenden Rathausturms mit hellem Feuerschein."
+     },
+     {
+      "timecode": "04:21",
+      "beschreibung": "Cinematische Silhouette von Sicherheitskräften vor dem rauchenden Arc de Triomphe."
+     }
+    ],
+    "story_potential": "Einstieg: Eine junge Botin navigiert durch eine abgeriegelte, protestierende Metropole → Konflikt: Zwischen Demonstranten und Polizeiketten gerät sie in eine eskalierende Konfrontation → Wendepunkt: Ein älterer Passant rettet sie vor dem Tränengas und teilt seine Beweggründe → Höhepunkt: Ein gemeinsamer symbolischer Akt des zivilen Zusammenhalts inmitten des Chaos → Nachhall: Stille senkt sich über die geräumten Straßen im Morgengrauen.",
+    "anime_concept": "In a near-future European megacity facing severe economic strain, a quiet delivery courier finds herself stranded between automated riot control drones and fractured citizen groups, rediscovering human empathy through brief, silent encounters with strangers.",
+    "fictional_character": "Lucie, a 19-year-old bicycle courier wearing a faded reflective vest and worn-out headphones, trying to stay neutral in a fractured city.",
+    "recommended_perspective": "Personale Erzählperspektive (aus der Sicht von Lucie)",
+    "anime_imagery": "Makoto Shinkai-inspired atmospheric urban realism meets Jin-Roh aesthetic: hyper-detailed city streets, intense lens flares from burning flares, soft rain reflections on asphalt, and melancholic dusk lighting.",
+    "sound_ideas": [
+     "Dumpfer Herzschlag und gedämpfte Atemgeräusche unter einer Staubmaske",
+     "Entfernte Echos von Trillerpfeifen und Sirenen, die im Häuserblock verhallen",
+     "Plötzliches Zischen von Reizgaskartuschen gefolgt von stimmungsvoller Klavier-Melodie"
+    ],
+    "recommended_length_seconds": 45,
+    "scores": {
+     "emotional": 14,
+     "transformation": 16,
+     "cinematic": 13,
+     "story": 12,
+     "originality": 8,
+     "technical": 4
+    },
+    "synthetic_suspected": false,
+    "misleading_suspected": true,
+    "authenticity_concerns": [
+     "Das Video präsentiert ein fiktives Zukunftsszenario ('17. Oktober 2026') als reguläres Nachrichtenformat.",
+     "Reales Archivmaterial tatsächlicher vergangener Proteste wurde mit fiktiven Datumsangaben und Narrativen kombiniert (z. B. fiktiver Papst 'Léon XIV')."
+    ],
+    "open_questions": [
+     "Aus welchen konkreten Jahren und Originalereignissen stammen die einzelnen Archivszenen der Straßenschlachten?",
+     "Welche Interviewpassagen sind echt und welche wurden kontextuell neu montiert?"
+    ],
+    "sensitive_content": [
+     "Darstellung von Flammen und brennenden Barrikaden",
+     "Einsatz von Tränengas und Schutzkräften",
+     "Erwähnung und Bildausschnitte von schweren Handverletzungen durch Detonationen"
+    ],
+    "_model": "gemini-3.8-flash"
+   },
+   "analyzed_at": "2026-10-19T20:56:51Z",
+   "emotional_observations": [
+    "Sichtbare Entschlossenheit und Wut in den Demonstrationszügen",
+    "Lautstarke Sprechchöre und Trommeln junger Demonstranten",
+    "Aufregung und Hektik bei Tränengaseinsätzen und brennenden Barrikaden",
+    "Ruhige, besonnene Berichterstattung im Interview mit älteren Protestteilnehmern"
+   ],
+   "visual_highlights": [
+    {
+     "timecode": "00:08",
+     "beschreibung": "Dichte Vogelperspektive auf eine wogende Menschenmasse mit Schildern auf einem Boulevard."
+    },
+    {
+     "timecode": "01:24",
+     "beschreibung": "Jugendlicher schwenkt französische Flagge an einer Preisanzeige vor einer Tankstelle."
+    },
+    {
+     "timecode": "02:49",
+     "beschreibung": "Brennendes Fahrzeug auf offener Straße mit aufsteigender dichter schwarzer Rauchwolke."
+    },
+    {
+     "timecode": "03:55",
+     "beschreibung": "Nachtaufnahme eines brennenden Rathausturms mit hellem Feuerschein."
+    },
+    {
+     "timecode": "04:21",
+     "beschreibung": "Cinematische Silhouette von Sicherheitskräften vor dem rauchenden Arc de Triomphe."
+    }
+   ],
+   "story_potential": "Einstieg: Eine junge Botin navigiert durch eine abgeriegelte, protestierende Metropole → Konflikt: Zwischen Demonstranten und Polizeiketten gerät sie in eine eskalierende Konfrontation → Wendepunkt: Ein älterer Passant rettet sie vor dem Tränengas und teilt seine Beweggründe → Höhepunkt: Ein gemeinsamer symbolischer Akt des zivilen Zusammenhalts inmitten des Chaos → Nachhall: Stille senkt sich über die geräumten Straßen im Morgengrauen.",
+   "anime_concept": "In a near-future European megacity facing severe economic strain, a quiet delivery courier finds herself stranded between automated riot control drones and fractured citizen groups, rediscovering human empathy through brief, silent encounters with strangers.",
+   "fictional_character": "Lucie, a 19-year-old bicycle courier wearing a faded reflective vest and worn-out headphones, trying to stay neutral in a fractured city.",
+   "recommended_perspective": "Personale Erzählperspektive (aus der Sicht von Lucie)",
+   "anime_imagery": "Makoto Shinkai-inspired atmospheric urban realism meets Jin-Roh aesthetic: hyper-detailed city streets, intense lens flares from burning flares, soft rain reflections on asphalt, and melancholic dusk lighting.",
+   "sound_ideas": [
+    "Dumpfer Herzschlag und gedämpfte Atemgeräusche unter einer Staubmaske",
+    "Entfernte Echos von Trillerpfeifen und Sirenen, die im Häuserblock verhallen",
+    "Plötzliches Zischen von Reizgaskartuschen gefolgt von stimmungsvoller Klavier-Melodie"
+   ],
+   "recommended_length_seconds": 45,
+   "authenticity_concerns": [
+    "Das Video präsentiert ein fiktives Zukunftsszenario ('17. Oktober 2026') als reguläres Nachrichtenformat.",
+    "Reales Archivmaterial tatsächlicher vergangener Proteste wurde mit fiktiven Datumsangaben und Narrativen kombiniert (z. B. fiktiver Papst 'Léon XIV')."
+   ],
+   "open_questions": [
+    "Aus welchen konkreten Jahren und Originalereignissen stammen die einzelnen Archivszenen der Straßenschlachten?",
+    "Welche Interviewpassagen sind echt und welche wurden kontextuell neu montiert?"
+   ],
+   "sensitive_content": [
+    "Darstellung von Flammen und brennenden Barrikaden",
+    "Einsatz von Tränengas und Schutzkräften",
+    "Erwähnung und Bildausschnitte von schweren Handverletzungen durch Detonationen"
+   ],
+   "irrelevant": true
   },
   "5VByzmloEcE": {
    "video_id": "5VByzmloEcE",
@@ -3624,14 +4211,20 @@
      "views": 11732,
      "likes": 207,
      "comments": 41
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 11743,
+     "likes": 208,
+     "comments": 41
     }
    ],
-   "views": 11732,
-   "likes": 207,
+   "views": 11743,
+   "likes": 208,
    "comments": 41,
    "shares": null,
-   "engagement_rate": 2.11,
-   "views_velocity_per_hour": 443,
+   "engagement_rate": 2.12,
+   "views_velocity_per_hour": 438,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "5VByzmloEcE",
@@ -3705,14 +4298,20 @@
      "views": 341825,
      "likes": 4778,
      "comments": 136
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 342094,
+     "likes": 4779,
+     "comments": 136
     }
    ],
-   "views": 341825,
-   "likes": 4778,
+   "views": 342094,
+   "likes": 4779,
    "comments": 136,
    "shares": null,
    "engagement_rate": 1.44,
-   "views_velocity_per_hour": 6712,
+   "views_velocity_per_hour": 6679,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "ibCVXxEau9E",
@@ -3733,7 +4332,7 @@
    "city": "Paris",
    "city_source": "Titel/Beschreibung",
    "found_by_query": "manifestation Paris",
-   "event_description": null,
+   "event_description": "Großdemonstration und Ausschreitungen in Paris rund um die Place de la République und Rue de Rivoli bezüglich Inflation und steigender Lebenshaltungskosten, mit Tränengaseinsatz, brennenden Barrikaden und Wasserwerfern.",
    "event_date": null,
    "published_at": "2026-10-17T22:34:35Z",
    "collected_at": "2026-10-19T20:26:20Z",
@@ -3786,21 +4385,173 @@
      "views": 485216,
      "likes": 2405,
      "comments": 743
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 485552,
+     "likes": 2407,
+     "comments": 743
     }
    ],
-   "views": 485216,
-   "likes": 2405,
+   "views": 485552,
+   "likes": 2407,
    "comments": 743,
    "shares": null,
    "engagement_rate": 0.65,
-   "views_velocity_per_hour": 10580,
+   "views_velocity_per_hour": 10521,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "0qH1pc6pqCs",
    "score_breakdown": {
-    "social": 9
+    "social": 9,
+    "emotional": 18.0,
+    "transformation": 18.0,
+    "cinematic": 14.0,
+    "story": 14.0,
+    "originality": 8.0,
+    "technical": 5
    },
-   "anime_score": null
+   "anime_score": 86,
+   "analysis": {
+    "relevant": true,
+    "event_description": "Großdemonstration und Ausschreitungen in Paris rund um die Place de la République und Rue de Rivoli bezüglich Inflation und steigender Lebenshaltungskosten, mit Tränengaseinsatz, brennenden Barrikaden und Wasserwerfern.",
+    "city_guess": "Paris",
+    "country_guess": "Frankreich",
+    "emotional_observations": [
+     "Sichtbare Verzweiflung und Weinen einer jungen Schülerin angesichts finanzieller Zukunftsangst",
+     "Spürbare Entschlossenheit und Wut bei interviewten Arbeitern und Müttern",
+     "Tiefe Trauer und Erschütterung bei einer älteren Demonstrantin über die Eskalation im Land",
+     "Adrenalin und Fluchtreflexe bei Tränengasangriffen und Detonationen",
+     "Kollektives Hochgefühl und Euphorie beim gemeinsamen Trommeln und Entrollen des Dachbanners"
+    ],
+    "visual_highlights": [
+     {
+      "timecode": "00:01",
+      "beschreibung": "Monumentale Totale der Place de la République mit der Marianne-Statue, umhüllt von dichtem Rauch und Menschenmassen."
+     },
+     {
+      "timecode": "00:27",
+      "beschreibung": "Lichterloh brennendes Auto erzeugt pechschwarzen Rauch vor historischen Pariser Fassaden."
+     },
+     {
+      "timecode": "01:28",
+      "beschreibung": "Dicht gedrängte Menge im Rhythmus von Trommeln und Blasinstrumenten in Bewegung."
+     },
+     {
+      "timecode": "01:47",
+      "beschreibung": "Plötzliche Ausbreitung dichter weißer Tränengasschwaden im hellen Gegenlicht des Platzes."
+     },
+     {
+      "timecode": "04:15",
+      "beschreibung": "Massiver Wasserwerfer der Polizei schießt weiße Druckstrahlen quer über den Platz."
+     },
+     {
+      "timecode": "05:07",
+      "beschreibung": "Silhouetten junger Menschen auf einem steilen Zinkdach entrollen ein riesiges Banner hoch über der Stadt."
+     },
+     {
+      "timecode": "07:27",
+      "beschreibung": "Nächtliche Reflexion lodernder Straßenfeuer und Schattenrisse von Demonstranten auf der spiegelglatten Wasseroberfläche des Kanals."
+     }
+    ],
+    "story_potential": "Einstieg: Eine junge Botin/Schülerin steht frierend im Morgengrauen einer Pariser Vorstadt, zerrissen zwischen existenzieller Not und Ohnmacht → Konflikt: Im Herzen der Metropole trifft sie auf Menschen aller Generationen, wird jedoch von Tränengas und Polizeiriegeln eingekesselt → Wendepunkt: Als die Panik ausbricht, hilft ihr eine fremde ältere Frau und ein Mitschüler klettert auf das Dach, um ein Leuchtfeuer der Hoffnung zu setzen → Höhepunkt: Ein gewaltiger Moment kollektiver Stille und Einigkeit, während Wasserwerfer und Rauch die Straßen fluten → Nachhall: Bei Einbruch der Nacht spiegeln sich stille Funken auf dem Wasser des Kanals, symbolisch für ein erwachtes Bewusstsein.",
+    "anime_concept": "In a diesel-tinted neo-Paris suffocated by soaring tariffs, a quiet mechanical apprentice named Camille gets caught in a citywide blackout protest, finding her voice only when the neon lights extinguish and the rooftops ignite with signals of unity.",
+    "fictional_character": "Camille, a 17-year-old apprentice watchmaker with grease-stained sleeves, wearing an oversized thrifted high-vis vest and protective dust goggles.",
+    "recommended_perspective": "Personale Erzählperspektive aus Sicht der fiktiven Jugendlichen, mit dynamischem Wechsel zwischen intimen Nahaufnahmen (Augen, zitternde Hände) und weiten Untersichten auf Monumente und Dächer.",
+    "anime_imagery": "Studio MAPPA / Production I.G style with gritty urban realism, sharp architectural detail of Haussmannian zinc rooftops, dynamic camera orbits through volumetric tear smoke, high-contrast embers against twilight skies, and glowing water reflections.",
+    "sound_ideas": [
+     "Dumpfer Herzschlag und Tinnitus-Pfeifen, das nahtlos in metallisches Trommeln der Menschenmenge übergeht",
+     "Scharfes Zischen von Druckluft- und Tränengasgranaten mit anschließender hallender Stille",
+     "Melancholisches Cello-Motiv, das sich über das ferne Sirenengeheul der Pariser Nacht legt",
+     "Rhythmische Rufe, die in orchestralen Synth-Wave-Beat anschwellen"
+    ],
+    "recommended_length_seconds": 45,
+    "scores": {
+     "emotional": 18,
+     "transformation": 18,
+     "cinematic": 14,
+     "story": 14,
+     "originality": 8,
+     "technical": 5
+    },
+    "synthetic_suspected": false,
+    "misleading_suspected": false,
+    "authenticity_concerns": [],
+    "open_questions": [
+     "Identität einzelner Personen im Video ist privat/journalistisch geschützt",
+     "Genaue polizeiliche und organisatorische Gesamtzahlen weichen zwischen Behörden und Veranstaltern ab"
+    ],
+    "sensitive_content": [
+     "Tränengaseinsatz",
+     "Brennende Fahrzeuge und Barrikaden",
+     "Polizeiliche Wasserwerfer",
+     "Weisungsgewalt/Ausschreitungen",
+     "Minderjährige (Schülerinnen) im Interview"
+    ],
+    "_model": "gemini-3.8-flash"
+   },
+   "analyzed_at": "2026-10-19T21:03:18Z",
+   "emotional_observations": [
+    "Sichtbare Verzweiflung und Weinen einer jungen Schülerin angesichts finanzieller Zukunftsangst",
+    "Spürbare Entschlossenheit und Wut bei interviewten Arbeitern und Müttern",
+    "Tiefe Trauer und Erschütterung bei einer älteren Demonstrantin über die Eskalation im Land",
+    "Adrenalin und Fluchtreflexe bei Tränengasangriffen und Detonationen",
+    "Kollektives Hochgefühl und Euphorie beim gemeinsamen Trommeln und Entrollen des Dachbanners"
+   ],
+   "visual_highlights": [
+    {
+     "timecode": "00:01",
+     "beschreibung": "Monumentale Totale der Place de la République mit der Marianne-Statue, umhüllt von dichtem Rauch und Menschenmassen."
+    },
+    {
+     "timecode": "00:27",
+     "beschreibung": "Lichterloh brennendes Auto erzeugt pechschwarzen Rauch vor historischen Pariser Fassaden."
+    },
+    {
+     "timecode": "01:28",
+     "beschreibung": "Dicht gedrängte Menge im Rhythmus von Trommeln und Blasinstrumenten in Bewegung."
+    },
+    {
+     "timecode": "01:47",
+     "beschreibung": "Plötzliche Ausbreitung dichter weißer Tränengasschwaden im hellen Gegenlicht des Platzes."
+    },
+    {
+     "timecode": "04:15",
+     "beschreibung": "Massiver Wasserwerfer der Polizei schießt weiße Druckstrahlen quer über den Platz."
+    },
+    {
+     "timecode": "05:07",
+     "beschreibung": "Silhouetten junger Menschen auf einem steilen Zinkdach entrollen ein riesiges Banner hoch über der Stadt."
+    },
+    {
+     "timecode": "07:27",
+     "beschreibung": "Nächtliche Reflexion lodernder Straßenfeuer und Schattenrisse von Demonstranten auf der spiegelglatten Wasseroberfläche des Kanals."
+    }
+   ],
+   "story_potential": "Einstieg: Eine junge Botin/Schülerin steht frierend im Morgengrauen einer Pariser Vorstadt, zerrissen zwischen existenzieller Not und Ohnmacht → Konflikt: Im Herzen der Metropole trifft sie auf Menschen aller Generationen, wird jedoch von Tränengas und Polizeiriegeln eingekesselt → Wendepunkt: Als die Panik ausbricht, hilft ihr eine fremde ältere Frau und ein Mitschüler klettert auf das Dach, um ein Leuchtfeuer der Hoffnung zu setzen → Höhepunkt: Ein gewaltiger Moment kollektiver Stille und Einigkeit, während Wasserwerfer und Rauch die Straßen fluten → Nachhall: Bei Einbruch der Nacht spiegeln sich stille Funken auf dem Wasser des Kanals, symbolisch für ein erwachtes Bewusstsein.",
+   "anime_concept": "In a diesel-tinted neo-Paris suffocated by soaring tariffs, a quiet mechanical apprentice named Camille gets caught in a citywide blackout protest, finding her voice only when the neon lights extinguish and the rooftops ignite with signals of unity.",
+   "fictional_character": "Camille, a 17-year-old apprentice watchmaker with grease-stained sleeves, wearing an oversized thrifted high-vis vest and protective dust goggles.",
+   "recommended_perspective": "Personale Erzählperspektive aus Sicht der fiktiven Jugendlichen, mit dynamischem Wechsel zwischen intimen Nahaufnahmen (Augen, zitternde Hände) und weiten Untersichten auf Monumente und Dächer.",
+   "anime_imagery": "Studio MAPPA / Production I.G style with gritty urban realism, sharp architectural detail of Haussmannian zinc rooftops, dynamic camera orbits through volumetric tear smoke, high-contrast embers against twilight skies, and glowing water reflections.",
+   "sound_ideas": [
+    "Dumpfer Herzschlag und Tinnitus-Pfeifen, das nahtlos in metallisches Trommeln der Menschenmenge übergeht",
+    "Scharfes Zischen von Druckluft- und Tränengasgranaten mit anschließender hallender Stille",
+    "Melancholisches Cello-Motiv, das sich über das ferne Sirenengeheul der Pariser Nacht legt",
+    "Rhythmische Rufe, die in orchestralen Synth-Wave-Beat anschwellen"
+   ],
+   "recommended_length_seconds": 45,
+   "authenticity_concerns": [],
+   "open_questions": [
+    "Identität einzelner Personen im Video ist privat/journalistisch geschützt",
+    "Genaue polizeiliche und organisatorische Gesamtzahlen weichen zwischen Behörden und Veranstaltern ab"
+   ],
+   "sensitive_content": [
+    "Tränengaseinsatz",
+    "Brennende Fahrzeuge und Barrikaden",
+    "Polizeiliche Wasserwerfer",
+    "Weisungsgewalt/Ausschreitungen",
+    "Minderjährige (Schülerinnen) im Interview"
+   ]
   },
   "JROb_u1Gwiw": {
    "video_id": "JROb_u1Gwiw",
@@ -3830,14 +4581,20 @@
      "views": 466634,
      "likes": 1586,
      "comments": 1928
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 467065,
+     "likes": 1586,
+     "comments": 1931
     }
    ],
-   "views": 466634,
+   "views": 467065,
    "likes": 1586,
-   "comments": 1928,
+   "comments": 1931,
    "shares": null,
    "engagement_rate": 0.75,
-   "views_velocity_per_hour": 11767,
+   "views_velocity_per_hour": 11693,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "JROb_u1Gwiw",
    "score_breakdown": {
@@ -3873,14 +4630,20 @@
      "views": 29132,
      "likes": 3587,
      "comments": 180
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 29160,
+     "likes": 3590,
+     "comments": 180
     }
    ],
-   "views": 29132,
-   "likes": 3587,
+   "views": 29160,
+   "likes": 3590,
    "comments": 180,
    "shares": null,
    "engagement_rate": 12.93,
-   "views_velocity_per_hour": 1011,
+   "views_velocity_per_hour": 1002,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "poGnuzHfjTY",
@@ -3954,14 +4717,20 @@
      "views": 370328,
      "likes": 4660,
      "comments": 1732
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 374168,
+     "likes": 4687,
+     "comments": 1741
     }
    ],
-   "views": 370328,
-   "likes": 4660,
-   "comments": 1732,
+   "views": 374168,
+   "likes": 4687,
+   "comments": 1741,
    "shares": null,
-   "engagement_rate": 1.73,
-   "views_velocity_per_hour": 16361,
+   "engagement_rate": 1.72,
+   "views_velocity_per_hour": 16323,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "yi_ODmCuNdQ",
@@ -4114,14 +4883,20 @@
      "views": 88045,
      "likes": 233,
      "comments": 631
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 88381,
+     "likes": 234,
+     "comments": 631
     }
    ],
-   "views": 88045,
-   "likes": 233,
+   "views": 88381,
+   "likes": 234,
    "comments": 631,
    "shares": null,
    "engagement_rate": 0.98,
-   "views_velocity_per_hour": 1774,
+   "views_velocity_per_hour": 1770,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "-3iwDWqSd94",
@@ -4195,14 +4970,20 @@
      "views": 307259,
      "likes": null,
      "comments": null
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 307940,
+     "likes": null,
+     "comments": null
     }
    ],
-   "views": 307259,
+   "views": 307940,
    "likes": null,
    "comments": null,
    "shares": null,
    "engagement_rate": null,
-   "views_velocity_per_hour": 6513,
+   "views_velocity_per_hour": 6487,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "aM2_Kcrh58I",
@@ -4230,7 +5011,14 @@
    "language": "de-DE",
    "duration_seconds": 177,
    "authenticity_status": "UNVERIFIED",
-   "verification_sources": [],
+   "verification_sources": [
+    {
+     "domain": "tagesspiegel.de",
+     "title": "Kaum Jugendliche bei Schülerprotest : 250 Menschen versammeln sich zu Demo am Berliner Kleistpark",
+     "url": "https://www.tagesspiegel.de/berlin/kaum-jugendliche-bei-schulerprotest-250-menschen-versammeln-sich-zu-demo-am-berliner-kleistpark-16173250.html",
+     "seen": "20261017T144500Z"
+    }
+   ],
    "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
    "manual_review_required": true,
    "snapshots": [
@@ -4239,14 +5027,20 @@
      "views": 8774,
      "likes": 871,
      "comments": 11
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 8971,
+     "likes": 898,
+     "comments": 11
     }
    ],
-   "views": 8774,
-   "likes": 871,
+   "views": 8971,
+   "likes": 898,
    "comments": 11,
    "shares": null,
-   "engagement_rate": 10.05,
-   "views_velocity_per_hour": 551,
+   "engagement_rate": 10.13,
+   "views_velocity_per_hour": 553,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "rJ18fP2tRFA",
@@ -4267,7 +5061,7 @@
    "city": "Madrid",
    "city_source": "Titel/Beschreibung",
    "found_by_query": "manifestación Madrid",
-   "event_description": null,
+   "event_description": "Isabel Díaz Ayuso, Präsidentin der Region Madrid, äußert sich in einem Gebäude vor zahlreichen Mikrofonen von Journalisten (u. a. TVE, laSexta) zu einem lautstarken Protest/Escrache vor dem Gebäude und kritisiert politische Gegner und Gewerkschaften.",
    "event_date": null,
    "published_at": "2026-10-19T14:51:20Z",
    "collected_at": "2026-10-19T20:26:20Z",
@@ -4283,21 +5077,123 @@
      "views": 12656,
      "likes": 523,
      "comments": 117
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 13364,
+     "likes": 549,
+     "comments": 121
     }
    ],
-   "views": 12656,
-   "likes": 523,
-   "comments": 117,
+   "views": 13364,
+   "likes": 549,
+   "comments": 121,
    "shares": null,
-   "engagement_rate": 5.06,
-   "views_velocity_per_hour": 2267,
+   "engagement_rate": 5.01,
+   "views_velocity_per_hour": 2276,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "U2VnzBbPT0I",
    "score_breakdown": {
-    "social": 10
+    "social": 10,
+    "emotional": 14.0,
+    "transformation": 13.0,
+    "cinematic": 10.0,
+    "story": 11.0,
+    "originality": 6.0,
+    "technical": 4.0
    },
-   "anime_score": null
+   "anime_score": 68,
+   "analysis": {
+    "relevant": true,
+    "event_description": "Isabel Díaz Ayuso, Präsidentin der Region Madrid, äußert sich in einem Gebäude vor zahlreichen Mikrofonen von Journalisten (u. a. TVE, laSexta) zu einem lautstarken Protest/Escrache vor dem Gebäude und kritisiert politische Gegner und Gewerkschaften.",
+    "city_guess": "Madrid",
+    "country_guess": "Spanien",
+    "emotional_observations": [
+     "Sichtbare Anspannung und Entschlossenheit in Mimik und Gestik",
+     "Intensiver Blickkontakt mit den Fragestellern und weit geöffnete Augen bei pointierten Aussagen",
+     "Feste, energische und teils gereizte Intonation bei der Erwähnung der Demonstrierenden"
+    ],
+    "visual_highlights": [
+     {
+      "timecode": "00:00",
+      "beschreibung": "Halbnahe Einstellung auf die Sprecherin, umgeben von einem dichten Bündel von Fernseh- und Radiomikrofonen"
+     },
+     {
+      "timecode": "00:15",
+      "beschreibung": "Dynamische Kopfbewegung und prüfender Blick bei Erwähnung der europäischen Gesamtlage"
+     },
+     {
+      "timecode": "00:30",
+      "beschreibung": "Spürbare Intensivierung des Blicks und markante Mimik bei der direkten Ablehnung von Zugeständnissen"
+     }
+    ],
+    "story_potential": "Einstieg: Eine junge Stadtbeamtin tritt in einem überfüllten Foyer vor eine Wand aus Kameras und Mikrofonen. → Konflikt: Durch die Türen hallt der Lärm protestierender Lehrer und Studenten, während Journalisten scharfe Fragen stellen. → Wendepunkt: Als ein Zwischenruf ertönt, hält sie inne und blickt auf die Protestierenden im Hof, die Transparente halten. → Höhepunkt: Statt der vorbereiteten Rede wählt sie klare, unnachgiebige Worte, die die Luft im Saal gefrieren lassen. → Nachhall: Sie wendet sich ab und geht durch den still gewordenen Korridor, während das Echo der Kamerasucher nachklingt.",
+    "anime_concept": "A psychological drama about Elena, a high-ranking education councilor trapped between intense press scrutiny and hundreds of protesting teachers outside a grand municipal hall, capturing the claustrophobia of power under siege.",
+    "fictional_character": "Elena Vance, a 35-year-old disciplined public administrator wearing a sharp beige trench coat, known for her composure under intense political storms.",
+    "recommended_perspective": "Dritte Person / Enge filmische Beobachterperspektive mit Fokus auf Mimik und Reaktionen der Medienmeute",
+    "anime_imagery": "Seinen-style political drama aesthetic with desaturated urban tones, sharp cinematic depth of field, dramatic claustrophobic framing with microphone stems cutting across the foreground, and stark rim lighting on the protagonist's determined face.",
+    "sound_ideas": [
+     "Klickende Kamerasucher und surrende Autofokus-Motoren im Vordergrund",
+     "Gedämpftes, dumpfes Rufen und Trillerpfeifen aus dem Off jenseits der Wände",
+     "Plötzliches Verstummen des Hintergrunds für einen Moment intensiver Augen-Nahaufnahme, gefolgt von einem tiefen Herzschlag-Bass"
+    ],
+    "recommended_length_seconds": 45,
+    "scores": {
+     "emotional": 14,
+     "transformation": 13,
+     "cinematic": 10,
+     "story": 11,
+     "originality": 6,
+     "technical": 4
+    },
+    "synthetic_suspected": false,
+    "misleading_suspected": false,
+    "authenticity_concerns": [],
+    "open_questions": [
+     "Genaue Identität und Zusammensetzung der Demonstrierenden vor dem Gebäude im tatsächlichen Moment der Aufnahme",
+     "Genauer Entstehungsort (Gebäude / Bildungszentrum) innerhalb der Autonomen Gemeinschaft Madrid"
+    ],
+    "sensitive_content": [],
+    "_model": "gemini-3.8-flash"
+   },
+   "analyzed_at": "2026-10-19T21:02:15Z",
+   "emotional_observations": [
+    "Sichtbare Anspannung und Entschlossenheit in Mimik und Gestik",
+    "Intensiver Blickkontakt mit den Fragestellern und weit geöffnete Augen bei pointierten Aussagen",
+    "Feste, energische und teils gereizte Intonation bei der Erwähnung der Demonstrierenden"
+   ],
+   "visual_highlights": [
+    {
+     "timecode": "00:00",
+     "beschreibung": "Halbnahe Einstellung auf die Sprecherin, umgeben von einem dichten Bündel von Fernseh- und Radiomikrofonen"
+    },
+    {
+     "timecode": "00:15",
+     "beschreibung": "Dynamische Kopfbewegung und prüfender Blick bei Erwähnung der europäischen Gesamtlage"
+    },
+    {
+     "timecode": "00:30",
+     "beschreibung": "Spürbare Intensivierung des Blicks und markante Mimik bei der direkten Ablehnung von Zugeständnissen"
+    }
+   ],
+   "story_potential": "Einstieg: Eine junge Stadtbeamtin tritt in einem überfüllten Foyer vor eine Wand aus Kameras und Mikrofonen. → Konflikt: Durch die Türen hallt der Lärm protestierender Lehrer und Studenten, während Journalisten scharfe Fragen stellen. → Wendepunkt: Als ein Zwischenruf ertönt, hält sie inne und blickt auf die Protestierenden im Hof, die Transparente halten. → Höhepunkt: Statt der vorbereiteten Rede wählt sie klare, unnachgiebige Worte, die die Luft im Saal gefrieren lassen. → Nachhall: Sie wendet sich ab und geht durch den still gewordenen Korridor, während das Echo der Kamerasucher nachklingt.",
+   "anime_concept": "A psychological drama about Elena, a high-ranking education councilor trapped between intense press scrutiny and hundreds of protesting teachers outside a grand municipal hall, capturing the claustrophobia of power under siege.",
+   "fictional_character": "Elena Vance, a 35-year-old disciplined public administrator wearing a sharp beige trench coat, known for her composure under intense political storms.",
+   "recommended_perspective": "Dritte Person / Enge filmische Beobachterperspektive mit Fokus auf Mimik und Reaktionen der Medienmeute",
+   "anime_imagery": "Seinen-style political drama aesthetic with desaturated urban tones, sharp cinematic depth of field, dramatic claustrophobic framing with microphone stems cutting across the foreground, and stark rim lighting on the protagonist's determined face.",
+   "sound_ideas": [
+    "Klickende Kamerasucher und surrende Autofokus-Motoren im Vordergrund",
+    "Gedämpftes, dumpfes Rufen und Trillerpfeifen aus dem Off jenseits der Wände",
+    "Plötzliches Verstummen des Hintergrunds für einen Moment intensiver Augen-Nahaufnahme, gefolgt von einem tiefen Herzschlag-Bass"
+   ],
+   "recommended_length_seconds": 45,
+   "authenticity_concerns": [],
+   "open_questions": [
+    "Genaue Identität und Zusammensetzung der Demonstrierenden vor dem Gebäude im tatsächlichen Moment der Aufnahme",
+    "Genauer Entstehungsort (Gebäude / Bildungszentrum) innerhalb der Autonomen Gemeinschaft Madrid"
+   ],
+   "sensitive_content": []
   },
   "UGKmBiFMdw0": {
    "video_id": "UGKmBiFMdw0",
@@ -4334,7 +5230,7 @@
    "comments": 9,
    "shares": null,
    "engagement_rate": 0.3,
-   "views_velocity_per_hour": 266,
+   "views_velocity_per_hour": 264,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "UGKmBiFMdw0",
    "score_breakdown": {
@@ -4407,14 +5303,20 @@
      "views": 45998,
      "likes": 1162,
      "comments": 180
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 46032,
+     "likes": 1162,
+     "comments": 180
     }
    ],
-   "views": 45998,
+   "views": 46032,
    "likes": 1162,
    "comments": 180,
    "shares": null,
    "engagement_rate": 2.92,
-   "views_velocity_per_hour": 819,
+   "views_velocity_per_hour": 815,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "2vCVl7D2MjU",
@@ -4488,14 +5390,20 @@
      "views": 228602,
      "likes": 484,
      "comments": 519
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 230050,
+     "likes": 488,
+     "comments": 519
     }
    ],
-   "views": 228602,
-   "likes": 484,
+   "views": 230050,
+   "likes": 488,
    "comments": 519,
    "shares": null,
    "engagement_rate": 0.44,
-   "views_velocity_per_hour": 4539,
+   "views_velocity_per_hour": 4541,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "Zr8BbAG-OPw",
@@ -4532,14 +5440,20 @@
      "views": 14544,
      "likes": 63,
      "comments": 11
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 14567,
+     "likes": 63,
+     "comments": 11
     }
    ],
-   "views": 14544,
+   "views": 14567,
    "likes": 63,
    "comments": 11,
    "shares": null,
    "engagement_rate": 0.51,
-   "views_velocity_per_hour": 431,
+   "views_velocity_per_hour": 428,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "YKBRFDWlvKY",
    "score_breakdown": {
@@ -4575,14 +5489,20 @@
      "views": 1498596,
      "likes": 19147,
      "comments": 4081
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 1500329,
+     "likes": 19162,
+     "comments": 4083
     }
    ],
-   "views": 1498596,
-   "likes": 19147,
-   "comments": 4081,
+   "views": 1500329,
+   "likes": 19162,
+   "comments": 4083,
    "shares": null,
    "engagement_rate": 1.55,
-   "views_velocity_per_hour": 44691,
+   "views_velocity_per_hour": 44362,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "RcpANAiIFiM",
@@ -4762,14 +5682,20 @@
      "views": 147561,
      "likes": 133,
      "comments": 187
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 147897,
+     "likes": 130,
+     "comments": 187
     }
    ],
-   "views": 147561,
-   "likes": 133,
+   "views": 147897,
+   "likes": 130,
    "comments": 187,
    "shares": null,
-   "engagement_rate": 0.22,
-   "views_velocity_per_hour": 4055,
+   "engagement_rate": 0.21,
+   "views_velocity_per_hour": 4033,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "AxsC-kFhflk",
@@ -4843,14 +5769,20 @@
      "views": 29047,
      "likes": 301,
      "comments": 45
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 29122,
+     "likes": 301,
+     "comments": 45
     }
    ],
-   "views": 29047,
+   "views": 29122,
    "likes": 301,
    "comments": 45,
    "shares": null,
    "engagement_rate": 1.19,
-   "views_velocity_per_hour": 1042,
+   "views_velocity_per_hour": 1034,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "3WAdzMxnirY",
@@ -4924,14 +5856,20 @@
      "views": 68953,
      "likes": 381,
      "comments": 87
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 69111,
+     "likes": 381,
+     "comments": 87
     }
    ],
-   "views": 68953,
+   "views": 69111,
    "likes": 381,
    "comments": 87,
    "shares": null,
    "engagement_rate": 0.68,
-   "views_velocity_per_hour": 2230,
+   "views_velocity_per_hour": 2215,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "1T7saU27jp0",
@@ -4968,14 +5906,20 @@
      "views": 75438,
      "likes": 1104,
      "comments": 243
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 75865,
+     "likes": 1106,
+     "comments": 245
     }
    ],
-   "views": 75438,
-   "likes": 1104,
-   "comments": 243,
+   "views": 75865,
+   "likes": 1106,
+   "comments": 245,
    "shares": null,
-   "engagement_rate": 1.79,
-   "views_velocity_per_hour": 2607,
+   "engagement_rate": 1.78,
+   "views_velocity_per_hour": 2596,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "r_Fyv_ooM4o",
@@ -5012,14 +5956,20 @@
      "views": 6554,
      "likes": 128,
      "comments": 129
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 6710,
+     "likes": 127,
+     "comments": 130
     }
    ],
-   "views": 6554,
-   "likes": 128,
-   "comments": 129,
+   "views": 6710,
+   "likes": 127,
+   "comments": 130,
    "shares": null,
-   "engagement_rate": 3.92,
-   "views_velocity_per_hour": 1060,
+   "engagement_rate": 3.83,
+   "views_velocity_per_hour": 1037,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "u42s-jmn2aY",
@@ -5100,7 +6050,7 @@
    "comments": 93,
    "shares": null,
    "engagement_rate": 1.32,
-   "views_velocity_per_hour": 408,
+   "views_velocity_per_hour": 404,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "8HocK_Hkmcc",
@@ -5174,14 +6124,20 @@
      "views": 146733,
      "likes": 1429,
      "comments": 253
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 147057,
+     "likes": 1431,
+     "comments": 253
     }
    ],
-   "views": 146733,
-   "likes": 1429,
+   "views": 147057,
+   "likes": 1431,
    "comments": 253,
    "shares": null,
    "engagement_rate": 1.15,
-   "views_velocity_per_hour": 5206,
+   "views_velocity_per_hour": 5165,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "ZDwtvh3biLc",
@@ -5218,14 +6174,20 @@
      "views": 42661,
      "likes": 723,
      "comments": 446
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 42762,
+     "likes": 725,
+     "comments": 446
     }
    ],
-   "views": 42661,
-   "likes": 723,
+   "views": 42762,
+   "likes": 725,
    "comments": 446,
    "shares": null,
    "engagement_rate": 2.74,
-   "views_velocity_per_hour": 823,
+   "views_velocity_per_hour": 821,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "KkTnn_5YjOs",
@@ -5262,14 +6224,20 @@
      "views": 32422,
      "likes": 1689,
      "comments": 229
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 32441,
+     "likes": 1689,
+     "comments": 230
     }
    ],
-   "views": 32422,
+   "views": 32441,
    "likes": 1689,
-   "comments": 229,
+   "comments": 230,
    "shares": null,
    "engagement_rate": 5.92,
-   "views_velocity_per_hour": 945,
+   "views_velocity_per_hour": 937,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "nZzDInTS7mI",
    "score_breakdown": {
@@ -5305,14 +6273,20 @@
      "views": 29883,
      "likes": 112,
      "comments": 337
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 30002,
+     "likes": 112,
+     "comments": 337
     }
    ],
-   "views": 29883,
+   "views": 30002,
    "likes": 112,
    "comments": 337,
    "shares": null,
    "engagement_rate": 1.5,
-   "views_velocity_per_hour": 870,
+   "views_velocity_per_hour": 866,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "-lao0VfUcmo",
@@ -5333,7 +6307,7 @@
    "city": "Madrid",
    "city_source": "Titel/Beschreibung",
    "found_by_query": "manifestación Madrid",
-   "event_description": null,
+   "event_description": "Demonstrierende blockieren eine mehrspurige Autobahn, wodurch der Verkehr zum Stillstand kommt. An einer Fußgängerüberführung hängen Protestbanner, während auf der Fahrbahn mehrere klassische Holzschulbänke und Stühle direkt vor den wartenden Fahrzeugen als symbolische Barriere aufgestellt sind. Die Gruppe skandiert im Chor mit erhobenen Händen.",
    "event_date": null,
    "published_at": "2026-10-19T08:33:24Z",
    "collected_at": "2026-10-19T20:26:20Z",
@@ -5349,21 +6323,121 @@
      "views": 28732,
      "likes": 913,
      "comments": 331
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 30105,
+     "likes": 948,
+     "comments": 341
     }
    ],
-   "views": 28732,
-   "likes": 913,
-   "comments": 331,
+   "views": 30105,
+   "likes": 948,
+   "comments": 341,
    "shares": null,
-   "engagement_rate": 4.33,
-   "views_velocity_per_hour": 2418,
+   "engagement_rate": 4.28,
+   "views_velocity_per_hour": 2474,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "oi_nQ_P7GAw",
    "score_breakdown": {
-    "social": 10
+    "social": 10,
+    "emotional": 15.0,
+    "transformation": 18.0,
+    "cinematic": 12.0,
+    "story": 14.0,
+    "originality": 9.0,
+    "technical": 3.0
    },
-   "anime_score": null
+   "anime_score": 81,
+   "analysis": {
+    "relevant": true,
+    "event_description": "Demonstrierende blockieren eine mehrspurige Autobahn, wodurch der Verkehr zum Stillstand kommt. An einer Fußgängerüberführung hängen Protestbanner, während auf der Fahrbahn mehrere klassische Holzschulbänke und Stühle direkt vor den wartenden Fahrzeugen als symbolische Barriere aufgestellt sind. Die Gruppe skandiert im Chor mit erhobenen Händen.",
+    "city_guess": "Madrid",
+    "country_guess": "Spanien",
+    "emotional_observations": [
+     "Lautstarke, entschlossene und rhythmische Sprechchöre der demonstrierenden Gruppe",
+     "Gespannte, abwartende Atmosphäre zwischen den stehenden Fahrzeugen und den Anwesenden"
+    ],
+    "visual_highlights": [
+     {
+      "timecode": "00:00",
+      "beschreibung": "Untersicht auf eine Fußgängerbrücke mit herabhängenden Bannern über stehenden Autos auf der Autobahn."
+     },
+     {
+      "timecode": "00:07",
+      "beschreibung": "Kameraschwenk entlang der Fahrzeugkolonne mit Personen in neongelben Warnwesten zwischen den Autoreihen."
+     },
+     {
+      "timecode": "00:18",
+      "beschreibung": "Unerwarteter visueller Bruch: Mitten auf der Fahrbahnspur stehen hölzerne Schultische und Stühle direkt vor einem weißen Auto und einem großen Banner."
+     }
+    ],
+    "story_potential": "Einstieg: Ein erschöpfter junger Lehrer trägt im Morgengrauen eine schwere Holzschulbank auf eine hektische Stadtautobahn. → Konflikt: Wütende Fahrer hupen und fordern Weiterfahrt, während die Barriere aus einfachen Schulmöbeln dem Druck standhalten muss. → Wendepunkt: Ein gestresster Pendler steigt aus, will die Bank wegräumen und bemerkt darauf eine alte Schülerschnitzerei, die Erinnerungen an seine eigene Jugend weckt. → Höhepunkt: Statt Konfrontation entsteht ein Moment des Innehaltens; weitere Menschen versammeln sich um die Tische wie in einem improvisierten Freiluft-Klassenzimmer mitten im Stillstand. → Nachhall: Die Morgensonne bricht durch das Straßengrau, während Kreidestaub über den ruhigen Asphalt weht.",
+    "anime_concept": "In a frantic modern metropolis consumed by relentless routine, an idealistic teacher sets up an isolated wooden classroom desk in the middle of a gridlocked highway, briefly halting the city's machine to remind people of childhood, patience, and learning.",
+    "fictional_character": "Julian, a gentle 28-year-old literature teacher with tired eyes and ink-stained cuffs, carrying a solitary vintage wooden school desk against the backdrop of speeding traffic.",
+    "recommended_perspective": "Dritte Person mit wechselndem Fokus zwischen dem Lehrer an der Schulbank und einem ungeduldigen Autofahrer hinter der Windschutzscheibe.",
+    "anime_imagery": "High-contrast urban cinematic aesthetic reminiscent of modern CoMix Wave films; cold metallic car tones and harsh asphalt juxtaposed with warm, nostalgic wood grain of the school desks and golden morning rim-lighting.",
+    "sound_ideas": [
+     "Aggressives Hupkonzert und Motorenbrummen, das abrupt verstummt, als ein Holzstuhlbein über den Asphalt schabt",
+     "Rhythmische, hallende Chorrufe, untermalt von einem sanften, ansteigenden Klavierthema",
+     "Das leise Klappern einer auf das Pult gelegten Kreide im Kontrast zur Autobahnkulisse"
+    ],
+    "recommended_length_seconds": 45,
+    "scores": {
+     "emotional": 15,
+     "transformation": 18,
+     "cinematic": 12,
+     "story": 14,
+     "originality": 9,
+     "technical": 3
+    },
+    "synthetic_suspected": false,
+    "misleading_suspected": false,
+    "authenticity_concerns": [],
+    "open_questions": [
+     "Dauer der Straßenblockade und Ausgang der Konfrontation zwischen Autofahrern und Demonstrierenden",
+     "Genaue polizeiliche Auflösung der Situation"
+    ],
+    "sensitive_content": [],
+    "_model": "gemini-3.8-flash"
+   },
+   "analyzed_at": "2026-10-19T21:01:16Z",
+   "emotional_observations": [
+    "Lautstarke, entschlossene und rhythmische Sprechchöre der demonstrierenden Gruppe",
+    "Gespannte, abwartende Atmosphäre zwischen den stehenden Fahrzeugen und den Anwesenden"
+   ],
+   "visual_highlights": [
+    {
+     "timecode": "00:00",
+     "beschreibung": "Untersicht auf eine Fußgängerbrücke mit herabhängenden Bannern über stehenden Autos auf der Autobahn."
+    },
+    {
+     "timecode": "00:07",
+     "beschreibung": "Kameraschwenk entlang der Fahrzeugkolonne mit Personen in neongelben Warnwesten zwischen den Autoreihen."
+    },
+    {
+     "timecode": "00:18",
+     "beschreibung": "Unerwarteter visueller Bruch: Mitten auf der Fahrbahnspur stehen hölzerne Schultische und Stühle direkt vor einem weißen Auto und einem großen Banner."
+    }
+   ],
+   "story_potential": "Einstieg: Ein erschöpfter junger Lehrer trägt im Morgengrauen eine schwere Holzschulbank auf eine hektische Stadtautobahn. → Konflikt: Wütende Fahrer hupen und fordern Weiterfahrt, während die Barriere aus einfachen Schulmöbeln dem Druck standhalten muss. → Wendepunkt: Ein gestresster Pendler steigt aus, will die Bank wegräumen und bemerkt darauf eine alte Schülerschnitzerei, die Erinnerungen an seine eigene Jugend weckt. → Höhepunkt: Statt Konfrontation entsteht ein Moment des Innehaltens; weitere Menschen versammeln sich um die Tische wie in einem improvisierten Freiluft-Klassenzimmer mitten im Stillstand. → Nachhall: Die Morgensonne bricht durch das Straßengrau, während Kreidestaub über den ruhigen Asphalt weht.",
+   "anime_concept": "In a frantic modern metropolis consumed by relentless routine, an idealistic teacher sets up an isolated wooden classroom desk in the middle of a gridlocked highway, briefly halting the city's machine to remind people of childhood, patience, and learning.",
+   "fictional_character": "Julian, a gentle 28-year-old literature teacher with tired eyes and ink-stained cuffs, carrying a solitary vintage wooden school desk against the backdrop of speeding traffic.",
+   "recommended_perspective": "Dritte Person mit wechselndem Fokus zwischen dem Lehrer an der Schulbank und einem ungeduldigen Autofahrer hinter der Windschutzscheibe.",
+   "anime_imagery": "High-contrast urban cinematic aesthetic reminiscent of modern CoMix Wave films; cold metallic car tones and harsh asphalt juxtaposed with warm, nostalgic wood grain of the school desks and golden morning rim-lighting.",
+   "sound_ideas": [
+    "Aggressives Hupkonzert und Motorenbrummen, das abrupt verstummt, als ein Holzstuhlbein über den Asphalt schabt",
+    "Rhythmische, hallende Chorrufe, untermalt von einem sanften, ansteigenden Klavierthema",
+    "Das leise Klappern einer auf das Pult gelegten Kreide im Kontrast zur Autobahnkulisse"
+   ],
+   "recommended_length_seconds": 45,
+   "authenticity_concerns": [],
+   "open_questions": [
+    "Dauer der Straßenblockade und Ausgang der Konfrontation zwischen Autofahrern und Demonstrierenden",
+    "Genaue polizeiliche Auflösung der Situation"
+   ],
+   "sensitive_content": []
   },
   "ld3keNyZ2BM": {
    "video_id": "ld3keNyZ2BM",
@@ -5430,14 +6504,20 @@
      "views": 152819,
      "likes": 4115,
      "comments": 294
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 153093,
+     "likes": 4116,
+     "comments": 294
     }
    ],
-   "views": 152819,
-   "likes": 4115,
+   "views": 153093,
+   "likes": 4116,
    "comments": 294,
    "shares": null,
-   "engagement_rate": 2.89,
-   "views_velocity_per_hour": 4941,
+   "engagement_rate": 2.88,
+   "views_velocity_per_hour": 4904,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "ld3keNyZ2BM",
@@ -5474,14 +6554,20 @@
      "views": 14144,
      "likes": 111,
      "comments": 161
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 14138,
+     "likes": 111,
+     "comments": 161
     }
    ],
-   "views": 14144,
+   "views": 14138,
    "likes": 111,
    "comments": 161,
    "shares": null,
    "engagement_rate": 1.92,
-   "views_velocity_per_hour": 398,
+   "views_velocity_per_hour": 395,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "OaY5pk-sqKg",
@@ -5518,14 +6604,20 @@
      "views": 7459,
      "likes": 122,
      "comments": 102
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 7848,
+     "likes": 129,
+     "comments": 108
     }
    ],
-   "views": 7459,
-   "likes": 122,
-   "comments": 102,
+   "views": 7848,
+   "likes": 129,
+   "comments": 108,
    "shares": null,
-   "engagement_rate": 3.0,
-   "views_velocity_per_hour": 1359,
+   "engagement_rate": 3.02,
+   "views_velocity_per_hour": 1358,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "3Q97xmM1mwU",
@@ -5562,14 +6654,20 @@
      "views": 18569,
      "likes": 128,
      "comments": 1
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 18602,
+     "likes": 128,
+     "comments": 1
     }
    ],
-   "views": 18569,
+   "views": 18602,
    "likes": 128,
    "comments": 1,
    "shares": null,
    "engagement_rate": 0.69,
-   "views_velocity_per_hour": 471,
+   "views_velocity_per_hour": 468,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "ZfUY2zi4frs",
    "score_breakdown": {
@@ -5596,7 +6694,14 @@
    "language": "de",
    "duration_seconds": 871,
    "authenticity_status": "UNVERIFIED",
-   "verification_sources": [],
+   "verification_sources": [
+    {
+     "domain": "tagesspiegel.de",
+     "title": "Kaum Jugendliche bei Schülerprotest : 250 Menschen versammeln sich zu Demo am Berliner Kleistpark",
+     "url": "https://www.tagesspiegel.de/berlin/kaum-jugendliche-bei-schulerprotest-250-menschen-versammeln-sich-zu-demo-am-berliner-kleistpark-16173250.html",
+     "seen": "20261017T144500Z"
+    }
+   ],
    "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
    "manual_review_required": true,
    "snapshots": [
@@ -5605,14 +6710,20 @@
      "views": 118017,
      "likes": 1308,
      "comments": 951
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 118334,
+     "likes": 1311,
+     "comments": 951
     }
    ],
-   "views": 118017,
-   "likes": 1308,
+   "views": 118334,
+   "likes": 1311,
    "comments": 951,
    "shares": null,
    "engagement_rate": 1.91,
-   "views_velocity_per_hour": 2020,
+   "views_velocity_per_hour": 2015,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "SUNzqUmcV7U",
@@ -5686,14 +6797,20 @@
      "views": 45800,
      "likes": 306,
      "comments": 46
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 45893,
+     "likes": 306,
+     "comments": 46
     }
    ],
-   "views": 45800,
+   "views": 45893,
    "likes": 306,
    "comments": 46,
    "shares": null,
    "engagement_rate": 0.77,
-   "views_velocity_per_hour": 1654,
+   "views_velocity_per_hour": 1640,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "kFGFFYeCh7A",
@@ -5767,14 +6884,20 @@
      "views": 5248,
      "likes": 36,
      "comments": 8
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 5303,
+     "likes": 36,
+     "comments": 8
     }
    ],
-   "views": 5248,
+   "views": 5303,
    "likes": 36,
    "comments": 8,
    "shares": null,
-   "engagement_rate": 0.84,
-   "views_velocity_per_hour": 391,
+   "engagement_rate": 0.83,
+   "views_velocity_per_hour": 386,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "mgx4NJS4w-A",
@@ -5811,14 +6934,20 @@
      "views": 184625,
      "likes": 5150,
      "comments": 915
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 185066,
+     "likes": 5159,
+     "comments": 915
     }
    ],
-   "views": 184625,
-   "likes": 5150,
+   "views": 185066,
+   "likes": 5159,
    "comments": 915,
    "shares": null,
-   "engagement_rate": 3.29,
-   "views_velocity_per_hour": 5822,
+   "engagement_rate": 3.28,
+   "views_velocity_per_hour": 5783,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "xRtdteECNxM",
    "score_breakdown": {
@@ -5891,14 +7020,20 @@
      "views": 265506,
      "likes": 2323,
      "comments": 726
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 266369,
+     "likes": 2333,
+     "comments": 732
     }
    ],
-   "views": 265506,
-   "likes": 2323,
-   "comments": 726,
+   "views": 266369,
+   "likes": 2333,
+   "comments": 732,
    "shares": null,
    "engagement_rate": 1.15,
-   "views_velocity_per_hour": 4830,
+   "views_velocity_per_hour": 4821,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "FSzgKsH40l4",
@@ -5916,10 +7051,10 @@
    "title": "Why Dhruv Rathee's London Protest Takes a Pakistan Turn?",
    "country": "Frankreich",
    "region": "FR",
-   "city": null,
-   "city_source": null,
+   "city": "London",
+   "city_source": "KI-Schätzung",
    "found_by_query": "vidéo manifestation",
-   "event_description": null,
+   "event_description": "Ein Video-Blogger kommentiert eine Protestkundgebung in London und blendet dabei Handykamera-Ausschnitte von Reden vor einer Menschenmenge, Flaggen und Straßenszenen vor historischer Kulisse ein.",
    "event_date": null,
    "published_at": "2026-10-19T09:30:27Z",
    "collected_at": "2026-10-19T20:26:20Z",
@@ -5935,20 +7070,142 @@
      "views": 118093,
      "likes": 10900,
      "comments": 251
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 118732,
+     "likes": 10912,
+     "comments": 251
     }
    ],
-   "views": 118093,
-   "likes": 10900,
+   "views": 118732,
+   "likes": 10912,
    "comments": 251,
    "shares": null,
-   "engagement_rate": 9.44,
-   "views_velocity_per_hour": 10803,
+   "engagement_rate": 9.4,
+   "views_velocity_per_hour": 10583,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "R9l8FPku3LQ",
    "score_breakdown": {
-    "social": 13
+    "social": 13,
+    "emotional": 12.0,
+    "transformation": 14.0,
+    "cinematic": 9.0,
+    "story": 11.0,
+    "originality": 8.0,
+    "technical": 3.0
    },
-   "anime_score": null
+   "anime_score": 70,
+   "analysis": {
+    "relevant": true,
+    "event_description": "Ein Video-Blogger kommentiert eine Protestkundgebung in London und blendet dabei Handykamera-Ausschnitte von Reden vor einer Menschenmenge, Flaggen und Straßenszenen vor historischer Kulisse ein.",
+    "city_guess": "London",
+    "country_guess": "Vereinigtes Königreich",
+    "emotional_observations": [
+     "Aufgebrachte und energische Gestik des Moderators im Studio",
+     "Lautstarke Rufe und kollektive Begeisterung in der demonstrierenden Menschenmenge",
+     "Fokussierte und ernste Gesichter von Personen, die Flaggen tragen"
+    ],
+    "visual_highlights": [
+     {
+      "timecode": "00:09",
+      "beschreibung": "Panorama einer dichten Menschenmenge auf einem offenen Platz mit Megafon und Transparenten"
+     },
+     {
+      "timecode": "00:13",
+      "beschreibung": "Straßenszene in London mit sitzenden Zuschauern und einer Person im weißen Gewand mit Flagge"
+     },
+     {
+      "timecode": "00:22",
+      "beschreibung": "Halbnahe Aufnahme einer Person in der Menge, die eine Flagge um die Schultern trägt"
+     },
+     {
+      "timecode": "00:54",
+      "beschreibung": "Redner spricht mit Megafon zu einer dicht gedrängten Menschenmenge vor Londoner Architektur"
+     }
+    ],
+    "story_potential": "Einstieg: Ein ausländischer Austauschstudent gerät zufällig in eine gewaltige Demonstration im Herzen einer fremden Metropole. → Konflikt: Zwischen wehenden Flaggen und lauten Parolen prallen zwei verfeindete Fraktionen aufeinander, wobei Vorurteile aus der Heimat hochkochen. → Wendepunkt: Bei einem Gedränge fällt eine Flagge zu Boden, und zwei junge Menschen verfeindeter Seiten helfen sich gegenseitig auf. → Höhepunkt: Ein kurzer Moment des gegenseitigen Verstehens trotzt dem tosenden Lärm der Masse. → Nachhall: Im einsetzenden Regen leert sich der Platz, zurück bleibt die Erkenntnis über gemeinsame Menschlichkeit.",
+    "anime_concept": "In a rain-slicked foreign metropolis, two overseas students from rival nations find themselves on opposite sides of a surging street demonstration, confronting inherited hostilities and uncovering a shared search for identity.",
+    "fictional_character": "Karan, a reflective 21-year-old student living abroad, caught between loyalty to his homeland's traditions and his desire for peace.",
+    "recommended_perspective": "Personale Erzählperspektive (aus der Sicht des Protagonisten mitten in der Menschenmenge)",
+    "anime_imagery": "Makoto Shinkai-inspired atmospheric cityscapes under overcast skies, rain reflections on cobblestone pavement, dynamic slow-motion fluttering of colored cloth, and intense emotional eye reflections.",
+    "sound_ideas": [
+     "Distant muffled roar of a crowd gradually swelling in volume",
+     "Sharp mechanical feedback from a megaphone cutting through the noise",
+     "Quiet, poignant piano notes rising above ambient street rain"
+    ],
+    "recommended_length_seconds": 45,
+    "scores": {
+     "emotional": 12,
+     "transformation": 14,
+     "cinematic": 9,
+     "story": 11,
+     "originality": 8,
+     "technical": 3
+    },
+    "synthetic_suspected": false,
+    "misleading_suspected": false,
+    "authenticity_concerns": [
+     "Das Video ist ein polarisierendes Meinungs- und Reaktionsformat mit selektiv zusammengeschnittenen Archiv- und Drittanbieter-Clips.",
+     "Kontextuelle Zuordnung einzelner kurzer Straßenszenen ist im Schnellschnitt nicht unabhängig überprüfbar."
+    ],
+    "open_questions": [
+     "Genauer zeitlicher Ablauf und tatsächliches Datum der gezeigten Londoner Demonstrationsszenen",
+     "Kontext und Authentizität der eingeblendeten Social-Media-Beiträge"
+    ],
+    "sensitive_content": [
+     "Politische Spannungen und geopolitische Konfliktthemen zwischen Indien und Pakistan",
+     "Hitzige Debatten mit Potenzial für Hassrede in Diskursen"
+    ],
+    "_model": "gemini-3.8-flash"
+   },
+   "analyzed_at": "2026-10-19T20:55:32Z",
+   "emotional_observations": [
+    "Aufgebrachte und energische Gestik des Moderators im Studio",
+    "Lautstarke Rufe und kollektive Begeisterung in der demonstrierenden Menschenmenge",
+    "Fokussierte und ernste Gesichter von Personen, die Flaggen tragen"
+   ],
+   "visual_highlights": [
+    {
+     "timecode": "00:09",
+     "beschreibung": "Panorama einer dichten Menschenmenge auf einem offenen Platz mit Megafon und Transparenten"
+    },
+    {
+     "timecode": "00:13",
+     "beschreibung": "Straßenszene in London mit sitzenden Zuschauern und einer Person im weißen Gewand mit Flagge"
+    },
+    {
+     "timecode": "00:22",
+     "beschreibung": "Halbnahe Aufnahme einer Person in der Menge, die eine Flagge um die Schultern trägt"
+    },
+    {
+     "timecode": "00:54",
+     "beschreibung": "Redner spricht mit Megafon zu einer dicht gedrängten Menschenmenge vor Londoner Architektur"
+    }
+   ],
+   "story_potential": "Einstieg: Ein ausländischer Austauschstudent gerät zufällig in eine gewaltige Demonstration im Herzen einer fremden Metropole. → Konflikt: Zwischen wehenden Flaggen und lauten Parolen prallen zwei verfeindete Fraktionen aufeinander, wobei Vorurteile aus der Heimat hochkochen. → Wendepunkt: Bei einem Gedränge fällt eine Flagge zu Boden, und zwei junge Menschen verfeindeter Seiten helfen sich gegenseitig auf. → Höhepunkt: Ein kurzer Moment des gegenseitigen Verstehens trotzt dem tosenden Lärm der Masse. → Nachhall: Im einsetzenden Regen leert sich der Platz, zurück bleibt die Erkenntnis über gemeinsame Menschlichkeit.",
+   "anime_concept": "In a rain-slicked foreign metropolis, two overseas students from rival nations find themselves on opposite sides of a surging street demonstration, confronting inherited hostilities and uncovering a shared search for identity.",
+   "fictional_character": "Karan, a reflective 21-year-old student living abroad, caught between loyalty to his homeland's traditions and his desire for peace.",
+   "recommended_perspective": "Personale Erzählperspektive (aus der Sicht des Protagonisten mitten in der Menschenmenge)",
+   "anime_imagery": "Makoto Shinkai-inspired atmospheric cityscapes under overcast skies, rain reflections on cobblestone pavement, dynamic slow-motion fluttering of colored cloth, and intense emotional eye reflections.",
+   "sound_ideas": [
+    "Distant muffled roar of a crowd gradually swelling in volume",
+    "Sharp mechanical feedback from a megaphone cutting through the noise",
+    "Quiet, poignant piano notes rising above ambient street rain"
+   ],
+   "recommended_length_seconds": 45,
+   "authenticity_concerns": [
+    "Das Video ist ein polarisierendes Meinungs- und Reaktionsformat mit selektiv zusammengeschnittenen Archiv- und Drittanbieter-Clips.",
+    "Kontextuelle Zuordnung einzelner kurzer Straßenszenen ist im Schnellschnitt nicht unabhängig überprüfbar."
+   ],
+   "open_questions": [
+    "Genauer zeitlicher Ablauf und tatsächliches Datum der gezeigten Londoner Demonstrationsszenen",
+    "Kontext und Authentizität der eingeblendeten Social-Media-Beiträge"
+   ],
+   "sensitive_content": [
+    "Politische Spannungen und geopolitische Konfliktthemen zwischen Indien und Pakistan",
+    "Hitzige Debatten mit Potenzial für Hassrede in Diskursen"
+   ]
   },
   "JSvF9vo72Hg": {
    "video_id": "JSvF9vo72Hg",
@@ -5957,12 +7214,12 @@
    "thumbnail": "https://i.ytimg.com/vi/JSvF9vo72Hg/hqdefault.jpg",
    "creator": "Fox News",
    "title": "BREAKING: At least 1,200 arrested in France during VIOLENT riots",
-   "country": null,
+   "country": "Frankreich",
    "region": "INT",
    "city": "Paris",
    "city_source": "Titel/Beschreibung",
    "found_by_query": "breaking protest footage",
-   "event_description": null,
+   "event_description": "Nachrichtenbericht mit B-Roll-Material über großflächige Proteste und Ausschreitungen in Frankreich (u. a. Paris, Limoges, Marseille). Zu sehen sind brennende Barrikaden und Fahrzeuge, vorrückende Bereitschaftspolizei mit Schilden, Einsatz von Tränengas und Wasserwerfern gegen Demonstranten sowie Menschenmengen rund um historische Denkmäler.",
    "event_date": null,
    "published_at": "2026-10-18T11:15:41Z",
    "collected_at": "2026-10-19T20:26:20Z",
@@ -6015,21 +7272,139 @@
      "views": 683048,
      "likes": 5192,
      "comments": 3446
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 683985,
+     "likes": 5195,
+     "comments": 3447
     }
    ],
-   "views": 683048,
-   "likes": 5192,
-   "comments": 3446,
+   "views": 683985,
+   "likes": 5195,
+   "comments": 3447,
    "shares": null,
    "engagement_rate": 1.26,
-   "views_velocity_per_hour": 20588,
+   "views_velocity_per_hour": 20439,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "JSvF9vo72Hg",
    "score_breakdown": {
-    "social": 10
+    "social": 10,
+    "emotional": 14.0,
+    "transformation": 16.0,
+    "cinematic": 13.0,
+    "story": 12.0,
+    "originality": 8.0,
+    "technical": 4.0
    },
-   "anime_score": null
+   "anime_score": 77,
+   "analysis": {
+    "relevant": true,
+    "event_description": "Nachrichtenbericht mit B-Roll-Material über großflächige Proteste und Ausschreitungen in Frankreich (u. a. Paris, Limoges, Marseille). Zu sehen sind brennende Barrikaden und Fahrzeuge, vorrückende Bereitschaftspolizei mit Schilden, Einsatz von Tränengas und Wasserwerfern gegen Demonstranten sowie Menschenmengen rund um historische Denkmäler.",
+    "city_guess": "Paris",
+    "country_guess": "Frankreich",
+    "emotional_observations": [
+     "Sichtbare Entschlossenheit und Widerstand bei Demonstranten, die trotz starkem Wasserwerferstrahl hinter Behelfsschilden ausharren",
+     "Hektische Flucht- und Ausweichbewegungen bei Tränengasangriffen und Polizeivorstößen",
+     "Anspannung und defensive Haltung bei den formierten Polizeikräften",
+     "Erregte Gestik und laute Rufe Einzelner im dichten Straßenrauch"
+    ],
+    "visual_highlights": [
+     {
+      "timecode": "03:09",
+      "beschreibung": "Eine Person kniet hinter einem improvisierten Schild und trotzt dem direkten Strahl eines Wasserwerfers im Nebelmeer"
+     },
+     {
+      "timecode": "05:27",
+      "beschreibung": "Vollständig ausgebranntes, lichterloh brennendes Fahrzeug mitten auf einem von Ruß bedeckten Boulevard"
+     },
+     {
+      "timecode": "06:13",
+      "beschreibung": "Monumentale Statue der Marianne, umhüllt von aufsteigendem Tränengas und roten Signalfackeln"
+     }
+    ],
+    "story_potential": "Einstieg: Ein junger Bäckereilehrling versucht mitten im abendlichen Pariser Tränengasnebel ein verängstigtes streunendes Tier zu bergen → Konflikt: Er gerät unversehens zwischen vorrückende Polizeilinien und eine Gruppe flüchtender Demonstranten → Wendepunkt: Als ein Wasserwerferstrahl droht, beide zu erfassen, wirft sich eine fremde Person mit einem Schild schützend vor sie → Höhepunkt: Ein Moment atemloser Stille im weißen Rauch, in dem Helfer und Schutzsuchende Blickkontakt aufnehmen → Nachhall: Die Straße leert sich langsam im Dämmerlicht; der Junge erreicht eine ruhige Seitengasse, gezeichnet aber unversehrt.",
+    "anime_concept": "In a stylized, dusk-lit European metropolis engulfed in misty haze, an innocent courier gets trapped between surging riot waves and finds an unexpected human shield of solidarity.",
+    "fictional_character": "Lucian, a 19-year-old culinary apprentice wearing an oversized jacket, caught in the tumult while trying to protect a lost pet.",
+    "recommended_perspective": "Dritte Person, bodennahe dynamische Verfolgungskamera mit Fokus auf Gesichtsausdrücke und Augen-Nahaufnahmen.",
+    "anime_imagery": "High-contrast neo-noir anime aesthetics reminiscent of Jin-Roh and Tokyo Ghoul, featuring vivid amber fire illumination piercing through cool blue-grey tear gas clouds, slow-motion water droplets catching streetlights, and sharp ink-line contours.",
+    "sound_ideas": [
+     "Gedämpftes Bassgrollen von Straßenbränden",
+     "Zischendes Geräusch von Tränengaskartuschen und plötzliches Aufprallen harten Wasserstrahls",
+     "Verstummende Umgebungsgeräusche hin zu leisem menschlichem Atem in Momenten extremer Bedrängnis",
+     "Melancholisches Cello-Motiv, das sich über die Straßenunruhen legt"
+    ],
+    "recommended_length_seconds": 45,
+    "scores": {
+     "emotional": 14,
+     "transformation": 16,
+     "cinematic": 13,
+     "story": 12,
+     "originality": 8,
+     "technical": 4
+    },
+    "synthetic_suspected": false,
+    "misleading_suspected": false,
+    "authenticity_concerns": [
+     "Das Ausgangsmaterial ist ein TV-Nachrichtenbeitrag mit eingespieltem B-Roll-Archivmaterial und stark meinungsbetonter Studiokommentierung; genaue zeitliche Zuordnung einzelner Straßenszenen unbestätigt."
+    ],
+    "open_questions": [
+     "Aus welchen konkreten Protesttagen und Pariser Stadtvierteln stammen die jeweiligen Einzelszenen der Archivaufnahmen?",
+     "Welche genauen Anlässe führten zu den einzelnen Straßenblockaden in den Zusammenschnitten?"
+    ],
+    "sensitive_content": [
+     "Gewaltsame Auseinandersetzungen zwischen Zivilisten und Polizei",
+     "Brennende Fahrzeuge und Barrikaden",
+     "Einsatz von Tränengas und Wasserwerfern"
+    ],
+    "_model": "gemini-3.8-flash"
+   },
+   "analyzed_at": "2026-10-19T20:58:17Z",
+   "emotional_observations": [
+    "Sichtbare Entschlossenheit und Widerstand bei Demonstranten, die trotz starkem Wasserwerferstrahl hinter Behelfsschilden ausharren",
+    "Hektische Flucht- und Ausweichbewegungen bei Tränengasangriffen und Polizeivorstößen",
+    "Anspannung und defensive Haltung bei den formierten Polizeikräften",
+    "Erregte Gestik und laute Rufe Einzelner im dichten Straßenrauch"
+   ],
+   "visual_highlights": [
+    {
+     "timecode": "03:09",
+     "beschreibung": "Eine Person kniet hinter einem improvisierten Schild und trotzt dem direkten Strahl eines Wasserwerfers im Nebelmeer"
+    },
+    {
+     "timecode": "05:27",
+     "beschreibung": "Vollständig ausgebranntes, lichterloh brennendes Fahrzeug mitten auf einem von Ruß bedeckten Boulevard"
+    },
+    {
+     "timecode": "06:13",
+     "beschreibung": "Monumentale Statue der Marianne, umhüllt von aufsteigendem Tränengas und roten Signalfackeln"
+    }
+   ],
+   "story_potential": "Einstieg: Ein junger Bäckereilehrling versucht mitten im abendlichen Pariser Tränengasnebel ein verängstigtes streunendes Tier zu bergen → Konflikt: Er gerät unversehens zwischen vorrückende Polizeilinien und eine Gruppe flüchtender Demonstranten → Wendepunkt: Als ein Wasserwerferstrahl droht, beide zu erfassen, wirft sich eine fremde Person mit einem Schild schützend vor sie → Höhepunkt: Ein Moment atemloser Stille im weißen Rauch, in dem Helfer und Schutzsuchende Blickkontakt aufnehmen → Nachhall: Die Straße leert sich langsam im Dämmerlicht; der Junge erreicht eine ruhige Seitengasse, gezeichnet aber unversehrt.",
+   "anime_concept": "In a stylized, dusk-lit European metropolis engulfed in misty haze, an innocent courier gets trapped between surging riot waves and finds an unexpected human shield of solidarity.",
+   "fictional_character": "Lucian, a 19-year-old culinary apprentice wearing an oversized jacket, caught in the tumult while trying to protect a lost pet.",
+   "recommended_perspective": "Dritte Person, bodennahe dynamische Verfolgungskamera mit Fokus auf Gesichtsausdrücke und Augen-Nahaufnahmen.",
+   "anime_imagery": "High-contrast neo-noir anime aesthetics reminiscent of Jin-Roh and Tokyo Ghoul, featuring vivid amber fire illumination piercing through cool blue-grey tear gas clouds, slow-motion water droplets catching streetlights, and sharp ink-line contours.",
+   "sound_ideas": [
+    "Gedämpftes Bassgrollen von Straßenbränden",
+    "Zischendes Geräusch von Tränengaskartuschen und plötzliches Aufprallen harten Wasserstrahls",
+    "Verstummende Umgebungsgeräusche hin zu leisem menschlichem Atem in Momenten extremer Bedrängnis",
+    "Melancholisches Cello-Motiv, das sich über die Straßenunruhen legt"
+   ],
+   "recommended_length_seconds": 45,
+   "authenticity_concerns": [
+    "Das Ausgangsmaterial ist ein TV-Nachrichtenbeitrag mit eingespieltem B-Roll-Archivmaterial und stark meinungsbetonter Studiokommentierung; genaue zeitliche Zuordnung einzelner Straßenszenen unbestätigt."
+   ],
+   "open_questions": [
+    "Aus welchen konkreten Protesttagen und Pariser Stadtvierteln stammen die jeweiligen Einzelszenen der Archivaufnahmen?",
+    "Welche genauen Anlässe führten zu den einzelnen Straßenblockaden in den Zusammenschnitten?"
+   ],
+   "sensitive_content": [
+    "Gewaltsame Auseinandersetzungen zwischen Zivilisten und Polizei",
+    "Brennende Fahrzeuge und Barrikaden",
+    "Einsatz von Tränengas und Wasserwerfern"
+   ]
   },
   "7_gulOpJoLo": {
    "video_id": "7_gulOpJoLo",
@@ -6059,14 +7434,20 @@
      "views": 7331,
      "likes": 266,
      "comments": 87
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 7499,
+     "likes": 268,
+     "comments": 87
     }
    ],
-   "views": 7331,
-   "likes": 266,
+   "views": 7499,
+   "likes": 268,
    "comments": 87,
    "shares": null,
-   "engagement_rate": 4.82,
-   "views_velocity_per_hour": 785,
+   "engagement_rate": 4.73,
+   "views_velocity_per_hour": 779,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "7_gulOpJoLo",
@@ -6103,14 +7484,20 @@
      "views": 205593,
      "likes": 6606,
      "comments": 65
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 206281,
+     "likes": 6620,
+     "comments": 65
     }
    ],
-   "views": 205593,
-   "likes": 6606,
+   "views": 206281,
+   "likes": 6620,
    "comments": 65,
    "shares": null,
    "engagement_rate": 3.24,
-   "views_velocity_per_hour": 6982,
+   "views_velocity_per_hour": 6938,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "dWLnWokNdAM",
    "score_breakdown": {
@@ -6146,14 +7533,20 @@
      "views": 33056,
      "likes": 608,
      "comments": 337
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 33192,
+     "likes": 612,
+     "comments": 339
     }
    ],
-   "views": 33056,
-   "likes": 608,
-   "comments": 337,
+   "views": 33192,
+   "likes": 612,
+   "comments": 339,
    "shares": null,
-   "engagement_rate": 2.86,
-   "views_velocity_per_hour": 982,
+   "engagement_rate": 2.87,
+   "views_velocity_per_hour": 977,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "Ba29ZRqvFkM",
@@ -6190,14 +7583,20 @@
      "views": 165056,
      "likes": 1644,
      "comments": 1711
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 165703,
+     "likes": 1650,
+     "comments": 1714
     }
    ],
-   "views": 165056,
-   "likes": 1644,
-   "comments": 1711,
+   "views": 165703,
+   "likes": 1650,
+   "comments": 1714,
    "shares": null,
    "engagement_rate": 2.03,
-   "views_velocity_per_hour": 5730,
+   "views_velocity_per_hour": 5696,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "Rb_pt9kCc7E",
@@ -6234,14 +7633,20 @@
      "views": 12094,
      "likes": 499,
      "comments": 319
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 12707,
+     "likes": 543,
+     "comments": 349
     }
    ],
-   "views": 12094,
-   "likes": 499,
-   "comments": 319,
+   "views": 12707,
+   "likes": 543,
+   "comments": 349,
    "shares": null,
-   "engagement_rate": 6.76,
-   "views_velocity_per_hour": 1668,
+   "engagement_rate": 7.02,
+   "views_velocity_per_hour": 1686,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "ACEQ2WPCz08",
@@ -6315,14 +7720,20 @@
      "views": 292688,
      "likes": 534,
      "comments": 512
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 292752,
+     "likes": 534,
+     "comments": 512
     }
    ],
-   "views": 292688,
+   "views": 292752,
    "likes": 534,
    "comments": 512,
    "shares": null,
    "engagement_rate": 0.36,
-   "views_velocity_per_hour": 5799,
+   "views_velocity_per_hour": 5768,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "2HjZG6zkt7Y",
@@ -6350,7 +7761,14 @@
    "language": "de-DE",
    "duration_seconds": 142,
    "authenticity_status": "UNVERIFIED",
-   "verification_sources": [],
+   "verification_sources": [
+    {
+     "domain": "tagesspiegel.de",
+     "title": "Kaum Jugendliche bei Schülerprotest : 250 Menschen versammeln sich zu Demo am Berliner Kleistpark",
+     "url": "https://www.tagesspiegel.de/berlin/kaum-jugendliche-bei-schulerprotest-250-menschen-versammeln-sich-zu-demo-am-berliner-kleistpark-16173250.html",
+     "seen": "20261017T144500Z"
+    }
+   ],
    "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
    "manual_review_required": true,
    "snapshots": [
@@ -6359,14 +7777,20 @@
      "views": 8590,
      "likes": 595,
      "comments": 18
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 8835,
+     "likes": 611,
+     "comments": 18
     }
    ],
-   "views": 8590,
-   "likes": 595,
+   "views": 8835,
+   "likes": 611,
    "comments": 18,
    "shares": null,
-   "engagement_rate": 7.14,
-   "views_velocity_per_hour": 479,
+   "engagement_rate": 7.12,
+   "views_velocity_per_hour": 485,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "CGGEfvJtD9M",
@@ -6440,14 +7864,20 @@
      "views": 1143366,
      "likes": 6357,
      "comments": 2597
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 1144755,
+     "likes": 6371,
+     "comments": 2600
     }
    ],
-   "views": 1143366,
-   "likes": 6357,
-   "comments": 2597,
+   "views": 1144755,
+   "likes": 6371,
+   "comments": 2600,
    "shares": null,
    "engagement_rate": 0.78,
-   "views_velocity_per_hour": 24383,
+   "views_velocity_per_hour": 24264,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "IkrO8OLU6w4",
@@ -6639,19 +8069,82 @@
      "views": 19008,
      "likes": 154,
      "comments": 5
+    },
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 19042,
+     "likes": 154,
+     "comments": 5
     }
    ],
-   "views": 19008,
+   "views": 19042,
    "likes": 154,
    "comments": 5,
    "shares": null,
-   "engagement_rate": 0.84,
-   "views_velocity_per_hour": 352,
+   "engagement_rate": 0.83,
+   "views_velocity_per_hour": 351,
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "verification_note": "Ereignis in Paris durch 6 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "ok-2INSyDKE",
    "score_breakdown": {
     "social": 3
+   },
+   "anime_score": null
+  },
+  "UEOnCY4HaGc": {
+   "video_id": "UEOnCY4HaGc",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=UEOnCY4HaGc",
+   "thumbnail": "https://i.ytimg.com/vi/UEOnCY4HaGc/hqdefault.jpg",
+   "creator": "Dr. Bea Merscher",
+   "title": "Danke Idar-Oberstein 19.9. - nächster Halt Hamburg 24.10. Rathausmarkt 14 Uhr ❤️",
+   "country": "Deutschland",
+   "region": "GM",
+   "city": "Hamburg",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "Demonstration Hamburg",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-19T06:50:17Z",
+   "collected_at": "2026-10-19T20:43:35Z",
+   "language": "de",
+   "duration_seconds": 15,
+   "authenticity_status": "PARTIALLY_VERIFIED",
+   "verification_sources": [
+    {
+     "domain": "n-tv.de",
+     "title": "Hamburg & Schleswig - Holstein : Hunderte Menschen protestieren gegen AfD - Jugend",
+     "url": "https://www.n-tv.de/regionales/hamburg-und-schleswig-holstein/Hunderte-Menschen-protestieren-gegen-AfD-Jugend-id31429390.html",
+     "seen": "20261017T163000Z"
+    },
+    {
+     "domain": "ndr.de",
+     "title": "Hamburg : Hunderte bei Demo gegen Aktion zur  Remigration  ",
+     "url": "https://www.ndr.de/nachrichten/hamburg/hamburg-hunderte-bei-demo-gegen-aktion-zur-remigration,demo-814.html",
+     "seen": "20261018T151500Z"
+    }
+   ],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-19T20:43:35Z",
+     "views": 5896,
+     "likes": 379,
+     "comments": 11
+    }
+   ],
+   "views": 5896,
+   "likes": 379,
+   "comments": 11,
+   "shares": null,
+   "engagement_rate": 6.61,
+   "views_velocity_per_hour": 425,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Ereignis in Hamburg durch 2 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
+   "cluster": "UEOnCY4HaGc",
+   "score_breakdown": {
+    "social": 6
    },
    "anime_score": null
   }
@@ -6713,6 +8206,62 @@
    "new": 144,
    "analyzed": 5,
    "finished": "2026-10-19T20:41:44Z"
+  },
+  {
+   "started": "2026-10-19T20:43:35Z",
+   "queries": [
+    {
+     "q": "Demonstration Hamburg",
+     "results": 7
+    },
+    {
+     "q": "breaking protest footage",
+     "results": 25
+    },
+    {
+     "q": "manifestation Paris",
+     "results": 25
+    },
+    {
+     "q": "manifestazione Milano",
+     "results": 25
+    },
+    {
+     "q": "manifestación Madrid",
+     "results": 25
+    },
+    {
+     "q": "Demonstration Köln",
+     "results": 3
+    },
+    {
+     "q": "eyewitness footage crowd",
+     "results": 3
+    },
+    {
+     "q": "rassemblement Paris",
+     "results": 25
+    },
+    {
+     "q": "corteo Milano oggi",
+     "results": 10
+    },
+    {
+     "q": "protesta Madrid hoy",
+     "results": 2
+    },
+    {
+     "q": "Kundgebung Hamburg",
+     "results": 1
+    },
+    {
+     "q": "emotional moment street",
+     "results": 24
+    }
+   ],
+   "new": 1,
+   "analyzed": 7,
+   "finished": "2026-10-19T21:05:01Z"
   }
  ]
 }
