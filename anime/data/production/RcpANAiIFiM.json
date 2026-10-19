@@ -2,30 +2,31 @@
  "video_id": "RcpANAiIFiM",
  "state": "done",
  "progress": "fertig",
- "title": "Holding the Line",
+ "title": "The Last Keeper of Dreams",
  "youtube": {
-  "title": "He Stood His Ground When Everything Shattered #shorts",
-  "description": "An archivist refuses to abandon his sanctuary during city unrest, finding unexpected allies in the chaos.\n\nFictional story inspired by real events.",
+  "title": "When a real store riot becomes a epic 90s anime! 💥 #shorts",
+  "description": "An unassuming shopkeeper defends his retro sanctuary in full 90s anime style!\n\nFictional story inspired by real events.",
   "tags": [
+   "retroanime",
+   "90sanime",
    "anime",
-   "animedrama",
-   "animestory",
-   "actionanime",
-   "courage",
-   "urbanart",
-   "shorts"
+   "animation",
+   "shorts",
+   "shonen",
+   "animeedit",
+   "celshading"
   ]
  },
- "started_at": "2026-10-19T21:49:07Z",
+ "started_at": "2026-10-19T22:51:35Z",
  "error": null,
- "updated_at": "2026-10-19T22:29:51Z",
- "gpu_seconds": 2400,
+ "updated_at": "2026-10-19T23:07:09Z",
+ "gpu_seconds": 867,
  "video_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/RcpANAiIFiM.mp4",
  "poster_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/poster.jpg",
- "duration_s": 12.0,
+ "duration_s": 15.0,
  "notes": [
   "Stimmen: Kokoro",
   "Musik: Freesound CC0"
  ],
- "finished_at": "2026-10-19T22:29:51Z"
+ "finished_at": "2026-10-19T23:07:09Z"
 }

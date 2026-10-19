@@ -1,34 +1,35 @@
 {
- "updated_at": "2026-10-19T22:29:51Z",
+ "updated_at": "2026-10-19T23:07:09Z",
  "productions": [
   {
    "video_id": "RcpANAiIFiM",
-   "title": "Holding the Line",
+   "title": "The Last Keeper of Dreams",
    "state": "done",
    "progress": "fertig",
    "video_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/RcpANAiIFiM.mp4",
    "poster_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/poster.jpg",
-   "duration_s": 12.0,
-   "gpu_seconds": 2400,
+   "duration_s": 15.0,
+   "gpu_seconds": 867,
    "notes": [
     "Stimmen: Kokoro",
     "Musik: Freesound CC0"
    ],
    "error": null,
-   "updated_at": "2026-10-19T22:29:51Z",
+   "updated_at": "2026-10-19T23:07:09Z",
    "decision": null,
    "decided_at": null,
    "youtube": {
-    "title": "He Stood His Ground When Everything Shattered #shorts",
-    "description": "An archivist refuses to abandon his sanctuary during city unrest, finding unexpected allies in the chaos.\n\nFictional story inspired by real events.",
+    "title": "When a real store riot becomes a epic 90s anime! 💥 #shorts",
+    "description": "An unassuming shopkeeper defends his retro sanctuary in full 90s anime style!\n\nFictional story inspired by real events.",
     "tags": [
+     "retroanime",
+     "90sanime",
      "anime",
-     "animedrama",
-     "animestory",
-     "actionanime",
-     "courage",
-     "urbanart",
-     "shorts"
+     "animation",
+     "shorts",
+     "shonen",
+     "animeedit",
+     "celshading"
     ]
    }
   }
