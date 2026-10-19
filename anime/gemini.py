@@ -21,7 +21,8 @@ def ask_json(prompt, system=None, video_url=None, models=None, temperature=0.7, 
         parts.append({"file_data": {"file_uri": video_url}})
     parts.append({"text": prompt})
     body = {"contents": [{"parts": parts}],
-            "generationConfig": {"responseMimeType": "application/json", "temperature": temperature}}
+            "generationConfig": {"responseMimeType": "application/json", "temperature": temperature,
+                                 "maxOutputTokens": 32768}}
     if system:
         body["systemInstruction"] = {"parts": [{"text": system}]}
     last = None
@@ -43,8 +44,15 @@ def ask_json(prompt, system=None, video_url=None, models=None, temperature=0.7, 
         if r.status_code == 429:
             raise QuotaError("Gemini-Gratis-Limit erreicht")
         r.raise_for_status()
-        txt = "".join(p.get("text", "") for p in r.json()["candidates"][0]["content"]["parts"])
-        data = json.loads(txt[txt.index("{"): txt.rindex("}") + 1])
+        resp = r.json()
+        cand = (resp.get("candidates") or [{}])[0]
+        txt = "".join(p.get("text", "") for p in (cand.get("content") or {}).get("parts", []) if not p.get("thought"))
+        if not txt.strip():
+            raise RuntimeError(f"{m}: leere Antwort ({cand.get('finishReason')}, {resp.get('promptFeedback')})")
+        try:
+            data = json.loads(txt[txt.index("{"): txt.rindex("}") + 1])
+        except ValueError as e:
+            raise RuntimeError(f"{m}: ungültiges JSON ({cand.get('finishReason')}): {e}; Anfang: {txt[:200]!r}") from e
         data["_model"] = m
         return data
     raise RuntimeError(last or "kein Gemini-Modell verfügbar")

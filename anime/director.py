@@ -188,6 +188,7 @@ def main():
     ap.add_argument("--force", action="store_true")
     a = ap.parse_args()
     ids = [a.id] if a.id else [p.stem for p in sorted(HANDOFF.glob("*.json"))]
+    errors = {}
     for vid in ids:
         if not re.fullmatch(r"[A-Za-z0-9_-]{6,20}", vid) or not (HANDOFF / f"{vid}.json").exists():
             print(f"  ⚠ kein Übergabepaket für {vid}")
@@ -199,6 +200,8 @@ def main():
             break
         except Exception as e:  # noqa: BLE001
             print(f"  ⚠ {vid}: {e}")
+            errors[vid] = {"at": now(), "error": str(e)[:600]}
+    (DATA / "director_errors.json").write_text(json.dumps(errors, ensure_ascii=False, indent=1), encoding="utf-8")
     build_index()
 
 
