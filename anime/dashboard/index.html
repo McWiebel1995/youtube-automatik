@@ -73,6 +73,10 @@
   .shots { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 6px; }
   .shots td, .shots th { border-top: 1px solid var(--line); padding: 7px 6px; vertical-align: top; text-align: left; }
   .shots th { color: var(--muted); font-weight: 600; font-size: 12px; }
+  video.short { width: 270px; max-width: 100%; aspect-ratio: 9/16; border-radius: 14px; background: #000; }
+  .prod { display: grid; grid-template-columns: 270px 1fr; gap: 18px; padding: 18px 0; border-top: 1px solid var(--line); }
+  @media (max-width: 720px) { .prod { grid-template-columns: 1fr; } }
+  pre.err { white-space: pre-wrap; font-size: 12px; color: #ffc2c2; background: #241414; padding: 10px; border-radius: 10px; max-height: 240px; overflow: auto; }
   .beat { font-size: 11px; font-weight: 700; color: var(--accent); }
   @media (max-width: 720px) { .shots .hide-m { display: none; } }
   @media (max-width: 720px) {
@@ -97,7 +101,7 @@
   <nav class="tabs">
     <div class="tab active" data-tab="hunter"><b>KI 1</b> — Viral Video Hunter</div>
     <div class="tab" data-tab="story"><b>KI 2</b> — Anime Story Director</div>
-    <div class="tab" data-tab="prod"><b>KI 3</b> — Anime Production <span class="soon">bald</span></div>
+    <div class="tab" data-tab="prod"><b>KI 3</b> — Anime Production</div>
   </nav>
 
   <section id="hunter" class="card">
@@ -135,8 +139,14 @@
   </section>
 
   <section id="prod" class="card" hidden>
-    <div class="card-head"><h2>Anime Production</h2><span class="pill grey">in Arbeit</span></div>
-    <p class="placeholder">Hier erscheinen Bilder, Animation, Stimme, Sounddesign und der fertige Short zur Endfreigabe.</p>
+    <div class="card-head"><h2>Anime Production</h2><span class="sub">Bilder · Animation · Stimmen · Sound · Schnitt</span></div>
+    <div class="stats">
+      <div class="stat"><div class="k">In Produktion</div><div class="v" id="pr-run">–</div></div>
+      <div class="stat"><div class="k">Fertig</div><div class="v" id="pr-done">–</div></div>
+      <div class="stat"><div class="k">Fehler</div><div class="v" id="pr-err">–</div></div>
+      <div class="stat"><div class="k">Freigegeben</div><div class="v" id="pr-ok">–</div></div>
+    </div>
+    <div id="prod-list"></div>
   </section>
 </div>
 
@@ -202,6 +212,50 @@ function scriptCard(sc) {
     </div></div></div>`;
 }
 let SCRIPTS = { scripts: [] };
+let PRODS = { productions: [] };
+const PSTATE = { running: ["In Produktion", "blue"], done: ["Fertig", "green"], error: ["Fehler", "red"] };
+function prodCard(p) {
+  const [l, c] = PSTATE[p.state] || [p.state || "?", "grey"];
+  const dec = p.decision === "approved" ? '<span class="pill green">✓ Zur Veröffentlichung freigegeben</span>' :
+              p.decision === "rejected" ? '<span class="pill red">Abgelehnt</span>' : "";
+  const vid = p.video_url && p.video_url.startsWith("http")
+    ? `<video class="short" controls preload="none" playsinline poster="${esc(p.poster_url || "")}" src="${esc(p.video_url)}"></video>`
+    : `<div class="short empty" style="display:grid;place-items:center;aspect-ratio:9/16;background:var(--panel2);border-radius:14px">${p.state === "running" ? "⏳ " + esc(p.progress || "") : "kein Video"}</div>`;
+  return `<div class="prod">${vid}<div>
+    <h3>${esc(p.title || p.video_id)}</h3>
+    <div class="row"><span class="pill ${c}">${l}</span> ${dec}
+      ${p.duration_s ? `<span class="meta">${p.duration_s} s</span>` : ""}
+      ${p.gpu_seconds ? `<span class="meta">GPU ${Math.round(p.gpu_seconds / 60)} min</span>` : ""}
+      <span class="meta">${ago(p.updated_at)}</span></div>
+    ${p.state === "running" ? `<div class="meta" style="margin-top:8px">Aktueller Schritt: ${esc(p.progress)}</div>` : ""}
+    ${(p.notes || []).length ? `<div class="box" style="margin-top:10px"><h4>Hinweise</h4>${list(p.notes)}</div>` : ""}
+    ${p.error ? `<details open><summary>Fehlermeldung</summary><pre class="err">${esc(p.error)}</pre></details>` : ""}
+    ${p.youtube ? `<div class="box" style="margin-top:10px"><h4>YouTube</h4><b>${esc(p.youtube.title)}</b>
+      <div style="white-space:pre-wrap;margin-top:6px">${esc(p.youtube.description)}</div></div>` : ""}
+    <div class="actions">
+      ${p.video_url && p.video_url.startsWith("http") ? `<a class="btn" href="${esc(p.video_url)}" target="_blank" rel="noopener">⬇ Video</a>` : ""}
+      ${p.state === "done" && !p.decision ? `<a class="btn ok" href="${shortIssue("APPROVE_SHORT", p)}" target="_blank" rel="noopener">✓ Short freigeben</a>
+        <a class="btn no" href="${shortIssue("REJECT_SHORT", p)}" target="_blank" rel="noopener">✕ Ablehnen</a>` : ""}
+      ${p.state === "error" || p.state === "done" ? `<a class="btn" href="https://github.com/${REPO}/actions/workflows/anime-produce.yml" target="_blank" rel="noopener">↻ Neu produzieren</a>` : ""}
+    </div></div></div>`;
+}
+function shortIssue(action, p) {
+  const body = `Short „${p.title}“\n${p.video_url}\n\nNotiz (optional):\n`;
+  return `https://github.com/${REPO}/issues/new?title=${encodeURIComponent(action + " " + p.video_id)}&body=${encodeURIComponent(body)}`;
+}
+function renderProd() {
+  const ps = PRODS.productions || [];
+  const have = new Set(ps.map(p => p.video_id));
+  const queued = (SCRIPTS.scripts || []).filter(x => x.status === "approved" && !have.has(x.video_id));
+  document.getElementById("pr-run").textContent = ps.filter(p => p.state === "running").length + queued.length;
+  document.getElementById("pr-done").textContent = ps.filter(p => p.state === "done").length;
+  document.getElementById("pr-err").textContent = ps.filter(p => p.state === "error").length;
+  document.getElementById("pr-ok").textContent = ps.filter(p => p.decision === "approved").length;
+  const q = queued.map(x => `<div class="item" style="grid-template-columns:1fr"><div><h3>${esc(x.title)}</h3>
+    <div class="meta">⏳ wartet auf Produktion (Start nach Freigabe des Drehbuchs)</div></div></div>`).join("");
+  document.getElementById("prod-list").innerHTML = (q + ps.map(prodCard).join("")) ||
+    '<div class="empty">Noch keine Produktionen. Gib unter KI 2 ein Drehbuch frei.</div>';
+}
 function renderStory() {
   const scr = SCRIPTS.scripts || [];
   const have = new Set(scr.map(x => x.video_id));
@@ -301,7 +355,8 @@ document.querySelector(".tabs").addEventListener("click", e => {
   ["hunter", "story", "prod"].forEach(id => document.getElementById(id).hidden = id !== t.dataset.tab);
 });
 
-fetch("scripts.json?ts=" + Date.now()).then(r => r.json()).then(d => { SCRIPTS = d; if (DATA) renderStory(); }).catch(() => {});
+fetch("scripts.json?ts=" + Date.now()).then(r => r.json()).then(d => { SCRIPTS = d; if (DATA) renderStory(); renderProd(); }).catch(() => {});
+fetch("productions.json?ts=" + Date.now()).then(r => r.json()).then(d => { PRODS = d; renderProd(); }).catch(() => renderProd());
 Promise.all([
   fetch("candidates.json?ts=" + Date.now()).then(r => r.json()),
   fetch("decisions.json?ts=" + Date.now()).then(r => r.ok ? r.json() : {}).catch(() => ({})),

@@ -64,7 +64,7 @@ Extreme Augen-Nahaufnahmen, Dutch Angles, Gegenlicht, Regen/Neon-Reflexionen, Ze
 plötzliche Stille, Herzschlag, Flashbacks in entsättigten Farben, Ton-Abriss vor dem Impact.
 
 ## Produktionsgrenzen (für KI 3)
-- 6–10 Shots, jeder 3–8 Sekunden (ein Video-Clip pro Shot)
+- 7–12 Shots, jeder 3–5 Sekunden (ein 5-Sekunden-Video-Clip pro Shot; längere Shots wirken sonst wie Zeitlupe)
 - Jeder Shot braucht: einen Bild-Prompt (Standbild) und einen Bewegungs-Prompt (Animation)
 - Konsistente Figuren: ein festes Character-Design-Sheet, das in JEDEM Bild-Prompt wiederholt wird
 - Dialog sparsam: kurze, starke Sätze (Englisch); gern innerer Monolog als Voice-over

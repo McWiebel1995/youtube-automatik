@@ -49,7 +49,7 @@ jobs:
         run: |
           mkdir -p _site
           cp anime/dashboard/index.html _site/
-          cp anime/data/candidates.json anime/data/scripts.json anime/data/decisions.json _site/ 2>/dev/null || true
+          cp anime/data/candidates.json anime/data/scripts.json anime/data/decisions.json anime/data/productions.json _site/ 2>/dev/null || true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

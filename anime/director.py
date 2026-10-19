@@ -56,7 +56,7 @@ Antworte ausschließlich mit JSON nach diesem Schema:
     "voice": "voice description (English)"
  }}],
  "shots": [{{
-    "n": 1, "duration_s": 3-8, "beat": "HOOK|EINSTIEG|KONFLIKT|WENDEPUNKT|HÖHEPUNKT|NACHHALL",
+    "n": 1, "duration_s": 3-5, "beat": "HOOK|EINSTIEG|KONFLIKT|WENDEPUNKT|HÖHEPUNKT|NACHHALL",
     "camera": "shot size + angle + movement",
     "action": "what happens (English)",
     "dialogue": [{{"character": "c1", "line": "..."}}],

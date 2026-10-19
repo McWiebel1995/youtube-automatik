@@ -1,0 +1,90 @@
+name: "Anime – KI 3 Production"
+
+# Startet automatisch, wenn du im Dashboard ein Drehbuch freigibst. Hier auch manuell startbar.
+# GPU-Arbeit läuft auf Modal (Guthaben), Stimmen/Sound/Schnitt hier auf GitHub.
+
+on:
+  workflow_dispatch:
+    inputs:
+      video_id:
+        description: "Video-ID (leer = nächstes freigegebenes Drehbuch)"
+        default: ""
+      max_shots:
+        description: "Test: nur die ersten N Shots (0 = alle)"
+        default: "0"
+      force:
+        description: "Erneut produzieren, auch wenn schon fertig"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: anime-produce
+  cancel-in-progress: false
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Werkzeuge installieren
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg espeak-ng fonts-dejavu-core
+          pip install -q modal requests numpy scipy pyyaml soundfile "kokoro>=0.9"
+      - name: Short produzieren
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+          FREESOUND_API_KEY: ${{ secrets.FREESOUND_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          VID: ${{ github.event.inputs.video_id }}
+          MAXS: ${{ github.event.inputs.max_shots }}
+          FORCE: ${{ github.event.inputs.force }}
+        run: |
+          ARGS=""
+          if [ -n "$VID" ]; then
+            [[ "$VID" =~ ^[A-Za-z0-9_-]{6,20}$ ]] || { echo "Ungültige ID"; exit 1; }
+            ARGS="--id $VID"
+          fi
+          [[ "$MAXS" =~ ^[0-9]+$ ]] && [ "$MAXS" != "0" ] && ARGS="$ARGS --max-shots $MAXS"
+          [ "$FORCE" = "true" ] && ARGS="$ARGS --force"
+          cd anime && python produce.py $ARGS
+      - name: Speichern
+        if: always()
+        run: |
+          git config user.name "anime-production"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add anime/data
+          git commit -m "KI 3: Produktion" || exit 0
+          ok=0; for i in 1 2 3 4 5; do git pull --rebase -X theirs -q origin main && git push -q origin HEAD:main && ok=1 && break; git rebase --abort 2>/dev/null; sleep $((i*5)); done; [ $ok = 1 ] || { echo "Speichern fehlgeschlagen"; exit 1; }
+      - name: Dashboard bauen
+        if: always()
+        run: |
+          mkdir -p _site
+          cp anime/dashboard/index.html _site/
+          cp anime/data/candidates.json anime/data/scripts.json anime/data/decisions.json anime/data/productions.json _site/ 2>/dev/null || true
+      - uses: actions/upload-pages-artifact@v3
+        if: always()
+        with:
+          path: _site
+
+  deploy:
+    needs: produce
+    if: always()
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.d.outputs.page_url }}
+    steps:
+      - id: d
+        uses: actions/deploy-pages@v4
