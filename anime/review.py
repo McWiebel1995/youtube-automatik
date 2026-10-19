@@ -32,10 +32,12 @@ def main():
     if not v:
         sys.exit(f"Kandidat {a.video_id} nicht gefunden.")
     t = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    v["decision"] = "approved" if a.action == "approve" else "rejected"
-    v["decided_at"] = t
-    db.setdefault("decisions", []).append({"video_id": a.video_id, "decision": v["decision"], "at": t,
-                                           "score": v.get("anime_score"), "note": a.note})
+    decision = "approved" if a.action == "approve" else "rejected"
+    dec_file = DATA / "decisions.json"
+    decisions = json.loads(dec_file.read_text(encoding="utf-8")) if dec_file.exists() else {}
+    decisions[a.video_id] = {"decision": decision, "at": t, "score": v.get("anime_score"),
+                             "cluster": v.get("cluster"), "note": a.note}
+    dec_file.write_text(json.dumps(decisions, ensure_ascii=False, indent=1), encoding="utf-8")
 
     if a.action == "approve":
         pkg = {
@@ -70,16 +72,7 @@ def main():
         (DATA / "handoff" / f"{a.video_id}.json").write_text(json.dumps(pkg, ensure_ascii=False, indent=1),
                                                             encoding="utf-8")
 
-    (DATA / "db.json").write_text(json.dumps(db, ensure_ascii=False, indent=1), encoding="utf-8")
-    cand = DATA / "candidates.json"
-    if cand.exists():
-        c = json.loads(cand.read_text(encoding="utf-8"))
-        for x in c.get("candidates", []):
-            if x["video_id"] == a.video_id or x.get("cluster") == v.get("cluster"):
-                x["decision"], x["decided_at"] = v["decision"], t
-        c["stats"]["approved"] = sum(x.get("decision") == "approved" for x in c["candidates"])
-        cand.write_text(json.dumps(c, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"{a.video_id}: {v['decision']}")
+    print(f"{a.video_id}: {decision}")
 
 
 def script_decision(a):

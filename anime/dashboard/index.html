@@ -302,7 +302,17 @@ document.querySelector(".tabs").addEventListener("click", e => {
 });
 
 fetch("scripts.json?ts=" + Date.now()).then(r => r.json()).then(d => { SCRIPTS = d; if (DATA) renderStory(); }).catch(() => {});
-fetch("candidates.json?ts=" + Date.now()).then(r => r.json()).then(d => { DATA = d; render(); })
+Promise.all([
+  fetch("candidates.json?ts=" + Date.now()).then(r => r.json()),
+  fetch("decisions.json?ts=" + Date.now()).then(r => r.ok ? r.json() : {}).catch(() => ({})),
+]).then(([d, dec]) => {
+  for (const c of d.candidates) {                       // neueste Freigaben sofort anzeigen
+    const x = dec[c.video_id] || Object.values(dec).find(e => e.cluster && e.cluster === c.cluster);
+    if (x) { c.decision = x.decision; c.decided_at = x.at; }
+  }
+  d.stats.approved = d.candidates.filter(c => c.decision === "approved").length;
+  DATA = d; render();
+})
   .catch(() => { document.getElementById("updated").textContent = "Noch keine Daten – der erste Suchlauf läuft.";
                  document.getElementById("mode").className = "pill amber"; document.getElementById("mode").textContent = "● wartet";
                  document.getElementById("list").innerHTML = '<div class="empty">Noch keine Kandidaten.</div>'; });

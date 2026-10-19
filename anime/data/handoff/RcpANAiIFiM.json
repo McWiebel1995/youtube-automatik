@@ -1,0 +1,59 @@
+{
+ "_hinweis": "Reale Fakten (real_*) und künstlerische Vorschläge (creative_*) sind strikt getrennt. Das Originalvideo wird nicht verwendet; alle Figuren sind fiktiv.",
+ "video_id": "RcpANAiIFiM",
+ "real_original_video_url": "https://www.youtube.com/watch?v=RcpANAiIFiM",
+ "real_platform": "YouTube",
+ "real_event_description": "Vor einem Ladenlokal in einer Einkaufsstraße liegen Scherben und Gegenstände auf dem Boden. Ein Mann verteidigt den beschädigten Eingangsbereich eines Geschäfts, wird dabei von Passanten konfrontiert und körperlich angegriffen. Umstehende greifen deeskalierend ein und rufen zum Aufhören auf, woraufhin der Mann sichtbar mitgenommen im zerstörten Schaufensterrahmen stehen bleibt.",
+ "real_location": {
+  "city": "Roma",
+  "country": "Frankreich"
+ },
+ "real_published_at": "2026-10-18T10:54:23Z",
+ "real_sources": [],
+ "real_open_questions": [
+  "Hintergrund und konkreter Auslöser der Ausschreitungen in dieser spezifischen Straße",
+  "Identität und rechtlicher Status der beteiligten Personen"
+ ],
+ "real_visual_highlights": [
+  {
+   "timecode": "00:08",
+   "beschreibung": "Person stürmt auf den Eingangsbereich zu, Chaos und Fluchtbewegungen im Vordergrund"
+  },
+  {
+   "timecode": "00:18",
+   "beschreibung": "Mehrere Passanten stellen sich schützend zwischen die Konfliktparteien und fordern Deeskalation"
+  },
+  {
+   "timecode": "00:54",
+   "beschreibung": "Nahaufnahme des Mannes im zerstörten Schaufensterrahmen, direkt neben einer Anime-Werbefigur (Son Goku)"
+  }
+ ],
+ "real_emotional_observations": [
+  "Lautstarke Rufe nach Mäßigung und Schutz ('Arrêtez, arrêtez !')",
+  "Aggressive Konfrontation und plötzlicher tätlicher Übergriff",
+  "Sichtbare Anspannung, Abwehrreflexe und Schockreaktion des Ladenverteidigers",
+  "Solidarisches Dazwischentreten unbeteiligter Passanten"
+ ],
+ "real_sensitive_content": [
+  "Physische Gewalt / Schlag in den Rücken",
+  "Sachbeschädigung und Vandalismus"
+ ],
+ "creative_anime_concept": "Set in a sprawling near-future neon city during civil unrest, an unassuming shopkeeper guards his underground sanctuary of vintage animation archives. When rioters shatter the facade, he stands his ground not with weapons, but sheer resolve, triggering an unexpected surge of solidarity among neighborhood youths who step in to shield him.",
+ "creative_fictional_character": "Ren, a sturdy 32-year-old archivist and shopkeeper dressed in an oversized dark hoodie, who values collective memory and protects his sanctuary with quiet, unyielding courage.",
+ "creative_perspective": "Dritte Person, dynamisch und nah am Geschehen (Over-the-Shoulder bei der Konfrontation, Close-Ups auf Augen und Glassplitter)",
+ "creative_imagery": "High-contrast urban anime style reminiscent of MAPPA productions, harsh shadows cast by streetlights, neon reflections flickering across shattered tempered glass, desaturated gritty colors with vivid pops of pop-culture poster hues.",
+ "creative_sound_ideas": [
+  "Klirren von berstendem Sicherheitsglas mit tiefem Nachhall",
+  "Verzerrte Straßenschreie, die in eine dumpfe Herzschlag-Tonspur übergehen",
+  "Plötzliches Verstummen aller Umweltgeräusche im Moment des Innehaltens",
+  "Subtiler, melancholischer Synthesizer-Akkord für das Ausklingen"
+ ],
+ "creative_story_arc": "Einstieg: Ein hingebungsvoller Ladenbesitzer hütet seinen Rückzugsort voller fiktiver Welten und Comics → Konflikt: Aufruhr erfasst das Stadtviertel, die Menge bedrängt die Glasfassade → Wendepunkt: Als die Gewalt eskaliert, stellen sich unerwartete Helfer schützend dazwischen → Höhepunkt: Ein Moment angespannter Stille inmitten des zersplitterten Glases → Nachhall: Der Entschluss, den Ort der Träume trotz Verwüstung nicht aufzugeben.",
+ "recommended_length_seconds": 45,
+ "anime_score": 84,
+ "authenticity_status": "UNVERIFIED",
+ "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+ "approval_note": "",
+ "approved_at": "2026-10-19T21:07:42Z",
+ "language": "en"
+}

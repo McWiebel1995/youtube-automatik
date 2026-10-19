@@ -503,7 +503,20 @@ PUBLIC_FIELDS = ["video_id", "platform", "video_url", "thumbnail", "creator", "t
                  "decision", "decided_at", "cluster", "snapshots"]
 
 
+def apply_decisions(db):
+    f = DATA / "decisions.json"
+    decisions = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+    for vid, d in decisions.items():
+        v = db["videos"].get(vid)
+        if v:
+            v["decision"], v["decided_at"] = d["decision"], d["at"]
+        for o in db["videos"].values():           # gleiche Szene (Cluster) mit entscheiden
+            if d.get("cluster") and o.get("cluster") == d["cluster"]:
+                o["decision"], o["decided_at"] = d["decision"], d["at"]
+
+
 def export(db, cfg, notes, signals):
+    apply_decisions(db)
     vids = [v for v in db["videos"].values() if not v.get("irrelevant")]
     clusters = {}
     for v in vids:
