@@ -41,6 +41,8 @@ PROD = DATA / "production"
 WORK = HERE.parent / "output" / "anime"
 SR = 48000
 W, H, FPS = 1080, 1920, 30
+VW, VH = 1080, 608                     # 16:9-Videofenster im Short (90er-Anime-Reel-Format)
+VY = 700                               # Oberkante des Videofensters; darüber steht die Schlagzeile
 END_CARD = "Fictional story inspired by real events."
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 
@@ -88,7 +90,7 @@ def gpu_shots(vid, sc, work, no_gpu=False):
         for s in shots:
             out = work / f"clip_{s['n']:02d}.mp4"
             sh("ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i",
-               f"color=c=0x{(s['n'] * 2654435761) % 0xFFFFFF:06x}:s=704x1280:d=5:r=24",
+               f"color=c=0x{(s['n'] * 2654435761) % 0xFFFFFF:06x}:s=832x480:d=3:r=24",
                "-vf", f"drawtext=fontfile={FONT}:text='Shot {s['n']}':fontsize=60:fontcolor=white:x=(w-tw)/2:y=(h-th)/2",
                "-pix_fmt", "yuv420p", out)
             sh("ffmpeg", "-y", "-loglevel", "error", "-i", out, "-frames:v", "1", work / f"key_{s['n']:02d}.png")
@@ -96,16 +98,36 @@ def gpu_shots(vid, sc, work, no_gpu=False):
 
     import modal
     from modal_app import Studio, app
+    chars = {c.get("id"): c for c in sc.get("characters", [])}
     with modal.enable_output(), app.run():
         studio = Studio()
+        # Referenzbild pro Figur – daran werden alle Shots ausgerichtet (gleiches Aussehen)
+        refs = {}
+        for j, (cid, c) in enumerate(chars.items()):
+            status(vid, state="running", progress=f"Figur {j + 1}/{len(chars)}")
+            res = studio.keyframe.remote(
+                f"{style}. character reference sheet, single character, full body, front view, standing, "
+                f"plain light background. {c.get('design_sheet', '')}"[:1800],
+                seed=base + 7 + j, width=832, height=1216)
+            refs[cid] = res["png"]
+            (work / f"ref_{cid}.png").write_bytes(res["png"])
+            if res.get("note"):
+                notes.append(res["note"])
         for i, s in enumerate(shots):
             status(vid, state="running", progress=f"Bild {i + 1}/{len(shots)}")
-            prompt = f"{style}. {s.get('image_prompt', '')}. vertical 9:16 composition"
-            png = studio.keyframe.remote(prompt[:1800], seed=base + s["n"])
+            prompt = f"{style}. {s.get('image_prompt', '')}. wide 16:9 anime frame"
+            who = [c for c in (s.get("characters") or []) if c in refs] or \
+                  [d.get("character") for d in (s.get("dialogue") or []) if d.get("character") in refs]
+            ref = refs.get(who[0]) if who else b""
+            res = studio.keyframe.remote(prompt[:1800], seed=base + s["n"], ref_png=ref or b"",
+                                         ref_scale=0.45 if len(who) > 1 else 0.55)
+            png = res["png"]
             (work / f"key_{s['n']:02d}.png").write_bytes(png)
             status(vid, state="running", progress=f"Animation {i + 1}/{len(shots)}")
             motion = f"{s.get('motion_prompt', '')}. {s.get('action', '')}. {s.get('camera', '')}"
-            res = studio.animate.remote(png, motion[:1800], num_frames=121, seed=base + 100 + s["n"])
+            dur = min(4.0, max(2.0, float(s.get("duration_s") or 3)))
+            frames = int(dur * 24) // 4 * 4 + 1
+            res = studio.animate.remote(png, motion[:1800], num_frames=frames, seed=base + 100 + s["n"])
             (work / f"clip_{s['n']:02d}.mp4").write_bytes(res["mp4"])
             if res.get("note"):
                 notes.append(f"Shot {s['n']}: {res['note']}")
@@ -133,7 +155,7 @@ def tts(text, voice, out):
         from kokoro import KPipeline
         if "p" not in _tts:
             _tts["p"] = KPipeline(lang_code="a")
-        chunks = [a for _, _, a in _tts["p"](text, voice=voice, speed=0.95)]
+        chunks = [a for _, _, a in _tts["p"](text, voice=voice, speed=1.0)]
         audio = np.concatenate([np.asarray(c, dtype=np.float32) for c in chunks])
         audio = resample_poly(audio, SR, 24000).astype(np.float32)
         _tts["engine"] = "Kokoro"
@@ -265,8 +287,10 @@ def produce(vid, no_gpu=False, max_shots=None):
         factor = max(1.0, min(1.8, dur / max(clen, 0.5)))           # leichte Zeitlupe, falls Shot länger
         seg = work / f"seg_{s['n']:02d}.mp4"
         sh("ffmpeg", "-y", "-loglevel", "error", "-i", clip, "-vf",
-           f"setpts={factor:.3f}*PTS,scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,"
-           f"crop={W}:{H},fps={FPS},tpad=stop_mode=clone:stop_duration=3",
+           f"setpts={factor:.3f}*PTS,scale={VW}:{VH}:force_original_aspect_ratio=increase:flags=lanczos,"
+           f"crop={VW}:{VH},eq=contrast=1.05:saturation=1.08,colorbalance=rs=0.04:gs=0.01:bs=-0.04,"
+           f"gblur=sigma=0.5,noise=alls=7:allf=t,pad={W}:{H}:0:{VY}:black,"
+           f"fps={FPS},tpad=stop_mode=clone:stop_duration=3",
            "-t", f"{dur:.2f}", "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p", seg)
         segs.append(seg)
     endc = work / "endcard.mp4"
@@ -285,20 +309,31 @@ def produce(vid, no_gpu=False, max_shots=None):
             "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, "
             "Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, "
             "MarginR, MarginV, Encoding\n"
-            "Style: S,DejaVu Sans,62,&H00FFFFFF,&H000000FF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,5,2,2,80,80,330,1\n\n"
+            f"Style: S,DejaVu Sans,46,&H0033E6FF,&H000000FF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,3,1,2,60,60,{H - VY - VH + 22},1\n\n"
             "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n")
     ev = [f"Dialogue: 0,{ass_time(a)},{ass_time(b)},S,,0,0,0,,{{\\fad(120,120)}}{x.replace('{', '(').replace('}', ')')}"
           for a, b, x in subs]
     ass.write_text(head + "\n".join(ev) + "\n", encoding="utf-8")
 
+    vf = f"subtitles={ass.name}"
+    headline = (sc.get("headline") or sc.get("title") or "").strip()
+    if headline:
+        import textwrap
+        lines = textwrap.wrap(headline, 30)[:4]
+        fs, lh = 58, 74
+        y0 = VY - 50 - lh * len(lines)
+        for k, ln in enumerate(lines):
+            (work / f"hl_{k}.txt").write_text(ln, encoding="utf-8")
+            vf += (f",drawtext=fontfile={FONT}:textfile=hl_{k}.txt:fontsize={fs}:fontcolor=white:"
+                   f"x=(w-tw)/2:y={y0 + k * lh}:enable='lt(t,{total - end_len:.2f})'")
     final = work / f"{vid}.mp4"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", joined.name, "-i", "mix.wav",
-                    "-vf", f"subtitles={ass.name}", "-map", "0:v", "-map", "1:a",
+                    "-vf", vf, "-map", "0:v", "-map", "1:a",
                     "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p", "-r", str(FPS),
                     "-af", "loudnorm=I=-14:TP=-1.5:LRA=9", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
                     "-shortest", "-movflags", "+faststart", final.name], cwd=work, check=True)
     poster = work / "poster.jpg"
-    sh("ffmpeg", "-y", "-loglevel", "error", "-ss", "1.5", "-i", final, "-frames:v", "1", "-vf", "scale=540:-2", poster)
+    sh("ffmpeg", "-y", "-loglevel", "error", "-ss", "2.5", "-i", final, "-frames:v", "1", "-vf", "scale=540:-2", poster)
 
     # Ablage als GitHub-Release (öffentlicher Link fürs Dashboard und später für Instagram/TikTok)
     urls = upload_release(vid, sc.get("title") or vid, [final, poster])

@@ -30,7 +30,7 @@ IMAGE_MODEL = "cagliostrolab/animagine-xl-4.0"
 VIDEO_MODEL = "Wan-AI/Wan2.2-TI2V-5B-Diffusers"
 WAN_NEG = ("static, blurry details, subtitles, text, watermark, logo, worst quality, low quality, jpeg artifacts, "
            "ugly, deformed, extra fingers, bad hands, bad face, fused fingers, messy background, three legs, "
-           "walking backwards, gore, dismemberment")
+           "walking backwards, gore, dismemberment, 3d render, cgi")
 
 
 @app.cls(gpu="L40S", image=image, volumes={"/models": models}, timeout=3600, scaledown_window=120)
@@ -43,8 +43,22 @@ class Studio:
         self.torch = torch
         # Alle Modelle bleiben im Arbeitsspeicher; auf die GPU kommt immer nur das gerade gebrauchte
         # (sonst reicht der Grafikspeicher nicht für Bild- UND Videomodell).
-        self.img = StableDiffusionXLPipeline.from_pretrained(
-            IMAGE_MODEL, torch_dtype=torch.float16, use_safetensors=True)
+        # Bildmodell + IP-Adapter (hält Figuren über alle Shots gleich: Referenzbild -> neue Szene)
+        self.ip_ok, self.ip_err = False, None
+        try:
+            from transformers import CLIPVisionModelWithProjection
+            enc = CLIPVisionModelWithProjection.from_pretrained(
+                "h94/IP-Adapter", subfolder="models/image_encoder", torch_dtype=torch.float16)
+            self.img = StableDiffusionXLPipeline.from_pretrained(
+                IMAGE_MODEL, image_encoder=enc, torch_dtype=torch.float16, use_safetensors=True)
+            self.img.load_ip_adapter("h94/IP-Adapter", subfolder="sdxl_models",
+                                     weight_name="ip-adapter-plus_sdxl_vit-h.safetensors")
+            self.ip_ok = True
+        except Exception as e:  # noqa: BLE001
+            self.ip_err = "IP-Adapter nicht verfügbar: " + repr(e)[:200]
+            self.img = StableDiffusionXLPipeline.from_pretrained(
+                IMAGE_MODEL, torch_dtype=torch.float16, use_safetensors=True)
+        print("IP-Adapter:", self.ip_ok, self.ip_err or "")
         vae = AutoencoderKLWan.from_pretrained(VIDEO_MODEL, subfolder="vae", torch_dtype=torch.float32)
         self.t2v = WanPipeline.from_pretrained(VIDEO_MODEL, vae=vae, torch_dtype=torch.bfloat16)
         try:
@@ -75,32 +89,40 @@ class Studio:
 
     @modal.method()
     def keyframe(self, prompt: str, negative: str = "", seed: int = 0,
-                 width: int = 832, height: int = 1216) -> bytes:
+                 width: int = 1344, height: int = 768, ref_png: bytes = b"", ref_scale: float = 0.5) -> dict:
+        from PIL import Image
+
         gen = self.torch.Generator("cuda").manual_seed(seed)
-        pos = ("masterpiece, high score, great score, absurdres, cinematic anime key visual, dramatic lighting, "
-               + prompt)
+        pos = ("1990s (style), retro artstyle, anime screencap, cel shading, film grain, masterpiece, high score, "
+               "great score, absurdres, dramatic lighting, " + prompt)
         neg = ("lowres, bad anatomy, bad hands, text, error, missing finger, extra digits, cropped, worst quality, "
-               "low quality, jpeg artifacts, signature, watermark, logo, blurry, gore, " + negative)
+               "low quality, jpeg artifacts, signature, watermark, logo, blurry, gore, 3d, cgi, glossy, "
+               "modern anime, " + negative)
+        kw = {}
+        if self.ip_ok:                    # ohne Referenz: Adapter mit Stärke 0 (Pipeline braucht trotzdem ein Bild)
+            ref = Image.open(io.BytesIO(ref_png)).convert("RGB") if ref_png else Image.new("RGB", (224, 224))
+            self.img.set_ip_adapter_scale(ref_scale if ref_png else 0.0)
+            kw["ip_adapter_image"] = ref
         out = self.use("img")(prompt=pos, negative_prompt=neg, width=width, height=height,
-                       guidance_scale=5.0, num_inference_steps=28, generator=gen).images[0]
+                              guidance_scale=5.0, num_inference_steps=28, generator=gen, **kw).images[0]
         buf = io.BytesIO()
         out.save(buf, format="PNG")
-        return buf.getvalue()
+        return {"png": buf.getvalue(), "note": self.ip_err}
 
     @modal.method()
-    def animate(self, image_png: bytes, prompt: str, num_frames: int = 121, seed: int = 0,
-                steps: int = 30) -> dict:
+    def animate(self, image_png: bytes, prompt: str, num_frames: int = 73, seed: int = 0,
+                steps: int = 25, width: int = 832, height: int = 480) -> dict:
         from diffusers.utils import export_to_video
         from PIL import Image
 
         gen = self.torch.Generator("cuda").manual_seed(seed)
         num_frames = max(17, min(121, (num_frames - 1) // 4 * 4 + 1))
-        prompt = "high quality cinematic anime animation, fluid motion. " + prompt
+        prompt = "1990s retro cel anime, hand-drawn animation, fluid motion. " + prompt
         mode, frames, note = "i2v", None, self.i2v_err
         if self.i2v_ok and image_png:
             try:
-                img = Image.open(io.BytesIO(image_png)).convert("RGB").resize((704, 1280))
-                frames = self.use("i2v")(image=img, prompt=prompt, negative_prompt=WAN_NEG, height=1280, width=704,
+                img = Image.open(io.BytesIO(image_png)).convert("RGB").resize((width, height))
+                frames = self.use("i2v")(image=img, prompt=prompt, negative_prompt=WAN_NEG, height=height, width=width,
                                   num_frames=num_frames, guidance_scale=5.0, num_inference_steps=steps,
                                   generator=gen).frames[0]
             except Exception as e:  # noqa: BLE001
@@ -108,7 +130,7 @@ class Studio:
                 frames = None
         if frames is None:
             mode = "t2v"
-            frames = self.use("t2v")(prompt=prompt, negative_prompt=WAN_NEG, height=1280, width=704,
+            frames = self.use("t2v")(prompt=prompt, negative_prompt=WAN_NEG, height=height, width=width,
                               num_frames=num_frames, guidance_scale=5.0, num_inference_steps=steps,
                               generator=gen).frames[0]
         path = "/tmp/clip.mp4"

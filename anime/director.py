@@ -45,9 +45,10 @@ Antworte ausschließlich mit JSON nach diesem Schema:
  "title": "short punchy English title",
  "logline": "one sentence (English)",
  "logline_de": "ein Satz auf Deutsch",
- "total_duration_s": 30-60,
+ "headline": "punchy English caption shown above the video, max 90 chars, meme style",
+ "total_duration_s": 45-75,
  "setting": {{"location": "fictional or generic place", "time": "...", "weather": "...",
-             "color_palette": "...", "art_style": "high-end cinematic anime, ..."}},
+             "color_palette": "...", "art_style": "1990s retro anime, cel shading, film grain, ..."}},
  "characters": [{{
     "id": "c1", "name": "fictional name", "role": "...", "age_group": "...", "build": "...",
     "design_sheet": "precise, reusable visual description for image prompts (face, hair, eyes, clothes, colors)",
@@ -56,19 +57,19 @@ Antworte ausschließlich mit JSON nach diesem Schema:
     "voice": "voice description (English)"
  }}],
  "shots": [{{
-    "n": 1, "duration_s": 3-5, "beat": "HOOK|EINSTIEG|KONFLIKT|WENDEPUNKT|HÖHEPUNKT|NACHHALL",
+    "n": 1, "duration_s": 2-4, "characters": ["c1"], "beat": "HOOK|EINSTIEG|KONFLIKT|WENDEPUNKT|HÖHEPUNKT|NACHHALL",
     "camera": "shot size + angle + movement",
     "action": "what happens (English)",
     "dialogue": [{{"character": "c1", "line": "..."}}],
     "voiceover": "inner monologue or null",
     "sfx": ["..."], "music": "music cue for this shot",
     "on_screen_text": null,
-    "image_prompt": "full prompt for the key frame, repeat character design_sheet, art style, lighting, 9:16",
+    "image_prompt": "full prompt for the key frame, 16:9 landscape, start with '1990s retro anime screencap, cel shading', repeat design_sheet of every visible character, lighting",
     "motion_prompt": "how the key frame animates (camera + character motion, impact frames, speed lines)"
  }}],
  "music": {{"mood": "...", "bpm": 60-140, "instruments": ["..."]}},
  "end_card": "{end_card}",
- "content_check_de": {{"gewalt": "wie dargestellt", "kein_gore": true, "politisch_neutral": true}},
+ "content_check_de": {{"gewalt": "wie dargestellt", "kein_gore": true, "keine_hetze": true}},
  "youtube": {{"title": "max 90 chars incl. #shorts", "description": "English, ends with the end card sentence",
              "tags": ["..."]}}
 }}
@@ -109,11 +110,11 @@ def static_checks(script):
         if w in text:
             issues.append(f"Gore-Begriff im Drehbuch: „{w}“")
     shots = script.get("shots") or []
-    if not 5 <= len(shots) <= 12:
-        issues.append(f"{len(shots)} Shots (erwartet 6–10)")
+    if not 8 <= len(shots) <= 26:
+        issues.append(f"{len(shots)} Shots (erwartet 14–22)")
     total = sum(float(s.get("duration_s") or 0) for s in shots)
-    if not 25 <= total <= 65:
-        issues.append(f"Gesamtlänge {total:.0f} s (erwartet 30–60 s)")
+    if not 30 <= total <= 80:
+        issues.append(f"Gesamtlänge {total:.0f} s (erwartet 45–75 s)")
     for s in shots:
         if not s.get("image_prompt") or not s.get("motion_prompt"):
             issues.append(f"Shot {s.get('n')}: Bild- oder Bewegungs-Prompt fehlt")
@@ -175,7 +176,7 @@ def build_index():
             "decided_at": r.get("decided_at"), "title": s.get("title"), "logline": s.get("logline"),
             "logline_de": s.get("logline_de"), "duration": s.get("total_duration_s"),
             "setting": s.get("setting"), "characters": s.get("characters"), "shots": s.get("shots"),
-            "music": s.get("music"), "youtube": s.get("youtube"), "end_card": s.get("end_card"),
+            "music": s.get("music"), "headline": s.get("headline"), "youtube": s.get("youtube"), "end_card": s.get("end_card"),
             "likeness": r.get("likeness_audit"), "issues": r.get("issues"), "source": r.get("source"),
         })
     items.sort(key=lambda x: x.get("created_at") or "", reverse=True)
