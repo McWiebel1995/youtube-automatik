@@ -64,6 +64,16 @@ def main():
     work = OUTPUT / f"{args.channel}_{stamp}"
     print(f"▶ {ch['name']}: {hours:g} h, Seed {seed}")
 
+    yt = None
+    if not args.dry_run:            # Zugang zuerst prüfen – nicht erst nach Stunden Rendern scheitern
+        import upload  # erst hier, damit Testläufe ohne Google-Bibliotheken gehen
+        token = os.environ.get(ch["token_secret"])
+        if not token:
+            raise SystemExit(f"Secret {ch['token_secret']} fehlt.")
+        yt = upload.service(token)
+        upload.check_channel(yt, ch)
+        print("  ✓ YouTube-Zugang ok")
+
     info = render.render(ch, seconds, work, rnd)
     meta = metadata.build(ch, cfg, info, hours, rnd)
     loop = ASSETS / ch["key"] / "video" / info["loop"]
@@ -78,12 +88,7 @@ def main():
     if args.dry_run:
         print("  (Testlauf – kein Upload)")
     else:
-        import upload  # erst hier, damit Testläufe ohne Google-Bibliotheken gehen
-        token = os.environ.get(ch["token_secret"])
-        if not token:
-            raise SystemExit(f"Secret {ch['token_secret']} fehlt.")
-        yt = upload.service(token)
-        upload.check_channel(yt, ch)
+        import upload
         vid = upload.upload(yt, info["video_file"], meta, ch, publish_at)
         upload.set_thumbnail(yt, vid, thumb)
         upload.add_to_playlist(yt, vid, ch.get("playlist_id"))

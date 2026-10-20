@@ -70,6 +70,16 @@ def main():
     work = OUTPUT / f"kids-{args.channel}_{stamp}"
     print(f"▶ {ch['name']} (Seed {seed})")
 
+    yt = None
+    if not args.dry_run:            # Zugang zuerst prüfen
+        import upload
+        token = os.environ.get(ch["token_secret"])
+        if not token:
+            raise SystemExit(f"Secret {ch['token_secret']} fehlt.")
+        yt = upload.service(token)
+        upload.check_channel(yt, ch)
+        print("  ✓ YouTube-Zugang ok")
+
     thumb = None
     if args.channel == "schlaf":
         import schlaf
@@ -103,11 +113,6 @@ def main():
         print("  (Testlauf – kein Upload)")
     else:
         import upload
-        token = os.environ.get(ch["token_secret"])
-        if not token:
-            raise SystemExit(f"Secret {ch['token_secret']} fehlt.")
-        yt = upload.service(token)
-        upload.check_channel(yt, ch)
         vid = upload.upload(yt, info["video_file"], meta, ch, publish_at=None)
         if thumb:
             upload.set_thumbnail(yt, vid, thumb)
