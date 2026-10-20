@@ -190,8 +190,8 @@ def story_short(title, text, work: Path, rnd, voice, rate, max_seconds=58.0):
             "Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, "
             "MarginL, MarginR, MarginV, Encoding\n"
             f"Style: Sub,{sub_font},64,&H00F5F5FF,&H000000FF,&H00402020,&H78000000,1,0,0,0,100,100,0,0,1,4,2,5,90,90,0,1\n"
-            f"Style: Kicker,{title_font},54,&H00A0E6FF,&H000000FF,&H00402020,&H64000000,1,0,0,0,100,100,0,0,1,4,2,8,80,80,190,1\n"
-            f"Style: Title,{title_font},96,&H00D8F4FF,&H000000FF,&H00402020,&H64000000,1,0,0,0,100,100,0,0,1,5,2,8,80,80,260,1\n\n"
+            f"Style: Kicker,{title_font},68,&H00A0E6FF,&H000000FF,&H00402020,&H64000000,1,0,0,0,100,100,0,0,1,4,2,8,80,80,170,1\n"
+            f"Style: Title,{title_font},150,&H00D8F4FF,&H000000FF,&H00402020,&H64000000,1,0,0,0,100,100,0,0,1,5,2,8,80,80,250,1\n\n"
             "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n")
     ev = [f"Dialogue: 0,{ts(0)},{ts(seconds)},Kicker,,0,0,0,,{{\\fad(600,600)}}Mini-Gute-Nacht-Geschichte",
           f"Dialogue: 0,{ts(0)},{ts(seconds)},Title,,0,0,0,,{{\\fad(600,600)}}{esc(title)}"]

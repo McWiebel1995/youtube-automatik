@@ -193,7 +193,7 @@ WrapStyle: 0
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Sub,{font_name},54,&H00F5F5FF,&H000000FF,&H00301818,&H64000000,0,0,0,0,100,100,0,0,1,3,1,2,160,160,70,1
-Style: Title,{title_font or font_name},104,&H00C8F0FF,&H000000FF,&H00301818,&H64000000,1,0,0,0,100,100,0,0,1,5,2,8,100,100,150,1
+Style: Title,{title_font or font_name},140,&H00C8F0FF,&H000000FF,&H00301818,&H64000000,1,0,0,0,100,100,0,0,1,5,2,8,100,100,150,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text

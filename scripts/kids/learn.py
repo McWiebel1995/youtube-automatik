@@ -145,20 +145,26 @@ def plan_zahlen(rnd, short=False):
     return segs, dict(max=mx, things=thing["many"], n=mx)
 
 
-def plan_mix(rnd, short=False):
-    """Großes Lernvideo (~10–14 Min.): Zahlen, Farben und Formen nacheinander, je mit Quiz."""
-    order = rnd.sample(["zahlen", "farben", "formen"], 3)
-    segs, info = [], {}
-    for i, t in enumerate(order):
-        part, inf = PLANS[t](rnd, False)
-        if i > 0:                                        # Begrüßung nur einmal
-            part[0] = dict(part[0], text=part[0]["text"].replace("Hallo! Heute", "Und jetzt").replace(
-                "Bist du bereit? Los geht's!", "Los geht's!"))
-        if i < len(order) - 1:                           # Verabschiedung nur am Ende
-            part = part[:-1]
-        segs += part
-        info[t] = inf
-    info["order"] = order
+def plan_mix(rnd, short=False, rounds=2):
+    """Großes Lernvideo (~10–14 Min.): zwei Runden Zahlen, Farben und Formen, je mit Quiz."""
+    segs, info, order_all = [], {}, []
+    for r in range(rounds):
+        order = rnd.sample(["zahlen", "farben", "formen"], 3)
+        for i, t in enumerate(order):
+            part, inf = PLANS[t](rnd, False)
+            first, last = (r == 0 and i == 0), (r == rounds - 1 and i == len(order) - 1)
+            if not first:                                    # Begrüßung nur einmal
+                txt = part[0]["text"].replace("Hallo! Heute", "Und jetzt").replace(
+                    "Bist du bereit? Los geht's!", "Los geht's!")
+                if r > 0 and i == 0:
+                    txt = "Super! Wir machen noch eine Runde. " + txt
+                part[0] = dict(part[0], text=txt)
+            if not last:                                     # Verabschiedung nur am Ende
+                part = part[:-1]
+            segs += part
+            info.setdefault(t, inf)
+            order_all.append(t)
+    info["order"] = order_all
     return segs, info
 
 
