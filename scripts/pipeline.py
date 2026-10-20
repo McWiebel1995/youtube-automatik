@@ -94,6 +94,15 @@ def main():
         upload.add_to_playlist(yt, vid, ch.get("playlist_id"))
         record["video_id"] = vid
         print(f"  ✓ Hochgeladen: https://youtu.be/{vid} (öffentlich ab {publish_at})")
+        try:                                          # 1 Relax-Clip pro Tag für @calmhavenig (Kanäle im Wechsel)
+            order = ["regen", "kamin", "wasserfall"]
+            if args.channel in order and dt.date.today().toordinal() % 3 == order.index(args.channel):
+                import ig_clip
+                import ig_queue
+                clip = ig_clip.make(info["video_file"], work / "ig_clip.mp4", hours, meta["scene"], args.channel, rnd)
+                ig_queue.add("calmhaven", clip, ig_clip.caption(args.channel, hours, meta["scene"], rnd))
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Instagram-Clip übersprungen: {e}")
         if not args.keep:
             os.remove(info["video_file"])
 

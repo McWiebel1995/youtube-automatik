@@ -18,6 +18,9 @@ on:
         type: boolean
         default: true
 
+permissions:
+  contents: write
+
 concurrency:
   group: produce
   cancel-in-progress: false
@@ -108,6 +111,7 @@ jobs:
           YT_REFRESH_TOKEN_REGEN: ${{ secrets.YT_REFRESH_TOKEN_REGEN }}
           YT_REFRESH_TOKEN_KAMIN: ${{ secrets.YT_REFRESH_TOKEN_KAMIN }}
           YT_REFRESH_TOKEN_WASSERFALL: ${{ secrets.YT_REFRESH_TOKEN_WASSERFALL }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ARGS="--channel ${{ matrix.channel }}"
           if [ -n "${{ github.event.inputs.hours }}" ]; then ARGS="$ARGS --hours ${{ github.event.inputs.hours }}"; fi
@@ -115,6 +119,16 @@ jobs:
           set -o pipefail
           python scripts/pipeline.py $ARGS 2>&1 | tee run.log || {
             echo "::error title=Fehler::$(tail -n 12 run.log | tr '\n' ' ' | cut -c1-1500)"; exit 1; }
+
+      - name: Instagram-Warteschlange speichern
+        if: always() && github.event.inputs.dry_run != 'true'
+        run: |
+          [ -f data/instagram_queue.json ] || exit 0
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add data/instagram_queue.json
+          git commit -m "Instagram: neues Reel vorgemerkt" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep $((RANDOM % 10 + 3)); done
 
       # Thumbnail + Metadaten (und beim Testlauf das kurze Video) zum Ansehen ablegen
       - name: Ergebnis speichern

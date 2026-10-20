@@ -34,6 +34,32 @@ def load_cfg():
     return cfg
 
 
+IG_ACCOUNT = {"schlaf": "mondmelodie", "lernen": "lernbaerchen", "geschichten": "gutenacht"}
+IG_TAGS = {
+    "schlaf": "#einschlafmusik #spieluhr #babyschlaf #schlaflied #gutenacht #babyeinschlafen #mamaleben #elternalltag",
+    "lernen": "#lernenmitkindern #kleinkind #farbenlernen #zahlenlernen #montessorizuhause #kitaideen #mamaleben #elternalltag",
+    "geschichten": "#gutenachtgeschichte #einschlafgeschichte #vorlesen #kindergeschichten #abendritual #mamaleben #elternalltag",
+}
+
+
+def ig_caption(channel, meta, info):
+    """Instagram-Text: an Eltern gerichtet (Instagram ist erst ab 13)."""
+    t = meta["title"].replace("#shorts", "").strip()
+    if channel == "schlaf":
+        body = (f"{info.get('title_word', 'Gute Nacht')} 🌙\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte "
+                "Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n"
+                "💤 Speichern für heute Abend\n🎵 15 Minuten Einschlafmusik auf unserem YouTube-Kanal (Link in der Bio)")
+    elif channel == "lernen":
+        body = (f"{t}\nKleine Lernmomente für zwischendurch: Schau es gemeinsam mit deinem Kind an und sprecht laut mit. "
+                "Wiederholung macht Kleinkinder sicher! 🐻\n\n📚 Das große Lernvideo (Zahlen, Farben & Formen) findest "
+                "du auf unserem YouTube-Kanal (Link in der Bio)")
+    else:
+        body = (f"{info.get('title', t)} ✨\nEine Mini-Gute-Nacht-Geschichte für euer Abendritual. Kuscheln, zuhören, "
+                "einschlafen. 🌙\n\n📖 Die ganze Geschichte (ca. 10 Minuten) hörst du auf unserem YouTube-Kanal "
+                "(Link in der Bio)")
+    return f"{body}\n\n{IG_TAGS[channel]}"
+
+
 def make_thumb(video, out, big, small, at=0.35):
     from common import duration
     ffmpeg("-ss", f"{duration(video) * at:.2f}", "-i", video, "-frames:v", "1", out.with_suffix(".png"))
@@ -147,6 +173,8 @@ def main():
             xvid = upload.upload(yt, xinfo["video_file"], xmeta, ch, publish_at=None)
             record.setdefault("extra_uploads", []).append({"video_id": xvid, "title": xmeta["title"]})
             print(f"  ✓ Short privat hochgeladen: https://youtu.be/{xvid}")
+            import ig_queue                                   # Short auch als Instagram-Reel (abends)
+            ig_queue.add(IG_ACCOUNT[args.channel], xinfo["video_file"], ig_caption(args.channel, xmeta, xinfo))
 
     (work / "meta.json").write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"  Dateien: {work}")
