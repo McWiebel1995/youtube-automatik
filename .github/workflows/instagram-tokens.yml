@@ -1,0 +1,29 @@
+name: "📸 Instagram-Tokens prüfen & verlängern"
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        type: choice
+        options: [check, refresh]
+        default: check
+  schedule:
+    - cron: "41 2 */10 * *"     # alle 10 Tage verlängern (Tokens gelten 60 Tage)
+
+jobs:
+  tokens:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Ausführen
+        env:
+          IG_TOKEN_CALMHAVEN: ${{ secrets.IG_TOKEN_CALMHAVEN }}
+          IG_TOKEN_MONDMELODIE: ${{ secrets.IG_TOKEN_MONDMELODIE }}
+          IG_TOKEN_LERNBAERCHEN: ${{ secrets.IG_TOKEN_LERNBAERCHEN }}
+          IG_TOKEN_GUTENACHT: ${{ secrets.IG_TOKEN_GUTENACHT }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: python scripts/instagram.py ${{ github.event.inputs.action || 'refresh' }}
