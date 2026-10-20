@@ -104,7 +104,10 @@ jobs:
           YT_REFRESH_TOKEN_LERNEN: ${{ secrets.YT_REFRESH_TOKEN_LERNEN }}
           YT_REFRESH_TOKEN_GESCHICHTEN: ${{ secrets.YT_REFRESH_TOKEN_GESCHICHTEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python scripts/kids/pipeline_kids.py ${{ steps.job.outputs.args }}
+        run: |
+          set -o pipefail
+          python scripts/kids/pipeline_kids.py ${{ steps.job.outputs.args }} 2>&1 | tee run.log || {
+            echo "::error title=Fehler::$(tail -n 12 run.log | tr '\n' ' ' | cut -c1-1500)"; exit 1; }
 
       - name: Verwendete Geschichte merken
         if: steps.job.outputs.name == 'geschichten' && github.event.inputs.dry_run != 'true'
