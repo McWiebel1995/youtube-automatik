@@ -40,14 +40,20 @@
      "views": 43309,
      "likes": 142,
      "comments": 94
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 44104,
+     "likes": 143,
+     "comments": 95
     }
    ],
-   "views": 43309,
-   "likes": 142,
-   "comments": 94,
+   "views": 44104,
+   "likes": 143,
+   "comments": 95,
    "shares": null,
    "engagement_rate": 0.54,
-   "views_velocity_per_hour": 188,
+   "views_velocity_per_hour": 145,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "PBB0H7tWleY",
@@ -96,18 +102,24 @@
      "views": 175284,
      "likes": null,
      "comments": 290
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 177249,
+     "likes": null,
+     "comments": 288
     }
    ],
-   "views": 175284,
+   "views": 177249,
    "likes": null,
-   "comments": 290,
+   "comments": 288,
    "shares": null,
-   "engagement_rate": 0.17,
-   "views_velocity_per_hour": 563,
+   "engagement_rate": 0.16,
+   "views_velocity_per_hour": 358,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "2zVWMFU2H0Y",
    "score_breakdown": {
-    "social": 5
+    "social": 3
    },
    "anime_score": null
   },
@@ -151,14 +163,20 @@
      "views": 185304,
      "likes": 8454,
      "comments": 242
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 186962,
+     "likes": 8518,
+     "comments": 242
     }
    ],
-   "views": 185304,
-   "likes": 8454,
+   "views": 186962,
+   "likes": 8518,
    "comments": 242,
    "shares": null,
    "engagement_rate": 4.69,
-   "views_velocity_per_hour": 421,
+   "views_velocity_per_hour": 302,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "huWaUw82IWU",
    "score_breakdown": {
@@ -482,14 +500,20 @@
      "views": 238215,
      "likes": 2347,
      "comments": 1630
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 266020,
+     "likes": 2646,
+     "comments": 1781
     }
    ],
-   "views": 238215,
-   "likes": 2347,
-   "comments": 1630,
+   "views": 266020,
+   "likes": 2646,
+   "comments": 1781,
    "shares": null,
-   "engagement_rate": 1.67,
-   "views_velocity_per_hour": 5406,
+   "engagement_rate": 1.66,
+   "views_velocity_per_hour": 5064,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "NFFvJ8D02G0",
@@ -538,14 +562,20 @@
      "views": 169914,
      "likes": 6482,
      "comments": 938
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 173909,
+     "likes": 6610,
+     "comments": 955
     }
    ],
-   "views": 169914,
-   "likes": 6482,
-   "comments": 938,
+   "views": 173909,
+   "likes": 6610,
+   "comments": 955,
    "shares": null,
-   "engagement_rate": 4.37,
-   "views_velocity_per_hour": 1575,
+   "engagement_rate": 4.35,
+   "views_velocity_per_hour": 728,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "xN4e8XiUDNo",
    "analysis": {
@@ -723,19 +753,25 @@
      "views": 19400,
      "likes": 542,
      "comments": 93
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 19837,
+     "likes": 546,
+     "comments": 95
     }
    ],
-   "views": 19400,
-   "likes": 542,
-   "comments": 93,
+   "views": 19837,
+   "likes": 546,
+   "comments": 95,
    "shares": null,
-   "engagement_rate": 3.27,
-   "views_velocity_per_hour": 141,
+   "engagement_rate": 3.23,
+   "views_velocity_per_hour": 80,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "JCs-jLr0QG4",
    "score_breakdown": {
-    "social": 5
+    "social": 4
    },
    "anime_score": null
   },
@@ -842,14 +878,20 @@
      "views": 770329,
      "likes": 4614,
      "comments": 3356
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 784380,
+     "likes": 4686,
+     "comments": 3419
     }
    ],
-   "views": 770329,
-   "likes": 4614,
-   "comments": 3356,
+   "views": 784380,
+   "likes": 4686,
+   "comments": 3419,
    "shares": null,
    "engagement_rate": 1.03,
-   "views_velocity_per_hour": 5664,
+   "views_velocity_per_hour": 2559,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "pozvqMsIKn8",
@@ -1182,14 +1224,20 @@
      "views": 156200,
      "likes": 121,
      "comments": 90
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 169415,
+     "likes": 126,
+     "comments": 92
     }
    ],
-   "views": 156200,
-   "likes": 121,
-   "comments": 90,
+   "views": 169415,
+   "likes": 126,
+   "comments": 92,
    "shares": null,
-   "engagement_rate": 0.14,
-   "views_velocity_per_hour": 3381,
+   "engagement_rate": 0.13,
+   "views_velocity_per_hour": 2407,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "WHhG_0nVvhA",
    "score_breakdown": {
@@ -1350,19 +1398,25 @@
      "views": 168726,
      "likes": 799,
      "comments": 456
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 170642,
+     "likes": 803,
+     "comments": 461
     }
    ],
-   "views": 168726,
-   "likes": 799,
-   "comments": 456,
+   "views": 170642,
+   "likes": 803,
+   "comments": 461,
    "shares": null,
    "engagement_rate": 0.74,
-   "views_velocity_per_hour": 629,
+   "views_velocity_per_hour": 349,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "O6UIewr1W10",
    "score_breakdown": {
-    "social": 5
+    "social": 3
    },
    "anime_score": null
   },
@@ -1406,14 +1460,20 @@
      "views": 59991,
      "likes": 118,
      "comments": 209
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 64028,
+     "likes": 127,
+     "comments": 220
     }
    ],
-   "views": 59991,
-   "likes": 118,
-   "comments": 209,
+   "views": 64028,
+   "likes": 127,
+   "comments": 220,
    "shares": null,
-   "engagement_rate": 0.55,
-   "views_velocity_per_hour": 637,
+   "engagement_rate": 0.54,
+   "views_velocity_per_hour": 735,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "yLU8MYHx7eU",
@@ -1462,14 +1522,20 @@
      "views": 123335,
      "likes": 1618,
      "comments": 608
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 131988,
+     "likes": 1698,
+     "comments": 625
     }
    ],
-   "views": 123335,
-   "likes": 1618,
-   "comments": 608,
+   "views": 131988,
+   "likes": 1698,
+   "comments": 625,
    "shares": null,
-   "engagement_rate": 1.8,
-   "views_velocity_per_hour": 911,
+   "engagement_rate": 1.76,
+   "views_velocity_per_hour": 1576,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "l1ll1AaZyQk",
@@ -1525,19 +1591,25 @@
      "views": 31891,
      "likes": 778,
      "comments": 75
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 32162,
+     "likes": 779,
+     "comments": 75
     }
    ],
-   "views": 31891,
-   "likes": 778,
+   "views": 32162,
+   "likes": 779,
    "comments": 75,
    "shares": null,
-   "engagement_rate": 2.67,
-   "views_velocity_per_hour": 190,
+   "engagement_rate": 2.66,
+   "views_velocity_per_hour": 49,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "mPRzIihMbnU",
    "score_breakdown": {
-    "social": 5
+    "social": 4
    },
    "anime_score": null
   },
@@ -1588,19 +1660,25 @@
      "views": 13844,
      "likes": 172,
      "comments": 39
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 14340,
+     "likes": 176,
+     "comments": 39
     }
    ],
-   "views": 13844,
-   "likes": 172,
+   "views": 14340,
+   "likes": 176,
    "comments": 39,
    "shares": null,
-   "engagement_rate": 1.52,
-   "views_velocity_per_hour": 400,
+   "engagement_rate": 1.5,
+   "views_velocity_per_hour": 90,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "U_0V8auS_TY",
    "score_breakdown": {
-    "social": 4
+    "social": 3
    },
    "anime_score": null
   },
@@ -1644,21 +1722,28 @@
      "views": 236479,
      "likes": 6546,
      "comments": 1023
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 254958,
+     "likes": 6945,
+     "comments": 1059
     }
    ],
-   "views": 236479,
-   "likes": 6546,
-   "comments": 1023,
+   "views": 254958,
+   "likes": 6945,
+   "comments": 1059,
    "shares": null,
-   "engagement_rate": 3.2,
-   "views_velocity_per_hour": 2439,
+   "engagement_rate": 3.14,
+   "views_velocity_per_hour": 3366,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "eFoeP7Z-8ng",
    "score_breakdown": {
     "social": 9
    },
-   "anime_score": null
+   "anime_score": null,
+   "analysis_failed": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
   },
   "rjbD7s61Bow": {
    "video_id": "rjbD7s61Bow",
@@ -1700,14 +1785,20 @@
      "views": 357874,
      "likes": 9954,
      "comments": 2129
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 363238,
+     "likes": 10048,
+     "comments": 2149
     }
    ],
-   "views": 357874,
-   "likes": 9954,
-   "comments": 2129,
+   "views": 363238,
+   "likes": 10048,
+   "comments": 2149,
    "shares": null,
-   "engagement_rate": 3.38,
-   "views_velocity_per_hour": 1202,
+   "engagement_rate": 3.36,
+   "views_velocity_per_hour": 977,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "rjbD7s61Bow",
@@ -1868,19 +1959,25 @@
      "views": 89163,
      "likes": 614,
      "comments": 374
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 92223,
+     "likes": 628,
+     "comments": 378
     }
    ],
-   "views": 89163,
-   "likes": 614,
-   "comments": 374,
+   "views": 92223,
+   "likes": 628,
+   "comments": 378,
    "shares": null,
-   "engagement_rate": 1.11,
-   "views_velocity_per_hour": 435,
+   "engagement_rate": 1.09,
+   "views_velocity_per_hour": 557,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "B5tLlWx8d1w",
    "score_breakdown": {
-    "social": 4
+    "social": 6
    },
    "anime_score": null
   },
@@ -1980,14 +2077,20 @@
      "views": 23122,
      "likes": 227,
      "comments": 7
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 23121,
+     "likes": 227,
+     "comments": 7
     }
    ],
-   "views": 23122,
+   "views": 23121,
    "likes": 227,
    "comments": 7,
    "shares": null,
    "engagement_rate": 1.01,
-   "views_velocity_per_hour": 3,
+   "views_velocity_per_hour": 0,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "QDG_QwXRMvU",
@@ -2043,19 +2146,25 @@
      "views": 786648,
      "likes": 3315,
      "comments": 1738
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 794778,
+     "likes": 3336,
+     "comments": 1740
     }
    ],
-   "views": 786648,
-   "likes": 3315,
-   "comments": 1738,
+   "views": 794778,
+   "likes": 3336,
+   "comments": 1740,
    "shares": null,
    "engagement_rate": 0.64,
-   "views_velocity_per_hour": 2390,
+   "views_velocity_per_hour": 1481,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "fEyAAGW2XJY",
    "score_breakdown": {
-    "social": 7
+    "social": 5
    },
    "anime_score": null
   },
@@ -2099,14 +2208,20 @@
      "views": 16985,
      "likes": 907,
      "comments": 72
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 17055,
+     "likes": 911,
+     "comments": 72
     }
    ],
-   "views": 16985,
-   "likes": 907,
+   "views": 17055,
+   "likes": 911,
    "comments": 72,
    "shares": null,
    "engagement_rate": 5.76,
-   "views_velocity_per_hour": 31,
+   "views_velocity_per_hour": 13,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "2CMyyjOBfdo",
    "score_breakdown": {
@@ -2154,14 +2269,20 @@
      "views": 7778,
      "likes": 76,
      "comments": 3
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 7797,
+     "likes": 76,
+     "comments": 3
     }
    ],
-   "views": 7778,
+   "views": 7797,
    "likes": 76,
    "comments": 3,
    "shares": null,
-   "engagement_rate": 1.02,
-   "views_velocity_per_hour": 10,
+   "engagement_rate": 1.01,
+   "views_velocity_per_hour": 3,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "hO0ez35i8BU",
    "score_breakdown": {
@@ -2216,14 +2337,20 @@
      "views": 51374,
      "likes": 575,
      "comments": 67
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 52147,
+     "likes": 577,
+     "comments": 67
     }
    ],
-   "views": 51374,
-   "likes": 575,
+   "views": 52147,
+   "likes": 577,
    "comments": 67,
    "shares": null,
-   "engagement_rate": 1.25,
-   "views_velocity_per_hour": 198,
+   "engagement_rate": 1.23,
+   "views_velocity_per_hour": 141,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "-2u0K1oqTbs",
@@ -2272,14 +2399,20 @@
      "views": 242862,
      "likes": 7271,
      "comments": 70
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 247784,
+     "likes": 7383,
+     "comments": 73
     }
    ],
-   "views": 242862,
-   "likes": 7271,
-   "comments": 70,
+   "views": 247784,
+   "likes": 7383,
+   "comments": 73,
    "shares": null,
-   "engagement_rate": 3.02,
-   "views_velocity_per_hour": 539,
+   "engagement_rate": 3.01,
+   "views_velocity_per_hour": 896,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "hkdY4TXdFec",
    "score_breakdown": {
@@ -2334,14 +2467,20 @@
      "views": 223739,
      "likes": 921,
      "comments": 610
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 227440,
+     "likes": 929,
+     "comments": 612
     }
    ],
-   "views": 223739,
-   "likes": 921,
-   "comments": 610,
+   "views": 227440,
+   "likes": 929,
+   "comments": 612,
    "shares": null,
    "engagement_rate": 0.68,
-   "views_velocity_per_hour": 1216,
+   "views_velocity_per_hour": 674,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "OaDTIYsMWOg",
@@ -2440,14 +2579,20 @@
      "views": 71147,
      "likes": 361,
      "comments": 650
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 73815,
+     "likes": 368,
+     "comments": 672
     }
    ],
-   "views": 71147,
-   "likes": 361,
-   "comments": 650,
+   "views": 73815,
+   "likes": 368,
+   "comments": 672,
    "shares": null,
-   "engagement_rate": 1.42,
-   "views_velocity_per_hour": 491,
+   "engagement_rate": 1.41,
+   "views_velocity_per_hour": 486,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "PeYKOrDf334",
@@ -2465,10 +2610,10 @@
    "title": "I giovani stanno protestando in tutta Europa #shorts",
    "country": "Frankreich",
    "region": "FR",
-   "city": null,
-   "city_source": null,
+   "city": "Paris, Madrid, Tirana, Rom",
+   "city_source": "KI-Schätzung",
    "found_by_query": "vidéo manifestation",
-   "event_description": null,
+   "event_description": "Ein journalistischer Nachrichtenbeitrag (Will Media) fasst aktuelle Jugend- und Studentenproteste in verschiedenen europäischen Ländern zusammen. Gezeigt werden Demonstrationen, Zeltdörfer auf öffentlichen Plätzen gegen hohe Mietpreise, brennende Barrikaden und Rauchbomben, Störungen von Online-Vorlesungen via Discord sowie Proteste vor Universitäten und Denkmälern in Frankreich, Italien, Albanien und Spanien.",
    "event_date": null,
    "published_at": "2026-10-17T07:00:02Z",
    "collected_at": "2026-10-19T20:26:20Z",
@@ -2501,9 +2646,133 @@
    "velocity_basis": "Durchschnitt seit Veröffentlichung",
    "cluster": "OEs9HUq6QCs",
    "score_breakdown": {
-    "social": 8
+    "social": 8,
+    "emotional": 16.0,
+    "transformation": 18.0,
+    "cinematic": 14.0,
+    "story": 13.0,
+    "originality": 7.0,
+    "technical": 4.0
    },
-   "anime_score": null
+   "anime_score": 80,
+   "analysis": {
+    "relevant": true,
+    "event_description": "Ein journalistischer Nachrichtenbeitrag (Will Media) fasst aktuelle Jugend- und Studentenproteste in verschiedenen europäischen Ländern zusammen. Gezeigt werden Demonstrationen, Zeltdörfer auf öffentlichen Plätzen gegen hohe Mietpreise, brennende Barrikaden und Rauchbomben, Störungen von Online-Vorlesungen via Discord sowie Proteste vor Universitäten und Denkmälern in Frankreich, Italien, Albanien und Spanien.",
+    "city_guess": "Paris, Madrid, Tirana, Rom",
+    "country_guess": "Frankreich, Spanien, Albanien, Italien",
+    "emotional_observations": [
+     "Lautstarke Entschlossenheit und Wut in den Gesichtern und Gesten der demonstrierenden Jugendlichen",
+     "Ernsthafter und informativer Vortragston der Moderatorin",
+     "Bedrückte Stimmung im kurzen Ausschnitt einer von Zwangsräumung betroffenen älteren Frau",
+     "Starkes Gefühl von Solidarität und Gemeinschaft beim Zelten und Marschieren"
+    ],
+    "visual_highlights": [
+     {
+      "timecode": "00:00",
+      "beschreibung": "Dramatische Collage aus Protestzug-Aufnahmen mit dichtem Rauch, roter Flammenglut und erhobenen Flaggen"
+     },
+     {
+      "timecode": "00:15",
+      "beschreibung": "Buntes Zeltdorf mitten auf einem städtischen Platz als Zeichen des Protests gegen hohe Mieten"
+     },
+     {
+      "timecode": "00:42",
+      "beschreibung": "Massive schwarze Rauchwolke über einer Nachtdemonstration mit lodernden Flammen"
+     },
+     {
+      "timecode": "01:05",
+      "beschreibung": "Einblendung von Discord-Screenshots als Beispiel für digitalen Protest und Vorlesungsstörungen"
+     },
+     {
+      "timecode": "02:01",
+      "beschreibung": "Zahlreiche Jugendliche belagern den Sockel des Republik-Denkmals in Paris"
+     }
+    ],
+    "story_potential": "Einstieg: Ein junger Student steht in einer regenverhangenen Großstadt vor der Nachricht seiner Mieterhöhung und dem drohenden Rauswurf. → Konflikt: Er schließt sich einer Gruppe von Gleichgesinnten an, die sowohl auf den Straßen als auch im digitalen Raum gegen unbezahlbaren Wohnraum kämpfen. → Wendepunkt: Als die Räumung ihres protestierenden Zeltdorfs droht, greift die Bewegung auf kreative digitale Guerilla-Aktionen über, die das gesamte Stadtnetz lahmlegen. → Höhepunkt: Eine gewaltige, friedliche Lichter-Demonstration vereint Tausende Jugendliche auf dem zentralen Platz. → Nachhall: Bei Sonnenaufgang blickt der Protagonist auf die veränderte Stadtlandschaft – entschlossen, seine Zukunft selbst zu gestalten.",
+    "anime_concept": "A coming-of-age story set in a visually striking modern European metropolis, following a group of young students and creators who combine street art, digital activism, and physical camp-ins to stand up against rising living costs and claim their future.",
+    "fictional_character": "Ren, an 19-year-old architecture student who designs modular makeshift shelters for protest camps while livestreaming digital art onto city monuments.",
+    "recommended_perspective": "3. Person begrenzt (Fokus auf den fiktiven Protagonisten Ren)",
+    "anime_imagery": "High-contrast cinematic anime aesthetics reminiscent of Makoto Shinkai, combining rainy neon-lit city streets, glowing digital interfaces, and emotional crowd scenes with dramatic smoke and sunset palettes.",
+    "sound_ideas": [
+     "Echoing protest chants over distant city traffic",
+     "Glitchy electronic ambient sound design transitioning into orchestral strings",
+     "Rhythmic rain sound muted by the sudden quiet inside a protest tent"
+    ],
+    "recommended_length_seconds": 45,
+    "scores": {
+     "emotional": 16,
+     "transformation": 18,
+     "cinematic": 14,
+     "story": 13,
+     "originality": 7,
+     "technical": 4
+    },
+    "synthetic_suspected": false,
+    "misleading_suspected": false,
+    "authenticity_concerns": [
+     "Das Video ist ein zusammengeschnittener Medienbeitrag aus B-Roll-Material verschiedener Proteste an unterschiedlichen Orten."
+    ],
+    "open_questions": [
+     "Genaue Entstehungsdaten der einzelnen Hintergrundclip-Ausschnitte sind im Beitrag nicht einzeln ausgewiesen."
+    ],
+    "sensitive_content": [
+     "Szenen von brennenden Gegenständen und Straßenbarrikaden",
+     "Konfrontationsszenen zwischen Polizeikräften und Demonstrierenden",
+     "Aufnahme einer älteren Person im Krankenbett"
+    ],
+    "_model": "gemini-3.6-flash"
+   },
+   "analyzed_at": "2026-10-20T17:57:40Z",
+   "emotional_observations": [
+    "Lautstarke Entschlossenheit und Wut in den Gesichtern und Gesten der demonstrierenden Jugendlichen",
+    "Ernsthafter und informativer Vortragston der Moderatorin",
+    "Bedrückte Stimmung im kurzen Ausschnitt einer von Zwangsräumung betroffenen älteren Frau",
+    "Starkes Gefühl von Solidarität und Gemeinschaft beim Zelten und Marschieren"
+   ],
+   "visual_highlights": [
+    {
+     "timecode": "00:00",
+     "beschreibung": "Dramatische Collage aus Protestzug-Aufnahmen mit dichtem Rauch, roter Flammenglut und erhobenen Flaggen"
+    },
+    {
+     "timecode": "00:15",
+     "beschreibung": "Buntes Zeltdorf mitten auf einem städtischen Platz als Zeichen des Protests gegen hohe Mieten"
+    },
+    {
+     "timecode": "00:42",
+     "beschreibung": "Massive schwarze Rauchwolke über einer Nachtdemonstration mit lodernden Flammen"
+    },
+    {
+     "timecode": "01:05",
+     "beschreibung": "Einblendung von Discord-Screenshots als Beispiel für digitalen Protest und Vorlesungsstörungen"
+    },
+    {
+     "timecode": "02:01",
+     "beschreibung": "Zahlreiche Jugendliche belagern den Sockel des Republik-Denkmals in Paris"
+    }
+   ],
+   "story_potential": "Einstieg: Ein junger Student steht in einer regenverhangenen Großstadt vor der Nachricht seiner Mieterhöhung und dem drohenden Rauswurf. → Konflikt: Er schließt sich einer Gruppe von Gleichgesinnten an, die sowohl auf den Straßen als auch im digitalen Raum gegen unbezahlbaren Wohnraum kämpfen. → Wendepunkt: Als die Räumung ihres protestierenden Zeltdorfs droht, greift die Bewegung auf kreative digitale Guerilla-Aktionen über, die das gesamte Stadtnetz lahmlegen. → Höhepunkt: Eine gewaltige, friedliche Lichter-Demonstration vereint Tausende Jugendliche auf dem zentralen Platz. → Nachhall: Bei Sonnenaufgang blickt der Protagonist auf die veränderte Stadtlandschaft – entschlossen, seine Zukunft selbst zu gestalten.",
+   "anime_concept": "A coming-of-age story set in a visually striking modern European metropolis, following a group of young students and creators who combine street art, digital activism, and physical camp-ins to stand up against rising living costs and claim their future.",
+   "fictional_character": "Ren, an 19-year-old architecture student who designs modular makeshift shelters for protest camps while livestreaming digital art onto city monuments.",
+   "recommended_perspective": "3. Person begrenzt (Fokus auf den fiktiven Protagonisten Ren)",
+   "anime_imagery": "High-contrast cinematic anime aesthetics reminiscent of Makoto Shinkai, combining rainy neon-lit city streets, glowing digital interfaces, and emotional crowd scenes with dramatic smoke and sunset palettes.",
+   "sound_ideas": [
+    "Echoing protest chants over distant city traffic",
+    "Glitchy electronic ambient sound design transitioning into orchestral strings",
+    "Rhythmic rain sound muted by the sudden quiet inside a protest tent"
+   ],
+   "recommended_length_seconds": 45,
+   "authenticity_concerns": [
+    "Das Video ist ein zusammengeschnittener Medienbeitrag aus B-Roll-Material verschiedener Proteste an unterschiedlichen Orten."
+   ],
+   "open_questions": [
+    "Genaue Entstehungsdaten der einzelnen Hintergrundclip-Ausschnitte sind im Beitrag nicht einzeln ausgewiesen."
+   ],
+   "sensitive_content": [
+    "Szenen von brennenden Gegenständen und Straßenbarrikaden",
+    "Konfrontationsszenen zwischen Polizeikräften und Demonstrierenden",
+    "Aufnahme einer älteren Person im Krankenbett"
+   ]
   },
   "xNcc6eU7aMM": {
    "video_id": "xNcc6eU7aMM",
@@ -2524,14 +2793,7 @@
    "language": "en",
    "duration_seconds": 13,
    "authenticity_status": "UNVERIFIED",
-   "verification_sources": [
-    {
-     "domain": "tagesspiegel.de",
-     "title": "Kaum Jugendliche bei Schülerprotest : 250 Menschen versammeln sich zu Demo am Berliner Kleistpark",
-     "url": "https://www.tagesspiegel.de/berlin/kaum-jugendliche-bei-schulerprotest-250-menschen-versammeln-sich-zu-demo-am-berliner-kleistpark-16173250.html",
-     "seen": "20261017T144500Z"
-    }
-   ],
+   "verification_sources": [],
    "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
    "manual_review_required": true,
    "snapshots": [
@@ -2590,14 +2852,20 @@
      "views": 10142,
      "likes": 292,
      "comments": 97
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 10343,
+     "likes": 295,
+     "comments": 98
     }
    ],
-   "views": 10142,
-   "likes": 292,
-   "comments": 97,
+   "views": 10343,
+   "likes": 295,
+   "comments": 98,
    "shares": null,
-   "engagement_rate": 3.84,
-   "views_velocity_per_hour": 52,
+   "engagement_rate": 3.8,
+   "views_velocity_per_hour": 37,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "VQLciJZexXo",
    "score_breakdown": {
@@ -2645,14 +2913,20 @@
      "views": 425066,
      "likes": 1100,
      "comments": 1341
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 429590,
+     "likes": 1114,
+     "comments": 1341
     }
    ],
-   "views": 425066,
-   "likes": 1100,
+   "views": 429590,
+   "likes": 1114,
    "comments": 1341,
    "shares": null,
    "engagement_rate": 0.57,
-   "views_velocity_per_hour": 835,
+   "views_velocity_per_hour": 824,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "dCVcfA4nPm0",
    "score_breakdown": {
@@ -2700,14 +2974,20 @@
      "views": 13003,
      "likes": 107,
      "comments": 7
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 13023,
+     "likes": 107,
+     "comments": 7
     }
    ],
-   "views": 13003,
+   "views": 13023,
    "likes": 107,
    "comments": 7,
    "shares": null,
    "engagement_rate": 0.88,
-   "views_velocity_per_hour": 1,
+   "views_velocity_per_hour": 4,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "wVwyVJjYZhw",
@@ -2904,14 +3184,20 @@
      "views": 78729,
      "likes": 399,
      "comments": 652
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 83207,
+     "likes": 412,
+     "comments": 668
     }
    ],
-   "views": 78729,
-   "likes": 399,
-   "comments": 652,
+   "views": 83207,
+   "likes": 412,
+   "comments": 668,
    "shares": null,
-   "engagement_rate": 1.33,
-   "views_velocity_per_hour": 1158,
+   "engagement_rate": 1.3,
+   "views_velocity_per_hour": 816,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "vl_kKuN1M5w",
@@ -2967,19 +3253,25 @@
      "views": 10044,
      "likes": 74,
      "comments": 40
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 10561,
+     "likes": 77,
+     "comments": 43
     }
    ],
-   "views": 10044,
-   "likes": 74,
-   "comments": 40,
+   "views": 10561,
+   "likes": 77,
+   "comments": 43,
    "shares": null,
    "engagement_rate": 1.14,
-   "views_velocity_per_hour": 109,
+   "views_velocity_per_hour": 94,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "PqwomqaQM64",
    "score_breakdown": {
-    "social": 4
+    "social": 3
    },
    "anime_score": null
   },
@@ -3078,14 +3370,20 @@
      "views": 46622,
      "likes": 127,
      "comments": 31
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 48715,
+     "likes": 129,
+     "comments": 31
     }
    ],
-   "views": 46622,
-   "likes": 127,
+   "views": 48715,
+   "likes": 129,
    "comments": 31,
    "shares": null,
-   "engagement_rate": 0.34,
-   "views_velocity_per_hour": 291,
+   "engagement_rate": 0.33,
+   "views_velocity_per_hour": 381,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "_Gn27MXFwRA",
    "score_breakdown": {
@@ -3176,14 +3474,20 @@
      "views": 7029,
      "likes": 71,
      "comments": 2
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 7033,
+     "likes": 71,
+     "comments": 2
     }
    ],
-   "views": 7029,
+   "views": 7033,
    "likes": 71,
    "comments": 2,
    "shares": null,
    "engagement_rate": 1.04,
-   "views_velocity_per_hour": 2,
+   "views_velocity_per_hour": 1,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "wVwyVJjYZhw",
@@ -3232,19 +3536,25 @@
      "views": 21421,
      "likes": 41,
      "comments": 77
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 22007,
+     "likes": 42,
+     "comments": 77
     }
    ],
-   "views": 21421,
-   "likes": 41,
+   "views": 22007,
+   "likes": 42,
    "comments": 77,
    "shares": null,
-   "engagement_rate": 0.55,
-   "views_velocity_per_hour": 68,
+   "engagement_rate": 0.54,
+   "views_velocity_per_hour": 107,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "XgDwOz28rn4",
    "score_breakdown": {
-    "social": 2
+    "social": 3
    },
    "anime_score": null
   },
@@ -3267,14 +3577,7 @@
    "language": "de",
    "duration_seconds": 232,
    "authenticity_status": "UNVERIFIED",
-   "verification_sources": [
-    {
-     "domain": "tagesspiegel.de",
-     "title": "Kaum Jugendliche bei Schülerprotest : 250 Menschen versammeln sich zu Demo am Berliner Kleistpark",
-     "url": "https://www.tagesspiegel.de/berlin/kaum-jugendliche-bei-schulerprotest-250-menschen-versammeln-sich-zu-demo-am-berliner-kleistpark-16173250.html",
-     "seen": "20261017T144500Z"
-    }
-   ],
+   "verification_sources": [],
    "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
    "manual_review_required": true,
    "snapshots": [
@@ -3295,14 +3598,20 @@
      "views": 6666,
      "likes": 297,
      "comments": 69
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 6712,
+     "likes": 298,
+     "comments": 71
     }
    ],
-   "views": 6666,
-   "likes": 297,
-   "comments": 69,
+   "views": 6712,
+   "likes": 298,
+   "comments": 71,
    "shares": null,
-   "engagement_rate": 5.49,
-   "views_velocity_per_hour": 18,
+   "engagement_rate": 5.5,
+   "views_velocity_per_hour": 8,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "L_Zk_v0ia00",
@@ -3351,14 +3660,20 @@
      "views": 30917,
      "likes": 451,
      "comments": 398
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 31395,
+     "likes": 465,
+     "comments": 401
     }
    ],
-   "views": 30917,
-   "likes": 451,
-   "comments": 398,
+   "views": 31395,
+   "likes": 465,
+   "comments": 401,
    "shares": null,
-   "engagement_rate": 2.75,
-   "views_velocity_per_hour": 96,
+   "engagement_rate": 2.76,
+   "views_velocity_per_hour": 87,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "Y8Dwg9IfpQ4",
@@ -3477,14 +3792,20 @@
      "views": 90929,
      "likes": 498,
      "comments": 95
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 91715,
+     "likes": 501,
+     "comments": 95
     }
    ],
-   "views": 90929,
-   "likes": 498,
+   "views": 91715,
+   "likes": 501,
    "comments": 95,
    "shares": null,
    "engagement_rate": 0.65,
-   "views_velocity_per_hour": 246,
+   "views_velocity_per_hour": 143,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "Qh2Zoo25yiI",
@@ -3582,18 +3903,24 @@
      "views": 22322,
      "likes": null,
      "comments": 9
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 24368,
+     "likes": null,
+     "comments": 9
     }
    ],
-   "views": 22322,
+   "views": 24368,
    "likes": null,
    "comments": 9,
    "shares": null,
    "engagement_rate": 0.04,
-   "views_velocity_per_hour": 756,
+   "views_velocity_per_hour": 373,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "nrEVBfoUZ6A",
    "score_breakdown": {
-    "social": 5
+    "social": 3
    },
    "anime_score": null
   },
@@ -3644,14 +3971,20 @@
      "views": 1150973,
      "likes": 16894,
      "comments": 1453
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 1159580,
+     "likes": 17013,
+     "comments": 1454
     }
    ],
-   "views": 1150973,
-   "likes": 16894,
-   "comments": 1453,
+   "views": 1159580,
+   "likes": 17013,
+   "comments": 1454,
    "shares": null,
    "engagement_rate": 1.59,
-   "views_velocity_per_hour": 1650,
+   "views_velocity_per_hour": 1568,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Ereignis in Paris durch 7 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "HFncBhBdP30",
@@ -3836,14 +4169,20 @@
      "views": 12289,
      "likes": 211,
      "comments": 43
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 12381,
+     "likes": 211,
+     "comments": 43
     }
    ],
-   "views": 12289,
+   "views": 12381,
    "likes": 211,
    "comments": 43,
    "shares": null,
-   "engagement_rate": 2.07,
-   "views_velocity_per_hour": 36,
+   "engagement_rate": 2.05,
+   "views_velocity_per_hour": 17,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "5VByzmloEcE",
@@ -3899,14 +4238,20 @@
      "views": 352002,
      "likes": 4849,
      "comments": 139
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 358404,
+     "likes": 4893,
+     "comments": 139
     }
    ],
-   "views": 352002,
-   "likes": 4849,
+   "views": 358404,
+   "likes": 4893,
    "comments": 139,
    "shares": null,
-   "engagement_rate": 1.42,
-   "views_velocity_per_hour": 653,
+   "engagement_rate": 1.4,
+   "views_velocity_per_hour": 1166,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "ibCVXxEau9E",
@@ -3962,14 +4307,20 @@
      "views": 491984,
      "likes": 2460,
      "comments": 740
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 494021,
+     "likes": 2473,
+     "comments": 743
     }
    ],
-   "views": 491984,
-   "likes": 2460,
-   "comments": 740,
+   "views": 494021,
+   "likes": 2473,
+   "comments": 743,
    "shares": null,
    "engagement_rate": 0.65,
-   "views_velocity_per_hour": 424,
+   "views_velocity_per_hour": 371,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "0qH1pc6pqCs",
@@ -4164,14 +4515,20 @@
      "views": 477435,
      "likes": 1611,
      "comments": 1936
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 480787,
+     "likes": 1619,
+     "comments": 1918
     }
    ],
-   "views": 477435,
-   "likes": 1611,
-   "comments": 1936,
+   "views": 480787,
+   "likes": 1619,
+   "comments": 1918,
    "shares": null,
    "engagement_rate": 0.74,
-   "views_velocity_per_hour": 684,
+   "views_velocity_per_hour": 611,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "JROb_u1Gwiw",
    "score_breakdown": {
@@ -4219,19 +4576,25 @@
      "views": 30649,
      "likes": 3659,
      "comments": 187
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 31825,
+     "likes": 3667,
+     "comments": 187
     }
    ],
-   "views": 30649,
-   "likes": 3659,
+   "views": 31825,
+   "likes": 3667,
    "comments": 187,
    "shares": null,
-   "engagement_rate": 12.55,
-   "views_velocity_per_hour": 98,
+   "engagement_rate": 12.11,
+   "views_velocity_per_hour": 214,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "poGnuzHfjTY",
    "score_breakdown": {
-    "social": 6
+    "social": 7
    },
    "anime_score": null
   },
@@ -4282,14 +4645,20 @@
      "views": 503550,
      "likes": 5855,
      "comments": 2064
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 539075,
+     "likes": 6185,
+     "comments": 2138
     }
    ],
-   "views": 503550,
-   "likes": 5855,
-   "comments": 2064,
+   "views": 539075,
+   "likes": 6185,
+   "comments": 2138,
    "shares": null,
-   "engagement_rate": 1.57,
-   "views_velocity_per_hour": 8530,
+   "engagement_rate": 1.54,
+   "views_velocity_per_hour": 6470,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "yi_ODmCuNdQ",
@@ -4454,14 +4823,20 @@
      "views": 95307,
      "likes": 235,
      "comments": 648
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 98040,
+     "likes": 239,
+     "comments": 654
     }
    ],
-   "views": 95307,
-   "likes": 235,
-   "comments": 648,
+   "views": 98040,
+   "likes": 239,
+   "comments": 654,
    "shares": null,
-   "engagement_rate": 0.93,
-   "views_velocity_per_hour": 457,
+   "engagement_rate": 0.91,
+   "views_velocity_per_hour": 498,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "-3iwDWqSd94",
@@ -4517,14 +4892,20 @@
      "views": 315143,
      "likes": null,
      "comments": null
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 317365,
+     "likes": null,
+     "comments": null
     }
    ],
-   "views": 315143,
+   "views": 317365,
    "likes": null,
    "comments": null,
    "shares": null,
    "engagement_rate": null,
-   "views_velocity_per_hour": 475,
+   "views_velocity_per_hour": 405,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "aM2_Kcrh58I",
@@ -4551,13 +4932,31 @@
    "collected_at": "2026-10-19T20:26:20Z",
    "language": "de-DE",
    "duration_seconds": 177,
-   "authenticity_status": "UNVERIFIED",
+   "authenticity_status": "PARTIALLY_VERIFIED",
    "verification_sources": [
     {
+     "domain": "welt.de",
+     "title": "Berliner Polizei bereitet sich auf Protesttag vor",
+     "url": "https://www.welt.de/regionales/berlin/article6ad77c3e51e5094f7a57337e/berliner-polizei-bereitet-sich-auf-protesttag-vor.html",
+     "seen": "20261020T151500Z"
+    },
+    {
      "domain": "tagesspiegel.de",
-     "title": "Kaum Jugendliche bei Schülerprotest : 250 Menschen versammeln sich zu Demo am Berliner Kleistpark",
-     "url": "https://www.tagesspiegel.de/berlin/kaum-jugendliche-bei-schulerprotest-250-menschen-versammeln-sich-zu-demo-am-berliner-kleistpark-16173250.html",
-     "seen": "20261017T144500Z"
+     "title": " „ Gen Z steht auf  ruft zu Protesten auf : Berliner Polizei bereitet sich auf umfangreichen Einsatz am 31 . Oktober vor",
+     "url": "https://www.tagesspiegel.de/berlin/dpa-berliner-polizei-bereitet-sich-auf-umfangreichen-einsatz-am-31-oktober-vor-16181215.html",
+     "seen": "20261020T153000Z"
+    },
+    {
+     "domain": "n-tv.de",
+     "title": "Berlin & Brandenburg : Berliner Polizei bereitet sich auf Protesttag vor",
+     "url": "https://www.n-tv.de/regionales/berlin-und-brandenburg/Berliner-Polizei-bereitet-sich-auf-Protesttag-vor-id31439428.html",
+     "seen": "20261020T150000Z"
+    },
+    {
+     "domain": "morgenpost.de",
+     "title": "Protesttag in Berlin am 31 . Oktober : Polizei fürchtet Szenario wie in Frankreich",
+     "url": "https://www.morgenpost.de/berlin/article413466092/protesttag-in-berlin-am-31-oktober-polizei-fuerchtet-szenario-wie-in-frankreich.html",
+     "seen": "20261020T161500Z"
     }
    ],
    "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
@@ -4580,19 +4979,25 @@
      "views": 18163,
      "likes": 1643,
      "comments": 24
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 20290,
+     "likes": 1737,
+     "comments": 26
     }
    ],
-   "views": 18163,
-   "likes": 1643,
-   "comments": 24,
+   "views": 20290,
+   "likes": 1737,
+   "comments": 26,
    "shares": null,
-   "engagement_rate": 9.18,
-   "views_velocity_per_hour": 606,
+   "engagement_rate": 8.69,
+   "views_velocity_per_hour": 387,
    "velocity_basis": "gemessen (zwei Messpunkte)",
-   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "verification_note": "Ereignis in Berlin durch 4 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "rJ18fP2tRFA",
    "score_breakdown": {
-    "social": 9
+    "social": 7
    },
    "anime_score": null
   },
@@ -4636,14 +5041,20 @@
      "views": 33828,
      "likes": 947,
      "comments": 180
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 40282,
+     "likes": 1058,
+     "comments": 209
     }
    ],
-   "views": 33828,
-   "likes": 947,
-   "comments": 180,
+   "views": 40282,
+   "likes": 1058,
+   "comments": 209,
    "shares": null,
-   "engagement_rate": 3.33,
-   "views_velocity_per_hour": 1349,
+   "engagement_rate": 3.15,
+   "views_velocity_per_hour": 1175,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "U2VnzBbPT0I",
@@ -4782,14 +5193,20 @@
      "views": 11242,
      "likes": 24,
      "comments": 9
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 11258,
+     "likes": 24,
+     "comments": 9
     }
    ],
-   "views": 11242,
+   "views": 11258,
    "likes": 24,
    "comments": 9,
    "shares": null,
    "engagement_rate": 0.29,
-   "views_velocity_per_hour": 8,
+   "views_velocity_per_hour": 3,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "UGKmBiFMdw0",
    "score_breakdown": {
@@ -4893,14 +5310,20 @@
      "views": 277003,
      "likes": 570,
      "comments": 565
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 302675,
+     "likes": 627,
+     "comments": 601
     }
    ],
-   "views": 277003,
-   "likes": 570,
-   "comments": 565,
+   "views": 302675,
+   "likes": 627,
+   "comments": 601,
    "shares": null,
    "engagement_rate": 0.41,
-   "views_velocity_per_hour": 3096,
+   "views_velocity_per_hour": 4676,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "Zr8BbAG-OPw",
@@ -4949,14 +5372,20 @@
      "views": 16702,
      "likes": 65,
      "comments": 13
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 17720,
+     "likes": 66,
+     "comments": 14
     }
    ],
-   "views": 16702,
-   "likes": 65,
-   "comments": 13,
+   "views": 17720,
+   "likes": 66,
+   "comments": 14,
    "shares": null,
-   "engagement_rate": 0.47,
-   "views_velocity_per_hour": 141,
+   "engagement_rate": 0.45,
+   "views_velocity_per_hour": 185,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "YKBRFDWlvKY",
    "score_breakdown": {
@@ -5004,14 +5433,20 @@
      "views": 1551192,
      "likes": 19445,
      "comments": 4169
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 1566706,
+     "likes": 19551,
+     "comments": 4206
     }
    ],
-   "views": 1551192,
-   "likes": 19445,
-   "comments": 4169,
+   "views": 1566706,
+   "likes": 19551,
+   "comments": 4206,
    "shares": null,
    "engagement_rate": 1.52,
-   "views_velocity_per_hour": 3353,
+   "views_velocity_per_hour": 2826,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "RcpANAiIFiM",
@@ -5173,14 +5608,20 @@
      "views": 162126,
      "likes": 134,
      "comments": 196
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 166610,
+     "likes": 134,
+     "comments": 196
     }
    ],
-   "views": 162126,
+   "views": 166610,
    "likes": 134,
    "comments": 196,
    "shares": null,
    "engagement_rate": 0.2,
-   "views_velocity_per_hour": 938,
+   "views_velocity_per_hour": 817,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "AxsC-kFhflk",
@@ -5236,14 +5677,20 @@
      "views": 30560,
      "likes": 306,
      "comments": 45
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 30750,
+     "likes": 307,
+     "comments": 45
     }
    ],
-   "views": 30560,
-   "likes": 306,
+   "views": 30750,
+   "likes": 307,
    "comments": 45,
    "shares": null,
-   "engagement_rate": 1.15,
-   "views_velocity_per_hour": 95,
+   "engagement_rate": 1.14,
+   "views_velocity_per_hour": 35,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "3WAdzMxnirY",
@@ -5299,14 +5746,20 @@
      "views": 73772,
      "likes": 398,
      "comments": 84
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 75297,
+     "likes": 403,
+     "comments": 84
     }
    ],
-   "views": 73772,
-   "likes": 398,
+   "views": 75297,
+   "likes": 403,
    "comments": 84,
    "shares": null,
    "engagement_rate": 0.65,
-   "views_velocity_per_hour": 307,
+   "views_velocity_per_hour": 278,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "1T7saU27jp0",
@@ -5355,19 +5808,25 @@
      "views": 85417,
      "likes": 1154,
      "comments": 250
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 87845,
+     "likes": 1168,
+     "comments": 251
     }
    ],
-   "views": 85417,
-   "likes": 1154,
-   "comments": 250,
+   "views": 87845,
+   "likes": 1168,
+   "comments": 251,
    "shares": null,
-   "engagement_rate": 1.64,
-   "views_velocity_per_hour": 630,
+   "engagement_rate": 1.62,
+   "views_velocity_per_hour": 442,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "r_Fyv_ooM4o",
    "score_breakdown": {
-    "social": 6
+    "social": 4
    },
    "anime_score": null
   },
@@ -5411,19 +5870,25 @@
      "views": 9214,
      "likes": 132,
      "comments": 136
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 9288,
+     "likes": 133,
+     "comments": 136
     }
    ],
-   "views": 9214,
-   "likes": 132,
+   "views": 9288,
+   "likes": 133,
    "comments": 136,
    "shares": null,
-   "engagement_rate": 2.91,
-   "views_velocity_per_hour": 165,
+   "engagement_rate": 2.9,
+   "views_velocity_per_hour": 13,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "u42s-jmn2aY",
    "score_breakdown": {
-    "social": 5
+    "social": 4
    },
    "anime_score": null
   },
@@ -5468,14 +5933,20 @@
      "views": 11958,
      "likes": 65,
      "comments": 93
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 11998,
+     "likes": 65,
+     "comments": 93
     }
    ],
-   "views": 11958,
+   "views": 11998,
    "likes": 65,
    "comments": 93,
    "shares": null,
    "engagement_rate": 1.32,
-   "views_velocity_per_hour": 3,
+   "views_velocity_per_hour": 7,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "8HocK_Hkmcc",
@@ -5531,14 +6002,20 @@
      "views": 153782,
      "likes": 1478,
      "comments": 254
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 155500,
+     "likes": 1491,
+     "comments": 256
     }
    ],
-   "views": 153782,
-   "likes": 1478,
-   "comments": 254,
+   "views": 155500,
+   "likes": 1491,
+   "comments": 256,
    "shares": null,
-   "engagement_rate": 1.13,
-   "views_velocity_per_hour": 443,
+   "engagement_rate": 1.12,
+   "views_velocity_per_hour": 313,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "ZDwtvh3biLc",
@@ -5643,14 +6120,20 @@
      "views": 33372,
      "likes": 1722,
      "comments": 235
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 33784,
+     "likes": 1747,
+     "comments": 237
     }
    ],
-   "views": 33372,
-   "likes": 1722,
-   "comments": 235,
+   "views": 33784,
+   "likes": 1747,
+   "comments": 237,
    "shares": null,
-   "engagement_rate": 5.86,
-   "views_velocity_per_hour": 61,
+   "engagement_rate": 5.87,
+   "views_velocity_per_hour": 75,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "nZzDInTS7mI",
    "score_breakdown": {
@@ -5698,14 +6181,20 @@
      "views": 33457,
      "likes": 122,
      "comments": 352
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 35403,
+     "likes": 127,
+     "comments": 358
     }
    ],
-   "views": 33457,
-   "likes": 122,
-   "comments": 352,
+   "views": 35403,
+   "likes": 127,
+   "comments": 358,
    "shares": null,
-   "engagement_rate": 1.42,
-   "views_velocity_per_hour": 228,
+   "engagement_rate": 1.37,
+   "views_velocity_per_hour": 354,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "-lao0VfUcmo",
@@ -5754,19 +6243,25 @@
      "views": 62640,
      "likes": 1167,
      "comments": 446
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 64585,
+     "likes": 1203,
+     "comments": 464
     }
    ],
-   "views": 62640,
-   "likes": 1167,
-   "comments": 446,
+   "views": 64585,
+   "likes": 1203,
+   "comments": 464,
    "shares": null,
    "engagement_rate": 2.58,
-   "views_velocity_per_hour": 2145,
+   "views_velocity_per_hour": 354,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "oi_nQ_P7GAw",
    "score_breakdown": {
-    "social": 9,
+    "social": 5,
     "emotional": 15.0,
     "transformation": 18.0,
     "cinematic": 12.0,
@@ -5774,7 +6269,7 @@
     "originality": 9.0,
     "technical": 3.0
    },
-   "anime_score": 80,
+   "anime_score": 76,
    "analysis": {
     "relevant": true,
     "event_description": "Demonstrierende blockieren eine mehrspurige Autobahn, wodurch der Verkehr zum Stillstand kommt. An einer Fußgängerüberführung hängen Protestbanner, während auf der Fahrbahn mehrere klassische Holzschulbänke und Stühle direkt vor den wartenden Fahrzeugen als symbolische Barriere aufgestellt sind. Die Gruppe skandiert im Chor mit erhobenen Händen.",
@@ -5911,14 +6406,20 @@
      "views": 161951,
      "likes": 4409,
      "comments": 313
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 164766,
+     "likes": 4502,
+     "comments": 325
     }
    ],
-   "views": 161951,
-   "likes": 4409,
-   "comments": 313,
+   "views": 164766,
+   "likes": 4502,
+   "comments": 325,
    "shares": null,
-   "engagement_rate": 2.92,
-   "views_velocity_per_hour": 584,
+   "engagement_rate": 2.93,
+   "views_velocity_per_hour": 513,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "ld3keNyZ2BM",
@@ -5967,14 +6468,20 @@
      "views": 14147,
      "likes": 111,
      "comments": 161
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 14156,
+     "likes": 111,
+     "comments": 161
     }
    ],
-   "views": 14147,
+   "views": 14156,
    "likes": 111,
    "comments": 161,
    "shares": null,
    "engagement_rate": 1.92,
-   "views_velocity_per_hour": 1,
+   "views_velocity_per_hour": 2,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "OaY5pk-sqKg",
@@ -6023,19 +6530,25 @@
      "views": 16728,
      "likes": 190,
      "comments": 141
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 18077,
+     "likes": 197,
+     "comments": 151
     }
    ],
-   "views": 16728,
-   "likes": 190,
-   "comments": 141,
+   "views": 18077,
+   "likes": 197,
+   "comments": 151,
    "shares": null,
-   "engagement_rate": 1.98,
-   "views_velocity_per_hour": 585,
+   "engagement_rate": 1.93,
+   "views_velocity_per_hour": 246,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "3Q97xmM1mwU",
    "score_breakdown": {
-    "social": 6
+    "social": 4
    },
    "anime_score": null
   },
@@ -6079,14 +6592,20 @@
      "views": 19358,
      "likes": 132,
      "comments": 1
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 19516,
+     "likes": 132,
+     "comments": 1
     }
    ],
-   "views": 19358,
+   "views": 19516,
    "likes": 132,
    "comments": 1,
    "shares": null,
-   "engagement_rate": 0.69,
-   "views_velocity_per_hour": 50,
+   "engagement_rate": 0.68,
+   "views_velocity_per_hour": 29,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "ZfUY2zi4frs",
    "score_breakdown": {
@@ -6113,14 +6632,7 @@
    "language": "de",
    "duration_seconds": 871,
    "authenticity_status": "UNVERIFIED",
-   "verification_sources": [
-    {
-     "domain": "tagesspiegel.de",
-     "title": "Kaum Jugendliche bei Schülerprotest : 250 Menschen versammeln sich zu Demo am Berliner Kleistpark",
-     "url": "https://www.tagesspiegel.de/berlin/kaum-jugendliche-bei-schulerprotest-250-menschen-versammeln-sich-zu-demo-am-berliner-kleistpark-16173250.html",
-     "seen": "20261017T144500Z"
-    }
-   ],
+   "verification_sources": [],
    "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
    "manual_review_required": true,
    "snapshots": [
@@ -6198,14 +6710,20 @@
      "views": 48610,
      "likes": 316,
      "comments": 47
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 49313,
+     "likes": 318,
+     "comments": 47
     }
    ],
-   "views": 48610,
-   "likes": 316,
+   "views": 49313,
+   "likes": 318,
    "comments": 47,
    "shares": null,
-   "engagement_rate": 0.75,
-   "views_velocity_per_hour": 179,
+   "engagement_rate": 0.74,
+   "views_velocity_per_hour": 128,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "kFGFFYeCh7A",
@@ -6261,14 +6779,20 @@
      "views": 6395,
      "likes": 40,
      "comments": 8
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 6642,
+     "likes": 42,
+     "comments": 8
     }
    ],
-   "views": 6395,
-   "likes": 40,
+   "views": 6642,
+   "likes": 42,
    "comments": 8,
    "shares": null,
    "engagement_rate": 0.75,
-   "views_velocity_per_hour": 72,
+   "views_velocity_per_hour": 45,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "mgx4NJS4w-A",
@@ -6317,14 +6841,20 @@
      "views": 195112,
      "likes": 5398,
      "comments": 970
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 199772,
+     "likes": 5540,
+     "comments": 996
     }
    ],
-   "views": 195112,
-   "likes": 5398,
-   "comments": 970,
+   "views": 199772,
+   "likes": 5540,
+   "comments": 996,
    "shares": null,
-   "engagement_rate": 3.26,
-   "views_velocity_per_hour": 662,
+   "engagement_rate": 3.27,
+   "views_velocity_per_hour": 849,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "xRtdteECNxM",
    "score_breakdown": {
@@ -6428,14 +6958,20 @@
      "views": 140606,
      "likes": 12591,
      "comments": 292
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 148307,
+     "likes": 13622,
+     "comments": 307
     }
    ],
-   "views": 140606,
-   "likes": 12591,
-   "comments": 292,
+   "views": 148307,
+   "likes": 13622,
+   "comments": 307,
    "shares": null,
-   "engagement_rate": 9.16,
-   "views_velocity_per_hour": 1442,
+   "engagement_rate": 9.39,
+   "views_velocity_per_hour": 1403,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "R9l8FPku3LQ",
    "score_breakdown": {
@@ -6600,14 +7136,20 @@
      "views": 713063,
      "likes": 5307,
      "comments": 3520
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 721459,
+     "likes": 5323,
+     "comments": 3533
     }
    ],
-   "views": 713063,
-   "likes": 5307,
-   "comments": 3520,
+   "views": 721459,
+   "likes": 5323,
+   "comments": 3533,
    "shares": null,
-   "engagement_rate": 1.24,
-   "views_velocity_per_hour": 1917,
+   "engagement_rate": 1.23,
+   "views_velocity_per_hour": 1529,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "JSvF9vo72Hg",
@@ -6768,14 +7310,20 @@
      "views": 10353,
      "likes": 331,
      "comments": 118
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 11329,
+     "likes": 359,
+     "comments": 135
     }
    ],
-   "views": 10353,
-   "likes": 331,
-   "comments": 118,
+   "views": 11329,
+   "likes": 359,
+   "comments": 135,
    "shares": null,
-   "engagement_rate": 4.34,
-   "views_velocity_per_hour": 188,
+   "engagement_rate": 4.36,
+   "views_velocity_per_hour": 178,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "7_gulOpJoLo",
@@ -6824,14 +7372,20 @@
      "views": 219970,
      "likes": 6869,
      "comments": 72
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 224965,
+     "likes": 7013,
+     "comments": 75
     }
    ],
-   "views": 219970,
-   "likes": 6869,
-   "comments": 72,
+   "views": 224965,
+   "likes": 7013,
+   "comments": 75,
    "shares": null,
-   "engagement_rate": 3.16,
-   "views_velocity_per_hour": 903,
+   "engagement_rate": 3.15,
+   "views_velocity_per_hour": 910,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "dWLnWokNdAM",
    "score_breakdown": {
@@ -6879,14 +7433,20 @@
      "views": 37456,
      "likes": 667,
      "comments": 375
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 39310,
+     "likes": 696,
+     "comments": 384
     }
    ],
-   "views": 37456,
-   "likes": 667,
-   "comments": 375,
+   "views": 39310,
+   "likes": 696,
+   "comments": 384,
    "shares": null,
-   "engagement_rate": 2.78,
-   "views_velocity_per_hour": 281,
+   "engagement_rate": 2.75,
+   "views_velocity_per_hour": 338,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "Ba29ZRqvFkM",
@@ -6935,14 +7495,20 @@
      "views": 176949,
      "likes": 1708,
      "comments": 1769
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 180252,
+     "likes": 1745,
+     "comments": 1791
     }
    ],
-   "views": 176949,
-   "likes": 1708,
-   "comments": 1769,
+   "views": 180252,
+   "likes": 1745,
+   "comments": 1791,
    "shares": null,
    "engagement_rate": 1.96,
-   "views_velocity_per_hour": 741,
+   "views_velocity_per_hour": 602,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "Rb_pt9kCc7E",
@@ -6991,19 +7557,25 @@
      "views": 56080,
      "likes": 1125,
      "comments": 693
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 64288,
+     "likes": 1228,
+     "comments": 771
     }
    ],
-   "views": 56080,
-   "likes": 1125,
-   "comments": 693,
+   "views": 64288,
+   "likes": 1228,
+   "comments": 771,
    "shares": null,
-   "engagement_rate": 3.24,
-   "views_velocity_per_hour": 2860,
+   "engagement_rate": 3.11,
+   "views_velocity_per_hour": 1495,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "ACEQ2WPCz08",
    "score_breakdown": {
-    "social": 9
+    "social": 7
    },
    "anime_score": null
   },
@@ -7054,14 +7626,20 @@
      "views": 293895,
      "likes": 540,
      "comments": 513
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 294353,
+     "likes": 540,
+     "comments": 505
     }
    ],
-   "views": 293895,
+   "views": 294353,
    "likes": 540,
-   "comments": 513,
+   "comments": 505,
    "shares": null,
    "engagement_rate": 0.36,
-   "views_velocity_per_hour": 75,
+   "views_velocity_per_hour": 83,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "2HjZG6zkt7Y",
@@ -7088,13 +7666,31 @@
    "collected_at": "2026-10-19T20:26:20Z",
    "language": "de-DE",
    "duration_seconds": 142,
-   "authenticity_status": "UNVERIFIED",
+   "authenticity_status": "PARTIALLY_VERIFIED",
    "verification_sources": [
     {
+     "domain": "welt.de",
+     "title": "Berliner Polizei bereitet sich auf Protesttag vor",
+     "url": "https://www.welt.de/regionales/berlin/article6ad77c3e51e5094f7a57337e/berliner-polizei-bereitet-sich-auf-protesttag-vor.html",
+     "seen": "20261020T151500Z"
+    },
+    {
      "domain": "tagesspiegel.de",
-     "title": "Kaum Jugendliche bei Schülerprotest : 250 Menschen versammeln sich zu Demo am Berliner Kleistpark",
-     "url": "https://www.tagesspiegel.de/berlin/kaum-jugendliche-bei-schulerprotest-250-menschen-versammeln-sich-zu-demo-am-berliner-kleistpark-16173250.html",
-     "seen": "20261017T144500Z"
+     "title": " „ Gen Z steht auf  ruft zu Protesten auf : Berliner Polizei bereitet sich auf umfangreichen Einsatz am 31 . Oktober vor",
+     "url": "https://www.tagesspiegel.de/berlin/dpa-berliner-polizei-bereitet-sich-auf-umfangreichen-einsatz-am-31-oktober-vor-16181215.html",
+     "seen": "20261020T153000Z"
+    },
+    {
+     "domain": "n-tv.de",
+     "title": "Berlin & Brandenburg : Berliner Polizei bereitet sich auf Protesttag vor",
+     "url": "https://www.n-tv.de/regionales/berlin-und-brandenburg/Berliner-Polizei-bereitet-sich-auf-Protesttag-vor-id31439428.html",
+     "seen": "20261020T150000Z"
+    },
+    {
+     "domain": "morgenpost.de",
+     "title": "Protesttag in Berlin am 31 . Oktober : Polizei fürchtet Szenario wie in Frankreich",
+     "url": "https://www.morgenpost.de/berlin/article413466092/protesttag-in-berlin-am-31-oktober-polizei-fuerchtet-szenario-wie-in-frankreich.html",
+     "seen": "20261020T161500Z"
     }
    ],
    "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
@@ -7117,16 +7713,22 @@
      "views": 15132,
      "likes": 868,
      "comments": 24
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 17212,
+     "likes": 960,
+     "comments": 28
     }
    ],
-   "views": 15132,
-   "likes": 868,
-   "comments": 24,
+   "views": 17212,
+   "likes": 960,
+   "comments": 28,
    "shares": null,
-   "engagement_rate": 5.89,
-   "views_velocity_per_hour": 415,
+   "engagement_rate": 5.74,
+   "views_velocity_per_hour": 379,
    "velocity_basis": "gemessen (zwei Messpunkte)",
-   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "verification_note": "Ereignis in Berlin durch 4 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
    "cluster": "CGGEfvJtD9M",
    "score_breakdown": {
     "social": 6
@@ -7180,14 +7782,20 @@
      "views": 1172380,
      "likes": 6484,
      "comments": 2619
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 1181075,
+     "likes": 6546,
+     "comments": 2620
     }
    ],
-   "views": 1172380,
-   "likes": 6484,
-   "comments": 2619,
+   "views": 1181075,
+   "likes": 6546,
+   "comments": 2620,
    "shares": null,
    "engagement_rate": 0.78,
-   "views_velocity_per_hour": 1821,
+   "views_velocity_per_hour": 1584,
    "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "IkrO8OLU6w4",
@@ -7388,14 +7996,8 @@
    "collected_at": "2026-10-19T20:43:35Z",
    "language": "de",
    "duration_seconds": 15,
-   "authenticity_status": "PARTIALLY_VERIFIED",
+   "authenticity_status": "UNVERIFIED",
    "verification_sources": [
-    {
-     "domain": "n-tv.de",
-     "title": "Hamburg & Schleswig - Holstein : Hunderte Menschen protestieren gegen AfD - Jugend",
-     "url": "https://www.n-tv.de/regionales/hamburg-und-schleswig-holstein/Hunderte-Menschen-protestieren-gegen-AfD-Jugend-id31429390.html",
-     "seen": "20261017T163000Z"
-    },
     {
      "domain": "ndr.de",
      "title": "Hamburg : Hunderte bei Demo gegen Aktion zur  Remigration  ",
@@ -7417,16 +8019,22 @@
      "views": 11252,
      "likes": 567,
      "comments": 14
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 12758,
+     "likes": 646,
+     "comments": 14
     }
    ],
-   "views": 11252,
-   "likes": 567,
+   "views": 12758,
+   "likes": 646,
    "comments": 14,
    "shares": null,
-   "engagement_rate": 5.16,
-   "views_velocity_per_hour": 353,
+   "engagement_rate": 5.17,
+   "views_velocity_per_hour": 274,
    "velocity_basis": "gemessen (zwei Messpunkte)",
-   "verification_note": "Ereignis in Hamburg durch 2 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "UEOnCY4HaGc",
    "score_breakdown": {
     "social": 6
@@ -7461,18 +8069,24 @@
      "views": 336827,
      "likes": 941,
      "comments": 763
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 341047,
+     "likes": 949,
+     "comments": 771
     }
    ],
-   "views": 336827,
-   "likes": 941,
-   "comments": 763,
+   "views": 341047,
+   "likes": 949,
+   "comments": 771,
    "shares": null,
-   "engagement_rate": 0.51,
-   "views_velocity_per_hour": 5291,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 0.5,
+   "views_velocity_per_hour": 769,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "0Ne6vxU5exE",
    "score_breakdown": {
-    "social": 7
+    "social": 5
    },
    "anime_score": null
   },
@@ -7511,19 +8125,25 @@
      "views": 144405,
      "likes": 844,
      "comments": 448
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 149957,
+     "likes": 851,
+     "comments": 456
     }
    ],
-   "views": 144405,
-   "likes": 844,
-   "comments": 448,
+   "views": 149957,
+   "likes": 851,
+   "comments": 456,
    "shares": null,
-   "engagement_rate": 0.89,
-   "views_velocity_per_hour": 2179,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 0.87,
+   "views_velocity_per_hour": 1011,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "rqBORwSD3z8",
    "score_breakdown": {
-    "social": 7
+    "social": 5
    },
    "anime_score": null
   },
@@ -7555,15 +8175,21 @@
      "views": 42286,
      "likes": 2344,
      "comments": 104
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 50520,
+     "likes": 2661,
+     "comments": 114
     }
    ],
-   "views": 42286,
-   "likes": 2344,
-   "comments": 104,
+   "views": 50520,
+   "likes": 2661,
+   "comments": 114,
    "shares": null,
-   "engagement_rate": 5.79,
-   "views_velocity_per_hour": 2015,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 5.49,
+   "views_velocity_per_hour": 1500,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "3P5hZpM6rgA",
    "analysis": {
     "relevant": true,
@@ -7684,7 +8310,7 @@
     "Teilweise vermummte Personen in unübersichtlichen Gefahrensituationen"
    ],
    "score_breakdown": {
-    "social": 10,
+    "social": 8,
     "emotional": 14.0,
     "transformation": 18.0,
     "cinematic": 12.0,
@@ -7692,7 +8318,7 @@
     "originality": 6.0,
     "technical": 3.0
    },
-   "anime_score": 76
+   "anime_score": 74
   },
   "DH5OpkSOv5g": {
    "video_id": "DH5OpkSOv5g",
@@ -7766,18 +8392,24 @@
      "views": 12202,
      "likes": 49,
      "comments": 14
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 14027,
+     "likes": 52,
+     "comments": 14
     }
    ],
-   "views": 12202,
-   "likes": 49,
+   "views": 14027,
+   "likes": 52,
    "comments": 14,
    "shares": null,
-   "engagement_rate": 0.52,
-   "views_velocity_per_hour": 570,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 0.47,
+   "views_velocity_per_hour": 332,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "J1nHWwZSoXM",
    "score_breakdown": {
-    "social": 5
+    "social": 3
    },
    "anime_score": null
   },
@@ -7809,15 +8441,21 @@
      "views": 237257,
      "likes": 24205,
      "comments": 977
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 251798,
+     "likes": 25357,
+     "comments": 1013
     }
    ],
-   "views": 237257,
-   "likes": 24205,
-   "comments": 977,
+   "views": 251798,
+   "likes": 25357,
+   "comments": 1013,
    "shares": null,
-   "engagement_rate": 10.61,
-   "views_velocity_per_hour": 11224,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 10.47,
+   "views_velocity_per_hour": 2648,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "iNGteGxGziA",
    "analysis": {
     "relevant": true,
@@ -7946,7 +8584,7 @@
     "Gefährliche Brandszenen und Konfrontationen im öffentlichen Raum"
    ],
    "score_breakdown": {
-    "social": 13,
+    "social": 11,
     "emotional": 17.0,
     "transformation": 18.0,
     "cinematic": 14.0,
@@ -7954,7 +8592,7 @@
     "originality": 9.0,
     "technical": 4.0
    },
-   "anime_score": 89
+   "anime_score": 87
   },
   "Ot0fKLRLILI": {
    "video_id": "Ot0fKLRLILI",
@@ -8042,19 +8680,25 @@
      "views": 2041466,
      "likes": 79554,
      "comments": 15575
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 2066310,
+     "likes": 81230,
+     "comments": 15860
     }
    ],
-   "views": 2041466,
-   "likes": 79554,
-   "comments": 15575,
+   "views": 2066310,
+   "likes": 81230,
+   "comments": 15860,
    "shares": null,
-   "engagement_rate": 4.66,
-   "views_velocity_per_hour": 52656,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 4.7,
+   "views_velocity_per_hour": 4525,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "xJKwRJBsrV8",
    "score_breakdown": {
-    "social": 14
+    "social": 10
    },
    "anime_score": null
   },
@@ -8086,19 +8730,25 @@
      "views": 32423,
      "likes": 307,
      "comments": 226
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 33953,
+     "likes": 322,
+     "comments": 233
     }
    ],
-   "views": 32423,
-   "likes": 307,
-   "comments": 226,
+   "views": 33953,
+   "likes": 322,
+   "comments": 233,
    "shares": null,
-   "engagement_rate": 1.64,
-   "views_velocity_per_hour": 1618,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 1.63,
+   "views_velocity_per_hour": 279,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "2H-avaVlci0",
    "score_breakdown": {
-    "social": 6
+    "social": 4
    },
    "anime_score": null
   },
@@ -8130,15 +8780,21 @@
      "views": 54053,
      "likes": 2047,
      "comments": 512
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 100060,
+     "likes": 3261,
+     "comments": 669
     }
    ],
-   "views": 54053,
-   "likes": 2047,
-   "comments": 512,
+   "views": 100060,
+   "likes": 3261,
+   "comments": 669,
    "shares": null,
-   "engagement_rate": 4.73,
-   "views_velocity_per_hour": 2600,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 3.93,
+   "views_velocity_per_hour": 8379,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "IZ1AANanK_k",
    "analysis": {
@@ -8254,7 +8910,7 @@
     "Polizeieinsatz mit Tränengas/Rauchmitteln"
    ],
    "score_breakdown": {
-    "social": 10,
+    "social": 9,
     "emotional": 16.0,
     "transformation": 18.0,
     "cinematic": 14.0,
@@ -8262,7 +8918,7 @@
     "originality": 8.0,
     "technical": 4.0
    },
-   "anime_score": 84
+   "anime_score": 83
   },
   "ZA5iQaOaJ8I": {
    "video_id": "ZA5iQaOaJ8I",
@@ -8292,19 +8948,25 @@
      "views": 60033,
      "likes": 220,
      "comments": 465
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 65855,
+     "likes": 251,
+     "comments": 539
     }
    ],
-   "views": 60033,
-   "likes": 220,
-   "comments": 465,
+   "views": 65855,
+   "likes": 251,
+   "comments": 539,
    "shares": null,
-   "engagement_rate": 1.14,
-   "views_velocity_per_hour": 2735,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 1.2,
+   "views_velocity_per_hour": 1060,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "9PnqEPBVU5U",
    "score_breakdown": {
-    "social": 8
+    "social": 6
    },
    "anime_score": null
   },
@@ -8336,20 +8998,26 @@
      "views": 476197,
      "likes": 1734,
      "comments": 948
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 484665,
+     "likes": 1769,
+     "comments": 968
     }
    ],
-   "views": 476197,
-   "likes": 1734,
-   "comments": 948,
+   "views": 484665,
+   "likes": 1769,
+   "comments": 968,
    "shares": null,
    "engagement_rate": 0.56,
-   "views_velocity_per_hour": 12838,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "views_velocity_per_hour": 1542,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "xhVv8I9j3KI",
    "analysis_failed": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=240)",
    "score_breakdown": {
-    "social": 9
+    "social": 5
    },
    "anime_score": null
   },
@@ -8365,7 +9033,7 @@
    "city": "Paris",
    "city_source": "Titel/Beschreibung",
    "found_by_query": "rassemblement Paris",
-   "event_description": null,
+   "event_description": "Dokumentation einer Demonstration in Paris in der Nähe des Élysée-Palastes. Ein Journalist (Clément Lanot) berichtet vor Ort über Demonstrierende und Polizeikräfte (CRS, BRAV-M auf Motorrädern). Es kommt zum Einsatz von Tränengas, Demonstrierende weichen zurück, einzelne Personen rufen Parolen oder treten Tränengasgranaten weg.",
    "event_date": null,
    "published_at": "2026-10-17T15:12:59Z",
    "collected_at": "2026-10-20T11:53:37Z",
@@ -8393,9 +9061,121 @@
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "3BPtEVtDOgk",
    "score_breakdown": {
-    "social": 8
+    "social": 8,
+    "emotional": 14.0,
+    "transformation": 17.0,
+    "cinematic": 13.0,
+    "story": 12.0,
+    "originality": 7.0,
+    "technical": 4.0
    },
-   "anime_score": null
+   "anime_score": 75,
+   "analysis": {
+    "relevant": true,
+    "event_description": "Dokumentation einer Demonstration in Paris in der Nähe des Élysée-Palastes. Ein Journalist (Clément Lanot) berichtet vor Ort über Demonstrierende und Polizeikräfte (CRS, BRAV-M auf Motorrädern). Es kommt zum Einsatz von Tränengas, Demonstrierende weichen zurück, einzelne Personen rufen Parolen oder treten Tränengasgranaten weg.",
+    "city_guess": "Paris",
+    "country_guess": "Frankreich",
+    "emotional_observations": [
+     "Hektische Fluchtbewegungen und schnelles Laufen vor aufsteigendem Tränengas",
+     "Hörbares Husten und Keuchen infolge von Rauchentwicklung",
+     "Lautstarke Zurufe und Rufe zur Mobilisierung innerhalb der Gruppe",
+     "Angespannte und beschleunigte Sprechweise des vor Ort berichtenden Journalisten"
+    ],
+    "visual_highlights": [
+     {
+      "timecode": "00:07",
+      "beschreibung": "Motorisierte Polizeieinheiten (BRAV-M) fahren mit Blaulicht zügig durch eine Pariser Straße"
+     },
+     {
+      "timecode": "00:20",
+      "beschreibung": "Weißer dichter Tränengasrauch breitet sich entlang einer leeren Prachtstraße aus"
+     },
+     {
+      "timecode": "00:25",
+      "beschreibung": "Vermummte Person rennt über einen Zebrastreifen durch Rauchschwaden"
+     },
+     {
+      "timecode": "00:56",
+      "beschreibung": "Radfahrer ruft Passanten zu, während im Hintergrund Sicherheitskräfte vorrücken"
+     }
+    ],
+    "story_potential": "Einstieg: Ein junger Fahrradkurier gerät auf seiner Route unerwartet in eine abgesperrte Zone → Konflikt: Tränengasrauch schneidet den Rückweg ab, Panik bricht in den Gassen aus → Wendepunkt: Er hilft einem gestürzten Fremden, die Maske aufzusetzen, und verliert dabei seine eigene Fracht → Höhepunkt: Gemeinsames Entkommen durch eine enge Passage im dichten Nebel → Nachhall: Stille in einem ruhigen Innenhof, der Blick zurück auf die vernebelten Boulevards.",
+    "anime_concept": "A fictional cyberpunk or near-future dystopian short following a courier navigating a sudden metropolitan lockdown, racing through neon-lit, smoke-filled boulevards to deliver an anonymous message before the blast doors close.",
+    "fictional_character": "Ren, an agile urban messenger with a battered helmet and protective goggles, neutral towards the city's conflicting factions but deeply empathetic to stranded bystanders.",
+    "recommended_perspective": "Dritte Person / dynamische Verfolgerperspektive (Over-the-shoulder bei Verfolgungsjagden)",
+    "anime_imagery": "High-contrast urban anime aesthetic reminiscent of 'Akira' and 'Ghost in the Shell'; volumetric lighting cutting through thick gas clouds, dynamic hand-drawn speed lines during bicycle and foot chases, reflections on wet asphalt.",
+    "sound_ideas": [
+     "Dumpfer Herzschlag unterlegt mit schrillem Pfeifen von Tränengasgranaten",
+     "Verzerrter Hall von Sirenen und knatternden Motorradmotoren in Häuserschluchten",
+     "Plötzliches Verstummen aller Umgebungsgeräusche beim Eintritt in dichten Nebel, fokussiert auf Atemgeräusche"
+    ],
+    "recommended_length_seconds": 45,
+    "scores": {
+     "emotional": 14,
+     "transformation": 17,
+     "cinematic": 13,
+     "story": 12,
+     "originality": 7,
+     "technical": 4
+    },
+    "synthetic_suspected": false,
+    "misleading_suspected": false,
+    "authenticity_concerns": [],
+    "open_questions": [
+     "Genaue Identität und Motive der einzelnen gezeigten Demonstrantengruppen abseits der journalistischen Einordnung"
+    ],
+    "sensitive_content": [
+     "Einsatz von Tränengas gegen Menschen",
+     "Polizeikonfrontation und Straßenblockaden",
+     "Reizgasinhalation und Fluchtszenen"
+    ],
+    "_model": "gemini-3.8-flash"
+   },
+   "analyzed_at": "2026-10-20T17:47:26Z",
+   "emotional_observations": [
+    "Hektische Fluchtbewegungen und schnelles Laufen vor aufsteigendem Tränengas",
+    "Hörbares Husten und Keuchen infolge von Rauchentwicklung",
+    "Lautstarke Zurufe und Rufe zur Mobilisierung innerhalb der Gruppe",
+    "Angespannte und beschleunigte Sprechweise des vor Ort berichtenden Journalisten"
+   ],
+   "visual_highlights": [
+    {
+     "timecode": "00:07",
+     "beschreibung": "Motorisierte Polizeieinheiten (BRAV-M) fahren mit Blaulicht zügig durch eine Pariser Straße"
+    },
+    {
+     "timecode": "00:20",
+     "beschreibung": "Weißer dichter Tränengasrauch breitet sich entlang einer leeren Prachtstraße aus"
+    },
+    {
+     "timecode": "00:25",
+     "beschreibung": "Vermummte Person rennt über einen Zebrastreifen durch Rauchschwaden"
+    },
+    {
+     "timecode": "00:56",
+     "beschreibung": "Radfahrer ruft Passanten zu, während im Hintergrund Sicherheitskräfte vorrücken"
+    }
+   ],
+   "story_potential": "Einstieg: Ein junger Fahrradkurier gerät auf seiner Route unerwartet in eine abgesperrte Zone → Konflikt: Tränengasrauch schneidet den Rückweg ab, Panik bricht in den Gassen aus → Wendepunkt: Er hilft einem gestürzten Fremden, die Maske aufzusetzen, und verliert dabei seine eigene Fracht → Höhepunkt: Gemeinsames Entkommen durch eine enge Passage im dichten Nebel → Nachhall: Stille in einem ruhigen Innenhof, der Blick zurück auf die vernebelten Boulevards.",
+   "anime_concept": "A fictional cyberpunk or near-future dystopian short following a courier navigating a sudden metropolitan lockdown, racing through neon-lit, smoke-filled boulevards to deliver an anonymous message before the blast doors close.",
+   "fictional_character": "Ren, an agile urban messenger with a battered helmet and protective goggles, neutral towards the city's conflicting factions but deeply empathetic to stranded bystanders.",
+   "recommended_perspective": "Dritte Person / dynamische Verfolgerperspektive (Over-the-shoulder bei Verfolgungsjagden)",
+   "anime_imagery": "High-contrast urban anime aesthetic reminiscent of 'Akira' and 'Ghost in the Shell'; volumetric lighting cutting through thick gas clouds, dynamic hand-drawn speed lines during bicycle and foot chases, reflections on wet asphalt.",
+   "sound_ideas": [
+    "Dumpfer Herzschlag unterlegt mit schrillem Pfeifen von Tränengasgranaten",
+    "Verzerrter Hall von Sirenen und knatternden Motorradmotoren in Häuserschluchten",
+    "Plötzliches Verstummen aller Umgebungsgeräusche beim Eintritt in dichten Nebel, fokussiert auf Atemgeräusche"
+   ],
+   "recommended_length_seconds": 45,
+   "authenticity_concerns": [],
+   "open_questions": [
+    "Genaue Identität und Motive der einzelnen gezeigten Demonstrantengruppen abseits der journalistischen Einordnung"
+   ],
+   "sensitive_content": [
+    "Einsatz von Tränengas gegen Menschen",
+    "Polizeikonfrontation und Straßenblockaden",
+    "Reizgasinhalation und Fluchtszenen"
+   ]
   },
   "51dXPOA6_Ns": {
    "video_id": "51dXPOA6_Ns",
@@ -8425,18 +9205,24 @@
      "views": 325385,
      "likes": 1755,
      "comments": 970
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 332066,
+     "likes": 1781,
+     "comments": 980
     }
    ],
-   "views": 325385,
-   "likes": 1755,
-   "comments": 970,
+   "views": 332066,
+   "likes": 1781,
+   "comments": 980,
    "shares": null,
-   "engagement_rate": 0.84,
-   "views_velocity_per_hour": 5184,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 0.83,
+   "views_velocity_per_hour": 1217,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "51dXPOA6_Ns",
    "score_breakdown": {
-    "social": 7
+    "social": 5
    },
    "anime_score": null
   },
@@ -8475,15 +9261,21 @@
      "views": 438930,
      "likes": 4595,
      "comments": 272
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 555811,
+     "likes": 5010,
+     "comments": 292
     }
    ],
-   "views": 438930,
-   "likes": 4595,
-   "comments": 272,
+   "views": 555811,
+   "likes": 5010,
+   "comments": 292,
    "shares": null,
-   "engagement_rate": 1.11,
-   "views_velocity_per_hour": 18760,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 0.95,
+   "views_velocity_per_hour": 21288,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "n0RSGMpnOXs",
    "analysis": {
@@ -8599,7 +9391,7 @@
     "Gewaltbereite Situation im Rahmen von Unruhen/Demonstrationen"
    ],
    "score_breakdown": {
-    "social": 10,
+    "social": 9,
     "emotional": 16.0,
     "transformation": 18.0,
     "cinematic": 12.0,
@@ -8607,7 +9399,7 @@
     "originality": 8.0,
     "technical": 3.0
    },
-   "anime_score": 81
+   "anime_score": 80
   },
   "5X5NpT76HfI": {
    "video_id": "5X5NpT76HfI",
@@ -8637,19 +9429,25 @@
      "views": 30410,
      "likes": 637,
      "comments": 59
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 32705,
+     "likes": 677,
+     "comments": 64
     }
    ],
-   "views": 30410,
-   "likes": 637,
-   "comments": 59,
+   "views": 32705,
+   "likes": 677,
+   "comments": 64,
    "shares": null,
-   "engagement_rate": 2.29,
-   "views_velocity_per_hour": 1569,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 2.27,
+   "views_velocity_per_hour": 418,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "5X5NpT76HfI",
    "score_breakdown": {
-    "social": 7
+    "social": 5
    },
    "anime_score": null
   },
@@ -8681,19 +9479,25 @@
      "views": 13544,
      "likes": 717,
      "comments": 68
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 14688,
+     "likes": 756,
+     "comments": 75
     }
    ],
-   "views": 13544,
-   "likes": 717,
-   "comments": 68,
+   "views": 14688,
+   "likes": 756,
+   "comments": 75,
    "shares": null,
-   "engagement_rate": 5.8,
-   "views_velocity_per_hour": 779,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 5.66,
+   "views_velocity_per_hour": 208,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "IaMjrHiqHVg",
    "score_breakdown": {
-    "social": 8
+    "social": 6
    },
    "anime_score": null
   },
@@ -8725,19 +9529,25 @@
      "views": 153118,
      "likes": 364,
      "comments": 15
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 154368,
+     "likes": 364,
+     "comments": 15
     }
    ],
-   "views": 153118,
+   "views": 154368,
    "likes": 364,
    "comments": 15,
    "shares": null,
    "engagement_rate": 0.25,
-   "views_velocity_per_hour": 3529,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "views_velocity_per_hour": 228,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "7Jme3PnDfvQ",
    "score_breakdown": {
-    "social": 7
+    "social": 3
    },
    "anime_score": null
   },
@@ -8769,18 +9579,24 @@
      "views": 7161,
      "likes": 49,
      "comments": 7
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 7186,
+     "likes": 49,
+     "comments": 7
     }
    ],
-   "views": 7161,
+   "views": 7186,
    "likes": 49,
    "comments": 7,
    "shares": null,
    "engagement_rate": 0.78,
-   "views_velocity_per_hour": 129,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "views_velocity_per_hour": 5,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "8XSJ5maT8uI",
    "score_breakdown": {
-    "social": 3
+    "social": 2
    },
    "anime_score": null
   },
@@ -8803,7 +9619,14 @@
    "language": "tr",
    "duration_seconds": 170,
    "authenticity_status": "MISLEADING",
-   "verification_sources": [],
+   "verification_sources": [
+    {
+     "domain": "connexionfrance.com",
+     "title": "France riots : Curfews considered for Paris and other city centres",
+     "url": "https://www.connexionfrance.com/news/french-prefects-told-to-consider-bringing-in-curfews-to-prevent-further-riots-and-looting/822191",
+     "seen": "20261019T161500Z"
+    }
+   ],
    "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
    "manual_review_required": true,
    "snapshots": [
@@ -8812,15 +9635,21 @@
      "views": 294365,
      "likes": 11660,
      "comments": 301
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 323532,
+     "likes": 12863,
+     "comments": 343
     }
    ],
-   "views": 294365,
-   "likes": 11660,
-   "comments": 301,
+   "views": 323532,
+   "likes": 12863,
+   "comments": 343,
    "shares": null,
-   "engagement_rate": 4.06,
-   "views_velocity_per_hour": 13672,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 4.08,
+   "views_velocity_per_hour": 5312,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "jpIlkCnzXHA",
    "analysis": {
     "relevant": true,
@@ -8961,7 +9790,7 @@
     "Mögliche Anwesenheit Minderjähriger im Protestumfeld"
    ],
    "score_breakdown": {
-    "social": 12,
+    "social": 10,
     "emotional": 13.0,
     "transformation": 16.0,
     "cinematic": 14.0,
@@ -8969,7 +9798,7 @@
     "originality": 8.0,
     "technical": 4.0
    },
-   "anime_score": 79
+   "anime_score": 77
   },
   "581YBAXj3tM": {
    "video_id": "581YBAXj3tM",
@@ -9006,15 +9835,21 @@
      "views": 597140,
      "likes": 7463,
      "comments": 964
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 615642,
+     "likes": 7682,
+     "comments": 988
     }
    ],
-   "views": 597140,
-   "likes": 7463,
-   "comments": 964,
+   "views": 615642,
+   "likes": 7682,
+   "comments": 988,
    "shares": null,
    "engagement_rate": 1.41,
-   "views_velocity_per_hour": 13626,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "views_velocity_per_hour": 3370,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "581YBAXj3tM",
    "analysis": {
@@ -9140,7 +9975,7 @@
     "Potenzielle Gefahrenstoffe im Schutt (z. B. explodierende Deodosen durch Hitze)"
    ],
    "score_breakdown": {
-    "social": 10,
+    "social": 8,
     "emotional": 14.0,
     "transformation": 18.0,
     "cinematic": 13.0,
@@ -9148,7 +9983,7 @@
     "originality": 9.0,
     "technical": 4.0
    },
-   "anime_score": 82
+   "anime_score": 80
   },
   "sLE6chvTC_U": {
    "video_id": "sLE6chvTC_U",
@@ -9206,7 +10041,7 @@
    "city": "Milano",
    "city_source": "Titel/Beschreibung",
    "found_by_query": "manifestazione Milano",
-   "event_description": null,
+   "event_description": "In Mailand kommt es während einer Kundgebung zu lautstarken verbalen Auseinandersetzungen, Vorwürfen und physischem Gerangel zwischen Protestierenden, Gegendemonstrierenden und Passanten unter Arkaden und auf öffentlichen Straßen, während Journalisten filmen und Polizeikräfte Stellung beziehen.",
    "event_date": null,
    "published_at": "2026-10-19T18:36:22Z",
    "collected_at": "2026-10-20T11:53:37Z",
@@ -9222,21 +10057,165 @@
      "views": 128904,
      "likes": 1402,
      "comments": 966
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 158357,
+     "likes": 1677,
+     "comments": 1123
     }
    ],
-   "views": 128904,
-   "likes": 1402,
-   "comments": 966,
+   "views": 158357,
+   "likes": 1677,
+   "comments": 1123,
    "shares": null,
-   "engagement_rate": 1.84,
-   "views_velocity_per_hour": 7456,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 1.77,
+   "views_velocity_per_hour": 5364,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "NCzvHmEw2uo",
    "score_breakdown": {
-    "social": 8
+    "social": 8,
+    "emotional": 16.0,
+    "transformation": 18.0,
+    "cinematic": 12.0,
+    "story": 14.0,
+    "originality": 7.0,
+    "technical": 4.0
    },
-   "anime_score": null
+   "anime_score": 79,
+   "analysis": {
+    "relevant": true,
+    "event_description": "In Mailand kommt es während einer Kundgebung zu lautstarken verbalen Auseinandersetzungen, Vorwürfen und physischem Gerangel zwischen Protestierenden, Gegendemonstrierenden und Passanten unter Arkaden und auf öffentlichen Straßen, während Journalisten filmen und Polizeikräfte Stellung beziehen.",
+    "city_guess": "Mailand",
+    "country_guess": "Italien",
+    "emotional_observations": [
+     "Sichtbare und hörbare Wut bei mehreren Rednern",
+     "Aufgeregte, gestikulierende Mimik bei Passanten und Protestierenden",
+     "Spürbare Frustration bezüglich wirtschaftlicher und sozialer Bedingungen",
+     "Angespannte Körperhaltung bei Umstehenden und Sicherheitskräften"
+    ],
+    "visual_highlights": [
+     {
+      "timecode": "00:01",
+      "beschreibung": "Ein großes Demonstrationsbanner mit der Aufschrift 'REMIGREREMO TUTTI' wird von einer Menschenmenge getragen."
+     },
+     {
+      "timecode": "00:20",
+      "beschreibung": "Ein junger Mann mit auffällig gemustertem, rot gefärbtem Haar redet hochemotional vor mehreren Reportermikrofonen."
+     },
+     {
+      "timecode": "02:18",
+      "beschreibung": "Ein Demonstrant hält ein selbstgemachtes Protestschild mit einem 'WANTED'-Poster im Gedränge hoch."
+     },
+     {
+      "timecode": "02:38",
+      "beschreibung": "Nahaufnahme eines Mannes, der direkt in die Kamera gestikuliert und lautstark über alltägliche finanzielle Überforderung spricht."
+     },
+     {
+      "timecode": "05:05",
+      "beschreibung": "Eine junge Frau mit grün gefärbten Haaren führt ein verbittertes Wortgefecht mitten im Gedränge."
+     },
+     {
+      "timecode": "06:23",
+      "beschreibung": "Unter den Arkaden bricht plötzlich ein Handgemenge und Schubsen zwischen mehreren Beteiligten aus."
+     },
+     {
+      "timecode": "08:35",
+      "beschreibung": "Sicherheitskräfte der Carabinieri in Schutzmontur und mit Schilden formieren eine Blockade."
+     }
+    ],
+    "story_potential": "Einstieg: Ein junger Straßenkünstler zeichnet am Rande einer belebten Ladenpassage, als um ihn herum eine unübersichtliche Demonstration aufzieht. → Konflikt: Die Stimmung kippt, und als ein Handgemenge ausbricht, wird seine Ausrüstung umgestoßen und beschädigt. → Wendepunkt: Eine Person aus der gegnerischen Gruppe stoppt mitten im Tumult, um ihm ein herabgefallenes Skizzenbuch aufzuheben. → Höhepunkt: Ein kurzer, stummer Blickkontakt voller gegenseitigem Verständnis entsteht mitten im Lärm der Menge und vor den Schilden der Sicherheitskräfte. → Nachhall: Die Demonstration zieht weiter; der Künstler bleibt zurück und zeichnet den flüchtigen Moment der Menschlichkeit im Chaos auf.",
+    "anime_concept": "In a vibrant, high-contrast metropolis, two youths from opposing urban subcultures cross paths during a chaotic street confrontation. When an unexpected act of empathy interrupts a rising brawl, they realize their shared struggle against societal pressures, forging a quiet bond amid the urban noise.",
+    "fictional_character": "Ren, an idealistic 19-year-old visual artist who wears a spray-painted jacket and expresses the quiet, unsaid frustrations of city youth through his sketchbooks.",
+    "recommended_perspective": "Dritte Person begrenzt (fokussiert auf den jungen Künstler als Beobachter)",
+    "anime_imagery": "High-contrast modern urban aesthetic with vivid pop-color accents (neon green and red hair highlights), dramatic camera zooms on eye expressions during intense arguments, and shallow depth-of-field under city arcades.",
+    "sound_ideas": [
+     "Muffled crowd noise swelling into a heavy sub-bass drone",
+     "Sharp camera shutter clicks cutting through sudden silence",
+     "Echoing footsteps on stone floor beneath tall arcade pillars",
+     "A soft piano melody emerging over the distant sound of sirens"
+    ],
+    "recommended_length_seconds": 45,
+    "scores": {
+     "emotional": 16,
+     "transformation": 18,
+     "cinematic": 12,
+     "story": 14,
+     "originality": 7,
+     "technical": 4
+    },
+    "synthetic_suspected": false,
+    "misleading_suspected": false,
+    "authenticity_concerns": [],
+    "open_questions": [
+     "Genaue Identität und Kontext aller unbeteiligten Einzelpersonen vor Ort unbestimmt",
+     "Rechtliche Nutzung im fiktionalen Bereich erfordert vollständige Entkopplung von realen Personen"
+    ],
+    "sensitive_content": [
+     "Sichtbare körperliche Auseinandersetzung / Gerangel",
+     "Aggressive verbale Konfrontationen im O-Ton"
+    ],
+    "_model": "gemini-3.6-flash"
+   },
+   "analyzed_at": "2026-10-20T17:56:43Z",
+   "emotional_observations": [
+    "Sichtbare und hörbare Wut bei mehreren Rednern",
+    "Aufgeregte, gestikulierende Mimik bei Passanten und Protestierenden",
+    "Spürbare Frustration bezüglich wirtschaftlicher und sozialer Bedingungen",
+    "Angespannte Körperhaltung bei Umstehenden und Sicherheitskräften"
+   ],
+   "visual_highlights": [
+    {
+     "timecode": "00:01",
+     "beschreibung": "Ein großes Demonstrationsbanner mit der Aufschrift 'REMIGREREMO TUTTI' wird von einer Menschenmenge getragen."
+    },
+    {
+     "timecode": "00:20",
+     "beschreibung": "Ein junger Mann mit auffällig gemustertem, rot gefärbtem Haar redet hochemotional vor mehreren Reportermikrofonen."
+    },
+    {
+     "timecode": "02:18",
+     "beschreibung": "Ein Demonstrant hält ein selbstgemachtes Protestschild mit einem 'WANTED'-Poster im Gedränge hoch."
+    },
+    {
+     "timecode": "02:38",
+     "beschreibung": "Nahaufnahme eines Mannes, der direkt in die Kamera gestikuliert und lautstark über alltägliche finanzielle Überforderung spricht."
+    },
+    {
+     "timecode": "05:05",
+     "beschreibung": "Eine junge Frau mit grün gefärbten Haaren führt ein verbittertes Wortgefecht mitten im Gedränge."
+    },
+    {
+     "timecode": "06:23",
+     "beschreibung": "Unter den Arkaden bricht plötzlich ein Handgemenge und Schubsen zwischen mehreren Beteiligten aus."
+    },
+    {
+     "timecode": "08:35",
+     "beschreibung": "Sicherheitskräfte der Carabinieri in Schutzmontur und mit Schilden formieren eine Blockade."
+    }
+   ],
+   "story_potential": "Einstieg: Ein junger Straßenkünstler zeichnet am Rande einer belebten Ladenpassage, als um ihn herum eine unübersichtliche Demonstration aufzieht. → Konflikt: Die Stimmung kippt, und als ein Handgemenge ausbricht, wird seine Ausrüstung umgestoßen und beschädigt. → Wendepunkt: Eine Person aus der gegnerischen Gruppe stoppt mitten im Tumult, um ihm ein herabgefallenes Skizzenbuch aufzuheben. → Höhepunkt: Ein kurzer, stummer Blickkontakt voller gegenseitigem Verständnis entsteht mitten im Lärm der Menge und vor den Schilden der Sicherheitskräfte. → Nachhall: Die Demonstration zieht weiter; der Künstler bleibt zurück und zeichnet den flüchtigen Moment der Menschlichkeit im Chaos auf.",
+   "anime_concept": "In a vibrant, high-contrast metropolis, two youths from opposing urban subcultures cross paths during a chaotic street confrontation. When an unexpected act of empathy interrupts a rising brawl, they realize their shared struggle against societal pressures, forging a quiet bond amid the urban noise.",
+   "fictional_character": "Ren, an idealistic 19-year-old visual artist who wears a spray-painted jacket and expresses the quiet, unsaid frustrations of city youth through his sketchbooks.",
+   "recommended_perspective": "Dritte Person begrenzt (fokussiert auf den jungen Künstler als Beobachter)",
+   "anime_imagery": "High-contrast modern urban aesthetic with vivid pop-color accents (neon green and red hair highlights), dramatic camera zooms on eye expressions during intense arguments, and shallow depth-of-field under city arcades.",
+   "sound_ideas": [
+    "Muffled crowd noise swelling into a heavy sub-bass drone",
+    "Sharp camera shutter clicks cutting through sudden silence",
+    "Echoing footsteps on stone floor beneath tall arcade pillars",
+    "A soft piano melody emerging over the distant sound of sirens"
+   ],
+   "recommended_length_seconds": 45,
+   "authenticity_concerns": [],
+   "open_questions": [
+    "Genaue Identität und Kontext aller unbeteiligten Einzelpersonen vor Ort unbestimmt",
+    "Rechtliche Nutzung im fiktionalen Bereich erfordert vollständige Entkopplung von realen Personen"
+   ],
+   "sensitive_content": [
+    "Sichtbare körperliche Auseinandersetzung / Gerangel",
+    "Aggressive verbale Konfrontationen im O-Ton"
+   ]
   },
   "vxjrCKlCCW0": {
    "video_id": "vxjrCKlCCW0",
@@ -9287,7 +10266,8 @@
    "score_breakdown": {
     "social": 8
    },
-   "anime_score": null
+   "anime_score": null,
+   "analysis_failed": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
   },
   "xD2WHAOq3pM": {
    "video_id": "xD2WHAOq3pM",
@@ -9317,19 +10297,25 @@
      "views": 5560,
      "likes": 38,
      "comments": 44
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 5921,
+     "likes": 42,
+     "comments": 48
     }
    ],
-   "views": 5560,
-   "likes": 38,
-   "comments": 44,
+   "views": 5921,
+   "likes": 42,
+   "comments": 48,
    "shares": null,
-   "engagement_rate": 1.47,
-   "views_velocity_per_hour": 219,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 1.52,
+   "views_velocity_per_hour": 66,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "xD2WHAOq3pM",
    "score_breakdown": {
-    "social": 4
+    "social": 3
    },
    "anime_score": null
   },
@@ -9351,14 +10337,8 @@
    "collected_at": "2026-10-20T11:53:37Z",
    "language": "de",
    "duration_seconds": 32,
-   "authenticity_status": "PARTIALLY_VERIFIED",
+   "authenticity_status": "UNVERIFIED",
    "verification_sources": [
-    {
-     "domain": "n-tv.de",
-     "title": "Hamburg & Schleswig - Holstein : Hunderte Menschen protestieren gegen AfD - Jugend",
-     "url": "https://www.n-tv.de/regionales/hamburg-und-schleswig-holstein/Hunderte-Menschen-protestieren-gegen-AfD-Jugend-id31429390.html",
-     "seen": "20261017T163000Z"
-    },
     {
      "domain": "ndr.de",
      "title": "Hamburg : Hunderte bei Demo gegen Aktion zur  Remigration  ",
@@ -9374,16 +10354,22 @@
      "views": 10484,
      "likes": 166,
      "comments": null
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 12937,
+     "likes": 185,
+     "comments": null
     }
    ],
-   "views": 10484,
-   "likes": 166,
+   "views": 12937,
+   "likes": 185,
    "comments": null,
    "shares": null,
-   "engagement_rate": 1.58,
-   "views_velocity_per_hour": 406,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
-   "verification_note": "Ereignis in Hamburg durch 2 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
+   "engagement_rate": 1.43,
+   "views_velocity_per_hour": 447,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "vCO9LagVnmQ",
    "score_breakdown": {
     "social": 4
@@ -9418,19 +10404,25 @@
      "views": 11726,
      "likes": 207,
      "comments": 65
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 13568,
+     "likes": 218,
+     "comments": 69
     }
    ],
-   "views": 11726,
-   "likes": 207,
-   "comments": 65,
+   "views": 13568,
+   "likes": 218,
+   "comments": 69,
    "shares": null,
-   "engagement_rate": 2.32,
-   "views_velocity_per_hour": 684,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 2.12,
+   "views_velocity_per_hour": 335,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "-nkCQWoWITk",
    "score_breakdown": {
-    "social": 7
+    "social": 5
    },
    "anime_score": null
   },
@@ -9446,7 +10438,7 @@
    "city": "Milano",
    "city_source": "Titel/Beschreibung",
    "found_by_query": "manifestazione Milano",
-   "event_description": null,
+   "event_description": "Eine Demonstration in Mailand gegen hohe Lebenshaltungskosten verläuft dynamisch in der Via Broletto. Einsatzkräfte der Polizei in Schutzmontur rücken mit Schildern vor und setzen Schlagstöcke ein, während sich Demonstranten zurückziehen, Schilder schwenken, 'Basta' rufen oder die Hände heben. Später stehen sich beide Parteien gegenüber, Flaggen werden geschwenkt und ein Knallkörper explodiert auf den Straßenbahngleisen.",
    "event_date": null,
    "published_at": "2026-10-17T17:06:13Z",
    "collected_at": "2026-10-20T11:53:37Z",
@@ -9474,9 +10466,137 @@
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "OeDSXnjeNIo",
    "score_breakdown": {
-    "social": 9
+    "social": 9,
+    "emotional": 16.0,
+    "transformation": 18.0,
+    "cinematic": 14.0,
+    "story": 13.0,
+    "originality": 7.0,
+    "technical": 4.0
    },
-   "anime_score": null
+   "anime_score": 81,
+   "analysis": {
+    "relevant": true,
+    "event_description": "Eine Demonstration in Mailand gegen hohe Lebenshaltungskosten verläuft dynamisch in der Via Broletto. Einsatzkräfte der Polizei in Schutzmontur rücken mit Schildern vor und setzen Schlagstöcke ein, während sich Demonstranten zurückziehen, Schilder schwenken, 'Basta' rufen oder die Hände heben. Später stehen sich beide Parteien gegenüber, Flaggen werden geschwenkt und ein Knallkörper explodiert auf den Straßenbahngleisen.",
+    "city_guess": "Mailand",
+    "country_guess": "Italien",
+    "emotional_observations": [
+     "Hörbare Aufregung und lautstarke 'Basta!'-Rufe aus der Menge",
+     "Sichtbare Anspannung während des Gegenüberstehens von Polizei und Demonstranten",
+     "Hektische Flucht- und Rückzugsbewegungen bei der Vorwärtsbewegung der Polizeikette"
+    ],
+    "visual_highlights": [
+     {
+      "timecode": "00:02",
+      "beschreibung": "Polizeikette rückt im Eillauf mit Schutzschilden in einer historischen Stadtstraße vor"
+     },
+     {
+      "timecode": "00:06",
+      "beschreibung": "Nahaufnahme einer Konfrontation an den Absperrungen mit erhobenem Schlagstock"
+     },
+     {
+      "timecode": "00:13",
+      "beschreibung": "Demonstranten heben beschwichtigend die Hände gegenüber den Einsatzkräften"
+     },
+     {
+      "timecode": "00:25",
+      "beschreibung": "Symmetrische Gegenüberstellung der Helm-Tragenden Polizeireihe und der Bürger entlang der Straßenbahnschienen"
+     },
+     {
+      "timecode": "00:48",
+      "beschreibung": "Eine italienische Flagge wird mitten in der vermummten Menge hochgehalten"
+     },
+     {
+      "timecode": "01:11",
+      "beschreibung": "Ein Pyrotechnikeffekt explodiert auf der leeren Straße zwischen beiden Fronten"
+     }
+    ],
+    "story_potential": "Einstieg: Ein junger Kunststudent zeichnet die ruhige Architektur einer belebten europäischen Metropole → Konflikt: Plötzlich gerät er in eine unerwartete Massendemonstration und steht vor einer Wand aus Schildern → Wendepunkt: Ein Blickkontakt mit jemandem auf der anderen Seite lässt die Zeit stillstehen → Höhepunkt: Ein lauter Knall bricht die Stille, Farben verflüssigen sich emotional um die Figuren → Nachhall: Ein fallengelassenes Skizzenbuch liegt auf den Gleisen, symbolisch für verlorene Unschuld und Hoffnung.",
+    "anime_concept": "In a stylized futuristic neo-vintage city, a quiet student gets trapped between two conflicting waves of human emotion during a public rally, discovering how shared human vulnerability connects people on both sides of a barrier.",
+    "fictional_character": "Ren (19), an introverted art student wearing a oversized hoodie, carrying a weathered sketchbook through chaotic city streets.",
+    "recommended_perspective": "Drittperson-Sicht mit subjektiver Kameraführung aus Augenhöhe des Protagonisten",
+    "anime_imagery": "High-contrast cinematic aesthetic reminiscent of MAPPA/Ufotable, dramatic shadow play under urban streetlights, slow-motion particle effects during tense standoffs, vibrant neon light reflections on rainy cobblestones.",
+    "sound_ideas": [
+     "Rhythmischer Herzschlag, der das Geschrei in der Umgebung ausblendet",
+     "Dumpfes Dröhnen von Polizeistiefeln auf Pflastersteinen",
+     "Plötzliche absolute Stille kurz vor der Knall-Explosion",
+     "Hallendes Ausklingen einer melancholischen Klavier-Melodie im Nachhall"
+    ],
+    "recommended_length_seconds": 45,
+    "scores": {
+     "emotional": 16,
+     "transformation": 18,
+     "cinematic": 14,
+     "story": 13,
+     "originality": 7,
+     "technical": 4
+    },
+    "synthetic_suspected": false,
+    "misleading_suspected": false,
+    "authenticity_concerns": [],
+    "open_questions": [
+     "Genaue Identität einzelner gefilmter Personen unklar"
+    ],
+    "sensitive_content": [
+     "Handgreifliche Auseinandersetzungen zwischen Polizei und Protestierenden",
+     "Einsatz von Schlagstöcken sichtbar",
+     "Explosion von Pyrotechnik/Knallkörpern"
+    ],
+    "_model": "gemini-3.6-flash"
+   },
+   "analyzed_at": "2026-10-20T17:45:20Z",
+   "emotional_observations": [
+    "Hörbare Aufregung und lautstarke 'Basta!'-Rufe aus der Menge",
+    "Sichtbare Anspannung während des Gegenüberstehens von Polizei und Demonstranten",
+    "Hektische Flucht- und Rückzugsbewegungen bei der Vorwärtsbewegung der Polizeikette"
+   ],
+   "visual_highlights": [
+    {
+     "timecode": "00:02",
+     "beschreibung": "Polizeikette rückt im Eillauf mit Schutzschilden in einer historischen Stadtstraße vor"
+    },
+    {
+     "timecode": "00:06",
+     "beschreibung": "Nahaufnahme einer Konfrontation an den Absperrungen mit erhobenem Schlagstock"
+    },
+    {
+     "timecode": "00:13",
+     "beschreibung": "Demonstranten heben beschwichtigend die Hände gegenüber den Einsatzkräften"
+    },
+    {
+     "timecode": "00:25",
+     "beschreibung": "Symmetrische Gegenüberstellung der Helm-Tragenden Polizeireihe und der Bürger entlang der Straßenbahnschienen"
+    },
+    {
+     "timecode": "00:48",
+     "beschreibung": "Eine italienische Flagge wird mitten in der vermummten Menge hochgehalten"
+    },
+    {
+     "timecode": "01:11",
+     "beschreibung": "Ein Pyrotechnikeffekt explodiert auf der leeren Straße zwischen beiden Fronten"
+    }
+   ],
+   "story_potential": "Einstieg: Ein junger Kunststudent zeichnet die ruhige Architektur einer belebten europäischen Metropole → Konflikt: Plötzlich gerät er in eine unerwartete Massendemonstration und steht vor einer Wand aus Schildern → Wendepunkt: Ein Blickkontakt mit jemandem auf der anderen Seite lässt die Zeit stillstehen → Höhepunkt: Ein lauter Knall bricht die Stille, Farben verflüssigen sich emotional um die Figuren → Nachhall: Ein fallengelassenes Skizzenbuch liegt auf den Gleisen, symbolisch für verlorene Unschuld und Hoffnung.",
+   "anime_concept": "In a stylized futuristic neo-vintage city, a quiet student gets trapped between two conflicting waves of human emotion during a public rally, discovering how shared human vulnerability connects people on both sides of a barrier.",
+   "fictional_character": "Ren (19), an introverted art student wearing a oversized hoodie, carrying a weathered sketchbook through chaotic city streets.",
+   "recommended_perspective": "Drittperson-Sicht mit subjektiver Kameraführung aus Augenhöhe des Protagonisten",
+   "anime_imagery": "High-contrast cinematic aesthetic reminiscent of MAPPA/Ufotable, dramatic shadow play under urban streetlights, slow-motion particle effects during tense standoffs, vibrant neon light reflections on rainy cobblestones.",
+   "sound_ideas": [
+    "Rhythmischer Herzschlag, der das Geschrei in der Umgebung ausblendet",
+    "Dumpfes Dröhnen von Polizeistiefeln auf Pflastersteinen",
+    "Plötzliche absolute Stille kurz vor der Knall-Explosion",
+    "Hallendes Ausklingen einer melancholischen Klavier-Melodie im Nachhall"
+   ],
+   "recommended_length_seconds": 45,
+   "authenticity_concerns": [],
+   "open_questions": [
+    "Genaue Identität einzelner gefilmter Personen unklar"
+   ],
+   "sensitive_content": [
+    "Handgreifliche Auseinandersetzungen zwischen Polizei und Protestierenden",
+    "Einsatz von Schlagstöcken sichtbar",
+    "Explosion von Pyrotechnik/Knallkörpern"
+   ]
   },
   "zMDwfD_iesY": {
    "video_id": "zMDwfD_iesY",
@@ -9506,18 +10626,24 @@
      "views": 72935,
      "likes": 1294,
      "comments": 271
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 74604,
+     "likes": 1327,
+     "comments": 277
     }
    ],
-   "views": 72935,
-   "likes": 1294,
-   "comments": 271,
+   "views": 74604,
+   "likes": 1327,
+   "comments": 277,
    "shares": null,
    "engagement_rate": 2.15,
-   "views_velocity_per_hour": 1158,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "views_velocity_per_hour": 304,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "cluster": "zMDwfD_iesY",
    "score_breakdown": {
-    "social": 7
+    "social": 5
    },
    "anime_score": null
   },
@@ -9549,19 +10675,25 @@
      "views": 107721,
      "likes": 886,
      "comments": 550
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 118027,
+     "likes": 929,
+     "comments": 577
     }
    ],
-   "views": 107721,
-   "likes": 886,
-   "comments": 550,
+   "views": 118027,
+   "likes": 929,
+   "comments": 577,
    "shares": null,
-   "engagement_rate": 1.33,
-   "views_velocity_per_hour": 4898,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 1.28,
+   "views_velocity_per_hour": 1877,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "9PnqEPBVU5U",
    "score_breakdown": {
-    "social": 8
+    "social": 6
    },
    "anime_score": null
   },
@@ -9643,19 +10775,25 @@
      "views": 13992,
      "likes": 199,
      "comments": 151
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 14776,
+     "likes": 205,
+     "comments": 153
     }
    ],
-   "views": 13992,
-   "likes": 199,
-   "comments": 151,
+   "views": 14776,
+   "likes": 205,
+   "comments": 153,
    "shares": null,
-   "engagement_rate": 2.5,
-   "views_velocity_per_hour": 725,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "engagement_rate": 2.42,
+   "views_velocity_per_hour": 143,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "PUBiOiYsyTI",
    "score_breakdown": {
-    "social": 7
+    "social": 5
    },
    "anime_score": null
   },
@@ -9687,19 +10825,1144 @@
      "views": 199036,
      "likes": 1790,
      "comments": 1323
+    },
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 204274,
+     "likes": 1837,
+     "comments": 1340
     }
    ],
-   "views": 199036,
-   "likes": 1790,
-   "comments": 1323,
+   "views": 204274,
+   "likes": 1837,
+   "comments": 1340,
    "shares": null,
    "engagement_rate": 1.56,
-   "views_velocity_per_hour": 3139,
-   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "views_velocity_per_hour": 954,
+   "velocity_basis": "gemessen (zwei Messpunkte)",
    "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
    "cluster": "fvUoHoIpb7M",
    "score_breakdown": {
+    "social": 6
+   },
+   "anime_score": null
+  },
+  "VDOHXGaNqiA": {
+   "video_id": "VDOHXGaNqiA",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=VDOHXGaNqiA",
+   "thumbnail": "https://i.ytimg.com/vi/VDOHXGaNqiA/hqdefault.jpg",
+   "creator": "ABA Media",
+   "title": "Protesting for Hijab freedom on the streets of Berlin, Germany",
+   "country": "Deutschland",
+   "region": "GM",
+   "city": "Berlin",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "Demonstration Berlin",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-18T15:29:05Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "az",
+   "duration_seconds": 65,
+   "authenticity_status": "PARTIALLY_VERIFIED",
+   "verification_sources": [
+    {
+     "domain": "welt.de",
+     "title": "Berliner Polizei bereitet sich auf Protesttag vor",
+     "url": "https://www.welt.de/regionales/berlin/article6ad77c3e51e5094f7a57337e/berliner-polizei-bereitet-sich-auf-protesttag-vor.html",
+     "seen": "20261020T151500Z"
+    },
+    {
+     "domain": "n-tv.de",
+     "title": "Berlin & Brandenburg : Berliner Polizei bereitet sich auf Protesttag vor",
+     "url": "https://www.n-tv.de/regionales/berlin-und-brandenburg/Berliner-Polizei-bereitet-sich-auf-Protesttag-vor-id31439428.html",
+     "seen": "20261020T150000Z"
+    }
+   ],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 6974,
+     "likes": 218,
+     "comments": 417
+    }
+   ],
+   "views": 6974,
+   "likes": 218,
+   "comments": 417,
+   "shares": null,
+   "engagement_rate": 9.11,
+   "views_velocity_per_hour": 140,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Ereignis in Berlin durch 2 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
+   "cluster": "VDOHXGaNqiA",
+   "score_breakdown": {
+    "social": 7
+   },
+   "anime_score": null
+  },
+  "ZlUK2prxotQ": {
+   "video_id": "ZlUK2prxotQ",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=ZlUK2prxotQ",
+   "thumbnail": "https://i.ytimg.com/vi/ZlUK2prxotQ/hqdefault.jpg",
+   "creator": "Vozpópuli",
+   "title": "AYUSO sobre el BOICOT de los MANIFESTANTES",
+   "country": "Spanien",
+   "region": "SP",
+   "city": "Madrid",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "manifestación Madrid",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-19T14:37:50Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "es",
+   "duration_seconds": 115,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 5254,
+     "likes": 177,
+     "comments": 42
+    }
+   ],
+   "views": 5254,
+   "likes": 177,
+   "comments": 42,
+   "shares": null,
+   "engagement_rate": 4.17,
+   "views_velocity_per_hour": 196,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "cluster": "ZlUK2prxotQ",
+   "score_breakdown": {
+    "social": 6
+   },
+   "anime_score": null
+  },
+  "_CnK20zmaJ0": {
+   "video_id": "_CnK20zmaJ0",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=_CnK20zmaJ0",
+   "thumbnail": "https://i.ytimg.com/vi/_CnK20zmaJ0/hqdefault.jpg",
+   "creator": "LiveNOW from FOX",
+   "title": "France riots: Protesters clash with police, set fires in Paris",
+   "country": "Frankreich",
+   "region": "FR",
+   "city": "Paris",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "manifestation Paris",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-17T17:35:55Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "en",
+   "duration_seconds": 885,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [
+    {
+     "domain": "connexionfrance.com",
+     "title": "France riots : Curfews considered for Paris and other city centres",
+     "url": "https://www.connexionfrance.com/news/french-prefects-told-to-consider-bringing-in-curfews-to-prevent-further-riots-and-looting/822191",
+     "seen": "20261019T161500Z"
+    }
+   ],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 363241,
+     "likes": 1998,
+     "comments": 1421
+    }
+   ],
+   "views": 363241,
+   "likes": 1998,
+   "comments": 1421,
+   "shares": null,
+   "engagement_rate": 0.94,
+   "views_velocity_per_hour": 5060,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "cluster": "_CnK20zmaJ0",
+   "score_breakdown": {
+    "social": 7
+   },
+   "anime_score": null
+  },
+  "oRQiCwoRT40": {
+   "video_id": "oRQiCwoRT40",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=oRQiCwoRT40",
+   "thumbnail": "https://i.ytimg.com/vi/oRQiCwoRT40/hqdefault.jpg",
+   "creator": "NLC",
+   "title": "🚨 Les tensions montent lors d’un rassemblement, les policiers déployés.",
+   "country": "Frankreich",
+   "region": "FR",
+   "city": "Paris",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "rassemblement Paris",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-18T13:25:20Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "fr",
+   "duration_seconds": 12,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [
+    {
+     "domain": "connexionfrance.com",
+     "title": "France riots : Curfews considered for Paris and other city centres",
+     "url": "https://www.connexionfrance.com/news/french-prefects-told-to-consider-bringing-in-curfews-to-prevent-further-riots-and-looting/822191",
+     "seen": "20261019T161500Z"
+    }
+   ],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 5398,
+     "likes": 65,
+     "comments": 1
+    }
+   ],
+   "views": 5398,
+   "likes": 65,
+   "comments": 1,
+   "shares": null,
+   "engagement_rate": 1.22,
+   "views_velocity_per_hour": 104,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "cluster": "oRQiCwoRT40",
+   "score_breakdown": {
+    "social": 4
+   },
+   "anime_score": null
+  },
+  "eXf7hCDQWB8": {
+   "video_id": "eXf7hCDQWB8",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=eXf7hCDQWB8",
+   "thumbnail": "https://i.ytimg.com/vi/eXf7hCDQWB8/hqdefault.jpg",
+   "creator": "Oli investiert",
+   "title": "🔥Deutschland BRENNT! Frankreich Demonstrationen kommen zu UNS!",
+   "country": "Deutschland",
+   "region": "GM",
+   "city": "Berlin",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "Demonstration Berlin",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-18T18:00:25Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "de",
+   "duration_seconds": 535,
+   "authenticity_status": "PARTIALLY_VERIFIED",
+   "verification_sources": [
+    {
+     "domain": "welt.de",
+     "title": "Berliner Polizei bereitet sich auf Protesttag vor",
+     "url": "https://www.welt.de/regionales/berlin/article6ad77c3e51e5094f7a57337e/berliner-polizei-bereitet-sich-auf-protesttag-vor.html",
+     "seen": "20261020T151500Z"
+    },
+    {
+     "domain": "tagesspiegel.de",
+     "title": " „ Gen Z steht auf  ruft zu Protesten auf : Berliner Polizei bereitet sich auf umfangreichen Einsatz am 31 . Oktober vor",
+     "url": "https://www.tagesspiegel.de/berlin/dpa-berliner-polizei-bereitet-sich-auf-umfangreichen-einsatz-am-31-oktober-vor-16181215.html",
+     "seen": "20261020T153000Z"
+    },
+    {
+     "domain": "n-tv.de",
+     "title": "Berlin & Brandenburg : Berliner Polizei bereitet sich auf Protesttag vor",
+     "url": "https://www.n-tv.de/regionales/berlin-und-brandenburg/Berliner-Polizei-bereitet-sich-auf-Protesttag-vor-id31439428.html",
+     "seen": "20261020T150000Z"
+    },
+    {
+     "domain": "morgenpost.de",
+     "title": "Protesttag in Berlin am 31 . Oktober : Polizei fürchtet Szenario wie in Frankreich",
+     "url": "https://www.morgenpost.de/berlin/article413466092/protesttag-in-berlin-am-31-oktober-polizei-fuerchtet-szenario-wie-in-frankreich.html",
+     "seen": "20261020T161500Z"
+    }
+   ],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 43364,
+     "likes": 2313,
+     "comments": 349
+    }
+   ],
+   "views": 43364,
+   "likes": 2313,
+   "comments": 349,
+   "shares": null,
+   "engagement_rate": 6.14,
+   "views_velocity_per_hour": 915,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Ereignis in Berlin durch 4 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
+   "cluster": "eXf7hCDQWB8",
+   "score_breakdown": {
     "social": 8
+   },
+   "anime_score": null
+  },
+  "OO-jHIBpVbM": {
+   "video_id": "OO-jHIBpVbM",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=OO-jHIBpVbM",
+   "thumbnail": "https://i.ytimg.com/vi/OO-jHIBpVbM/hqdefault.jpg",
+   "creator": "CLPRESS / Agence de presse",
+   "title": "Lycéens : rassemblement ce 19 octobre à Paris place de la République au lendemain des émeutes",
+   "country": "Frankreich",
+   "region": "FR",
+   "city": "Paris",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "rassemblement Paris",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-19T17:59:48Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "fr",
+   "duration_seconds": 532,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [
+    {
+     "domain": "connexionfrance.com",
+     "title": "France riots : Curfews considered for Paris and other city centres",
+     "url": "https://www.connexionfrance.com/news/french-prefects-told-to-consider-bringing-in-curfews-to-prevent-further-riots-and-looting/822191",
+     "seen": "20261019T161500Z"
+    }
+   ],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 8488,
+     "likes": 88,
+     "comments": 18
+    }
+   ],
+   "views": 8488,
+   "likes": 88,
+   "comments": 18,
+   "shares": null,
+   "engagement_rate": 1.25,
+   "views_velocity_per_hour": 363,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "cluster": "OO-jHIBpVbM",
+   "score_breakdown": {
+    "social": 4
+   },
+   "anime_score": null
+  },
+  "L89Ixk5z-uc": {
+   "video_id": "L89Ixk5z-uc",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=L89Ixk5z-uc",
+   "thumbnail": "https://i.ytimg.com/vi/L89Ixk5z-uc/hqdefault.jpg",
+   "creator": "Ryad Aref (Ryad aref)",
+   "title": "Berlin police officer twists a female protester’s arm outside Rheinmetall arms factory! 🚨Footage",
+   "country": "Deutschland",
+   "region": "GM",
+   "city": "Berlin",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "Demonstration Berlin",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-18T04:06:49Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "en",
+   "duration_seconds": 17,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 8379,
+     "likes": 141,
+     "comments": 17
+    }
+   ],
+   "views": 8379,
+   "likes": 141,
+   "comments": 17,
+   "shares": null,
+   "engagement_rate": 1.89,
+   "views_velocity_per_hour": 137,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "cluster": "L89Ixk5z-uc",
+   "score_breakdown": {
+    "social": 4
+   },
+   "anime_score": null
+  },
+  "aifhjxjvXnM": {
+   "video_id": "aifhjxjvXnM",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=aifhjxjvXnM",
+   "thumbnail": "https://i.ytimg.com/vi/aifhjxjvXnM/hqdefault.jpg",
+   "creator": "Ryad Aref (Ryad aref)",
+   "title": "Young woman arrested during a protest against sexist police violence in Berlin! 🚨17.10.2026My camera",
+   "country": "Deutschland",
+   "region": "GM",
+   "city": "Berlin",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "Demonstration Berlin",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-18T02:11:41Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "ar",
+   "duration_seconds": 14,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 5274,
+     "likes": 113,
+     "comments": 5
+    }
+   ],
+   "views": 5274,
+   "likes": 113,
+   "comments": 5,
+   "shares": null,
+   "engagement_rate": 2.24,
+   "views_velocity_per_hour": 83,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "cluster": "aifhjxjvXnM",
+   "score_breakdown": {
+    "social": 4
+   },
+   "anime_score": null
+  },
+  "_JK8sUGLjV8": {
+   "video_id": "_JK8sUGLjV8",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=_JK8sUGLjV8",
+   "thumbnail": "https://i.ytimg.com/vi/_JK8sUGLjV8/hqdefault.jpg",
+   "creator": "El Debate",
+   "title": "Profesores en huelga tratan de boicotear un acto de Ayuso en el centro de Madrid",
+   "country": "Spanien",
+   "region": "SP",
+   "city": "Madrid",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "manifestación Madrid",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-19T14:39:37Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "es",
+   "duration_seconds": 81,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 22074,
+     "likes": 161,
+     "comments": 190
+    }
+   ],
+   "views": 22074,
+   "likes": 161,
+   "comments": 190,
+   "shares": null,
+   "engagement_rate": 1.59,
+   "views_velocity_per_hour": 826,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "cluster": "u42s-jmn2aY",
+   "score_breakdown": {
+    "social": 6
+   },
+   "anime_score": null
+  },
+  "zbaKqlYIslk": {
+   "video_id": "zbaKqlYIslk",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=zbaKqlYIslk",
+   "thumbnail": "https://i.ytimg.com/vi/zbaKqlYIslk/hqdefault.jpg",
+   "creator": "New York Post",
+   "title": "Vehicles, Shops Set Ablaze as Clashes Turn Violent at Paris Protest",
+   "country": "Frankreich",
+   "region": "FR",
+   "city": "Paris",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "manifestation Paris",
+   "event_description": "Dokumentierte Straßenausschreitungen und Demonstrationen in Paris: Brennende Barrikaden, umgestürzte und lichterloh brennende Fahrzeuge, massive Rauchentwicklung, Demonstranten mit Schildern und One-Piece-Flagge, Feuerwehrleute im Löscheinsatz an brennenden Ladenfronten sowie geplünderte und beschädigte Geschäfte.",
+   "event_date": null,
+   "published_at": "2026-10-18T18:15:26Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "en",
+   "duration_seconds": 201,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [
+    {
+     "domain": "connexionfrance.com",
+     "title": "France riots : Curfews considered for Paris and other city centres",
+     "url": "https://www.connexionfrance.com/news/french-prefects-told-to-consider-bringing-in-curfews-to-prevent-further-riots-and-looting/822191",
+     "seen": "20261019T161500Z"
+    }
+   ],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 195868,
+     "likes": 1575,
+     "comments": 848
+    }
+   ],
+   "views": 195868,
+   "likes": 1575,
+   "comments": 848,
+   "shares": null,
+   "engagement_rate": 1.24,
+   "views_velocity_per_hour": 4156,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "cluster": "zbaKqlYIslk",
+   "analysis": {
+    "relevant": true,
+    "event_description": "Dokumentierte Straßenausschreitungen und Demonstrationen in Paris: Brennende Barrikaden, umgestürzte und lichterloh brennende Fahrzeuge, massive Rauchentwicklung, Demonstranten mit Schildern und One-Piece-Flagge, Feuerwehrleute im Löscheinsatz an brennenden Ladenfronten sowie geplünderte und beschädigte Geschäfte.",
+    "city_guess": "Paris",
+    "country_guess": "Frankreich",
+    "emotional_observations": [
+     "Lautstarke Anfeuerungsrufe und Rufe aus der versammelten Menge",
+     "Triumphierende und provokante Posen zweier vermummter Personen vor den brennenden Fahrzeugen",
+     "Konzentriertes und zielgerichtetes Vorgehen der Feuerwehrleute unter Atemschutz",
+     "Schaulustige und teils verunsicherte Reaktionen von Passanten auf geplünderte Geschäfte"
+    ],
+    "visual_highlights": [
+     {
+      "timecode": "00:46",
+      "beschreibung": "Zwei vermummte Demonstranten posieren vor brennenden Autos; einer schwenkt eine schwarze One-Piece-Piratenflagge."
+     },
+     {
+      "timecode": "01:05",
+      "beschreibung": "Pariser Feuerwehrleute (Sapeurs-Pompiers) in roter Einsatzkleidung dringen unter dichtem Rauch in ein brennendes Geschäft ein."
+     },
+     {
+      "timecode": "02:08",
+      "beschreibung": "Lichterloh brennende Fassade und Markise eines Eckgeschäfts mit intensiver Flammenbildung und herabstürzenden Funken."
+     },
+     {
+      "timecode": "02:30",
+      "beschreibung": "Asphalt übersät mit herausgerissenen Pflastersteinen und Trümmern neben einem gepanzerten Einsatzfahrzeug."
+     }
+    ],
+    "story_potential": "Einstieg: Ein junger Fahrradkurier gerät auf seiner Route durch eine Metropole unerwartet in eine verrauchte Straßenschlucht voller Barrikaden. → Konflikt: Brennende Fahrzeuge und herabfallende Trümmer schneiden ihm den Fluchtweg ab; seine Fracht droht verloren zu gehen. → Wendepunkt: Ein Feuerwehrmann und eine vermummte Person ziehen ihn gemeinsam im dichten Rauch aus der Gefahrenzone. → Höhepunkt: Ein Einsturz der brennenden Hausfassade wird durch eine beherzte Warnung in letzter Sekunde knapp überlebt. → Nachhall: Stille legt sich über die rußbedeckte Straße; der Kurier blickt durch seine beschlagene Schutzbrille in den verbleibenden Funkenregen.",
+    "anime_concept": "In a near-future sprawling metropolis engulfed in civil unrest, an agile courier navigating blocked streets must make a desperate run through a burning boulevard, witnessing fleeting moments of solidarity amidst total urban chaos.",
+    "fictional_character": "Ren, an 18-year-old urban courier equipped with a patched high-collar windbreaker, scuffed respirator mask, and reinforced messenger pack.",
+    "recommended_perspective": "Dritte Person, dynamische Schulterperspektive (Over-the-shoulder) mit Fokus auf schnelle Ausweichbewegungen und Blickkontakt im Rauch",
+    "anime_imagery": "Gritty urban aesthetic reminiscent of 'Akira' and 'Terror in Resonance', featuring sharp chiaroscuro lighting, blazing orange fire reflections against cool grey asphalt, and thick, expressive volumetric smoke.",
+    "sound_ideas": [
+     "Prasselndes, tiefes Grollen intensiver Flammenwände",
+     "Gedämpftes, metallisches Klirren herabfallender Glassplitter und Pflastersteine",
+     "Schneller, keuchender Atem hinter einem Atemfilter",
+     "Fern hallende Sirenen, die plötzlich von einer dumpfen Druckwelle überlagert werden"
+    ],
+    "recommended_length_seconds": 45,
+    "scores": {
+     "emotional": 13,
+     "transformation": 18,
+     "cinematic": 14,
+     "story": 12,
+     "originality": 9,
+     "technical": 4
+    },
+    "synthetic_suspected": false,
+    "misleading_suspected": false,
+    "authenticity_concerns": [],
+    "open_questions": [
+     "Konkrete Chronologie und Zusammenschnittfolge der einzelnen Szenen (Zusammenstellung mehrerer Sequenzen)",
+     "Identität und Absichten der im Video gefilmten Einzelpersonen"
+    ],
+    "sensitive_content": [
+     "Schwere Brandstiftung und Sachbeschädigung",
+     "Plünderung von Gewerberäumen",
+     "Vermummte Personen im Kontext von Straßengewalt",
+     "Gefährliche Nähe zu unkontrollierten Großbränden"
+    ],
+    "_model": "gemini-3.8-flash"
+   },
+   "analyzed_at": "2026-10-20T17:54:50Z",
+   "emotional_observations": [
+    "Lautstarke Anfeuerungsrufe und Rufe aus der versammelten Menge",
+    "Triumphierende und provokante Posen zweier vermummter Personen vor den brennenden Fahrzeugen",
+    "Konzentriertes und zielgerichtetes Vorgehen der Feuerwehrleute unter Atemschutz",
+    "Schaulustige und teils verunsicherte Reaktionen von Passanten auf geplünderte Geschäfte"
+   ],
+   "visual_highlights": [
+    {
+     "timecode": "00:46",
+     "beschreibung": "Zwei vermummte Demonstranten posieren vor brennenden Autos; einer schwenkt eine schwarze One-Piece-Piratenflagge."
+    },
+    {
+     "timecode": "01:05",
+     "beschreibung": "Pariser Feuerwehrleute (Sapeurs-Pompiers) in roter Einsatzkleidung dringen unter dichtem Rauch in ein brennendes Geschäft ein."
+    },
+    {
+     "timecode": "02:08",
+     "beschreibung": "Lichterloh brennende Fassade und Markise eines Eckgeschäfts mit intensiver Flammenbildung und herabstürzenden Funken."
+    },
+    {
+     "timecode": "02:30",
+     "beschreibung": "Asphalt übersät mit herausgerissenen Pflastersteinen und Trümmern neben einem gepanzerten Einsatzfahrzeug."
+    }
+   ],
+   "story_potential": "Einstieg: Ein junger Fahrradkurier gerät auf seiner Route durch eine Metropole unerwartet in eine verrauchte Straßenschlucht voller Barrikaden. → Konflikt: Brennende Fahrzeuge und herabfallende Trümmer schneiden ihm den Fluchtweg ab; seine Fracht droht verloren zu gehen. → Wendepunkt: Ein Feuerwehrmann und eine vermummte Person ziehen ihn gemeinsam im dichten Rauch aus der Gefahrenzone. → Höhepunkt: Ein Einsturz der brennenden Hausfassade wird durch eine beherzte Warnung in letzter Sekunde knapp überlebt. → Nachhall: Stille legt sich über die rußbedeckte Straße; der Kurier blickt durch seine beschlagene Schutzbrille in den verbleibenden Funkenregen.",
+   "anime_concept": "In a near-future sprawling metropolis engulfed in civil unrest, an agile courier navigating blocked streets must make a desperate run through a burning boulevard, witnessing fleeting moments of solidarity amidst total urban chaos.",
+   "fictional_character": "Ren, an 18-year-old urban courier equipped with a patched high-collar windbreaker, scuffed respirator mask, and reinforced messenger pack.",
+   "recommended_perspective": "Dritte Person, dynamische Schulterperspektive (Over-the-shoulder) mit Fokus auf schnelle Ausweichbewegungen und Blickkontakt im Rauch",
+   "anime_imagery": "Gritty urban aesthetic reminiscent of 'Akira' and 'Terror in Resonance', featuring sharp chiaroscuro lighting, blazing orange fire reflections against cool grey asphalt, and thick, expressive volumetric smoke.",
+   "sound_ideas": [
+    "Prasselndes, tiefes Grollen intensiver Flammenwände",
+    "Gedämpftes, metallisches Klirren herabfallender Glassplitter und Pflastersteine",
+    "Schneller, keuchender Atem hinter einem Atemfilter",
+    "Fern hallende Sirenen, die plötzlich von einer dumpfen Druckwelle überlagert werden"
+   ],
+   "recommended_length_seconds": 45,
+   "authenticity_concerns": [],
+   "open_questions": [
+    "Konkrete Chronologie und Zusammenschnittfolge der einzelnen Szenen (Zusammenstellung mehrerer Sequenzen)",
+    "Identität und Absichten der im Video gefilmten Einzelpersonen"
+   ],
+   "sensitive_content": [
+    "Schwere Brandstiftung und Sachbeschädigung",
+    "Plünderung von Gewerberäumen",
+    "Vermummte Personen im Kontext von Straßengewalt",
+    "Gefährliche Nähe zu unkontrollierten Großbränden"
+   ],
+   "score_breakdown": {
+    "social": 8,
+    "emotional": 13.0,
+    "transformation": 18.0,
+    "cinematic": 14.0,
+    "story": 12.0,
+    "originality": 9.0,
+    "technical": 4.0
+   },
+   "anime_score": 78
+  },
+  "JwVc4wo2ks0": {
+   "video_id": "JwVc4wo2ks0",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=JwVc4wo2ks0",
+   "thumbnail": "https://i.ytimg.com/vi/JwVc4wo2ks0/hqdefault.jpg",
+   "creator": "Anadolu English",
+   "title": "Berlin students march in solidarity with French education protests",
+   "country": "Deutschland",
+   "region": "GM",
+   "city": "Berlin",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "Demonstration Berlin",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-18T04:00:39Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "en-US",
+   "duration_seconds": 62,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 5958,
+     "likes": 735,
+     "comments": 0
+    }
+   ],
+   "views": 5958,
+   "likes": 735,
+   "comments": 0,
+   "shares": null,
+   "engagement_rate": 12.34,
+   "views_velocity_per_hour": 97,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "cluster": "JwVc4wo2ks0",
+   "score_breakdown": {
+    "social": 6
+   },
+   "anime_score": null
+  },
+  "0aBl1fX50mA": {
+   "video_id": "0aBl1fX50mA",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=0aBl1fX50mA",
+   "thumbnail": "https://i.ytimg.com/vi/0aBl1fX50mA/hqdefault.jpg",
+   "creator": "Ryad Aref (Ryad aref)",
+   "title": "One voice, one rhythm… Berlin chants for Gaza! 🥁17.10.2026A woman leads powerful chants to the beat",
+   "country": "Deutschland",
+   "region": "GM",
+   "city": "Berlin",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "Demonstration Berlin",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-19T12:01:12Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "en",
+   "duration_seconds": 17,
+   "authenticity_status": "PARTIALLY_VERIFIED",
+   "verification_sources": [
+    {
+     "domain": "welt.de",
+     "title": "Berliner Polizei bereitet sich auf Protesttag vor",
+     "url": "https://www.welt.de/regionales/berlin/article6ad77c3e51e5094f7a57337e/berliner-polizei-bereitet-sich-auf-protesttag-vor.html",
+     "seen": "20261020T151500Z"
+    },
+    {
+     "domain": "tagesspiegel.de",
+     "title": " „ Gen Z steht auf  ruft zu Protesten auf : Berliner Polizei bereitet sich auf umfangreichen Einsatz am 31 . Oktober vor",
+     "url": "https://www.tagesspiegel.de/berlin/dpa-berliner-polizei-bereitet-sich-auf-umfangreichen-einsatz-am-31-oktober-vor-16181215.html",
+     "seen": "20261020T153000Z"
+    },
+    {
+     "domain": "n-tv.de",
+     "title": "Berlin & Brandenburg : Berliner Polizei bereitet sich auf Protesttag vor",
+     "url": "https://www.n-tv.de/regionales/berlin-und-brandenburg/Berliner-Polizei-bereitet-sich-auf-Protesttag-vor-id31439428.html",
+     "seen": "20261020T150000Z"
+    },
+    {
+     "domain": "morgenpost.de",
+     "title": "Protesttag in Berlin am 31 . Oktober : Polizei fürchtet Szenario wie in Frankreich",
+     "url": "https://www.morgenpost.de/berlin/article413466092/protesttag-in-berlin-am-31-oktober-polizei-fuerchtet-szenario-wie-in-frankreich.html",
+     "seen": "20261020T161500Z"
+    }
+   ],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 5609,
+     "likes": 304,
+     "comments": 49
+    }
+   ],
+   "views": 5609,
+   "likes": 304,
+   "comments": 49,
+   "shares": null,
+   "engagement_rate": 6.29,
+   "views_velocity_per_hour": 191,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Ereignis in Berlin durch 4 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
+   "cluster": "0aBl1fX50mA",
+   "score_breakdown": {
+    "social": 6
+   },
+   "anime_score": null
+  },
+  "dZFpmqbaoZI": {
+   "video_id": "dZFpmqbaoZI",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=dZFpmqbaoZI",
+   "thumbnail": "https://i.ytimg.com/vi/dZFpmqbaoZI/hqdefault.jpg",
+   "creator": "Andi wacht auf!",
+   "title": "Plötzlich bedauert sie die Hautfarbe der Zuhörer...",
+   "country": "Deutschland",
+   "region": "GM",
+   "city": null,
+   "city_source": null,
+   "found_by_query": "Demonstration Berlin",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-18T16:24:39Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "de",
+   "duration_seconds": 163,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 36232,
+     "likes": 1863,
+     "comments": 165
+    }
+   ],
+   "views": 36232,
+   "likes": 1863,
+   "comments": 165,
+   "shares": null,
+   "engagement_rate": 5.6,
+   "views_velocity_per_hour": 740,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "cluster": "dZFpmqbaoZI",
+   "score_breakdown": {
+    "social": 8
+   },
+   "anime_score": null
+  },
+  "UNzT_CIhA4k": {
+   "video_id": "UNzT_CIhA4k",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=UNzT_CIhA4k",
+   "thumbnail": "https://i.ytimg.com/vi/UNzT_CIhA4k/hqdefault.jpg",
+   "creator": "Tg1",
+   "title": "Milano: ancora tensioni in Piazza Duomo. Fermati 60 giovani incappucciati.",
+   "country": "Italien",
+   "region": "IT",
+   "city": "Milano",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "manifestazione Milano",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-18T14:53:30Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "it",
+   "duration_seconds": 28,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 105739,
+     "likes": 1367,
+     "comments": 312
+    }
+   ],
+   "views": 105739,
+   "likes": 1367,
+   "comments": 312,
+   "shares": null,
+   "engagement_rate": 1.59,
+   "views_velocity_per_hour": 2094,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "cluster": "UNzT_CIhA4k",
+   "analysis_failed": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+   "score_breakdown": {
+    "social": 8
+   },
+   "anime_score": null
+  },
+  "xgytmbsY-0U": {
+   "video_id": "xgytmbsY-0U",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=xgytmbsY-0U",
+   "thumbnail": "https://i.ytimg.com/vi/xgytmbsY-0U/hqdefault.jpg",
+   "creator": "Éthique et tac",
+   "title": "Masterclass de Poutou après les manifestations du 17 octobre",
+   "country": "Frankreich",
+   "region": "FR",
+   "city": null,
+   "city_source": null,
+   "found_by_query": "vidéo manifestation",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-19T10:12:33Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "fr",
+   "duration_seconds": 722,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 270553,
+     "likes": 5158,
+     "comments": 1216
+    }
+   ],
+   "views": 270553,
+   "likes": 5158,
+   "comments": 1216,
+   "shares": null,
+   "engagement_rate": 2.36,
+   "views_velocity_per_hour": 8678,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "cluster": "xgytmbsY-0U",
+   "score_breakdown": {
+    "social": 9
+   },
+   "anime_score": null
+  },
+  "eCJN8a8KOZM": {
+   "video_id": "eCJN8a8KOZM",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=eCJN8a8KOZM",
+   "thumbnail": "https://i.ytimg.com/vi/eCJN8a8KOZM/hqdefault.jpg",
+   "creator": "stern TV",
+   "title": "Pro-Palästina-Demos in Berlin: Protest oder Hass? | stern TV",
+   "country": "Deutschland",
+   "region": "GM",
+   "city": "Berlin",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "Demonstration Berlin",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-19T16:30:21Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "de",
+   "duration_seconds": 83,
+   "authenticity_status": "PARTIALLY_VERIFIED",
+   "verification_sources": [
+    {
+     "domain": "welt.de",
+     "title": "Berliner Polizei bereitet sich auf Protesttag vor",
+     "url": "https://www.welt.de/regionales/berlin/article6ad77c3e51e5094f7a57337e/berliner-polizei-bereitet-sich-auf-protesttag-vor.html",
+     "seen": "20261020T151500Z"
+    },
+    {
+     "domain": "tagesspiegel.de",
+     "title": " „ Gen Z steht auf  ruft zu Protesten auf : Berliner Polizei bereitet sich auf umfangreichen Einsatz am 31 . Oktober vor",
+     "url": "https://www.tagesspiegel.de/berlin/dpa-berliner-polizei-bereitet-sich-auf-umfangreichen-einsatz-am-31-oktober-vor-16181215.html",
+     "seen": "20261020T153000Z"
+    },
+    {
+     "domain": "n-tv.de",
+     "title": "Berlin & Brandenburg : Berliner Polizei bereitet sich auf Protesttag vor",
+     "url": "https://www.n-tv.de/regionales/berlin-und-brandenburg/Berliner-Polizei-bereitet-sich-auf-Protesttag-vor-id31439428.html",
+     "seen": "20261020T150000Z"
+    },
+    {
+     "domain": "morgenpost.de",
+     "title": "Protesttag in Berlin am 31 . Oktober : Polizei fürchtet Szenario wie in Frankreich",
+     "url": "https://www.morgenpost.de/berlin/article413466092/protesttag-in-berlin-am-31-oktober-polizei-fuerchtet-szenario-wie-in-frankreich.html",
+     "seen": "20261020T161500Z"
+    }
+   ],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 35969,
+     "likes": 460,
+     "comments": 312
+    }
+   ],
+   "views": 35969,
+   "likes": 460,
+   "comments": 312,
+   "shares": null,
+   "engagement_rate": 2.15,
+   "views_velocity_per_hour": 1446,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Ereignis in Berlin durch 4 unabhängige Nachrichtenquellen belegt; dass genau dieses Video das Ereignis zeigt, ist NICHT geprüft – manuelle Prüfung nötig.",
+   "cluster": "eCJN8a8KOZM",
+   "score_breakdown": {
+    "social": 7
+   },
+   "anime_score": null
+  },
+  "rOrmHdQlzSc": {
+   "video_id": "rOrmHdQlzSc",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=rOrmHdQlzSc",
+   "thumbnail": "https://i.ytimg.com/vi/rOrmHdQlzSc/hqdefault.jpg",
+   "creator": "India Global Review",
+   "title": "Riots Sweep Across France as Protests Turn Violent | The Palki Sharma Show | India Global Review",
+   "country": "Frankreich",
+   "region": "FR",
+   "city": "Paris",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "manifestation Paris",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-19T17:15:07Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "en",
+   "duration_seconds": 777,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [
+    {
+     "domain": "connexionfrance.com",
+     "title": "France riots : Curfews considered for Paris and other city centres",
+     "url": "https://www.connexionfrance.com/news/french-prefects-told-to-consider-bringing-in-curfews-to-prevent-further-riots-and-looting/822191",
+     "seen": "20261019T161500Z"
+    }
+   ],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 769157,
+     "likes": 4249,
+     "comments": 999
+    }
+   ],
+   "views": 769157,
+   "likes": 4249,
+   "comments": 999,
+   "shares": null,
+   "engagement_rate": 0.68,
+   "views_velocity_per_hour": 31872,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "cluster": "rOrmHdQlzSc",
+   "score_breakdown": {
+    "social": 9
+   },
+   "anime_score": null
+  },
+  "tGOqlayN0fM": {
+   "video_id": "tGOqlayN0fM",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=tGOqlayN0fM",
+   "thumbnail": "https://i.ytimg.com/vi/tGOqlayN0fM/hqdefault.jpg",
+   "creator": "The New Arab",
+   "title": "Berlin police rip Palestinian flag away from protesters",
+   "country": "Deutschland",
+   "region": "GM",
+   "city": "Berlin",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "Demonstration Berlin",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-18T13:00:29Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "en",
+   "duration_seconds": 18,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 7997,
+     "likes": 1291,
+     "comments": 85
+    }
+   ],
+   "views": 7997,
+   "likes": 1291,
+   "comments": 85,
+   "shares": null,
+   "engagement_rate": 17.21,
+   "views_velocity_per_hour": 153,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "cluster": "tGOqlayN0fM",
+   "score_breakdown": {
+    "social": 7
+   },
+   "anime_score": null
+  },
+  "LB9zH-SKoj8": {
+   "video_id": "LB9zH-SKoj8",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=LB9zH-SKoj8",
+   "thumbnail": "https://i.ytimg.com/vi/LB9zH-SKoj8/hqdefault.jpg",
+   "creator": "Reuters",
+   "title": "Mass protests in France spiral into worst riots in years",
+   "country": "Frankreich",
+   "region": "FR",
+   "city": null,
+   "city_source": null,
+   "found_by_query": "manifestation Paris",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-17T22:45:06Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "en-US",
+   "duration_seconds": 44,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 386989,
+     "likes": 2231,
+     "comments": 1117
+    }
+   ],
+   "views": 386989,
+   "likes": 2231,
+   "comments": 1117,
+   "shares": null,
+   "engagement_rate": 0.87,
+   "views_velocity_per_hour": 5808,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "cluster": "LB9zH-SKoj8",
+   "score_breakdown": {
+    "social": 7
+   },
+   "anime_score": null
+  },
+  "59wML3m_L-c": {
+   "video_id": "59wML3m_L-c",
+   "platform": "YouTube",
+   "video_url": "https://www.youtube.com/watch?v=59wML3m_L-c",
+   "thumbnail": "https://i.ytimg.com/vi/59wML3m_L-c/hqdefault.jpg",
+   "creator": "RTVE Noticias",
+   "title": "Tensión entre policía y manifestantes al irrumpir la huelga educativa de Madrid en un acto de Ayuso",
+   "country": "Spanien",
+   "region": "SP",
+   "city": "Madrid",
+   "city_source": "Titel/Beschreibung",
+   "found_by_query": "manifestación Madrid",
+   "event_description": null,
+   "event_date": null,
+   "published_at": "2026-10-19T13:24:50Z",
+   "collected_at": "2026-10-20T17:23:03Z",
+   "language": "es",
+   "duration_seconds": 92,
+   "authenticity_status": "UNVERIFIED",
+   "verification_sources": [],
+   "rights_status": "NOT_CLEARED – Originalmaterial wird nicht verwendet, nur Inspiration",
+   "manual_review_required": true,
+   "snapshots": [
+    {
+     "t": "2026-10-20T17:23:03Z",
+     "views": 24210,
+     "likes": 167,
+     "comments": 334
+    }
+   ],
+   "views": 24210,
+   "likes": 167,
+   "comments": 334,
+   "shares": null,
+   "engagement_rate": 2.07,
+   "views_velocity_per_hour": 866,
+   "velocity_basis": "Durchschnitt seit Veröffentlichung",
+   "verification_note": "Keine unabhängigen Nachrichtenquellen zum Ereignis gefunden.",
+   "cluster": "59wML3m_L-c",
+   "score_breakdown": {
+    "social": 7
    },
    "anime_score": null
   }
@@ -9873,6 +12136,62 @@
    "new": 33,
    "analyzed": 7,
    "finished": "2026-10-20T12:27:46Z"
+  },
+  {
+   "started": "2026-10-20T17:23:03Z",
+   "queries": [
+    {
+     "q": "Demonstration Berlin",
+     "results": 25
+    },
+    {
+     "q": "manifestation Paris",
+     "results": 25
+    },
+    {
+     "q": "manifestazione Milano",
+     "results": 25
+    },
+    {
+     "q": "manifestación Madrid",
+     "results": 25
+    },
+    {
+     "q": "breaking protest footage",
+     "results": 25
+    },
+    {
+     "q": "Demonstration Köln",
+     "results": 5
+    },
+    {
+     "q": "rassemblement Paris",
+     "results": 25
+    },
+    {
+     "q": "corteo Milano oggi",
+     "results": 7
+    },
+    {
+     "q": "protesta Madrid hoy",
+     "results": 5
+    },
+    {
+     "q": "eyewitness footage crowd",
+     "results": 5
+    },
+    {
+     "q": "Kundgebung Berlin",
+     "results": 4
+    },
+    {
+     "q": "vidéo manifestation",
+     "results": 25
+    }
+   ],
+   "new": 20,
+   "analyzed": 5,
+   "finished": "2026-10-20T18:04:22Z"
   }
  ]
 }
