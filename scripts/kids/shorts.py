@@ -72,15 +72,15 @@ def text_layer(title, sub, footer):
     words, lines, cur = sub.split(), [], ""
     for w in words:
         test = (cur + " " + w).strip()
-        if d.textlength(test, font=drawing.font(70, "SemiBold", "Quicksand")) > W - 160 and cur:
+        if d.textlength(test, font=drawing.font(66, "Bold", "Quicksand")) > W - 160 and cur:
             lines.append(cur)
             cur = w
         else:
             cur = test
     lines.append(cur)
     for i, ln in enumerate(lines):
-        centered(ln, 70, 860 + i * 90, (225, 225, 255, 235), "SemiBold")
-    centered(footer, 42, 1800, (200, 200, 235, 200), "SemiBold")
+        centered(ln, 66, 920 + i * 86, (230, 230, 255, 240), "Bold")
+    centered(footer, 42, 1800, (205, 205, 240, 215), "Bold")
     return img
 
 
