@@ -56,7 +56,6 @@ def main():
     ap.add_argument("--channel", required=True, choices=["schlaf", "lernen", "geschichten"])
     ap.add_argument("--format", default="long", choices=["long", "short"], help="nur für lernen")
     ap.add_argument("--topic", choices=["zahlen", "farben", "formen"], help="nur für lernen")
-    ap.add_argument("--hours", type=float, help="nur für schlaf")
     ap.add_argument("--minutes", type=float, help="nur für schlaf (Tests)")
     ap.add_argument("--seed", type=int)
     ap.add_argument("--dry-run", action="store_true")
@@ -81,16 +80,17 @@ def main():
         print("  ✓ YouTube-Zugang ok")
 
     thumb = None
+    extra = []                       # weitere Uploads in diesem Lauf (z. B. der tägliche Short)
     if args.channel == "schlaf":
+        import shorts
         import schlaf
-        if args.minutes:
-            hours, seconds = round(args.minutes / 60, 2), int(args.minutes * 60)
-        else:
-            hours = args.hours or rnd.choice(ch["durations_hours"])
-            seconds = int(hours * 3600)
+        minutes = args.minutes or ch.get("minutes", 14)
+        seconds = int(minutes * 60)
         info = schlaf.produce(ch, seconds, work, rnd)
-        meta = schlaf.metadata(ch, info, hours, rnd)
+        meta = schlaf.metadata(ch, info, minutes, rnd)
         thumb = make_thumb(info["loop"], work / "thumbnail.jpg", meta["thumb_label"], meta["thumb_sub"], at=0.2)
+        sinfo = shorts.schlaf_short(work / "short", rnd, float(ch.get("short_seconds", 45)))
+        extra.append((sinfo, schlaf.short_metadata(ch, sinfo, rnd)))
     elif args.channel == "lernen":
         import learn
         topic = args.topic or rnd.choice(ch["topics"])
@@ -111,6 +111,8 @@ def main():
 
     if args.dry_run:
         print("  (Testlauf – kein Upload)")
+        for xinfo, xmeta in extra:
+            print(f"  + Short: {xmeta['title']} ({xinfo['video_file']})")
     else:
         import upload
         vid = upload.upload(yt, info["video_file"], meta, ch, publish_at=None)
@@ -122,6 +124,10 @@ def main():
         if args.channel == "geschichten":
             stories.mark_used(info["story"]["title"])
         os.remove(info["video_file"])
+        for xinfo, xmeta in extra:
+            xvid = upload.upload(yt, xinfo["video_file"], xmeta, ch, publish_at=None)
+            record.setdefault("extra_uploads", []).append({"video_id": xvid, "title": xmeta["title"]})
+            print(f"  ✓ Short privat hochgeladen: https://youtu.be/{xvid}")
 
     (work / "meta.json").write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"  Dateien: {work}")

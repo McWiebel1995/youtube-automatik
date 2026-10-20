@@ -6,6 +6,7 @@ from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 from common import ffmpeg
 
 FONT_CANDIDATES = [
+    Path(__file__).resolve().parent.parent / "assets" / "fonts" / "PlayfairDisplay.ttf",
     Path(__file__).resolve().parent.parent / "assets" / "fonts" / "Thumbnail.ttf",
     Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"),
     Path("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"),
@@ -15,7 +16,12 @@ FONT_CANDIDATES = [
 def font(size):
     for p in FONT_CANDIDATES:
         if p.exists():
-            return ImageFont.truetype(str(p), size)
+            f = ImageFont.truetype(str(p), size)
+            try:
+                f.set_variation_by_name("Bold")
+            except Exception:  # noqa: BLE001 – keine variable Schrift
+                pass
+            return f
     return ImageFont.load_default(size)
 
 

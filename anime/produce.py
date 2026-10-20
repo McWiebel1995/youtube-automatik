@@ -45,6 +45,8 @@ VW, VH = 1080, 608                     # 16:9-Videofenster im Short (90er-Anime-
 VY = 700                               # Oberkante des Videofensters; darüber steht die Schlagzeile
 END_CARD = "Fictional story inspired by real events."
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+_ANTON = HERE.parent / "assets" / "fonts" / "Anton.ttf"
+HEAD_FONT = str(_ANTON) if _ANTON.exists() else FONT
 
 
 def now():
@@ -458,11 +460,11 @@ def produce(vid, no_gpu=False, max_shots=None):
     if headline:
         import textwrap
         lines = textwrap.wrap(headline, 30)[:4]
-        fs, lh = 58, 74
+        fs, lh = (66, 80) if HEAD_FONT != FONT else (58, 74)
         y0 = VY - 50 - lh * len(lines)
         for k, ln in enumerate(lines):
             (work / f"hl_{k}.txt").write_text(ln, encoding="utf-8")
-            vf += (f",drawtext=fontfile={FONT}:textfile=hl_{k}.txt:fontsize={fs}:fontcolor=white:"
+            vf += (f",drawtext=fontfile={HEAD_FONT}:textfile=hl_{k}.txt:fontsize={fs}:fontcolor=white:"
                    f"x=(w-tw)/2:y={y0 + k * lh}:enable='lt(t,{total - end_len:.2f})'")
     final = work / f"{vid}.mp4"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", joined.name, "-i", "mix.wav",

@@ -9,9 +9,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-os.environ.setdefault("KIDS_VIS_W", "540")      # Szene direkt hochkant zeichnen (vor Import von visuals!)
-os.environ.setdefault("KIDS_VIS_H", "960")
-
 import numpy as np  # noqa: E402
 from PIL import Image, ImageDraw, ImageFilter  # noqa: E402
 from scipy.io import wavfile  # noqa: E402
@@ -19,7 +16,27 @@ from scipy.io import wavfile  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import drawing  # noqa: E402
 import music  # noqa: E402
-import visuals  # noqa: E402
+
+
+def _portrait_visuals():
+    """Eigene Kopie von visuals.py, die hochkant (540x960) zeichnet – die Querformat-Szenen bleiben unberührt."""
+    import importlib.util
+    old = os.environ.get("KIDS_VIS_W"), os.environ.get("KIDS_VIS_H")
+    os.environ["KIDS_VIS_W"], os.environ["KIDS_VIS_H"] = "540", "960"
+    try:
+        spec = importlib.util.spec_from_file_location("visuals_portrait", Path(__file__).with_name("visuals.py"))
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+    finally:
+        for k, v in zip(("KIDS_VIS_W", "KIDS_VIS_H"), old):
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+    return mod
+
+
+visuals = _portrait_visuals()
 
 W, H, FPS = 1080, 1920, 24
 
@@ -37,33 +54,33 @@ def text_layer(title, sub, footer):
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
 
-    def centered(text, size, y, fill, weight="SemiBold"):
-        f = drawing.font(size, weight)
+    def centered(text, size, y, fill, weight="SemiBold", family="Quicksand"):
+        f = drawing.font(size, weight, family)
         tw = d.textlength(text, font=f)
         d.text(((W - tw) / 2, y), text, font=f, fill=fill)
 
     glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     gd = ImageDraw.Draw(glow)
-    f = drawing.font(150)
+    f = drawing.font(150, "Regular", "Pacifico")
     tw = gd.textlength(title, font=f)
     gd.text(((W - tw) / 2, 640), title, font=f, fill=(255, 230, 160, 200))
     glow = glow.filter(ImageFilter.GaussianBlur(18))
     img = Image.alpha_composite(img, glow)
     d = ImageDraw.Draw(img)
-    centered(title, 150, 640, (255, 246, 220, 255))
+    centered(title, 150, 640, (255, 246, 220, 255), "Regular", "Pacifico")
     # Untertitel ggf. umbrechen
     words, lines, cur = sub.split(), [], ""
     for w in words:
         test = (cur + " " + w).strip()
-        if d.textlength(test, font=drawing.font(70, "Medium")) > W - 160 and cur:
+        if d.textlength(test, font=drawing.font(70, "SemiBold", "Quicksand")) > W - 160 and cur:
             lines.append(cur)
             cur = w
         else:
             cur = test
     lines.append(cur)
     for i, ln in enumerate(lines):
-        centered(ln, 70, 850 + i * 90, (225, 225, 255, 235), "Medium")
-    centered(footer, 42, 1800, (200, 200, 235, 200), "Medium")
+        centered(ln, 70, 860 + i * 90, (225, 225, 255, 235), "SemiBold")
+    centered(footer, 42, 1800, (200, 200, 235, 200), "SemiBold")
     return img
 
 

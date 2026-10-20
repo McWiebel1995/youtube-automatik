@@ -41,6 +41,11 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg espeak-ng fonts-dejavu-core
           pip install -q modal requests numpy scipy pyyaml soundfile "kokoro>=0.9"
+
+      - name: Schriften laden (freie Google Fonts)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/fetch_fonts.py
       - name: Short produzieren
         env:
           MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}

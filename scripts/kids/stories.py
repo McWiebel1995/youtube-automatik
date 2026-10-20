@@ -126,7 +126,7 @@ def build(story, work, voice, rate, rnd):
     return vpath, subs, len(voice_track) / SR
 
 
-def write_ass(path, title, subs, font_name):
+def write_ass(path, title, subs, font_name, title_font=None):
     def esc(s):
         return s.replace("{", "(").replace("}", ")")
 
@@ -139,7 +139,7 @@ WrapStyle: 0
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Sub,{font_name},54,&H00F5F5FF,&H000000FF,&H00301818,&H64000000,0,0,0,0,100,100,0,0,1,3,1,2,160,160,70,1
-Style: Title,{font_name},104,&H00C8F0FF,&H000000FF,&H00301818,&H64000000,1,0,0,0,100,100,0,0,1,5,2,8,100,100,150,1
+Style: Title,{title_font or font_name},104,&H00C8F0FF,&H000000FF,&H00301818,&H64000000,1,0,0,0,100,100,0,0,1,5,2,8,100,100,150,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -172,9 +172,10 @@ def produce(ch, work: Path, rnd, voice, rate):
     mpath = work / "music.wav"
     wavfile.write(mpath, SR, (np.clip(m, -1, 1) * 32767).astype(np.int16))
 
-    kids_font = ROOT / "assets" / "fonts" / "Kids.ttf"
-    font_name = "Fredoka" if kids_font.exists() else "DejaVu Sans"
-    write_ass(work / "story.ass", story["title"], subs, font_name)
+    fdir = ROOT / "assets" / "fonts"
+    font_name = "Nunito" if (fdir / "Nunito.ttf").exists() else "Fredoka" if (fdir / "Kids.ttf").exists() else "DejaVu Sans"
+    title_font = "Baloo 2" if (fdir / "Baloo2.ttf").exists() else font_name
+    write_ass(work / "story.ass", story["title"], subs, font_name, title_font)
     fonts_dir = (ROOT / "assets" / "fonts").as_posix()
 
     out = work / "video.mp4"

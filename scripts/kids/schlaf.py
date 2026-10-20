@@ -93,15 +93,14 @@ def produce(ch, seconds, work: Path, rnd):
     return {"video_file": str(out), "loop": str(loop), "with_noise": with_noise, "songs": count}
 
 
-def metadata(ch, info, hours, rnd):
+def metadata(ch, info, minutes, rnd):
     theme = rnd.choice(ch["themes"])
     noise = " + sanftes Rauschen" if info["with_noise"] else ""
-    h = f"{hours:g}".replace(".", ",")
-    title = rnd.choice(ch["title_templates"]).format(hours=h, theme=theme, noise=noise)[:100]
+    title = rnd.choice(ch["title_templates"]).format(theme=theme, noise=noise)[:100]
     desc = "\n".join([
-        f"{h} Stunden sanfte Spieluhr-Musik {theme}{noise}.",
+        f"Sanfte Spieluhr-Musik {theme}{noise} – genau richtig für die Einschlafphase.",
         "",
-        "Ruhige Schlaflieder helfen deinem Baby beim Einschlafen und Durchschlafen.",
+        "Ruhige Schlaflieder helfen deinem Baby beim Einschlafen.",
         "Der Bildschirm bleibt dunkel und ruhig – du kannst ihn auch einfach ausschalten",
         "oder das Handy weglegen und nur die Musik laufen lassen.",
         "",
@@ -112,4 +111,17 @@ def metadata(ch, info, hours, rnd):
         "#Einschlafmusik #Spieluhr #Babyschlaf",
     ])
     return {"title": title, "description": desc, "tags": ch["tags"], "scene": theme,
-            "thumb_label": f"{h} STD" if hours != 1 else "1 STUNDE", "thumb_sub": "SPIELUHR ZUM EINSCHLAFEN"}
+            "thumb_label": "15 MIN", "thumb_sub": "SPIELUHR ZUM EINSCHLAFEN"}
+
+
+def short_metadata(ch, info, rnd):
+    title = rnd.choice(ch["short_titles"]).format(greeting=info["title_word"])[:100]
+    desc = "\n".join([
+        f"{info['title_word']} – {info['subtitle']}. 🌙",
+        "Ein neues Spieluhr-Schlaflied, jeden Tag.",
+        "",
+        "Die ganze Einschlafmusik findest du auf dem Kanal.",
+        "",
+        "#shorts #Einschlafmusik #Spieluhr #Schlaflied",
+    ])
+    return {"title": title, "description": desc, "tags": ch["tags"] + ["shorts"]}

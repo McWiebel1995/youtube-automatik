@@ -8,11 +8,13 @@ ROOT = Path(__file__).resolve().parents[2]
 _fonts = {}
 
 
-def font(size, weight="SemiBold"):
-    key = (size, weight)
+def font(size, weight="SemiBold", family="Kids"):
+    """family = Dateiname in assets/fonts (z. B. "Pacifico", "Quicksand"); Fallback: Kids/Fredoka, DejaVu."""
+    key = (size, weight, family)
     if key not in _fonts:
         f = None
-        for p in [ROOT / "assets/fonts/Kids.ttf", Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf")]:
+        for p in [ROOT / f"assets/fonts/{family}.ttf", ROOT / "assets/fonts/Kids.ttf",
+                  Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf")]:
             if p.exists():
                 try:
                     f = ImageFont.truetype(str(p), size)

@@ -21,12 +21,18 @@ channels:
     token_secret: YT_REFRESH_TOKEN_SCHLAF
     category_id: "10"           # Musik
     playlist_id: ""
-    durations_hours: [1, 2, 3]
+    # Täglich: ein Video mit 14 Minuten (unter dem 15-Minuten-Limit) + ein 45-Sekunden-Short
+    minutes: 14
+    short_seconds: 45
     with_noise_chance: 0.5     # zusätzlich leises Rauschen (beruhigt Babys)
     title_templates:
-      - "{hours} Stunden Spieluhr {theme} – Einschlafmusik für Babys"
-      - "Babys Einschlafmusik {theme} | {hours}h sanfte Spieluhr{noise}"
-      - "Spieluhr zum Einschlafen – {theme} ({hours} Stunden){noise}"
+      - "15 Minuten Einschlafmusik {theme} – sanfte Spieluhr für Babys"
+      - "Babys Einschlafmusik {theme} | 15 Min. Spieluhr{noise}"
+      - "Spieluhr zum Einschlafen – {theme} (15 Minuten){noise}"
+    short_titles:
+      - "{greeting} 🌙 Spieluhr zum Einschlafen #shorts"
+      - "{greeting} 🌙 Einschlafmusik für Babys #shorts"
+      - "{greeting} ✨ Sanfte Spieluhr #shorts #schlaflied"
     themes: ["unter dem Sternenhimmel", "im Mondschein", "für süße Träume", "für ruhige Nächte", "mit Wolken & Sternen"]
     tags: ["Einschlafmusik", "Baby Schlafmusik", "Spieluhr", "Schlaflied", "Babymusik", "Lullaby", "Baby schlafen"]
 

@@ -5,7 +5,7 @@ name: Kinder-Videos produzieren
 
 on:
   schedule:
-    - cron: "17 4 */2 * *"      # Schlafkanal: alle 2 Tage
+    - cron: "17 4 * * *"        # Schlafkanal: täglich 14-Min-Video + 45-s-Short
     - cron: "27 4 * * *"        # Lernkanal: täglich ein Short
     - cron: "37 4 * * 1,4"      # Lernkanal: Mo + Do ein langes Video
     - cron: "47 4 * * 0,2,5"    # Geschichten: So, Di, Fr
@@ -40,7 +40,7 @@ jobs:
         id: job
         run: |
           case "${{ github.event.schedule }}" in
-            "17 4 */2 * *")   JOB=schlaf ;;
+            "17 4 * * *")     JOB=schlaf ;;
             "27 4 * * *")     JOB=lernen-short ;;
             "37 4 * * 1,4")   JOB=lernen-long ;;
             "47 4 * * 0,2,5") JOB=geschichten ;;
@@ -57,7 +57,7 @@ jobs:
           fi
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             ARGS="$ARGS --dry-run"
-            [ "$JOB" = "schlaf" ] && ARGS="$ARGS --minutes 3"
+            [ "$JOB" = "schlaf" ] && ARGS="$ARGS --minutes 2"
           fi
           echo "name=$JOB" >> "$GITHUB_OUTPUT"
           echo "args=$ARGS" >> "$GITHUB_OUTPUT"
@@ -88,13 +88,10 @@ jobs:
           restore-keys: |
             kids-assets-${{ hashFiles('scripts/kids/visuals.py', 'config/kids.yaml') }}-
 
-      - name: Kinderschrift laden (Fredoka, frei lizenziert)
-        run: |
-          if [ ! -s assets/fonts/Kids.ttf ]; then
-            curl -fsSL --create-dirs -o assets/fonts/Kids.ttf \
-              "https://raw.githubusercontent.com/google/fonts/main/ofl/fredoka/Fredoka%5Bwdth%2Cwght%5D.ttf" \
-              || echo "Schrift nicht geladen – nutze Standardschrift"
-          fi
+      - name: Schriften laden (freie Google Fonts)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/fetch_fonts.py
 
       - name: Video produzieren & hochladen
         env:
