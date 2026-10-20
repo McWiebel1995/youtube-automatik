@@ -71,7 +71,7 @@ jobs:
         if: always()
         run: |
           mkdir -p _site
-          cp anime/dashboard/index.html _site/
+          cp anime/dashboard/*.html _site/
           cp anime/data/candidates.json anime/data/scripts.json anime/data/decisions.json anime/data/productions.json _site/ 2>/dev/null || true
       - uses: actions/upload-pages-artifact@v3
         if: always()
