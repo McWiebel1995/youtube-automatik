@@ -6,7 +6,9 @@ Ruhige, nahtlos loopende Kinder-Szenen (komplett selbst gezeichnet):
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
-W, H = 960, 540
+import os
+
+W, H = int(os.environ.get("KIDS_VIS_W", 960)), int(os.environ.get("KIDS_VIS_H", 540))
 
 PALETTES = [
     dict(top=(10, 14, 48), bot=(46, 40, 100), hill1=(22, 30, 70), hill2=(14, 20, 50), cloud=(90, 90, 150)),
