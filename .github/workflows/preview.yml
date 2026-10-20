@@ -1,0 +1,33 @@
+name: "🖼 Vorschau (Schriften & Test-Shorts)"
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+      - run: pip install numpy scipy pillow requests pyyaml
+      - name: Schriften laden
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/fetch_fonts.py
+      - name: Vorschau bauen
+        run: |
+          python scripts/font_sheet.py
+          python scripts/kids/shorts.py output/preview 7
+          cp output/preview/video.mp4 output/schlaf-short.mp4
+      - name: Als Release ablegen
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete preview -y --cleanup-tag || true
+          gh release create preview output/fonts.png output/schlaf-short.mp4 --title "Vorschau" --notes "Automatische Vorschau" --prerelease
