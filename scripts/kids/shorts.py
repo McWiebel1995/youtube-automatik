@@ -131,3 +131,88 @@ if __name__ == "__main__":
     info = schlaf_short(Path(sys.argv[1] if len(sys.argv) > 1 else "output/test-schlaf-short"),
                         random.Random(int(sys.argv[2]) if len(sys.argv) > 2 else None))
     print(info)
+
+
+# ----------------------------------------------------------------- Mini-Geschichte (Gute-Nacht-Kiste)
+def story_short(title, text, work: Path, rnd, voice, rate, max_seconds=58.0):
+    """Hochkant-Short: Bilderbuch-Nachtszene, Sprecherstimme, große Untertitel, Titel oben."""
+    import re as _re
+
+    from scipy.signal import resample_poly
+
+    import tts
+
+    work.mkdir(parents=True, exist_ok=True)
+    root = Path(__file__).resolve().parents[2]
+    SR = music.SR
+    sents = [s for s in _re.split(r"(?<=[.!?])\s+", text.strip()) if s]
+    pieces, subs, t = [np.zeros(int(1.2 * SR), np.float32)], [], 1.2
+    for i, s in enumerate(sents):
+        wav = work / f"m_{i:02d}.wav"
+        tts.speak(s, wav, voice, rate)
+        sr, a = wavfile.read(wav)
+        a = a.astype(np.float32) / 32768
+        if a.ndim > 1:
+            a = a.mean(axis=1)
+        if sr != SR:
+            a = resample_poly(a, SR, sr).astype(np.float32)
+        d = len(a) / SR
+        if t + d > max_seconds - 2.5:
+            break
+        subs.append((t, t + d + 0.3, s))
+        pieces += [a, np.zeros(int(0.45 * SR), np.float32)]
+        t += d + 0.45
+        wav.unlink(missing_ok=True)
+    seconds = min(max_seconds, t + 2.5)
+    voice_trk = np.concatenate(pieces)
+    voice_trk = np.pad(voice_trk, (0, max(0, int(seconds * SR) - len(voice_trk))))[: int(seconds * SR)]
+    m = music.lullaby(rnd.randrange(2**31), repeats=2, bpm=(48, 58))
+    m = np.pad(m, ((0, max(0, len(voice_trk) - len(m))), (0, 0)))[: len(voice_trk)] * (10 ** (-22 / 20))
+    mix = np.stack([voice_trk * 1.4, voice_trk * 1.4], 1) + m
+    fo = int(2.0 * SR)
+    mix[-fo:] *= np.linspace(1, 0, fo)[:, None]
+    wav = work / "mix.wav"
+    wavfile.write(str(wav), SR, (np.clip(mix, -1, 1) * 32767).astype(np.int16))
+
+    fdir = root / "assets" / "fonts"
+    sub_font = "Nunito" if (fdir / "Nunito.ttf").exists() else "DejaVu Sans"
+    title_font = "Baloo 2" if (fdir / "Baloo2.ttf").exists() else sub_font
+
+    def ts(x):
+        h, r = divmod(x, 3600)
+        mm, ss = divmod(r, 60)
+        return f"{int(h)}:{int(mm):02d}:{ss:05.2f}"
+
+    def esc(x):
+        return x.replace("{", "(").replace("}", ")").replace("\n", " ")
+    head = ("[Script Info]\nScriptType: v4.00+\nPlayResX: 1080\nPlayResY: 1920\nWrapStyle: 0\n\n[V4+ Styles]\n"
+            "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, "
+            "Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, "
+            "MarginL, MarginR, MarginV, Encoding\n"
+            f"Style: Sub,{sub_font},64,&H00F5F5FF,&H000000FF,&H00402020,&H78000000,1,0,0,0,100,100,0,0,1,4,2,5,90,90,0,1\n"
+            f"Style: Kicker,{title_font},54,&H00A0E6FF,&H000000FF,&H00402020,&H64000000,1,0,0,0,100,100,0,0,1,4,2,8,80,80,190,1\n"
+            f"Style: Title,{title_font},96,&H00D8F4FF,&H000000FF,&H00402020,&H64000000,1,0,0,0,100,100,0,0,1,5,2,8,80,80,260,1\n\n"
+            "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n")
+    ev = [f"Dialogue: 0,{ts(0)},{ts(seconds)},Kicker,,0,0,0,,{{\\fad(600,600)}}Mini-Gute-Nacht-Geschichte",
+          f"Dialogue: 0,{ts(0)},{ts(seconds)},Title,,0,0,0,,{{\\fad(600,600)}}{esc(title)}"]
+    ev += [f"Dialogue: 0,{ts(a)},{ts(b)},Sub,,0,0,0,,{{\\fad(200,200)\\pos(540,1180)}}{esc(x)}" for a, b, x in subs]
+    (work / "mini.ass").write_text(head + "\n".join(ev) + "\n", encoding="utf-8")
+
+    rng = np.random.default_rng(rnd.randrange(2**31))
+    scene = visuals.bilderbuch(rng, seconds)
+    out = work / "video.mp4"
+    cmd = ["ffmpeg", "-y", "-loglevel", "error",
+           "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{visuals.W}x{visuals.H}", "-r", str(FPS), "-i", "-",
+           "-i", str(wav), "-filter_complex",
+           f"[0:v]scale={W}:{H}:flags=lanczos,subtitles=mini.ass:fontsdir='{fdir.as_posix()}',"
+           f"fade=t=in:d=0.6,fade=t=out:st={seconds - 1.2}:d=1.2,format=yuv420p[v]",
+           "-map", "[v]", "-map", "1:a", "-t", f"{seconds:.2f}",
+           "-c:v", "libx264", "-profile:v", "high", "-preset", "medium", "-crf", "19",
+           "-c:a", "aac", "-b:a", "192k", "-af", "loudnorm=I=-16:TP=-1.5", "-movflags", "+faststart", "video.mp4"]
+    p = subprocess.Popen(cmd, stdin=subprocess.PIPE, cwd=work)
+    for i in range(int(seconds * FPS)):
+        p.stdin.write(np.clip(scene(i / FPS), 0, 255).astype(np.uint8).tobytes())
+    p.stdin.close()
+    if p.wait():
+        raise RuntimeError("ffmpeg-Fehler beim Geschichten-Short")
+    return {"video_file": str(out), "seconds": round(seconds, 1), "title": title}

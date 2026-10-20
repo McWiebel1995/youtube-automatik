@@ -54,7 +54,8 @@ def make_thumb(video, out, big, small, at=0.35):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--channel", required=True, choices=["schlaf", "lernen", "geschichten"])
-    ap.add_argument("--format", default="long", choices=["long", "short"], help="nur für lernen")
+    ap.add_argument("--format", default="both", choices=["long", "short", "both", "mix"],
+                    help="nur für lernen: both = großes Lernvideo (~14 Min.) + Short")
     ap.add_argument("--topic", choices=["zahlen", "farben", "formen"], help="nur für lernen")
     ap.add_argument("--minutes", type=float, help="nur für schlaf (Tests)")
     ap.add_argument("--seed", type=int)
@@ -93,18 +94,36 @@ def main():
         extra.append((sinfo, schlaf.short_metadata(ch, sinfo, rnd)))
     elif args.channel == "lernen":
         import learn
-        topic = args.topic or rnd.choice(ch["topics"])
-        short = args.format == "short"
-        info = learn.produce(ch, topic, short, work, rnd, ch["voice"], ch["speech_rate"])
-        meta = learn.metadata(ch, info, rnd)
-        if not short:
-            big = {"zahlen": "ZÄHLEN LERNEN", "farben": "FARBEN LERNEN", "formen": "FORMEN LERNEN"}[topic]
-            thumb = make_thumb(info["video_file"], work / "thumbnail.jpg", big, None, at=0.3)
+        fmt = args.format
+        if fmt in ("both", "mix"):
+            info = learn.produce(ch, "mix", False, work, rnd, ch["voice"], ch["speech_rate"])
+            meta = learn.metadata(ch, info, rnd)
+            thumb = make_thumb(info["video_file"], work / "thumbnail.jpg", "LERNEN MIT SPASS", "ZAHLEN · FARBEN · FORMEN", at=0.3)
+            if fmt == "both":
+                st = args.topic or rnd.choice(ch["topics"])
+                sinfo = learn.produce(ch, st, True, work / "short", rnd, ch["voice"], ch["speech_rate"])
+                extra.append((sinfo, learn.metadata(ch, sinfo, rnd)))
+        else:
+            topic = args.topic or rnd.choice(ch["topics"])
+            short = fmt == "short"
+            info = learn.produce(ch, topic, short, work, rnd, ch["voice"], ch["speech_rate"])
+            meta = learn.metadata(ch, info, rnd)
+            if not short:
+                big = {"zahlen": "ZÄHLEN LERNEN", "farben": "FARBEN LERNEN", "formen": "FORMEN LERNEN"}[topic]
+                thumb = make_thumb(info["video_file"], work / "thumbnail.jpg", big, None, at=0.3)
     else:
         import stories
         info = stories.produce(ch, work, rnd, ch["voice"], ch["speech_rate"])
         meta = stories.metadata(ch, info, rnd)
         thumb = make_thumb(info["loop"], work / "thumbnail.jpg", info["story"]["title"], "GUTE NACHT", at=0.3)
+        import shorts
+        st = info["story"]
+        sinfo = shorts.story_short(st["title"], stories.mini_of(st), work / "short", rnd, ch["voice"], ch["speech_rate"])
+        stitle = rnd.choice(ch["short_titles"]).format(title=st["title"])[:100]
+        sdesc = (f"🌙 {st['title']} – eine Mini-Gute-Nacht-Geschichte.\n\nDie ganze Geschichte (ca. "
+                 f"{max(1, round(info['seconds'] / 60))} Minuten) hörst du auf unserem Kanal.\n\n"
+                 "#shorts #GuteNachtGeschichte #Einschlafgeschichte")
+        extra.append((sinfo, {"title": stitle, "description": sdesc, "tags": ch["tags"] + ["shorts"]}))
 
     print(f"  Titel: {meta['title']}")
     record = {"channel": args.channel, "seed": seed, **{k: v for k, v in info.items() if k != "script"}, **meta}

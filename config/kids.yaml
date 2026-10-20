@@ -46,6 +46,10 @@ channels:
       zahlen: ["Zählen lernen von 1 bis {max} 🎈 Zahlen für Kinder", "Wir zählen {things}! Zahlen lernen 1–{max}"]
       farben: ["Farben lernen für Kinder 🌈 {count} Farben", "Welche Farbe ist das? Farben lernen mit {things}"]
       formen: ["Formen lernen für Kinder ⭐ Kreis, Dreieck & Co.", "{count} Formen lernen – Lernvideo für Kleinkinder"]
+    mix_titles:
+      - "Zahlen, Farben & Formen lernen 🌈 Großes Lernvideo für Kleinkinder"
+      - "Lernvideo für Kinder: Zählen, Farben und Formen ⭐ Kita & Vorschule"
+      - "Wir lernen Zahlen, Farben & Formen! 🎈 Lernen mit Spaß für Kleinkinder"
     short_titles:
       zahlen: "Zählen bis {n}! 🎈 #shorts #zahlenlernen"
       farben: "Das ist {item}! 🌈 #shorts #farbenlernen"
@@ -57,9 +61,12 @@ channels:
     token_secret: YT_REFRESH_TOKEN_GESCHICHTEN
     category_id: "24"           # Unterhaltung
     playlist_id: ""
-    # true = neue Geschichten per Claude-API schreiben (Secret ANTHROPIC_API_KEY nötig)
+    # true = jeden Tag eine neue Geschichte per KI (Gemini, Secret GEMINI_API_KEY; sonst Claude)
     # false = nur Geschichten aus data/stories.yaml (werden der Reihe nach verwendet)
-    ai_stories: false
+    ai_stories: true
+    short_titles:
+      - "{title} 🌙 Mini-Gute-Nacht-Geschichte #shorts"
+      - "{title} ✨ Geschichte zum Einschlafen #shorts"
     title_templates:
       - "{title} 🌙 Gute-Nacht-Geschichte für Kinder"
       - "{title} – Einschlafgeschichte zum Zuhören"

@@ -77,7 +77,61 @@ def from_claude(rnd):
     return data
 
 
+ANIMALS = ["Igel", "Eichhörnchen", "Häschen", "Entlein", "Bärchen", "Kätzchen", "Schaf", "Maus", "Rehkitz",
+           "Pinguin", "Schildkröte", "Otter", "Eule", "Marienkäfer", "Fuchs", "Dachs", "Glühwürmchen", "Frosch",
+           "Elefantenkind", "Seehund", "Küken", "Waschbär", "Koala", "Faultier"]
+THEMES = ["Freundschaft", "Mut", "Teilen", "Geduld", "Neugier", "Helfen", "Dankbarkeit", "Ruhe finden",
+          "Anderssein", "Verzeihen", "Heimweh", "etwas Neues lernen", "Zuhören"]
+PLACES = ["im Wald", "am See", "auf dem Bauernhof", "am Meer", "auf einer Blumenwiese", "in den Bergen",
+          "im Garten", "unter dem Sternenhimmel", "in einem verschneiten Dorf", "auf einer kleinen Insel",
+          "in einem alten Leuchtturm", "auf einer Wolke"]
+
+
+def from_gemini(rnd):
+    """Schreibt eine neue lange Geschichte (~12 Min.) + Mini-Version für den Short (Gemini, Gratis-Kontingent)."""
+    sys.path.insert(0, str(ROOT / "anime"))
+    import gemini
+
+    used = _used()[-40:]
+    prompt = (
+        "Schreibe eine neue, ruhige Gute-Nacht-Geschichte auf Deutsch für Kinder von 2 bis 6 Jahren.\n"
+        f"Hauptfigur: ein {rnd.choice(ANIMALS)}. Ort: {rnd.choice(PLACES)}. Thema: {rnd.choice(THEMES)}.\n"
+        "Regeln: 1100 bis 1400 Wörter, 12 bis 16 Absätze, kurze einfache Sätze, keine Anführungszeichen "
+        "(wörtliche Rede einfach mit 'sagte' einleiten), nichts Gruseliges, keine Gefahr, keine Markennamen "
+        "oder bekannten Figuren. Liebevolle Details (Geräusche, Farben, Gerüche), ein, zwei Nebenfiguren. "
+        "Die Geschichte wird zum Ende hin immer ruhiger und endet damit, dass die Figur einschläft, "
+        "plus ein sanftes 'Gute Nacht'.\n"
+        "Zusätzlich eine MINI-Version für einen 45-Sekunden-Clip: 55 bis 75 Wörter, beginnt neugierig machend, "
+        "endet mit dem Satz: Die ganze Geschichte hörst du auf unserem Kanal. Gute Nacht!\n"
+        f"Diese Titel gab es schon, wähle etwas anderes: {', '.join(used) or '–'}\n"
+        'Antworte NUR mit JSON: {"title": "...", "paragraphs": ["...", "..."], "mini": "..."}'
+    )
+    data = gemini.ask_json(prompt, temperature=0.95)
+    assert data["title"] and len(data["paragraphs"]) >= 6 and data.get("mini")
+    words = sum(len(p.split()) for p in data["paragraphs"])
+    while words > 1600 and len(data["paragraphs"]) > 8:     # max. ~14 Minuten
+        words -= len(data["paragraphs"].pop(len(data["paragraphs"]) // 2).split())
+    return data
+
+
+def mini_of(story):
+    """Mini-Text für den Short (falls die KI keinen geliefert hat)."""
+    if story.get("mini"):
+        return story["mini"]
+    text, out = " ".join(story["paragraphs"][:2]), []
+    for s_ in sentences(text):
+        if len(" ".join(out + [s_]).split()) > 55:
+            break
+        out.append(s_)
+    return " ".join(out) + " Wie es weitergeht, hörst du in der ganzen Geschichte auf unserem Kanal. Gute Nacht!"
+
+
 def pick_story(ch, rnd):
+    if ch.get("ai_stories") and os.environ.get("GEMINI_API_KEY"):
+        try:
+            return from_gemini(rnd), "ki"
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Gemini-Geschichte fehlgeschlagen ({str(e)[:200]})")
     if ch.get("ai_stories") and os.environ.get("ANTHROPIC_API_KEY"):
         try:
             return from_claude(rnd), "ki"

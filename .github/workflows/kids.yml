@@ -6,16 +6,15 @@ name: Kinder-Videos produzieren
 on:
   schedule:
     - cron: "17 4 * * *"        # Schlafkanal: täglich 14-Min-Video + 45-s-Short
-    - cron: "27 4 * * *"        # Lernkanal: täglich ein Short
-    - cron: "37 4 * * 1,4"      # Lernkanal: Mo + Do ein langes Video
-    - cron: "47 4 * * 0,2,5"    # Geschichten: So, Di, Fr
+    - cron: "27 4 * * *"        # Lernkanal: täglich großes Lernvideo (~14 Min.) + Short
+    - cron: "47 4 * * *"        # Geschichten: täglich neue Geschichte (~12 Min.) + Mini-Short
   workflow_dispatch:
     inputs:
       job:
         description: "Was produzieren?"
         type: choice
-        options: [schlaf, lernen-short, lernen-long, geschichten]
-        default: lernen-short
+        options: [schlaf, lernen, lernen-short, lernen-long, geschichten]
+        default: lernen
       topic:
         description: "Lernthema (leer = zufällig): zahlen, farben, formen"
         default: ""
@@ -41,13 +40,13 @@ jobs:
         run: |
           case "${{ github.event.schedule }}" in
             "17 4 * * *")     JOB=schlaf ;;
-            "27 4 * * *")     JOB=lernen-short ;;
-            "37 4 * * 1,4")   JOB=lernen-long ;;
-            "47 4 * * 0,2,5") JOB=geschichten ;;
+            "27 4 * * *")     JOB=lernen ;;
+            "47 4 * * *")     JOB=geschichten ;;
             *)                JOB="${{ github.event.inputs.job }}" ;;
           esac
           case "$JOB" in
             schlaf)       ARGS="--channel schlaf" ;;
+            lernen)       ARGS="--channel lernen --format both" ;;
             lernen-short) ARGS="--channel lernen --format short" ;;
             lernen-long)  ARGS="--channel lernen --format long" ;;
             geschichten)  ARGS="--channel geschichten" ;;
@@ -101,6 +100,7 @@ jobs:
           YT_REFRESH_TOKEN_LERNEN: ${{ secrets.YT_REFRESH_TOKEN_LERNEN }}
           YT_REFRESH_TOKEN_GESCHICHTEN: ${{ secrets.YT_REFRESH_TOKEN_GESCHICHTEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           set -o pipefail
           python scripts/kids/pipeline_kids.py ${{ steps.job.outputs.args }} 2>&1 | tee run.log || {

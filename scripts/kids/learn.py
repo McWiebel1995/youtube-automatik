@@ -145,7 +145,25 @@ def plan_zahlen(rnd, short=False):
     return segs, dict(max=mx, things=thing["many"], n=mx)
 
 
+def plan_mix(rnd, short=False):
+    """Großes Lernvideo (~10–14 Min.): Zahlen, Farben und Formen nacheinander, je mit Quiz."""
+    order = rnd.sample(["zahlen", "farben", "formen"], 3)
+    segs, info = [], {}
+    for i, t in enumerate(order):
+        part, inf = PLANS[t](rnd, False)
+        if i > 0:                                        # Begrüßung nur einmal
+            part[0] = dict(part[0], text=part[0]["text"].replace("Hallo! Heute", "Und jetzt").replace(
+                "Bist du bereit? Los geht's!", "Los geht's!"))
+        if i < len(order) - 1:                           # Verabschiedung nur am Ende
+            part = part[:-1]
+        segs += part
+        info[t] = inf
+    info["order"] = order
+    return segs, info
+
+
 PLANS = {"farben": plan_farben, "formen": plan_formen, "zahlen": plan_zahlen}
+PLANS_ALL = dict(PLANS, mix=plan_mix)
 
 
 # ----------------------------------------------------------------- Zeichnen
@@ -294,7 +312,7 @@ def background_music(seconds, work, rnd):
 # ----------------------------------------------------------------- Hauptfunktion
 def produce(ch, topic, short, work: Path, rnd, voice, rate):
     work.mkdir(parents=True, exist_ok=True)
-    segs, info = PLANS[topic](rnd, short)
+    segs, info = PLANS_ALL[topic](rnd, short)
     voice_wav, times, total = build_audio(segs, work, voice, rate, rnd)
     music_wav = background_music(total, work, rnd)
 
@@ -331,6 +349,17 @@ def produce(ch, topic, short, work: Path, rnd, voice, rate):
 
 def metadata(ch, info, rnd):
     topic, items = info["topic"], info["items"]
+    if topic == "mix":
+        script = "\n".join(f"• {s}" for s in info["script"][:15])
+        desc = "\n".join([
+            "Das große Lernvideo: Zahlen zählen, Farben entdecken und Formen kennenlernen – jeweils mit kleinem Quiz.",
+            "",
+            "Für Kinder ab ca. 2 Jahren. Am schönsten gemeinsam anschauen und laut mitsprechen!",
+            "",
+            "Inhalt:", script, "",
+            "Alle Bilder, Melodien und Texte wurden für diesen Kanal erstellt.",
+        ])
+        return {"title": rnd.choice(ch["mix_titles"])[:100], "description": desc, "tags": ch["tags"], "scene": "mix"}
     if info["short"]:
         if topic == "zahlen":
             title = ch["short_titles"]["zahlen"].format(n=items["n"])
