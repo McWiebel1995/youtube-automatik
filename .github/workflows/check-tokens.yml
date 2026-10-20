@@ -1,0 +1,25 @@
+name: "✅ Tokens prüfen (alle Kanäle, ohne Upload)"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install google-api-python-client google-auth pyyaml
+      - name: Prüfen
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_REGEN: ${{ secrets.YT_REFRESH_TOKEN_REGEN }}
+          YT_REFRESH_TOKEN_KAMIN: ${{ secrets.YT_REFRESH_TOKEN_KAMIN }}
+          YT_REFRESH_TOKEN_WASSERFALL: ${{ secrets.YT_REFRESH_TOKEN_WASSERFALL }}
+          YT_REFRESH_TOKEN_SCHLAF: ${{ secrets.YT_REFRESH_TOKEN_SCHLAF }}
+          YT_REFRESH_TOKEN_LERNEN: ${{ secrets.YT_REFRESH_TOKEN_LERNEN }}
+          YT_REFRESH_TOKEN_GESCHICHTEN: ${{ secrets.YT_REFRESH_TOKEN_GESCHICHTEN }}
+        run: python scripts/check_tokens.py
