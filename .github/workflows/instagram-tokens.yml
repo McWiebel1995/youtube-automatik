@@ -5,7 +5,7 @@ on:
     inputs:
       action:
         type: choice
-        options: [check, refresh]
+        options: [check, refresh, media]
         default: check
   schedule:
     - cron: "41 2 */10 * *"     # alle 10 Tage verlängern (Tokens gelten 60 Tage)

@@ -109,6 +109,23 @@ def cmd_check():
     return bad
 
 
+def cmd_media(n=5):
+    lines = []
+    for key, (secret, expected) in ACCOUNTS.items():
+        try:
+            tok = token_for(key)
+            js = _req("GET", "me/media", tok, fields="timestamp,media_type,media_product_type,permalink,caption", limit=n)
+            items = js.get("data", [])
+            lines.append(f"## @{expected}: {len(items)} (neueste)")
+            for m in items:
+                cap = (m.get("caption") or "").split("\n")[0][:60]
+                lines.append(f"- {m['timestamp'][:16]} {m.get('media_product_type')} {m.get('permalink')} {cap}")
+        except Exception as e:  # noqa: BLE001
+            lines.append(f"## @{expected}: FEHLER {str(e)[:160]}")
+    print("\n".join(lines))
+    print("::notice title=IG-Medien::" + " ⏎ ".join(lines))
+
+
 def cmd_refresh():
     """Verlängert alle Tokens. Neue Token-Werte werden (falls geändert) per GH_PAT als Secret gespeichert."""
     out = []
@@ -141,6 +158,8 @@ if __name__ == "__main__":
         sys.exit(1 if cmd_check() else 0)
     elif c == "refresh":
         cmd_refresh()
+    elif c == "media":
+        cmd_media()
     elif c == "reel":
         mid, link = publish_reel(sys.argv[2], sys.argv[3], open(sys.argv[4], encoding="utf-8").read())
         print(f"✓ veröffentlicht: {link}")
