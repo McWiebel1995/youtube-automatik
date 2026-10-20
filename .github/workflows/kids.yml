@@ -57,6 +57,7 @@ jobs:
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             ARGS="$ARGS --dry-run"
             [ "$JOB" = "schlaf" ] && ARGS="$ARGS --minutes 2"
+            true
           fi
           echo "name=$JOB" >> "$GITHUB_OUTPUT"
           echo "args=$ARGS" >> "$GITHUB_OUTPUT"
@@ -114,6 +115,20 @@ jobs:
           git add data/stories_used.json
           git commit -m "Geschichte als verwendet markiert" || echo "nichts zu speichern"
           git push
+
+      - name: Testlauf-Videos als Vorschau-Release ablegen
+        if: github.event.inputs.dry_run == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="preview-${{ steps.job.outputs.name }}"
+          gh release delete "$TAG" -y --cleanup-tag || true
+          mkdir -p _pv
+          for f in output/kids-*/video.mp4; do cp "$f" _pv/lang.mp4; done
+          for f in output/kids-*/short/video.mp4; do cp "$f" _pv/short.mp4; done
+          for f in output/kids-*/thumbnail.jpg; do cp "$f" _pv/thumbnail.jpg; done
+          for f in output/kids-*/meta.json; do cp "$f" _pv/meta.json; done
+          gh release create "$TAG" _pv/* --title "Vorschau ${{ steps.job.outputs.name }}" --notes "Testlauf" --prerelease
 
       - name: Ergebnis speichern
         if: always()
