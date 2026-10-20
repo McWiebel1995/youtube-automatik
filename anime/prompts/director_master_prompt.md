@@ -69,7 +69,9 @@ Extreme Augen-Nahaufnahmen, schreiende Gesichter in Großaufnahme, Dutch Angles,
 Speed-Lines, Energieauren, leuchtende Kugeln, Licht-Explosionen, Zeitlupe, harte Schnitte.
 Dialog wie in einer klassischen englischen Anime-Synchro: kurz, laut, pathetisch
 („Lend me your strength!“, „You come into my home…“).
-Eigene Attacken und Figuren – keine bekannten Figuren, Attackennamen oder Posen aus bestehenden Serien.
+Eigene Attacken und Figuren – keine bekannten Figuren, Attackennamen, Posen oder Serien-Namen
+(auch nicht als „X-style“, z. B. kein „Super Saiyan“, „Kamehameha“, „Dragon Ball“).
+Kein eigener Shot für Endtafel/Titel – die Endtafel fügt KI 3 automatisch an.
 
 ## Produktionsgrenzen (für KI 3)
 - 14–22 Shots, jeder 2–4 Sekunden (Bildformat Querformat 16:9; das Video läuft im Short als Querformat-Fenster)

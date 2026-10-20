@@ -95,11 +95,29 @@ def cast_tags(ids, chars, action=""):
         tags.append("1girl" if f == 1 else f"{min(f, 6)}girls")
     if m and not f:
         tags.append("male focus")
+    ages = [(profile_of(chars[c])["gender"], (chars[c].get("voice_profile") or {}).get("age")) for c in ids if c in chars]
+    for gen, age in ages[:2]:
+        if age == "adult":
+            tags.append("mature male, 30s" if gen == "male" else "mature female")
+        elif age == "old":
+            tags.append("old man" if gen == "male" else "old woman")
     if not g:
         crowd = any(w in action.lower() for w in ["crowd", "people", "riot", "rioters", "citizens", "police"])
         tags.append("crowd, multiple boys, scenery" if crowd else "no humans, scenery")
     neg = SAFE_NEG + ("" if f else ", 1girl, female, woman")
     return ", ".join(tags), neg
+
+
+FRANCHISE = {"super saiyan": "golden", "saiyan": "golden", "kamehameha": "energy blast", "spirit bomb": "energy sphere",
+             "dragon ball": "90s action anime", "goku": "hero", "naruto": "ninja", "rasengan": "spinning energy orb",
+             "one piece": "pirate", "sailor moon": "magical", "jojo": "", "gundam": "mecha", "evangelion": "mecha"}
+
+
+def clean(text):
+    t = text or ""
+    for k, v in FRANCHISE.items():
+        t = re.sub(re.escape(k) + r"(-style| style)?", v, t, flags=re.I)
+    return t
 
 
 def gpu_shots(vid, sc, work, no_gpu=False):
@@ -128,7 +146,7 @@ def gpu_shots(vid, sc, work, no_gpu=False):
             status(vid, state="running", progress=f"Figur {j + 1}/{len(chars)}")
             tags, neg = cast_tags([cid], chars)
             res = studio.keyframe.remote(
-                f"{tags}, solo, full body, front view, standing, plain light background, character reference. "
+                f"{tags}, solo, full body, front view, standing, dark city street at night background. "
                 f"{style}. {c.get('design_sheet', '')}"[:1800],
                 negative=neg, seed=base + 7 + j, width=832, height=1216)
             refs[cid] = res["png"]
@@ -140,14 +158,14 @@ def gpu_shots(vid, sc, work, no_gpu=False):
             who = [c for c in (s.get("characters") or []) if c in refs] or \
                   [d.get("character") for d in (s.get("dialogue") or []) if d.get("character") in refs]
             tags, neg = cast_tags(who, chars, s.get("action", ""))
-            prompt = f"{tags}. {style}. {s.get('image_prompt', '')}. wide 16:9 anime frame"
+            prompt = clean(f"{tags}. {style}. {s.get('image_prompt', '')}. wide 16:9 anime frame")
             ref = refs.get(who[0]) if who else b""
             res = studio.keyframe.remote(prompt[:1800], negative=neg, seed=base + s["n"], ref_png=ref or b"",
-                                         ref_scale=0.45 if len(who) > 1 else 0.55)
+                                         ref_scale=0.25 if len(who) > 1 else 0.35)
             png = res["png"]
             (work / f"key_{s['n']:02d}.png").write_bytes(png)
             status(vid, state="running", progress=f"Animation {i + 1}/{len(shots)}")
-            motion = f"{s.get('motion_prompt', '')}. {s.get('action', '')}. {s.get('camera', '')}"
+            motion = clean(f"{s.get('motion_prompt', '')}. {s.get('action', '')}. {s.get('camera', '')}")
             dur = min(4.0, max(2.0, float(s.get("duration_s") or 3)))
             frames = int(dur * 24) // 4 * 4 + 1
             res = studio.animate.remote(png, motion[:1800], num_frames=frames, seed=base + 100 + s["n"])
