@@ -26,7 +26,7 @@ def make(video, out: Path, hours, scene, channel, rnd, seconds=40):
     total = duration(video)
     start = rnd.uniform(60, max(61, total - seconds - 60))
     h = f"{hours:g}"
-    head = rnd.choice(HEAD[channel]).format(h=h)
+    head = rnd.choice(HEAD[channel]).format(h=h).replace("1 hours", "1 hour")
     font = ROOT / "assets/fonts/PlayfairDisplay.ttf"
     ff = f"fontfile={font}:" if font.exists() else ""
     (out.parent / "ig_head.txt").write_text(head, encoding="utf-8")
@@ -50,4 +50,5 @@ def caption(channel, hours, scene, rnd):
         "kamin": f"Crackling fire, warm light, nowhere to be. 🔥\n{scene.capitalize()} – {h} hours of cozy fireplace sounds.",
         "wasserfall": f"Let the water carry your thoughts away. 🌊\n{scene.capitalize()} – {h} hours of natural water sounds.",
     }[channel]
+    lines = lines.replace("1 hours", "1 hour")
     return (f"{lines}\n\n💾 Save this for tonight\n▶️ Full {h}-hour version on YouTube (link in bio)\n\n{TAGS[channel]}")
