@@ -28,7 +28,7 @@ def to_mp3(wav_path, name):
 sys.path.insert(0, str(ROOT / "scripts" / "kids"))
 try:
     import tts
-    for v in ["de_DE-thorsten-medium", "de_DE-thorsten-high", "de_DE-kerstin-low"]:
+    for v in ["de_DE-thorsten-medium"]:
         tts.speak(TEXT, OUT / "tmp.wav", v, 0.92)
         to_mp3(OUT / "tmp.wav", f"1_piper_{v.split('-')[1]}_{v.split('-')[2]}")
 except Exception as e:  # noqa: BLE001
@@ -37,7 +37,7 @@ except Exception as e:  # noqa: BLE001
 # 2) Gemini TTS (Gratis-Kontingent, Stil per Anweisung)
 key = os.environ.get("GEMINI_API_KEY")
 models = ["gemini-2.5-flash-preview-tts", "gemini-2.5-flash-tts", "gemini-2.5-pro-preview-tts"]
-for voice in ["Sulafat", "Achernar", "Charon", "Kore"]:
+for voice in ["Sulafat", "Charon"]:
     ok = False
     for m in models:
         try:
@@ -72,13 +72,25 @@ try:
     from modal_app import VoiceDE, app
     with modal.enable_output(), app.run():
         v = VoiceDE()
-        for i, (ex, cfg) in enumerate([(0.5, 0.5), (0.7, 0.35)]):
-            wav = v.speak.remote(TEXT, exaggeration=ex, cfg_weight=cfg, seed=7)
-            (OUT / "tmp.wav").write_bytes(wav)
-            to_mp3(OUT / "tmp.wav", f"3_chatterbox_{'ruhig' if i == 0 else 'lebhaft'}")
+        # Referenz = deutsche Muttersprach-Stimme (Gemini-Probe) -> kein amerikanischer Akzent;
+        # cfg_weight 0 verhindert, dass der Akzent des Grundmodells durchschlägt.
+        refs = {}
+        for name in ["Sulafat", "Charon"]:
+            mp3 = OUT / f"2_gemini_{name}.mp3"
+            if mp3.exists():
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp3), "-t", "12", "-ac", "1",
+                                "-ar", "24000", str(OUT / f"ref_{name}.wav")], check=True)
+                refs[name] = (OUT / f"ref_{name}.wav").read_bytes()
+        for name, ref in refs.items():
+            for label, ex, cfg in [("ruhig", 0.5, 0.0), ("lebhaft", 0.75, 0.0)]:
+                wav = v.speak.remote(TEXT, ref_wav=ref, exaggeration=ex, cfg_weight=cfg, seed=7)
+                (OUT / "tmp.wav").write_bytes(wav)
+                to_mp3(OUT / "tmp.wav", f"4_chatterbox_de_{name}_{label}")
 except Exception as e:  # noqa: BLE001
     notes.append(f"Chatterbox: {repr(e)[:300]}")
 
 (OUT / "tmp.wav").unlink(missing_ok=True)
+for f in OUT.glob("ref_*.wav"):
+    f.unlink()
 print("\n".join(notes) or "alles ok")
 print("::notice title=Stimmproben::" + (" | ".join(notes) or "alles ok"))
