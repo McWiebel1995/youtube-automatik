@@ -109,6 +109,7 @@ def main():
             print("  ⏭ Heute wurde auf diesem Kanal schon hochgeladen – übersprungen (kein Doppel-Upload).")
             return
 
+    os.environ.setdefault("TTS_STYLE", "lebhaft" if args.channel == "lernen" else "ruhig")
     thumb = None
     extra = []                       # weitere Uploads in diesem Lauf (z. B. der tägliche Short)
     if args.channel == "schlaf":

@@ -105,8 +105,38 @@ def chunks(paragraphs, max_words=300):
     return out
 
 
+def sentences(text):
+    import re
+    return [x for x in re.split(r"(?<=[.!?…])\s+", text.strip()) if x]
+
+
+def cb_paragraph(p, work, tag):
+    """Chatterbox (deutsche Referenzstimme): je 1–2 Sätze pro Anfrage, natürliche kurze Pausen."""
+    sys.path.insert(0, str(HERE / "kids"))
+    import tts as ktts
+    groups, cur = [], []
+    for s_ in sentences(p):
+        cur.append(s_)
+        if len(" ".join(cur).split()) >= 22:
+            groups.append(" ".join(cur))
+            cur = []
+    if cur:
+        groups.append(" ".join(cur))
+    out = []
+    for j, g in enumerate(groups):
+        f = work / f"{tag}_{j:02d}.wav"
+        ktts.speak(g, f, style="ruhig")
+        out += [trim_silence(read_wav(f)), np.zeros(int(0.45 * SR), np.float32)]
+    return np.concatenate(out) if out else np.zeros(1, np.float32)
+
+
 def voice_track(paragraphs, voice, work):
     parts, model = [np.zeros(int(3.0 * SR), np.float32)], None
+    if os.environ.get("TTS_ENGINE") == "chatterbox":
+        for i, p in enumerate(paragraphs):
+            parts += [cb_paragraph(p, work, f"p{i:02d}"), np.zeros(int(1.2 * SR), np.float32)]
+        parts.append(np.zeros(int(8 * SR), np.float32))
+        return np.concatenate(parts), "chatterbox-de"
     for i, p in enumerate(chunks(paragraphs)):
         model = tts(p, voice, work / f"v{i:02d}.wav")
         parts += [trim_silence(read_wav(work / f"v{i:02d}.wav")), np.zeros(int(1.6 * SR), np.float32)]
@@ -226,9 +256,12 @@ def build(out: Path, minutes=12.0, voice="Sulafat", seed=None):
                    cwd=work, check=True)
 
     print("▶ Short …")
-    tts(data["short_thought"], voice, work / "short.wav")
-    sv = np.concatenate([np.zeros(int(1.0 * SR), np.float32), trim_silence(read_wav(work / "short.wav")),
-                         np.zeros(int(2.5 * SR), np.float32)])
+    if os.environ.get("TTS_ENGINE") == "chatterbox":
+        st = cb_paragraph(data["short_thought"], work, "short")
+    else:
+        tts(data["short_thought"], voice, work / "short.wav")
+        st = trim_silence(read_wav(work / "short.wav"))
+    sv = np.concatenate([np.zeros(int(1.0 * SR), np.float32), st, np.zeros(int(2.5 * SR), np.float32)])
     sdur = min(58.0, len(sv) / SR)
     sm = sv[: int(sdur * SR)] + amb[: int(sdur * SR)] * (10 ** (-22 / 20))
     sm = np.clip(sm / max(1e-6, np.max(np.abs(sm))) * 0.9, -1, 1)

@@ -64,7 +64,7 @@ channels:
     # true = jeden Tag eine neue Geschichte per KI (Gemini, Secret GEMINI_API_KEY; sonst Claude)
     # false = nur Geschichten aus data/stories.yaml (werden der Reihe nach verwendet)
     ai_stories: true
-    gemini_voice: Sulafat      # High-End-Stimme für Geschichten + Mini-Shorts (Fallback: Piper)
+    # Stimme: Chatterbox mit deutscher Referenz (TTS_ENGINE im Workflow). Optional Gemini-TTS: gemini_voice: Sulafat
     short_titles:
       - "{title} 🌙 Mini-Gute-Nacht-Geschichte #shorts"
       - "{title} ✨ Geschichte zum Einschlafen #shorts"

@@ -1,5 +1,9 @@
 """
-Deutsche Sprachausgabe mit Piper (offline, kostenlos, natürliche Stimmen).
+Deutsche Sprachausgabe.
+
+Standard (TTS_ENGINE=chatterbox): Chatterbox Multilingual auf Modal-GPU mit deutscher Referenzstimme
+(data/voices/ref_sulafat.wav, eine Gemini-„Sulafat“-Probe) -> natürlich, ohne Akzent, ohne Tageslimit.
+Ersatz: Piper (offline, kostenlos).
 Stimmen werden beim ersten Lauf automatisch heruntergeladen (rhasspy/piper-voices).
 
 Fallbacks, falls Piper fehlt (z. B. lokal zum Testen):
@@ -75,9 +79,50 @@ def _silence(text, out):
         wf.writeframes(np.zeros(int(secs * SR), np.int16).tobytes())
 
 
-def speak(text, out, voice="de_DE-thorsten-medium", rate=0.92):
+# ----------------------------------------------------------------- Chatterbox (Modal-GPU)
+import os  # noqa: E402
+
+_cb = {}
+STYLE = {"ruhig": (0.5, 0.0), "lebhaft": (0.75, 0.0)}
+
+
+def _chatterbox(text, out, style="ruhig"):
+    if "voice" not in _cb:
+        import atexit
+        import sys
+        sys.path.insert(0, str(ROOT / "anime"))
+        import modal
+        from modal_app import VoiceDE, app
+        ctx = app.run()
+        ctx.__enter__()
+        atexit.register(lambda: ctx.__exit__(None, None, None))
+        _cb["voice"] = VoiceDE()
+        ref = Path(os.environ.get("TTS_REF", ROOT / "data" / "voices" / "ref_sulafat.wav"))
+        _cb["ref"] = ref.read_bytes() if ref.exists() else b""
+        _cb["n"] = 0
+        _ = modal
+    ex, cfg = STYLE.get(style, STYLE["ruhig"])
+    wav = _cb["voice"].speak.remote(text, ref_wav=_cb["ref"], exaggeration=ex, cfg_weight=cfg, seed=11)
+    Path(out).write_bytes(wav)
+    _cb["n"] += 1
+
+
+def engine():
+    return os.environ.get("TTS_ENGINE", "piper")
+
+
+def speak(text, out, voice="de_DE-thorsten-medium", rate=0.92, style=None):
     """Schreibt die gesprochene Zeile als WAV und gibt die Dauer in Sekunden zurück."""
     out = Path(out)
+    if engine() == "chatterbox" and not _cb.get("failed"):
+        try:
+            _chatterbox(text, out, style or os.environ.get("TTS_STYLE", "ruhig"))
+            with wave.open(str(out)) as wf:
+                return wf.getnframes() / wf.getframerate()
+        except Exception as e:  # noqa: BLE001
+            _cb["failed"] = True
+            _warn(f"Chatterbox nicht verfügbar ({repr(e)[:160]}) – nutze Piper")
+            print(f"::warning title=Stimme::Chatterbox nicht verfügbar, Ersatzstimme Piper: {repr(e)[:300]}")
     try:
         _piper(text, out, voice, rate)
     except ImportError:
