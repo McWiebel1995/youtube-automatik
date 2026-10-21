@@ -37,6 +37,21 @@ def check_channel(yt, channel):
     print(f"  Kanal geprüft: {title}")
 
 
+def uploaded_recently(yt, hours=18):
+    """True, wenn auf dem Kanal in den letzten `hours` Stunden schon hochgeladen wurde (verhindert Doppel-Uploads,
+    falls ein verspäteter Zeitplan-Lauf nach einem manuellen Lauf doch noch startet)."""
+    import datetime as _dt
+    c = yt.channels().list(part="contentDetails", mine=True).execute()["items"][0]
+    pl = c["contentDetails"]["relatedPlaylists"]["uploads"]
+    items = yt.playlistItems().list(part="snippet", playlistId=pl, maxResults=3).execute().get("items", [])
+    cutoff = _dt.datetime.now(_dt.timezone.utc) - _dt.timedelta(hours=hours)
+    for it in items:
+        t = _dt.datetime.fromisoformat(it["snippet"]["publishedAt"].replace("Z", "+00:00"))
+        if t > cutoff:
+            return True
+    return False
+
+
 def upload(yt, video_path, meta, channel, publish_at=None):
     status = {
         "privacyStatus": "private" if publish_at else channel.get("privacy", "private"),

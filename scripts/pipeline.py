@@ -73,6 +73,9 @@ def main():
         yt = upload.service(token)
         upload.check_channel(yt, ch)
         print("  ✓ YouTube-Zugang ok")
+        if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_recently(yt):
+            print("  ⏭ Heute wurde auf diesem Kanal schon hochgeladen – übersprungen (kein Doppel-Upload).")
+            return
 
     info = render.render(ch, seconds, work, rnd)
     meta = metadata.build(ch, cfg, info, hours, rnd)
