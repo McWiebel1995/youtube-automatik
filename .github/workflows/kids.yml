@@ -5,9 +5,9 @@ name: Kinder-Videos produzieren
 
 on:
   schedule:
-    - cron: "17 4 * * *"        # Schlafkanal: täglich 14-Min-Video + 45-s-Short
-    - cron: "27 4 * * *"        # Lernkanal: täglich großes Lernvideo (~14 Min.) + Short
-    - cron: "47 4 * * *"        # Geschichten: täglich neue Geschichte (~12 Min.) + Mini-Short
+    - cron: "17 4,7,10 * * *"   # Schlafkanal: täglich 14-Min-Video + 45-s-Short (+2 Absicherungs-Versuche)
+    - cron: "27 4,7,10 * * *"   # Lernkanal: täglich großes Lernvideo (~14 Min.) + Short
+    - cron: "47 4,7,10 * * *"   # Geschichten: täglich neue Geschichte (~12 Min.) + Mini-Short
   workflow_dispatch:
     inputs:
       job:
@@ -39,9 +39,9 @@ jobs:
         id: job
         run: |
           case "${{ github.event.schedule }}" in
-            "17 4 * * *")     JOB=schlaf ;;
-            "27 4 * * *")     JOB=lernen ;;
-            "47 4 * * *")     JOB=geschichten ;;
+            "17 4,7,10 * * *") JOB=schlaf ;;
+            "27 4,7,10 * * *") JOB=lernen ;;
+            "47 4,7,10 * * *") JOB=geschichten ;;
             *)                JOB="${{ github.event.inputs.job }}" ;;
           esac
           case "$JOB" in

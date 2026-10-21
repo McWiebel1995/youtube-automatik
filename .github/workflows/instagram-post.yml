@@ -3,6 +3,7 @@ name: "📸 Instagram-Reels posten"
 on:
   schedule:
     - cron: "37 16 * * *"       # täglich ca. 18:37 Uhr (Sommerzeit) / 17:37 Uhr (Winterzeit)
+    - cron: "7 18 * * *"        # Absicherung, falls der erste Termin ausfällt (postet nur, was noch offen ist)
   workflow_dispatch:
     inputs:
       account:

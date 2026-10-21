@@ -4,6 +4,10 @@ on:
   # Jeden Tag um 03:07 UTC: pro Kanal ein neues Video, veröffentlicht um publish_time_utc
   schedule:
     - cron: "7 3 * * *"
+    # Absicherung: GitHub startet Zeitpläne manchmal stark verspätet oder gar nicht.
+    # Weitere Versuche später – bereits erledigte Kanäle werden übersprungen (data/last_upload).
+    - cron: "7 6 * * *"
+    - cron: "7 9 * * *"
   # Manuell starten (Actions -> "Run workflow")
   workflow_dispatch:
     inputs:
