@@ -1,0 +1,48 @@
+name: "🌿 Ruhige Gedanken – Testvideo"
+
+on:
+  workflow_dispatch:
+    inputs:
+      voice:
+        description: "Gemini-Stimme (Sulafat, Achernar, Kore, Charon …)"
+        default: "Sulafat"
+      minutes:
+        description: "Länge in Minuten"
+        default: "12"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+      - run: pip install -r requirements.txt
+      - name: Schriften laden
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/fetch_fonts.py
+      - name: Video bauen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          FREESOUND_API_KEY: ${{ secrets.FREESOUND_API_KEY }}
+          VOICE: ${{ github.event.inputs.voice }}
+          MINUTES: ${{ github.event.inputs.minutes }}
+        run: |
+          set -o pipefail
+          python scripts/gedanken.py --out output/gedanken --voice "$VOICE" --minutes "$MINUTES" 2>&1 | tee run.log || {
+            echo "::error title=Fehler::$(tail -n 12 run.log | tr '\n' ' ' | cut -c1-1500)"; exit 1; }
+      - name: Als Release ablegen
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete preview-gedanken -y --cleanup-tag || true
+          gh release create preview-gedanken output/gedanken/video.mp4 output/gedanken/short.mp4 output/gedanken/meta.json --title "Vorschau Ruhige Gedanken" --notes "Testlauf" --prerelease
