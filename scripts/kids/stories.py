@@ -109,6 +109,20 @@ def from_gemini(rnd):
     data = gemini.ask_json(prompt, temperature=0.95)
     assert data["title"] and len(data["paragraphs"]) >= 6 and data.get("mini")
     words = sum(len(p.split()) for p in data["paragraphs"])
+    for _ in range(2):                                  # zu kurz? -> ausbauen lassen (Ziel ~8–12 Minuten)
+        if words >= 950:
+            break
+        more = gemini.ask_json(
+            "Hier ist eine Gute-Nacht-Geschichte (JSON). Sie ist zu kurz. Erweitere sie auf 1200 bis 1400 Wörter "
+            "in 14 bis 18 Absätzen: gleiche Figuren, gleicher Ablauf und gleicher Schluss, aber mehr liebevolle "
+            "Details, kleine Begegnungen und ruhige Momente. Gleiche Regeln (keine Anführungszeichen, nichts "
+            "Gruseliges). Antworte NUR mit JSON {\"title\": \"...\", \"paragraphs\": [\"...\"]}.\n\n"
+            + json.dumps({"title": data["title"], "paragraphs": data["paragraphs"]}, ensure_ascii=False),
+            temperature=0.8)
+        w2 = sum(len(p.split()) for p in more.get("paragraphs", []))
+        if w2 > words:
+            data["paragraphs"], words = more["paragraphs"], w2
+    print(f"  Geschichte: {words} Wörter")
     while words > 1600 and len(data["paragraphs"]) > 8:     # max. ~14 Minuten
         words -= len(data["paragraphs"].pop(len(data["paragraphs"]) // 2).split())
     return data
