@@ -1,0 +1,29 @@
+name: "🎙 Gemini-Stimme testen"
+on:
+  workflow_dispatch:
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests numpy scipy
+      - env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python - <<'PY'
+          import sys, requests, os
+          sys.path.insert(0, "scripts")
+          import gtts
+          for m in gtts.MODELS:
+              body = {"contents": [{"parts": [{"text": "Hallo, das ist ein kurzer Test."}]}],
+                      "generationConfig": {"responseModalities": ["AUDIO"],
+                      "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": "Sulafat"}}}}}
+              r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
+                                headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]}, json=body, timeout=120)
+              msg = f"{m}: {r.status_code} " + (r.text[:400].replace(chr(10), ' ') if r.status_code != 200 else "OK")
+              print(msg)
+              print(f"::notice title=GTTS::{msg}")
+          PY

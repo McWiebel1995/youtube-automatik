@@ -159,6 +159,7 @@ def story_short(title, text, work: Path, rnd, voice, rate, max_seconds=58.0, gvo
             subs = [(a, min(b, max_seconds - 2.5), x) for a, b, x in subs if a < max_seconds - 2.5]
         except Exception as e:  # noqa: BLE001
             print(f"  ⚠ Gemini-Stimme (Short) nicht verfügbar: {str(e)[:160]}")
+            print(f"::warning title=Stimme::Gemini-Stimme nicht verfügbar, Ersatzstimme genutzt: {str(e)[:300]}")
             pieces, subs, t = None, [], 1.2
     if pieces is None:
         pieces = [np.zeros(int(1.2 * SR), np.float32)]

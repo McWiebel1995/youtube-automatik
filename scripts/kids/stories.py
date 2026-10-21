@@ -188,6 +188,7 @@ def build(story, work, voice, rate, rnd, gvoice=None):
             return build_gemini(story, work, gvoice)
         except Exception as e:  # noqa: BLE001
             print(f"  ⚠ Gemini-Stimme nicht verfügbar ({str(e)[:160]}) – nutze Piper")
+            print(f"::warning title=Stimme::Gemini-Stimme nicht verfügbar, Ersatzstimme genutzt: {str(e)[:300]}")
     lines = [(f"Heute erzähle ich dir eine Geschichte. Sie heißt: {story['title']}.", 1.4)]
     for para in story["paragraphs"]:
         ss = sentences(para)
