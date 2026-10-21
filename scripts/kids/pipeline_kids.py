@@ -105,7 +105,7 @@ def main():
         yt = upload.service(token)
         upload.check_channel(yt, ch)
         print("  ✓ YouTube-Zugang ok")
-        if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_recently(yt):
+        if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_today("kids-" + args.channel):
             print("  ⏭ Heute wurde auf diesem Kanal schon hochgeladen – übersprungen (kein Doppel-Upload).")
             return
 
@@ -168,6 +168,7 @@ def main():
             upload.set_thumbnail(yt, vid, thumb)
         upload.add_to_playlist(yt, vid, ch.get("playlist_id"))
         record["video_id"] = vid
+        upload.mark_uploaded("kids-" + args.channel)
         print(f"  ✓ Privat hochgeladen: https://youtu.be/{vid} – bitte in YouTube Studio prüfen & veröffentlichen")
         if args.channel == "geschichten":
             stories.mark_used(info["story"]["title"])

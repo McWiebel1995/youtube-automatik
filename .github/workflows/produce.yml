@@ -120,14 +120,13 @@ jobs:
           python scripts/pipeline.py $ARGS 2>&1 | tee run.log || {
             echo "::error title=Fehler::$(tail -n 12 run.log | tr '\n' ' ' | cut -c1-1500)"; exit 1; }
 
-      - name: Instagram-Warteschlange speichern
+      - name: Upload-Stand & Instagram-Warteschlange speichern
         if: always() && github.event.inputs.dry_run != 'true'
         run: |
-          [ -f data/instagram_queue.json ] || exit 0
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add data/instagram_queue.json
-          git commit -m "Instagram: neues Reel vorgemerkt" || exit 0
+          git add data/instagram_queue.json data/last_upload.json 2>/dev/null || true
+          git commit -m "Upload-Stand + Instagram-Warteschlange" || exit 0
           for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep $((RANDOM % 10 + 3)); done
 
       # Thumbnail + Metadaten (und beim Testlauf das kurze Video) zum Ansehen ablegen

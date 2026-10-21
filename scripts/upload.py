@@ -1,5 +1,6 @@
 """Lädt ein Video per YouTube Data API v3 hoch (geplant veröffentlicht)."""
 import os
+from pathlib import Path
 import random
 import time
 
@@ -37,19 +38,29 @@ def check_channel(yt, channel):
     print(f"  Kanal geprüft: {title}")
 
 
-def uploaded_recently(yt, hours=10):
-    """True, wenn auf dem Kanal in den letzten `hours` Stunden schon hochgeladen wurde (verhindert Doppel-Uploads,
-    falls ein verspäteter Zeitplan-Lauf nach einem manuellen Lauf doch noch startet)."""
+LAST = Path(__file__).resolve().parent.parent / "data" / "last_upload.json"
+
+
+def _today():
     import datetime as _dt
-    c = yt.channels().list(part="contentDetails", mine=True).execute()["items"][0]
-    pl = c["contentDetails"]["relatedPlaylists"]["uploads"]
-    items = yt.playlistItems().list(part="snippet", playlistId=pl, maxResults=3).execute().get("items", [])
-    cutoff = _dt.datetime.now(_dt.timezone.utc) - _dt.timedelta(hours=hours)
-    for it in items:
-        t = _dt.datetime.fromisoformat(it["snippet"]["publishedAt"].replace("Z", "+00:00"))
-        if t > cutoff:
-            return True
-    return False
+    return _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%d")
+
+
+def uploaded_today(channel_key):
+    """True, wenn für diesen Kanal heute (UTC) schon hochgeladen wurde (verhindert Doppel-Uploads, falls ein
+    verspäteter Zeitplan-Lauf nach einem manuellen Lauf doch noch startet)."""
+    import json as _json
+    if not LAST.exists():
+        return False
+    return _json.loads(LAST.read_text(encoding="utf-8")).get(channel_key) == _today()
+
+
+def mark_uploaded(channel_key):
+    import json as _json
+    data = _json.loads(LAST.read_text(encoding="utf-8")) if LAST.exists() else {}
+    data[channel_key] = _today()
+    LAST.parent.mkdir(parents=True, exist_ok=True)
+    LAST.write_text(_json.dumps(data, indent=1), encoding="utf-8")
 
 
 def upload(yt, video_path, meta, channel, publish_at=None):
