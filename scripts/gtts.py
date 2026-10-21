@@ -9,7 +9,8 @@ import requests
 from scipy.io import wavfile
 from scipy.signal import resample_poly
 
-MODELS = ["gemini-2.5-flash-preview-tts", "gemini-2.5-flash-tts", "gemini-2.5-pro-preview-tts"]
+MODELS = ["gemini-2.5-flash-preview-tts"]        # im Gratis-Kontingent verfügbar (Pro: Limit 0)
+GAP_S = 21                                         # Gratis-Kontingent: ca. 3 Anfragen pro Minute
 STYLE_STORY = ("Lies wie eine liebevolle, erfahrene Erzählerin eine Gute-Nacht-Geschichte für kleine Kinder vor: "
                "ruhig, warm und lebendig, bei wörtlicher Rede etwas Ausdruck, mit kleinen natürlichen Pausen. "
                "Lies den folgenden Text vor:\n\n")
@@ -20,7 +21,7 @@ def synth(text, voice, out_wav, style=STYLE_STORY, key=None):
     key = key or os.environ["GEMINI_API_KEY"]
     last = None
     for m in MODELS:
-        for attempt in range(4):
+        for attempt in range(6):
             body = {"contents": [{"parts": [{"text": style + text}]}],
                     "generationConfig": {"responseModalities": ["AUDIO"],
                                          "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}}}}
@@ -40,9 +41,9 @@ def synth(text, voice, out_wav, style=STYLE_STORY, key=None):
                 return m
             last = f"{m}: {r.status_code} {r.text[:200]}"
             if r.status_code == 429:
-                if "per day" in r.text.lower() or "PerDay" in r.text:
-                    break                               # Tageslimit dieses Modells -> nächstes Modell
-                time.sleep(25 * (attempt + 1))
+                if "per day" in r.text.lower() or "PerDay" in r.text or "limit: 0" in r.text:
+                    break                               # Tageslimit -> aufgeben (Ersatzstimme)
+                time.sleep(65)                          # Minutenlimit -> eine Minute warten
                 continue
             if r.status_code in (500, 502, 503, 504):
                 time.sleep(10)
@@ -95,5 +96,6 @@ def spoken_with_timing(blocks, voice, work, sr, split_sentences, gap=1.2, style=
             cur += dur
         pieces += [a, np.zeros(int(gap * sr), np.float32)]
         t += d + gap
-        time.sleep(1.5)
+        if i < len(blocks) - 1:
+            time.sleep(GAP_S)
     return np.concatenate(pieces), subs, model

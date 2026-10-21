@@ -73,37 +73,10 @@ def write_text(rnd, minutes):
 
 # ----------------------------------------------------------------- Stimme (Gemini TTS)
 def tts(text, voice, out_wav, key=None):
-    key = key or os.environ["GEMINI_API_KEY"]
-    last = None
-    for m in TTS_MODELS:
-        for attempt in range(4):
-            body = {"contents": [{"parts": [{"text": STYLE + text}]}],
-                    "generationConfig": {"responseModalities": ["AUDIO"],
-                                         "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}}}}
-            r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
-                              headers={"x-goog-api-key": key}, json=body, timeout=300)
-            if r.status_code == 200:
-                try:
-                    part = r.json()["candidates"][0]["content"]["parts"][0]["inlineData"]
-                except (KeyError, IndexError):
-                    last = f"{m}: keine Audiodaten"
-                    break
-                pcm = base64.b64decode(part["data"])
-                with wave.open(str(out_wav), "wb") as w:
-                    w.setnchannels(1)
-                    w.setsampwidth(2)
-                    w.setframerate(24000)
-                    w.writeframes(pcm)
-                return m
-            last = f"{m}: {r.status_code} {r.text[:200]}"
-            if r.status_code == 429:
-                time.sleep(25 * (attempt + 1))        # Minutenlimit -> kurz warten
-                continue
-            if r.status_code in (500, 502, 503, 504):
-                time.sleep(10)
-                continue
-            break
-    raise RuntimeError(f"Gemini TTS fehlgeschlagen: {last}")
+    import gtts
+    m = gtts.synth(text, voice, out_wav, style=STYLE, key=key)
+    time.sleep(gtts.GAP_S)
+    return m
 
 
 def read_wav(path):
@@ -137,7 +110,6 @@ def voice_track(paragraphs, voice, work):
     for i, p in enumerate(chunks(paragraphs)):
         model = tts(p, voice, work / f"v{i:02d}.wav")
         parts += [trim_silence(read_wav(work / f"v{i:02d}.wav")), np.zeros(int(1.6 * SR), np.float32)]
-        time.sleep(2)
     parts.append(np.zeros(int(8 * SR), np.float32))
     return np.concatenate(parts), model
 
