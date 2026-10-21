@@ -171,3 +171,29 @@ class Voice:
         buf = io.BytesIO()
         sf.write(buf, wav.squeeze(0).cpu().numpy(), self.model.sr, format="WAV")
         return buf.getvalue()
+
+
+@app.cls(gpu="L4", image=voice_image, volumes={"/models": models}, timeout=1800, scaledown_window=120)
+class VoiceDE:
+    """Chatterbox Multilingual (MIT) – deutsche Sprachausgabe mit Ausdruck (für die Kinderkanäle)."""
+    @modal.enter()
+    def load(self):
+        from chatterbox.mtl_tts import ChatterboxMultilingualTTS
+        self.model = ChatterboxMultilingualTTS.from_pretrained(device="cuda")
+        models.commit()
+
+    @modal.method()
+    def speak(self, text: str, ref_wav: bytes = b"", exaggeration: float = 0.5, cfg_weight: float = 0.5,
+              language: str = "de", seed: int = 0) -> bytes:
+        import soundfile as sf
+        import torch
+        torch.manual_seed(seed)
+        kw = {}
+        if ref_wav:
+            with open("/tmp/ref_de.wav", "wb") as f:
+                f.write(ref_wav)
+            kw["audio_prompt_path"] = "/tmp/ref_de.wav"
+        wav = self.model.generate(text, language_id=language, exaggeration=exaggeration, cfg_weight=cfg_weight, **kw)
+        buf = io.BytesIO()
+        sf.write(buf, wav.squeeze(0).cpu().numpy(), self.model.sr, format="WAV")
+        return buf.getvalue()
