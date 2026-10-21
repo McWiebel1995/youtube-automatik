@@ -1,7 +1,7 @@
 name: Kinder-Videos produzieren
 
-# Alle Kinder-Videos werden PRIVAT hochgeladen.
-# Du prüfst sie in der YouTube-Studio-App und stellst sie auf "Öffentlich".
+# Alle Kinder-Videos werden direkt öffentlich hochgeladen (config/kids.yaml: privacy).
+#
 
 on:
   schedule:

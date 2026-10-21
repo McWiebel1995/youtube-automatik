@@ -152,7 +152,28 @@ def ass_time(t):
     return f"{int(h)}:{int(m):02d}:{s:05.2f}"
 
 
-def build(story, work, voice, rate, rnd):
+def build_gemini(story, work, gvoice):
+    """High-End-Stimme (Gemini-TTS): wenige große Stücke statt einzelner Sätze."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import gtts
+    intro = f"Heute erzähle ich dir eine Geschichte. Sie heißt: {story['title']}."
+    groups = gtts.chunks(story["paragraphs"])
+    blocks = [intro + "\n\n" + "\n\n".join(groups[0])] + ["\n\n".join(g) for g in groups[1:]]
+    def split(text):
+        return [x for para in text.split("\n\n") for x in sentences(para)]
+    audio, subs, model = gtts.spoken_with_timing(blocks, gvoice, work, SR, split)
+    audio = np.concatenate([audio, np.zeros(int(6 * SR), np.float32)])
+    vpath = work / "voice.wav"
+    wavfile.write(vpath, SR, (np.clip(audio, -1, 1) * 32767).astype(np.int16))
+    return vpath, subs, len(audio) / SR
+
+
+def build(story, work, voice, rate, rnd, gvoice=None):
+    if gvoice and os.environ.get("GEMINI_API_KEY"):
+        try:
+            return build_gemini(story, work, gvoice)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Gemini-Stimme nicht verfügbar ({str(e)[:160]}) – nutze Piper")
     lines = [(f"Heute erzähle ich dir eine Geschichte. Sie heißt: {story['title']}.", 1.4)]
     for para in story["paragraphs"]:
         ss = sentences(para)
@@ -221,7 +242,7 @@ def produce(ch, work: Path, rnd, voice, rate):
     story, source = pick_story(ch, rnd)
     print(f"  Geschichte: {story['title']} ({source})")
     loop = rnd.choice(ensure_loops())
-    vpath, subs, total = build(story, work, voice, rate, rnd)
+    vpath, subs, total = build(story, work, voice, rate, rnd, ch.get("gemini_voice"))
     m = music.lullaby(rnd.randrange(2**31), repeats=2, bpm=(48, 58))
     mpath = work / "music.wav"
     wavfile.write(mpath, SR, (np.clip(m, -1, 1) * 32767).astype(np.int16))

@@ -147,7 +147,8 @@ def main():
         thumb = make_thumb(info["loop"], work / "thumbnail.jpg", info["story"]["title"], "GUTE NACHT", at=0.3)
         import shorts
         st = info["story"]
-        sinfo = shorts.story_short(st["title"], stories.mini_of(st), work / "short", rnd, ch["voice"], ch["speech_rate"])
+        sinfo = shorts.story_short(st["title"], stories.mini_of(st), work / "short", rnd, ch["voice"], ch["speech_rate"],
+                                   gvoice=ch.get("gemini_voice"))
         stitle = rnd.choice(ch["short_titles"]).format(title=st["title"])[:100]
         sdesc = (f"🌙 {st['title']} – eine Mini-Gute-Nacht-Geschichte.\n\nDie ganze Geschichte (ca. "
                  f"{max(1, round(info['seconds'] / 60))} Minuten) hörst du auf unserem Kanal.\n\n"
@@ -169,14 +170,14 @@ def main():
         upload.add_to_playlist(yt, vid, ch.get("playlist_id"))
         record["video_id"] = vid
         upload.mark_uploaded("kids-" + args.channel)
-        print(f"  ✓ Privat hochgeladen: https://youtu.be/{vid} – bitte in YouTube Studio prüfen & veröffentlichen")
+        print(f"  ✓ Hochgeladen ({ch.get('privacy', 'private')}): https://youtu.be/{vid}")
         if args.channel == "geschichten":
             stories.mark_used(info["story"]["title"])
         os.remove(info["video_file"])
         for xinfo, xmeta in extra:
             xvid = upload.upload(yt, xinfo["video_file"], xmeta, ch, publish_at=None)
             record.setdefault("extra_uploads", []).append({"video_id": xvid, "title": xmeta["title"]})
-            print(f"  ✓ Short privat hochgeladen: https://youtu.be/{xvid}")
+            print(f"  ✓ Short hochgeladen ({ch.get('privacy', 'private')}): https://youtu.be/{xvid}")
             import ig_queue                                   # Short auch als Instagram-Reel (abends)
             ig_queue.add(IG_ACCOUNT[args.channel], xinfo["video_file"], ig_caption(args.channel, xmeta, xinfo))
 

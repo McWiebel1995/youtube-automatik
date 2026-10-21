@@ -1,13 +1,13 @@
 # ------------------------------------------------------------------
 # Kinderkanäle
-# Alle Videos werden als "Speziell für Kinder" markiert und PRIVAT
-# hochgeladen. Du prüfst sie in der YouTube-Studio-App und stellst
-# sie dann auf "Öffentlich". So geht nichts Ungeprüftes online.
+# Alle Videos werden als "Speziell für Kinder" markiert und ÖFFENTLICH
+# hochgeladen (auf Wunsch ohne vorherige Freigabe).
+#
 # ------------------------------------------------------------------
 
 defaults:
   language: de
-  privacy: private
+  privacy: public            # auf Wunsch direkt öffentlich (vorher: private zur Prüfung in YouTube Studio)
   made_for_kids: true
   # Sprecherstimme (Piper, offline, kostenlos). Andere deutsche Stimmen:
   # de_DE-kerstin-low, de_DE-eva_k-x_low, de_DE-ramona-low, de_DE-thorsten-high
@@ -64,6 +64,7 @@ channels:
     # true = jeden Tag eine neue Geschichte per KI (Gemini, Secret GEMINI_API_KEY; sonst Claude)
     # false = nur Geschichten aus data/stories.yaml (werden der Reihe nach verwendet)
     ai_stories: true
+    gemini_voice: Sulafat      # High-End-Stimme für Geschichten + Mini-Shorts (Fallback: Piper)
     short_titles:
       - "{title} 🌙 Mini-Gute-Nacht-Geschichte #shorts"
       - "{title} ✨ Geschichte zum Einschlafen #shorts"

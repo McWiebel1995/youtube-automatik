@@ -134,7 +134,7 @@ if __name__ == "__main__":
 
 
 # ----------------------------------------------------------------- Mini-Geschichte (Gute-Nacht-Kiste)
-def story_short(title, text, work: Path, rnd, voice, rate, max_seconds=58.0):
+def story_short(title, text, work: Path, rnd, voice, rate, max_seconds=58.0, gvoice=None):
     """Hochkant-Short: Bilderbuch-Nachtszene, Sprecherstimme, große Untertitel, Titel oben."""
     import re as _re
 
@@ -146,23 +146,38 @@ def story_short(title, text, work: Path, rnd, voice, rate, max_seconds=58.0):
     root = Path(__file__).resolve().parents[2]
     SR = music.SR
     sents = [s for s in _re.split(r"(?<=[.!?])\s+", text.strip()) if s]
-    pieces, subs, t = [np.zeros(int(1.2 * SR), np.float32)], [], 1.2
-    for i, s in enumerate(sents):
-        wav = work / f"m_{i:02d}.wav"
-        tts.speak(s, wav, voice, rate)
-        sr, a = wavfile.read(wav)
-        a = a.astype(np.float32) / 32768
-        if a.ndim > 1:
-            a = a.mean(axis=1)
-        if sr != SR:
-            a = resample_poly(a, SR, sr).astype(np.float32)
-        d = len(a) / SR
-        if t + d > max_seconds - 2.5:
-            break
-        subs.append((t, t + d + 0.3, s))
-        pieces += [a, np.zeros(int(0.45 * SR), np.float32)]
-        t += d + 0.45
-        wav.unlink(missing_ok=True)
+    pieces, subs, t = None, [], 1.2
+    if gvoice and os.environ.get("GEMINI_API_KEY"):
+        try:
+            sys.path.insert(0, str(root / "scripts"))
+            import gtts
+            audio, subs, _ = gtts.spoken_with_timing([text], gvoice, work, SR,
+                                                     lambda x: [s for s in _re.split(r"(?<=[.!?])\s+", x.strip()) if s],
+                                                     lead=1.2)
+            pieces = [audio]
+            t = len(audio) / SR
+            subs = [(a, min(b, max_seconds - 2.5), x) for a, b, x in subs if a < max_seconds - 2.5]
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Gemini-Stimme (Short) nicht verfügbar: {str(e)[:160]}")
+            pieces, subs, t = None, [], 1.2
+    if pieces is None:
+        pieces = [np.zeros(int(1.2 * SR), np.float32)]
+        for i, s in enumerate(sents):
+            wav = work / f"m_{i:02d}.wav"
+            tts.speak(s, wav, voice, rate)
+            sr, a = wavfile.read(wav)
+            a = a.astype(np.float32) / 32768
+            if a.ndim > 1:
+                a = a.mean(axis=1)
+            if sr != SR:
+                a = resample_poly(a, SR, sr).astype(np.float32)
+            d = len(a) / SR
+            if t + d > max_seconds - 2.5:
+                break
+            subs.append((t, t + d + 0.3, s))
+            pieces += [a, np.zeros(int(0.45 * SR), np.float32)]
+            t += d + 0.45
+            wav.unlink(missing_ok=True)
     seconds = min(max_seconds, t + 2.5)
     voice_trk = np.concatenate(pieces)
     voice_trk = np.pad(voice_trk, (0, max(0, int(seconds * SR) - len(voice_trk))))[: int(seconds * SR)]
