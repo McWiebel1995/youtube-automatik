@@ -37,7 +37,7 @@ def check_channel(yt, channel):
     print(f"  Kanal geprüft: {title}")
 
 
-def uploaded_recently(yt, hours=18):
+def uploaded_recently(yt, hours=10):
     """True, wenn auf dem Kanal in den letzten `hours` Stunden schon hochgeladen wurde (verhindert Doppel-Uploads,
     falls ein verspäteter Zeitplan-Lauf nach einem manuellen Lauf doch noch startet)."""
     import datetime as _dt
