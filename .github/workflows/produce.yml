@@ -126,7 +126,7 @@ jobs:
             echo "::error title=Fehler::$(tail -n 12 run.log | tr '\n' ' ' | cut -c1-1500)"; exit 1; }
 
       - name: Upload-Stand & Instagram-Warteschlange speichern
-        if: always() && github.event.inputs.dry_run != 'true'
+        if: always() && steps.sel.outputs.run == 'true' && github.event.inputs.dry_run != 'true'
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
