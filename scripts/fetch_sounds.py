@@ -38,13 +38,27 @@ QUERIES = {
     "birds_": ["birds forest ambience", "morning birdsong", "birds chirping nature"],
 }
 BAD_TAGS = {"music", "voice", "speech", "talking", "melody", "song", "synth", "processed", "loop-music"}
+# Störende Geräusche, die in Natur-Aufnahmen oft mit drin sind (Tiere, Menschen, Verkehr) – geprüft in
+# Tags, Titel und Beschreibung. Vögel sind nur beim "birds_"-Sound erlaubt.
+NOISE_WORDS = {"sheep", "lamb", "lambs", "goat", "cow", "cows", "cattle", "farm", "barn", "dog", "dogs", "bark",
+               "barking", "rooster", "chicken", "chickens", "hen", "horse", "donkey", "pig", "cat", "meow", "animal",
+               "animals", "frog", "frogs", "cricket", "crickets", "insects", "people", "person", "children", "kids",
+               "child", "baby", "voices", "crowd", "laugh", "cough", "footsteps", "car", "cars", "traffic", "siren",
+               "motorbike", "airplane", "plane", "train", "bell", "bells", "church", "tractor", "lawnmower"}
+BIRD_WORDS = {"bird", "birds", "birdsong", "chirp", "chirping", "crow", "owl", "seagull", "gull", "duck", "geese"}
 
 
-def search(key, query):
+def _words(s):
+    import re
+    text = " ".join([s.get("name", ""), s.get("description", ""), " ".join(s.get("tags", []))]).lower()
+    return set(re.findall(r"[a-zäöü]+", text))
+
+
+def search(key, query, allow_birds=False):
     params = {
         "query": query, "token": key, "page_size": 30, "sort": "rating_desc",
         "filter": 'license:"Creative Commons 0" duration:[60 TO 1500] avg_rating:[3.5 TO *]',
-        "fields": "id,name,tags,duration,previews,username,num_downloads,avg_rating",
+        "fields": "id,name,tags,description,duration,previews,username,num_downloads,avg_rating",
     }
     r = requests.get("https://freesound.org/apiv2/search/text/", timeout=30, params=params)
     if r.status_code == 404:  # neuere API-Version
@@ -52,6 +66,9 @@ def search(key, query):
     r.raise_for_status()
     for s in r.json().get("results", []):
         if BAD_TAGS & {t.lower() for t in s.get("tags", [])}:
+            continue
+        w = _words(s)
+        if w & NOISE_WORDS or (not allow_birds and w & BIRD_WORDS):
             continue
         pv = s.get("previews") or {}
         url = pv.get("preview-hq-ogg") or pv.get("preview-hq-mp3")   # ogg = 192 kbit/s
@@ -107,7 +124,7 @@ def main():
                 if need <= 0:
                     break
                 try:
-                    hits = list(search(key, q))
+                    hits = list(search(key, q, allow_birds=prefix == "birds_"))
                 except requests.RequestException as e:
                     print(f"  ⚠ Freesound '{q}': {e}")
                     continue
