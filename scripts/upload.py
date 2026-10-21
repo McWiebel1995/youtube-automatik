@@ -38,7 +38,7 @@ def check_channel(yt, channel):
     print(f"  Kanal geprüft: {title}")
 
 
-LAST = Path(__file__).resolve().parent.parent / "data" / "last_upload.json"
+LAST_DIR = Path(__file__).resolve().parent.parent / "data" / "last_upload"
 
 
 def _today():
@@ -48,19 +48,14 @@ def _today():
 
 def uploaded_today(channel_key):
     """True, wenn für diesen Kanal heute (UTC) schon hochgeladen wurde (verhindert Doppel-Uploads, falls ein
-    verspäteter Zeitplan-Lauf nach einem manuellen Lauf doch noch startet)."""
-    import json as _json
-    if not LAST.exists():
-        return False
-    return _json.loads(LAST.read_text(encoding="utf-8")).get(channel_key) == _today()
+    verspäteter Zeitplan-Lauf nach einem manuellen Lauf doch noch startet). Eine Datei pro Kanal."""
+    f = LAST_DIR / f"{channel_key}.txt"
+    return f.exists() and f.read_text().strip() == _today()
 
 
 def mark_uploaded(channel_key):
-    import json as _json
-    data = _json.loads(LAST.read_text(encoding="utf-8")) if LAST.exists() else {}
-    data[channel_key] = _today()
-    LAST.parent.mkdir(parents=True, exist_ok=True)
-    LAST.write_text(_json.dumps(data, indent=1), encoding="utf-8")
+    LAST_DIR.mkdir(parents=True, exist_ok=True)
+    (LAST_DIR / f"{channel_key}.txt").write_text(_today() + "\n")
 
 
 def upload(yt, video_path, meta, channel, publish_at=None):

@@ -7,7 +7,7 @@ Warteschlange für Instagram-Reels.
   Abends (Workflow instagram-post): python scripts/ig_queue.py post
       -> veröffentlicht alles Vorgemerkte als Reel
 
-Datei: data/instagram_queue.json
+Ablage: data/ig_queue/<id>.json (eine Datei pro Reel – parallele Läufe überschreiben sich nicht)
 """
 import datetime as dt
 import json
@@ -17,7 +17,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-QUEUE = ROOT / "data" / "instagram_queue.json"
+QDIR = ROOT / "data" / "ig_queue"
+OLD = ROOT / "data" / "instagram_queue.json"
 TAG = "ig-media"
 
 
@@ -26,12 +27,21 @@ def now():
 
 
 def load():
-    return json.loads(QUEUE.read_text(encoding="utf-8")) if QUEUE.exists() else []
+    items = []
+    if OLD.exists():                                  # alte Sammeldatei einmalig übernehmen
+        QDIR.mkdir(parents=True, exist_ok=True)
+        for it in json.loads(OLD.read_text(encoding="utf-8")):
+            (QDIR / f"{it['id']}.json").write_text(json.dumps(it, ensure_ascii=False, indent=1), encoding="utf-8")
+        OLD.unlink()
+    for f in sorted(QDIR.glob("*.json")) if QDIR.exists() else []:
+        items.append(json.loads(f.read_text(encoding="utf-8")))
+    items.sort(key=lambda x: x.get("created_at", ""))
+    return items
 
 
-def save(items):
-    QUEUE.parent.mkdir(parents=True, exist_ok=True)
-    QUEUE.write_text(json.dumps(items[-300:], ensure_ascii=False, indent=1), encoding="utf-8")
+def save_item(item):
+    QDIR.mkdir(parents=True, exist_ok=True)
+    (QDIR / f"{item['id']}.json").write_text(json.dumps(item, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 def upload_public(path: Path, name: str) -> str:
@@ -56,11 +66,9 @@ def add(account, video, caption, name=None):
                 return None
             stamp = dt.datetime.now().strftime("%Y%m%d-%H%M%S")
             video = upload_public(Path(video), name or f"{account}-{stamp}.mp4")
-        items = load()
-        item = {"id": f"{account}-{len(items)}-{int(dt.datetime.now().timestamp())}", "account": account,
+        item = {"id": f"{account}-{int(dt.datetime.now().timestamp())}", "account": account,
                 "video_url": video, "caption": caption, "created_at": now(), "status": "pending"}
-        items.append(item)
-        save(items)
+        save_item(item)
         print(f"  📸 Instagram vorgemerkt: @{account}")
         return item
     except Exception as e:  # noqa: BLE001 – Instagram darf die YouTube-Produktion nie stoppen
@@ -87,7 +95,7 @@ def post(limit_per_account=1):
                 it["status"] = "failed"
             report.append(f"❌ @{it['account']}: {str(e)[:200]}")
         done[it["account"]] = done.get(it["account"], 0) + 1
-        save(items)
+        save_item(it)
     msg = " | ".join(report) or "nichts zu posten"
     print(msg.replace(" | ", "\n"))
     print(f"::notice title=Instagram::{msg}")
