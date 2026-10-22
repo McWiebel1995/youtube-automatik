@@ -215,6 +215,7 @@ def esc(t):
 
 def build(out: Path, minutes=12.0, voice="Sulafat", seed=None):
     rnd = random.Random(seed)
+    out = Path(out).resolve()                     # absolute Pfade (ffmpeg läuft im Arbeitsordner)
     out.mkdir(parents=True, exist_ok=True)
     work = Path(tempfile.mkdtemp(dir=out))
     print("▶ Text …")
