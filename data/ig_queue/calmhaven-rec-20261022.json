@@ -4,5 +4,7 @@
  "video_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/ig-media/calmhaven-20261022-074521.mp4",
  "caption": "Close your eyes. Just the rain. 🌧️\nRain in the forest – 3 hours of calm for sleep, study or a quiet evening.\n\n💾 Save this for tonight\n▶️ Full 3-hour version on YouTube (link in bio)\n\n#rainsounds #sleepsounds #rain #ambience #relaxingsounds #asmrsleep #studyambience #cozyvibes",
  "created_at": "2026-10-22T07:45:00Z",
- "status": "pending"
+ "status": "pending",
+ "tries": 1,
+ "error": "Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (Code 190/0)"
 }
