@@ -76,13 +76,30 @@ def add(account, video, caption, name=None):
         return None
 
 
+def _recent_captions(instagram, account):
+    """Erste Zeilen der letzten Beiträge – Schutz gegen Doppel-Posts."""
+    try:
+        js = instagram._req("GET", "me/media", instagram.token_for(account), fields="caption,timestamp", limit=12)
+        return {(m.get("caption") or "").strip()[:120] for m in js.get("data", [])}
+    except Exception:  # noqa: BLE001
+        return set()
+
+
 def post(limit_per_account=1):
     import instagram
     items, done, report = load(), {}, []
+    recent = {}
     for it in items:
         if it.get("status") != "pending":
             continue
         if done.get(it["account"], 0) >= limit_per_account:
+            continue
+        if it["account"] not in recent:
+            recent[it["account"]] = _recent_captions(instagram, it["account"])
+        if it["caption"].strip()[:120] in recent[it["account"]]:
+            it.update(status="posted", note="bereits auf Instagram (Doppel-Post verhindert)")
+            save_item(it)
+            report.append(f"⏭ @{it['account']}: schon gepostet – übersprungen")
             continue
         try:
             mid, link = instagram.publish_reel(it["account"], it["video_url"], it["caption"])
