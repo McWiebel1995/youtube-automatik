@@ -94,6 +94,13 @@ def upload(yt, video_path, meta, channel, publish_at=None):
             wait = min(60, 2 ** attempt) + random.random()
             print(f"  Serverfehler {e.resp.status}, neuer Versuch in {wait:.0f}s")
             time.sleep(wait)
+        except (ConnectionError, TimeoutError, OSError) as e:   # Verbindungsabbruch (SSL/Socket) -> fortsetzen
+            if attempt >= 8:
+                raise
+            attempt += 1
+            wait = min(60, 2 ** attempt) + random.random()
+            print(f"  Verbindung unterbrochen ({type(e).__name__}), setze Upload in {wait:.0f}s fort")
+            time.sleep(wait)
     return response["id"]
 
 
