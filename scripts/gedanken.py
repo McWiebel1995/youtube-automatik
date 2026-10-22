@@ -181,7 +181,7 @@ def normalize(src, dst, seconds):
     d = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(src)],
                              capture_output=True, text=True).stdout or 10)
     vf = ("scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,setpts=1.25*PTS,fps=30,"
-          f"eq=saturation=0.95:brightness=-0.02,fade=t=in:d=1.5,fade=t=out:st={seconds - 1.5}:d=1.5,format=yuv420p")
+          f"eq=saturation=0.95:brightness=-0.02,fade=t=in:d=1.2,fade=t=out:st={seconds - 1.2}:d=1.2,format=yuv420p")
     loop = ["-stream_loop", "-1"] if d * 1.25 < seconds else []
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *loop, "-i", str(src), "-t", f"{seconds}", "-an", "-vf", vf,
                     "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-profile:v", "high", str(dst)], check=True)
@@ -229,7 +229,7 @@ def build(out: Path, minutes=12.0, voice="Sulafat", seed=None):
     srcs = fetch_clips(scene_pool, work)
     if not srcs:
         raise RuntimeError("Keine Naturvideos gefunden (PEXELS_API_KEY / PIXABAY_API_KEY?)")
-    seg = 40.0
+    seg = 90.0                                    # lange, ruhige Einstellungen
     n = int(np.ceil(total / seg))
     segs = []
     for i in range(n):
@@ -272,8 +272,9 @@ def build(out: Path, minutes=12.0, voice="Sulafat", seed=None):
     lines = textwrap.wrap(data["short_thought"], 26)
     (work / "thought.txt").write_text("\n".join(lines), encoding="utf-8")
     (work / "kicker.txt").write_text("Gedanke des Tages", encoding="utf-8")
-    bf = font("CormorantGaramond.ttf")
-    svf = ("scale=-2:1920,crop=1080:1920,setpts=1.25*PTS,eq=brightness=-0.06,"
+    bf = font("PlayfairDisplay.ttf")
+    svf = ("scale=-2:1920,crop=1080:1920,setpts=1.25*PTS,eq=brightness=-0.10,"
+           "drawbox=x=0:y=ih*0.18:w=iw:h=ih*0.62:color=black@0.32:t=fill,"
            f"drawtext=fontfile={bf}:textfile=kicker.txt:fontsize=58:fontcolor=white@0.85:x=(w-tw)/2:y=330,"
            f"drawtext=fontfile={bf}:textfile=thought.txt:fontsize=64:line_spacing=18:fontcolor=white:"
            "x=(w-tw)/2:y=(h-th)/2:shadowcolor=black@0.6:shadowx=2:shadowy=2:alpha='min(1,t/1.5)',"
