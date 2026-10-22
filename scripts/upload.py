@@ -114,6 +114,44 @@ def set_thumbnail(yt, video_id, thumb_path):
         return False
 
 
+def recent_titles(yt, n=40):
+    c = yt.channels().list(part="contentDetails", mine=True).execute()["items"][0]
+    pl = c["contentDetails"]["relatedPlaylists"]["uploads"]
+    items = yt.playlistItems().list(part="snippet", playlistId=pl, maxResults=min(50, n)).execute().get("items", [])
+    return {i["snippet"]["title"].strip().lower() for i in items}
+
+
+def unique_title(make, recent, rnd, suffixes, tries=15):
+    """make() liefert ein Metadaten-Dict mit 'title'. Wiederholt, bis der Titel neu ist; sonst Zusatz anhängen."""
+    meta = make()
+    for _ in range(tries):
+        if meta["title"].strip().lower() not in recent:
+            return meta
+        meta = make()
+    for suf in rnd.sample(suffixes, len(suffixes)):
+        t = f"{meta['title']} {suf}"[:100]
+        if t.strip().lower() not in recent:
+            meta["title"] = t
+            return meta
+    return meta
+
+
+PLAYLIST_DIR = Path(__file__).resolve().parent.parent / "data" / "playlists"
+
+
+def ensure_playlist(yt, key, title, description, made_for_kids=False):
+    """Legt pro Kanal einmal eine Playlist an (ID in data/playlists/<key>.txt) und gibt die ID zurück."""
+    f = PLAYLIST_DIR / f"{key}.txt"
+    if f.exists() and f.read_text().strip():
+        return f.read_text().strip()
+    body = {"snippet": {"title": title, "description": description},
+            "status": {"privacyStatus": "public"}}
+    pid = yt.playlists().insert(part="snippet,status", body=body).execute()["id"]
+    PLAYLIST_DIR.mkdir(parents=True, exist_ok=True)
+    f.write_text(pid + "\n")
+    return pid
+
+
 def add_to_playlist(yt, video_id, playlist_id):
     if not playlist_id:
         return

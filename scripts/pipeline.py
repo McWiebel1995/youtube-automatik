@@ -78,7 +78,11 @@ def main():
             return
 
     info = render.render(ch, seconds, work, rnd)
-    meta = metadata.build(ch, cfg, info, hours, rnd)
+    recent = upload.recent_titles(yt) if yt else set()
+    meta = metadata.build(ch, cfg, info, hours, rnd) if not yt else upload.unique_title(
+        lambda: metadata.build(ch, cfg, info, hours, rnd), recent, rnd,
+                               ["| Deep Sleep", "| Relax & Unwind", "| Study & Focus", "| Calm Night",
+                                "| Peaceful Ambience", "| Sleep Better Tonight"])
     loop = ASSETS / ch["key"] / "video" / info["loop"]
     thumb = thumbnail.make(loop, work / "thumbnail.jpg", hours, meta["scene"], rnd)
     publish_at = next_publish_time(ch["publish_time_utc"], args.publish_days)
@@ -94,19 +98,32 @@ def main():
         import upload
         vid = upload.upload(yt, info["video_file"], meta, ch, publish_at)
         upload.set_thumbnail(yt, vid, thumb)
-        upload.add_to_playlist(yt, vid, ch.get("playlist_id"))
+        PL = {"regen": ("Rain Sounds for Sleep", "Rain sounds for deep sleep, study and relaxation – new videos daily."),
+              "kamin": ("Fireplace Sounds", "Crackling fireplace ambience for sleep, reading and cozy evenings."),
+              "wasserfall": ("Water & Waterfall Sounds", "Waterfalls, streams and rivers for sleep, focus and calm.")}
+        try:
+            pid = ch.get("playlist_id") or upload.ensure_playlist(yt, args.channel, *PL.get(args.channel, (ch["name"], "")))
+            upload.add_to_playlist(yt, vid, pid)
+        except Exception as e:  # noqa: BLE001
+            pid = None
+            print(f"  ⚠ Playlist: {e}")
         record["video_id"] = vid
         upload.mark_uploaded(args.channel)
         print(f"  ✓ Hochgeladen: https://youtu.be/{vid} (öffentlich ab {publish_at})")
-        try:                                          # 1 Relax-Clip pro Tag für @calmhavenig (Kanäle im Wechsel)
+        try:                                          # täglicher 40-s-Clip: YouTube-Short + (im Wechsel) Instagram
+            import ig_clip
+            clip = ig_clip.make(info["video_file"], work / "ig_clip.mp4", hours, meta["scene"], args.channel, rnd)
+            smeta = upload.unique_title(lambda: ig_clip.short_meta(args.channel, hours, meta["scene"], rnd, meta["title"]),
+                                        recent, rnd, ["🌙", "✨", "💤", "🎧"])
+            svid = upload.upload(yt, clip, smeta, ch, publish_at)
+            record["short_id"] = svid
+            print(f"  ✓ Short: https://youtu.be/{svid}")
             order = ["regen", "kamin", "wasserfall"]
             if args.channel in order and dt.date.today().toordinal() % 3 == order.index(args.channel):
-                import ig_clip
                 import ig_queue
-                clip = ig_clip.make(info["video_file"], work / "ig_clip.mp4", hours, meta["scene"], args.channel, rnd)
                 ig_queue.add("calmhaven", clip, ig_clip.caption(args.channel, hours, meta["scene"], rnd))
         except Exception as e:  # noqa: BLE001
-            print(f"  ⚠ Instagram-Clip übersprungen: {e}")
+            print(f"  ⚠ Short/Instagram-Clip übersprungen: {e}")
         if not args.keep:
             os.remove(info["video_file"])
 

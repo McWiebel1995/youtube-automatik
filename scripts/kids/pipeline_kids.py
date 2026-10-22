@@ -34,6 +34,12 @@ def load_cfg():
     return cfg
 
 
+SUFFIX = {"schlaf": ["| Baby schläft schnell ein", "| sanft & ruhig", "| für süße Träume", "| zum Durchschlafen"],
+          "lernen": ["| Folge mit Quiz", "| zum Mitmachen", "| für Kita & Vorschule", "| spielerisch lernen"],
+          "geschichten": ["| zum Einschlafen", "| zum Vorlesen", "| für Kinder ab 2"]}
+PLAYLISTS = {"schlaf": ("Spieluhr zum Einschlafen", "Sanfte Spieluhr-Musik zum Einschlafen für Babys – jeden Tag neu."),
+             "lernen": ("Lernvideos für Kleinkinder", "Zahlen, Farben und Formen spielerisch lernen."),
+             "geschichten": ("Gute-Nacht-Geschichten", "Jeden Abend eine neue Gute-Nacht-Geschichte zum Zuhören.")}
 IG_ACCOUNT = {"schlaf": "mondmelodie", "lernen": "lernbaerchen", "geschichten": "gutenacht"}
 IG_TAGS = {
     "schlaf": "#einschlafmusik #spieluhr #babyschlaf #schlaflied #gutenacht #babyeinschlafen #mamaleben #elternalltag",
@@ -165,10 +171,21 @@ def main():
             print(f"  + Short: {xmeta['title']} ({xinfo['video_file']})")
     else:
         import upload
+        recent = upload.recent_titles(yt)
+        if meta["title"].strip().lower() in recent:
+            meta["title"] = upload.unique_title(lambda: dict(meta), recent, rnd, SUFFIX[args.channel], tries=0)["title"]
+        for _, xm in extra:
+            if xm["title"].strip().lower() in recent:
+                xm["title"] = upload.unique_title(lambda: dict(xm), recent, rnd, ["🌙", "✨", "⭐", "💫"], tries=0)["title"]
         vid = upload.upload(yt, info["video_file"], meta, ch, publish_at=None)
         if thumb:
             upload.set_thumbnail(yt, vid, thumb)
-        upload.add_to_playlist(yt, vid, ch.get("playlist_id"))
+        try:
+            pid = ch.get("playlist_id") or upload.ensure_playlist(yt, "kids-" + args.channel, *PLAYLISTS[args.channel])
+            upload.add_to_playlist(yt, vid, pid)
+        except Exception as e:  # noqa: BLE001
+            pid = None
+            print(f"  ⚠ Playlist: {e}")
         record["video_id"] = vid
         upload.mark_uploaded("kids-" + args.channel)
         print(f"  ✓ Hochgeladen ({ch.get('privacy', 'private')}): https://youtu.be/{vid}")

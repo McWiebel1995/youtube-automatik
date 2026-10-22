@@ -52,3 +52,22 @@ def caption(channel, hours, scene, rnd):
     }[channel]
     lines = lines.replace("1 hours", "1 hour")
     return (f"{lines}\n\n💾 Save this for tonight\n▶️ Full {h}-hour version on YouTube (link in bio)\n\n{TAGS[channel]}")
+
+
+SHORT_TITLES = {
+    "regen": ["Close your eyes. Just rain. 🌧️ #shorts", "Rain on the window – instant calm #shorts #rainsounds",
+              "This rain sound puts you to sleep in minutes #shorts", "Rainy night, phone down 🌧️ #shorts #sleepsounds"],
+    "kamin": ["Crackling fire for a cozy night 🔥 #shorts", "Fireplace sounds – instant calm #shorts #cozy",
+              "Warm fire, soft crackle, deep sleep #shorts", "Cozy cabin fireplace 🔥 #shorts #ambience"],
+    "wasserfall": ["Waterfall sounds for instant calm 🌊 #shorts", "Let the water carry your thoughts away #shorts",
+                   "Forest stream for deep focus #shorts #naturesounds", "Flowing water, quiet mind 🌊 #shorts"],
+}
+
+
+def short_meta(channel, hours, scene, rnd, full_title):
+    h = f"{hours:g}"
+    title = rnd.choice(SHORT_TITLES[channel])
+    desc = (f"{scene.capitalize()} – a calm moment from today's full video.\n\n"
+            f"▶️ Full {h}-hour version on the channel: {full_title}\n\n{TAGS[channel]} #shorts")
+    tags = [t.lstrip("#") for t in TAGS[channel].split()] + ["shorts"]
+    return {"title": title[:100], "description": desc, "tags": tags, "scene": scene}

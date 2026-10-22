@@ -12,7 +12,7 @@ defaults:
   privacy: private             # published automatically via publish_at
   made_for_kids: false
   durations_hours: [1, 2, 3]   # picked at random per video
-  publish_time_utc: "18:00"    # publish time (UTC) – evening in Europe, midday in the US
+  publish_time_utc: "00:30"    # publish time (UTC) – early evening in the US (main audience), 02:30 in Germany
   fade_seconds: 8
 
 channels:
