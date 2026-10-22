@@ -320,6 +320,18 @@ def produce(ch, topic, short, work: Path, rnd, voice, rate):
     work.mkdir(parents=True, exist_ok=True)
     segs, info = PLANS_ALL[topic](rnd, short)
     voice_wav, times, total = build_audio(segs, work, voice, rate, rnd)
+    max_s = 14 * 60 + 20                                  # YouTube-Limit 15 Min. (Kanäle ohne Telefon-Bestätigung)
+    if total > max_s and len(segs) > 3:
+        # an einer Segmentgrenze kürzen und die Verabschiedung (letztes Segment) behalten
+        k = max(i for i, t0 in enumerate(times) if t0 < max_s - (total - times[-1]) - 1)
+        sr_, a = wavfile.read(voice_wav)
+        a = np.concatenate([a[: int(times[k] * sr_)], a[int(times[-1] * sr_):]])
+        wavfile.write(voice_wav, sr_, a)
+        shift = times[-1] - times[k]
+        segs = segs[:k] + [segs[-1]]
+        times = times[:k] + [times[k]]
+        total = total - shift
+        print(f"  ✂ auf {total / 60:.1f} Min. gekürzt (15-Minuten-Grenze)")
     music_wav = background_music(total, work, rnd)
 
     W, H = (1080, 1920) if short else (1920, 1080)
