@@ -52,7 +52,10 @@ def ig_caption(channel, meta, info):
     """Instagram-Text: an Eltern gerichtet (Instagram ist erst ab 13)."""
     t = meta["title"].replace("#shorts", "").strip()
     if channel == "schlaf":
-        body = (f"{info.get('title_word', 'Gute Nacht')} 🌙\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte "
+        hook = random.choice([f"{info.get('title_word', 'Gute Nacht')} 🌙", "Psst … Zeit zum Träumen 🌙",
+                              "Augen zu, kleiner Stern ✨", "Ganz leise jetzt … 💫", "Schlaf schön, mein Schatz 🌙",
+                              "Die Spieluhr spielt nur für dich 🎶", "Sanft ins Traumland ☁️"])
+        body = (f"{hook}\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte "
                 "Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n"
                 "💤 Speichern für heute Abend\n🎵 15 Minuten Einschlafmusik auf unserem YouTube-Kanal (Link in der Bio)")
     elif channel == "lernen":

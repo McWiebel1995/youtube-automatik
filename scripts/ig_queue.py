@@ -80,9 +80,9 @@ def _recent_captions(instagram, account):
     """Erste Zeilen der letzten Beiträge – Schutz gegen Doppel-Posts."""
     try:
         js = instagram._req("GET", "me/media", instagram.token_for(account), fields="caption,timestamp", limit=12)
-        return {(m.get("caption") or "").strip()[:120] for m in js.get("data", [])}
+        return [((m.get("caption") or "").strip()[:120], (m.get("timestamp") or "")[:19]) for m in js.get("data", [])]
     except Exception:  # noqa: BLE001
-        return set()
+        return []
 
 
 def post(limit_per_account=1):
@@ -105,7 +105,9 @@ def post(limit_per_account=1):
             continue
         if it["account"] not in recent:
             recent[it["account"]] = _recent_captions(instagram, it["account"])
-        if it["caption"].strip()[:120] in recent[it["account"]]:
+        # Doppel-Post nur, wenn dieselbe Caption NACH dem Anlegen dieses Eintrags schon gepostet wurde
+        # (gleiche Captions an verschiedenen Tagen sind erlaubt)
+        if any(c == it["caption"].strip()[:120] and ts >= it["created_at"][:19] for c, ts in recent[it["account"]]):
             it.update(status="posted", note="bereits auf Instagram (Doppel-Post verhindert)")
             save_item(it)
             report.append(f"⏭ @{it['account']}: schon gepostet – übersprungen")
