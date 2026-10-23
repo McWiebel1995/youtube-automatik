@@ -248,6 +248,84 @@ def ass(subs, path, w, h, size, margin_v, align=2, upper=False):
     path.write_text(head + "\n".join(ev) + "\n", encoding="utf-8")
 
 
+CAP_FONT = ROOT / "assets" / "fonts" / "Poppins-ExtraBold.ttf"
+_WHISPER = None
+
+
+def _norm(w):
+    return re.sub(r"[^a-z0-9]", "", w.lower())
+
+
+def word_times(audio, subs):
+    """Zeit für jedes Wort des Skripts: Whisper hört die Sprachspur ab, die Wörter werden dem Skript zugeordnet.
+    Ohne Whisper: Schätzung nach Wortlänge innerhalb jedes Satzes."""
+    words = []                                            # (wort, satz_start, satz_ende, anteil_start, anteil_ende)
+    for a, b, txt in subs:
+        ws = txt.split()
+        lens = np.cumsum([0] + [len(w) + 2 + (4 if w[-1:] in ",;:" else 0) for w in ws])
+        for k, w in enumerate(ws):
+            words.append([w, a + (b - a) * lens[k] / lens[-1], a + (b - a) * lens[k + 1] / lens[-1]])
+    global _WHISPER
+    try:
+        import difflib
+        from faster_whisper import WhisperModel
+        if _WHISPER is None:
+            _WHISPER = WhisperModel("small.en", device="cpu", compute_type="int8")
+        a16 = resample_poly(audio, 16000, SR).astype(np.float32)
+        segs, _ = _WHISPER.transcribe(a16, language="en", word_timestamps=True, beam_size=1,
+                                      initial_prompt=" ".join(t for _, _, t in subs)[:800])
+        heard = [(w.word, w.start, w.end) for s in segs for w in (s.words or [])]
+        sm = difflib.SequenceMatcher(None, [_norm(w[0]) for w in words], [_norm(h[0]) for h in heard], autojunk=False)
+        hit = 0
+        for blk in sm.get_matching_blocks():
+            for j in range(blk.size):
+                words[blk.a + j][1], words[blk.a + j][2] = heard[blk.b + j][1], heard[blk.b + j][2]
+                hit += 1
+        print(f"  Wort-Timing: {hit}/{len(words)} Wörter per Whisper erkannt")
+    except Exception as e:  # noqa: BLE001
+        print(f"  ⚠ Whisper nicht verfügbar ({e}) – Wortzeiten geschätzt")
+    for k in range(1, len(words)):                         # Reihenfolge absichern
+        words[k][1] = max(words[k][1], words[k - 1][1] + 0.02)
+        words[k][2] = max(words[k][2], words[k][1] + 0.08)
+    return [tuple(w) for w in words]
+
+
+def karaoke_ass(words, path, w, h, size, margin_v, align=2, upper=False, per=3):
+    """Wenige Wörter auf einmal, das gesprochene Wort leuchtet gelb auf und wird kurz größer."""
+    def ts(x):
+        hh, r = divmod(max(0, x), 3600)
+        mm, ss = divmod(r, 60)
+        return f"{int(hh)}:{int(mm):02d}:{ss:05.2f}"
+    name = "Poppins ExtraBold" if CAP_FONT.exists() else ("Montserrat" if FONT.exists() else "DejaVu Sans")
+    head = (f"[Script Info]\nScriptType: v4.00+\nPlayResX: {w}\nPlayResY: {h}\nWrapStyle: 2\n\n[V4+ Styles]\n"
+            "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, "
+            "Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, "
+            "MarginR, MarginV, Encoding\n"
+            f"Style: K,{name},{size},&H00FFFFFF,&H000000FF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,1,"
+            f"{max(3, size // 14)},{max(2, size // 22)},{align},60,60,{margin_v},1\n\n"
+            "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n")
+    groups, cur = [], []
+    for wd in words:                                       # Gruppen: max. `per` Wörter, Bruch nach Satzzeichen/Pausen
+        if cur and (len(cur) >= per or cur[-1][0][-1:] in ".,!?;:" or wd[1] - cur[-1][2] > 0.6):
+            groups.append(cur)
+            cur = []
+        cur.append(wd)
+    groups += [cur] if cur else []
+    ev = []
+    for gi, g in enumerate(groups):
+        end = min(g[-1][2] + 0.35, groups[gi + 1][0][1]) if gi + 1 < len(groups) else g[-1][2] + 0.6
+        for k, (wd, a, b) in enumerate(g):
+            b2 = g[k + 1][1] if k + 1 < len(g) else end
+            parts = []
+            for j, (x, _, _) in enumerate(g):
+                x = x.replace("{", "(").replace("}", ")")
+                x = x.upper() if upper else x
+                parts.append("{\\c&H00D7FF&\\fscx112\\fscy112}" + x + "{\\c&HFFFFFF&\\fscx100\\fscy100}" if j == k else x)
+            pop = "{\\fad(60,0)}" if k == 0 else ""
+            ev.append(f"Dialogue: 0,{ts(a)},{ts(b2)},K,,0,0,0,,{pop}{' '.join(parts)}")
+    path.write_text(head + "\n".join(ev) + "\n", encoding="utf-8")
+
+
 def music_bed(seconds, work):
     import fetch_sounds as fsd
     key = os.environ.get("FREESOUND_API_KEY")
@@ -379,7 +457,7 @@ def build(out: Path, minutes=9.0, seed=None):
         t += len(a) / SR
     xfade_concat(clips, durs, work / "joined.mp4", fade)
     voice_all = np.concatenate(seg_audio)
-    ass(all_subs, work / "subs.ass", 1920, 1080, 52, 70)
+    karaoke_ass(word_times(voice_all, all_subs), work / "subs.ass", 1920, 1080, 76, 90)
     mix_and_render(work / "joined.mp4", voice_all, work / "main.mp4", work, work / "subs.ass")
     starts = np.cumsum([0] + [len(a) / SR for a in seg_audio])[:-1]
     brand(work / "main.mp4", out / "video.mp4", work, starts, len(voice_all) / SR)
@@ -398,15 +476,7 @@ def build(out: Path, minutes=9.0, seed=None):
             segment_video(sources[i][0], dst, per, sources[i][1], w=1080, h=1920, seed=50 + j)
             sclips.append(dst)
         xfade_concat(sclips, [per] * len(sclips), work / f"sh{k}.mp4", fade)
-        # große, kurze Untertitel (3–4 Wörter) in der Bildmitte
-        chunks = []
-        for x, y, txt in subs:
-            words = txt.split()
-            n = max(1, int(np.ceil(len(words) / 4)))
-            for c in range(n):
-                part = " ".join(words[c * 4:(c + 1) * 4])
-                chunks.append((x + (y - x) * c / n, x + (y - x) * (c + 1) / n, part))
-        ass(chunks, work / f"sh{k}.ass", 1080, 1920, 84, 0, align=5, upper=True)
+        karaoke_ass(word_times(a, subs), work / f"sh{k}.ass", 1080, 1920, 92, 0, align=5, upper=True)
         mix_and_render(work / f"sh{k}.mp4", a, out / f"short{k + 1}.mp4", work, work / f"sh{k}.ass", music_db=-22)
         shorts_meta.append({"title": sh.get("title", sc["title"])[:100], "text": sh["text"]})
 
@@ -529,13 +599,7 @@ def news_short(out: Path, seed=None):
         segment_video(src, dst, per, is_img, w=1080, h=1920, seed=j)
         clips.append(dst)
     xfade_concat(clips, [per] * len(clips), work / "short.mp4", fade)
-    chunks = []
-    for x, y, txt in subs:
-        words = txt.split()
-        n = max(1, int(np.ceil(len(words) / 4)))
-        for c in range(n):
-            chunks.append((x + (y - x) * c / n, x + (y - x) * (c + 1) / n, " ".join(words[c * 4:(c + 1) * 4])))
-    ass(chunks, work / "s.ass", 1080, 1920, 84, 0, align=5, upper=True)
+    karaoke_ass(word_times(a, subs), work / "s.ass", 1080, 1920, 92, 0, align=5, upper=True)
     mix_and_render(work / "short.mp4", a, out / "news_short.mp4", work, work / "s.ass", music_db=-22)
     src_lines = "\n".join(f"- {t}: {u}" for t, _, u in wiki if u)
     meta = {"title": sc["title"][:100], "question": sc.get("question"), "headline": sc.get("headline"),
