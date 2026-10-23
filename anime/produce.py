@@ -330,9 +330,10 @@ def freesound(query, dur_filter, work, cache):
         r = requests.get("https://freesound.org/apiv2/search/text/", timeout=30, params={
             "query": query, "token": key, "page_size": 10, "sort": "rating_desc",
             "filter": f'license:"Creative Commons 0" duration:{dur_filter}',
-            "fields": "id,name,previews,duration"})
+            "fields": "id,name,previews,duration,tags"})
         r.raise_for_status()
-        res = r.json().get("results", [])
+        bad = {"vocal", "vocals", "voice", "singing", "speech", "talking", "lyrics", "rap", "choir"}
+        res = [x for x in r.json().get("results", []) if not bad & {t.lower() for t in x.get("tags", [])}]
         if not res:
             cache[query] = None
             return None
@@ -347,6 +348,58 @@ def freesound(query, dur_filter, work, cache):
     except Exception:  # noqa: BLE001
         cache[query] = None
     return cache[query]
+
+
+BEAT_MUSIC = {     # Beat -> (Freesound-Suche, Lautstärke dB)
+    "HOOK": ("dark tense cinematic suspense", -16),
+    "EINSTIEG": ("emotional cinematic piano strings", -18),
+    "KONFLIKT": ("intense action drums cinematic", -14),
+    "WENDEPUNKT": ("suspense drone heartbeat", -21),
+    "HÖHEPUNKT": ("epic orchestral battle trailer", -12),
+    "NACHHALL": ("sad emotional piano ambient", -18),
+}
+
+
+def score(shots, starts, total, work, cache):
+    """Musik in Abschnitten: aufeinanderfolgende Shots mit gleichem Beat bekommen ein passendes Stück,
+    weiche Überblendungen dazwischen, kurzer Ton-Abriss direkt vor dem Höhepunkt."""
+    n = int(total * SR) + SR
+    bed = np.zeros(n, np.float32)
+    groups = []
+    for s, st in zip(shots, starts):
+        beat = (s.get("beat") or "KONFLIKT").upper().replace("HOEHEPUNKT", "HÖHEPUNKT")
+        end = st + float(s.get("duration_s") or 3)
+        if groups and groups[-1][0] == beat:
+            groups[-1][2] = end
+        else:
+            groups.append([beat, st, end, s.get("music") or ""])
+    got = False
+    xf = int(0.8 * SR)
+    for i, (beat, st, end, cue) in enumerate(groups):
+        q, gain = BEAT_MUSIC.get(beat, BEAT_MUSIC["KONFLIKT"])
+        track = None
+        cue_q = " ".join(w for w in cue.lower().replace(",", " ").split() if w.isalpha())[:60]
+        for query in ([f"{cue_q} music"] if cue_q else []) + [f"{q} music", q, "cinematic tension drone"]:
+            track = freesound(query, "[20 TO 400]", work, cache)
+            if track is not None:
+                break
+        if track is None:
+            continue
+        got = True
+        a0 = int(max(0, st - (0.8 if i else 0)) * SR)
+        a1 = min(n, int((end + 0.8) * SR))
+        need = a1 - a0
+        off = (len(track) // 5) if len(track) > need * 1.5 else 0          # nicht immer beim leisen Anfang
+        seg = np.tile(track, int(np.ceil((need + off) / len(track))) + 1)[off: off + need].copy() * (10 ** (gain / 20))
+        f = min(xf, len(seg) // 3)
+        if f:
+            seg[:f] *= np.linspace(0, 1, f)
+            seg[-f:] *= np.linspace(1, 0, f)
+        bed[a0:a0 + len(seg)] += seg
+        if beat == "HÖHEPUNKT" and st > 1:                                  # Stille vor dem Impact
+            g0, g1 = int((st - 0.7) * SR), int(st * SR)
+            bed[g0:g1] *= np.linspace(1, 0.05, g1 - g0)
+    return bed if got else None
 
 
 def place(track, clip, start_s, gain_db=0.0):
@@ -451,24 +504,27 @@ def produce(vid, no_gpu=False, max_shots=None):
             cur += len(a) / SR + 0.15
         last_end = cur
 
-    # Geräusche + Musik
+    # Geräusche + Musik – pro Szene passend zur Stimmung (Beat des Drehbuchs)
     cache = {}
     sfx = np.zeros_like(vo)
     for s, st in zip(shots, starts):
-        for q in (s.get("sfx") or [])[:2]:
-            place(sfx, freesound(q, "[0.5 TO 20]", work, cache), st, -6)
-    mood = (sc.get("music") or {}).get("mood", "tense")
-    music_q = f"{mood} cinematic music"
-    music = freesound(music_q, "[30 TO 600]", work, cache) or freesound("cinematic tension drone", "[30 TO 600]", work, cache)
-    bed = np.zeros_like(vo)
-    if music is not None:
-        reps = int(np.ceil(len(bed) / len(music)))
-        bed = np.tile(music, reps)[: len(bed)]
+        dur = float(s.get("duration_s") or 3)
+        for k, q in enumerate((s.get("sfx") or [])[:2]):
+            clip = freesound(q, "[0.3 TO 12]", work, cache)
+            if clip is not None:
+                clip = clip[: int((dur + 0.5) * SR)].copy()
+                f = min(len(clip), int(0.3 * SR))
+                if f:
+                    clip[-f:] *= np.linspace(1, 0, f)
+                place(sfx, clip, st + 0.15 + 0.6 * k, -4 if k == 0 else -9)
+    bed = score(shots, starts, total, work, cache)
+    if bed is not None:
         env = np.convolve((np.abs(vo) > 0.01).astype(np.float32), np.ones(SR // 4) / (SR // 4), "same")
-        bed *= (10 ** (-17 / 20)) * (1 - 0.6 * np.clip(env * 3, 0, 1))     # leiser, wenn gesprochen wird
-        fade = int(1.5 * SR)
-        bed[:fade] *= np.linspace(0, 1, fade)
+        bed *= (1 - 0.55 * np.clip(env * 3, 0, 1))                       # leiser, wenn gesprochen wird
         bed[int((total - 2) * SR):] *= np.linspace(1, 0, len(bed) - int((total - 2) * SR))
+        music = bed
+    else:
+        bed, music = np.zeros_like(vo), None
     mix = vo * 1.0 + sfx + bed
     mix = np.clip(mix / max(1.0, np.max(np.abs(mix)) / 0.95), -1, 1)
     wavfile.write(work / "mix.wav", SR, (np.stack([mix, mix], 1) * 32767).astype(np.int16))
