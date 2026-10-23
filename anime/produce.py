@@ -284,18 +284,45 @@ def voice_for(char):   # Fallback, falls eine Figur fehlt
 
 
 def dub_fx(a, emotion):
-    """Leichte 90er-Synchro-Färbung: Bandbegrenzung, sanfte Kompression, bei Schreien etwas Raum."""
-    from scipy.signal import butter, sosfilt
-    a = sosfilt(butter(4, [90, 9000], btype="band", fs=SR, output="sos"), a).astype(np.float32)
-    a = np.tanh(a * 2.2) / np.tanh(2.2)
+    """Sauberer Studio-Klang: nur Pegel angleichen; bei Schreien ein Hauch Raum (kein Telefon-/Schrank-Filter)."""
+    a = a.astype(np.float32)
     if emotion == "shout":
-        ir = np.zeros(int(0.25 * SR), np.float32)
-        for k, d in enumerate([0.023, 0.041, 0.067, 0.11, 0.16]):
-            ir[int(d * SR)] = 0.35 * 0.6 ** k
+        ir = np.zeros(int(0.12 * SR), np.float32)
         ir[0] = 1.0
-        a = np.convolve(a, ir)[: len(a) + int(0.2 * SR)].astype(np.float32)
+        for k, d in enumerate([0.019, 0.037, 0.061]):
+            ir[int(d * SR)] = 0.18 * 0.55 ** k
+        a = np.convolve(a, ir)[: len(a) + int(0.1 * SR)].astype(np.float32)
     peak = np.max(np.abs(a)) or 1.0
     return (a / peak * 0.9).astype(np.float32)
+
+
+def voice_chain(vo, work):
+    """Broadcast-Kette für Sprache: Trittschall weg, etwas Präsenz, Zischlaute zähmen, sanft komprimieren."""
+    src, dst = work / "vo_raw.wav", work / "vo_proc.wav"
+    wavfile.write(src, SR, (np.clip(vo, -1, 1) * 32767).astype(np.int16))
+    try:
+        sh("ffmpeg", "-y", "-loglevel", "error", "-i", src, "-af",
+           "highpass=f=80,equalizer=f=250:t=q:w=1.2:g=-2,equalizer=f=3800:t=q:w=1:g=2.5,deesser=i=0.4,"
+           "acompressor=threshold=-20dB:ratio=3:attack=6:release=90:makeup=3,alimiter=limit=0.95", dst)
+        _, x = wavfile.read(dst)
+        x = x.astype(np.float32) / 32768
+        return x[: len(vo)] if len(x) >= len(vo) else np.pad(x, (0, len(vo) - len(x)))
+    except Exception:  # noqa: BLE001
+        return vo
+
+
+def fade(x, n, out=False):
+    n = min(n, len(x))
+    if n <= 0:
+        return x
+    r = np.linspace(1, 0, n) if out else np.linspace(0, 1, n)
+    if x.ndim == 2:
+        r = r[:, None]
+    if out:
+        x[-n:] *= r
+    else:
+        x[:n] *= r
+    return x
 
 
 def tts(text, voice, out):
@@ -343,9 +370,10 @@ def freesound(query, dur_filter, work, cache):
         raw = work / f"fs_{res[0]['id']}.ogg"
         raw.write_bytes(requests.get(url, timeout=60).content)
         wav = raw.with_suffix(".wav")
-        sh("ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-ac", "1", "-ar", SR, wav)
+        sh("ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-ac", "2", "-ar", SR, wav)
         _, a = wavfile.read(wav)
-        cache[query] = a.astype(np.float32) / 32768
+        a = a.astype(np.float32) / 32768
+        cache[query] = a if a.ndim == 2 else np.stack([a, a], 1)
     except Exception:  # noqa: BLE001
         cache[query] = None
     return cache[query]
@@ -365,7 +393,7 @@ def score(shots, starts, total, work, cache):
     """Musik in Abschnitten: aufeinanderfolgende Shots mit gleichem Beat bekommen ein passendes Stück,
     weiche Überblendungen dazwischen, kurzer Ton-Abriss direkt vor dem Höhepunkt."""
     n = int(total * SR) + SR
-    bed = np.zeros(n, np.float32)
+    bed = np.zeros((n, 2), np.float32)
     groups = []
     for s, st in zip(shots, starts):
         beat = (s.get("beat") or "KONFLIKT").upper().replace("HOEHEPUNKT", "HÖHEPUNKT")
@@ -391,15 +419,15 @@ def score(shots, starts, total, work, cache):
         a1 = min(n, int((end + 0.8) * SR))
         need = a1 - a0
         off = (len(track) // 5) if len(track) > need * 1.5 else 0          # nicht immer beim leisen Anfang
-        seg = np.tile(track, int(np.ceil((need + off) / len(track))) + 1)[off: off + need].copy() * (10 ** (gain / 20))
+        reps = int(np.ceil((need + off) / len(track))) + 1
+        seg = np.tile(track, (reps, 1))[off: off + need].copy() * (10 ** (gain / 20))
         f = min(xf, len(seg) // 3)
-        if f:
-            seg[:f] *= np.linspace(0, 1, f)
-            seg[-f:] *= np.linspace(1, 0, f)
+        fade(seg, f)
+        fade(seg, f, out=True)
         bed[a0:a0 + len(seg)] += seg
         if beat == "HÖHEPUNKT" and st > 1:                                  # Stille vor dem Impact
             g0, g1 = int((st - 0.7) * SR), int(st * SR)
-            bed[g0:g1] *= np.linspace(1, 0.05, g1 - g0)
+            bed[g0:g1] *= np.linspace(1, 0.05, g1 - g0)[:, None]
     return bed if got else None
 
 
@@ -408,7 +436,12 @@ def place(track, clip, start_s, gain_db=0.0):
     if i >= len(track) or clip is None or not len(clip):
         return
     e = min(len(track), i + len(clip))
-    track[i:e] += clip[: e - i] * (10 ** (gain_db / 20))
+    c = clip[: e - i]
+    if track.ndim == 2 and c.ndim == 1:
+        c = c[:, None]
+    elif track.ndim == 1 and c.ndim == 2:
+        c = c.mean(axis=1)
+    track[i:e] += c * (10 ** (gain_db / 20))
 
 
 # ----------------------------------------------------------------- 5 SCHNITT
@@ -507,28 +540,26 @@ def produce(vid, no_gpu=False, max_shots=None):
 
     # Geräusche + Musik – pro Szene passend zur Stimmung (Beat des Drehbuchs)
     cache = {}
-    sfx = np.zeros_like(vo)
+    sfx = np.zeros((len(vo), 2), np.float32)
     for s, st in zip(shots, starts):
         dur = float(s.get("duration_s") or 3)
         for k, q in enumerate((s.get("sfx") or [])[:2]):
             clip = freesound(q, "[0.3 TO 12]", work, cache)
             if clip is not None:
-                clip = clip[: int((dur + 0.5) * SR)].copy()
-                f = min(len(clip), int(0.3 * SR))
-                if f:
-                    clip[-f:] *= np.linspace(1, 0, f)
+                clip = fade(clip[: int((dur + 0.5) * SR)].copy(), int(0.3 * SR), out=True)
                 place(sfx, clip, st + 0.15 + 0.6 * k, -4 if k == 0 else -9)
     bed = score(shots, starts, total, work, cache)
     if bed is not None:
         env = np.convolve((np.abs(vo) > 0.01).astype(np.float32), np.ones(SR // 4) / (SR // 4), "same")
-        bed *= (1 - 0.55 * np.clip(env * 3, 0, 1))                       # leiser, wenn gesprochen wird
-        bed[int((total - 2) * SR):] *= np.linspace(1, 0, len(bed) - int((total - 2) * SR))
+        bed *= (1 - 0.55 * np.clip(env * 3, 0, 1))[:, None]              # leiser, wenn gesprochen wird
+        fade(bed, len(bed) - int((total - 2) * SR), out=True)
         music = bed
     else:
-        bed, music = np.zeros_like(vo), None
-    mix = vo * 1.0 + sfx + bed
+        bed, music = np.zeros((len(vo), 2), np.float32), None
+    vo = voice_chain(vo, work)
+    mix = vo[:, None] * 1.0 + sfx + bed                                    # Stimme Mitte, Musik/Geräusche stereo
     mix = np.clip(mix / max(1.0, np.max(np.abs(mix)) / 0.95), -1, 1)
-    wavfile.write(work / "mix.wav", SR, (np.stack([mix, mix], 1) * 32767).astype(np.int16))
+    wavfile.write(work / "mix.wav", SR, (mix * 32767).astype(np.int16))
 
     # Video: Clips auf Shot-Länge bringen, aneinanderhängen, Endtafel
     status(vid, state="running", progress="Schnitt")
@@ -583,7 +614,7 @@ def produce(vid, no_gpu=False, max_shots=None):
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", joined.name, "-i", "mix.wav",
                     "-vf", vf, "-map", "0:v", "-map", "1:a",
                     "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p", "-r", str(FPS),
-                    "-af", "loudnorm=I=-14:TP=-1.5:LRA=9", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+                    "-af", "loudnorm=I=-14:TP=-1.5:LRA=9", "-c:a", "aac", "-b:a", "256k", "-ar", "48000",
                     "-shortest", "-movflags", "+faststart", final.name], cwd=work, check=True)
     poster = work / "poster.jpg"
     sh("ffmpeg", "-y", "-loglevel", "error", "-ss", "2.5", "-i", final, "-frames:v", "1", "-vf", "scale=540:-2", poster)
