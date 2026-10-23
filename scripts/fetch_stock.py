@@ -101,6 +101,9 @@ def _creepy(text):
     return bool(CREEPY & set(re.findall(r"[a-z]+", (text or "").lower())))
 
 
+DESC = {}   # Clip-ID -> Beschreibung/Tags (für Relevanzprüfung)
+
+
 def search_pixabay(key, q):
     r = requests.get("https://pixabay.com/api/videos/", timeout=30, params={
         "key": key, "q": q, "per_page": 30, "safesearch": "true", "order": "popular"})
@@ -111,6 +114,7 @@ def search_pixabay(key, q):
             continue
         v = hit["videos"].get("large") or hit["videos"].get("medium") or {}
         if v.get("url") and v.get("width", 0) >= 1920:
+            DESC[f"pixabay_{hit['id']}"] = hit.get("tags", "")
             yield f"pixabay_{hit['id']}", v["url"], hit.get("user", "")
 
 
@@ -126,6 +130,7 @@ def search_pexels(key, q):
                  and f.get("file_type") == "video/mp4"]
         if files:
             best = min(files, key=lambda f: f["width"])  # 1080p statt 4K -> schneller
+            DESC[f"pexels_{vid['id']}"] = vid.get("url", "").rstrip("/").split("/")[-1].replace("-", " ")
             yield f"pexels_{vid['id']}", best["link"], (vid.get("user") or {}).get("name", "")
 
 

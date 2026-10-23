@@ -130,6 +130,16 @@ def plan(rnd, minutes):
     # Zusätzlich / ersatzweise: Wikipedia-Fakten + aktuelle Meldungen (Google News) zum Thema
     kw = re.sub(r"(?i)^what if\s+", "", q).rstrip("?")
     wiki = wikipedia(kw)
+    if len(wiki) < 2:                                      # Frage als Suchtext findet oft nichts -> Fachbegriffe
+        try:
+            terms = gemini.ask_json(f"List 3 exact English Wikipedia article titles with the core science behind: {q}. "
+                                    'Answer JSON: {"titles": ["...", "...", "..."]}', temperature=0.2)["titles"]
+            for t in terms[:3]:
+                wiki += wikipedia(t, 1)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Wikipedia-Begriffe: {e}")
+        seen = set()
+        wiki = [w for w in wiki if not (w[0] in seen or seen.add(w[0]))]
     nws = google_news(kw, 6)
     notes += "\n\nWikipedia facts:\n" + "\n".join(f"[{t}] {x[:1500]}" for t, x, _ in wiki)
     notes += "\n\nRecent news headlines:\n" + "\n".join(f"- {t}" for t, _ in nws)
@@ -140,6 +150,15 @@ def plan(rnd, minutes):
     words = int(minutes * 140)
     script = gemini.ask_json(SCRIPT_TASK.format(question=q, notes=notes[:12000], words=words,
                                                 segs=max(10, words // 60)), temperature=0.8)
+    for _ in range(2):
+        have = sum(len(sg.get("text", "").split()) for sg in script.get("segments", []))
+        if have >= words * 0.9:
+            break
+        print(f"  Skript zu kurz ({have}/{words} Wörter) – verlängere …")
+        script = gemini.ask_json(
+            f"This script has only {have} words but needs {words} words. Expand it to {words} words: add more "
+            f"segments and vivid details (same facts, same style, same JSON format, keep the shorts).\n\n"
+            + json.dumps(script, ensure_ascii=False), temperature=0.7)
     script["question"] = q
     script["sources"] = [s for s in sources if s[1]][:8]
     return script
@@ -174,14 +193,28 @@ def narrate(voice, ref, texts, work, tag):
 
 
 # ----------------------------------------------------------------- 5 Bilder
+OFFTOPIC = {"laptop", "computer", "phone", "smartphone", "keyboard", "office", "desk", "woman", "man", "person",
+            "people", "girl", "boy", "selfie", "food", "kitchen", "candle", "toy", "studio", "product", "logo"}
+STOP = {"a", "an", "the", "of", "in", "on", "and", "with", "at", "to", "from", "over", "under", "by"}
+
+
+def relevant(query, desc):
+    """Clip passt nur, wenn die Beschreibung ein Wort der Suche enthält und nichts Themenfremdes zeigt."""
+    if not desc:
+        return True
+    q = {w.rstrip("s") for w in re.findall(r"[a-z]+", query.lower())} - STOP
+    d = {w.rstrip("s") for w in re.findall(r"[a-z]+", desc.lower())}
+    return bool(q & d) and not ({w.rstrip("s") for w in OFFTOPIC} & d - q)
+
+
 def stock_clip(query, work, used_ids):
     import fetch_stock as fs
     for fn, key in [(fs.search_pexels, os.environ.get("PEXELS_API_KEY")), (fs.search_pixabay, os.environ.get("PIXABAY_API_KEY"))]:
         if not key:
             continue
         try:
-            for cid, url, _ in list(fn(key, query))[:6]:
-                if cid in used_ids:
+            for cid, url, _ in list(fn(key, query))[:12]:
+                if cid in used_ids or not relevant(query, fs.DESC.get(cid, "")):
                     continue
                 dst = work / f"src_{cid}.mp4"
                 with requests.get(url, stream=True, timeout=180) as r:
