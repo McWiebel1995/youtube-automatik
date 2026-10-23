@@ -208,7 +208,7 @@ image_v2 = (
     .pip_install(
         "torch==2.6.0", "torchvision==0.21.0",
         "git+https://github.com/huggingface/diffusers", "transformers>=4.51", "accelerate>=1.6",
-        "safetensors", "sentencepiece", "ftfy", "imageio", "imageio-ffmpeg", "pillow", "numpy<2.3", "huggingface_hub",
+        "safetensors", "sentencepiece", "ftfy", "imageio", "imageio-ffmpeg", "pillow", "numpy<2.3", "huggingface_hub", "peft>=0.15",
     )
     .env({"HF_HOME": "/models/hf", "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})
 )
