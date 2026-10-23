@@ -61,3 +61,23 @@ def ask_json(prompt, system=None, video_url=None, models=None, temperature=0.7, 
     if quota_hits and len(quota_hits) == len(models):
         raise QuotaError("Gemini-Gratis-Limit bei allen Modellen erreicht – morgen geht es weiter")
     raise RuntimeError(last or "kein Gemini-Modell verfügbar")
+
+
+def research(question, models=None, key=None):
+    """Faktenrecherche mit Google-Suche (Grounding). Gibt (Text, Quellen[(Titel, URL)]) zurück."""
+    key = key or os.environ.get("GEMINI_API_KEY")
+    body = {"contents": [{"parts": [{"text": question}]}], "tools": [{"google_search": {}}],
+            "generationConfig": {"temperature": 0.2, "maxOutputTokens": 8192}}
+    last = None
+    for m in models or DEFAULT_MODELS:
+        r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
+                          headers={"x-goog-api-key": key}, json=body, timeout=300)
+        if r.status_code != 200:
+            last = f"{m}: {r.status_code} {r.text[:200]}"
+            continue
+        cand = (r.json().get("candidates") or [{}])[0]
+        txt = "".join(p.get("text", "") for p in (cand.get("content") or {}).get("parts", []))
+        chunks = (cand.get("groundingMetadata") or {}).get("groundingChunks", [])
+        src = [(c["web"].get("title", ""), c["web"].get("uri", "")) for c in chunks if c.get("web")]
+        return txt, src
+    raise RuntimeError(last or "Recherche fehlgeschlagen")

@@ -21,12 +21,16 @@ ROLES = {   # Datei: (Gemini-Stimme, Schauspiel-Anweisung)
     "female_high": ("Leda", "an energetic teenage anime girl, brave but scared, emotional and loud, like a 90s anime English dub"),
     "old_male": ("Orus", "a wise old anime mentor, deep, calm but powerful, every word heavy with meaning, like a 90s anime English dub"),
 }
+NARR = ("Imagine you wake up tomorrow, and the Moon is simply gone. No explosion, no warning. "
+        "At first, almost nothing changes. But within hours, the oceans begin to behave very differently.")
+ROLES["narrator"] = ("Charon", "a captivating science documentary narrator: curious, warm, clear, with subtle "
+                     "suspense and natural pauses, like a top YouTube science channel")
 for name, (voice, direction) in ROLES.items():
     f = OUT / f"{name}.wav"
     if f.exists():
         continue
-    style = f"Perform this line as {direction}. Real acting, not narration:\n\n"
-    gtts.synth(LINE, voice, f, style=style)
+    style = f"Perform this as {direction}. Real voice acting, not flat reading:\n\n"
+    gtts.synth(NARR if name == "narrator" else LINE, voice, f, style=style)
     print("✓", name)
     import time
     time.sleep(gtts.GAP_S)

@@ -1,0 +1,7 @@
+# Beyond the If – automatische What-if-Videos (Englisch)
+channel:
+  name: "Beyond the If"
+  token_secret: YT_REFRESH_TOKEN_WHATIF
+  category_id: "28"          # Science & Technology
+  minutes: 9                 # Länge des langen Videos
+  # Rhythmus: 2 lange Videos pro Woche (Di + Fr), je 2 Shorts

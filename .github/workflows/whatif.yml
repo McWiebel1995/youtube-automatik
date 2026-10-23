@@ -1,0 +1,71 @@
+name: "🌌 Beyond the If – What-if-Video"
+
+on:
+  schedule:
+    - cron: "15 13 * * 2,5"     # Di + Fr
+    - cron: "15 16 * * 2,5"     # Absicherung
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Nur Testlauf (Vorschau-Release, kein Upload)"
+        type: boolean
+        default: true
+      minutes:
+        description: "Länge in Minuten"
+        default: "9"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: whatif
+  cancel-in-progress: false
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+      - run: pip install -r requirements.txt modal
+      - name: Schriften laden
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/fetch_fonts.py
+      - name: Produzieren
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          FREESOUND_API_KEY: ${{ secrets.FREESOUND_API_KEY }}
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_WHATIF: ${{ secrets.YT_REFRESH_TOKEN_WHATIF }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -o pipefail
+          ARGS="--out output/whatif --minutes ${{ github.event.inputs.minutes || '9' }}"
+          [ "${{ github.event.inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          python scripts/whatif.py $ARGS 2>&1 | tee run.log || {
+            echo "::error title=Fehler::$( (grep -E 'File \"/home/runner|Error|error' run.log | tail -n 14) | tr '\n' ' ' | cut -c1-1800)"; exit 1; }
+      - name: Vorschau ablegen
+        if: github.event.inputs.dry_run == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete preview-whatif -y --cleanup-tag || true
+          gh release create preview-whatif output/whatif/video.mp4 output/whatif/short*.mp4 output/whatif/meta.json --title "Vorschau Beyond the If" --notes "Testlauf" --prerelease
+      - name: Stand speichern
+        if: always() && github.event.inputs.dry_run != 'true'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A data/whatif_used.json data/last_upload data/playlists 2>/dev/null || true
+          git commit -m "Beyond the If: Stand" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep 5; done

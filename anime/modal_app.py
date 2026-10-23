@@ -319,3 +319,26 @@ class AnimateV2:
         with open("/tmp/v2.mp4", "rb") as f:
             return {"mp4": f.read(), "last_png": buf.getvalue(), "frames": num_frames,
                     "note": None if self.fast else f"ohne Lightning: {self.fast_err}"}
+
+
+# ================================================================ What-if: realistische KI-Bilder
+@app.cls(gpu="L40S", image=image_v2, volumes={"/models": models}, timeout=3600, scaledown_window=120, memory=65536)
+class ImageFlux:
+    """FLUX.1-schnell (Apache 2.0): fotorealistische/cineastische Bilder in 4 Schritten."""
+    @modal.enter()
+    def load(self):
+        import torch
+        from diffusers import FluxPipeline
+        self.torch = torch
+        self.pipe = FluxPipeline.from_pretrained("black-forest-labs/FLUX.1-schnell", torch_dtype=torch.bfloat16)
+        self.pipe.enable_model_cpu_offload()
+        models.commit()
+
+    @modal.method()
+    def generate(self, prompt: str, seed: int = 0, width: int = 1344, height: int = 768) -> bytes:
+        gen = self.torch.Generator("cuda").manual_seed(seed)
+        img = self.pipe(prompt=prompt, num_inference_steps=4, guidance_scale=0.0, width=width, height=height,
+                        max_sequence_length=256, generator=gen).images[0]
+        buf = io.BytesIO()
+        img.save(buf, format="PNG")
+        return buf.getvalue()
