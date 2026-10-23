@@ -322,6 +322,16 @@ class AnimateV2:
 
 
 # ================================================================ What-if: realistische KI-Bilder
+@app.function(image=image_v2, volumes={"/models": models}, timeout=7200, cpu=4, memory=8192)
+def download_flux():
+    from huggingface_hub import snapshot_download
+    snapshot_download("black-forest-labs/FLUX.1-schnell", cache_dir="/models/hf/hub",
+                      allow_patterns=["*.json", "*.txt", "*.model", "transformer/*", "text_encoder*/*", "tokenizer*/*",
+                                      "vae/*", "scheduler/*"])
+    models.commit()
+    return "ok"
+
+
 @app.cls(gpu="L40S", image=image_v2, volumes={"/models": models}, timeout=3600, scaledown_window=120, memory=65536)
 class ImageFlux:
     """FLUX.1-schnell (Apache 2.0): fotorealistische/cineastische Bilder in 4 Schritten."""

@@ -251,10 +251,15 @@ def build(out: Path, minutes=9.0, seed=None):
     print(f"  {sc['question']} → „{sc['title']}“, {len(segs)} Abschnitte, {len(sc['sources'])} Quellen")
 
     import modal
-    from modal_app import ImageFlux, Voice, app
+    from modal_app import ImageFlux, Voice, app, download_flux
     ref_path = ROOT / "data" / "voices" / "anime" / "narrator.wav"
     ref = ref_path.read_bytes() if ref_path.exists() else b""
+    import time as _t
+    t0 = _t.time()
     with modal.enable_output(), app.run():
+        print("▶ Modelle bereitstellen …", flush=True)
+        download_flux.remote()
+        print(f"  ({_t.time() - t0:.0f} s)", flush=True)
         voice, flux = Voice(), ImageFlux()
         print("▶ Stimme …")
         seg_audio, seg_subs = [], []
@@ -262,6 +267,7 @@ def build(out: Path, minutes=9.0, seed=None):
             a, subs = narrate(voice, ref, sentences(s["text"]), work, f"s{i}")
             seg_audio.append(np.concatenate([a, np.zeros(int(0.5 * SR), np.float32)]))
             seg_subs.append(subs)
+            print(f"  Stimme {i + 1}/{len(segs)} ({_t.time() - t0:.0f} s)", flush=True)
         print("▶ Bilder …")
         sources, used_ids = [], set()
         for i, s in enumerate(segs):
@@ -277,6 +283,7 @@ def build(out: Path, minutes=9.0, seed=None):
                 src.write_bytes(png)
                 is_img = True
             sources.append((src, is_img))
+            print(f"  Bild {i + 1}/{len(segs)} {'KI' if is_img else 'Stock'} ({_t.time() - t0:.0f} s)", flush=True)
         print("▶ Shorts-Stimmen …")
         short_audio = []
         for k, sh in enumerate(sc.get("shorts", [])[:2]):
