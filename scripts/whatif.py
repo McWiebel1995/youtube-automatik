@@ -82,9 +82,14 @@ def plan(rnd, minutes):
     u = used()[-60:]
     topic = gemini.ask_json(TOPIC_TASK.format(used="; ".join(u) or "none"), temperature=1.0)
     q = topic["question"]
-    notes, sources = gemini.research(
-        f"Research the scientific facts for the question: {q}\nGive key facts, numbers, timelines and consequences "
-        f"with brief explanations. Be accurate; mention uncertainties.")
+    try:
+        notes, sources = gemini.research(
+            f"Research the scientific facts for the question: {q}\nGive key facts, numbers, timelines and consequences "
+            f"with brief explanations. Be accurate; mention uncertainties.")
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning title=Recherche::{str(e)[:900]}")
+        notes, sources = ("No live research available. Use only well-established, widely accepted scientific facts; "
+                          "avoid precise numbers unless they are textbook knowledge."), []
     words = int(minutes * 140)
     script = gemini.ask_json(SCRIPT_TASK.format(question=q, notes=notes[:12000], words=words,
                                                 segs=max(10, words // 60)), temperature=0.8)
