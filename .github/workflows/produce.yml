@@ -127,7 +127,7 @@ jobs:
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run --minutes 3"; fi
           set -o pipefail
           python scripts/pipeline.py $ARGS 2>&1 | tee run.log || {
-            echo "::error title=Fehler::$(tail -n 12 run.log | tr '\n' ' ' | cut -c1-1500)"; exit 1; }
+            echo "::error title=Fehler::$( (grep -E 'File \"/home/runner|Error|error' run.log | tail -n 14) | tr '\n' ' ' | cut -c1-1800)"; exit 1; }
 
       - name: Upload-Stand & Instagram-Warteschlange speichern
         if: always() && steps.sel.outputs.run == 'true' && github.event.inputs.dry_run != 'true'

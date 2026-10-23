@@ -77,7 +77,7 @@ def upload(yt, video_path, meta, channel, publish_at=None):
         },
         "status": status,
     }
-    media = MediaFileUpload(str(video_path), chunksize=64 * 1024 * 1024, resumable=True,
+    media = MediaFileUpload(str(video_path), chunksize=16 * 1024 * 1024, resumable=True,
                             mimetype="video/mp4")
     req = yt.videos().insert(part="snippet,status", body=body, media_body=media)
 
