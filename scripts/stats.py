@@ -13,7 +13,8 @@ import upload  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 chans = list(yaml.safe_load(open(ROOT / "config/channels.yaml"))["channels"].values()) + \
-        list(yaml.safe_load(open(ROOT / "config/kids.yaml"))["channels"].values())
+        list(yaml.safe_load(open(ROOT / "config/kids.yaml"))["channels"].values()) + \
+        [yaml.safe_load(open(ROOT / "config/whatif.yaml"))["channel"]]
 now = dt.datetime.now(dt.timezone.utc)
 report, data = [], {"at": now.isoformat(), "channels": []}
 for ch in chans:

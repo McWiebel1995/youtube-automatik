@@ -11,7 +11,8 @@ import upload  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 chans = list(yaml.safe_load(open(ROOT / "config/channels.yaml"))["channels"].values()) + \
-        list(yaml.safe_load(open(ROOT / "config/kids.yaml"))["channels"].values())
+        list(yaml.safe_load(open(ROOT / "config/kids.yaml"))["channels"].values()) + \
+        [yaml.safe_load(open(ROOT / "config/whatif.yaml"))["channel"]]
 n = int(os.environ.get("N", "6"))
 out = []
 for ch in chans:

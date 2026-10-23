@@ -22,4 +22,5 @@ jobs:
           YT_REFRESH_TOKEN_SCHLAF: ${{ secrets.YT_REFRESH_TOKEN_SCHLAF }}
           YT_REFRESH_TOKEN_LERNEN: ${{ secrets.YT_REFRESH_TOKEN_LERNEN }}
           YT_REFRESH_TOKEN_GESCHICHTEN: ${{ secrets.YT_REFRESH_TOKEN_GESCHICHTEN }}
+          YT_REFRESH_TOKEN_WHATIF: ${{ secrets.YT_REFRESH_TOKEN_WHATIF }}
         run: python scripts/check_tokens.py
