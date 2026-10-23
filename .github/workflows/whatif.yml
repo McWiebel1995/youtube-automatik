@@ -1,4 +1,5 @@
 name: "🌌 Beyond the If – What-if-Video"
+run-name: "Beyond the If: ${{ (github.event.schedule == '45 11 * * *' || github.event.schedule == '45 14 * * *') && 'news' || (github.event.schedule == '5 17 * * *' || github.event.schedule == '5 19 * * *') && 'quiz' || github.event.schedule && 'video' || inputs.mode == 'news-short' && 'news' || inputs.mode || 'video' }}${{ inputs.dry_run && ' (Test)' || '' }}"
 
 on:
   schedule:

@@ -10,3 +10,4 @@ client_secret*.json
 .env
 assets/voices/
 assets/fonts/Kids.ttf
+site/status.json

@@ -1,4 +1,5 @@
 name: Kinder-Videos produzieren
+run-name: "Kinder: ${{ github.event.schedule == '17 4,7,10 * * *' && 'schlaf' || github.event.schedule == '27 4,7,10 * * *' && 'lernen' || github.event.schedule == '47 4,7,10 * * *' && 'geschichten' || inputs.job }}${{ inputs.dry_run && ' (Test)' || '' }}"
 
 # Alle Kinder-Videos werden direkt öffentlich hochgeladen (config/kids.yaml: privacy).
 #

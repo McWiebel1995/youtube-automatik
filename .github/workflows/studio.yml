@@ -1,0 +1,62 @@
+name: "🏢 Virtuelles Studio aktualisieren"
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_run:
+    workflows:
+      - "Videos produzieren & hochladen"
+      - "Kinder-Videos produzieren"
+      - "🌌 Beyond the If – What-if-Video"
+      - "📸 Instagram-Reels posten"
+    types: [completed]
+  push:
+    branches: [main]
+    paths: ["site/**", "scripts/studio_status.py", ".github/workflows/studio.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: studio-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install google-api-python-client google-auth pyyaml requests
+      - name: Stand aller Kanäle sammeln (nur lesend)
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_REGEN: ${{ secrets.YT_REFRESH_TOKEN_REGEN }}
+          YT_REFRESH_TOKEN_KAMIN: ${{ secrets.YT_REFRESH_TOKEN_KAMIN }}
+          YT_REFRESH_TOKEN_WASSERFALL: ${{ secrets.YT_REFRESH_TOKEN_WASSERFALL }}
+          YT_REFRESH_TOKEN_SCHLAF: ${{ secrets.YT_REFRESH_TOKEN_SCHLAF }}
+          YT_REFRESH_TOKEN_LERNEN: ${{ secrets.YT_REFRESH_TOKEN_LERNEN }}
+          YT_REFRESH_TOKEN_GESCHICHTEN: ${{ secrets.YT_REFRESH_TOKEN_GESCHICHTEN }}
+          YT_REFRESH_TOKEN_WHATIF: ${{ secrets.YT_REFRESH_TOKEN_WHATIF }}
+          IG_TOKEN_CALMHAVEN: ${{ secrets.IG_TOKEN_CALMHAVEN }}
+          IG_TOKEN_MONDMELODIE: ${{ secrets.IG_TOKEN_MONDMELODIE }}
+          IG_TOKEN_LERNBAERCHEN: ${{ secrets.IG_TOKEN_LERNBAERCHEN }}
+          IG_TOKEN_GUTENACHT: ${{ secrets.IG_TOKEN_GUTENACHT }}
+          IG_TOKEN_WHATIF: ${{ secrets.IG_TOKEN_WHATIF }}
+          IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
+        run: python scripts/studio_status.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4
