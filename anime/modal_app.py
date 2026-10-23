@@ -275,6 +275,22 @@ class AnimateV2:
         from diffusers import WanImageToVideoPipeline
         self.torch = torch
         self.pipe = WanImageToVideoPipeline.from_pretrained(I2V14, torch_dtype=torch.bfloat16)
+        # Lightning-LoRA (lightx2v, Apache 2.0): 4–8 statt 30 Schritte -> vielfach schneller
+        self.fast, self.fast_err = False, None
+        try:
+            from huggingface_hub import list_repo_files
+            files = [f for f in list_repo_files("lightx2v/Wan2.2-Lightning") if f.endswith(".safetensors")
+                     and "I2V" in f and "A14B" in f]
+            hi = sorted(f for f in files if "high_noise" in f)[-1]
+            lo = sorted(f for f in files if "low_noise" in f)[-1]
+            self.pipe.load_lora_weights("lightx2v/Wan2.2-Lightning", weight_name=hi, adapter_name="l_hi")
+            self.pipe.load_lora_weights("lightx2v/Wan2.2-Lightning", weight_name=lo, adapter_name="l_lo",
+                                        load_into_transformer_2=True)
+            self.pipe.set_adapters(["l_hi", "l_lo"], adapter_weights=[1.0, 1.0])
+            self.fast = True
+        except Exception as e:  # noqa: BLE001
+            self.fast_err = repr(e)[:300]
+        print("Lightning:", self.fast, self.fast_err or "")
         self.pipe.enable_model_cpu_offload()
         try:
             self.pipe.vae.enable_tiling()
@@ -292,7 +308,8 @@ class AnimateV2:
         num_frames = max(17, min(81, (num_frames - 1) // 4 * 4 + 1))
         frames = self.pipe(image=img, prompt="1990s retro cel anime, hand-drawn animation, fluid motion. " + prompt,
                            negative_prompt=WAN_NEG, height=height, width=width, num_frames=num_frames,
-                           guidance_scale=3.5, num_inference_steps=steps, generator=gen).frames[0]
+                           guidance_scale=1.0 if self.fast else 3.5,
+                           num_inference_steps=6 if self.fast else steps, generator=gen).frames[0]
         export_to_video(frames, "/tmp/v2.mp4", fps=16)
         last = frames[-1]
         if not isinstance(last, Image.Image):
@@ -300,4 +317,5 @@ class AnimateV2:
         buf = io.BytesIO()
         last.save(buf, format="PNG")
         with open("/tmp/v2.mp4", "rb") as f:
-            return {"mp4": f.read(), "last_png": buf.getvalue(), "frames": num_frames}
+            return {"mp4": f.read(), "last_png": buf.getvalue(), "frames": num_frames,
+                    "note": None if self.fast else f"ohne Lightning: {self.fast_err}"}

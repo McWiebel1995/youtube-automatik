@@ -232,6 +232,8 @@ def gpu_shots_v2(vid, sc, work, style, base, notes, t0):
             res = anim.animate.remote(start, motion[:1800], num_frames=int(dur * 16) // 4 * 4 + 1, seed=base + 100 + s["n"])
             (work / f"clip_{s['n']:02d}.mp4").write_bytes(res["mp4"])
             last = res["last_png"]
+            if res.get("note"):
+                notes.append(res["note"])
     notes.append("Engine V2: Qwen-Image-Edit + Wan 2.2 14B")
     return {"notes": sorted(set(notes)), "gpu_seconds": round(time.time() - t0)}
 
@@ -248,10 +250,38 @@ KOKORO_VOICES = {   # (Geschlecht, Tonlage) -> Kandidaten; jede Figur bekommt ei
     ("female", "mid"): ["af_heart", "af_sarah", "bf_emma", "af_nova"],
     ("female", "high"): ["af_bella", "af_sky", "af_jessica", "af_nova"],
 }
-EMOTION = {   # Chatterbox: (exaggeration, cfg_weight, Lautstärke dB)
-    "shout": (1.05, 0.3, 2), "angry": (0.85, 0.35, 1), "mocking": (0.75, 0.4, 0), "determined": (0.7, 0.4, 0),
-    "crying": (0.8, 0.35, -1), "fearful": (0.7, 0.4, -1), "calm": (0.45, 0.5, -1), "whisper": (0.35, 0.5, -6),
+EMOTION = {   # Chatterbox: (exaggeration, cfg_weight, Lautstärke dB) – kräftiger gespielt
+    "shout": (1.2, 0.25, 2), "angry": (1.0, 0.3, 1), "mocking": (0.85, 0.35, 0), "determined": (0.85, 0.35, 0),
+    "crying": (0.95, 0.3, -1), "fearful": (0.85, 0.35, -1), "calm": (0.55, 0.5, -1), "whisper": (0.45, 0.5, -6),
 }
+ANIME_REFS = Path(__file__).resolve().parent.parent / "data" / "voices" / "anime"
+
+
+ALT = {"male_low": ["male_mid", "old_male", "villain"], "male_mid": ["male_high", "male_low", "villain"],
+       "male_high": ["male_mid", "male_low"], "villain": ["male_low", "old_male"], "old_male": ["male_low", "villain"],
+       "female_mid": ["female_high"], "female_high": ["female_mid"]}
+
+
+def ref_role(char, used=None):
+    """Passende ausdrucksstarke Referenzstimme (data/voices/anime/*.wav) nach Stimmprofil der Figur."""
+    p = profile_of(char or {})
+    desc = f"{char.get('role', '')} {char.get('voice', '')}".lower() if char else ""
+    age = (char or {}).get("voice_profile", {}).get("age")
+    if any(w in desc for w in ["villain", "antagonist", "rival", "mocking", "cold"]):
+        name = "villain" if p["gender"] == "male" else "female_mid"
+    elif age == "old":
+        name = "old_male" if p["gender"] == "male" else "female_mid"
+    elif p["gender"] == "female":
+        name = "female_high" if p["pitch"] == "high" or age == "teen" else "female_mid"
+    else:
+        name = {"low": "male_low", "mid": "male_mid", "high": "male_high"}[p["pitch"]]
+    used = used if used is not None else set()
+    for cand in [name] + ALT.get(name, []):              # jede Figur eine andere Stimme
+        f = ANIME_REFS / f"{cand}.wav"
+        if f.exists() and cand not in used:
+            used.add(cand)
+            return f.read_bytes()
+    return None
 REF_TEXT = ("I have waited a long time for this moment. Whatever happens tonight, "
             "I will not run away again. Not this time.")
 
@@ -465,7 +495,12 @@ def render_lines(vid, jobs, chars, kvoice, work, no_gpu, notes):
         import modal
         from modal_app import Voice, app
         refs = {}
-        for cid in {c for _, lines in jobs for c, _, _ in lines}:
+        used_roles = set()
+        for cid in sorted({c for _, lines in jobs for c, _, _ in lines if c}):
+            r = ref_role(chars.get(cid), used_roles)
+            if r:
+                refs[cid] = r
+                continue
             a = kokoro(cid, REF_TEXT)
             buf = _io.BytesIO()
             wavfile.write(buf, SR, (np.clip(a, -1, 1) * 32767).astype(np.int16))
