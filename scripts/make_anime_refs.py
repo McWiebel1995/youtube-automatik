@@ -31,7 +31,11 @@ for name, (voice, direction) in ROLES.items():
     if f.exists():
         continue
     style = f"Perform this as {direction}. Real voice acting, not flat reading:\n\n"
-    gtts.synth(NARR if name == "narrator" else LINE, voice, f, style=style)
+    try:
+        gtts.synth(NARR if name == "narrator" else LINE, voice, f, style=style)
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning title=Referenz {name}::{str(e)[:300]}")
+        break
     print("✓", name)
     import time
     time.sleep(gtts.GAP_S)
@@ -59,6 +63,10 @@ for name, (voice, direction, fem) in ROLES_JA.items():
         continue
     style = (f"Speak in natural native Japanese as {direction}, exactly like a professional Japanese anime voice "
              "performance (original archetype, not imitating any real actor). Real acting:\n\n")
-    gtts.synth(LINE_JA_F if fem else LINE_JA, voice, f, style=style)
-    print("✓ ja", name)
+    try:
+        gtts.synth(LINE_JA_F if fem else LINE_JA, voice, f, style=style)
+        print("✓ ja", name)
+    except Exception as e:  # noqa: BLE001 – z. B. Tageslimit: Rest beim nächsten Lauf
+        print(f"::warning title=Referenz {name}::{str(e)[:300]}")
+        break
     time.sleep(gtts.GAP_S)
