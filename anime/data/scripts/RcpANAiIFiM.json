@@ -1,6 +1,6 @@
 {
  "video_id": "RcpANAiIFiM",
- "created_at": "2026-10-23T15:16:56Z",
+ "created_at": "2026-10-23T17:44:14Z",
  "status": "draft",
  "source": {
   "video_url": "https://www.youtube.com/watch?v=RcpANAiIFiM",
@@ -13,38 +13,37 @@
   "authenticity_status": "UNVERIFIED"
  },
  "script": {
-  "title": "Neo-Retro Sanctuary",
-  "logline": "A steadfast shopkeeper protects his archive of animated legends from surging chaos as neighborhood youths rally to his side.",
-  "logline_de": "Ein standhafter Ladenbesitzer verteidigt sein Archiv animierter Legenden vor aufkommendem Chaos, während Jugendliche aus dem Viertel ihm zur Seite stehen.",
-  "headline": "When local riots hit your retro anime shop and you activate final form",
+  "title": "Guardians of the Archived Realm",
+  "logline": "When civil unrest shatters his vintage archive, a dedicated archivist stands his ground against rioters, inspiring local youth to rally to his defense.",
+  "logline_de": "Als bürterliche Unruhen sein Archäologenarchiv verwüsten, verteidigt ein hingebungsvoller Archivar seinen Platz gegen Aufständische und inspiriert lokale Jugendliche.",
+  "headline": "AI turned a street clash into a 90s retro anime and it's peak fiction",
   "total_duration_s": 54,
   "setting": {
-   "location": "Neo-Veridia shopping district, general urban street",
-   "time": "Late afternoon, dusk settling in",
-   "weather": "Windy, scattered debris blowing across asphalt",
-   "color_palette": "Gritty desaturated urban tones with vivid neon pink and electric blue accents",
-   "art_style": "1990s retro anime, cel shading, film grain, dramatic hand-drawn look, vibrant poster hues"
+   "location": "Neotokyo Commercial District, fictional neo-urban setting",
+   "time": "Late afternoon, amber sunset filtering through thick smog",
+   "weather": "Hazy, swirling paper debris caught in an urban updraft",
+   "color_palette": "Deep amber, warm terracotta, gritty dark greys, neon turquoise accents",
+   "art_style": "1990s retro anime, cel shading, heavy film grain, dramatic lighting, impact frames, speed lines"
   },
   "characters": [
    {
     "id": "c1",
     "name": "Ren",
-    "role": "Archive Shopkeeper",
+    "role": "Vintage archive shopkeeper",
     "age_group": "early 30s",
-    "build": "sturdy, broad-shouldered",
-    "design_sheet": "1990s anime style, 32-year-old man, round wire-rimmed glasses (different from real life), short messy dark-green hair, determined expression, wearing an oversized black hoodie with embroidered abstract crest, dark cargo pants, heavy combat boots",
+    "build": "Sturdy, broad-shouldered",
+    "design_sheet": "1990s retro anime male, age 32, sturdy build, short messy dark green hair, fierce intense amber eyes, wearing an oversized black hoodie with a faded neon-green abstract graphic on the chest, dark baggy trousers, serious expression",
     "inspired_by_scene_de": [
      "Rolle als verteidigender Ladenbesitzer",
-     "Grobe Statur und Haltung",
-     "Trägt einen dunklen Kapuzenpullover"
+     "Körpersprache mit verschränkten Armen im Türrahmen",
+     "Dunkler Hoodie als Kleidungsstil"
     ],
     "changed_de": [
-     "Anderes Gesicht und andere Gesichtsform",
-     "Kurze dunkelgrüne Haare statt realer Frisur",
-     "Eckige Brille durch runde ersetzt",
-     "Keine realen Logos oder Firmen"
+     "Gesichtszüge, Frisur und dunkelgrüne Haarfarbe",
+     "Keine Logos oder echten Marken, stattdessen fiktives neon-grünes Grafik-Design",
+     "Keine echten Tattoos oder Bart"
     ],
-    "voice": "Deep, raspy 90s dub voice with immense emotional weight and gritty determination",
+    "voice": "Gravelly, deep, resolute voice with a powerful classic 90s English dub heroic timbre",
     "voice_profile": {
      "gender": "male",
      "age": "adult",
@@ -54,24 +53,22 @@
    },
    {
     "id": "c2",
-    "name": "Maya",
-    "role": "Neighborhood Youth Defender",
-    "age_group": "late teens",
-    "build": "athletic, agile",
-    "design_sheet": "1990s anime style, 18-year-old young woman, long straight crimson hair tied in a high ponytail, sharp determined eyes, wearing a white utility jacket over a checkered flannel shirt, dark jeans, canvas sneakers",
+    "name": "Kaito",
+    "role": "Neighborhood youth stepping in to de-escalate",
+    "age_group": "teen",
+    "build": "Lean and athletic",
+    "design_sheet": "1990s retro anime male teen, age 18, lean athletic build, messy blue spiky hair, determined bright blue eyes, wearing a white utility jacket over a grey t-shirt, light jeans, desperate expression",
     "inspired_by_scene_de": [
-     "Rolle als deeskalierende und schützende Passantin",
-     "Junge Statur und dynamische Bewegung"
+     "Rolle des schlichtenden Passanten",
+     "Helle Freizeitkleidung"
     ],
     "changed_de": [
-     "Komplett anderes Gesicht und Design",
-     "Roter hoher Zopf",
-     "Weisse Funktionsjacke statt Alltagsbekleidung",
-     "Fiktiver Charakter ohne reale Entsprechung"
+     "Blaues, stacheliges Anime-Haar",
+     "Gesicht und Statur komplett fiktiv"
     ],
-    "voice": "Clear, energetic, and sharp young heroine voice, fierce yet compassionate",
+    "voice": "Passionate, youthful, mid-range voice full of urgency",
     "voice_profile": {
-     "gender": "female",
+     "gender": "male",
      "age": "teen",
      "pitch": "mid",
      "texture": "bright"
@@ -87,18 +84,26 @@
     ],
     "continues_previous": false,
     "beat": "HOOK",
-    "camera": "Wide angle, dramatic low angle looking up at shattered storefront, intense shake",
-    "action": "Glass shatters outward in a burst of speed lines as chaos erupts in front of the vintage store.",
-    "dialogue": [],
-    "voiceover": null,
-    "sfx": [
-     "Deep glass-shattering bass drop",
-     "Distorted street noise"
+    "camera": "Medium shot, low angle, slow push-in",
+    "action": "Ren stands inside the shattered storefront frame, debris and glowing paper scraps swirling around him in the amber twilight.",
+    "dialogue": [
+     {
+      "character": "c1",
+      "line_ja": "ふざけるなっ！ここは通さない！",
+      "line": "Don't you dare! You're not crossing this line!",
+      "emotion": "shout"
+     }
     ],
-    "music": "High-tempo 90s cyberpunk synth-rock riff starts abruptly",
+    "voiceover": null,
+    "voiceover_ja": null,
+    "sfx": [
+     "Shattering glass echoed with deep sub-bass reverb",
+     "Heavy wind rushing through debris"
+    ],
+    "music": "High-octane 90s synth-rock intro with driving electric bass",
     "on_screen_text": null,
-    "image_prompt": "1990s retro anime screencap, cel shading, shattered storefront glass on asphalt, dynamic wide angle, dramatic dark shadows, film grain, intense street chaos",
-    "motion_prompt": "Camera pushes forward rapidly through flying glass shards with heavy motion blur and speed lines."
+    "image_prompt": "1990s retro anime screencap, cel shading, c1 Ren with short messy dark green hair, fierce amber eyes, oversized black hoodie with neon-green graphic, standing inside a shattered storefront frame with flying debris, dramatic rim lighting, film grain",
+    "motion_prompt": "Camera pushes in slowly as debris swirls violently around Ren, speed lines flashing in the background."
    },
    {
     "n": 2,
@@ -107,45 +112,38 @@
      "c1"
     ],
     "continues_previous": true,
-    "beat": "HOOK",
-    "camera": "Medium close-up, Dutch angle, fast pan",
-    "action": "Ren steps into the shattered entryway, dark hoodie snapping in the wind, eyes glowing with fierce determination.",
-    "dialogue": [
-     {
-      "character": "c1",
-      "line": "You won't destroy our history!",
-      "emotion": "shout"
-     }
-    ],
-    "voiceover": null,
+    "beat": "EINSTIEG",
+    "camera": "Extreme close-up on Ren's eyes, Dutch angle",
+    "action": "Ren's eyes narrow intensely as street lights flicker above the chaotic avenue.",
+    "dialogue": [],
+    "voiceover": "This place... holds the memories of everything we built.",
+    "voiceover_ja": "この場所は…私たちが築いたすべての記憶を宿している。",
     "sfx": [
-     "Heavy wind howl",
-     "Storefront metal groan"
+     "Subtle synth pulse fading in"
     ],
-    "music": "Synth riff continues with driving drum beat",
+    "music": "Driving synth-rock continues with a soaring melody",
     "on_screen_text": null,
-    "image_prompt": "1990s retro anime screencap, cel shading, 32-year-old man Ren with short messy dark-green hair, round wire-rimmed glasses, oversized black hoodie, fierce expression, standing in a broken shop entrance, dramatic neon rim lighting",
-    "motion_prompt": "Camera zooms in on Ren's face as energy aura flashes around his silhouette; impact frame on 'history'."
+    "image_prompt": "1990s retro anime screencap, cel shading, extreme close-up of c1 Ren's intense amber eyes, dark green bangs framing his face, gritty cel shading, dramatic shadow contrast, film grain",
+    "motion_prompt": "Camera zooms rapidly into Ren's glowing pupil with an impact frame flash."
    },
    {
     "n": 3,
     "duration_s": 3,
-    "characters": [
-     "c1"
-    ],
+    "characters": [],
     "continues_previous": false,
-    "beat": "EINSTIEG",
-    "camera": "Extreme close-up on eyes",
-    "action": "Ren's eyes narrow behind his glasses, reflecting the neon signs and flying debris.",
+    "beat": "KONFLIKT",
+    "camera": "Wide shot, tracking forward fast along the chaotic street",
+    "action": "Pivoting down the avenue, shadowy figures in dark gear surge forward past damaged shopfronts amidst floating papers.",
     "dialogue": [],
-    "voiceover": "This place... holds every dream we ever drew.",
+    "voiceover": null,
+    "voiceover_ja": null,
     "sfx": [
-     "Heartbeat thumping in slow motion"
+     "Muffled angry shouts and running footsteps"
     ],
-    "music": "Music drops to a tense, rhythmic pulse",
+    "music": "Aggressive electric guitar riff builds tension",
     "on_screen_text": null,
-    "image_prompt": "1990s retro anime screencap, cel shading, extreme close-up of Ren's intense eyes behind round glasses reflecting neon city lights, detailed cel animation style, dramatic shadow",
-    "motion_prompt": "Slow zoom into the pupil with a subtle pulsing light reflection and chromatic aberration."
+    "image_prompt": "1990s retro anime screencap, cel shading, wide street view filled with scattered papers and debris, silhouetted rioters in dark clothing surging forward under amber streetlamps, highly detailed architectural buildings in background, film grain",
+    "motion_prompt": "Fast tracking forward shot simulating handheld camera rush through the crowd."
    },
    {
     "n": 4,
@@ -153,67 +151,85 @@
     "characters": [
      "c1"
     ],
-    "continues_previous": true,
-    "beat": "EINSTIEG",
-    "camera": "Over-the-shoulder shot looking out at the chaotic street",
-    "action": "Silhouetted figures surge forward past littered pavement while Ren stands his ground at the threshold.",
-    "dialogue": [],
-    "voiceover": null,
-    "sfx": [
-     "Heavy footsteps on paper-strewn ground"
+    "continues_previous": false,
+    "beat": "KONFLIKT",
+    "camera": "Over-the-shoulder medium shot, dynamic angle",
+    "action": "Ren braces his stance as a dark-clad figure lunges toward him with a hostile gesture.",
+    "dialogue": [
+     {
+      "character": "c1",
+      "line_ja": "来るな！",
+      "line": "Stay back!",
+      "emotion": "angry"
+     }
     ],
-    "music": "Bassline builds up tension",
+    "voiceover": null,
+    "voiceover_ja": null,
+    "sfx": [
+     "Flesh impact sound with a bright white flash frame"
+    ],
+    "music": "Percussive drum beat drops heavily",
     "on_screen_text": null,
-    "image_prompt": "1990s retro anime screencap, cel shading, over-the-shoulder view of Ren in black hoodie facing a chaotic crowd in a littered urban street, vintage anime art style, grainy texture",
-    "motion_prompt": "Camera pans slightly right following a shadowy figure rushing past in the foreground with strong speed lines."
+    "image_prompt": "1990s retro anime screencap, cel shading, c1 Ren in black hoodie bracing his arms in a defensive stance, aggressive assailant lunging from the side, dynamic action pose, cel-shaded shadows, film grain",
+    "motion_prompt": "Fast punch motion from the attacker with an impact frame freeze and radial speed lines."
    },
    {
     "n": 5,
     "duration_s": 3,
     "characters": [
-     "c1"
+     "c1",
+     "c2"
     ],
     "continues_previous": false,
-    "beat": "KONFLIKT",
-    "camera": "Medium tracking shot, side profile",
-    "action": "An aggressive figure rushes up behind Ren and strikes a sudden blow, catching him off guard.",
+    "beat": "WENDEPUNKT",
+    "camera": "Medium close-up, eye level, steady",
+    "action": "Kaito steps in front of Ren, spreading his arms wide with a determined expression to block the approaching conflict.",
     "dialogue": [
      {
-      "character": "c1",
-      "line": "Gah! What is your problem?!",
-      "emotion": "angry"
+      "character": "c2",
+      "line_ja": "やめろ！もうこれ以上はさせない！",
+      "line": "Stop it! No more of this!",
+      "emotion": "shout"
      }
     ],
     "voiceover": null,
+    "voiceover_ja": null,
     "sfx": [
-     "Muffled impact thud",
-     "Sharp intake of breath"
+     "All background noise cuts out instantly into a ringing tone"
     ],
-    "music": "Percussion hits hard on the impact frame",
+    "music": "Music drops to a tense, expectant ambient hum",
     "on_screen_text": null,
-    "image_prompt": "1990s retro anime screencap, cel shading, Ren stumbling forward from an impact, stylized action lines radiating outward, shattered glass on floor, dramatic high-contrast lighting",
-    "motion_prompt": "Fast horizontal whip-pan with impact frames and white flash on the hit."
+    "image_prompt": "1990s retro anime screencap, cel shading, c2 Kaito with messy blue spiky hair and white utility jacket standing protectively with arms spread, c1 Ren visible behind him, street setting, dramatic lighting, film grain",
+    "motion_prompt": "Kaito steps firmly into frame with sudden momentum, wind blowing back his blue hair."
    },
    {
     "n": 6,
     "duration_s": 3,
     "characters": [
-     "c1"
+     "c1",
+     "c2"
     ],
     "continues_previous": true,
-    "beat": "KONFLIKT",
-    "camera": "Low angle close-up on Ren",
-    "action": "Ren stumbles into the display area against the wall, dropping his gaze in shock before clenching his fists.",
-    "dialogue": [],
-    "voiceover": null,
-    "sfx": [
-     "Scraping boots",
-     "Glass crunching underfoot"
+    "beat": "WENDEPUNKT",
+    "camera": "Close-up on Kaito's determined face, slight low angle",
+    "action": "Kaito stares down the aggressors, his blue eyes reflecting the flickering neon lights of the street.",
+    "dialogue": [
+     {
+      "character": "c2",
+      "line_ja": "この街を守るんだ…一緒に！",
+      "line": "We protect this city... together!",
+      "emotion": "determined"
+     }
     ],
-    "music": "Sustained menacing synth chord",
+    "voiceover": null,
+    "voiceover_ja": null,
+    "sfx": [
+     "Subtle electrical hum building up"
+    ],
+    "music": "Uplifting synth arpeggio swells into the mix",
     "on_screen_text": null,
-    "image_prompt": "1990s retro anime screencap, cel shading, Ren leaning against a ruined shop wall next to a torn vintage anime poster, bruised cheek, tight fists, dramatic cel shadows",
-    "motion_prompt": "Camera slowly tilts down from Ren's face to his clenched fists trembling with restrained energy."
+    "image_prompt": "1990s retro anime screencap, cel shading, close-up of c2 Kaito's determined face, blue eyes glowing with resolve, neon reflections on his cheek, dramatic rim light, film grain",
+    "motion_prompt": "Camera pushes in slowly on Kaito's face as his eyes flare with energy."
    },
    {
     "n": 7,
@@ -223,24 +239,26 @@
      "c2"
     ],
     "continues_previous": false,
-    "beat": "WENDEPUNKT",
-    "camera": "Medium shot, eye-level, stable",
-    "action": "Maya suddenly steps between Ren and the approaching hostile figures, arms spread wide to halt them.",
+    "beat": "HÖHEPUNKT",
+    "camera": "Wide angle, dramatic upward tilt",
+    "action": "A surge of blue and amber energy auras erupts around Ren and Kaito, pushing the hostile crowd back as shattered glass floats weightlessly.",
     "dialogue": [
      {
-      "character": "c2",
-      "line": "Stop right there! Back off now!",
+      "character": "c1",
+      "line_ja": "おおおっ！",
+      "line": "Rrragh!",
       "emotion": "shout"
      }
     ],
     "voiceover": null,
+    "voiceover_ja": null,
     "sfx": [
-     "Shout echoing off concrete buildings"
+     "Powerful energy shockwave blast with thunderous roar"
     ],
-    "music": "Heroic melodic synth lead swells up instantly",
+    "music": "Full symphonic 90s anime battle theme reaches its peak crescendo",
     "on_screen_text": null,
-    "image_prompt": "1990s retro anime screencap, cel shading, 18-year-old Maya with long crimson hair in ponytail, white utility jacket, standing defiantly in front of Ren with arms spread, dramatic anime lighting",
-    "motion_prompt": "Camera zooms in quickly on Maya's resolute expression as wind whips her hair across her face."
+    "image_prompt": "1990s retro anime screencap, cel shading, c1 Ren and c2 Kaito standing side-by-side surrounded by glowing blue and amber aura flames, floating glass shards refracting light like diamonds, epic shonen pose, film grain",
+    "motion_prompt": "Explosive energy aura expands outward from characters with swirling particles and intense camera shake."
    },
    {
     "n": 8,
@@ -250,147 +268,47 @@
      "c2"
     ],
     "continues_previous": true,
-    "beat": "WENDEPUNKT",
-    "camera": "Close-up on Ren looking up in surprise",
-    "action": "Ren looks up from the threshold, his eyes widening in disbelief as support arrives from unexpected allies.",
-    "dialogue": [
-     {
-      "character": "c1",
-      "line": "You... you're protecting the shop?",
-      "emotion": "fearful"
-     }
-    ],
-    "voiceover": null,
-    "sfx": [
-     "Subtle magical chime effect"
-    ],
-    "music": "Uplifting brass synth joins the melody",
-    "on_screen_text": null,
-    "image_prompt": "1990s retro anime screencap, cel shading, close-up of Ren's surprised face behind round glasses, wide glowing eyes, warm rim light from the streetlamps",
-    "motion_prompt": "Subtle slow-motion effect with sparkling light particles floating past the lens."
-   },
-   {
-    "n": 9,
-    "duration_s": 3,
-    "characters": [
-     "c2"
-    ],
-    "continues_previous": false,
-    "beat": "WENDEPUNKT",
-    "camera": "Medium wide shot, low angle",
-    "action": "More neighborhood youths step forward beside Maya, forming an unbreakable defensive wall.",
-    "dialogue": [
-     {
-      "character": "c2",
-      "line": "We grew up in these streets. We defend what's ours!",
-      "emotion": "determined"
-     }
-    ],
-    "voiceover": null,
-    "sfx": [
-     "Collective determined shout",
-     "Power-up hum"
-    ],
-    "music": "Full symphonic 90s anime battle theme peaks",
-    "on_screen_text": null,
-    "image_prompt": "1990s retro anime screencap, cel shading, group of diverse youths standing shoulder to shoulder in front of the ruined shop, energetic glowing outlines, dramatic heroic pose, classic cel art",
-    "motion_prompt": "Camera pans across the group with rising energy auras flickering around each character."
-   },
-   {
-    "n": 10,
-    "duration_s": 3,
-    "characters": [
-     "c1",
-     "c2"
-    ],
-    "continues_previous": true,
-    "beat": "HÖHEPUNKT",
-    "camera": "Wide dynamic shot, slight Dutch angle",
-    "action": "A brilliant burst of golden energy flares outward from the group, driving back the encroaching crowd with sheer force.",
-    "dialogue": [],
-    "voiceover": null,
-    "sfx": [
-     "Sonic shockwave boom",
-     "Energy beam hum"
-    ],
-    "music": "Climax of the theme song with electric guitar solo",
-    "on_screen_text": null,
-    "image_prompt": "1990s retro anime screencap, cel shading, massive golden energy shockwave erupting from the storefront, rioters stepping back in awe, glowing particles, vintage anime aesthetic",
-    "motion_prompt": "Rapid outward zoom with massive speed lines and a flash of white light filling the frame."
-   },
-   {
-    "n": 11,
-    "duration_s": 3,
-    "characters": [
-     "c1"
-    ],
-    "continues_previous": false,
-    "beat": "HÖHEPUNKT",
-    "camera": "Close-up on Ren's face, determined smile",
-    "action": "Ren stands tall inside the shattered frame, a fierce yet calm smile on his face as he grips his hoodie straps.",
-    "dialogue": [
-     {
-      "character": "c1",
-      "line": "Let's rebuild it together!",
-      "emotion": "shout"
-     }
-    ],
-    "voiceover": null,
-    "sfx": [
-     "lingering energy hum fading out"
-    ],
-    "music": "Music transitions into an inspiring, heroic outro melody",
-    "on_screen_text": null,
-    "image_prompt": "1990s retro anime screencap, cel shading, close-up of Ren smiling confidently amidst debris, wind blowing his dark-green hair, dramatic warm sunset lighting behind him",
-    "motion_prompt": "Camera holds steady with a gentle breathing motion on Ren's upper body."
-   },
-   {
-    "n": 12,
-    "duration_s": 3,
-    "characters": [
-     "c1",
-     "c2"
-    ],
-    "continues_previous": true,
     "beat": "NACHHALL",
-    "camera": "Wide shot, static, atmospheric",
-    "action": "The dust settles in front of the damaged shop; Ren and Maya stand side by side looking forward into the evening light.",
+    "camera": "Medium shot, slow pull back into the dark shop interior",
+    "action": "The energy settles into a warm amber glow. Ren and Kaito stand firm together amidst the ruins, refusing to back down.",
     "dialogue": [],
-    "voiceover": "Some stories can never be erased.",
+    "voiceover": "Some places are worth fighting for, no matter the ruins left behind.",
+    "voiceover_ja": "守るべき場所がある。どんな廃墟になろうとも。",
     "sfx": [
-     "Gentle evening wind rustling paper"
+     "Gentle wind chime sound echoing softly"
     ],
-    "music": "Melodic synthesizer chords fading into a warm ambient pad",
+    "music": "Melancholic yet hopeful synthesizer chord fading out",
     "on_screen_text": null,
-    "image_prompt": "1990s retro anime screencap, cel shading, wide shot of Ren and Maya standing calmly before the ruined storefront under a twilight sky, retro anime cel aesthetic, soft film grain",
-    "motion_prompt": "Slow, cinematic fade out with gentle swaying motion of papers on the ground."
+    "image_prompt": "1990s retro anime screencap, cel shading, c1 Ren and c2 Kaito standing resolutely inside the damaged storefront glowing under warm amber light, debris scattered around, calm defiant atmosphere, film grain",
+    "motion_prompt": "Camera pulls back slowly, framing the two figures steadfast against the ruined backdrop."
    }
   ],
   "music": {
-   "mood": "High-energy 90s retro anime synth-rock shifting into an inspiring heroic theme",
+   "mood": "Epic 90s retro anime synth-rock transitioning into a heroic, emotional orchestral theme",
    "bpm": 128,
    "instruments": [
-    "distorted electric guitar",
-    "retro synthesizer leads",
-    "punchy 90s drum machine beats",
-    "warm ambient pads"
+    "Electric guitar",
+    "Analog synthesizer",
+    "Punchy drum machine",
+    "Symphonic strings"
    ]
   },
   "end_card": "Fictional story inspired by real events.",
   "content_check_de": {
-   "gewalt": "Stylisierte Anime-Action und kurzer Schubser, ohne schwere Verletzungen",
+   "gewalt": "Dramatische Anime-Konfrontation mit Impact-Frames, ohne Blut oder Gore",
    "kein_gore": true,
    "keine_hetze": true
   },
   "youtube": {
-   "title": "When a local riot hits a retro anime shop #shorts",
-   "description": "An ordinary shopkeeper stands his ground against chaos when unexpected allies rally to protect his archive. Fictional story inspired by real events.",
+   "title": "When a street riot turns into a 90s anime showdown #shorts",
+   "description": "An ordinary store defense escalates into an epic 90s retro anime battle of solidarity and resolve. Fictional story inspired by real events.",
    "tags": [
     "anime",
     "90sanime",
     "retroadaptation",
     "shonen",
-    "shortsanime"
+    "animation",
+    "shorts"
    ]
   },
   "_model": "gemini-3.5-flash-lite"
@@ -400,9 +318,9 @@
    {
     "id": "c1",
     "matching_features": [
-     "Rolle als verteidigender Shop-Mitarbeiter",
-     "Kräftige, breite Statur",
-     "Dunkler Kapuzenpullover mit dunkler Hose"
+     "Sturdy build",
+     "Hoodie",
+     "Standing in doorway"
     ],
     "risk": "low",
     "required_changes": []
@@ -410,8 +328,8 @@
    {
     "id": "c2",
     "matching_features": [
-     "Rolle als deeskalierende Passantin im Geschehen",
-     "Kariertes Hemd-Element in der Kleidung"
+     "Light jacket",
+     "Youthful build"
     ],
     "risk": "low",
     "required_changes": []
@@ -419,14 +337,15 @@
   ],
   "brands_or_text_visible_in_script": [
    "Micromania",
-   "ZiNG",
+   "Zing",
    "Armand Thiery",
-   "Le Parisien",
-   "Dragon Ball"
+   "Le Parisien"
   ],
   "overall_risk": "low",
-  "_model": "gemini-3.6-flash"
+  "_model": "gemini-3.5-flash-lite"
  },
- "issues": [],
+ "issues": [
+  "Gesamtlänge 24 s (erwartet 45–75 s)"
+ ],
  "model": "gemini-3.5-flash-lite"
 }
