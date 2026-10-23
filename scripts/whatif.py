@@ -286,6 +286,35 @@ def mix_and_render(video, voice_audio, out, work, subs_ass, music_db=-24):
                     "-movflags", "+faststart", str(out)], cwd=work, check=True)
 
 
+BRAND = ROOT / "assets" / "brand" / "whatif"
+
+
+def brand(main, out, work, starts, total):
+    """Hook -> Intro -> 1. Hälfte -> Abo-Einspieler -> 2. Hälfte -> Outro (Clips des Kanals)."""
+    intro, abo, outro = (BRAND / f for f in ("intro.mp4", "abo.mp4", "outro.mp4"))
+    if not all(x.exists() for x in (intro, abo, outro)) or len(starts) < 3:
+        subprocess.run(["cp", str(main), str(out)], check=True)
+        return
+    hook = float(starts[1])                                   # Ende des ersten Abschnitts (Hook)
+    mid = float(min(starts[2:], key=lambda x: abs(x - total / 2)))
+    parts = [(main, 0, hook), (intro, None, None), (main, hook, mid), (abo, None, None), (main, mid, total), (outro, None, None)]
+    args, flt = [], ""
+    for k, (src, a, b) in enumerate(parts):
+        args += (["-ss", f"{a:.3f}", "-t", f"{b - a:.3f}"] if a is not None else []) + ["-i", str(src)]
+        f = 0.12                                              # kurze Ton-Blenden gegen Knackser an den Schnitten
+        dur = (b - a) if a is not None else float(subprocess.run(
+            ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(src)],
+            capture_output=True, text=True).stdout)
+        flt += (f"[{k}:v]scale=1920:1080,fps=30,format=yuv420p,setsar=1[v{k}];"
+                f"[{k}:a]aresample=48000,aformat=channel_layouts=stereo,afade=t=in:d={f},"
+                f"afade=t=out:st={max(0, dur - f):.3f}:d={f}[a{k}];")
+    flt += "".join(f"[v{k}][a{k}]" for k in range(len(parts))) + f"concat=n={len(parts)}:v=1:a=1[v][a]"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *args, "-filter_complex", flt, "-map", "[v]", "-map", "[a]",
+                    "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-c:a", "aac", "-b:a", "256k",
+                    "-movflags", "+faststart", str(out)], check=True)
+    print(f"  Intro nach {hook:.0f} s, Abo-Einspieler bei {mid:.0f} s, Outro am Ende")
+
+
 # ----------------------------------------------------------------- Hauptablauf
 def build(out: Path, minutes=9.0, seed=None):
     rnd = random.Random(seed)
@@ -351,8 +380,10 @@ def build(out: Path, minutes=9.0, seed=None):
     xfade_concat(clips, durs, work / "joined.mp4", fade)
     voice_all = np.concatenate(seg_audio)
     ass(all_subs, work / "subs.ass", 1920, 1080, 52, 70)
-    mix_and_render(work / "joined.mp4", voice_all, out / "video.mp4", work, work / "subs.ass")
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "3", "-i", str(out / "video.mp4"), "-frames:v", "1",
+    mix_and_render(work / "joined.mp4", voice_all, work / "main.mp4", work, work / "subs.ass")
+    starts = np.cumsum([0] + [len(a) / SR for a in seg_audio])[:-1]
+    brand(work / "main.mp4", out / "video.mp4", work, starts, len(voice_all) / SR)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "3", "-i", str(work / "main.mp4"), "-frames:v", "1",
                     str(out / "thumb_frame.png")], check=True)
 
     # ---- Shorts
