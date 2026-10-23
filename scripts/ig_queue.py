@@ -89,6 +89,15 @@ def post(limit_per_account=1):
     import instagram
     items, done, report = load(), {}, []
     recent = {}
+    # pro Konto nur das NEUESTE offene Reel posten; ältere offene (z. B. nach Ausfällen) überspringen -> kein Rückstau
+    newest = {}
+    for it in items:
+        if it.get("status") == "pending" and it["created_at"] > newest.get(it["account"], ""):
+            newest[it["account"]] = it["created_at"]
+    for it in items:
+        if it.get("status") == "pending" and it["created_at"] < newest[it["account"]]:
+            it.update(status="skipped", note="veraltet – neueres Reel vorhanden")
+            save_item(it)
     for it in items:
         if it.get("status") != "pending":
             continue
