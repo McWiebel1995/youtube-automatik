@@ -324,31 +324,31 @@ class AnimateV2:
 # ================================================================ What-if: realistische KI-Bilder
 @app.function(image=image_v2, volumes={"/models": models}, timeout=7200, cpu=4, memory=8192)
 def download_flux():
+    """Bildmodell für What-if vorab laden (Qwen-Image, Apache 2.0, frei zugänglich)."""
     from huggingface_hub import snapshot_download
-    snapshot_download("black-forest-labs/FLUX.1-schnell", cache_dir="/models/hf/hub",
-                      allow_patterns=["*.json", "*.txt", "*.model", "transformer/*", "text_encoder*/*", "tokenizer*/*",
-                                      "vae/*", "scheduler/*"])
+    snapshot_download("Qwen/Qwen-Image", cache_dir="/models/hf/hub")
     models.commit()
     return "ok"
 
 
-@app.cls(gpu="L40S", image=image_v2, volumes={"/models": models}, timeout=3600, scaledown_window=120, memory=65536)
+@app.cls(gpu="A100-80GB", image=image_v2, volumes={"/models": models}, timeout=3600, scaledown_window=120,
+         memory=98304)
 class ImageFlux:
-    """FLUX.1-schnell (Apache 2.0): fotorealistische/cineastische Bilder in 4 Schritten."""
+    """Fotorealistische/cineastische Bilder mit Qwen-Image (Apache 2.0)."""
     @modal.enter()
     def load(self):
         import torch
-        from diffusers import FluxPipeline
+        from diffusers import DiffusionPipeline
         self.torch = torch
-        self.pipe = FluxPipeline.from_pretrained("black-forest-labs/FLUX.1-schnell", torch_dtype=torch.bfloat16)
+        self.pipe = DiffusionPipeline.from_pretrained("Qwen/Qwen-Image", torch_dtype=torch.bfloat16)
         self.pipe.enable_model_cpu_offload()
-        models.commit()
 
     @modal.method()
-    def generate(self, prompt: str, seed: int = 0, width: int = 1344, height: int = 768) -> bytes:
+    def generate(self, prompt: str, seed: int = 0, width: int = 1664, height: int = 928) -> bytes:
         gen = self.torch.Generator("cuda").manual_seed(seed)
-        img = self.pipe(prompt=prompt, num_inference_steps=4, guidance_scale=0.0, width=width, height=height,
-                        max_sequence_length=256, generator=gen).images[0]
+        img = self.pipe(prompt=prompt, negative_prompt="text, watermark, logo, blurry, lowres, deformed, cartoon",
+                        width=width, height=height, num_inference_steps=30, true_cfg_scale=4.0,
+                        generator=gen).images[0]
         buf = io.BytesIO()
         img.save(buf, format="PNG")
         return buf.getvalue()
