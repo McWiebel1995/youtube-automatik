@@ -82,7 +82,8 @@ Kein eigener Shot für Endtafel/Titel – die Endtafel fügt KI 3 automatisch an
 - "continues_previous": true, wenn der Shot direkt an den vorherigen anschließt (gleiche Szene, gleiche
   Kamera-Achse, die Handlung geht nahtlos weiter) – dann wird er aus dem letzten Bild des Vorgängers weiteranimiert.
   Etwa jeder dritte Shot sollte so ein Anschluss sein.
-- Viel Dialog (Englisch), jede Zeile max. ~10 Wörter, jede Zeile mit Emotion (shout, angry, whisper …)
+- Gesprochen wird JAPANISCH (natürliche Anime-Sprache, kurze, kraftvolle Sätze, typische Ausrufe wie „くそっ！“),
+  dazu jeweils die englische Untertitel-Übersetzung. Jede Zeile max. ~10 Wörter, jede Zeile mit Emotion (shout, angry, whisper …)
 - Jede Figur hat eine klar unterscheidbare Stimme (Alter, Tonlage, Klangfarbe) wie in einer 90er-Anime-Synchro:
   der raue Held, der höhnische Gegenspieler, die entschlossene junge Frau usw.
 - Eine Schlagzeile für den Short (oben über dem Video), z. B.

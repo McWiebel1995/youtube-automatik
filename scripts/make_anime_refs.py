@@ -25,6 +25,7 @@ NARR = ("Imagine you wake up tomorrow, and the Moon is simply gone. No explosion
         "At first, almost nothing changes. But within hours, the oceans begin to behave very differently.")
 ROLES["narrator"] = ("Charon", "a captivating science documentary narrator: curious, warm, clear, with subtle "
                      "suspense and natural pauses, like a top YouTube science channel")
+import time  # noqa: E402
 for name, (voice, direction) in ROLES.items():
     f = OUT / f"{name}.wav"
     if f.exists():
@@ -33,4 +34,31 @@ for name, (voice, direction) in ROLES.items():
     gtts.synth(NARR if name == "narrator" else LINE, voice, f, style=style)
     print("✓", name)
     import time
+    time.sleep(gtts.GAP_S)
+
+
+# ---------------------------------------------------------------- Japanisch (Rollen-Archetypen, keine echten Sprecher)
+OUT_JA = ROOT / "data" / "voices" / "anime_ja"
+OUT_JA.mkdir(parents=True, exist_ok=True)
+LINE_JA = ("逃げない……今夜だけは絶対に逃げない！お前たちに全部奪わせてたまるか！"
+           "俺がここに立っている限り、誰にもこの場所には触れさせない！")
+LINE_JA_F = ("逃げない……今夜だけは絶対に逃げない！あなたたちに全部奪わせたりしない！"
+             "私がここに立っている限り、誰にもこの場所には触れさせない！")
+ROLES_JA = {
+    "male_low": ("Algenib", "a hoarse, battle-hardened Japanese anime hero (seinen style), intense, voice cracking with rage", False),
+    "male_mid": ("Fenrir", "a passionate young Japanese shonen hero, fiery, breathless, screaming the last line with everything he has", False),
+    "male_high": ("Puck", "a cocky, energetic Japanese teenage rival, loud and arrogant, typical shonen anime delivery", False),
+    "villain": ("Charon", "a cold, elegant Japanese anime villain, quiet, slow, mocking and menacing", False),
+    "female_mid": ("Kore", "a fierce, determined Japanese anime heroine, emotional, shouting with tears in her voice", True),
+    "female_high": ("Leda", "an energetic Japanese anime girl, brave but scared, bright and emotional", True),
+    "old_male": ("Orus", "a deep, calm, wise old Japanese anime mentor, every word heavy and powerful", False),
+}
+for name, (voice, direction, fem) in ROLES_JA.items():
+    f = OUT_JA / f"{name}.wav"
+    if f.exists():
+        continue
+    style = (f"Speak in natural native Japanese as {direction}, exactly like a professional Japanese anime voice "
+             "performance (original archetype, not imitating any real actor). Real acting:\n\n")
+    gtts.synth(LINE_JA_F if fem else LINE_JA, voice, f, style=style)
+    print("✓ ja", name)
     time.sleep(gtts.GAP_S)

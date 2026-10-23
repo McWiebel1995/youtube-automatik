@@ -254,7 +254,8 @@ EMOTION = {   # Chatterbox: (exaggeration, cfg_weight, Lautstärke dB) – kräf
     "shout": (1.2, 0.25, 2), "angry": (1.0, 0.3, 1), "mocking": (0.85, 0.35, 0), "determined": (0.85, 0.35, 0),
     "crying": (0.95, 0.3, -1), "fearful": (0.85, 0.35, -1), "calm": (0.55, 0.5, -1), "whisper": (0.45, 0.5, -6),
 }
-ANIME_REFS = Path(__file__).resolve().parent.parent / "data" / "voices" / "anime"
+LANG = os.environ.get("ANIME_LANG", "ja")
+ANIME_REFS = Path(__file__).resolve().parent.parent / "data" / "voices" / ("anime_ja" if LANG == "ja" else "anime")
 
 
 ALT = {"male_low": ["male_mid", "old_male", "villain"], "male_mid": ["male_high", "male_low", "villain"],
@@ -488,15 +489,15 @@ def render_lines(vid, jobs, chars, kvoice, work, no_gpu, notes):
 
     if no_gpu:
         notes.add(f"Stimmen: {_tts.get('engine', 'Kokoro')} (ohne GPU)")
-        return [[kokoro(c, t) for c, t, _ in lines] for _, lines in jobs]
+        return [[kokoro(c, t) for c, t, *_ in lines] for _, lines in jobs]
     try:
         import io as _io
 
         import modal
-        from modal_app import Voice, app
+        from modal_app import Voice, VoiceDE, app
         refs = {}
         used_roles = set()
-        for cid in sorted({c for _, lines in jobs for c, _, _ in lines if c}):
+        for cid in sorted({c for _, lines in jobs for c, *_ in lines if c}):
             r = ref_role(chars.get(cid), used_roles)
             if r:
                 refs[cid] = r
@@ -508,12 +509,14 @@ def render_lines(vid, jobs, chars, kvoice, work, no_gpu, notes):
         base = int(hashlib.sha1(vid.encode()).hexdigest()[:6], 16)
         out = []
         with modal.enable_output(), app.run():
-            v = Voice()
+            v = VoiceDE() if LANG == "ja" else Voice()
             for i, (_, lines) in enumerate(jobs):
                 shot = []
-                for j, (cid, text, emo) in enumerate(lines):
+                for j, (cid, text, emo, _sub) in enumerate(lines):
                     ex, cfg, _ = EMOTION.get(emo, EMOTION["determined"])
-                    wav = v.speak.remote(text, refs[cid], exaggeration=ex, cfg_weight=cfg, seed=base + i * 10 + j)
+                    kw = {"language": "ja"} if LANG == "ja" else {}
+                    wav = v.speak.remote(text, refs[cid], exaggeration=ex, cfg_weight=0.0 if LANG == "ja" else cfg,
+                                         seed=base + i * 10 + j, **kw)
                     sr, a = wavfile.read(_io.BytesIO(wav))
                     a = a.astype(np.float32) / (32768 if a.dtype == np.int16 else 1)
                     shot.append(resample_poly(a, SR, sr).astype(np.float32))
@@ -522,7 +525,7 @@ def render_lines(vid, jobs, chars, kvoice, work, no_gpu, notes):
         return out
     except Exception as e:  # noqa: BLE001
         notes.add(f"Stimmen: Kokoro-Fallback (Chatterbox-Fehler: {repr(e)[:160]})")
-        return [[kokoro(c, t) for c, t, _ in lines] for _, lines in jobs]
+        return [[kokoro(c, t) for c, t, *_ in lines] for _, lines in jobs]
 
 
 def produce(vid, no_gpu=False, max_shots=None):
@@ -555,21 +558,23 @@ def produce(vid, no_gpu=False, max_shots=None):
     kvoice = assign_voices(sc.get("characters") or [])
     jobs = []
     for s, st in zip(shots, starts):
-        lines = [(d.get("character"), d.get("line"), (d.get("emotion") or "determined").lower())
+        lines = [(d.get("character"), (d.get("line_ja") if LANG == "ja" else None) or d.get("line"),
+                  (d.get("emotion") or "determined").lower(), d.get("line"))
                  for d in (s.get("dialogue") or [])]
         if s.get("voiceover"):
-            lines.append((main_char.get("id"), s["voiceover"], "calm"))
+            lines.append((main_char.get("id"), (s.get("voiceover_ja") if LANG == "ja" else None) or s["voiceover"],
+                          "calm", s["voiceover"]))
         jobs.append((st, [x for x in lines if x[1]]))
     rendered = render_lines(vid, jobs, chars, kvoice, work, no_gpu, voice_notes)
     last_end = 0.0
     for (st, lines), audios in zip(jobs, rendered):
         cur = max(st + 0.25, last_end)            # nie zwei Sätze übereinander
-        for (cid, text, emo), a in zip(lines, audios):
+        for (cid, text, emo, sub), a in zip(lines, audios):
             a = dub_fx(a, emo) * (10 ** (EMOTION.get(emo, EMOTION["determined"])[2] / 20))
             place(vo, a, cur)
             if subs and subs[-1][1] > cur:
                 subs[-1] = (subs[-1][0], cur - 0.02, subs[-1][2])
-            subs.append((cur, cur + len(a) / SR + 0.15, text))
+            subs.append((cur, cur + len(a) / SR + 0.15, sub or text))     # Untertitel immer Englisch
             cur += len(a) / SR + 0.15
         last_end = cur
 
