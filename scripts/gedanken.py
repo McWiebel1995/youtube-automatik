@@ -77,6 +77,16 @@ def write_text(rnd, minutes):
     data = gemini.ask_json(TEXT_TASK.format(topic=topic, words=words, paras=max(10, words // 110), nq=rnd.choice([2, 3]),
                                             quotes=qlist), temperature=0.9)
     data["topic"] = topic
+    w = sum(len(x.split()) for x in data["paragraphs"])
+    if w < words * 0.75:                                   # zu kurz -> ausbauen lassen
+        more = gemini.ask_json(
+            f"Erweitere diesen Hörtext auf {words} Wörter in {max(12, words // 110)} Absätzen. Gleicher Ton, gleiche "
+            "Zitate (wörtlich, nicht verändern), mehr anschauliche Beispiele und ruhige Momente. Antworte NUR mit JSON "
+            '{"paragraphs": ["..."], "quotes": [{"text": "...", "author": "...", "paragraph": 0}]}\n\n'
+            + json.dumps({"paragraphs": data["paragraphs"], "quotes": data.get("quotes")}, ensure_ascii=False),
+            temperature=0.7)
+        if sum(len(x.split()) for x in more.get("paragraphs", [])) > w:
+            data["paragraphs"], data["quotes"] = more["paragraphs"], more.get("quotes", data.get("quotes"))
     valid = {q["text"]: q["author"] for q in pool}
     data["quotes"] = [q for q in (data.get("quotes") or []) if q.get("text") in valid
                       and valid[q["text"]] == q.get("author")]          # nur geprüfte Zitate anzeigen
@@ -312,12 +322,12 @@ def build(out: Path, minutes=12.0, voice="Sulafat", seed=None):
         t0, t1 = pstarts[i] + 2, pstarts[i] + 16
         qlines = textwrap.wrap(q["text"], 42)
         (work / f"q{k}.txt").write_text("„" + "\n".join(qlines) + "“", encoding="utf-8")
-        ay = f"h*0.62+{len(qlines) * 66 + 24}"
+        ay = f"h*0.62+{len(qlines) * 76 + 26}"
         (work / f"a{k}.txt").write_text("– " + q["author"], encoding="utf-8")
         al = f"if(lt(t,{t0}),0,if(lt(t,{t0 + 1.5}),(t-{t0})/1.5,if(lt(t,{t1 - 1.5}),1,if(lt(t,{t1}),({t1}-t)/1.5,0))))"
-        vf += (f",drawtext=fontfile={qf}:textfile=q{k}.txt:fontsize=50:line_spacing=14:fontcolor=white:"
+        vf += (f",drawtext=fontfile={qf}:textfile=q{k}.txt:fontsize=58:line_spacing=16:fontcolor=white:"
                f"x=(w-tw)/2:y=h*0.62:shadowcolor=black@0.6:shadowx=2:shadowy=2:alpha='{al}'"
-               f",drawtext=fontfile={qf}:textfile=a{k}.txt:fontsize=36:fontcolor=white@0.85:"
+               f",drawtext=fontfile={qf}:textfile=a{k}.txt:fontsize=40:fontcolor=white@0.85:"
                f"x=(w-tw)/2:y={ay}:shadowcolor=black@0.6:shadowx=2:shadowy=2:alpha='{al}'")
     print("▶ Schnitt …")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", "list.txt", "-i", "mix.wav",

@@ -91,13 +91,23 @@ def make_loop(src, dst):
 
 
 # ----------------------------------------------------------------- Quellen
+CREEPY = {"spider", "spiders", "insect", "insects", "bug", "bugs", "snake", "snakes", "worm", "worms", "ant", "ants",
+          "bee", "bees", "wasp", "cockroach", "tarantula", "scorpion", "mosquito", "fly", "flies", "beetle", "caterpillar",
+          "people", "person", "man", "woman", "girl", "boy", "crowd", "face", "car", "traffic"}
+
+
+def _creepy(text):
+    import re
+    return bool(CREEPY & set(re.findall(r"[a-z]+", (text or "").lower())))
+
+
 def search_pixabay(key, q):
     r = requests.get("https://pixabay.com/api/videos/", timeout=30, params={
         "key": key, "q": q, "per_page": 30, "safesearch": "true", "order": "popular"})
     r.raise_for_status()
     hits = sorted(r.json().get("hits", []), key=lambda h: -h.get("duration", 0))
     for hit in hits:
-        if hit.get("duration", 0) < MIN_CLIP:
+        if hit.get("duration", 0) < MIN_CLIP or _creepy(hit.get("tags", "")):
             continue
         v = hit["videos"].get("large") or hit["videos"].get("medium") or {}
         if v.get("url") and v.get("width", 0) >= 1920:
@@ -110,7 +120,7 @@ def search_pexels(key, q):
     r.raise_for_status()
     vids = sorted(r.json().get("videos", []), key=lambda v: -v.get("duration", 0))
     for vid in vids:
-        if vid.get("duration", 0) < MIN_CLIP:
+        if vid.get("duration", 0) < MIN_CLIP or _creepy(vid.get("url", "").replace("-", " ")):
             continue
         files = [f for f in vid.get("video_files", []) if (f.get("width") or 0) >= 1920
                  and f.get("file_type") == "video/mp4"]
