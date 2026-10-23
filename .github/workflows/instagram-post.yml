@@ -45,6 +45,8 @@ jobs:
           IG_TOKEN_MONDMELODIE: ${{ secrets.IG_TOKEN_MONDMELODIE }}
           IG_TOKEN_LERNBAERCHEN: ${{ secrets.IG_TOKEN_LERNBAERCHEN }}
           IG_TOKEN_GUTENACHT: ${{ secrets.IG_TOKEN_GUTENACHT }}
+          IG_TOKEN_WHATIF: ${{ secrets.IG_TOKEN_WHATIF }}
+          IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
         run: python scripts/ig_queue.py post
       - name: Warteschlange speichern
         if: always()
