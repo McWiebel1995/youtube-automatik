@@ -125,29 +125,30 @@ def frame(bg, q, idx, state, t_count, hook=None):
     for ln in lines:
         d.text((W / 2, y), ln, font=fq, fill=(25, 25, 45), anchor="mm")
         y += 92
-    top = max(820, y + 140)
+    top = max(760, y + 110)
+    end = top + 2 * 210 + 170
     for k, opt in enumerate(q["options"][:3]):
-        y0 = top + k * 230
+        y0 = top + k * 210
         fill, txtc, outline = (255, 255, 255, 40), "white", (255, 255, 255, 160)
         if state == "reveal":
             if k == q["correct"]:
                 fill, outline, txtc = (46, 204, 113, 235), (255, 255, 255, 255), "white"
             else:
                 fill, outline, txtc = (255, 255, 255, 18), (255, 255, 255, 60), (255, 255, 255, 110)
-        card(d, (110, y0, W - 110, y0 + 180), fill, outline=outline)
-        d.text((190, y0 + 90), "ABC"[k], font=font(76), fill=(255, 210, 90) if state != "reveal" else txtc, anchor="mm")
-        d.text((W / 2 + 40, y0 + 90), opt, font=font(64, bold=False), fill=txtc, anchor="mm")
+        card(d, (110, y0, W - 110, y0 + 170), fill, outline=outline)
+        d.text((190, y0 + 85), "ABC"[k], font=font(76), fill=(255, 210, 90) if state != "reveal" else txtc, anchor="mm")
+        d.text((W / 2 + 40, y0 + 85), opt, font=font(64, bold=False), fill=txtc, anchor="mm")
     if state == "count":
         left = max(0.0, COUNT - t_count)
         frac = left / COUNT
-        card(d, (110, H - 300, W - 110, H - 250), (255, 255, 255, 50), radius=25)
+        card(d, (110, end + 210, W - 110, end + 260), (255, 255, 255, 50), radius=25)
         if frac > 0:
-            card(d, (110, H - 300, 110 + (W - 220) * frac, H - 250), (255, 210, 90, 255), radius=25)
-        d.text((W / 2, H - 380), str(int(np.ceil(left)) or 1), font=font(110), fill="white", anchor="mm")
+            card(d, (110, end + 210, 110 + (W - 220) * frac, end + 260), (255, 210, 90, 255), radius=25)
+        d.text((W / 2, end + 120), str(int(np.ceil(left)) or 1), font=font(110), fill="white", anchor="mm")
     if state == "reveal":
         fe = font(48, bold=False)
         for j, ln in enumerate(wrap(d, q.get("explain", ""), fe, W - 200)[:3]):
-            d.text((W / 2, H - 360 + j * 62), ln, font=fe, fill=(230, 230, 255), anchor="mm")
+            d.text((W / 2, end + 90 + j * 62), ln, font=fe, fill=(230, 230, 255), anchor="mm")
     return im
 
 
