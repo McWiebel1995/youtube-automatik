@@ -79,6 +79,9 @@ Kein eigener Shot für Endtafel/Titel – die Endtafel fügt KI 3 automatisch an
 - Konsistente Figuren: ein festes Character-Design-Sheet, das in JEDEM Bild-Prompt wiederholt wird;
   pro Shot angeben, welche Figuren zu sehen sind
 - Bild-Prompts auf Englisch im Stil: "1990s retro anime screencap, cel shading, ..."
+- "continues_previous": true, wenn der Shot direkt an den vorherigen anschließt (gleiche Szene, gleiche
+  Kamera-Achse, die Handlung geht nahtlos weiter) – dann wird er aus dem letzten Bild des Vorgängers weiteranimiert.
+  Etwa jeder dritte Shot sollte so ein Anschluss sein.
 - Viel Dialog (Englisch), jede Zeile max. ~10 Wörter, jede Zeile mit Emotion (shout, angry, whisper …)
 - Jede Figur hat eine klar unterscheidbare Stimme (Alter, Tonlage, Klangfarbe) wie in einer 90er-Anime-Synchro:
   der raue Held, der höhnische Gegenspieler, die entschlossene junge Frau usw.

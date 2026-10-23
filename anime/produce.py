@@ -137,6 +137,9 @@ def gpu_shots(vid, sc, work, no_gpu=False):
             sh("ffmpeg", "-y", "-loglevel", "error", "-i", out, "-frames:v", "1", work / f"key_{s['n']:02d}.png")
         return {"notes": ["Testlauf ohne GPU"], "gpu_seconds": 0}
 
+    if os.environ.get("ANIME_ENGINE", "v2") == "v2":
+        return gpu_shots_v2(vid, sc, work, style, base, notes, t0)
+
     import modal
     from modal_app import Studio, app
     chars = {c.get("id"): c for c in sc.get("characters", [])}
@@ -176,6 +179,59 @@ def gpu_shots(vid, sc, work, no_gpu=False):
                 notes.append(f"Shot {s['n']}: {res['note']}")
             if res.get("mode") == "t2v":
                 notes.append(f"Shot {s['n']}: ohne Startbild animiert (Figur evtl. weniger konsistent)")
+    return {"notes": sorted(set(notes)), "gpu_seconds": round(time.time() - t0)}
+
+
+def gpu_shots_v2(vid, sc, work, style, base, notes, t0):
+    """V2: Referenzbild je Figur (Animagine, 90er-Look) -> Szenenbild mit Qwen-Image-Edit (Figur bleibt gleich)
+    -> Animation mit Wan 2.2 I2V 14B. Shots mit "continues_previous" starten mit dem letzten Bild des Vorgängers."""
+    import modal
+    from modal_app import AnimateV2, KeyframeV2, Studio, app, download_v2
+    shots = sc["shots"]
+    chars = {c.get("id"): c for c in sc.get("characters", [])}
+    with modal.enable_output(), app.run():
+        status(vid, state="running", progress="Modelle bereitstellen")
+        download_v2.remote()                      # einmalig, danach sofort fertig (liegt im Volume)
+        studio = Studio()
+        refs = {}
+        for j, (cid, c) in enumerate(chars.items()):
+            status(vid, state="running", progress=f"Figur {j + 1}/{len(chars)}")
+            tags, neg = cast_tags([cid], chars)
+            res = studio.keyframe.remote(
+                f"{tags}, solo, full body, front view, standing, simple background, character sheet. "
+                f"{style}. {c.get('design_sheet', '')}"[:1800], negative=neg, seed=base + 7 + j, width=832, height=1216)
+            refs[cid] = res["png"]
+            (work / f"ref_{cid}.png").write_bytes(res["png"])
+        kf = KeyframeV2()
+        keys = {}
+        for i, s in enumerate(shots):
+            if s.get("continues_previous") and i > 0:
+                continue
+            status(vid, state="running", progress=f"Bild {i + 1}/{len(shots)}")
+            who = [c for c in (s.get("characters") or []) if c in refs] or \
+                  [d.get("character") for d in (s.get("dialogue") or []) if d.get("character") in refs]
+            names = ", ".join(chars[c].get("name", c) for c in who[:3])
+            prompt = clean(f"1990s retro anime screencap, cel shading, film grain, wide 16:9 frame. "
+                           f"{'Keep the exact same character design as in the reference image(s) (' + names + '). ' if who else ''}"
+                           f"{s.get('image_prompt', '')}. {style}")
+            if who:
+                res = kf.edit.remote([refs[c] for c in who[:3]], prompt[:1800], seed=base + s["n"])
+                keys[s["n"]] = res["png"]
+            else:                                 # Szene ohne Hauptfigur: normales Bild
+                tags, neg = cast_tags([], chars, s.get("action", ""))
+                keys[s["n"]] = studio.keyframe.remote(f"{tags}. {prompt}"[:1800], negative=neg, seed=base + s["n"])["png"]
+            (work / f"key_{s['n']:02d}.png").write_bytes(keys[s["n"]])
+        anim = AnimateV2()
+        last = None
+        for i, s in enumerate(shots):
+            status(vid, state="running", progress=f"Animation {i + 1}/{len(shots)}")
+            start = last if (s.get("continues_previous") and last) else keys.get(s["n"]) or last
+            motion = clean(f"{s.get('motion_prompt', '')}. {s.get('action', '')}. {s.get('camera', '')}")
+            dur = min(4.0, max(2.0, float(s.get("duration_s") or 3)))
+            res = anim.animate.remote(start, motion[:1800], num_frames=int(dur * 16) // 4 * 4 + 1, seed=base + 100 + s["n"])
+            (work / f"clip_{s['n']:02d}.mp4").write_bytes(res["mp4"])
+            last = res["last_png"]
+    notes.append("Engine V2: Qwen-Image-Edit + Wan 2.2 14B")
     return {"notes": sorted(set(notes)), "gpu_seconds": round(time.time() - t0)}
 
 

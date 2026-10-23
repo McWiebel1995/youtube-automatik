@@ -197,3 +197,107 @@ class VoiceDE:
         buf = io.BytesIO()
         sf.write(buf, wav.squeeze(0).cpu().numpy(), self.model.sr, format="WAV")
         return buf.getvalue()
+
+
+# ================================================================ V2: konsistente Figuren + flüssige Animation
+# Qwen-Image-Edit (Apache 2.0): Figur aus Referenzbild(ern) in neue Szene setzen  (≈ "Nano Banana", offen)
+# Wan 2.2 I2V A14B (Apache 2.0): großes Bild-zu-Video-Modell                     (≈ "Seedance", offen)
+image_v2 = (
+    modal.Image.debian_slim(python_version="3.11")
+    .apt_install("ffmpeg", "git")
+    .pip_install(
+        "torch==2.6.0", "torchvision==0.21.0",
+        "git+https://github.com/huggingface/diffusers", "transformers>=4.51", "accelerate>=1.6",
+        "safetensors", "sentencepiece", "ftfy", "imageio", "imageio-ffmpeg", "pillow", "numpy<2.3", "huggingface_hub",
+    )
+    .env({"HF_HOME": "/models/hf", "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})
+)
+EDIT_MODELS = ["Qwen/Qwen-Image-Edit-2509", "Qwen/Qwen-Image-Edit"]
+I2V14 = "Wan-AI/Wan2.2-I2V-A14B-Diffusers"
+
+
+@app.function(image=image_v2, volumes={"/models": models}, timeout=7200, cpu=4, memory=8192)
+def download_v2():
+    """Lädt die großen Modelle einmal ins Volume – auf CPU (kostet kaum Guthaben)."""
+    from huggingface_hub import snapshot_download
+    for repo in [EDIT_MODELS[0], I2V14]:
+        snapshot_download(repo, cache_dir="/models/hf/hub")
+        models.commit()
+    return "ok"
+
+
+@app.cls(gpu="A100-80GB", image=image_v2, volumes={"/models": models}, timeout=3600, scaledown_window=120,
+         memory=98304)
+class KeyframeV2:
+    @modal.enter()
+    def load(self):
+        import torch
+        self.torch = torch
+        self.mode, self.err = None, None
+        try:
+            from diffusers import QwenImageEditPlusPipeline
+            self.pipe = QwenImageEditPlusPipeline.from_pretrained(EDIT_MODELS[0], torch_dtype=torch.bfloat16)
+            self.mode = "plus"
+        except Exception as e:  # noqa: BLE001
+            self.err = repr(e)[:200]
+            from diffusers import QwenImageEditPipeline
+            self.pipe = QwenImageEditPipeline.from_pretrained(EDIT_MODELS[1], torch_dtype=torch.bfloat16)
+            self.mode = "edit"
+        self.pipe.enable_model_cpu_offload()
+        print("Qwen-Edit:", self.mode, self.err or "")
+
+    @modal.method()
+    def edit(self, ref_pngs: list, prompt: str, seed: int = 0, steps: int = 30) -> dict:
+        from PIL import Image
+        refs = [Image.open(io.BytesIO(b)).convert("RGB") for b in ref_pngs][:3]
+        gen = self.torch.Generator("cuda").manual_seed(seed)
+        neg = "lowres, blurry, text, watermark, logo, bad anatomy, extra fingers, 3d, photo, nsfw, gore"
+        kw = dict(prompt=prompt, negative_prompt=neg, num_inference_steps=steps, true_cfg_scale=4.0, generator=gen)
+        if self.mode == "plus":
+            out = self.pipe(image=refs if len(refs) > 1 else refs[0], **kw).images[0]
+        else:
+            out = self.pipe(image=refs[0], **kw).images[0]
+        out = out.convert("RGB")
+        w, h = out.size                                          # auf 16:9 zuschneiden
+        tw, th = (w, int(w * 9 / 16)) if h > w * 9 / 16 else (int(h * 16 / 9), h)
+        out = out.crop(((w - tw) // 2, (h - th) // 2, (w + tw) // 2, (h + th) // 2)).resize((1344, 756))
+        buf = io.BytesIO()
+        out.save(buf, format="PNG")
+        return {"png": buf.getvalue(), "mode": self.mode}
+
+
+@app.cls(gpu="A100-80GB", image=image_v2, volumes={"/models": models}, timeout=3600, scaledown_window=120,
+         memory=98304)
+class AnimateV2:
+    @modal.enter()
+    def load(self):
+        import torch
+        from diffusers import WanImageToVideoPipeline
+        self.torch = torch
+        self.pipe = WanImageToVideoPipeline.from_pretrained(I2V14, torch_dtype=torch.bfloat16)
+        self.pipe.enable_model_cpu_offload()
+        try:
+            self.pipe.vae.enable_tiling()
+        except Exception:  # noqa: BLE001
+            pass
+
+    @modal.method()
+    def animate(self, image_png: bytes, prompt: str, num_frames: int = 49, seed: int = 0, steps: int = 30,
+                width: int = 832, height: int = 480) -> dict:
+        import numpy as np
+        from diffusers.utils import export_to_video
+        from PIL import Image
+        img = Image.open(io.BytesIO(image_png)).convert("RGB").resize((width, height))
+        gen = self.torch.Generator("cuda").manual_seed(seed)
+        num_frames = max(17, min(81, (num_frames - 1) // 4 * 4 + 1))
+        frames = self.pipe(image=img, prompt="1990s retro cel anime, hand-drawn animation, fluid motion. " + prompt,
+                           negative_prompt=WAN_NEG, height=height, width=width, num_frames=num_frames,
+                           guidance_scale=3.5, num_inference_steps=steps, generator=gen).frames[0]
+        export_to_video(frames, "/tmp/v2.mp4", fps=16)
+        last = frames[-1]
+        if not isinstance(last, Image.Image):
+            last = Image.fromarray((np.asarray(last) * 255).clip(0, 255).astype("uint8"))
+        buf = io.BytesIO()
+        last.save(buf, format="PNG")
+        with open("/tmp/v2.mp4", "rb") as f:
+            return {"mp4": f.read(), "last_png": buf.getvalue(), "frames": num_frames}

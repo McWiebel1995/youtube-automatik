@@ -59,7 +59,7 @@ Antworte ausschließlich mit JSON nach diesem Schema:
                       "texture": "gravelly|smooth|raspy|bright|breathy|nasal"}}
  }}],
  "shots": [{{
-    "n": 1, "duration_s": 2-4, "characters": ["c1"], "beat": "HOOK|EINSTIEG|KONFLIKT|WENDEPUNKT|HÖHEPUNKT|NACHHALL",
+    "n": 1, "duration_s": 2-4, "characters": ["c1"], "continues_previous": false, "beat": "HOOK|EINSTIEG|KONFLIKT|WENDEPUNKT|HÖHEPUNKT|NACHHALL",
     "camera": "shot size + angle + movement",
     "action": "what happens (English)",
     "dialogue": [{{"character": "c1", "line": "...", "emotion": "shout|angry|determined|calm|whisper|crying|mocking|fearful"}}],
