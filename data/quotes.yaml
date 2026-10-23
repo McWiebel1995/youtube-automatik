@@ -1,0 +1,29 @@
+# Geprüfte, bekannte Zitate (Autoren seit über 70 Jahren verstorben). Nur diese werden verwendet –
+# die KI darf keine Zitate erfinden.
+- {text: "Nicht weil es schwer ist, wagen wir es nicht, sondern weil wir es nicht wagen, ist es schwer.", author: "Seneca"}
+- {text: "Wir leiden öfter in der Vorstellung als in der Wirklichkeit.", author: "Seneca"}
+- {text: "Das Glück deines Lebens hängt von der Beschaffenheit deiner Gedanken ab.", author: "Marc Aurel"}
+- {text: "Sehr wenig ist nötig, um ein glückliches Leben zu führen.", author: "Marc Aurel"}
+- {text: "Nicht die Dinge selbst beunruhigen die Menschen, sondern ihre Urteile über die Dinge.", author: "Epiktet"}
+- {text: "Wer mit wenig nicht zufrieden ist, ist mit nichts zufrieden.", author: "Epikur"}
+- {text: "Ich weiß, dass ich nichts weiß.", author: "Sokrates"}
+- {text: "Nichts ist so beständig wie der Wandel.", author: "Heraklit"}
+- {text: "Auch eine Reise von tausend Meilen beginnt mit dem ersten Schritt.", author: "Laozi"}
+- {text: "Wer andere kennt, ist klug. Wer sich selbst kennt, ist weise.", author: "Laozi"}
+- {text: "In dir muss brennen, was du in anderen entzünden willst.", author: "Augustinus"}
+- {text: "Das Herz hat seine Gründe, die der Verstand nicht kennt.", author: "Blaise Pascal"}
+- {text: "Habe Mut, dich deines eigenen Verstandes zu bedienen!", author: "Immanuel Kant"}
+- {text: "Ich weiß nicht, ob es besser wird, wenn es anders wird. Aber es muss anders werden, wenn es besser werden soll.", author: "Georg Christoph Lichtenberg"}
+- {text: "Es ist nicht genug, zu wissen, man muss auch anwenden; es ist nicht genug, zu wollen, man muss auch tun.", author: "Johann Wolfgang von Goethe"}
+- {text: "Man sieht nur, was man weiß.", author: "Johann Wolfgang von Goethe"}
+- {text: "Ernst ist das Leben, heiter ist die Kunst.", author: "Friedrich Schiller"}
+- {text: "Wo aber Gefahr ist, wächst das Rettende auch.", author: "Friedrich Hölderlin"}
+- {text: "Wohin gehen wir? Immer nach Hause.", author: "Novalis"}
+- {text: "Im Grunde sind es immer die Verbindungen mit Menschen, die dem Leben seinen Wert geben.", author: "Wilhelm von Humboldt"}
+- {text: "Wer ein Warum zum Leben hat, erträgt fast jedes Wie.", author: "Friedrich Nietzsche"}
+- {text: "Wer nichts weiß, muss alles glauben.", author: "Marie von Ebner-Eschenbach"}
+- {text: "Habe Geduld gegen alles Ungelöste in deinem Herzen und versuche, die Fragen selbst liebzuhaben.", author: "Rainer Maria Rilke"}
+- {text: "Wege entstehen dadurch, dass man sie geht.", author: "Franz Kafka"}
+- {text: "Man sieht nur mit dem Herzen gut. Das Wesentliche ist für die Augen unsichtbar.", author: "Antoine de Saint-Exupéry"}
+- {text: "Phantasie ist wichtiger als Wissen.", author: "Albert Einstein"}
+- {text: "Das Wichtigste ist, dass man nicht aufhört zu fragen.", author: "Albert Einstein"}

@@ -51,12 +51,16 @@ AMBIENT = {"forest stream": "stream creek", "rain on leaves": "gentle rain", "oc
 TEXT_TASK = """Schreibe einen neuen, ruhigen Hörtext auf Deutsch zum Thema „{topic}“.
 Stil: warm, klug, persönlich (Du-Form), wie eine kluge, humorvolle Lehrerin, die abends am Kamin erzählt.
 Anschauliche Beispiele aus dem Alltag, kleine überraschende Erkenntnisse (z. B. wie das Gehirn lernt),
-keine Ratgeber-Floskeln, keine Aufzählungen, keine Esoterik, keine medizinischen Versprechen, keine Namen
-realer Personen. Zum Ende hin immer ruhiger, der Schluss lädt zum Entspannen und Einschlafen ein.
+keine Ratgeber-Floskeln, keine Aufzählungen, keine Esoterik, keine medizinischen Versprechen.
+Baue genau {nq} passende Zitate aus DIESER Liste wörtlich ein (nicht verändern, keine anderen Zitate erfinden),
+jeweils mit Namen eingeleitet (z. B. „Seneca hat einmal geschrieben: …“) und danach einen Moment zum Nachdenken:
+{quotes}
+Außer diesen Zitat-Autoren keine Namen realer Personen. Zum Ende hin immer ruhiger, der Schluss lädt zum Entspannen und Einschlafen ein.
 Länge: {words} Wörter in {paras} Absätzen.
 Zusätzlich: ein „Gedanke des Tages“ (35–50 Wörter) für einen Kurzclip, der für sich allein steht.
 Antworte NUR mit JSON:
 {{"title": "...", "paragraphs": ["..."], "short_thought": "...",
+  "quotes": [{{"text": "exakt wie in der Liste", "author": "...", "paragraph": Index des Absatzes (0-basiert)}}],
   "youtube": {{"title": "max 90 Zeichen, z. B. 'Gelassenheit lernen – ruhige Gedanken zum Einschlafen'",
               "description": "3–5 Sätze", "tags": ["..."]}},
   "short_title": "max 80 Zeichen, endet mit #shorts"}}"""
@@ -66,8 +70,16 @@ Antworte NUR mit JSON:
 def write_text(rnd, minutes):
     topic = rnd.choice(TOPICS)
     words = int(minutes * 120)                    # ruhiges Vorlesetempo ~120 Wörter/Minute
-    data = gemini.ask_json(TEXT_TASK.format(topic=topic, words=words, paras=max(10, words // 110)), temperature=0.9)
+    import yaml
+    pool = yaml.safe_load((ROOT / "data" / "quotes.yaml").read_text(encoding="utf-8"))
+    sample = rnd.sample(pool, min(12, len(pool)))
+    qlist = "\n".join(f"- „{q['text']}“ – {q['author']}" for q in sample)
+    data = gemini.ask_json(TEXT_TASK.format(topic=topic, words=words, paras=max(10, words // 110), nq=rnd.choice([2, 3]),
+                                            quotes=qlist), temperature=0.9)
     data["topic"] = topic
+    valid = {q["text"]: q["author"] for q in pool}
+    data["quotes"] = [q for q in (data.get("quotes") or []) if q.get("text") in valid
+                      and valid[q["text"]] == q.get("author")]          # nur geprüfte Zitate anzeigen
     return data
 
 
@@ -130,11 +142,16 @@ def cb_paragraph(p, work, tag):
     return np.concatenate(out) if out else np.zeros(1, np.float32)
 
 
-def voice_track(paragraphs, voice, work):
+def voice_track(paragraphs, voice, work, starts=None):
     parts, model = [np.zeros(int(3.0 * SR), np.float32)], None
     if os.environ.get("TTS_ENGINE") == "chatterbox":
+        t = 3.0
         for i, p in enumerate(paragraphs):
-            parts += [cb_paragraph(p, work, f"p{i:02d}"), np.zeros(int(1.2 * SR), np.float32)]
+            a = cb_paragraph(p, work, f"p{i:02d}")
+            if starts is not None:
+                starts.append(t)
+            parts += [a, np.zeros(int(1.2 * SR), np.float32)]
+            t += len(a) / SR + 1.2
         parts.append(np.zeros(int(8 * SR), np.float32))
         return np.concatenate(parts), "chatterbox-de"
     for i, p in enumerate(chunks(paragraphs)):
@@ -204,6 +221,40 @@ def ambient(scene, seconds, work):
     return np.zeros(int(seconds * SR), np.float32)
 
 
+MUSIC_Q = ["calm ambient piano", "soft piano relaxing", "ambient pad calm meditation", "gentle piano ambient"]
+
+
+def ambient_music(seconds, work):
+    """Entspannte Hintergrundmusik (Freesound CC0, ohne Gesang), mehrere Stücke weich aneinandergereiht."""
+    import fetch_sounds as fsd
+    key = os.environ.get("FREESOUND_API_KEY")
+    out, n = [], int(seconds * SR)
+    try:
+        for q in random.sample(MUSIC_Q, len(MUSIC_Q)):
+            for s, url in fsd.search(key, q):
+                if {"vocal", "vocals", "voice", "singing", "drums", "beat"} & {t.lower() for t in s.get("tags", [])}:
+                    continue
+                raw = work / f"mus_{s['id']}.ogg"
+                raw.write_bytes(requests.get(url, timeout=120).content)
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(raw), "-ac", "1", "-ar", str(SR),
+                                str(raw.with_suffix(".wav"))], check=True)
+                a = read_wav(raw.with_suffix(".wav"))
+                f = min(len(a) // 4, 4 * SR)
+                a[:f] *= np.linspace(0, 1, f)
+                a[-f:] *= np.linspace(1, 0, f)
+                out.append(a)
+                break
+            if sum(len(x) for x in out) >= n:
+                break
+    except Exception as e:  # noqa: BLE001
+        print(f"  ⚠ Musik: {e}")
+    if not out:
+        return np.zeros(n, np.float32)
+    track = np.concatenate(out)
+    track = np.tile(track, int(np.ceil(n / len(track))) + 1)[:n]
+    return track.astype(np.float32)
+
+
 def font(name):
     p = ROOT / "assets" / "fonts" / name
     return p if p.exists() else Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
@@ -222,7 +273,8 @@ def build(out: Path, minutes=12.0, voice="Sulafat", seed=None):
     data = write_text(rnd, minutes)
     print(f"  „{data['title']}“ ({data['topic']}), {sum(len(p.split()) for p in data['paragraphs'])} Wörter")
     print("▶ Stimme …")
-    v, model = voice_track(data["paragraphs"], voice, work)
+    pstarts = []
+    v, model = voice_track(data["paragraphs"], voice, work, pstarts)
     total = len(v) / SR
     scene_pool = rnd.sample(SCENES, 5)
     print(f"  {total / 60:.1f} Min. ({model}) ▶ Bilder: {scene_pool}")
@@ -239,7 +291,8 @@ def build(out: Path, minutes=12.0, voice="Sulafat", seed=None):
     (work / "list.txt").write_text("".join(f"file '{p.name}'\n" for p in segs))
     amb = ambient(scene_pool[0], total + 2, work)
     amb = np.pad(amb, (0, max(0, len(v) + 60 * SR - len(amb))))   # nie kürzer als Stimme (+ Short)
-    mix = v * 1.0 + amb[: len(v)] * (10 ** (-24 / 20))
+    mus = ambient_music(total + 60, work)                          # sanfte Hintergrundmusik
+    mix = v * 1.0 + amb[: len(v)] * (10 ** (-26 / 20)) + mus[: len(v)] * (10 ** (-25 / 20))
     fo = int(6 * SR)
     mix[-fo:] *= np.linspace(1, 0, fo)
     mix = np.clip(mix / max(1e-6, np.max(np.abs(mix))) * 0.9, -1, 1)
@@ -250,6 +303,22 @@ def build(out: Path, minutes=12.0, voice="Sulafat", seed=None):
           "shadowcolor=black@0.5:shadowx=2:shadowy=2:alpha='if(lt(t,1),0,if(lt(t,2.5),(t-1)/1.5,if(lt(t,7),1,"
           "if(lt(t,9),(9-t)/2,0))))',"
           f"fade=t=out:st={total - 3}:d=3")
+    qf = font("PlayfairDisplay.ttf")
+    import textwrap
+    for k, q in enumerate(data.get("quotes") or []):
+        i = q.get("paragraph")
+        if not isinstance(i, int) or not 0 <= i < len(pstarts):
+            continue
+        t0, t1 = pstarts[i] + 2, pstarts[i] + 16
+        qlines = textwrap.wrap(q["text"], 42)
+        (work / f"q{k}.txt").write_text("„" + "\n".join(qlines) + "“", encoding="utf-8")
+        ay = f"h*0.62+{len(qlines) * 66 + 24}"
+        (work / f"a{k}.txt").write_text("– " + q["author"], encoding="utf-8")
+        al = f"if(lt(t,{t0}),0,if(lt(t,{t0 + 1.5}),(t-{t0})/1.5,if(lt(t,{t1 - 1.5}),1,if(lt(t,{t1}),({t1}-t)/1.5,0))))"
+        vf += (f",drawtext=fontfile={qf}:textfile=q{k}.txt:fontsize=50:line_spacing=14:fontcolor=white:"
+               f"x=(w-tw)/2:y=h*0.62:shadowcolor=black@0.6:shadowx=2:shadowy=2:alpha='{al}'"
+               f",drawtext=fontfile={qf}:textfile=a{k}.txt:fontsize=36:fontcolor=white@0.85:"
+               f"x=(w-tw)/2:y={ay}:shadowcolor=black@0.6:shadowx=2:shadowy=2:alpha='{al}'")
     print("▶ Schnitt …")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", "list.txt", "-i", "mix.wav",
                     "-vf", vf, "-map", "0:v", "-map", "1:a", "-t", f"{total:.2f}", "-c:v", "libx264", "-preset", "medium",
@@ -265,7 +334,7 @@ def build(out: Path, minutes=12.0, voice="Sulafat", seed=None):
         st = trim_silence(read_wav(work / "short.wav"))
     sv = np.concatenate([np.zeros(int(1.0 * SR), np.float32), st, np.zeros(int(2.5 * SR), np.float32)])
     sdur = min(58.0, len(sv) / SR)
-    sm = sv[: int(sdur * SR)] + amb[: int(sdur * SR)] * (10 ** (-22 / 20))
+    sm = sv[: int(sdur * SR)] + amb[: int(sdur * SR)] * (10 ** (-24 / 20)) + mus[: int(sdur * SR)] * (10 ** (-23 / 20))
     sm = np.clip(sm / max(1e-6, np.max(np.abs(sm))) * 0.9, -1, 1)
     wavfile.write(work / "smix.wav", SR, (sm * 32767).astype(np.int16))
     import textwrap
@@ -283,7 +352,7 @@ def build(out: Path, minutes=12.0, voice="Sulafat", seed=None):
                     "-vf", svf, "-map", "0:v", "-map", "1:a", "-t", f"{sdur:.2f}", "-c:v", "libx264", "-preset",
                     "medium", "-crf", "19", "-c:a", "aac", "-b:a", "192k", "-af", "loudnorm=I=-16:TP=-1.5",
                     "-movflags", "+faststart", str(out / "short.mp4")], cwd=work, check=True)
-    meta = {k: data.get(k) for k in ("title", "topic", "short_thought", "youtube", "short_title")}
+    meta = {k: data.get(k) for k in ("title", "topic", "short_thought", "youtube", "short_title", "quotes")}
     meta.update(minutes=round(total / 60, 1), voice=voice, tts_model=model, scenes=scene_pool)
     (out / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
     subprocess.run(["rm", "-rf", str(work)])
