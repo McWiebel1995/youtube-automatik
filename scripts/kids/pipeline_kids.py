@@ -171,6 +171,7 @@ def main():
             print(f"  + Short: {xmeta['title']} ({xinfo['video_file']})")
     else:
         import upload
+        yt = upload.service(token)          # frische Verbindung (die alte ist nach der langen Produktion oft getrennt)
         recent = upload.recent_titles(yt)
         if meta["title"].strip().lower() in recent:
             meta["title"] = upload.unique_title(lambda: dict(meta), recent, rnd, SUFFIX[args.channel], tries=0)["title"]

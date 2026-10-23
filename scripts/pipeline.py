@@ -78,6 +78,8 @@ def main():
             return
 
     info = render.render(ch, seconds, work, rnd)
+    if yt:
+        yt = upload.service(token)          # frische Verbindung nach dem langen Rendern
     recent = upload.recent_titles(yt) if yt else set()
     meta = metadata.build(ch, cfg, info, hours, rnd) if not yt else upload.unique_title(
         lambda: metadata.build(ch, cfg, info, hours, rnd), recent, rnd,
