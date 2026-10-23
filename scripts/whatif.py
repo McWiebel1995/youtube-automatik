@@ -78,9 +78,47 @@ def used():
 
 
 # ----------------------------------------------------------------- 1–3 Text
+UA = {"User-Agent": "BeyondTheIf/1.0 (YouTube science channel; github.com/McWiebel1995)"}
+
+
+def google_news(query, n=12):
+    """Aktuelle Schlagzeilen (Google News RSS) – als Themen-Inspiration und Quellenhinweise."""
+    import xml.etree.ElementTree as ET
+    try:
+        r = requests.get("https://news.google.com/rss/search", params={"q": query, "hl": "en-US", "gl": "US",
+                                                                         "ceid": "US:en"}, headers=UA, timeout=30)
+        r.raise_for_status()
+        items = ET.fromstring(r.content).findall(".//item")[:n]
+        return [(i.findtext("title") or "", i.findtext("link") or "") for i in items]
+    except Exception as e:  # noqa: BLE001
+        print(f"  ⚠ Google News: {e}")
+        return []
+
+
+def wikipedia(query, n=3):
+    """Faktenbasis aus Wikipedia (Zusammenfassungen + Links)."""
+    out = []
+    try:
+        r = requests.get("https://en.wikipedia.org/w/api.php", headers=UA, timeout=30, params={
+            "action": "query", "list": "search", "srsearch": query, "srlimit": n, "format": "json"})
+        for hit in r.json().get("query", {}).get("search", []):
+            t = hit["title"]
+            sm = requests.get("https://en.wikipedia.org/api/rest_v1/page/summary/" + requests.utils.quote(t),
+                              headers=UA, timeout=30).json()
+            out.append((t, sm.get("extract", ""), (sm.get("content_urls") or {}).get("desktop", {}).get("page", "")))
+    except Exception as e:  # noqa: BLE001
+        print(f"  ⚠ Wikipedia: {e}")
+    return out
+
+
 def plan(rnd, minutes):
     u = used()[-60:]
-    topic = gemini.ask_json(TOPIC_TASK.format(used="; ".join(u) or "none"), temperature=1.0)
+    news = google_news(rnd.choice(["science discovery", "space astronomy", "physics breakthrough", "climate earth science",
+                                   "biology evolution", "future technology"]))
+    news_txt = "\n".join(f"- {t}" for t, _ in news) or "none"
+    topic = gemini.ask_json(TOPIC_TASK.format(used="; ".join(u) or "none") +
+                            f"\nOptional inspiration – current science headlines (Google News):\n{news_txt}",
+                            temperature=1.0)
     q = topic["question"]
     try:
         notes, sources = gemini.research(
@@ -88,8 +126,17 @@ def plan(rnd, minutes):
             f"with brief explanations. Be accurate; mention uncertainties.")
     except Exception as e:  # noqa: BLE001
         print(f"::warning title=Recherche::{str(e)[:900]}")
-        notes, sources = ("No live research available. Use only well-established, widely accepted scientific facts; "
-                          "avoid precise numbers unless they are textbook knowledge."), []
+        notes, sources = "", []
+    # Zusätzlich / ersatzweise: Wikipedia-Fakten + aktuelle Meldungen (Google News) zum Thema
+    kw = re.sub(r"(?i)^what if\s+", "", q).rstrip("?")
+    wiki = wikipedia(kw)
+    nws = google_news(kw, 6)
+    notes += "\n\nWikipedia facts:\n" + "\n".join(f"[{t}] {x[:1500]}" for t, x, _ in wiki)
+    notes += "\n\nRecent news headlines:\n" + "\n".join(f"- {t}" for t, _ in nws)
+    if not wiki and not sources:
+        notes += ("\nUse only well-established, widely accepted scientific facts; avoid precise numbers unless they "
+                  "are textbook knowledge.")
+    sources = sources + [(f"Wikipedia: {t}", url) for t, _, url in wiki if url] + [(t, url) for t, url in nws[:3]]
     words = int(minutes * 140)
     script = gemini.ask_json(SCRIPT_TASK.format(question=q, notes=notes[:12000], words=words,
                                                 segs=max(10, words // 60)), temperature=0.8)
