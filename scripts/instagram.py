@@ -22,6 +22,8 @@ ACCOUNTS = {
     "lernbaerchen": ("IG_TOKEN_LERNBAERCHEN", "lernbaerchenig"),
     "gutenacht": ("IG_TOKEN_GUTENACHT", "gutenachtgeschichteig"),
 }
+if os.environ.get("IG_TOKEN_WHATIF") and os.environ.get("IG_USER_WHATIF"):
+    ACCOUNTS["whatif"] = ("IG_TOKEN_WHATIF", os.environ["IG_USER_WHATIF"])
 
 
 class IGError(RuntimeError):

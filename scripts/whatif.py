@@ -424,12 +424,127 @@ def upload_all(out: Path, meta):
     upload.mark_uploaded("whatif")
 
 
+# ----------------------------------------------------------------- Tages-Short zu aktuellen News (Algorithmus-Test)
+NEWS_TASK = """You run "Beyond the If" (science what-if scenarios). Here are today's top science/tech headlines:
+{news}
+Pick the ONE headline with the most viral what-if potential and turn it into a YouTube Short / Instagram Reel.
+Facts you may use (Wikipedia): {facts}
+Rules: 70–90 words, first sentence is a scroll-stopping hook that references the real news briefly,
+then the what-if scenario with real science, end with a question to the viewer + "Follow for more what-ifs."
+No invented numbers, no fear-mongering, no real private people. Visuals: 4 scenes (stock or ai, like before).
+Answer ONLY JSON: {{"headline": "...", "question": "What if ...?", "title": "max 80 chars incl #shorts",
+ "text": "...", "visuals": [{{"kind": "stock|ai", "query": "...", "prompt": "..."}}], "hashtags": ["..."]}}"""
+
+
+def perf_hint():
+    """Lernschleife: welche Themen liefen bisher am besten (aus data/stats)?"""
+    import glob
+    best = []
+    for f in sorted(glob.glob(str(ROOT / "data" / "stats" / "*.json")))[-3:]:
+        try:
+            for ch in json.loads(Path(f).read_text(encoding="utf-8"))["channels"]:
+                if ch["name"] == CFG["name"]:
+                    best += [(r["views"], r["title"]) for r in ch["list"]]
+        except Exception:  # noqa: BLE001
+            pass
+    best = sorted(set(best), reverse=True)[:5]
+    return "\n".join(f"- {t} ({v} views)" for v, t in best) or "no data yet"
+
+
+def news_short(out: Path, seed=None):
+    rnd = random.Random(seed)
+    out = Path(out).resolve()
+    out.mkdir(parents=True, exist_ok=True)
+    work = Path(tempfile.mkdtemp(dir=out))
+    news = []
+    for q in ["science", "space NASA", "physics", "climate", "AI technology", "medicine discovery"]:
+        news += google_news(q + " when:2d", 5)
+    news_txt = "\n".join(f"- {t}" for t, _ in news[:25])
+    sc = gemini.ask_json(NEWS_TASK.format(news=news_txt, facts="(see below)") +
+                         f"\nBest performing videos so far (prefer similar topics/hooks):\n{perf_hint()}", temperature=0.9)
+    wiki = wikipedia(re.sub(r"(?i)^what if\s+", "", sc.get("question", "")).rstrip("?"))
+    if wiki:                                                    # Faktencheck-Durchgang mit Wikipedia
+        sc = gemini.ask_json("Check this Short script against these facts and fix anything inaccurate; keep length, "
+                             "tone and JSON format exactly.\nFacts:\n" +
+                             "\n".join(f"[{t}] {x[:1200]}" for t, x, _ in wiki) + "\n\nScript JSON:\n" +
+                             json.dumps(sc, ensure_ascii=False), temperature=0.3) | {"_checked": True}
+    print(f"  News: {sc.get('headline')}\n  → {sc.get('question')}")
+    import modal
+    from modal_app import ImageFlux, Voice, app, download_flux
+    ref_path = ROOT / "data" / "voices" / "anime" / "narrator.wav"
+    ref = ref_path.read_bytes() if ref_path.exists() else b""
+    with modal.enable_output(), app.run():
+        download_flux.remote()
+        voice, img = Voice(), ImageFlux()
+        a, subs = narrate(voice, ref, sentences(sc["text"]), work, "n")
+        srcs, used_ids = [], set()
+        for i, v in enumerate((sc.get("visuals") or [])[:5]):
+            src, is_img = None, False
+            if v.get("kind") == "stock" and v.get("query"):
+                src = stock_clip(v["query"], work, used_ids)
+            if src is None:
+                png = img.generate.remote(f"cinematic photorealistic, dramatic lighting, highly detailed, vertical "
+                                          f"composition. {v.get('prompt') or v.get('query')}. no text", seed=200 + i,
+                                          width=928, height=1664)
+                src = work / f"ai_{i}.png"
+                src.write_bytes(png)
+                is_img = True
+            srcs.append((src, is_img))
+    fade, total = 0.5, len(a) / SR
+    per = total / max(1, len(srcs)) + fade
+    clips = []
+    for j, (src, is_img) in enumerate(srcs):
+        dst = work / f"c{j}.mp4"
+        segment_video(src, dst, per, is_img, w=1080, h=1920, seed=j)
+        clips.append(dst)
+    xfade_concat(clips, [per] * len(clips), work / "short.mp4", fade)
+    chunks = []
+    for x, y, txt in subs:
+        words = txt.split()
+        n = max(1, int(np.ceil(len(words) / 4)))
+        for c in range(n):
+            chunks.append((x + (y - x) * c / n, x + (y - x) * (c + 1) / n, " ".join(words[c * 4:(c + 1) * 4])))
+    ass(chunks, work / "s.ass", 1080, 1920, 84, 0, align=5, upper=True)
+    mix_and_render(work / "short.mp4", a, out / "news_short.mp4", work, work / "s.ass", music_db=-22)
+    src_lines = "\n".join(f"- {t}: {u}" for t, _, u in wiki if u)
+    meta = {"title": sc["title"][:100], "question": sc.get("question"), "headline": sc.get("headline"),
+            "description": f"{sc['text']}\n\nBased on today's news: {sc.get('headline')}\nBackground:\n{src_lines}\n\n"
+                           "Some scenes are AI-generated illustrations.\n" + " ".join("#" + h.lstrip("#") for h in sc.get("hashtags", [])[:6]),
+            "tags": [h.lstrip("#") for h in sc.get("hashtags", [])][:15] + ["shorts", "whatif"]}
+    (out / "news_meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
+    subprocess.run(["rm", "-rf", str(work)])
+    return meta
+
+
+def upload_news_short(out: Path, meta):
+    import upload
+    yt = upload.service(os.environ[CFG["token_secret"]])
+    upload.check_channel(yt, CFG)
+    ch = {"category_id": CFG.get("category_id", "28"), "made_for_kids": False, "privacy": "public", "name": CFG["name"]}
+    vid = upload.upload(yt, out / "news_short.mp4", meta, ch)
+    print(f"  ✓ Short: https://youtu.be/{vid}")
+    if os.environ.get("IG_TOKEN_WHATIF"):
+        import ig_queue
+        ig_queue.add("whatif", out / "news_short.mp4", meta["description"][:2000])
+    upload.mark_uploaded("whatif-news")
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="output/whatif")
     ap.add_argument("--minutes", type=float, default=9)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--news-short", action="store_true", help="nur ein Short zu aktuellen News")
     a = ap.parse_args()
+    if a.news_short:
+        if not a.dry_run:
+            import upload
+            if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_today("whatif-news"):
+                sys.exit("Heute schon gepostet – übersprungen.")
+        m = news_short(Path(a.out))
+        if not a.dry_run:
+            upload_news_short(Path(a.out), m)
+        sys.exit(0)
     if not a.dry_run:
         import upload
         if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_today("whatif"):
