@@ -14,17 +14,18 @@
    "shortsanime"
   ]
  },
- "started_at": "2026-10-23T15:20:03Z",
+ "started_at": "2026-10-23T16:46:24Z",
  "error": null,
- "updated_at": "2026-10-23T16:36:03Z",
- "gpu_seconds": 4315,
+ "updated_at": "2026-10-23T17:29:18Z",
+ "gpu_seconds": 2346,
  "video_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/RcpANAiIFiM.mp4",
  "poster_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/poster.jpg",
  "duration_s": 21.0,
  "notes": [
   "Engine V2: Qwen-Image-Edit + Wan 2.2 14B",
+  "ohne Lightning: ValueError('PEFT backend is required for `load_lora_weights()`.')",
   "Stimmen: Chatterbox (eigene Stimme pro Figur, Emotion pro Zeile)",
   "Musik: Freesound CC0"
  ],
- "finished_at": "2026-10-23T16:36:03Z"
+ "finished_at": "2026-10-23T17:29:18Z"
 }
