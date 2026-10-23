@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20T00:07:20Z",
+ "updated_at": "2026-10-23T14:51:30Z",
  "productions": [
   {
    "video_id": "RcpANAiIFiM",
@@ -8,14 +8,15 @@
    "progress": "fertig",
    "video_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/RcpANAiIFiM.mp4",
    "poster_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/poster.jpg",
-   "duration_s": 21.0,
-   "gpu_seconds": 1247,
+   "duration_s": 12.0,
+   "gpu_seconds": 2186,
    "notes": [
+    "Engine V2: Qwen-Image-Edit + Wan 2.2 14B",
     "Stimmen: Chatterbox (eigene Stimme pro Figur, Emotion pro Zeile)",
     "Musik: Freesound CC0"
    ],
    "error": null,
-   "updated_at": "2026-10-20T00:07:20Z",
+   "updated_at": "2026-10-23T14:51:30Z",
    "decision": null,
    "decided_at": null,
    "youtube": {

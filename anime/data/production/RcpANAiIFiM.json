@@ -17,16 +17,17 @@
    "retrovibes"
   ]
  },
- "started_at": "2026-10-19T23:43:55Z",
+ "started_at": "2026-10-23T14:13:00Z",
  "error": null,
- "updated_at": "2026-10-20T00:07:20Z",
- "gpu_seconds": 1247,
+ "updated_at": "2026-10-23T14:51:30Z",
+ "gpu_seconds": 2186,
  "video_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/RcpANAiIFiM.mp4",
  "poster_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/poster.jpg",
- "duration_s": 21.0,
+ "duration_s": 12.0,
  "notes": [
+  "Engine V2: Qwen-Image-Edit + Wan 2.2 14B",
   "Stimmen: Chatterbox (eigene Stimme pro Figur, Emotion pro Zeile)",
   "Musik: Freesound CC0"
  ],
- "finished_at": "2026-10-20T00:07:20Z"
+ "finished_at": "2026-10-23T14:51:30Z"
 }
