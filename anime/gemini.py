@@ -5,6 +5,19 @@ import time
 
 import requests
 
+_post_raw = requests.post
+
+
+def _post(*a, **kw):
+    """requests.post mit Wiederholung bei Verbindungsabbrüchen."""
+    for attempt in range(4):
+        try:
+            return _post_raw(*a, **kw)
+        except (requests.ConnectionError, requests.Timeout):
+            if attempt == 3:
+                raise
+            time.sleep(10 * (attempt + 1))
+
 DEFAULT_MODELS = ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash-lite", "gemini-2.5-flash"]
 
 
@@ -30,7 +43,7 @@ def ask_json(prompt, system=None, video_url=None, models=None, temperature=0.7, 
     for m in models:
         r = None
         for attempt in range(3):
-            r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
+            r = _post(f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
                               headers={"x-goog-api-key": key}, json=body, timeout=300)
             if r.status_code in (500, 502, 503, 504):
                 time.sleep(20 * (attempt + 1))
@@ -70,7 +83,7 @@ def research(question, models=None, key=None):
             "generationConfig": {"temperature": 0.2, "maxOutputTokens": 8192}}
     errs = []
     for m in models or DEFAULT_MODELS:
-        r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
+        r = _post(f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
                           headers={"x-goog-api-key": key}, json=body, timeout=300)
         if r.status_code != 200:
             errs.append(f"{m}: {r.status_code} {r.text[:160]}")
