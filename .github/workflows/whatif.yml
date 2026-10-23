@@ -6,6 +6,8 @@ on:
     - cron: "15 16 * * 2,5"     # Absicherung
     - cron: "45 11 * * *"       # täglich: News-Short (Algorithmus-Test)
     - cron: "45 14 * * *"       # Absicherung
+    - cron: "5 17 * * *"        # täglich: Quiz-Short
+    - cron: "5 19 * * *"        # Absicherung
   workflow_dispatch:
     inputs:
       dry_run:
@@ -18,7 +20,7 @@ on:
       mode:
         description: "video oder news-short"
         type: choice
-        options: [video, news-short]
+        options: [video, news-short, quiz]
         default: video
 
 permissions:
@@ -63,7 +65,11 @@ jobs:
           case "${{ github.event.schedule }}" in "45 11 * * *"|"45 14 * * *") ARGS="$ARGS --news-short" ;; esac
           [ "${{ github.event.inputs.mode }}" = "news-short" ] && ARGS="$ARGS --news-short"
           [ "${{ github.event.inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
-          python scripts/whatif.py $ARGS 2>&1 | tee run.log || {
+          SCRIPT=scripts/whatif.py
+          case "${{ github.event.schedule }}" in "5 17 * * *"|"5 19 * * *") SCRIPT=scripts/quiz.py ;; esac
+          [ "${{ github.event.inputs.mode }}" = "quiz" ] && SCRIPT=scripts/quiz.py
+          [ "$SCRIPT" = scripts/quiz.py ] && ARGS="--out output/whatif$(echo "$ARGS" | grep -o ' --dry-run' || true)"
+          python $SCRIPT $ARGS 2>&1 | tee run.log || {
             echo "::error title=Fehler::$( (grep -E 'File \"/home/runner|Error|error' run.log | tail -n 14) | tr '\n' ' ' | cut -c1-1800)"; exit 1; }
       - name: Vorschau ablegen
         if: github.event.inputs.dry_run == 'true'
@@ -77,6 +83,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add -A data/whatif_used.json data/last_upload data/playlists data/ig_queue 2>/dev/null || true
+          git add -A data/whatif_used.json data/quiz_used.json data/last_upload data/playlists data/ig_queue 2>/dev/null || true
           git commit -m "Beyond the If: Stand" || exit 0
           for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep 5; done
