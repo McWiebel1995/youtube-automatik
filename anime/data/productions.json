@@ -1,36 +1,33 @@
 {
- "updated_at": "2026-10-23T14:51:30Z",
+ "updated_at": "2026-10-23T16:36:03Z",
  "productions": [
   {
    "video_id": "RcpANAiIFiM",
-   "title": "Unbreakable Soul: The Shopkeeper's Stand",
+   "title": "Neo-Retro Sanctuary",
    "state": "done",
    "progress": "fertig",
    "video_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/RcpANAiIFiM.mp4",
    "poster_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/short-RcpANAiIFiM/poster.jpg",
-   "duration_s": 12.0,
-   "gpu_seconds": 2186,
+   "duration_s": 21.0,
+   "gpu_seconds": 4315,
    "notes": [
     "Engine V2: Qwen-Image-Edit + Wan 2.2 14B",
     "Stimmen: Chatterbox (eigene Stimme pro Figur, Emotion pro Zeile)",
     "Musik: Freesound CC0"
    ],
    "error": null,
-   "updated_at": "2026-10-23T14:51:30Z",
+   "updated_at": "2026-10-23T16:36:03Z",
    "decision": null,
    "decided_at": null,
    "youtube": {
-    "title": "AI Turned French Shop Riot Into 90s Anime Power-Up! #shorts",
-    "description": "When chaos hit the streets, a humble shopkeeper and brave youths showed true Shonen spirit to protect their anime archive!\n\nFictional story inspired by real events.",
+    "title": "When a local riot hits a retro anime shop #shorts",
+    "description": "An ordinary shopkeeper stands his ground against chaos when unexpected allies rally to protect his archive. Fictional story inspired by real events.",
     "tags": [
      "anime",
      "90sanime",
-     "retroanime",
+     "retroadaptation",
      "shonen",
-     "animation",
-     "shorts",
-     "aianime",
-     "retrovibes"
+     "shortsanime"
     ]
    }
   }
