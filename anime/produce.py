@@ -199,7 +199,7 @@ def gpu_shots_v2(vid, sc, work, style, base, notes, t0):
             tags, neg = cast_tags([cid], chars)
             res = studio.keyframe.remote(
                 f"{tags}, solo, full body, front view, standing, simple background, character sheet. "
-                f"{style}. {c.get('design_sheet', '')}"[:1800], negative=neg, seed=base + 7 + j, width=832, height=1216)
+                f"{c.get('design_sheet', '')}. {style}"[:1800], negative=neg, seed=base + 7 + j, width=832, height=1216)
             refs[cid] = res["png"]
             (work / f"ref_{cid}.png").write_bytes(res["png"])
         kf = KeyframeV2()
@@ -212,7 +212,8 @@ def gpu_shots_v2(vid, sc, work, style, base, notes, t0):
                   [d.get("character") for d in (s.get("dialogue") or []) if d.get("character") in refs]
             names = ", ".join(chars[c].get("name", c) for c in who[:3])
             prompt = clean(f"1990s retro anime screencap, cel shading, film grain, wide 16:9 frame. "
-                           f"{'Keep the exact same character design as in the reference image(s) (' + names + '). ' if who else ''}"
+                           f"{'Keep the EXACT same character(s) as in the reference image(s): same face, hairstyle, hair color and outfit (' + names + '). ' if who else ''}"
+                           f"{' '.join(chars[c].get('design_sheet', '')[:220] for c in who[:2])} "
                            f"{s.get('image_prompt', '')}. {style}")
             if who:
                 res = kf.edit.remote([refs[c] for c in who[:3]], prompt[:1800], seed=base + s["n"])
