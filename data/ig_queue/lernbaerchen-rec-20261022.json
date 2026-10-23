@@ -4,7 +4,8 @@
  "video_url": "https://github.com/McWiebel1995/youtube-automatik/releases/download/ig-media/lernbaerchen-20261022-084319.mp4",
  "caption": "Das ist ein Kreis! ⭐  #formenlernen\nKleine Lernmomente für zwischendurch: Schau es gemeinsam mit deinem Kind an und sprecht laut mit. Wiederholung macht Kleinkinder sicher! 🐻\n\n📚 Das große Lernvideo (Zahlen, Farben & Formen) findest du auf unserem YouTube-Kanal (Link in der Bio)\n\n#lernenmitkindern #kleinkind #farbenlernen #zahlenlernen #montessorizuhause #kitaideen #mamaleben #elternalltag",
  "created_at": "2026-10-22T08:43:00Z",
- "status": "pending",
+ "status": "skipped",
  "tries": 2,
- "error": "Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (Code 190/0)"
+ "error": "Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (Code 190/0)",
+ "note": "veraltet – neueres Reel vorhanden"
 }
