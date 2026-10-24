@@ -35,4 +35,9 @@ for ch in chans:
     except Exception as e:  # noqa: BLE001
         out.append(f"## {ch['name']}: FEHLER {str(e)[:200]}")
 print("\n".join(out))
-print("::notice title=Uploads::" + " ⏎ ".join(out))
+block = []
+for line in out + ["## "]:                       # ein Hinweis pro Kanal (GitHub kürzt lange Hinweise)
+    if line.startswith("## ") and block:
+        print("::notice title=Uploads::" + " ⏎ ".join(block)[:3900])
+        block = []
+    block.append(line)
