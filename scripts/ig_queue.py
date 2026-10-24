@@ -60,6 +60,11 @@ def upload_public(path: Path, name: str) -> str:
 def add(account, video, caption, name=None):
     """video = lokaler Pfad oder öffentliche URL. Gibt den Eintrag zurück (oder None, wenn nicht möglich)."""
     try:
+        try:                                          # max. 5 Hashtags, passend zum Reel (siehe hashtags.py)
+            import hashtags
+            caption = hashtags.ig_caption(caption, account)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Hashtags: {e}")
         if not str(video).startswith("http"):
             if not (os.environ.get("GITHUB_REPOSITORY") and os.environ.get("GH_TOKEN")):
                 print("  (Instagram: kein GitHub-Kontext – nicht vorgemerkt)")
@@ -113,6 +118,11 @@ def post(limit_per_account=1):
             report.append(f"⏭ @{it['account']}: schon gepostet – übersprungen")
             continue
         try:
+            try:                                      # auch ältere Einträge auf max. 5 passende Hashtags bringen
+                import hashtags
+                it["caption"] = hashtags.ig_caption(it["caption"], it["account"])
+            except Exception:  # noqa: BLE001
+                pass
             mid, link = instagram.publish_reel(it["account"], it["video_url"], it["caption"])
             it.update(status="posted", posted_at=now(), media_id=mid, permalink=link)
             report.append(f"✅ @{it['account']}: {link}")

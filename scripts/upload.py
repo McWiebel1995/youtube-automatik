@@ -59,6 +59,11 @@ def mark_uploaded(channel_key):
 
 
 def upload(yt, video_path, meta, channel, publish_at=None):
+    try:                                              # Hashtags passend zu Kanal & Video (max. 3, siehe hashtags.py)
+        import hashtags
+        meta = hashtags.yt_meta(meta, channel.get("name", ""))
+    except Exception as e:  # noqa: BLE001
+        print(f"  ⚠ Hashtags: {e}")
     status = {
         "privacyStatus": "private" if publish_at else channel.get("privacy", "private"),
         "selfDeclaredMadeForKids": bool(channel.get("made_for_kids", False)),
