@@ -265,7 +265,7 @@ if __name__ == "__main__":
     if not a.dry_run:
         import upload
         if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_today("whatif-quiz"):
-            sys.exit("Heute schon ein Quiz – übersprungen.")
+            print("Heute schon ein Quiz – übersprungen."); sys.exit(0)
     m = build(Path(a.out))
     if not a.dry_run:
         upload_quiz(Path(a.out), m)
