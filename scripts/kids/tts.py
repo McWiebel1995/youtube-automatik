@@ -10,6 +10,7 @@ Fallbacks, falls Piper fehlt (z. B. lokal zum Testen):
   1. espeak-ng (klingt robotisch, nur zum Testen)
   2. Stille mit passender Länge (damit die Pipeline trotzdem durchläuft)
 """
+import os
 import shutil
 import subprocess
 import wave
@@ -86,6 +87,71 @@ _cb = {}
 STYLE = {"ruhig": (0.5, 0.0), "lebhaft": (0.75, 0.0)}
 
 
+_WH = {}
+
+
+def _norm_words(t):
+    import re
+    return re.findall(r"[a-zäöüß0-9]+", t.lower())
+
+
+def _heard(audio16):
+    """Was die Stimme wirklich gesagt hat (Whisper, deutsch). None, wenn Whisper fehlt."""
+    if _WH.get("off"):
+        return None
+    try:
+        if "m" not in _WH:
+            from faster_whisper import WhisperModel
+            _WH["m"] = WhisperModel(os.environ.get("TTS_CHECK_MODEL", "base"), device="cpu", compute_type="int8")
+        segs, _ = _WH["m"].transcribe(audio16, language="de", beam_size=1, vad_filter=False)
+        return " ".join(s.text for s in segs)
+    except Exception as e:  # noqa: BLE001
+        _WH["off"] = True
+        _warn(f"Sprach-Kontrolle ohne Whisper ({repr(e)[:120]})")
+        return None
+
+
+def _score(text, heard):
+    import difflib
+    a, b = _norm_words(text), _norm_words(heard or "")
+    if not a:
+        return 1.0
+    return difflib.SequenceMatcher(None, a, b).ratio()
+
+
+def _clean(wav_bytes, text):
+    """Ränder abschneiden; Nachplappern hinter dem erwarteten Ende entfernen. -> (audio float32, sr, zu_lang?)"""
+    import io
+    from scipy.io import wavfile as wf_
+    sr, a = wf_.read(io.BytesIO(wav_bytes))
+    a = a.astype(np.float32) / (32768 if a.dtype == np.int16 else 1)
+    if a.ndim > 1:
+        a = a.mean(axis=1)
+    win = int(sr * 0.02)
+    env = np.sqrt(np.convolve(a ** 2, np.ones(win) / win, "same"))
+    voiced = np.where(env > max(0.006, env.max() * 0.06))[0]
+    if len(voiced):
+        a = a[max(0, voiced[0] - int(sr * .05)): voiced[-1] + int(sr * .12)]
+        env = env[max(0, voiced[0] - int(sr * .05)): voiced[-1] + int(sr * .12)]
+    words = max(1, len(_norm_words(text)))
+    expect = 0.45 * words + 0.5                      # ruhiges Kindertempo
+    limit = expect * 1.9 + 0.6
+    too_long = len(a) / sr > limit
+    if too_long:                                     # an der ersten längeren Pause nach dem erwarteten Ende schneiden
+        quiet = env < max(0.006, env.max() * 0.06)
+        start = int(sr * expect * 0.8)
+        run, cut = 0, None
+        for i in range(start, len(quiet)):
+            run = run + 1 if quiet[i] else 0
+            if run > sr * 0.25:
+                cut = i - run + int(sr * .12)
+                break
+        a = a[: cut or int(sr * limit)]
+        f = int(sr * 0.06)
+        a[-f:] *= np.linspace(1, 0, f)
+    return a, sr, too_long
+
+
 def _chatterbox(text, out, style="ruhig"):
     if "voice" not in _cb:
         import atexit
@@ -101,9 +167,25 @@ def _chatterbox(text, out, style="ruhig"):
         _cb["ref"] = ref.read_bytes() if ref.exists() else b""
         _cb["n"] = 0
         _ = modal
+    from scipy.io import wavfile as wf_
+    from scipy.signal import resample_poly
     ex, cfg = STYLE.get(style, STYLE["ruhig"])
-    wav = _cb["voice"].speak.remote(text, ref_wav=_cb["ref"], exaggeration=ex, cfg_weight=cfg, seed=11)
-    Path(out).write_bytes(wav)
+    best = None
+    for k, seed in enumerate((11, 23, 37)):          # bis zu 3 Versuche, der beste gewinnt
+        wav = _cb["voice"].speak.remote(text, ref_wav=_cb["ref"], exaggeration=ex, cfg_weight=cfg, seed=seed)
+        a, sr, too_long = _clean(wav, text)
+        heard = _heard(resample_poly(a, 16000, sr).astype(np.float32))
+        sc = _score(text, heard) if heard is not None else (0.5 if too_long else 1.0)
+        sc -= 0.3 if too_long else 0
+        if best is None or sc > best[0]:
+            best = (sc, a, sr, heard)
+        if sc >= 0.75:
+            break
+        print(f"  ↻ Stimme neu (Versuch {k + 2}): „{text[:50]}“ → gehört: „{(heard or '')[:60]}“", flush=True)
+    sc, a, sr, heard = best
+    if sc < 0.5:
+        print(f"::warning title=Stimme::Abschnitt unsicher: „{text[:60]}“ → „{(heard or '')[:60]}“")
+    wf_.write(str(out), sr, (np.clip(a, -1, 1) * 32767).astype(np.int16))
     _cb["n"] += 1
 
 
