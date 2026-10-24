@@ -90,9 +90,14 @@ STYLE = {"ruhig": (0.5, 0.0), "lebhaft": (0.75, 0.0)}
 _WH = {}
 
 
+ZAHL = ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf",
+        "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig"]
+
+
 def _norm_words(t):
     import re
-    return re.findall(r"[a-zäöüß0-9]+", t.lower())
+    ws = re.findall(r"[a-zäöüß0-9]+", t.lower())
+    return [ZAHL[int(w)] if w.isdigit() and int(w) <= 20 else ("eins" if w == "ein" else w) for w in ws]
 
 
 def _heard(audio16):
@@ -102,7 +107,7 @@ def _heard(audio16):
     try:
         if "m" not in _WH:
             from faster_whisper import WhisperModel
-            _WH["m"] = WhisperModel(os.environ.get("TTS_CHECK_MODEL", "base"), device="cpu", compute_type="int8")
+            _WH["m"] = WhisperModel(os.environ.get("TTS_CHECK_MODEL", "small"), device="cpu", compute_type="int8")
         segs, _ = _WH["m"].transcribe(audio16, language="de", beam_size=1, vad_filter=False)
         return " ".join(s.text for s in segs)
     except Exception as e:  # noqa: BLE001
@@ -113,10 +118,10 @@ def _heard(audio16):
 
 def _score(text, heard):
     import difflib
-    a, b = _norm_words(text), _norm_words(heard or "")
+    a, b = " ".join(_norm_words(text)), " ".join(_norm_words(heard or ""))
     if not a:
         return 1.0
-    return difflib.SequenceMatcher(None, a, b).ratio()
+    return difflib.SequenceMatcher(None, a, b).ratio()   # buchstabenweise: verzeiht kleine Hörfehler
 
 
 def _clean(wav_bytes, text):
@@ -179,7 +184,7 @@ def _chatterbox(text, out, style="ruhig"):
         sc -= 0.3 if too_long else 0
         if best is None or sc > best[0]:
             best = (sc, a, sr, heard)
-        if sc >= 0.75:
+        if sc >= 0.72:
             break
         print(f"  ↻ Stimme neu (Versuch {k + 2}): „{text[:50]}“ → gehört: „{(heard or '')[:60]}“", flush=True)
     sc, a, sr, heard = best

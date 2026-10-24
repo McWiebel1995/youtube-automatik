@@ -138,10 +138,11 @@ jobs:
           TAG="preview-${{ steps.job.outputs.name }}"
           gh release delete "$TAG" -y --cleanup-tag || true
           mkdir -p _pv
-          for f in output/kids-*/video.mp4; do cp "$f" _pv/lang.mp4; done
-          for f in output/kids-*/short/video.mp4; do cp "$f" _pv/short.mp4; done
-          for f in output/kids-*/thumbnail.jpg; do cp "$f" _pv/thumbnail.jpg; done
-          for f in output/kids-*/meta.json; do cp "$f" _pv/meta.json; done
+          for f in output/kids-*/video.mp4; do [ -f "$f" ] && cp "$f" _pv/lang.mp4; done
+          for f in output/kids-*/short/video.mp4; do [ -f "$f" ] && cp "$f" _pv/short.mp4; done
+          for f in output/kids-*/thumbnail.jpg; do [ -f "$f" ] && cp "$f" _pv/thumbnail.jpg || true; done
+          for f in output/kids-*/meta.json; do [ -f "$f" ] && cp "$f" _pv/meta.json || true; done
+          ls _pv
           gh release create "$TAG" _pv/* --title "Vorschau ${{ steps.job.outputs.name }}" --notes "Testlauf" --prerelease
 
       - name: Ergebnis speichern
