@@ -108,6 +108,11 @@ def post(limit_per_account=1):
             continue
         if done.get(it["account"], 0) >= limit_per_account:
             continue
+        try:                                          # auch ältere Einträge auf max. 5 passende Hashtags bringen
+            import hashtags
+            it["caption"] = hashtags.ig_caption(it["caption"], it["account"])
+        except Exception:  # noqa: BLE001
+            pass
         if it["account"] not in recent:
             recent[it["account"]] = _recent_captions(instagram, it["account"])
         # Doppel-Post nur, wenn dieselbe Caption NACH dem Anlegen dieses Eintrags schon gepostet wurde
@@ -118,11 +123,6 @@ def post(limit_per_account=1):
             report.append(f"⏭ @{it['account']}: schon gepostet – übersprungen")
             continue
         try:
-            try:                                      # auch ältere Einträge auf max. 5 passende Hashtags bringen
-                import hashtags
-                it["caption"] = hashtags.ig_caption(it["caption"], it["account"])
-            except Exception:  # noqa: BLE001
-                pass
             mid, link = instagram.publish_reel(it["account"], it["video_url"], it["caption"])
             it.update(status="posted", posted_at=now(), media_id=mid, permalink=link)
             report.append(f"✅ @{it['account']}: {link}")
