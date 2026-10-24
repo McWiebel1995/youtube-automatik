@@ -176,7 +176,10 @@ def _chatterbox(text, out, style="ruhig"):
     from scipy.signal import resample_poly
     ex, cfg = STYLE.get(style, STYLE["ruhig"])
     best = None
-    for k, seed in enumerate((11, 23, 37)):          # bis zu 3 Versuche, der beste gewinnt
+    short = len(_norm_words(text)) <= 2
+    if short:                                        # Einzelwörter ("Drei.") sind für Chatterbox heikel: ruhiger + mehr Versuche
+        ex, cfg = min(ex, 0.35), max(cfg, 0.6)
+    for k, seed in enumerate((11, 23, 37, 53, 71, 97) if short else (11, 23, 37)):  # der beste Versuch gewinnt
         wav = _cb["voice"].speak.remote(text, ref_wav=_cb["ref"], exaggeration=ex, cfg_weight=cfg, seed=seed)
         a, sr, too_long = _clean(wav, text)
         heard = _heard(resample_poly(a, 16000, sr).astype(np.float32))
