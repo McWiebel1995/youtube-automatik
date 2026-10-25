@@ -58,6 +58,20 @@ def mark_uploaded(channel_key):
     (LAST_DIR / f"{channel_key}.txt").write_text(_today() + "\n")
 
 
+SYNTHETIC = {"whatif", "lernen", "geschichten"}   # KI-Stimme erzählt bzw. realistische KI-Szenen -> YouTube-Kennzeichnung
+
+
+def synthetic(channel):
+    """YouTube verlangt die Kennzeichnung bei synthetischer Erzählstimme und realistischen KI-Szenen."""
+    if "synthetic" in channel:
+        return bool(channel["synthetic"])
+    try:
+        import hashtags
+        return hashtags.channel_of(name=channel.get("name", "")) in SYNTHETIC
+    except Exception:  # noqa: BLE001
+        return False
+
+
 def upload(yt, video_path, meta, channel, publish_at=None):
     try:                                              # Hashtags passend zu Kanal & Video (max. 3, siehe hashtags.py)
         import hashtags
@@ -67,7 +81,7 @@ def upload(yt, video_path, meta, channel, publish_at=None):
     status = {
         "privacyStatus": "private" if publish_at else channel.get("privacy", "private"),
         "selfDeclaredMadeForKids": bool(channel.get("made_for_kids", False)),
-        "containsSyntheticMedia": False,
+        "containsSyntheticMedia": synthetic(channel),
     }
     if publish_at:
         status["publishAt"] = publish_at
