@@ -185,7 +185,7 @@ class CutPage(QWidget):
         row = QHBoxLayout()
         row.addWidget(label("Worum geht's?", wrap=False))
         self.style_group = QButtonGroup(self)
-        for key, txt in (("hof", "🚜  Hof & Selbstgemacht"), ("kochen", "🍳  Kochen"), ("allgemein", "📱  Alltag")):
+        for key, txt in (("hof", "🚜  Hof && Selbstgemacht"), ("kochen", "🍳  Kochen"), ("allgemein", "📱  Alltag")):
             b = QPushButton(txt)
             b.setObjectName("chip")
             b.setCheckable(True)
