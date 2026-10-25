@@ -154,7 +154,12 @@ def transcribe(clip: Clip, cache_dir: Path, model="small", language="de", log=pr
         from faster_whisper import WhisperModel
         _WHISPER[model] = WhisperModel(model, device="cpu", compute_type="int8",
                                        download_root=str(data_dir() / "models"))
-    segs, _ = _WHISPER[model].transcribe(str(wav), language=language or None, word_timestamps=True,
+    import wave
+
+    import numpy as np
+    with wave.open(str(wav)) as wf:                  # selbst einlesen (16 kHz mono) – unabhängig von PyAV
+        audio = np.frombuffer(wf.readframes(wf.getnframes()), np.int16).astype(np.float32) / 32768.0
+    segs, _ = _WHISPER[model].transcribe(audio, language=language or None, word_timestamps=True,
                                          vad_filter=True, beam_size=5)
     words = [(w.word.strip(), float(w.start), float(w.end)) for s in segs for w in (s.words or []) if w.word.strip()]
     cache.write_text(json.dumps(words, ensure_ascii=False), encoding="utf-8")
