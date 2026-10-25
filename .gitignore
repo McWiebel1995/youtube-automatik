@@ -11,3 +11,7 @@ client_secret*.json
 assets/voices/
 assets/fonts/Kids.ttf
 site/status.json
+desktop/clipwerk/bin/
+desktop/clipwerk/build/
+desktop/clipwerk/dist/
+*.spec

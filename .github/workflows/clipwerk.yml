@@ -1,0 +1,82 @@
+name: "🎬 ClipWerk (Windows-Programm) bauen"
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["desktop/**", ".github/workflows/clipwerk.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Abhängigkeiten
+        run: pip install pyside6 faster-whisper requests modal pillow pyinstaller
+      - name: ffmpeg, Schrift und Symbol holen
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force desktop/clipwerk/bin, desktop/clipwerk/assets | Out-Null
+          Invoke-WebRequest https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip -OutFile ff.zip
+          Expand-Archive ff.zip -DestinationPath ff
+          Copy-Item (Get-ChildItem ff -Recurse -Filter ffmpeg.exe | Select-Object -First 1).FullName desktop/clipwerk/bin/
+          Copy-Item (Get-ChildItem ff -Recurse -Filter ffprobe.exe | Select-Object -First 1).FullName desktop/clipwerk/bin/
+          Invoke-WebRequest https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/Poppins-ExtraBold.ttf -OutFile desktop/clipwerk/assets/Poppins-ExtraBold.ttf
+          python desktop/make_icon.py desktop/clipwerk/assets/clipwerk.ico
+      - name: Programm bauen
+        working-directory: desktop/clipwerk
+        run: >
+          pyinstaller --noconfirm --windowed --name ClipWerk --icon assets/clipwerk.ico
+          --add-data "assets;assets" --add-binary "bin/ffmpeg.exe;bin" --add-binary "bin/ffprobe.exe;bin"
+          --collect-all faster_whisper --collect-all ctranslate2 --collect-all av --collect-all tokenizers
+          --collect-submodules modal --collect-data modal --collect-data grpclib --collect-data certifi
+          app.py
+      - name: Selbsttest (Testvideo mit Sprache schneiden)
+        shell: pwsh
+        working-directory: desktop/clipwerk
+        run: |
+          Add-Type -AssemblyName System.Speech
+          $s = New-Object System.Speech.Synthesis.SpeechSynthesizer
+          $s.SetOutputToWaveFile("$PWD\speech.wav")
+          $s.Speak("Today we build a new fence on the farm. First we measure everything. Then the posts go in. Uhm. At the end it looks really good. What do you think?")
+          $s.Dispose()
+          bin/ffmpeg.exe -loglevel error -y -f lavfi -i "testsrc2=s=1080x1920:r=30:d=16" -i speech.wav -shortest -c:v libx264 -c:a aac test1.mp4
+          bin/ffmpeg.exe -loglevel error -y -f lavfi -i "testsrc=s=1920x1080:r=30:d=10" -c:v libx264 test2.mp4
+          $p = Start-Process dist/ClipWerk/ClipWerk.exe -ArgumentList "--selftest test1.mp4 test2.mp4" -Wait -PassThru
+          Get-Content selftest.log -ErrorAction SilentlyContinue | Select-Object -Last 25
+          if (-not (Test-Path selftest_out/ergebnis.json)) { Write-Error "Selbsttest fehlgeschlagen"; exit 1 }
+          Get-ChildItem selftest_out
+          $env:QT_QPA_PLATFORM = "offscreen"
+          Start-Process dist/ClipWerk/ClipWerk.exe -ArgumentList "--screenshots shots test1.mp4 test2.mp4" -Wait
+          Get-ChildItem shots
+      - name: Paket & Download bereitstellen
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: desktop/clipwerk
+        run: |
+          Compress-Archive dist/ClipWerk ClipWerk-Windows.zip
+          $reel = (Get-ChildItem selftest_out -Filter "01_*.mp4" | Select-Object -First 1).FullName
+          Copy-Item $reel selftest_reel.mp4
+          gh release delete clipwerk -y --cleanup-tag 2>$null
+          gh release create clipwerk ClipWerk-Windows.zip shots/seite_1.png shots/seite_2.png shots/seite_3.png shots/seite_4.png selftest_reel.mp4 --title "ClipWerk für Windows" --notes "ZIP herunterladen, entpacken, ClipWerk.exe starten."
+
+  stimme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install modal
+      - name: Stimm-KI auf Modal bereitstellen
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+        run: modal deploy desktop/modal_voice.py
