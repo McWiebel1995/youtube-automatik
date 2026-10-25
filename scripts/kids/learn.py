@@ -128,10 +128,13 @@ def plan_zahlen(rnd, short=False):
         if not short:
             segs.append(S(f"Die Zahl {NUM[n]}.", dict(kind="count", n=n, k=0, t=thing_key, cols=cols, num=True), 0.4, pop=True))
         for k in range(1, n + 1):
-            segs.append(S(f"{NUM[k].capitalize()}.", dict(kind="count", n=n, k=k, t=thing_key, cols=cols, num=short and k == n or not short),
+            # "Ein Stern, zwei Sterne …" statt einzelner Zahlwörter – die KI-Stimme spricht Einzelwörter unzuverlässig
+            wk = thing["one"] if k == 1 else thing["many"]
+            segs.append(S(f"{NUM_ADJ[k]} {wk}.", dict(kind="count", n=n, k=k, t=thing_key, cols=cols, num=short and k == n or not short),
                           0.25, pop=True))
         word = thing["one"] if n == 1 else thing["many"]
-        segs.append(S(f"{NUM_ADJ[n]} {word}!", dict(kind="count", n=n, k=n, t=thing_key, cols=cols, num=True), 0.8))
+        segs.append(S(f"Das sind {NUM[n]} {word}!" if n > 1 else f"Das ist {NUM_ADJ[1].lower()} {word}!",
+                      dict(kind="count", n=n, k=n, t=thing_key, cols=cols, num=True), 0.8))
     if not short:
         segs.append(S(f"Jetzt bist du dran! Wie viele {thing['many']} siehst du?",
                       dict(kind="title", title="Quiz", sub="?"), 0.6))
