@@ -541,6 +541,10 @@ class SettingsPage(QWidget):
         self.model.addItems(["small", "medium", "large-v3"])
         self.model.setCurrentText(s["whisper_model"])
         row("Spracherkennung", self.model, "small = schnell · medium = genauer · large-v3 = am genauesten, aber langsam")
+        self.vis = QCheckBox("Bilder verstehen (beste Bildmomente finden)")
+        self.vis.setChecked(bool(s.get("vision", True)))
+        row("Bildanalyse", self.vis, "Unscharfes/Wackeliges fliegt immer raus (lokal). Mit Gemini-Schlüssel werden zusätzlich "
+            "kleine Standbilder (keine Videos) bewertet: Ergebnis, Vorher/Nachher, Aktion, Essen, Tiere …")
         self.music = QLineEdit(s["music_dir"])
         mb = QPushButton("Ordner wählen")
         mb.clicked.connect(lambda: self.music.setText(QFileDialog.getExistingDirectory(self, "Musikordner") or self.music.text()))
@@ -585,6 +589,7 @@ class SettingsPage(QWidget):
 
     def save(self):
         self.main.settings.update(gemini_key=self.gem.text().strip(), whisper_model=self.model.currentText(),
+                                  vision=self.vis.isChecked(),
                                   music_dir=self.music.text().strip(), projects_dir=self.proj.text().strip(),
                                   highlight_color=self.color.text(), modal_token_id=self.mid.text().strip(),
                                   modal_token_secret=self.msec.text().strip())

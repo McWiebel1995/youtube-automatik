@@ -74,7 +74,7 @@ DEFAULTS = {
     "gemini_key": "", "whisper_model": "small", "language": "de", "reels": 2, "reel_min": 25, "reel_max": 55,
     "music": True, "music_dir": "", "music_db": -22, "subtitles": True, "hook": True, "long_version": True,
     "style": "hof", "instagram": "", "highlight_color": "#FFD700", "projects_dir": "",
-    "modal_token_id": "", "modal_token_secret": "",
+    "modal_token_id": "", "modal_token_secret": "", "vision": True,
 }
 
 
@@ -103,6 +103,7 @@ class Clip:
     height: int = 0
     has_audio: bool = True
     words: list = field(default_factory=list)      # [(wort, start, ende)]
+    shots: list = field(default_factory=list)      # Bildbewertung (vision.Shot)
 
     @property
     def vertical(self):
@@ -176,6 +177,9 @@ class Unit:
     end: float
     text: str
     speech: bool = True
+    interest: float = 5.0
+    quality: float = 0.5
+    seen: str = ""
 
     @property
     def dur(self):
@@ -207,12 +211,25 @@ def units_for(clips: list[Clip]) -> list[Unit]:
                 units.append(Unit(uid, ci, max(0, cur[0][1] - 0.08), min(c.duration, cur[-1][2] + 0.18),
                                   " ".join(x[0] for x in cur)))
                 uid += 1
-        else:                                       # B-Roll: ruhige 3-s-Stücke, gleichmäßig verteilt
-            n = max(1, min(6, int(c.duration // 4)))
-            for k in range(n):
-                s = 0.4 + (c.duration - 3.8) * k / max(1, n - 1) if n > 1 else max(0, c.duration / 2 - 1.5)
-                units.append(Unit(uid, ci, max(0, s), min(c.duration, s + 3.0), "[Bild ohne Sprache]", speech=False))
+        else:                                       # B-Roll: die stärksten Bildmomente (oder gleichmäßig verteilt)
+            n = max(1, min(8, int(c.duration // 4)))
+            shots = getattr(c, "shots", None)
+            if shots:
+                import vision
+                wins = vision.best_windows(shots, c.duration, n)
+            else:
+                wins = []
+                for k in range(n):
+                    s = 0.4 + (c.duration - 3.8) * k / max(1, n - 1) if n > 1 else max(0, c.duration / 2 - 1.5)
+                    wins.append((max(0, s), min(c.duration, s + 3.0)))
+            for a, b in wins:
+                units.append(Unit(uid, ci, a, b, "[Bild ohne Sprache]", speech=False))
                 uid += 1
+    for u in units:                                 # Bildinfos an jedes Stück hängen
+        shots = getattr(clips[u.clip], "shots", None)
+        if shots:
+            import vision
+            u.interest, u.quality, u.seen = vision.score_at(shots, u.start, u.end)
     return units
 
 
@@ -229,7 +246,10 @@ STYLES = {
 }
 SELECT_TASK = """Du bist Video-Editor für Instagram-Reels.
 Account: {style}
-Unten stehen die Stücke aus den Rohaufnahmen (id, Länge in Sekunden, gesprochener Text; „[Bild ohne Sprache]“ = nur Bild).
+Unten stehen die Stücke aus den Rohaufnahmen: id | Länge | gesprochener Text („[Bild ohne Sprache]“ = nur Bild)
+| Bild: was man sieht | Bild-Interesse 1–10 | Bildqualität 0–1.
+Bevorzuge Stücke mit hohem Bild-Interesse und guter Qualität; Qualität unter 0.25 nur, wenn der Text unverzichtbar ist.
+Das beste Ergebnis-/Vorher-Nachher-Bild gehört an den Anfang (Hook) oder als Höhepunkt ans Ende.
 Baue {n} verschiedene Reels, jedes {rmin}–{rmax} Sekunden lang, jedes erzählt EINE kleine Geschichte:
 starker Einstieg (das Spannendste/Ergebnis zuerst oder eine Frage), dann der Weg, dann ein Abschluss.
 Nutze Bildstücke ohne Sprache als Zwischenschnitte. Wiederholungen/Versprecher (gleicher Satz zweimal) -> nur den besseren nehmen.
@@ -276,7 +296,8 @@ def select(units: list[Unit], settings: dict, log=print) -> dict:
     n, rmin, rmax = int(settings["reels"]), int(settings["reel_min"]), int(settings["reel_max"])
     if settings.get("gemini_key"):
         try:
-            lst = "\n".join(f"{u.id} | {u.dur:.1f}s | {u.text[:220]}" for u in units)
+            lst = "\n".join(f"{u.id} | {u.dur:.1f}s | {u.text[:200]} | Bild: {u.seen or '-'} | {u.interest:.0f} | {u.quality:.2f}"
+                            for u in units)
             js = gemini_json(settings["gemini_key"], SELECT_TASK.format(style=style, n=n, rmin=rmin, rmax=rmax,
                                                                         units=lst[:60000]), log)
             byid = {u.id: u for u in units}
@@ -296,9 +317,9 @@ def select(units: list[Unit], settings: dict, log=print) -> dict:
                 return js
         except Exception as e:  # noqa: BLE001
             log(f"⚠ Automatische Auswahl nicht möglich ({e}) – nutze einfache Auswahl.")
-    # Ohne Gemini: der Reihe nach aufteilen
+    # Ohne Gemini: der Reihe nach aufteilen (unscharfe/langweilige Bildstücke weglassen)
     reels, cur, tot = [], [], 0.0
-    for u in units:
+    for u in [x for x in units if x.speech or x.quality >= 0.2]:
         cur.append(u.id)
         tot += u.dur
         if tot >= (rmin + rmax) / 2:
@@ -443,9 +464,22 @@ def process(paths: list[Path], out_dir: Path, settings: dict, progress=lambda p,
         progress(2, "Videos prüfen …")
         clips = [probe(p) for p in paths]
         for i, c in enumerate(clips):
-            progress(5 + 40 * i / len(clips), f"Höre zu: {c.path.name} ({i + 1}/{len(clips)})")
+            progress(5 + 25 * i / len(clips), f"Höre zu: {c.path.name} ({i + 1}/{len(clips)})")
             c.words = transcribe(c, cache, settings.get("whisper_model", "small"), settings.get("language", "de"), log)
             log(f"  {c.path.name}: {c.duration:.0f} s, {len(c.words)} Wörter")
+        if settings.get("vision", True):
+            import vision
+            for i, c in enumerate(clips):
+                progress(30 + 14 * i / len(clips), f"Schaue mir die Bilder an: {c.path.name}")
+                c.shots = vision.measure(c, log)
+                if settings.get("gemini_key"):
+                    try:
+                        vision.understand(c, c.shots, settings["gemini_key"],
+                                          STYLES.get(settings["style"], STYLES["allgemein"])[0][:120], log)
+                    except Exception as e:  # noqa: BLE001
+                        log(f"⚠ Bildanalyse nicht möglich ({e}) – nutze nur Bildqualität.")
+                top = sorted(c.shots, key=lambda s: s.interest, reverse=True)[:2]
+                log(f"  Bilder {c.path.name}: " + "; ".join(f"{s.t:.0f}s {s.desc or ''} ({s.interest:.0f}/10)" for s in top))
         progress(46, "Pausen und Füllwörter entfernen …")
         units = units_for(clips)
         if not units:
