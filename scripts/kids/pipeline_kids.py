@@ -167,6 +167,8 @@ def main():
 
     print(f"  Titel: {meta['title']}")
     record = {"channel": args.channel, "seed": seed, **{k: v for k, v in info.items() if k != "script"}, **meta}
+    if info.get("script"):                           # kompletter Sprechtext zum Nachlesen
+        record["speech_text"] = list(info["script"])
 
     if args.dry_run:
         print("  (Testlauf – kein Upload)")

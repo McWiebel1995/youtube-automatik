@@ -1,0 +1,49 @@
+name: "📜 Sprechtext eines Kinder-Videos anzeigen"
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "ID des Produktionslaufs (kids.yml)"
+        required: true
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  show:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml numpy scipy pillow
+      - name: Text wiederherstellen
+        run: |
+          RUN=${{ github.event.inputs.run_id }}
+          SHA=$(gh api repos/${{ github.repository }}/actions/runs/$RUN -q .head_sha)
+          gh run download $RUN -D art || true
+          META=$(find art -name meta.json | head -1)
+          git checkout -q $SHA
+          python - "$META" "$RUN" <<'PY'
+          import json, random, sys
+          sys.path.insert(0, "scripts/kids")
+          import learn
+          meta = json.load(open(sys.argv[1], encoding="utf-8"))
+          seed, topic = meta["seed"], meta.get("topic", "mix")
+          segs, info = learn.PLANS_ALL[topic](random.Random(seed), bool(meta.get("short")))
+          lines = [f"Lernbärchen – {meta.get('title','')}", f"Seed {seed} · Thema {topic} · {len(segs)} Abschnitte", ""]
+          lines += [f"{i + 1:3d}. {s['text']}" for i, s in enumerate(segs)]
+          lines += ["", "Hinweis: Bei über 14:20 Min. wurde das Video an einer Abschnittsgrenze gekürzt (die Verabschiedung bleibt)."]
+          open(f"skript_{sys.argv[2]}.txt", "w", encoding="utf-8").write("\n".join(lines))
+          print("\n".join(lines[:40]))
+          PY
+          git checkout -q -
+          gh release view skripte >/dev/null 2>&1 || gh release create skripte --title "Sprechtexte" --notes "Wiederhergestellte Sprechtexte" --prerelease
+          gh release upload skripte skript_$RUN.txt --clobber
