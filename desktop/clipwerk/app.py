@@ -646,6 +646,14 @@ class Main(QMainWindow):
 
 
 def main():
+    import io
+    import os
+    if sys.stdout is None:                          # Fenster-Programm ohne Konsole: Ausgaben ins Leere statt Absturz
+        sys.stdout = open(os.devnull, "w", encoding="utf-8")
+    if sys.stderr is None:
+        sys.stderr = open(os.devnull, "w", encoding="utf-8")
+    os.environ.setdefault("HF_HUB_DISABLE_PROGRESS_BARS", "1")
+    _ = io
     if "--selftest" in sys.argv:                    # für den automatischen Test beim Bauen
         i = sys.argv.index("--selftest")
         vids = [Path(p) for p in sys.argv[i + 1:]]

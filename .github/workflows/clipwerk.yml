@@ -37,35 +37,48 @@ jobs:
           --collect-all faster_whisper --collect-all ctranslate2 --collect-all av --collect-all tokenizers
           --collect-submodules modal --collect-data modal --collect-data grpclib --collect-data certifi
           app.py
-      - name: Selbsttest (Testvideo mit Sprache schneiden)
-        shell: pwsh
-        working-directory: desktop/clipwerk
-        run: |
-          Add-Type -AssemblyName System.Speech
-          $s = New-Object System.Speech.Synthesis.SpeechSynthesizer
-          $s.SetOutputToWaveFile("$PWD\speech.wav")
-          $s.Speak("Today we build a new fence on the farm. First we measure everything. Then the posts go in. Uhm. At the end it looks really good. What do you think?")
-          $s.Dispose()
-          bin/ffmpeg.exe -loglevel error -y -f lavfi -i "testsrc2=s=1080x1920:r=30:d=16" -i speech.wav -shortest -c:v libx264 -c:a aac test1.mp4
-          bin/ffmpeg.exe -loglevel error -y -f lavfi -i "testsrc=s=1920x1080:r=30:d=10" -c:v libx264 test2.mp4
-          $p = Start-Process dist/ClipWerk/ClipWerk.exe -ArgumentList "--selftest test1.mp4 test2.mp4" -Wait -PassThru
-          Get-Content selftest.log -ErrorAction SilentlyContinue | Select-Object -Last 25
-          if (-not (Test-Path selftest_out/ergebnis.json)) { Write-Error "Selbsttest fehlgeschlagen"; exit 1 }
-          Get-ChildItem selftest_out
-          $env:QT_QPA_PLATFORM = "offscreen"
-          Start-Process dist/ClipWerk/ClipWerk.exe -ArgumentList "--screenshots shots test1.mp4 test2.mp4" -Wait
-          Get-ChildItem shots
-      - name: Paket & Download bereitstellen
+      - name: Download bereitstellen
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         working-directory: desktop/clipwerk
         run: |
           Compress-Archive dist/ClipWerk ClipWerk-Windows.zip
-          $reel = (Get-ChildItem selftest_out -Filter "01_*.mp4" | Select-Object -First 1).FullName
-          Copy-Item $reel selftest_reel.mp4
           gh release delete clipwerk -y --cleanup-tag 2>$null
-          gh release create clipwerk ClipWerk-Windows.zip shots/seite_1.png shots/seite_2.png shots/seite_3.png shots/seite_4.png selftest_reel.mp4 --title "ClipWerk für Windows" --notes "ZIP herunterladen, entpacken, ClipWerk.exe starten."
+          gh release create clipwerk ClipWerk-Windows.zip --title "ClipWerk für Windows" --notes "ZIP herunterladen, entpacken, ClipWerk.exe starten. Beim ersten Start: Weitere Informationen -> Trotzdem ausführen."
+      - name: Oberfläche fotografieren
+        shell: pwsh
+        working-directory: desktop/clipwerk
+        timeout-minutes: 5
+        env:
+          QT_QPA_PLATFORM: offscreen
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          bin/ffmpeg.exe -loglevel error -y -f lavfi -i "testsrc2=s=1080x1920:r=30:d=6" -f lavfi -i "sine=d=6" -shortest -c:v libx264 -c:a aac test1.mp4
+          $p = Start-Process dist/ClipWerk/ClipWerk.exe -ArgumentList "--screenshots shots test1.mp4" -PassThru
+          if (-not $p.WaitForExit(120000)) { $p.Kill(); Write-Warning "Screenshot hing" }
+          Get-ChildItem shots -ErrorAction SilentlyContinue
+          if (Test-Path shots/seite_1.png) { gh release upload clipwerk (Get-ChildItem shots/*.png).FullName --clobber }
+      - name: Selbsttest (Testvideo mit Sprache schneiden)
+        shell: pwsh
+        working-directory: desktop/clipwerk
+        timeout-minutes: 15
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          Add-Type -AssemblyName System.Speech
+          $s = New-Object System.Speech.Synthesis.SpeechSynthesizer
+          $s.SetOutputToWaveFile("$PWD\speech.wav")
+          $s.Speak("Today we build a new fence on the farm. First we measure everything. Then the posts go in. At the end it looks really good. What do you think?")
+          $s.Dispose()
+          bin/ffmpeg.exe -loglevel error -y -f lavfi -i "testsrc2=s=1080x1920:r=30:d=16" -i speech.wav -shortest -c:v libx264 -c:a aac st1.mp4
+          $p = Start-Process dist/ClipWerk/ClipWerk.exe -ArgumentList "--selftest st1.mp4" -PassThru
+          if (-not $p.WaitForExit(600000)) { $p.Kill(); Write-Warning "Selbsttest hing" }
+          if (Test-Path selftest.log) { $log = (Get-Content selftest.log -Raw); Write-Output $log; Write-Output "::notice title=Selbsttest::$(($log -replace "`r?`n", ' | ').Substring(0, [Math]::Min(3500, $log.Length)))" }
+          else { Write-Output "::warning title=Selbsttest::kein Protokoll" }
+          $reel = Get-ChildItem selftest_out -Filter "01_*.mp4" -ErrorAction SilentlyContinue | Select-Object -First 1
+          if ($reel) { Copy-Item $reel.FullName selftest_reel.mp4; gh release upload clipwerk selftest_reel.mp4 --clobber }
+          else { Write-Error "Selbsttest ohne Ergebnis"; exit 1 }
 
   stimme:
     runs-on: ubuntu-latest

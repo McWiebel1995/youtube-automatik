@@ -57,6 +57,7 @@ def tool(name: str) -> str:
 def run(args, **kw):
     kw.setdefault("check", True)
     kw.setdefault("capture_output", True)
+    kw.setdefault("stdin", subprocess.DEVNULL)          # ohne Konsole würde ffmpeg sonst auf Tastatureingaben warten
     return subprocess.run([str(a) for a in args], creationflags=CREATE_NO_WINDOW, **kw)
 
 
