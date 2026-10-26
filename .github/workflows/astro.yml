@@ -1,0 +1,69 @@
+name: "✨ Astro-Karussell (Instagram)"
+
+on:
+  schedule:
+    - cron: "20 17 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Nur Vorschau (nicht posten)"
+        type: boolean
+        default: true
+      format:
+        description: "Format (leer = automatisch im Wechsel)"
+        type: choice
+        options: ["", signs, months, message]
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: astro
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt modal pillow
+      - name: Schriften laden
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/fetch_fonts.py
+      - name: Karussell erstellen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+          IG_TOKEN_ASTRO: ${{ secrets.IG_TOKEN_ASTRO }}
+          IG_USER_ASTRO: ${{ vars.IG_USER_ASTRO }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -o pipefail
+          ARGS="--out output/astro"
+          [ -n "${{ github.event.inputs.format }}" ] && ARGS="$ARGS --format ${{ github.event.inputs.format }}"
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ] || [ -z "$IG_TOKEN_ASTRO" ]; then ARGS="$ARGS --dry-run"; fi
+          python scripts/astro.py $ARGS 2>&1 | tee run.log || {
+            echo "::error title=Fehler::$( (grep -E 'File \"/home/runner|Error|error' run.log | tail -n 14) | tr '\n' ' ' | cut -c1-1800)"; exit 1; }
+      - name: Vorschau ablegen
+        if: github.event.inputs.dry_run == 'true' || env.HAS_TOKEN == ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HAS_TOKEN: ${{ secrets.IG_TOKEN_ASTRO }}
+        run: |
+          gh release delete preview-astro -y --cleanup-tag || true
+          gh release create preview-astro output/astro/*.jpg output/astro/meta.json --title "Vorschau Astro" --notes "Testlauf" --prerelease
+      - name: Stand speichern
+        if: always() && github.event.inputs.dry_run != 'true'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          for p in data/astro_used.json data/last_upload; do [ -e "$p" ] && git add -A "$p" || true; done
+          git commit -m "Astro: Stand" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep 5; done

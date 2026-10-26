@@ -22,6 +22,8 @@ ACCOUNTS = {
     "lernbaerchen": ("IG_TOKEN_LERNBAERCHEN", "lernbaerchenig"),
     "gutenacht": ("IG_TOKEN_GUTENACHT", "gutenachtgeschichteig"),
 }
+if os.environ.get("IG_TOKEN_ASTRO") and os.environ.get("IG_USER_ASTRO"):
+    ACCOUNTS["astro"] = ("IG_TOKEN_ASTRO", os.environ["IG_USER_ASTRO"])
 if os.environ.get("IG_TOKEN_WHATIF") and os.environ.get("IG_USER_WHATIF"):
     ACCOUNTS["whatif"] = ("IG_TOKEN_WHATIF", os.environ["IG_USER_WHATIF"])
 
@@ -83,6 +85,30 @@ def publish_reel(key, video_url, caption, cover_url=None, share_to_feed=True, ti
     mid = _req("POST", f"{uid}/media_publish", tok, creation_id=cid)["id"]
     link = _req("GET", mid, tok, fields="permalink").get("permalink")
     return mid, link
+
+
+def publish_carousel(key, image_urls, caption, timeout_s=600):
+    """Karussell (2–10 Bilder, öffentliche JPEG-URLs) veröffentlichen. Gibt (media_id, permalink) zurück."""
+    tok = token_for(key)
+    info = me(tok)
+    expected = ACCOUNTS[key][1]
+    if info.get("username") != expected:
+        raise IGError(f"Token gehört zu @{info.get('username')}, erwartet @{expected}")
+    uid = info["user_id"]
+    kids = [_req("POST", f"{uid}/media", tok, image_url=u, is_carousel_item="true")["id"] for u in image_urls[:10]]
+    cid = _req("POST", f"{uid}/media", tok, media_type="CAROUSEL", children=",".join(kids), caption=caption[:2200])["id"]
+    t0 = time.time()
+    while True:
+        st = _req("GET", cid, tok, fields="status_code,status")
+        if st.get("status_code") == "FINISHED":
+            break
+        if st.get("status_code") in ("ERROR", "EXPIRED"):
+            raise IGError(f"Karussell fehlgeschlagen: {st.get('status')}")
+        if time.time() - t0 > timeout_s:
+            raise IGError("Zeitüberschreitung beim Karussell")
+        time.sleep(5)
+    mid = _req("POST", f"{uid}/media_publish", tok, creation_id=cid)["id"]
+    return mid, _req("GET", mid, tok, fields="permalink").get("permalink")
 
 
 def refresh(token):

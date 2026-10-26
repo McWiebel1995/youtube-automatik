@@ -12,7 +12,7 @@ FONTS = {   # Ordner im Repo google/fonts -> Dateiname bei uns
     "sniglet": "Sniglet.ttf", "chewy": "Chewy.ttf", "patrickhand": "PatrickHand.ttf", "pacifico": "Pacifico.ttf",
     "dancingscript": "DancingScript.ttf", "playfairdisplay": "PlayfairDisplay.ttf", "montserrat": "Montserrat.ttf",
     "cormorantgaramond": "CormorantGaramond.ttf", "bangers": "Bangers.ttf", "anton": "Anton.ttf",
-    "lilitaone": "LilitaOne.ttf", "comfortaa": "Comfortaa.ttf", "poppins": "Poppins-ExtraBold.ttf",
+    "lilitaone": "LilitaOne.ttf", "comfortaa": "Comfortaa.ttf", "poppins": "Poppins-ExtraBold.ttf", "cinzel": "Cinzel.ttf",
 }
 PICK = {"poppins": "Poppins-ExtraBold.ttf"}   # bestimmte Datei statt variabler Schrift
 H = {"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}"} if os.environ.get("GITHUB_TOKEN") else {}
