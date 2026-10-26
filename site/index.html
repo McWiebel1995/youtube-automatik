@@ -225,8 +225,7 @@ const FLOORS = [
   { title: "Kinder-Etage", sub: "2. OG · direkt öffentlich", rooms: [
     { id: "schlaf", name: "Mondmelodie", sub: "Spieluhr 14 Min + Short", ch: "schlaf", lock: "kids-schlaf", wf: "kids.yml",
       match: r => /schlaf/.test(r.display_title), crons: ["17 4 * * *"], prop: "moon", color: "#b9a6ff", ig: "mondmelodie" },
-    { id: "lernen", name: "Lernbärchen", sub: "Lernvideo 14 Min + Short", ch: "lernen", lock: "kids-lernen", wf: "kids.yml",
-      match: r => /lernen/.test(r.display_title), crons: ["27 4 * * *"], prop: "board", color: "#ffc857", ig: "lernbaerchen" },
+    { id: "lernen", name: "Lernbärchen", sub: "eingestellt", ch: "lernen", prop: "board", color: "#ffc857", kind: "paused" },
     { id: "geschichten", name: "Gute-Nacht-Kiste", sub: "Geschichte ~12 Min + Short", ch: "geschichten", lock: "kids-geschichten", wf: "kids.yml",
       match: r => /geschichten/.test(r.display_title), crons: ["47 4 * * *"], prop: "books", color: "#ff8fab", ig: "gutenacht" },
   ]},

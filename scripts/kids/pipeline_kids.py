@@ -131,6 +131,9 @@ def main():
         thumb = make_thumb(info["loop"], work / "thumbnail.jpg", meta["thumb_label"], meta["thumb_sub"], at=0.2)
         sinfo = shorts.schlaf_short(work / "short", rnd, float(ch.get("short_seconds", 45)))
         extra.append((sinfo, schlaf.short_metadata(ch, sinfo, rnd)))
+    elif args.channel == "lernen" and os.environ.get("LERNEN_AKTIV") != "1":
+        print("  ⏸ Lernbärchen ist eingestellt – nichts zu tun.")
+        return
     elif args.channel == "lernen":
         import learn
         fmt = args.format

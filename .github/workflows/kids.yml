@@ -7,7 +7,7 @@ run-name: "Kinder: ${{ github.event.schedule == '17 4,7,10 * * *' && 'schlaf' ||
 on:
   schedule:
     - cron: "17 4,7,10 * * *"   # Schlafkanal: täglich 14-Min-Video + 45-s-Short (+2 Absicherungs-Versuche)
-    - cron: "27 4,7,10 * * *"   # Lernkanal: täglich großes Lernvideo (~14 Min.) + Short
+    # Lernbärchen eingestellt (26.10.2026) – kein täglicher Lauf mehr
     - cron: "47 4,7,10 * * *"   # Geschichten: täglich neue Geschichte (~12 Min.) + Mini-Short
   workflow_dispatch:
     inputs:
