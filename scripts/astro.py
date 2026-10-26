@@ -42,7 +42,7 @@ MONTHS = [["January", "February", "March"], ["April", "May", "June"], ["July", "
           ["October", "November", "December"]]
 STYLE = ("ethereal celestial fine-art illustration, deep midnight blue and navy, luminous gold accents, "
          "glowing stars and nebula, crescent moon, soft dreamy light, painterly, elegant, mystical, high detail, "
-         "vertical composition, no text, no letters, no watermark")
+         "no text, no letters, no watermark")
 ELEMENT_SCENES = {
     "Fire": "a radiant figure made of golden starlight holding a small flame under a starry sky",
     "Earth": "a moonlit enchanted forest with golden constellations above ancient trees",
@@ -325,12 +325,39 @@ def publish(out: Path, meta: dict, account="astro"):
     return link
 
 
+AVATARS = [
+    "a glowing golden crescent moon centered, cradling a small bright star, tiny constellations around, deep midnight blue",
+    "a serene woman's face in profile made of soft starlight, crescent moon in her hair, centered, deep navy and gold",
+    "an ornate golden zodiac wheel with a crescent moon in the center, glowing, centered, deep midnight blue night sky",
+    "a delicate golden hand holding a tiny glowing moon, stars falling softly, centered composition, deep navy",
+]
+
+
+def avatars(out: Path):
+    """Profilbild-Vorschläge (1:1, Motiv mittig – passt in den runden Instagram-Ausschnitt)."""
+    import modal
+    from modal_app import ImageFlux, app, download_flux
+    out.mkdir(parents=True, exist_ok=True)
+    with modal.enable_output(), app.run():
+        download_flux.remote()
+        fl = ImageFlux()
+        for k, p in enumerate(AVATARS):
+            png = fl.generate.remote(f"{p}, icon-like, simple and bold, generous margin around the subject, {STYLE}",
+                                     seed=700 + k, width=1328, height=1328)
+            (out / f"profilbild_{k + 1}.png").write_bytes(png)
+            print(f"  Profilbild {k + 1}/{len(AVATARS)}", flush=True)
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
+    ap.add_argument("--avatar", action="store_true", help="nur Profilbild-Vorschläge erzeugen")
     ap.add_argument("--out", default="output/astro")
     ap.add_argument("--format", choices=["signs", "months", "message"])
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
+    if a.avatar:
+        avatars(Path(a.out))
+        sys.exit(0)
     handle = os.environ.get("IG_USER_ASTRO", "")
     if not handle and os.environ.get("IG_TOKEN_LERNBAERCHEN"):    # Benutzername direkt vom Konto holen
         try:

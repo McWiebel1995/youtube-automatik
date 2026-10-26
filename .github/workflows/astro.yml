@@ -12,7 +12,7 @@ on:
       format:
         description: "Format (leer = automatisch im Wechsel)"
         type: choice
-        options: ["", signs, months, message]
+        options: ["", signs, months, message, profilbild]
         default: ""
 
 permissions:
@@ -47,6 +47,7 @@ jobs:
         run: |
           set -o pipefail
           ARGS="--out output/astro"
+          if [ "${{ github.event.inputs.format }}" = "profilbild" ]; then python scripts/astro.py --avatar --out output/astro; exit 0; fi
           [ -n "${{ github.event.inputs.format }}" ] && ARGS="$ARGS --format ${{ github.event.inputs.format }}"
           if [ "${{ github.event.inputs.dry_run }}" = "true" ] || [ -z "$IG_TOKEN_LERNBAERCHEN" ]; then ARGS="$ARGS --dry-run"; fi
           python scripts/astro.py $ARGS 2>&1 | tee run.log || {
@@ -57,7 +58,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release delete preview-astro -y --cleanup-tag || true
-          gh release create preview-astro output/astro/*.jpg output/astro/meta.json --title "Vorschau Astro" --notes "Testlauf" --prerelease
+          gh release create preview-astro $(ls output/astro/*.jpg output/astro/*.png output/astro/meta.json 2>/dev/null) --title "Vorschau Astro" --notes "Testlauf" --prerelease
       - name: Stand speichern
         if: always() && github.event.inputs.dry_run != 'true'
         run: |
