@@ -19,11 +19,9 @@ API = "https://graph.instagram.com/v23.0"
 ACCOUNTS = {
     "calmhaven": ("IG_TOKEN_CALMHAVEN", "calmhavenig"),
     "mondmelodie": ("IG_TOKEN_MONDMELODIE", "mondmelodieig"),
-    "lernbaerchen": ("IG_TOKEN_LERNBAERCHEN", "lernbaerchenig"),
+    "astro": ("IG_TOKEN_LERNBAERCHEN", None),          # ehemals @lernbaerchenig, jetzt Astro-Karussells (umbenannt)
     "gutenacht": ("IG_TOKEN_GUTENACHT", "gutenachtgeschichteig"),
 }
-if os.environ.get("IG_TOKEN_ASTRO") and os.environ.get("IG_USER_ASTRO"):
-    ACCOUNTS["astro"] = ("IG_TOKEN_ASTRO", os.environ["IG_USER_ASTRO"])
 if os.environ.get("IG_TOKEN_WHATIF") and os.environ.get("IG_USER_WHATIF"):
     ACCOUNTS["whatif"] = ("IG_TOKEN_WHATIF", os.environ["IG_USER_WHATIF"])
 
@@ -63,7 +61,7 @@ def publish_reel(key, video_url, caption, cover_url=None, share_to_feed=True, ti
     tok = token_for(key)
     info = me(tok)
     expected = ACCOUNTS[key][1]
-    if info.get("username") != expected:
+    if expected and info.get("username") != expected:
         raise IGError(f"Token gehört zu @{info.get('username')}, erwartet @{expected}")
     uid = info["user_id"]
     params = dict(media_type="REELS", video_url=video_url, caption=caption[:2200],
@@ -92,7 +90,7 @@ def publish_carousel(key, image_urls, caption, timeout_s=600):
     tok = token_for(key)
     info = me(tok)
     expected = ACCOUNTS[key][1]
-    if info.get("username") != expected:
+    if expected and info.get("username") != expected:
         raise IGError(f"Token gehört zu @{info.get('username')}, erwartet @{expected}")
     uid = info["user_id"]
     kids = [_req("POST", f"{uid}/media", tok, image_url=u, is_carousel_item="true")["id"] for u in image_urls[:10]]
@@ -125,7 +123,8 @@ def cmd_check():
     for key, (secret, expected) in ACCOUNTS.items():
         try:
             info = me(token_for(key))
-            ok = info.get("username") == expected
+            ok = expected is None or info.get("username") == expected
+            expected = expected or info.get("username")
             bad += not ok
             lines.append(f"{'✅' if ok else '❌'} {secret}: @{info.get('username')} (erwartet @{expected}), "
                          f"Typ {info.get('account_type')}, {info.get('media_count')} Beiträge")
@@ -144,7 +143,7 @@ def cmd_media(n=5):
             tok = token_for(key)
             js = _req("GET", "me/media", tok, fields="timestamp,media_type,media_product_type,permalink,caption", limit=n)
             items = js.get("data", [])
-            lines.append(f"## @{expected}: {len(items)} (neueste)")
+            lines.append(f"## @{expected or key}: {len(items)} (neueste)")
             for m in items:
                 cap = (m.get("caption") or "").split("\n")[0][:60]
                 lines.append(f"- {m['timestamp'][:16]} {m.get('media_product_type')} {m.get('permalink')} {cap}")

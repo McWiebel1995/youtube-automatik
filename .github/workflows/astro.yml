@@ -41,21 +41,20 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
           MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
-          IG_TOKEN_ASTRO: ${{ secrets.IG_TOKEN_ASTRO }}
+          IG_TOKEN_LERNBAERCHEN: ${{ secrets.IG_TOKEN_LERNBAERCHEN }}
           IG_USER_ASTRO: ${{ vars.IG_USER_ASTRO }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -o pipefail
           ARGS="--out output/astro"
           [ -n "${{ github.event.inputs.format }}" ] && ARGS="$ARGS --format ${{ github.event.inputs.format }}"
-          if [ "${{ github.event.inputs.dry_run }}" = "true" ] || [ -z "$IG_TOKEN_ASTRO" ]; then ARGS="$ARGS --dry-run"; fi
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ] || [ -z "$IG_TOKEN_LERNBAERCHEN" ]; then ARGS="$ARGS --dry-run"; fi
           python scripts/astro.py $ARGS 2>&1 | tee run.log || {
             echo "::error title=Fehler::$( (grep -E 'File \"/home/runner|Error|error' run.log | tail -n 14) | tr '\n' ' ' | cut -c1-1800)"; exit 1; }
       - name: Vorschau ablegen
-        if: github.event.inputs.dry_run == 'true' || env.HAS_TOKEN == ''
+        if: github.event.inputs.dry_run == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          HAS_TOKEN: ${{ secrets.IG_TOKEN_ASTRO }}
         run: |
           gh release delete preview-astro -y --cleanup-tag || true
           gh release create preview-astro output/astro/*.jpg output/astro/meta.json --title "Vorschau Astro" --notes "Testlauf" --prerelease

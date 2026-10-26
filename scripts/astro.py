@@ -332,6 +332,15 @@ if __name__ == "__main__":
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
     handle = os.environ.get("IG_USER_ASTRO", "")
+    if not handle and os.environ.get("IG_TOKEN_LERNBAERCHEN"):    # Benutzername direkt vom Konto holen
+        try:
+            import instagram
+            handle = instagram.me(instagram.token_for("astro")).get("username", "")
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Benutzername nicht lesbar: {e}")
+    if handle == "lernbaerchenig":                          # noch nicht umbenannt -> nicht posten, nur Vorschau
+        print("  ⚠ Konto heißt noch @lernbaerchenig – nur Vorschau, bitte zuerst umbenennen.")
+        handle, a.dry_run = "", True
     if not a.dry_run:
         import upload
         if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_today("astro"):
