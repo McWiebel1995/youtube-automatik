@@ -31,6 +31,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
       - run: pip install -r requirements.txt modal pillow
       - name: Schriften laden
         env:
@@ -42,6 +43,10 @@ jobs:
           MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
           MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
           IG_TOKEN_LERNBAERCHEN: ${{ secrets.IG_TOKEN_LERNBAERCHEN }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_LERNEN: ${{ secrets.YT_REFRESH_TOKEN_LERNEN }}
+          FREESOUND_API_KEY: ${{ secrets.FREESOUND_API_KEY }}
           IG_USER_ASTRO: ${{ vars.IG_USER_ASTRO }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -58,7 +63,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release delete preview-astro -y --cleanup-tag || true
-          gh release create preview-astro $(ls output/astro/*.jpg output/astro/*.png output/astro/meta.json 2>/dev/null) --title "Vorschau Astro" --notes "Testlauf" --prerelease
+          gh release create preview-astro $(ls output/astro/*.jpg output/astro/*.png output/astro/*.mp4 output/astro/meta.json 2>/dev/null) --title "Vorschau Astro" --notes "Testlauf" --prerelease
       - name: Stand speichern
         if: always() && github.event.inputs.dry_run != 'true'
         run: |

@@ -325,6 +325,95 @@ def publish(out: Path, meta: dict, account="astro"):
     return link
 
 
+# ----------------------------------------------------------------- YouTube-Short aus dem Karussell
+def _music(seconds, work: Path):
+    """Ruhige Sphärenmusik (Freesound CC0); ohne Schlüssel: Stille."""
+    import subprocess
+    try:
+        import requests
+        import fetch_sounds as fsd
+        key = os.environ.get("FREESOUND_API_KEY")
+        for q in ["ethereal ambient pad", "dreamy ambient music", "celestial ambient", "meditation ambient pad"]:
+            for snd, url in fsd.search(key, q):
+                if {"vocal", "vocals", "voice", "singing", "speech"} & {t.lower() for t in snd.get("tags", [])}:
+                    continue
+                raw = work / "music_src"
+                raw.write_bytes(requests.get(url, timeout=120).content)
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-stream_loop", "-1", "-i", str(raw), "-t",
+                                f"{seconds:.2f}", "-ac", "2", "-ar", "48000",
+                                "-af", f"afade=t=in:d=1.5,afade=t=out:st={seconds - 2.5:.2f}:d=2.5,volume=0.7",
+                                str(work / "music.wav")], check=True)
+                return work / "music.wav"
+    except Exception as e:  # noqa: BLE001
+        print(f"  ⚠ Musik: {e}")
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo",
+                    "-t", f"{seconds:.2f}", str(work / "music.wav")], check=True)
+    return work / "music.wav"
+
+
+def make_short(out: Path, meta: dict):
+    """Karussell-Folien -> 9:16-Short (1080x1920): unscharfer Hintergrund, Folie mittig, sanfter Zoom, Überblendungen."""
+    import subprocess
+    import tempfile
+    work = Path(tempfile.mkdtemp(dir=out))
+    slides = [out / f for f in meta["slides"]]
+    durs = [3.8] + [8.5] * (len(slides) - 2) + [3.6]
+    fade = 0.6
+    clips = []
+    for k, (sl, d) in enumerate(zip(slides, durs)):
+        bg = Image.open(sl).convert("RGB").resize((1080, 1920)).filter(ImageFilter.GaussianBlur(28))
+        bg = ImageEnhance.Brightness(bg).enhance(0.55)
+        fg = Image.open(sl).convert("RGB")
+        bg.paste(fg, (0, (1920 - 1350) // 2))
+        frame_png = work / f"f{k}.png"
+        bg.save(frame_png)
+        n = int((d + fade) * 30)
+        z = "min(zoom+0.00035,1.06)" if k % 2 == 0 else "if(eq(on,1),1.06,max(zoom-0.00035,1.0))"
+        clip = work / f"c{k}.mp4"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(frame_png), "-vf",
+                        f"scale=2160:3840,zoompan=z='{z}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={n}:s=1080x1920:fps=30,"
+                        "format=yuv420p", "-frames:v", str(n), "-c:v", "libx264", "-preset", "medium", "-crf", "19",
+                        str(clip)], check=True)
+        clips.append((clip, d + fade))
+    # Überblendungen
+    inputs, fc, prev, t = [], "", "0:v", 0.0
+    for k, (c, d) in enumerate(clips):
+        inputs += ["-i", str(c)]
+    for k in range(1, len(clips)):
+        t += clips[k - 1][1] - fade
+        fc += f"[{prev}][{k}:v]xfade=transition=fade:duration={fade}:offset={t:.2f}[x{k}];"
+        prev = f"x{k}"
+    total = sum(d for _, d in clips) - fade * (len(clips) - 1)
+    music = _music(total, work)
+    vid = out / "astro_short.mp4"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-i", str(music), "-filter_complex", fc.rstrip(";"),
+                    "-map", f"[{prev}]", "-map", f"{len(clips)}:a", "-t", f"{total:.2f}", "-c:v", "libx264", "-preset",
+                    "medium", "-crf", "19", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
+                    "-af", "loudnorm=I=-16:TP=-1.5", "-movflags", "+faststart", str(vid)], check=True)
+    subprocess.run(["rm", "-rf", str(work)])
+    print(f"  ✓ Short: {total:.0f} s")
+    return vid
+
+
+def upload_short(out: Path, meta: dict):
+    import upload
+    token = os.environ.get("YT_REFRESH_TOKEN_LERNEN")
+    if not token:
+        print("  (kein YouTube-Zugang – Short nicht hochgeladen)")
+        return None
+    yt = upload.service(token)
+    title = f"{meta['hook']} ✨ #zodiac #shorts"[:100]
+    cap = meta["caption"]
+    desc = (f"{cap}\n\nSave this for the nights you need it 🌙 New cosmic notes every day.\n"
+            "For entertainment and reflection.")
+    ch = {"name": "astro", "category_id": "24", "made_for_kids": False, "privacy": "public", "synthetic": False}
+    m = {"title": title, "description": desc,
+         "tags": ["zodiac", "astrology", "zodiac signs", "horoscope", "shorts", meta.get("format", "")]}
+    vid = upload.upload(yt, out / "astro_short.mp4", m, ch)
+    print(f"  ✓ YouTube: https://youtu.be/{vid}")
+    return vid
+
+
 AVATARS = [
     "a glowing golden crescent moon centered, cradling a small bright star, tiny constellations around, deep midnight blue",
     "a serene woman's face in profile made of soft starlight, crescent moon in her hair, centered, deep navy and gold",
@@ -374,6 +463,15 @@ if __name__ == "__main__":
             print("Heute schon gepostet – übersprungen.")
             sys.exit(0)
     m = build(Path(a.out), a.format, handle=handle)
+    try:
+        make_short(Path(a.out).resolve(), m)
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning title=Short::{str(e)[:400]}")
     if not a.dry_run:
         publish(Path(a.out), m)
+        if (Path(a.out) / "astro_short.mp4").exists():
+            try:
+                upload_short(Path(a.out).resolve(), m)
+            except Exception as e:  # noqa: BLE001
+                print(f"::warning title=YouTube::{str(e)[:400]}")
     _ = textwrap
