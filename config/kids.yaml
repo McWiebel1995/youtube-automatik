@@ -37,7 +37,7 @@ channels:
     tags: ["Einschlafmusik", "Baby Schlafmusik", "Spieluhr", "Schlaflied", "Babymusik", "Lullaby", "Baby schlafen"]
 
   lernen:
-    name: "Lernbärchen"
+    name: "dear.zodiac"         # ehemals Lernbärchen, jetzt Astro-Shorts
     token_secret: YT_REFRESH_TOKEN_LERNEN
     category_id: "27"           # Bildung
     playlist_id: ""
