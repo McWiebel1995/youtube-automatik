@@ -402,6 +402,11 @@ def upload_short(out: Path, meta: dict):
         print("  (kein YouTube-Zugang – Short nicht hochgeladen)")
         return None
     yt = upload.service(token)
+    st = (yt.channels().list(part="status", mine=True).execute().get("items") or [{}])[0].get("status", {})
+    if st.get("madeForKids"):                         # Kanal noch auf „für Kinder“ -> nicht hochladen
+        print("::warning title=YouTube::dear.zodiac steht noch auf „speziell für Kinder“ – Short nicht hochgeladen. "
+              "Bitte in YouTube Studio umstellen.")
+        return None
     title = f"{meta['hook']} ✨ #zodiac #shorts"[:100]
     cap = meta["caption"]
     desc = (f"{cap}\n\nSave this for the nights you need it 🌙 New cosmic notes every day.\n"
