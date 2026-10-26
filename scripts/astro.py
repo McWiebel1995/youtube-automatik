@@ -176,7 +176,8 @@ def cover(bg, hook, subline, handle, label):
         d.text((W // 2, y), ln, font=ft, fill=GOLD2, anchor="mm", stroke_width=1, stroke_fill=(30, 22, 6))
         y += ft.size * 1.12
     d.text((W // 2, y + 34), subline, font=SERIF_I(54), fill=INK, anchor="mm")
-    d.text((W // 2, H - 140), "swipe  ⟶", font=SERIF_I(34), fill=GOLD, anchor="mm")
+    d.text((W // 2 - 22, H - 140), "swipe", font=SERIF_I(36), fill=GOLD, anchor="mm")
+    d.text((W // 2 + 42, H - 138), "→", font=glyph_font(34), fill=GOLD, anchor="mm")
     handle_line(d, handle)
     return im
 
@@ -190,7 +191,7 @@ def group_slide(bg, title, glyphs, items, handle):
     if glyphs:
         d.text((W // 2, 182), glyphs, font=glyph_font(40), fill=GOLD, anchor="mm")
     y = 250
-    fb = SERIF(37)
+    fb = SERIF(40)
     for name, gl, text in items:
         d.line([(W // 2 - 60, y), (W // 2 + 60, y)], fill=GOLD + (140,), width=1)
         y += 36
@@ -202,8 +203,8 @@ def group_slide(bg, title, glyphs, items, handle):
         y += 74
         for ln in wrap(d, text, fb, W - 210):
             d.text((W // 2, y), ln, font=fb, fill=INK, anchor="mm")
-            y += 46
-        y += 28
+            y += 49
+        y += 24
     handle_line(d, handle)
     return im
 
