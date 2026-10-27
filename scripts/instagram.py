@@ -120,6 +120,9 @@ def refresh(token):
 
 def cmd_check():
     lines, bad = [], 0
+    if not os.environ.get("IG_TOKEN_WHATIF") or not os.environ.get("IG_USER_WHATIF"):
+        lines.append(f"ℹ facts/WHATIF: Secret IG_TOKEN_WHATIF {'vorhanden' if os.environ.get('IG_TOKEN_WHATIF') else 'FEHLT'}, "
+                     f"Variable IG_USER_WHATIF {'= ' + os.environ['IG_USER_WHATIF'] if os.environ.get('IG_USER_WHATIF') else 'FEHLT'}")
     for key, (secret, expected) in ACCOUNTS.items():
         try:
             info = me(token_for(key))
