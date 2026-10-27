@@ -653,7 +653,7 @@ def upload_news_short(out: Path, meta):
     ch = {"category_id": CFG.get("category_id", "28"), "made_for_kids": False, "privacy": "public", "name": CFG["name"]}
     vid = upload.upload(yt, out / "news_short.mp4", meta, ch)
     print(f"  ✓ Short: https://youtu.be/{vid}")
-    if os.environ.get("IG_TOKEN_WHATIF"):
+    if os.environ.get("IG_TOKEN_WHATIF") or os.environ.get("IG_WHATIF_ALT"):
         import ig_queue
         ig_queue.add("whatif", out / "news_short.mp4", meta["description"][:2000])
     upload.mark_uploaded("whatif-news")

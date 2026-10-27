@@ -251,7 +251,7 @@ def upload_quiz(out: Path, meta):
     used = json.loads(USED.read_text(encoding="utf-8")) if USED.exists() else []
     USED.write_text(json.dumps((used + [q["q"] for q in meta["questions"]])[-500:], ensure_ascii=False, indent=1),
                     encoding="utf-8")
-    if os.environ.get("IG_TOKEN_WHATIF"):
+    if os.environ.get("IG_TOKEN_WHATIF") or os.environ.get("IG_WHATIF_ALT"):
         import ig_queue
         ig_queue.add("whatif", out / "quiz_short.mp4", meta["description"])
     upload.mark_uploaded("whatif-quiz")
