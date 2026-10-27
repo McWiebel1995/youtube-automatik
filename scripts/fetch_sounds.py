@@ -16,6 +16,7 @@ import subprocess
 import sys
 import tempfile
 import time
+from pathlib import Path
 
 import numpy as np
 import requests
@@ -44,7 +45,11 @@ NOISE_WORDS = {"sheep", "lamb", "lambs", "goat", "cow", "cows", "cattle", "farm"
                "barking", "rooster", "chicken", "chickens", "hen", "horse", "donkey", "pig", "cat", "meow", "animal",
                "animals", "frog", "frogs", "cricket", "crickets", "insects", "people", "person", "children", "kids",
                "child", "baby", "voices", "crowd", "laugh", "cough", "footsteps", "car", "cars", "traffic", "siren",
-               "motorbike", "airplane", "plane", "train", "bell", "bells", "church", "tractor", "lawnmower"}
+               "motorbike", "airplane", "plane", "train", "bell", "bells", "church", "tractor", "lawnmower",
+               "city", "street", "streets", "road", "urban", "highway", "engine", "motor", "vehicle", "vehicles",
+               "truck", "bus", "tram", "horn", "construction", "drill", "radio", "tv", "television", "talk", "talking",
+               "neighbour", "neighbor", "neighbourhood", "parking", "garage", "door", "doors", "window-cleaner",
+               "helicopter", "jet", "beep", "alarm", "phone", "kitchen", "cafe", "restaurant", "station", "subway"}
 BIRD_WORDS = {"bird", "birds", "birdsong", "chirp", "chirping", "crow", "owl", "seagull", "gull", "duck", "geese"}
 
 
@@ -76,7 +81,7 @@ def search(key, query, allow_birds=False):
             yield s, url
 
 
-def to_loop(mp3_path, out_path, max_seconds=300):
+def to_loop(mp3_path, out_path, max_seconds=300, prefix=""):
     """Dekodiert, schneidet Anfang/Ende weg, normalisiert und macht einen nahtlosen Loop."""
     with tempfile.NamedTemporaryFile(suffix=".wav") as wav:
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", mp3_path, "-ac", "2", "-ar", str(SR),
@@ -95,7 +100,79 @@ def to_loop(mp3_path, out_path, max_seconds=300):
     rms = np.sqrt((m ** 2).mean(axis=1)) + 1e-9
     if np.percentile(rms, 99.5) / np.median(rms) > 8:          # länger anhaltende laute Störung (Stimme, Auto, Hund …)
         raise ValueError("laute Störgeräusche im Ton")
+    if car_like(x, prefix):
+        raise ValueError("Anschwellen im Tiefton (vermutlich Auto/Motor)")
+    if gemini_clean(x, prefix) is False:
+        raise ValueError("Gemini hört Störgeräusche")
     write_flac(out_path, seamless(x, loop_n, fade))
+
+
+def car_like(x, prefix):
+    """Vorbeifahrende Autos/Motoren: deutliches, mehrsekündiges Anschwellen im Tiefton (40–250 Hz).
+    Regen/Feuer/Wasser sind dort gleichmäßig. Donner/Wind sind ausgenommen (die schwellen natürlich an)."""
+    if prefix in ("thunder_", "wind_"):
+        return False
+    mono = x.mean(axis=1)
+    win = SR // 2
+    n = len(mono) // win
+    if n < 20:
+        return False
+    frames = mono[: n * win].reshape(n, win) * np.hanning(win)
+    spec = np.abs(np.fft.rfft(frames, axis=1)) ** 2
+    f = np.fft.rfftfreq(win, 1 / SR)
+    low = spec[:, (f >= 40) & (f <= 250)].sum(axis=1)
+    tot = spec.sum(axis=1) + 1e-12
+    share = np.convolve(low / tot, np.ones(4) / 4, "same")          # 2-s-Glättung
+    return float(np.percentile(share, 97) / (np.median(share) + 1e-9)) > 3.0
+
+
+GEMINI_LISTEN = ("You are checking a nature sound recording for a sleep-sounds video. Expected sound: {what}. "
+                 "Listen carefully to all of it. Is it ONLY that sound (plus natural ambience like soft wind)? List any "
+                 "unwanted sounds: cars, traffic, engines, airplanes, voices, people, footsteps, doors, animals, "
+                 "insects, music, beeps, phones, clicks, hum, wind noise on the microphone. "
+                 'Answer ONLY JSON: {{"clean": true/false, "unwanted": ["..."]}}')
+WHAT = {"rain_": "steady rain", "roof_": "rain on a roof or tent", "thunder_": "rain with distant thunder",
+        "wind_": "wind", "fire_": "a crackling fireplace or campfire", "clock_": "a ticking clock",
+        "waterfall_": "a waterfall", "stream_": "a stream or brook", "birds_": "birds in a forest"}
+
+
+def gemini_clean(x, prefix):
+    """Gemini hört 3 Ausschnitte (Anfang/Mitte/Ende, je 20 s). True = sauber, False = Störgeräusch, None = keine Prüfung."""
+    import base64
+    import json
+    import re
+    key = os.environ.get("GEMINI_API_KEY")
+    if not key:
+        return None
+    n = len(x)
+    parts = [x[int(n * a): int(n * a) + 20 * SR] for a in (0.05, 0.45, 0.8)]
+    clip = np.concatenate([p for p in parts if len(p)])
+    with tempfile.TemporaryDirectory() as d:
+        wavp, mp3p = Path(d) / "c.wav", Path(d) / "c.mp3"
+        wavfile.write(wavp, SR, (np.clip(clip, -1, 1) * 32767).astype(np.int16))
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(wavp), "-ac", "1", "-ar", "16000", "-b:a", "48k",
+                        str(mp3p)], check=True)
+        b64 = base64.b64encode(mp3p.read_bytes()).decode()
+    for model in ("gemini-3.8-flash", "gemini-3.6-flash", "gemini-2.5-flash"):
+        try:
+            r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                              params={"key": key}, timeout=120, json={
+                                  "contents": [{"parts": [{"text": GEMINI_LISTEN.format(what=WHAT.get(prefix, "nature sound"))},
+                                                          {"inline_data": {"mime_type": "audio/mp3", "data": b64}}]}],
+                                  "generationConfig": {"temperature": 0, "responseMimeType": "application/json"}})
+            if r.status_code in (404, 400):
+                continue
+            if r.status_code == 429:
+                time.sleep(8)
+                continue
+            r.raise_for_status()
+            js = json.loads(re.sub(r"^```(json)?|```$", "", r.json()["candidates"][0]["content"]["parts"][0]["text"].strip()))
+            if not js.get("clean", False):
+                print(f"    🎧 Gemini hört Störgeräusche: {', '.join(js.get('unwanted', []))[:120]}")
+            return bool(js.get("clean", False))
+        except Exception as e:  # noqa: BLE001
+            print(f"    (Hörprobe {model}: {str(e)[:80]})")
+    return None
 
 
 def prefixes_for(chan, cfg):
@@ -138,7 +215,7 @@ def main():
                             r.raise_for_status()
                             tmp.write(r.content)
                             tmp.flush()
-                            to_loop(tmp.name, dst)
+                            to_loop(tmp.name, dst, prefix=prefix)
                         except Exception as e:  # noqa: BLE001
                             print(f"  übersprungen {s['id']}: {e}")
                             dst.unlink(missing_ok=True)
