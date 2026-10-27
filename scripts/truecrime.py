@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
 """
-True-Crime-Dokus (englisch) – auf der sicheren Seite:
+Krimi-Geschichten im True-Crime-Stil (englisch) – FIKTIV und klar gekennzeichnet:
 
-  * nur gut dokumentierte, ABGESCHLOSSENE Fälle (Täter rechtskräftig verurteilt, mind. 25 Jahre her) oder berühmte
-    ungelöste historische Fälle OHNE Verdächtige zu nennen
-  * Opfer, Angehörige, Zeugen, Polizisten: keine Namen; Täter nur mit Namen, wenn verurteilt + historisch + bekannt
-  * Grundlage ist der komplette Wikipedia-Artikel; ein zweiter Durchgang prüft jeden Satz gegen die Quelle,
-    Unbelegtes fliegt raus und wird für die Freigabe gelistet
-  * Bilder nur Atmosphäre (keine Gesichter echter Menschen), ruhiger Doku-Ton, Quellen in der Beschreibung
-  * Upload als PRIVAT – öffentlich erst nach deiner Freigabe
+  * erfundene Fälle, angelehnt an typische echte Fallmuster; alle Namen, Orte, Details erfunden (fiktive Kleinstädte)
+  * kein Bezug zu echten Personen/Fällen; keine Taten an Kindern, keine Sexualverbrechen, keine Grausamkeiten
+  * Hinweis „This story is fictional …“ im ersten Satz, in der Beschreibung und als YouTube-KI-Kennzeichnung
+  * Bilder nur Atmosphäre (keine Gesichter), ruhiger Doku-Erzähler, Karaoke-Untertitel; dazu ein Teaser-Short
 
     python scripts/truecrime.py --out output/truecrime [--dry-run] [--minutes 10]
 """
@@ -33,53 +30,8 @@ import whatif as wi  # noqa: E402
 
 SR = wi.SR
 USED = ROOT / "data" / "truecrime_used.json"
-UA = {"User-Agent": "youtube-automatik/1.0 (true crime research; contact via GitHub)"}
 STYLE = ("cinematic documentary still, moody, muted desaturated colors, film grain, atmospheric, dusk or night, "
          "no people's faces, no text, no logos, no gore, no blood, no weapons, no dead bodies")
-
-PICK_TASK = """You are planning a serious English-language true crime documentary (YouTube, about {minutes} minutes).
-Pick ONE case that meets ALL conditions:
-- very well documented, with its own detailed English Wikipedia article
-- either: the perpetrator was convicted (final) AND the crime is at least 25 years old
-  or: a famous unsolved historical case (40+ years old) where NO living suspects are named
-- no crimes against children, no sexual crimes, no terror attacks, no ongoing proceedings or appeals
-- great to tell (investigation, twists, resolution): famous heists, cons and frauds, historic murder cases,
-  spectacular prison escapes, art thefts, kidnappings with a good outcome, legendary unsolved mysteries
-Already covered: {used}
-Answer ONLY JSON: {{"case":"short case name","wiki_title":"exact English Wikipedia article title",
-"why":"1 sentence why it meets the conditions","year":1970}}"""
-
-SCRIPT_TASK = """Write the narration script of a calm, serious English true crime documentary (documentary-film style,
-not sensational). Length about {words} words in {segs} segments (2–4 sentences each).
-Use ONLY facts from the SOURCE below – invent nothing, no invented quotes, no invented thoughts/feelings of people,
-mark uncertainty ("According to the court…", "To this day it is unclear…").
-Names: do NOT name victims, relatives, witnesses or investigators ("a 34-year-old woman", "the lead detective").
-Name the perpetrator only if finally convicted; otherwise "the perpetrator"/"a suspect" without a name.
-No gruesome details, no blood, no description of injuries. Respectful towards victims.
-Structure: calm gripping opening (place, time, atmosphere) – the crime (without gore) – investigation and twists –
-resolution/verdict – aftermath – reflective ending + a question to viewers.
-For EVERY segment a visual idea with atmosphere ONLY, no human faces (e.g. "rain-soaked cobblestone street in a small
-town at night, 1970s", "stack of old case files on a wooden desk under a desk lamp").
-Also: title (max 70 chars, serious and intriguing, no misleading clickbait), description (3 sentences),
-short (a standalone 50–70-word teaser for a YouTube Short, ending with "The full story is on the channel.").
-Answer ONLY JSON: {{"title":"...","description":"...","segments":[{{"text":"...","visual":"..."}}],"short":"..."}}
-
-SOURCE ({source_name}):
-{source}"""
-
-CHECK_TASK = """Check this documentary script sentence by sentence against the SOURCE.
-Remove or correct every statement that is not clearly supported by the source (dates, numbers, places, events, quotes,
-motives). Remove names of victims, relatives, witnesses, investigators and anyone not finally convicted.
-Remove gruesome details. Keep style and length as far as possible.
-Return the corrected script in the SAME JSON format plus "removed": a list of removed/changed statements, each with a
-short reason, written in GERMAN (the creator reviews in German). Answer ONLY JSON.
-
-SOURCE:
-{source}
-
-SCRIPT:
-{script}"""
-
 
 def used():
     try:
@@ -88,42 +40,47 @@ def used():
         return []
 
 
-def wiki_de(title):
-    """Kompletter Artikeltext (en.wikipedia) + URL."""
-    r = requests.get("https://en.wikipedia.org/w/api.php", headers=UA, timeout=40, params={
-        "action": "query", "prop": "extracts|info", "explaintext": 1, "titles": title, "redirects": 1,
-        "inprop": "url", "format": "json"}).json()
-    page = next(iter(r.get("query", {}).get("pages", {}).values()), {})
-    if not page or "missing" in page:
-        s = requests.get("https://en.wikipedia.org/w/api.php", headers=UA, timeout=40, params={
-            "action": "query", "list": "search", "srsearch": title, "srlimit": 1, "format": "json"}).json()
-        hits = s.get("query", {}).get("search", [])
-        if not hits:
-            return "", "", ""
-        return wiki_de(hits[0]["title"]) if hits[0]["title"] != title else ("", "", "")
-    return page.get("title", title), page.get("extract", ""), page.get("fullurl", "")
+STORY_TASK = """Write an ORIGINAL, entirely FICTIONAL crime story told like a calm, serious true crime documentary
+(narrator voice, investigation, twists, resolution). It is inspired by the kinds of cases that really happen
+(theme for this episode: {theme}), but every person, place, date and detail is invented.
+Hard rules:
+- Invent all names (ordinary, believable names) and set it in a FICTIONAL small town or neighbourhood (invent the name;
+  country/region may be generic, e.g. "a small town in the American Midwest"). Never use real people, real crimes,
+  real victims, real companies, real police departments or real towns as the setting.
+- Do not make it resemble a specific famous real case.
+- No crimes against children, no sexual crimes, no terrorism; no gore, no blood, no description of injuries.
+- The FIRST sentence of the first segment is exactly: "This story is fictional, inspired by the kinds of cases
+  investigators face every day."
+- Never call it a true story. Clever, fair twist; clues planted earlier; satisfying, plausible resolution.
+Length about {words} words in {segs} segments (2–4 sentences each). Calm, atmospheric, gripping.
+For EVERY segment a visual idea with atmosphere ONLY, no human faces (e.g. "rain-soaked main street of a quiet town at
+night, 1990s", "old case files under a desk lamp").
+Also: title (max 70 chars, intriguing, must NOT claim it is true; e.g. "The Last Guest at Harrow Inn"),
+description (2–3 sentences), short (a standalone 50–70-word teaser for a Short, first words "A fictional case:",
+ending with "Full story on the channel."), case (short name of the story).
+Avoid these previous stories/themes: {used}
+Answer ONLY JSON: {{"case":"...","title":"...","description":"...","segments":[{{"text":"...","visual":"..."}}],
+"short":"..."}}"""
+THEMES = ["a disappearance in a small town", "a perfect-looking alibi", "an inheritance dispute", "a con artist",
+          "a cold case reopened decades later", "a robbery that went wrong", "a lighthouse keeper's secret",
+          "a missing hiker", "a family business with a dark secret", "an anonymous letter", "a fire at an old mill",
+          "a stolen painting", "a forged will", "a snowed-in mountain lodge", "a vanished fortune",
+          "a witness who saw too much", "a small-town radio host", "a wrong man convicted"]
 
 
 def plan(minutes, log=print):
-    for attempt in range(4):
-        pick = gemini.ask_json(PICK_TASK.format(minutes=int(minutes), used="; ".join(used()[-80:]) or "keine"),
-                               temperature=1.0)
-        title, text, url = wiki_de(pick["wiki_title"])
-        if len(text) >= 6000:                       # nur ausführlich dokumentierte Fälle
-            break
-        log(f"  ↻ Quelle zu dünn ({pick.get('case')}: {len(text)} Zeichen) – anderer Fall")
-    else:
-        raise SystemExit("Kein ausreichend dokumentierter Fall gefunden.")
-    log(f"▶ Fall: {pick['case']} – {title} ({len(text)} Zeichen Quelle)")
     words = int(minutes * 135)
-    src = text[:45000]
-    sc = gemini.ask_json(SCRIPT_TASK.format(words=words, segs=max(12, words // 55), source=src,
-                                            source_name=f"Wikipedia: {title}"), temperature=0.6)
-    checked = gemini.ask_json(CHECK_TASK.format(source=src, script=json.dumps(sc, ensure_ascii=False)), temperature=0.1)
-    removed = checked.pop("removed", [])
-    if checked.get("segments"):
-        sc = checked
-    sc.update(case=pick["case"], why=pick.get("why", ""), source_title=title, source_url=url, removed=removed)
+    theme = random.choice(THEMES)
+    sc = gemini.ask_json(STORY_TASK.format(theme=theme, words=words, segs=max(12, words // 55),
+                                           used="; ".join(used()[-80:]) or "none"), temperature=0.95)
+    first = sc["segments"][0]["text"]
+    if "fictional" not in first.lower():           # Hinweis am Anfang erzwingen
+        sc["segments"][0]["text"] = ("This story is fictional, inspired by the kinds of cases investigators face every "
+                                     "day. " + first)
+    if re.search(r"\btrue (story|case|crime)\b", sc["title"], re.I):
+        sc["title"] = re.sub(r"\btrue (story|case|crime)\b", "", sc["title"], flags=re.I).strip(" -–:")
+    sc.update(theme=theme, source_title="", source_url="", removed=[], why=f"fiktiv, Thema: {theme}")
+    log(f"▶ Fiktiver Fall: {sc['case']} ({theme}) – {sc['title']}")
     return sc
 
 
@@ -213,17 +170,17 @@ def build(out: Path, minutes=10.0, seed=None, log=print):
     wi.mix_and_render(work / "sh.mp4", sh_audio, out / "short.mp4", work, work / "sh.ass", music_db=-25)
     # Begleittext für die Freigabe
     total = len(voice_all) / SR
-    review = [f"FALL: {sc['case']}  ({sc.get('why', '')})", f"Quelle: {sc['source_url']}",
+    review = [f"FALL (fiktiv): {sc['case']}  ({sc.get('why', '')})",
               f"Titel: {sc['title']}", f"Länge: {total / 60:.1f} min", "",
               "VOM FAKTENCHECK ENTFERNT/GEÄNDERT:"] + [f"- {r}" for r in sc.get("removed", [])] + \
              ["", "SKRIPT:"] + [f"[{i + 1}] {s['text']}" for i, s in enumerate(segs)] + ["", "SHORT:", sc["short"]]
     (out / "skript_zur_freigabe.txt").write_text("\n".join(review), encoding="utf-8")
     meta = {"title": sc["title"][:100], "case": sc["case"], "source_url": sc["source_url"],
-            "description": (f"{sc['description']}\n\nSource: Wikipedia – {sc['source_title']}: {sc['source_url']}\n"
-                            "All information is based on publicly available sources. Out of respect, the names of "
-                            "victims and their families are not mentioned. Images: AI-generated illustrations, not real "
-                            "people or locations.\n\n#truecrime #truestory #documentary"),
-            "short_title": f"{sc['case']} – a true story #shorts"[:100], "short_text": sc["short"],
+            "description": (f"{sc['description']}\n\n⚠️ This is a work of fiction, told in the style of a true crime "
+                            "documentary and inspired by the kinds of cases that really happen. All names, places and "
+                            "events are invented; any resemblance to real persons or cases is coincidental. "
+                            "Images are AI-generated.\n\n#truecrimestories #crimestory #mystery"),
+            "short_title": f"{sc['case']} 🔎 #shorts #mystery"[:100], "short_text": sc["short"],
             "minutes": round(total / 60, 1)}
     (out / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
     subprocess.run(["rm", "-rf", str(work)])
@@ -250,7 +207,7 @@ def thumbnail(src, title, out):
         d.text((64, y), ln, font=f, fill=(245, 240, 230), stroke_width=4, stroke_fill=(0, 0, 0))
         y += 100
     d.rectangle([64, 52, 64 + 236, 104], fill=(178, 34, 34))
-    d.text((80, 56), "TRUE STORY", font=ImageFont.truetype(str(fp), 40) if fp.exists() else f, fill="white")
+    d.text((80, 56), "CASE FILE", font=ImageFont.truetype(str(fp), 40) if fp.exists() else f, fill="white")
     im.save(out, quality=92)
 
 
@@ -262,17 +219,17 @@ def upload_private(out: Path, meta: dict):
         print("  (kein YouTube-Zugang für True Crime – nur Vorschau)")
         return
     yt = upload.service(tok)
-    ch = {"name": "truecrime", "category_id": "25", "made_for_kids": False, "privacy": "private", "synthetic": True}
+    ch = {"name": "truecrime", "category_id": "24", "made_for_kids": False,
+          "privacy": os.environ.get("TC_PRIVACY", "public"), "synthetic": True}
     vid = upload.upload(yt, out / "video.mp4", {"title": meta["title"], "description": meta["description"],
-                                                "tags": ["true crime", "true story", "documentary", "crime documentary", "unsolved"]}, ch)
+                                                "tags": ["crime story", "mystery", "true crime style", "fictional crime", "detective story"]}, ch)
     try:
         upload.set_thumbnail(yt, vid, out / "thumbnail.jpg")
     except Exception:  # noqa: BLE001
         pass
     svid = upload.upload(yt, out / "short.mp4", {"title": meta["short_title"], "description":
-                         f"{meta['short_text']}\n\nSource: {meta['source_url']}\n#shorts #truecrime"}, ch)
-    print(f"::notice title=Zur Freigabe::Video https://youtu.be/{vid} und Short https://youtu.be/{svid} liegen PRIVAT "
-          "bereit – bitte ansehen und in YouTube Studio auf Öffentlich stellen.")
+                         f"{meta['short_text']}\n\nA fictional story. #shorts #crimestory"}, ch)
+    print(f"::notice title=Hochgeladen::Video https://youtu.be/{vid} · Short https://youtu.be/{svid}")
     u = used()
     USED.write_text(json.dumps((u + [meta["case"]])[-300:], ensure_ascii=False, indent=1), encoding="utf-8")
     upload.mark_uploaded("truecrime")
