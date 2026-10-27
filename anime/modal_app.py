@@ -344,9 +344,9 @@ class ImageFlux:
         self.pipe.enable_model_cpu_offload()
 
     @modal.method()
-    def generate(self, prompt: str, seed: int = 0, width: int = 1664, height: int = 928) -> bytes:
+    def generate(self, prompt: str, seed: int = 0, width: int = 1664, height: int = 928, negative: str = "") -> bytes:
         gen = self.torch.Generator("cuda").manual_seed(seed)
-        img = self.pipe(prompt=prompt, negative_prompt="text, watermark, logo, blurry, lowres, deformed, cartoon",
+        img = self.pipe(prompt=prompt, negative_prompt="text, watermark, logo, blurry, lowres, deformed, cartoon" + (", " + negative if negative else ""),
                         width=width, height=height, num_inference_steps=30, true_cfg_scale=4.0,
                         generator=gen).images[0]
         buf = io.BytesIO()

@@ -31,7 +31,17 @@ import whatif as wi  # noqa: E402
 SR = wi.SR
 USED = ROOT / "data" / "truecrime_used.json"
 STYLE = ("cinematic documentary still, moody, muted desaturated colors, film grain, atmospheric, dusk or night, "
-         "no people's faces, no text, no logos, no gore, no blood, no weapons, no dead bodies")
+         "quiet and empty scene, calm still life, tidy and clean")
+NEGATIVE = ("blood, gore, weapon, gun, rifle, pistol, knife, corpse, dead body, injury, violence, crime scene tape, "
+            "skull, face, portrait, person in focus, red stains")
+BAD_WORDS = r"\b(blood\w*|bloody|gun\w*|rifle\w*|pistol\w*|knife|knives|weapon\w*|corpse\w*|body|bodies|dead|murder\w*|" \
+            r"kill\w*|victim\w*|injur\w*|wound\w*|gore|crime scene|stab\w*|shot|shoot\w*)\b"
+
+
+def safe_visual(v):
+    """Bildidee entschärfen: heikle Wörter raus (der Bildgenerator malt sonst genau das)."""
+    v = re.sub(BAD_WORDS, "", v or "", flags=re.I)
+    return re.sub(r"\s{2,}", " ", v).strip(" ,.") or "old case files on a wooden desk under a desk lamp"
 
 def used():
     try:
@@ -53,8 +63,9 @@ Hard rules:
   investigators face every day."
 - Never call it a true story. Clever, fair twist; clues planted earlier; satisfying, plausible resolution.
 Length about {words} words in {segs} segments (2–4 sentences each). Calm, atmospheric, gripping.
-For EVERY segment a visual idea with atmosphere ONLY, no human faces (e.g. "rain-soaked main street of a quiet town at
-night, 1990s", "old case files under a desk lamp").
+For EVERY segment a visual idea: a calm, EMPTY place or harmless object only (e.g. "rain-soaked main street of a quiet
+town at night, 1990s", "old case files under a desk lamp", "an old fountain pen on a document"). Never mention weapons,
+blood, bodies, victims or violence in the visual idea.
 Also: title (max 70 chars, intriguing, must NOT claim it is true; e.g. "The Last Guest at Harrow Inn"),
 description (2–3 sentences), short (a standalone 50–70-word teaser for a Short, first words "A fictional case:",
 ending with "Full story on the channel."), case (short name of the story).
@@ -133,7 +144,7 @@ def build(out: Path, minutes=10.0, seed=None, log=print):
             log(f"  Stimme {i + 1}/{len(segs)} ({_t.time() - t0:.0f} s)")
         imgs = []
         for i, s in enumerate(segs):
-            png = flux.generate.remote(f"{s.get('visual', 'old case files on a wooden desk')}, {STYLE}", seed=300 + i)
+            png = flux.generate.remote(f"{safe_visual(s.get('visual'))}, {STYLE}", seed=300 + i, negative=NEGATIVE)
             p = work / f"img_{i}.png"
             p.write_bytes(png)
             imgs.append(p)
