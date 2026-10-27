@@ -1,0 +1,58 @@
+name: "💬 Kommentar-Bot (YouTube & Instagram)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "probe = nur prüfen · dry-run = Vorschläge zeigen · live = antworten"
+        type: choice
+        options: [probe, dry-run, live]
+        default: probe
+
+permissions:
+  contents: write
+
+concurrency:
+  group: comment-bot
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Kommentare bearbeiten
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_REGEN: ${{ secrets.YT_REFRESH_TOKEN_REGEN }}
+          YT_REFRESH_TOKEN_KAMIN: ${{ secrets.YT_REFRESH_TOKEN_KAMIN }}
+          YT_REFRESH_TOKEN_WASSERFALL: ${{ secrets.YT_REFRESH_TOKEN_WASSERFALL }}
+          YT_REFRESH_TOKEN_LERNEN: ${{ secrets.YT_REFRESH_TOKEN_LERNEN }}
+          YT_REFRESH_TOKEN_WHATIF: ${{ secrets.YT_REFRESH_TOKEN_WHATIF }}
+          IG_TOKEN_CALMHAVEN: ${{ secrets.IG_TOKEN_CALMHAVEN }}
+          IG_TOKEN_MONDMELODIE: ${{ secrets.IG_TOKEN_MONDMELODIE }}
+          IG_TOKEN_LERNBAERCHEN: ${{ secrets.IG_TOKEN_LERNBAERCHEN }}
+          IG_TOKEN_GUTENACHT: ${{ secrets.IG_TOKEN_GUTENACHT }}
+          IG_TOKEN_WHATIF: ${{ secrets.IG_TOKEN_WHATIF }}
+          IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
+        run: |
+          MODE="${{ github.event.inputs.mode || 'live' }}"
+          ARGS=""
+          [ "$MODE" = "probe" ] && ARGS="--probe"
+          [ "$MODE" = "dry-run" ] && ARGS="--dry-run"
+          python scripts/comment_bot.py $ARGS
+      - name: Stand speichern
+        if: always() && (github.event.inputs.mode == 'live' || github.event.inputs.mode == '')
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          [ -e data/comment_bot ] && git add -A data/comment_bot || true
+          git commit -m "Kommentar-Bot: Stand" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep 5; done
