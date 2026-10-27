@@ -86,7 +86,13 @@ def main():
                                ["| Deep Sleep", "| Relax & Unwind", "| Study & Focus", "| Calm Night",
                                 "| Peaceful Ambience", "| Sleep Better Tonight"])
     loop = ASSETS / ch["key"] / "video" / info["loop"]
-    thumb = thumbnail.make(loop, work / "thumbnail.jpg", hours, meta["scene"], rnd)
+    try:
+        import covers
+        bg = covers.background(args.channel, meta["scene"], "landscape", work, rnd)
+    except Exception as e:  # noqa: BLE001
+        print(f"  ⚠ Titelbild-Suche: {e}")
+        bg = None
+    thumb = thumbnail.make(loop, work / "thumbnail.jpg", hours, meta["scene"], rnd, bg=bg)
     publish_at = next_publish_time(ch["publish_time_utc"], args.publish_days)
 
     record = {"channel": args.channel, "seed": seed, "hours": hours, "publish_at": publish_at,
@@ -123,7 +129,13 @@ def main():
             order = ["regen", "kamin", "wasserfall"]
             if args.channel in order and dt.date.today().toordinal() % 3 == order.index(args.channel):
                 import ig_queue
-                ig_queue.add("calmhaven", clip, ig_clip.caption(args.channel, hours, meta["scene"], rnd))
+                try:
+                    import covers
+                    igc = covers.ig_cover(args.channel, meta["scene"], meta["scene"], work / "ig_cover.jpg", work, rnd)
+                except Exception as e:  # noqa: BLE001
+                    print(f"  ⚠ IG-Titelbild: {e}")
+                    igc = None
+                ig_queue.add("calmhaven", clip, ig_clip.caption(args.channel, hours, meta["scene"], rnd), cover=igc)
         except Exception as e:  # noqa: BLE001
             print(f"  ⚠ Short/Instagram-Clip übersprungen: {e}")
         if not args.keep:

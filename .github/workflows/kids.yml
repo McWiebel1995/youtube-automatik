@@ -104,6 +104,8 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
           TTS_ENGINE: chatterbox
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -126,7 +128,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          for p in data/ig_queue data/last_upload data/playlists; do [ -e "$p" ] && git add -A "$p" || true; done
+          for p in data/ig_queue data/last_upload data/playlists data/covers_used.json; do [ -e "$p" ] && git add -A "$p" || true; done
           git commit -m "Upload-Stand + Instagram-Warteschlange" || exit 0
           for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep $((RANDOM % 10 + 3)); done
 

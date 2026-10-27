@@ -25,9 +25,13 @@ def font(size):
     return ImageFont.load_default(size)
 
 
-def make(loop_video, out_path: Path, hours, scene, rnd):
+def make(loop_video, out_path: Path, hours, scene, rnd, bg=None):
     frame = out_path.with_suffix(".frame.png")
-    ffmpeg("-ss", round(rnd.uniform(1, 8), 2), "-i", loop_video, "-frames:v", "1", frame)
+    if bg:                                            # eigenes, passendes Foto (covers.py)
+        import covers
+        covers.fit(bg, 1280, 720).save(frame)
+    else:
+        ffmpeg("-ss", round(rnd.uniform(1, 8), 2), "-i", loop_video, "-frames:v", "1", frame)
     img = Image.open(frame).convert("RGB").resize((1280, 720), Image.LANCZOS)
     img = ImageEnhance.Brightness(img).enhance(1.25)
     img = ImageEnhance.Contrast(img).enhance(1.15)

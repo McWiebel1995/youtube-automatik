@@ -69,9 +69,20 @@ def ig_caption(channel, meta, info):
     return f"{body}\n\n{IG_TAGS[channel]}"
 
 
-def make_thumb(video, out, big, small, at=0.35):
+def make_thumb(video, out, big, small, at=0.35, channel=None, scene=None):
     from common import duration
-    ffmpeg("-ss", f"{duration(video) * at:.2f}", "-i", video, "-frames:v", "1", out.with_suffix(".png"))
+    bg = None
+    if channel:                                       # eigenes, passendes Bild statt immer gleichem Video-Frame
+        try:
+            import covers
+            bg = covers.background(channel, scene or big, "landscape", out.parent)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Titelbild-Suche: {e}")
+    if bg:
+        import covers
+        covers.fit(bg, 1280, 720).save(out.with_suffix(".png"))
+    else:
+        ffmpeg("-ss", f"{duration(video) * at:.2f}", "-i", video, "-frames:v", "1", out.with_suffix(".png"))
     img = Image.open(out.with_suffix(".png")).convert("RGB").resize((1280, 720), Image.LANCZOS)
     img = ImageEnhance.Brightness(img).enhance(1.1)
     d = ImageDraw.Draw(img)
@@ -128,7 +139,8 @@ def main():
         seconds = int(minutes * 60)
         info = schlaf.produce(ch, seconds, work, rnd)
         meta = schlaf.metadata(ch, info, minutes, rnd)
-        thumb = make_thumb(info["loop"], work / "thumbnail.jpg", meta["thumb_label"], meta["thumb_sub"], at=0.2)
+        thumb = make_thumb(info["loop"], work / "thumbnail.jpg", meta["thumb_label"], meta["thumb_sub"], at=0.2,
+                           channel="schlaf", scene=info.get("title_word", "") + " " + str(info.get("subtitle", "")))
         sinfo = shorts.schlaf_short(work / "short", rnd, float(ch.get("short_seconds", 45)))
         extra.append((sinfo, schlaf.short_metadata(ch, sinfo, rnd)))
     elif args.channel == "lernen" and os.environ.get("LERNEN_AKTIV") != "1":
@@ -157,7 +169,8 @@ def main():
         import stories
         info = stories.produce(ch, work, rnd, ch["voice"], ch["speech_rate"])
         meta = stories.metadata(ch, info, rnd)
-        thumb = make_thumb(info["loop"], work / "thumbnail.jpg", info["story"]["title"], "GUTE NACHT", at=0.3)
+        thumb = make_thumb(info["loop"], work / "thumbnail.jpg", info["story"]["title"], "GUTE NACHT", at=0.3,
+                           channel="geschichten", scene=info["story"]["title"])
         import shorts
         st = info["story"]
         sinfo = shorts.story_short(st["title"], stories.mini_of(st), work / "short", rnd, ch["voice"], ch["speech_rate"],
@@ -206,7 +219,14 @@ def main():
             record.setdefault("extra_uploads", []).append({"video_id": xvid, "title": xmeta["title"]})
             print(f"  ✓ Short hochgeladen ({ch.get('privacy', 'private')}): https://youtu.be/{xvid}")
             import ig_queue                                   # Short auch als Instagram-Reel (abends)
-            ig_queue.add(IG_ACCOUNT[args.channel], xinfo["video_file"], ig_caption(args.channel, xmeta, xinfo))
+            igc = None
+            try:
+                import covers
+                ttl = info["story"]["title"] if args.channel == "geschichten" else info.get("title_word", "Gute Nacht")
+                igc = covers.ig_cover(args.channel, ttl, str(info.get("subtitle", "")) or ttl, work / "ig_cover.jpg", work)
+            except Exception as e:  # noqa: BLE001
+                print(f"  ⚠ IG-Titelbild: {e}")
+            ig_queue.add(IG_ACCOUNT[args.channel], xinfo["video_file"], ig_caption(args.channel, xmeta, xinfo), cover=igc)
 
     (work / "meta.json").write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"  Dateien: {work}")
