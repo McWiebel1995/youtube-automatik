@@ -12,7 +12,7 @@ on:
       format:
         description: "Format (leer = automatisch im Wechsel)"
         type: choice
-        options: ["", signs, months, message, profilbild]
+        options: ["", signs, months, message, profilbild, profilbild-gedanken]
         default: ""
 
 permissions:
@@ -53,6 +53,7 @@ jobs:
           set -o pipefail
           ARGS="--out output/astro"
           if [ "${{ github.event.inputs.format }}" = "profilbild" ]; then python scripts/astro.py --avatar --out output/astro; exit 0; fi
+          if [ "${{ github.event.inputs.format }}" = "profilbild-gedanken" ]; then AVATAR_SET=gedanken python scripts/astro.py --avatar --out output/astro; exit 0; fi
           [ -n "${{ github.event.inputs.format }}" ] && ARGS="$ARGS --format ${{ github.event.inputs.format }}"
           if [ "${{ github.event.inputs.dry_run }}" = "true" ] || [ -z "$IG_TOKEN_LERNBAERCHEN" ]; then ARGS="$ARGS --dry-run"; fi
           python scripts/astro.py $ARGS 2>&1 | tee run.log || {

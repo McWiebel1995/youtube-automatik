@@ -427,6 +427,16 @@ AVATARS = [
 ]
 
 
+AVATAR_SETS = {
+    "gedanken": (["a single small green sprout growing from calm water with soft ripples, warm morning light, centered",
+                  "a smooth stack of balanced zen stones by a misty lake at sunrise, centered composition",
+                  "a single autumn leaf floating on a perfectly calm lake, soft golden light, centered",
+                  "a lone tree on a gentle hill under a soft pastel dawn sky, minimal, centered"],
+                 "serene minimal nature photography style, soft natural colors, sage green and warm beige, calm, "
+                 "peaceful, generous negative space, no text, no letters, no people"),
+}
+
+
 def avatars(out: Path):
     """Profilbild-Vorschläge (1:1, Motiv mittig – passt in den runden Instagram-Ausschnitt)."""
     import modal
@@ -435,11 +445,12 @@ def avatars(out: Path):
     with modal.enable_output(), app.run():
         download_flux.remote()
         fl = ImageFlux()
-        for k, p in enumerate(AVATARS):
-            png = fl.generate.remote(f"{p}, icon-like, simple and bold, generous margin around the subject, {STYLE}",
+        prompts, style = AVATAR_SETS.get(os.environ.get("AVATAR_SET", ""), (AVATARS, STYLE))
+        for k, p in enumerate(prompts):
+            png = fl.generate.remote(f"{p}, icon-like, simple and bold, generous margin around the subject, {style}",
                                      seed=700 + k, width=1328, height=1328)
             (out / f"profilbild_{k + 1}.png").write_bytes(png)
-            print(f"  Profilbild {k + 1}/{len(AVATARS)}", flush=True)
+            print(f"  Profilbild {k + 1}/{len(prompts)}", flush=True)
 
 
 if __name__ == "__main__":
