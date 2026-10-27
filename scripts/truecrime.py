@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-True-Crime-Dokus (deutsch) – auf der sicheren Seite:
+True-Crime-Dokus (englisch) – auf der sicheren Seite:
 
   * nur gut dokumentierte, ABGESCHLOSSENE Fälle (Täter rechtskräftig verurteilt, mind. 25 Jahre her) oder berühmte
     ungelöste historische Fälle OHNE Verdächtige zu nennen
@@ -37,49 +37,47 @@ UA = {"User-Agent": "youtube-automatik/1.0 (true crime research; contact via Git
 STYLE = ("cinematic documentary still, moody, muted desaturated colors, film grain, atmospheric, dusk or night, "
          "no people's faces, no text, no logos, no gore, no blood, no weapons, no dead bodies")
 
-PICK_TASK = """Du planst eine seriöse deutschsprachige True-Crime-Doku (YouTube, ca. {minutes} Minuten).
-Wähle EINEN Fall, der ALLE Bedingungen erfüllt:
-- sehr gut dokumentiert, mit eigenem ausführlichem deutschen Wikipedia-Artikel
-- entweder: Täter rechtskräftig verurteilt UND die Tat liegt mindestens 25 Jahre zurück
-  oder: berühmter ungelöster historischer Fall (mind. 40 Jahre her), bei dem KEINE lebenden Verdächtigen benannt werden
-- keine Taten an Kindern, keine Sexualverbrechen, keine Terroranschläge, keine Fälle mit noch laufenden Verfahren
-- spannend erzählbar (Ermittlung, Wendepunkte, Auflösung), z. B. berühmte Kriminalfälle, Betrugs- und Raubfälle,
-  historische Mordfälle, spektakuläre Ausbrüche, Kunstraub, Entführungen mit gutem Ausgang
-Bevorzugt Fälle aus Deutschland, Österreich, Schweiz oder weltbekannte Fälle.
-Diese Fälle hatten wir schon: {used}
-Antworte NUR mit JSON: {{"case":"kurzer Name des Falls","wiki_title":"exakter Titel des deutschen Wikipedia-Artikels",
-"why":"1 Satz, warum er die Bedingungen erfüllt","year":1970}}"""
+PICK_TASK = """You are planning a serious English-language true crime documentary (YouTube, about {minutes} minutes).
+Pick ONE case that meets ALL conditions:
+- very well documented, with its own detailed English Wikipedia article
+- either: the perpetrator was convicted (final) AND the crime is at least 25 years old
+  or: a famous unsolved historical case (40+ years old) where NO living suspects are named
+- no crimes against children, no sexual crimes, no terror attacks, no ongoing proceedings or appeals
+- great to tell (investigation, twists, resolution): famous heists, cons and frauds, historic murder cases,
+  spectacular prison escapes, art thefts, kidnappings with a good outcome, legendary unsolved mysteries
+Already covered: {used}
+Answer ONLY JSON: {{"case":"short case name","wiki_title":"exact English Wikipedia article title",
+"why":"1 sentence why it meets the conditions","year":1970}}"""
 
-SCRIPT_TASK = """Schreibe das Sprechskript einer ruhigen, seriösen deutschen True-Crime-Doku (Stil: Dokumentarfilm,
-nicht reißerisch). Länge ca. {words} Wörter in {segs} Abschnitten (je 2–4 Sätze).
-NUR Fakten aus der QUELLE unten verwenden – nichts erfinden, keine Zitate erfinden, keine Gedanken/Gefühle von
-Beteiligten ausdenken, Unsicheres als unsicher kennzeichnen ("Laut Gericht…", "Bis heute ist unklar…").
-Namen: Opfer, Angehörige, Zeugen, Ermittler NICHT namentlich nennen (z. B. "eine 34-jährige Frau", "der Ermittler").
-Täter nur namentlich, wenn rechtskräftig verurteilt; sonst "der Täter"/"ein Verdächtiger" ohne Namen.
-Keine grausamen Details, kein Blut, keine Beschreibung von Verletzungen. Respektvoll gegenüber Opfern.
-Aufbau: ruhiger, packender Einstieg (Ort, Zeit, Atmosphäre) – Tat (ohne Grausamkeit) – Ermittlungen und Wendepunkte –
-Auflösung/Urteil – Nachwirkung – nachdenklicher Schluss + Frage an die Zuschauer.
-Für JEDEN Abschnitt eine Bildidee NUR mit Atmosphäre, ohne Menschen-Gesichter (z. B. "verregnete Kopfsteinpflaster-
-straße in einer Kleinstadt bei Nacht, 1970er", "Stapel alter Akten auf einem Holztisch, Schreibtischlampe").
-Außerdem: title (max 70 Zeichen, seriös neugierig machend, kein Clickbait-Lügen),
-description (3 Sätze), short (ein eigenständiger 50–70-Wort-Teaser für einen YouTube-Short, endet mit
-"Die ganze Geschichte auf dem Kanal.").
-Antworte NUR mit JSON: {{"title":"...","description":"...","segments":[{{"text":"...","visual":"..."}}],"short":"..."}}
+SCRIPT_TASK = """Write the narration script of a calm, serious English true crime documentary (documentary-film style,
+not sensational). Length about {words} words in {segs} segments (2–4 sentences each).
+Use ONLY facts from the SOURCE below – invent nothing, no invented quotes, no invented thoughts/feelings of people,
+mark uncertainty ("According to the court…", "To this day it is unclear…").
+Names: do NOT name victims, relatives, witnesses or investigators ("a 34-year-old woman", "the lead detective").
+Name the perpetrator only if finally convicted; otherwise "the perpetrator"/"a suspect" without a name.
+No gruesome details, no blood, no description of injuries. Respectful towards victims.
+Structure: calm gripping opening (place, time, atmosphere) – the crime (without gore) – investigation and twists –
+resolution/verdict – aftermath – reflective ending + a question to viewers.
+For EVERY segment a visual idea with atmosphere ONLY, no human faces (e.g. "rain-soaked cobblestone street in a small
+town at night, 1970s", "stack of old case files on a wooden desk under a desk lamp").
+Also: title (max 70 chars, serious and intriguing, no misleading clickbait), description (3 sentences),
+short (a standalone 50–70-word teaser for a YouTube Short, ending with "The full story is on the channel.").
+Answer ONLY JSON: {{"title":"...","description":"...","segments":[{{"text":"...","visual":"..."}}],"short":"..."}}
 
-QUELLE ({source_name}):
+SOURCE ({source_name}):
 {source}"""
 
-CHECK_TASK = """Prüfe dieses Doku-Skript Satz für Satz gegen die QUELLE.
-Entferne oder korrigiere jede Aussage, die nicht eindeutig durch die Quelle belegt ist (Daten, Zahlen, Orte, Abläufe,
-Zitate, Motive). Entferne Namen von Opfern, Angehörigen, Zeugen, Ermittlern und nicht verurteilten Personen.
-Entferne grausame Details. Stil und Länge möglichst erhalten.
-Gib das korrigierte Skript im GLEICHEN JSON-Format zurück und zusätzlich "removed": Liste der entfernten/geänderten
-Aussagen (jeweils kurz, mit Grund). Antworte NUR mit JSON.
+CHECK_TASK = """Check this documentary script sentence by sentence against the SOURCE.
+Remove or correct every statement that is not clearly supported by the source (dates, numbers, places, events, quotes,
+motives). Remove names of victims, relatives, witnesses, investigators and anyone not finally convicted.
+Remove gruesome details. Keep style and length as far as possible.
+Return the corrected script in the SAME JSON format plus "removed": a list of removed/changed statements, each with a
+short reason, written in GERMAN (the creator reviews in German). Answer ONLY JSON.
 
-QUELLE:
+SOURCE:
 {source}
 
-SKRIPT:
+SCRIPT:
 {script}"""
 
 
@@ -91,13 +89,13 @@ def used():
 
 
 def wiki_de(title):
-    """Kompletter Artikeltext (de.wikipedia) + URL."""
-    r = requests.get("https://de.wikipedia.org/w/api.php", headers=UA, timeout=40, params={
+    """Kompletter Artikeltext (en.wikipedia) + URL."""
+    r = requests.get("https://en.wikipedia.org/w/api.php", headers=UA, timeout=40, params={
         "action": "query", "prop": "extracts|info", "explaintext": 1, "titles": title, "redirects": 1,
         "inprop": "url", "format": "json"}).json()
     page = next(iter(r.get("query", {}).get("pages", {}).values()), {})
     if not page or "missing" in page:
-        s = requests.get("https://de.wikipedia.org/w/api.php", headers=UA, timeout=40, params={
+        s = requests.get("https://en.wikipedia.org/w/api.php", headers=UA, timeout=40, params={
             "action": "query", "list": "search", "srsearch": title, "srlimit": 1, "format": "json"}).json()
         hits = s.get("query", {}).get("search", [])
         if not hits:
@@ -136,7 +134,7 @@ def narrate_de(voice, ref, texts, work, tag):
     for i, s in enumerate(texts):
         best = None
         for seed in (5, 17, 29):
-            wav = voice.speak.remote(s, ref_wav=ref, exaggeration=0.45, cfg_weight=0.5, language="de", seed=seed + i)
+            wav = voice.speak.remote(s, ref, exaggeration=0.45, cfg_weight=0.5, seed=seed + i)
             a, sr, too_long = tts._clean(wav, s)
             if best is None or not too_long:
                 best = (a, sr)
@@ -163,13 +161,13 @@ def build(out: Path, minutes=10.0, seed=None, log=print):
     sc = plan(minutes, log)
     segs = sc["segments"]
     import modal
-    from modal_app import ImageFlux, VoiceDE, app, download_flux
-    ref_p = ROOT / "data" / "voices" / os.environ.get("TC_VOICE", "ref_sulafat.wav")
+    from modal_app import ImageFlux, Voice, app, download_flux
+    ref_p = ROOT / "data" / "voices" / os.environ.get("TC_VOICE", "anime/narrator.wav")
     ref = ref_p.read_bytes() if ref_p.exists() else b""
     t0 = _t.time()
     with modal.enable_output(), app.run():
         download_flux.remote()
-        voice, flux = VoiceDE(), ImageFlux()
+        voice, flux = Voice(), ImageFlux()
         seg_audio, seg_subs = [], []
         for i, s in enumerate(segs):
             a, subs = narrate_de(voice, ref, wi.sentences(s["text"]), work, f"s{i}")
@@ -197,7 +195,7 @@ def build(out: Path, minutes=10.0, seed=None, log=print):
         t += len(a) / SR
     wi.xfade_concat(clips, durs, work / "joined.mp4", fade)
     voice_all = np.concatenate(seg_audio)
-    wi.karaoke_ass(wi.word_times(voice_all, all_subs, lang="de"), work / "subs.ass", 1920, 1080, 64, 80)
+    wi.karaoke_ass(wi.word_times(voice_all, all_subs, lang="en"), work / "subs.ass", 1920, 1080, 64, 80)
     wi.mix_and_render(work / "joined.mp4", voice_all, out / "video.mp4", work, work / "subs.ass", music_db=-27)
     import subprocess
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(imgs[0]), "-vf", "scale=1280:720", str(work / "th.png")],
@@ -211,7 +209,7 @@ def build(out: Path, minutes=10.0, seed=None, log=print):
         wi.segment_video(img, dst, per, True, w=1080, h=1920, seed=50 + j)
         sclips.append(dst)
     wi.xfade_concat(sclips, [per] * len(sclips), work / "sh.mp4", fade)
-    wi.karaoke_ass(wi.word_times(sh_audio, sh_subs, lang="de"), work / "sh.ass", 1080, 1920, 84, 0, align=5, upper=True)
+    wi.karaoke_ass(wi.word_times(sh_audio, sh_subs, lang="en"), work / "sh.ass", 1080, 1920, 84, 0, align=5, upper=True)
     wi.mix_and_render(work / "sh.mp4", sh_audio, out / "short.mp4", work, work / "sh.ass", music_db=-25)
     # Begleittext für die Freigabe
     total = len(voice_all) / SR
@@ -221,11 +219,11 @@ def build(out: Path, minutes=10.0, seed=None, log=print):
              ["", "SKRIPT:"] + [f"[{i + 1}] {s['text']}" for i, s in enumerate(segs)] + ["", "SHORT:", sc["short"]]
     (out / "skript_zur_freigabe.txt").write_text("\n".join(review), encoding="utf-8")
     meta = {"title": sc["title"][:100], "case": sc["case"], "source_url": sc["source_url"],
-            "description": (f"{sc['description']}\n\nQuelle: Wikipedia – {sc['source_title']}: {sc['source_url']}\n"
-                            "Alle Angaben beruhen auf öffentlich zugänglichen Quellen. Namen von Opfern und Angehörigen "
-                            "werden aus Respekt nicht genannt. Bilder: KI-generierte Symbolbilder, keine echten Personen "
-                            "oder Orte.\n\n#truecrime #kriminalfall #doku"),
-            "short_title": f"{sc['case']} – wahre Geschichte #shorts"[:100], "short_text": sc["short"],
+            "description": (f"{sc['description']}\n\nSource: Wikipedia – {sc['source_title']}: {sc['source_url']}\n"
+                            "All information is based on publicly available sources. Out of respect, the names of "
+                            "victims and their families are not mentioned. Images: AI-generated illustrations, not real "
+                            "people or locations.\n\n#truecrime #truestory #documentary"),
+            "short_title": f"{sc['case']} – a true story #shorts"[:100], "short_text": sc["short"],
             "minutes": round(total / 60, 1)}
     (out / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
     subprocess.run(["rm", "-rf", str(work)])
@@ -251,8 +249,8 @@ def thumbnail(src, title, out):
     for ln in lines[:3]:
         d.text((64, y), ln, font=f, fill=(245, 240, 230), stroke_width=4, stroke_fill=(0, 0, 0))
         y += 100
-    d.rectangle([64, 52, 64 + 250, 104], fill=(178, 34, 34))
-    d.text((80, 56), "WAHRER FALL", font=ImageFont.truetype(str(fp), 40) if fp.exists() else f, fill="white")
+    d.rectangle([64, 52, 64 + 236, 104], fill=(178, 34, 34))
+    d.text((80, 56), "TRUE STORY", font=ImageFont.truetype(str(fp), 40) if fp.exists() else f, fill="white")
     im.save(out, quality=92)
 
 
@@ -266,13 +264,13 @@ def upload_private(out: Path, meta: dict):
     yt = upload.service(tok)
     ch = {"name": "truecrime", "category_id": "25", "made_for_kids": False, "privacy": "private", "synthetic": True}
     vid = upload.upload(yt, out / "video.mp4", {"title": meta["title"], "description": meta["description"],
-                                                "tags": ["true crime", "kriminalfall", "doku", "wahre geschichte"]}, ch)
+                                                "tags": ["true crime", "true story", "documentary", "crime documentary", "unsolved"]}, ch)
     try:
         upload.set_thumbnail(yt, vid, out / "thumbnail.jpg")
     except Exception:  # noqa: BLE001
         pass
     svid = upload.upload(yt, out / "short.mp4", {"title": meta["short_title"], "description":
-                         f"{meta['short_text']}\n\nQuelle: {meta['source_url']}\n#shorts #truecrime"}, ch)
+                         f"{meta['short_text']}\n\nSource: {meta['source_url']}\n#shorts #truecrime"}, ch)
     print(f"::notice title=Zur Freigabe::Video https://youtu.be/{vid} und Short https://youtu.be/{svid} liegen PRIVAT "
           "bereit – bitte ansehen und in YouTube Studio auf Öffentlich stellen.")
     u = used()

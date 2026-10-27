@@ -1,4 +1,4 @@
-name: "🔎 True Crime (deutsch, mit Freigabe)"
+name: "🔎 True Crime (englisch, mit Freigabe)"
 
 on:
   workflow_dispatch:
