@@ -58,6 +58,7 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN_WHATIF: ${{ secrets.YT_REFRESH_TOKEN_WHATIF }}
           IG_TOKEN_WHATIF: ${{ secrets.IG_TOKEN_WHATIF }}
+          IG_WHATIF_ALT: ${{ secrets.IG_USER_WHATIF }}
           IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

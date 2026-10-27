@@ -57,7 +57,24 @@ def upload_public(path: Path, name: str) -> str:
     return f"https://github.com/{repo}/releases/download/{TAG}/{name}"
 
 
-def add(account, video, caption, name=None):
+def make_cover(video: Path, at=None) -> Path:
+    """Titelbild fürs Reel: hellstes/schärfstes von 5 Kandidaten-Bildern zwischen 20 % und 60 % der Länge."""
+    import subprocess
+    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(video)],
+                               capture_output=True, text=True).stdout or 0)
+    if dur <= 0:
+        return None
+    best, best_size = None, 0
+    for k, frac in enumerate([0.2, 0.3, 0.4, 0.5, 0.6] if at is None else [at / dur]):
+        out = video.with_name(f"{video.stem}_cover{k}.jpg")
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{dur * frac:.2f}", "-i", str(video),
+                        "-frames:v", "1", "-q:v", "2", str(out)], check=False)
+        if out.exists() and out.stat().st_size > best_size:   # größere JPEG = mehr Details/Helligkeit
+            best, best_size = out, out.stat().st_size
+    return best
+
+
+def add(account, video, caption, name=None, cover=None):
     """video = lokaler Pfad oder öffentliche URL. Gibt den Eintrag zurück (oder None, wenn nicht möglich)."""
     try:
         try:                                          # max. 5 Hashtags, passend zum Reel (siehe hashtags.py)
@@ -70,9 +87,21 @@ def add(account, video, caption, name=None):
                 print("  (Instagram: kein GitHub-Kontext – nicht vorgemerkt)")
                 return None
             stamp = dt.datetime.now().strftime("%Y%m%d-%H%M%S")
-            video = upload_public(Path(video), name or f"{account}-{stamp}.mp4")
+            local = Path(video)
+            video = upload_public(local, name or f"{account}-{stamp}.mp4")
+            cover_url = None
+            try:                                      # Titelbild: ein klares Bild aus dem Video (nicht das erste, oft dunkle)
+                cover = cover or make_cover(local)
+                if cover:
+                    cover_url = upload_public(Path(cover), f"{account}-{stamp}-cover.jpg")
+            except Exception as e:  # noqa: BLE001
+                print(f"  ⚠ Titelbild: {e}")
+        else:
+            cover_url = cover if (cover and str(cover).startswith("http")) else None
         item = {"id": f"{account}-{int(dt.datetime.now().timestamp())}", "account": account,
                 "video_url": video, "caption": caption, "created_at": now(), "status": "pending"}
+        if cover_url:
+            item["cover_url"] = cover_url
         save_item(item)
         print(f"  📸 Instagram vorgemerkt: @{account}")
         return item
@@ -123,7 +152,8 @@ def post(limit_per_account=1):
             report.append(f"⏭ @{it['account']}: schon gepostet – übersprungen")
             continue
         try:
-            mid, link = instagram.publish_reel(it["account"], it["video_url"], it["caption"])
+            mid, link = instagram.publish_reel(it["account"], it["video_url"], it["caption"],
+                                               cover_url=it.get("cover_url"))
             it.update(status="posted", posted_at=now(), media_id=mid, permalink=link)
             report.append(f"✅ @{it['account']}: {link}")
         except Exception as e:  # noqa: BLE001

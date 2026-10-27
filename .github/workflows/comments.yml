@@ -43,6 +43,7 @@ jobs:
           IG_TOKEN_LERNBAERCHEN: ${{ secrets.IG_TOKEN_LERNBAERCHEN }}
           IG_TOKEN_GUTENACHT: ${{ secrets.IG_TOKEN_GUTENACHT }}
           IG_TOKEN_WHATIF: ${{ secrets.IG_TOKEN_WHATIF }}
+          IG_WHATIF_ALT: ${{ secrets.IG_USER_WHATIF }}
           IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
         run: |
           MODE="${{ github.event.inputs.mode || 'live' }}"

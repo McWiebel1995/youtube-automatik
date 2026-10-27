@@ -22,8 +22,12 @@ ACCOUNTS = {
     "astro": ("IG_TOKEN_LERNBAERCHEN", None),          # ehemals @lernbaerchenig, jetzt Astro-Karussells (umbenannt)
     "gutenacht": ("IG_TOKEN_GUTENACHT", "gutenachtgeschichteig"),
 }
-if os.environ.get("IG_TOKEN_WHATIF") and os.environ.get("IG_USER_WHATIF"):
-    ACCOUNTS["whatif"] = ("IG_TOKEN_WHATIF", os.environ["IG_USER_WHATIF"])
+# facts_mcwiebel (Beyond the If): Token aus IG_TOKEN_WHATIF – oder aus dem Secret IG_USER_WHATIF, falls er dort landete
+if not os.environ.get("IG_TOKEN_WHATIF") and len(os.environ.get("IG_WHATIF_ALT", "")) > 40:
+    os.environ["IG_TOKEN_WHATIF"] = os.environ["IG_WHATIF_ALT"]
+if os.environ.get("IG_TOKEN_WHATIF"):
+    _u = os.environ.get("IG_USER_WHATIF", "")
+    ACCOUNTS["whatif"] = ("IG_TOKEN_WHATIF", _u if 0 < len(_u) <= 40 else None)
 
 
 class IGError(RuntimeError):
@@ -120,9 +124,8 @@ def refresh(token):
 
 def cmd_check():
     lines, bad = [], 0
-    if not os.environ.get("IG_TOKEN_WHATIF") or not os.environ.get("IG_USER_WHATIF"):
-        lines.append(f"ℹ facts/WHATIF: Secret IG_TOKEN_WHATIF {'vorhanden' if os.environ.get('IG_TOKEN_WHATIF') else 'FEHLT'}, "
-                     f"Variable IG_USER_WHATIF {'= ' + os.environ['IG_USER_WHATIF'] if os.environ.get('IG_USER_WHATIF') else 'FEHLT'}")
+    if "whatif" not in ACCOUNTS:
+        lines.append("ℹ facts/WHATIF: kein Token gefunden (weder IG_TOKEN_WHATIF noch IG_USER_WHATIF)")
     for key, (secret, expected) in ACCOUNTS.items():
         try:
             info = me(token_for(key))
