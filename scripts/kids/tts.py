@@ -210,6 +210,9 @@ def speak(text, out, voice="de_DE-thorsten-medium", rate=0.92, style=None):
             with wave.open(str(out)) as wf:
                 return wf.getnframes() / wf.getframerate()
         except Exception as e:  # noqa: BLE001
+            if os.environ.get("TTS_NO_FALLBACK") == "1":     # lieber kein Video als die Robo-Ersatzstimme
+                print(f"::warning title=Stimme::Chatterbox nicht verfügbar ({repr(e)[:200]}) – heute kein Video.")
+                raise SystemExit("Stimme nicht verfügbar (Modal-Guthaben?) – Produktion übersprungen.")
             _cb["failed"] = True
             _warn(f"Chatterbox nicht verfügbar ({repr(e)[:160]}) – nutze Piper")
             print(f"::warning title=Stimme::Chatterbox nicht verfügbar, Ersatzstimme Piper: {repr(e)[:300]}")
