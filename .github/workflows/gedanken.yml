@@ -1,4 +1,4 @@
-name: "🌿 Ruhige Gedanken – Testvideo"
+name: "🌿 Ruhige Gedanken"
 
 on:
   workflow_dispatch:
@@ -9,6 +9,10 @@ on:
       minutes:
         description: "Länge in Minuten"
         default: "12"
+      dry_run:
+        description: "Nur Vorschau (nicht hochladen)"
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -37,15 +41,28 @@ jobs:
           MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
           MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
           TTS_ENGINE: chatterbox
-          VOICE: ${{ github.event.inputs.voice }}
-          MINUTES: ${{ github.event.inputs.minutes }}
+          VOICE: ${{ github.event.inputs.voice || 'Sulafat' }}
+          MINUTES: ${{ github.event.inputs.minutes || '12' }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_GEDANKEN: ${{ secrets.YT_REFRESH_TOKEN_GEDANKEN }}
         run: |
           set -o pipefail
-          python scripts/gedanken.py --out output/gedanken --voice "$VOICE" --minutes "$MINUTES" 2>&1 | tee run.log || {
+          PUB=""; [ "${{ github.event.inputs.dry_run }}" = "false" ] && PUB="--publish"
+          python scripts/gedanken.py --out output/gedanken --voice "$VOICE" --minutes "$MINUTES" $PUB 2>&1 | tee run.log || {
             echo "::error title=Fehler::$(tail -n 12 run.log | tr '\n' ' ' | cut -c1-1500)"; exit 1; }
       - name: Als Release ablegen
+        if: github.event.inputs.dry_run != 'false'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release delete preview-gedanken -y --cleanup-tag || true
           gh release create preview-gedanken output/gedanken/video.mp4 output/gedanken/short.mp4 output/gedanken/meta.json --title "Vorschau Ruhige Gedanken" --notes "Testlauf" --prerelease
+      - name: Stand speichern
+        if: always() && github.event.inputs.dry_run == 'false'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          for p in data/last_upload data/covers_used.json; do [ -e "$p" ] && git add -A "$p" || true; done
+          git commit -m "Ruhige Gedanken: Stand" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep 5; done

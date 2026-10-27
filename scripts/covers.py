@@ -38,11 +38,16 @@ CHANNEL = {
                                                   "mond": "moon night cute", "meer": "sea night moon",
                                                   "wald": "forest night moon", "schaf": "sheep moon night"}),
     "geschichten": ("illustration", "bedtime story night", {}),
+    "gedanken": ("photo", "calm nature landscape", {"see": "calm lake morning", "lake": "calm lake morning",
+                                                    "wald": "forest light morning", "forest": "forest light",
+                                                    "meer": "calm sea sunset", "sea": "calm sea", "berg": "mountains mist",
+                                                    "mountain": "mountains mist", "wiese": "meadow sunrise",
+                                                    "regen": "rain leaves calm", "schnee": "snow landscape calm"}),
 }
 STYLE = {   # Schrift/Farbe für Instagram-Titelbilder
     "regen": ("PlayfairDisplay.ttf", (245, 242, 235)), "kamin": ("PlayfairDisplay.ttf", (255, 236, 205)),
     "wasserfall": ("PlayfairDisplay.ttf", (235, 248, 245)), "schlaf": ("Pacifico.ttf", (255, 246, 214)),
-    "geschichten": ("Baloo2.ttf", (255, 246, 214)),
+    "geschichten": ("Baloo2.ttf", (255, 246, 214)), "gedanken": ("PlayfairDisplay.ttf", (250, 246, 236)),
 }
 BAD = re.compile(r"\b(car|cars|traffic|street|road|people|person|woman|man|girl|boy|child|face|text|logo|"
                  r"halloween|horror|scary|skull|blood)\b", re.I)

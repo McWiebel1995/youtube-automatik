@@ -370,11 +370,84 @@ def build(out: Path, minutes=12.0, voice="Sulafat", seed=None):
     return meta
 
 
+# ----------------------------------------------------------------- Veröffentlichen
+CHANNEL = {"name": "Ruhige Gedanken", "token_secret": "YT_REFRESH_TOKEN_GEDANKEN", "category_id": "22",
+           "made_for_kids": False, "privacy": "public", "synthetic": True}
+
+
+def thumbnail(meta, out: Path, work: Path):
+    """Eigenes ruhiges Naturfoto + Titel (jedes Video anders, covers.py)."""
+    from PIL import Image, ImageDraw, ImageFont
+    import covers
+    scene = " ".join(meta.get("scenes") or []) or meta.get("topic", "")
+    bg = covers.background("gedanken", scene, "landscape", work)
+    if not bg:
+        return None
+    im = covers.fit(bg, 1280, 720)
+    shade = Image.new("L", (1280, 720), 0)
+    d = ImageDraw.Draw(shade)
+    for y in range(720):
+        d.line([(0, y), (1280, y)], fill=int(170 * max(0, (y - 260) / 460)))
+    im = Image.composite(Image.new("RGB", im.size, (0, 0, 0)), im, shade)
+    d = ImageDraw.Draw(im)
+    title = (meta.get("youtube") or {}).get("thumb") or meta.get("topic") or meta.get("title", "")
+    fp = str(ROOT / "assets" / "fonts" / "PlayfairDisplay.ttf")
+    size = 78
+    while size > 44:
+        f = ImageFont.truetype(fp, size)
+        if d.textlength(title, font=f) <= 1140 or size <= 46:
+            break
+        size -= 4
+    import textwrap
+    lines = textwrap.wrap(title, 26 if size > 60 else 34)[:2]
+    y = 720 - 70 - len(lines) * (size + 12)
+    for ln in lines:
+        d.text((64, y), ln, font=f, fill=(250, 246, 236), stroke_width=2, stroke_fill=(0, 0, 0))
+        y += size + 12
+    d.text((66, 50), "RUHIGE GEDANKEN", font=ImageFont.truetype(fp, 30), fill=(235, 225, 200))
+    im.save(out, quality=92)
+    return out
+
+
+def publish(out: Path, meta):
+    import upload
+    yt = upload.service(os.environ[CHANNEL["token_secret"]])
+    upload.check_channel(yt, CHANNEL)
+    y = meta.get("youtube") or {}
+    title = (y.get("title") or meta.get("title") or "Ruhige Gedanken")[:100]
+    desc = (y.get("description") or "") + ("\n\nZitate: " + " · ".join(f"„{q['text']}“ – {q['author']}" for q in meta.get("quotes") or [])
+                                          if meta.get("quotes") else "") + \
+        "\n\nStimme mit KI erzeugt. Naturaufnahmen: Pexels/Pixabay. Zum Zuhören, Entspannen und Einschlafen. 🌿"
+    vid = upload.upload(yt, out / "video.mp4", {"title": title, "description": desc,
+                                                "tags": (y.get("tags") or [])[:15] + ["ruhige gedanken", "entspannung"]}, CHANNEL)
+    print(f"  ✓ Video: https://youtu.be/{vid}")
+    th = thumbnail(meta, out / "thumbnail.jpg", out)
+    if th:
+        try:
+            upload.set_thumbnail(yt, vid, th)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Vorschaubild: {e}")
+    if (out / "short.mp4").exists():
+        st = (meta.get("short_title") or meta.get("short_thought", "")[:60] + " #shorts")[:100]
+        svid = upload.upload(yt, out / "short.mp4", {"title": st, "description": meta.get("short_thought", "") +
+                                                     "\n\n#shorts #gedanken #achtsamkeit"}, CHANNEL)
+        print(f"  ✓ Short: https://youtu.be/{svid}")
+    upload.mark_uploaded("gedanken")
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
+    ap.add_argument("--publish", action="store_true", help="nach dem Bauen auf YouTube hochladen")
     ap.add_argument("--out", default="output/gedanken-test")
     ap.add_argument("--minutes", type=float, default=12)
     ap.add_argument("--voice", default="Sulafat")
     ap.add_argument("--seed", type=int)
     a = ap.parse_args()
-    build(Path(a.out), a.minutes, a.voice, a.seed)
+    if a.publish:
+        import upload
+        if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_today("gedanken"):
+            print("Heute schon hochgeladen – übersprungen.")
+            sys.exit(0)
+    m = build(Path(a.out), a.minutes, a.voice, a.seed)
+    if a.publish:
+        publish(Path(a.out).resolve(), m)
