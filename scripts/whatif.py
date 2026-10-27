@@ -286,10 +286,10 @@ _WHISPER = None
 
 
 def _norm(w):
-    return re.sub(r"[^a-z0-9]", "", w.lower())
+    return re.sub(r"[^a-z0-9äöüß]", "", w.lower())
 
 
-def word_times(audio, subs):
+def word_times(audio, subs, lang="en"):
     """Zeit für jedes Wort des Skripts: Whisper hört die Sprachspur ab, die Wörter werden dem Skript zugeordnet.
     Ohne Whisper: Schätzung nach Wortlänge innerhalb jedes Satzes."""
     words = []                                            # (wort, satz_start, satz_ende, anteil_start, anteil_ende)
@@ -302,10 +302,12 @@ def word_times(audio, subs):
     try:
         import difflib
         from faster_whisper import WhisperModel
-        if _WHISPER is None:
-            _WHISPER = WhisperModel("small.en", device="cpu", compute_type="int8")
+        mname = "small.en" if lang == "en" else "small"
+        if _WHISPER is None or getattr(_WHISPER, "_cw_name", "") != mname:
+            _WHISPER = WhisperModel(mname, device="cpu", compute_type="int8")
+            _WHISPER._cw_name = mname
         a16 = resample_poly(audio, 16000, SR).astype(np.float32)
-        segs, _ = _WHISPER.transcribe(a16, language="en", word_timestamps=True, beam_size=1,
+        segs, _ = _WHISPER.transcribe(a16, language=lang, word_timestamps=True, beam_size=1,
                                       initial_prompt=" ".join(t for _, _, t in subs)[:800])
         heard = [(w.word, w.start, w.end) for s in segs for w in (s.words or [])]
         sm = difflib.SequenceMatcher(None, [_norm(w[0]) for w in words], [_norm(h[0]) for h in heard], autojunk=False)

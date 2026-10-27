@@ -1,0 +1,61 @@
+name: "🔎 True Crime (deutsch, mit Freigabe)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Nur Vorschau (nichts hochladen)"
+        type: boolean
+        default: true
+      minutes:
+        description: "Länge in Minuten"
+        default: "10"
+
+permissions:
+  contents: write
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+      - run: pip install -r requirements.txt modal faster-whisper pillow
+      - name: Schriften laden
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/fetch_fonts.py
+      - name: Doku produzieren
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+          FREESOUND_API_KEY: ${{ secrets.FREESOUND_API_KEY }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_TRUECRIME: ${{ secrets.YT_REFRESH_TOKEN_TRUECRIME }}
+        run: |
+          set -o pipefail
+          ARGS="--out output/truecrime --minutes ${{ github.event.inputs.minutes || '10' }}"
+          [ "${{ github.event.inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          python scripts/truecrime.py $ARGS 2>&1 | tee run.log || {
+            echo "::error title=Fehler::$( (grep -E 'File \"/home/runner|Error|error' run.log | tail -n 14) | tr '\n' ' ' | cut -c1-1800)"; exit 1; }
+      - name: Vorschau ablegen
+        if: github.event.inputs.dry_run == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete preview-truecrime -y --cleanup-tag || true
+          gh release create preview-truecrime output/truecrime/*.mp4 output/truecrime/*.jpg output/truecrime/*.txt output/truecrime/meta.json --title "Vorschau True Crime" --notes "Testlauf" --prerelease
+      - name: Stand speichern
+        if: always() && github.event.inputs.dry_run != 'true'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          for p in data/truecrime_used.json data/last_upload; do [ -e "$p" ] && git add -A "$p" || true; done
+          git commit -m "True Crime: Stand" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep 5; done
