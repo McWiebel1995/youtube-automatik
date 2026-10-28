@@ -1,6 +1,7 @@
 """Kleiner Gemini-Client (REST) mit Modell-Fallback und Wiederholung bei Überlastung."""
 import json
 import os
+import re
 import time
 
 import requests
@@ -23,6 +24,31 @@ DEFAULT_MODELS = ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash-lite
 
 class QuotaError(RuntimeError):
     """Gratis-Limit erreicht – später erneut."""
+
+
+def _parse_json(txt):
+    """JSON aus der Antwort holen; bei kleinen Fehlern reparieren (json-repair). None, wenn hoffnungslos."""
+    t = txt.strip()
+    starts = [i for i in (t.find("{"), t.find("[")) if i >= 0]
+    if not starts:
+        return None
+    t = t[min(starts):]
+    try:
+        return json.JSONDecoder().raw_decode(t)[0]       # ignoriert Text/zweites JSON danach
+    except ValueError:
+        pass
+    fixed = re.sub(r'„([^"„“\n]{0,200})"', r"„\1“", t)       # deutsches „…" mit falschem Schlusszeichen
+    fixed = re.sub(r",\s*([}\]])", r"\1", fixed)               # Komma vor Klammer
+    try:
+        return json.JSONDecoder().raw_decode(fixed)[0]
+    except ValueError:
+        pass
+    try:
+        from json_repair import repair_json
+        data = repair_json(t, return_objects=True)
+        return data if isinstance(data, (dict, list)) and data else None
+    except Exception:  # noqa: BLE001
+        return None
 
 
 def ask_json(prompt, system=None, video_url=None, models=None, temperature=0.7, key=None):
@@ -65,11 +91,13 @@ def ask_json(prompt, system=None, video_url=None, models=None, temperature=0.7, 
         txt = "".join(p.get("text", "") for p in (cand.get("content") or {}).get("parts", []) if not p.get("thought"))
         if not txt.strip():
             raise RuntimeError(f"{m}: leere Antwort ({cand.get('finishReason')}, {resp.get('promptFeedback')})")
-        try:
-            data = json.loads(txt[txt.index("{"): txt.rindex("}") + 1])
-        except ValueError as e:
-            raise RuntimeError(f"{m}: ungültiges JSON ({cand.get('finishReason')}): {e}; Anfang: {txt[:200]!r}") from e
-        data["_model"] = m
+        data = _parse_json(txt)
+        if data is None:                               # kaputtes JSON (z. B. „…" in deutschem Text): nächstes Modell
+            last = f"{m}: ungültiges JSON ({cand.get('finishReason')}); Anfang: {txt[:200]!r}"
+            print(f"  ⚠ {last[:160]}")
+            continue
+        if isinstance(data, dict):
+            data["_model"] = m
         return data
     if quota_hits and len(quota_hits) == len(models):
         raise QuotaError("Gemini-Gratis-Limit bei allen Modellen erreicht – morgen geht es weiter")
