@@ -34,7 +34,7 @@ for ch in chans:
         import requests
         sc = requests.get("https://oauth2.googleapis.com/tokeninfo", timeout=30,
                           params={"access_token": yt._http.credentials.token}).json().get("scope", "")
-        perms = (("💬" if "youtube.force-ssl" in sc else "–") + ("📊" if "yt-analytics" in sc else "–"))
+        perms = (("💬" if "youtube.force-ssl" in sc else "–") + ("📊" if "yt-analytics" in sc else "–")) + f" [{sc.replace('https://www.googleapis.com/auth/', '') or '?'}]"
         bad += not ok
         lines.append(f"{'✅' if ok else '❌'} {ch['token_secret']}: »{title}« (erwartet »{ch['name']}«) "
                      f"Kommentare/Analytics {perms}, lange Videos: {long_ok}")
