@@ -9,7 +9,7 @@ on:
       mode:
         description: "list = nur abgleichen · post = Fehlende nachholen"
         type: choice
-        options: [list, post]
+        options: [list, post, test]
         default: list
 
 permissions:
@@ -29,7 +29,10 @@ jobs:
         with:
           python-version: "3.12"
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-      - run: pip install -r requirements.txt yt-dlp
+      - uses: denoland/setup-deno@v2      # yt-dlp braucht eine JS-Laufzeit für YouTube
+        with:
+          deno-version: v2.x
+      - run: pip install -r requirements.txt && pip install -U --pre "yt-dlp[default]"
       - name: Abgleichen
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,7 +53,8 @@ jobs:
           IG_WHATIF_ALT: ${{ secrets.IG_USER_WHATIF }}
           IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
           MODE: ${{ inputs.mode || 'post' }}
-        run: python scripts/ig_sync.py --$MODE
+        run: |
+          if [ "$MODE" = test ]; then python scripts/ig_sync.py --test-download xY1zX2en6hk || python scripts/ig_sync.py --list; else python scripts/ig_sync.py --$MODE; fi
       - name: Stand speichern
         if: always()
         run: |

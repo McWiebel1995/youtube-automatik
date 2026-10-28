@@ -159,14 +159,20 @@ def compare(st):
 
 
 def download(vid, work: Path):
+    """YouTube blockt Server-Downloads oft (403) -> mehrere Player-Clients nacheinander probieren."""
     work.mkdir(parents=True, exist_ok=True)
-    out = work / f"{vid}.mp4"
-    r = subprocess.run(["yt-dlp", "-q", "--no-warnings", "-f", "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/b",
-                        "--merge-output-format", "mp4", "-o", str(out), f"https://www.youtube.com/shorts/{vid}"],
-                       capture_output=True, text=True)
-    if r.returncode or not out.exists():
-        raise RuntimeError("Download: " + (r.stderr or r.stdout)[-250:])
-    return out
+    out, err = work / f"{vid}.mp4", ""
+    for client in ("default", "tv_simply", "web_safari", "mweb", "ios", "android_vr"):
+        extra = [] if client == "default" else ["--extractor-args", f"youtube:player_client={client}"]
+        r = subprocess.run(["yt-dlp", "-q", "--no-warnings", "-f", "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b",
+                            "--merge-output-format", "mp4", *extra, "-o", str(out),
+                            f"https://www.youtube.com/shorts/{vid}"], capture_output=True, text=True)
+        if not r.returncode and out.exists():
+            print(f"  ⬇ {vid} über {client}")
+            return out
+        err = f"{client}: " + (r.stderr or r.stdout)[-160:]
+        print(f"  ⚠ {err}")
+    raise RuntimeError("Download: " + err)
 
 
 def post_one(acc, v):
@@ -190,7 +196,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--list", action="store_true")
     ap.add_argument("--post", action="store_true")
+    ap.add_argument("--test-download")
     a = ap.parse_args()
+    if a.test_download:
+        print(download(a.test_download, ROOT / "output" / "ig_sync"))
+        return
     st = load()
     missing, lines = compare(st)
     for acc, items in missing.items():
