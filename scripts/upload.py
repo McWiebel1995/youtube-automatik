@@ -120,7 +120,34 @@ def upload(yt, video_path, meta, channel, publish_at=None):
             wait = min(60, 2 ** attempt) + random.random()
             print(f"  Verbindung unterbrochen ({type(e).__name__}), setze Upload in {wait:.0f}s fort")
             time.sleep(wait)
+    _archive_short(video_path, response["id"], meta)
     return response["id"]
+
+
+def _archive_short(path, vid, meta):
+    """Shorts zusätzlich als Release-Anhang ablegen (Tag yt-shorts, Name <videoId>.mp4) –
+    so kann der Abgleich YouTube ↔ Instagram (ig_sync.py) sie später ohne YouTube-Download posten."""
+    try:
+        import subprocess
+        if "#shorts" not in (meta.get("title", "") + meta.get("description", "")).lower():
+            dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                        str(path)], capture_output=True, text=True).stdout or 999)
+            if dur > 180:
+                return
+        repo = os.environ.get("GITHUB_REPOSITORY")
+        if not (repo and os.environ.get("GH_TOKEN")):
+            return
+        if subprocess.run(["gh", "release", "view", "yt-shorts", "--repo", repo], capture_output=True).returncode:
+            subprocess.run(["gh", "release", "create", "yt-shorts", "--repo", repo, "--prerelease", "--title",
+                            "YouTube-Shorts (Archiv)", "--notes", "Kopien der hochgeladenen Shorts für den Instagram-Abgleich."],
+                           capture_output=True)
+        tmp = Path(path).with_name(f"{vid}.mp4")
+        if tmp != Path(path):
+            tmp.write_bytes(Path(path).read_bytes())
+        subprocess.run(["gh", "release", "upload", "yt-shorts", str(tmp), "--clobber", "--repo", repo], capture_output=True)
+        print(f"  🗄 Short archiviert ({vid})")
+    except Exception as e:  # noqa: BLE001 – darf den Upload nie stören
+        print(f"  ⚠ Short-Archiv: {e}")
 
 
 def set_thumbnail(yt, video_id, thumb_path):

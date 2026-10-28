@@ -162,6 +162,13 @@ def download(vid, work: Path):
     """YouTube blockt Server-Downloads oft (403) -> mehrere Player-Clients nacheinander probieren."""
     work.mkdir(parents=True, exist_ok=True)
     out, err = work / f"{vid}.mp4", ""
+    repo = os.environ.get("GITHUB_REPOSITORY")
+    if repo:                                          # 1. Wahl: Kopie aus dem Short-Archiv (siehe upload.py)
+        r = subprocess.run(["gh", "release", "download", "yt-shorts", "--repo", repo, "-p", f"{vid}.mp4", "-D", str(work),
+                            "--clobber"], capture_output=True, text=True)
+        if not r.returncode and out.exists():
+            print(f"  ⬇ {vid} aus dem Archiv")
+            return out
     for client in ("default", "tv_simply", "web_safari", "mweb", "ios", "android_vr"):
         extra = [] if client == "default" else ["--extractor-args", f"youtube:player_client={client}"]
         r = subprocess.run(["yt-dlp", "-q", "--no-warnings", "-f", "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b",
@@ -212,16 +219,28 @@ def main():
     report = []
     if a.post:
         for acc, items in missing.items():
-            for v in items[:PER_DAY.get(acc, 1)]:
+            ok = 0
+            for v in items:
+                if ok >= PER_DAY.get(acc, 1):
+                    break
                 try:
                     mid, link = post_one(acc, v)
                     st[v["id"]] = {"status": "posted", "ig": mid, "link": link,
                                    "at": dt.datetime.now().isoformat(timespec="seconds")}
                     report.append(f"✅ @{acc}: {v['title'][:50]} → {link}")
+                    ok += 1
                 except Exception as e:  # noqa: BLE001
+                    msg = str(e)
+                    if msg.startswith("Download"):    # nicht im Archiv & YouTube blockt -> nicht erneut versuchen
+                        st[v["id"]] = {"status": "failed", "error": "keine Kopie (vor dem Archiv hochgeladen)"}
+                        continue
                     tries = st.get(v["id"], {}).get("tries", 0) + 1
-                    st[v["id"]] = {"status": "failed" if tries >= 3 else "retry", "tries": tries, "error": str(e)[:300]}
-                    report.append(f"❌ @{acc}: {v['title'][:50]}: {str(e)[:160]}")
+                    st[v["id"]] = {"status": "failed" if tries >= 3 else "retry", "tries": tries, "error": msg[:300]}
+                    report.append(f"❌ @{acc}: {v['title'][:50]}: {msg[:160]}")
+                    ok += 1                           # Instagram-Fehler zählt mit (nicht endlos weiterprobieren)
+        skipped = sum(1 for x in st.values() if x.get("error", "").startswith("keine Kopie"))
+        if skipped:
+            report.append(f"ℹ {skipped} ältere Shorts ohne Kopie übersprungen (YouTube erlaubt keinen Download vom Server)")
     save(st)
     out = lines + report
     print("\n".join(out))
