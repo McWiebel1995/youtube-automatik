@@ -170,7 +170,7 @@ def download(vid, work: Path):
         if not r.returncode and out.exists():
             print(f"  ⬇ {vid} über {client}")
             return out
-        err = f"{client}: " + (r.stderr or r.stdout)[-160:]
+        err += f" | {client}: " + (r.stderr or r.stdout).strip().replace("\n", " ")[-220:]
         print(f"  ⚠ {err}")
     raise RuntimeError("Download: " + err)
 
@@ -199,7 +199,11 @@ def main():
     ap.add_argument("--test-download")
     a = ap.parse_args()
     if a.test_download:
-        print(download(a.test_download, ROOT / "output" / "ig_sync"))
+        try:
+            f = download(a.test_download, ROOT / "output" / "ig_sync")
+            print(f"::notice title=Download-Test::OK {f.stat().st_size // 1024} KB")
+        except Exception as e:  # noqa: BLE001
+            print(f"::warning title=Download-Test::{str(e)[:900]}")
         return
     st = load()
     missing, lines = compare(st)

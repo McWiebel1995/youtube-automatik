@@ -54,7 +54,7 @@ jobs:
           IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
           MODE: ${{ inputs.mode || 'post' }}
         run: |
-          if [ "$MODE" = test ]; then python scripts/ig_sync.py --test-download xY1zX2en6hk > t.txt 2>&1 || true; echo "::warning title=Download-Test::$(tail -c 3000 t.txt | tr \'\n\' \' \')"; else python scripts/ig_sync.py --$MODE; fi
+          if [ "$MODE" = test ]; then python scripts/ig_sync.py --test-download xY1zX2en6hk; else python scripts/ig_sync.py --$MODE; fi
       - name: Stand speichern
         if: always()
         run: |
