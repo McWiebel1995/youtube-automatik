@@ -331,7 +331,7 @@ def download_flux():
     return "ok"
 
 
-@app.cls(gpu="A100-80GB", image=image_v2, volumes={"/models": models}, timeout=3600, scaledown_window=120,
+@app.cls(gpu=["A100-80GB", "H100"], image=image_v2, volumes={"/models": models}, timeout=3600, scaledown_window=120,
          memory=98304)
 class ImageFlux:
     """Fotorealistische/cineastische Bilder mit Qwen-Image (Apache 2.0)."""
