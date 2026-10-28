@@ -73,6 +73,14 @@ jobs:
           [ "$SCRIPT" = scripts/quiz.py ] && ARGS="--out output/whatif$(echo "$ARGS" | grep -o ' --dry-run' || true)"
           python $SCRIPT $ARGS 2>&1 | tee run.log || {
             echo "::error title=Fehler::$( (grep -E 'File \"/home/runner|Error|error' run.log | tail -n 14) | tr '\n' ' ' | cut -c1-1800)"; exit 1; }
+      - name: Reel sofort auf Instagram (facts_mcwiebel)
+        if: github.event.inputs.dry_run != 'true'
+        continue-on-error: true
+        env:
+          IG_TOKEN_WHATIF: ${{ secrets.IG_TOKEN_WHATIF }}
+          IG_WHATIF_ALT: ${{ secrets.IG_USER_WHATIF }}
+          IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
+        run: python scripts/ig_queue.py post whatif
       - name: Vorschau ablegen
         if: github.event.inputs.dry_run == 'true'
         env:

@@ -119,12 +119,14 @@ def _recent_captions(instagram, account):
         return []
 
 
-def post(limit_per_account=1):
+def post(limit_per_account=1, only=None):
     import instagram
     items, done, report = load(), {}, []
     recent = {}
     # pro Konto nur das NEUESTE offene Reel posten; ältere offene (z. B. nach Ausfällen) überspringen -> kein Rückstau
     newest = {}
+    if only:                                          # nur bestimmte Konten (z. B. direkt nach einer Produktion)
+        items = [it for it in items if it["account"] in only]
     for it in items:
         if it.get("status") == "pending" and it["created_at"] > newest.get(it["account"], ""):
             newest[it["account"]] = it["created_at"]
@@ -173,6 +175,6 @@ if __name__ == "__main__":
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     cmd = sys.argv[1] if len(sys.argv) > 1 else "post"
     if cmd == "post":
-        post()
+        post(only=set(sys.argv[2:]) or None)
     elif cmd == "add":                                    # python ig_queue.py add <konto> <url> <caption>
         add(sys.argv[2], sys.argv[3], sys.argv[4])
