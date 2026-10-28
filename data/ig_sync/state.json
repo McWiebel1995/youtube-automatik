@@ -82,5 +82,38 @@
  "fKQ-RAshAXY": {
   "status": "matched",
   "ig": "18029072009880235"
+ },
+ "9555oWVmhYo": {
+  "status": "matched",
+  "ig": "18118357931077887"
+ },
+ "chZqMlXEBoU": {
+  "status": "matched",
+  "ig": "18401066467206361"
+ },
+ "Fy-dIeGZnu8": {
+  "status": "retry",
+  "tries": 1,
+  "error": "Download: ERROR: unable to download video data: HTTP Error 403: Forbidden\n"
+ },
+ "PclW3lPQvPI": {
+  "status": "retry",
+  "tries": 1,
+  "error": "Download: See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies\n"
+ },
+ "LoasMmdrpoI": {
+  "status": "retry",
+  "tries": 1,
+  "error": "Download: See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies\n"
+ },
+ "zbCOyhAGpxU": {
+  "status": "retry",
+  "tries": 1,
+  "error": "Download: See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies\n"
+ },
+ "jjgKgirsIR4": {
+  "status": "retry",
+  "tries": 1,
+  "error": "Download: See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies\n"
  }
 }
