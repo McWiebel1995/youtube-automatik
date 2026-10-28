@@ -15,3 +15,4 @@ desktop/clipwerk/bin/
 desktop/clipwerk/build/
 desktop/clipwerk/dist/
 *.spec
+site/comments.json

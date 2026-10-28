@@ -5,7 +5,9 @@ Kanals, der Bot antwortet. Spam/Beleidigungen/heikle Fälle werden NICHT beantwo
 
   python scripts/comment_bot.py --probe        # nur prüfen: Zugänge & Berechtigungen
   python scripts/comment_bot.py --dry-run      # Vorschläge anzeigen, nichts posten
-  python scripts/comment_bot.py                # wirklich antworten
+  python scripts/comment_bot.py --suggest      # Vorschläge fürs Studio sammeln (data/comment_bot/pending.json)
+  python scripts/comment_bot.py --send f.json  # im Studio freigegebene Antworten senden
+  python scripts/comment_bot.py                # wirklich antworten (ohne Freigabe)
 
 Merkt sich beantwortete Kommentare in data/comment_bot/replied.json (keine Doppel-Antworten).
 """
@@ -24,6 +26,7 @@ sys.path[:0] = [str(HERE), str(ROOT / "anime")]
 
 STATE = ROOT / "data" / "comment_bot" / "replied.json"
 LOG = ROOT / "data" / "comment_bot" / "log.jsonl"
+PENDING = ROOT / "data" / "comment_bot" / "pending.json"
 MAX_AGE_DAYS = 14
 MAX_PER_CHANNEL = 15
 
@@ -74,6 +77,20 @@ def log(entry):
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
 
 
+def load_pending():
+    try:
+        return {e["id"]: e for e in json.loads(PENDING.read_text(encoding="utf-8"))}
+    except Exception:  # noqa: BLE001
+        return {}
+
+
+def save_pending(pend):
+    PENDING.parent.mkdir(parents=True, exist_ok=True)
+    keep = [e for e in pend.values() if recent(e.get("t", ""))]
+    keep.sort(key=lambda e: e.get("t", ""), reverse=True)
+    PENDING.write_text(json.dumps(keep, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
 def recent(ts):
     try:
         t = dt.datetime.fromisoformat(ts.replace("Z", "+00:00").replace("+0000", "+00:00"))
@@ -111,7 +128,7 @@ def yt_scopes(yt_creds_token):
     return r.json().get("scope", "")
 
 
-def yt_run(name, secret, persona, replied, dry, probe, report):
+def yt_run(name, secret, persona, replied, dry, probe, report, sink=None):
     import upload
     tok = os.environ.get(secret)
     if not tok:
@@ -131,7 +148,7 @@ def yt_run(name, secret, persona, replied, dry, probe, report):
     for th in threads:
         top = th["snippet"]["topLevelComment"]
         sn = top["snippet"]
-        if th["id"] in replied or sn.get("authorChannelId", {}).get("value") == cid or not recent(sn["publishedAt"]):
+        if th["id"] in replied or (sink is not None and th["id"] in sink) or sn.get("authorChannelId", {}).get("value") == cid or not recent(sn["publishedAt"]):
             continue
         rep = (th.get("replies") or {}).get("comments", [])
         if any(r["snippet"].get("authorChannelId", {}).get("value") == cid for r in rep):
@@ -140,7 +157,7 @@ def yt_run(name, secret, persona, replied, dry, probe, report):
         vids.add(sn.get("videoId"))
         meta[th["id"]] = sn
         items.append({"id": th["id"], "author": sn.get("authorDisplayName", ""), "text": sn.get("textDisplay", "")[:600],
-                      "video": sn.get("videoId")})
+                      "video": sn.get("videoId"), "t": sn.get("publishedAt", ""), "vid": sn.get("videoId")})
     titles = {}
     if vids - {None}:
         for v in yt.videos().list(part="snippet", id=",".join(list(vids - {None})[:50])).execute().get("items", []):
@@ -152,9 +169,16 @@ def yt_run(name, secret, persona, replied, dry, probe, report):
                       f"Antworten erlaubt: {'✅' if can_reply else '❌ (Berechtigung youtube.force-ssl fehlt)'}")
         return
     items = items[:MAX_PER_CHANNEL]
-    dec = decide(persona, items)
+    dec = decide(persona, [{k: it[k] for k in ("id", "author", "text", "video")} for it in items])
     for it in items:
         d = dec.get(it["id"], {"action": "skip", "reason": "keine Entscheidung"})
+        if sink is not None:
+            sink[it["id"]] = {"id": it["id"], "pf": "yt", "ch": name, "acct": secret, "author": it["author"],
+                              "text": it["text"], "ctx": it["video"], "t": it["t"],
+                              "url": f"https://www.youtube.com/watch?v={it['vid']}&lc={it['id']}" if it["vid"] else "",
+                              "action": d.get("action", "skip"), "reply": d.get("reply") or "", "reason": d.get("reason", "")}
+            report.append(f"YT {name} · „{it['text'][:60]}“ → Vorschlag ({d.get('action')})")
+            continue
         line = f"YT {name} · „{it['text'][:80]}“ → {d['action']}: {d.get('reply') or d.get('reason', '')}"
         if d["action"] == "reply" and d.get("reply") and not dry:
             if not can_reply:
@@ -174,7 +198,7 @@ IG_PERSONA = {"calmhaven": "calm", "mondmelodie": "mondmelodie", "gutenacht": "g
               "whatif": "whatif"}
 
 
-def ig_run(key, replied, dry, probe, report):
+def ig_run(key, replied, dry, probe, report, sink=None):
     import instagram
     try:
         tok = instagram.token_for(key)
@@ -191,20 +215,27 @@ def ig_run(key, replied, dry, probe, report):
         cs = instagram._req("GET", f"{m['id']}/comments", tok,
                             fields="id,text,username,timestamp,replies{username}", limit=50).get("data", [])
         for c in cs:
-            if c["id"] in replied or c.get("username") == uname:
+            if c["id"] in replied or (sink is not None and c["id"] in sink) or c.get("username") == uname:
                 continue
             if any(r.get("username") == uname for r in (c.get("replies") or {}).get("data", [])):
                 replied.add(c["id"])
                 continue
             items.append({"id": c["id"], "author": c.get("username", ""), "text": (c.get("text") or "")[:600],
-                          "post": (m.get("caption") or "").split("\n")[0][:120]})
+                          "post": (m.get("caption") or "").split("\n")[0][:120], "t": c.get("timestamp", ""),
+                          "url": m.get("permalink", "")})
     if probe:
         report.append(f"IG @{uname}: {len(media)} Beiträge, {len(items)} offene Kommentare (Lesen ✅)")
         return
     items = items[:MAX_PER_CHANNEL]
-    dec = decide(IG_PERSONA.get(key, "calm"), items)
+    dec = decide(IG_PERSONA.get(key, "calm"), [{k: it[k] for k in ("id", "author", "text", "post")} for it in items])
     for it in items:
         d = dec.get(it["id"], {"action": "skip", "reason": "keine Entscheidung"})
+        if sink is not None:
+            sink[it["id"]] = {"id": it["id"], "pf": "ig", "ch": "@" + uname, "acct": key, "author": it["author"],
+                              "text": it["text"], "ctx": it["post"], "t": it["t"], "url": it["url"],
+                              "action": d.get("action", "skip"), "reply": d.get("reply") or "", "reason": d.get("reason", "")}
+            report.append(f"IG @{uname} · „{it['text'][:60]}“ → Vorschlag ({d.get('action')})")
+            continue
         line = f"IG @{uname} · „{it['text'][:80]}“ → {d['action']}: {d.get('reply') or d.get('reason', '')}"
         if d["action"] == "reply" and d.get("reply") and not dry:
             try:
@@ -219,24 +250,72 @@ def ig_run(key, replied, dry, probe, report):
         report.append(line)
 
 
+def send(path, replied, report):
+    """Im Studio freigegebene Antworten senden: {"send":[{"id","reply"}], "skip":[ids]}"""
+    import instagram
+    import upload
+    job = json.loads(Path(path).read_text(encoding="utf-8") or "{}")
+    pend = load_pending()
+    yt_cache = {}
+    for s in job.get("send", []):
+        e, text = pend.get(s.get("id")), (s.get("reply") or "").strip()[:500]
+        if not e or not text:
+            report.append(f"übersprungen: {s.get('id')} (nicht mehr offen oder leer)")
+            continue
+        try:
+            if e["pf"] == "yt":
+                if e["acct"] not in yt_cache:
+                    yt_cache[e["acct"]] = upload.service(os.environ[e["acct"]])
+                yt_cache[e["acct"]].comments().insert(part="snippet", body={"snippet": {
+                    "parentId": e["id"], "textOriginal": text}}).execute()
+            else:
+                instagram._req("POST", f"{e['id']}/replies", instagram.token_for(e["acct"]), message=text)
+        except Exception as ex:  # noqa: BLE001
+            report.append(f"❌ {e['ch']} · „{e['text'][:60]}“: {str(ex)[:150]}")
+            continue
+        replied.add(e["id"])
+        pend.pop(e["id"], None)
+        log({"t": dt.datetime.now().isoformat(timespec="seconds"), "pf": e["pf"], "ch": e["ch"], "id": e["id"],
+             "comment": e["text"], "action": "reply", "reply": text, "suggested": e.get("reply"), "via": "studio"})
+        report.append(f"✅ {e['ch']} · „{e['text'][:60]}“ → {text}")
+    for cid in job.get("skip", []):
+        if cid in pend:
+            replied.add(cid)
+            pend.pop(cid)
+            report.append(f"🙈 ignoriert: {cid}")
+    save_pending(pend)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--probe", action="store_true")
+    ap.add_argument("--suggest", action="store_true")
+    ap.add_argument("--send")
     a = ap.parse_args()
     replied = load_state()
     report = []
+    if a.send:
+        send(a.send, replied, report)
+        save_state(replied)
+        print("\n".join(report) or "nichts zu senden")
+        print(f"::notice title=Kommentare gesendet::{' ⏎ '.join(report)[:3800] or 'nichts'}")
+        return
+    sink = load_pending() if a.suggest else None
     for name, secret, persona in yt_channels():
         try:
-            yt_run(name, secret, persona, replied, a.dry_run, a.probe, report)
+            yt_run(name, secret, persona, replied, a.dry_run, a.probe, report, sink)
         except Exception as e:  # noqa: BLE001
             report.append(f"YT {name}: Fehler {str(e)[:200]}")
     import instagram
     for key in list(instagram.ACCOUNTS):
         try:
-            ig_run(key, replied, a.dry_run, a.probe, report)
+            ig_run(key, replied, a.dry_run, a.probe, report, sink)
         except Exception as e:  # noqa: BLE001
             report.append(f"IG {key}: Fehler {str(e)[:200]}")
+    if sink is not None:
+        save_pending(sink)
+        report.append(f"📬 {len(sink)} Kommentare warten im Studio auf Freigabe")
     if not a.dry_run and not a.probe:
         save_state(replied)
     print("\n".join(report))

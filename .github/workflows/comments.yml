@@ -1,15 +1,20 @@
 name: "💬 Kommentar-Bot (YouTube & Instagram)"
+run-name: "Kommentare: ${{ github.event.inputs.mode || 'suggest' }}"
 
 on:
   schedule:
-    - cron: "17 */2 * * *"     # alle 2 Stunden (live)
+    - cron: "17 */2 * * *"     # alle 2 Stunden: Vorschläge sammeln -> Freigabe im Studio
   workflow_dispatch:
     inputs:
       mode:
-        description: "probe = nur prüfen · dry-run = Vorschläge zeigen · live = antworten"
+        description: "suggest = Vorschläge fürs Studio · send = Freigaben senden · probe · dry-run · live = ohne Freigabe"
         type: choice
-        options: [probe, dry-run, live]
-        default: probe
+        options: [suggest, send, probe, dry-run, live]
+        default: suggest
+      payload:
+        description: "nur für send (kommt aus dem Studio)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -38,6 +43,7 @@ jobs:
           YT_REFRESH_TOKEN_WASSERFALL: ${{ secrets.YT_REFRESH_TOKEN_WASSERFALL }}
           YT_REFRESH_TOKEN_LERNEN: ${{ secrets.YT_REFRESH_TOKEN_LERNEN }}
           YT_REFRESH_TOKEN_WHATIF: ${{ secrets.YT_REFRESH_TOKEN_WHATIF }}
+          YT_REFRESH_TOKEN_GEDANKEN: ${{ secrets.YT_REFRESH_TOKEN_GEDANKEN }}
           IG_TOKEN_CALMHAVEN: ${{ secrets.IG_TOKEN_CALMHAVEN }}
           IG_TOKEN_MONDMELODIE: ${{ secrets.IG_TOKEN_MONDMELODIE }}
           IG_TOKEN_LERNBAERCHEN: ${{ secrets.IG_TOKEN_LERNBAERCHEN }}
@@ -45,14 +51,17 @@ jobs:
           IG_TOKEN_WHATIF: ${{ secrets.IG_TOKEN_WHATIF }}
           IG_WHATIF_ALT: ${{ secrets.IG_USER_WHATIF }}
           IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
+          MODE: ${{ github.event.inputs.mode || 'suggest' }}
+          PAYLOAD: ${{ github.event.inputs.payload }}
         run: |
-          MODE="${{ github.event.inputs.mode || 'live' }}"
           ARGS=""
           [ "$MODE" = "probe" ] && ARGS="--probe"
           [ "$MODE" = "dry-run" ] && ARGS="--dry-run"
+          [ "$MODE" = "suggest" ] && ARGS="--suggest"
+          if [ "$MODE" = "send" ]; then printf '%s' "$PAYLOAD" > "$RUNNER_TEMP/send.json"; ARGS="--send $RUNNER_TEMP/send.json"; fi
           python scripts/comment_bot.py $ARGS
       - name: Stand speichern
-        if: always() && (github.event.inputs.mode == 'live' || github.event.inputs.mode == '')
+        if: always() && github.event.inputs.mode != 'probe' && github.event.inputs.mode != 'dry-run'
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"

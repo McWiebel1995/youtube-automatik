@@ -9,6 +9,7 @@ on:
       - "Kinder-Videos produzieren"
       - "🌌 Beyond the If – What-if-Video"
       - "📸 Instagram-Reels posten"
+      - "💬 Kommentar-Bot (YouTube & Instagram)"
     types: [completed]
   push:
     branches: [main]

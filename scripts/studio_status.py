@@ -112,6 +112,14 @@ def main():
         on = y.get(True) or y.get("on") or {}
         crons = [c["cron"] for c in (on.get("schedule") or [])] if isinstance(on, dict) else []
         res["schedules"][wf.name] = {"name": y.get("name", wf.stem), "crons": crons}
+    # Kommentar-Vorschläge zur Freigabe (öffentliche Kommentare, keine Zugangsdaten)
+    try:
+        pend = json.loads((ROOT / "data/comment_bot/pending.json").read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        pend = []
+    (OUT.parent / "comments.json").write_text(json.dumps(
+        {"generated": res["generated"], "items": [{k: v for k, v in e.items() if k != "acct"} for e in pend]},
+        ensure_ascii=False, indent=1), encoding="utf-8")
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"✓ {OUT} ({len(res['channels'])} Kanäle, {len(res['instagram'])} IG-Konten)")

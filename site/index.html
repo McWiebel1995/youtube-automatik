@@ -164,6 +164,29 @@ header{max-width:1180px;margin:0 auto;padding-top:calc(18px + env(safe-area-inse
 .igrow a{display:block;aspect-ratio:9/16;border-radius:6px;overflow:hidden;background:var(--panel-2);position:relative}
 .igrow img{width:100%;height:100%;object-fit:cover}
 .igrow span{position:absolute;left:4px;right:4px;bottom:4px;font:500 9.5px var(--f-mono);text-shadow:0 1px 3px #000}
+/* Kommentar-Postfach */
+.inbox{display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:7px 14px;border-radius:99px;cursor:pointer;
+  background:var(--panel-2);border:1px solid var(--line);font:700 13px var(--f-body)}
+.inbox b{min-width:22px;padding:1px 7px;border-radius:99px;background:var(--off);color:var(--ink);font:500 12px var(--f-mono);text-align:center}
+.inbox.has b{background:var(--lamp);color:#1b1c25}
+.cmt{border-top:1px solid var(--line);padding:12px 0}
+.cmt .who{display:flex;justify-content:space-between;gap:8px;font:500 11px var(--f-mono);color:var(--ink-2)}
+.cmt .who a{color:var(--run)}
+.cmt q{display:block;margin:6px 0 2px;font-size:14px;quotes:none}
+.cmt .ctx{font-size:12px;color:var(--ink-3)}
+.cmt textarea{width:100%;min-height:62px;margin-top:8px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel-2);
+  color:var(--ink);font:14px/1.4 var(--f-body);resize:vertical}
+.cmt .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;align-items:center}
+.btn{padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel-2);cursor:pointer;font-size:13px}
+.btn.on.ok{background:color-mix(in srgb,var(--ok) 25%,var(--panel-2));border-color:var(--ok)}
+.btn.on.no{background:color-mix(in srgb,var(--err) 20%,var(--panel-2));border-color:var(--err)}
+.btn.main{background:var(--lamp);color:#1b1c25;border-color:var(--lamp);font-weight:700}
+.btn:disabled{opacity:.45;cursor:default}
+.cmt.done{opacity:.45}
+.sendbar{position:sticky;bottom:calc(-24px - env(safe-area-inset-bottom,0px));margin:16px -18px 0;padding:12px 18px calc(14px + env(safe-area-inset-bottom,0px));
+  background:var(--panel);border-top:1px solid var(--line);display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.keyrow{display:flex;gap:8px;margin-top:8px}
+.keyrow input{flex:1;min-width:0;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel-2);color:var(--ink);font:13px var(--f-mono)}
 footer{max-width:1180px;margin:22px auto 0;color:var(--ink-3);font-size:12px;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
 </style>
 </head>
@@ -175,7 +198,8 @@ footer{max-width:1180px;margin:22px auto 0;color:var(--ink-3);font-size:12px;dis
     <h1>Kanal-Studio</h1>
     <p>Alle Kanäle, alle Abläufe – live aus GitHub, YouTube und Instagram.</p>
   </div>
-  <div class="clock"><b id="clock">--:--</b><span class="live" id="live"><i></i><span id="freshness">verbinde …</span></span></div>
+  <div class="clock"><b id="clock">--:--</b><span class="live" id="live"><i></i><span id="freshness">verbinde …</span></span><br>
+    <button class="inbox" id="inbox" type="button">💬 Kommentare <b id="inboxN">–</b></button></div>
 </header>
 
 <section class="summary" id="summary" aria-label="Überblick"></section>
@@ -484,7 +508,7 @@ function render() {
   document.getElementById("freshness").textContent = fresh == null ? "verbinde …" : `live · vor ${fresh} s`;
   document.getElementById("live").classList.toggle("stale", fresh == null || fresh > 300);
   document.getElementById("gen").textContent = status ? `Kanaldaten ${ago(status.generated)} gesammelt` : "Kanaldaten werden geladen …";
-  if (openId) openRoom(ALL.find(r => r.id === openId), true);
+  if (openId && openId !== "__comments") openRoom(ALL.find(r => r.id === openId), true);
 }
 
 /* ---------------------------------------------------------------- Details */
@@ -537,6 +561,94 @@ function openRoom(room, refresh) {
   if (!refresh) { drawer.classList.add("open"); scrim.classList.add("open"); drawer.setAttribute("aria-hidden", "false"); drawer.querySelector("#dclose").focus(); }
 }
 
+/* ---------------------------------------------------------------- Kommentar-Freigabe
+   Vorschläge kommen aus comments.json (Kommentar-Bot, alle 2 h). Freigeben startet den Bot im Modus "send".
+   Der GitHub-Schlüssel (nur Actions: Lesen & Schreiben) bleibt ausschließlich in diesem Browser. */
+const LS = { get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
+             set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+let comments = [], decisions = LS.get("cmtDecisions", {}), sent = LS.get("cmtSent", {});
+async function loadComments() {
+  try { const r = await fetch("comments.json?t=" + Date.now()); if (r.ok) comments = (await r.json()).items || []; } catch (e) { console.warn(e); }
+  const now = Date.now();
+  for (const [id, t] of Object.entries(sent)) if (now - t > 6 * 3600e3 || !comments.some(c => c.id === id)) delete sent[id];
+  LS.set("cmtSent", sent);
+  updateInbox();
+}
+const openCmts = () => comments.filter(c => !sent[c.id]);
+function updateInbox() {
+  const n = openCmts().length, b = document.getElementById("inbox");
+  document.getElementById("inboxN").textContent = n; b.classList.toggle("has", n > 0);
+}
+const ACT = { reply: ["Antwort vorgeschlagen", "ok"], flag: ["Bitte selbst ansehen", "sch"], skip: ["Bot würde ignorieren", ""] };
+function openComments() {
+  openId = "__comments";
+  const list = openCmts().sort((a, b) => ({ reply: 0, flag: 1, skip: 2 }[a.action] - { reply: 0, flag: 1, skip: 2 }[b.action]) || (b.t || "").localeCompare(a.t || ""));
+  const key = LS.get("ghKey", "");
+  let html = `<div class="dhead"><div><h2 id="dtitle" style="color:var(--lamp)">Kommentare</h2><p>Vorschläge prüfen, bei Bedarf ändern, dann freigeben.</p></div><button class="x" id="dclose" aria-label="Schließen">✕</button></div>`;
+  if (!key) html += `<div class="sec"><h3>Einmalig: GitHub-Schlüssel</h3><p class="note">Derselbe Schlüssel wie bei cron-job.org (beginnt mit <code>github_pat_</code>). Er wird nur in diesem Browser gespeichert.</p>
+    <div class="keyrow"><input id="ghkey" type="password" autocomplete="off" placeholder="github_pat_…"><button class="btn main" id="savekey">Speichern</button></div></div>`;
+  if (!list.length) html += `<div class="sec"><p class="note">Keine offenen Kommentare. Der Bot schaut alle 2 Stunden nach neuen.</p></div>`;
+  html += `<div class="sec">` + list.map(c => {
+    const d = decisions[c.id] || {}, [lbl, cls] = ACT[c.action] || ACT.skip;
+    return `<div class="cmt" data-id="${esc(c.id)}">
+      <div class="who"><span>${c.pf === "yt" ? "▶ YouTube" : "◎ Instagram"} · ${esc(c.ch)} · ${esc(c.author)}</span><span>${c.t ? ago(c.t) : ""}${c.url ? ` · <a href="${esc(c.url)}" target="_blank" rel="noopener">öffnen</a>` : ""}</span></div>
+      <q>${esc(c.text)}</q><div class="ctx">${c.ctx ? "zu: " + esc(c.ctx) : ""}</div>
+      <div class="acts"><span class="pill ${cls}">${lbl}</span>${c.reason && c.action !== "reply" ? `<span class="note">${esc(c.reason)}</span>` : ""}</div>
+      <textarea maxlength="500" aria-label="Antwort" placeholder="Antwort schreiben …">${esc(d.reply ?? c.reply)}</textarea>
+      <div class="acts"><button class="btn ok ${d.act === "send" ? "on" : ""}" data-a="send">✓ Antworten</button><button class="btn no ${d.act === "skip" ? "on" : ""}" data-a="skip">Ignorieren</button></div></div>`;
+  }).join("") + `</div>`;
+  const n = Object.entries(decisions).filter(([id, d]) => d.act && list.some(c => c.id === id)).length;
+  if (list.length) html += `<div class="sendbar"><span class="note" id="sendmsg">${n ? n + " ausgewählt" : "Wähle „Antworten“ oder „Ignorieren“."}</span>
+    <span style="display:flex;gap:8px"><button class="btn" id="allok">Alle Vorschläge annehmen</button><button class="btn main" id="sendnow" ${n && key ? "" : "disabled"}>Freigeben (${n})</button></span></div>`;
+  if (key) html += `<p class="note" style="margin-top:14px"><a href="#" id="forget">GitHub-Schlüssel aus diesem Browser löschen</a></p>`;
+  drawer.innerHTML = html;
+  drawer.querySelector("#dclose").addEventListener("click", closeDrawer);
+  const save = () => LS.set("cmtDecisions", decisions);
+  drawer.querySelectorAll(".cmt").forEach(el => {
+    const id = el.dataset.id, ta = el.querySelector("textarea");
+    ta.addEventListener("input", () => { decisions[id] = { ...(decisions[id] || {}), reply: ta.value }; save(); });
+    el.querySelectorAll("[data-a]").forEach(b => b.addEventListener("click", () => {
+      const a = b.dataset.a, cur = decisions[id] || {};
+      decisions[id] = { ...cur, reply: ta.value, act: cur.act === a ? null : a }; save(); openComments();
+    }));
+  });
+  const q = s => drawer.querySelector(s);
+  q("#savekey") && q("#savekey").addEventListener("click", () => { const v = q("#ghkey").value.trim(); if (v) { LS.set("ghKey", v); openComments(); } });
+  q("#forget") && q("#forget").addEventListener("click", e => { e.preventDefault(); try { localStorage.removeItem("ghKey"); } catch {} openComments(); });
+  q("#allok") && q("#allok").addEventListener("click", () => {
+    for (const c of list) if (c.action === "reply" && !(decisions[c.id] || {}).act) decisions[c.id] = { reply: (decisions[c.id] || {}).reply ?? c.reply, act: "send" };
+    save(); openComments();
+  });
+  q("#sendnow") && q("#sendnow").addEventListener("click", sendDecisions);
+  drawer.classList.add("open"); scrim.classList.add("open"); drawer.setAttribute("aria-hidden", "false");
+}
+async function sendDecisions() {
+  const list = openCmts(), payload = { send: [], skip: [] };
+  for (const c of list) {
+    const d = decisions[c.id] || {};
+    if (d.act === "send" && (d.reply ?? c.reply).trim()) payload.send.push({ id: c.id, reply: (d.reply ?? c.reply).trim().slice(0, 500) });
+    if (d.act === "skip") payload.skip.push(c.id);
+  }
+  const body = JSON.stringify(payload), msg = drawer.querySelector("#sendmsg"), btn = drawer.querySelector("#sendnow");
+  if (body.length > 60000) { msg.textContent = "Zu viele auf einmal – bitte in zwei Runden freigeben."; return; }
+  btn.disabled = true; msg.textContent = "Sende …";
+  try {
+    const r = await fetch(API + "/actions/workflows/comments.yml/dispatches", { method: "POST",
+      headers: { Accept: "application/vnd.github+json", Authorization: "Bearer " + LS.get("ghKey", ""), "Content-Type": "application/json" },
+      body: JSON.stringify({ ref: "main", inputs: { mode: "send", payload: body } }) });
+    if (r.status === 401 || r.status === 403) throw new Error("Schlüssel ungültig oder ohne Actions-Schreibrecht (" + r.status + ")");
+    if (!r.ok) throw new Error("GitHub " + r.status);
+    const now = Date.now();
+    for (const x of payload.send) { sent[x.id] = now; delete decisions[x.id]; }
+    for (const id of payload.skip) { sent[id] = now; delete decisions[id]; }
+    LS.set("cmtSent", sent); LS.set("cmtDecisions", decisions);
+    updateInbox(); openComments();
+    const m = drawer.querySelector("#sendmsg") || drawer.querySelector(".sec .note");
+    if (m) m.textContent = `✓ ${payload.send.length} Antworten werden gesendet, ${payload.skip.length} ignoriert – in ca. 1 Minute online.`;
+  } catch (e) { msg.textContent = "❌ " + e.message; btn.disabled = false; }
+}
+document.getElementById("inbox").addEventListener("click", openComments);
+
 /* ---------------------------------------------------------------- Himmel & Uhr */
 const cv = document.getElementById("stars"), cx = cv.getContext("2d");
 const STARS = Array.from({ length: 160 }, () => [Math.random(), Math.random() * .7, Math.random() * 1.3 + .3, Math.random() * 6]);
@@ -558,13 +670,14 @@ function sky() {
 function tick() { document.getElementById("clock").textContent = hm(new Date()); }
 
 /* ---------------------------------------------------------------- Start */
-async function refreshAll() { await Promise.all([loadRuns(), loadStatus()]); render(); }
+async function refreshAll() { await Promise.all([loadRuns(), loadStatus(), loadComments()]); render(); }
 tick(); sky(); render(); refreshAll();
 setInterval(tick, 10000);
 setInterval(sky, 4000);
 setInterval(render, 15000);
 setInterval(loadRuns, 90000);
 setInterval(loadStatus, 300000);
+setInterval(loadComments, 300000);
 setInterval(render, 92000);
 </script>
 </body>
