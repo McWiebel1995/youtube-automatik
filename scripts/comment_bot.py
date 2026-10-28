@@ -105,11 +105,25 @@ def decide(persona, items):
     if not items:
         return {}
     out = {}
-    for k in range(0, len(items), 20):
-        js = gemini.ask_json(TASK.format(persona=PERSONAS[persona], rules=RULES,
-                                         items=json.dumps(items[k:k + 20], ensure_ascii=False)), temperature=0.7)
-        for r in js.get("replies", []):
-            out[str(r.get("id"))] = r
+
+    def ask(batch):
+        try:
+            js = gemini.ask_json(TASK.format(persona=PERSONAS[persona], rules=RULES,
+                                             items=json.dumps(batch, ensure_ascii=False)), temperature=0.6)
+        except Exception as e:  # noqa: BLE001  – kaputtes JSON: in kleineren Portionen nochmal
+            if len(batch) > 1:
+                ask(batch[:len(batch) // 2])
+                ask(batch[len(batch) // 2:])
+            else:
+                print(f"  ⚠ keine Entscheidung für {batch[0]['id']}: {str(e)[:120]}")
+            return
+        rows = js if isinstance(js, list) else js.get("replies", [])
+        for r in rows:
+            if isinstance(r, dict) and r.get("id"):
+                out[str(r["id"])] = r
+
+    for k in range(0, len(items), 10):
+        ask(items[k:k + 10])
     return out
 
 
