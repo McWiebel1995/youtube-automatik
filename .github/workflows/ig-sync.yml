@@ -3,7 +3,7 @@ run-name: "Abgleich: ${{ inputs.mode || 'post' }}"
 
 on:
   schedule:
-    - cron: "23 13 * * *"     # täglich 14:23 Uhr: fehlende Shorts nachholen (pro Konto 1, Calm Haven 2)
+    - cron: "23 13 * * *"     # täglich 14:23 Uhr: fehlende Shorts nachholen (pro Konto 1, Calm Haven 3)
   workflow_dispatch:
     inputs:
       mode:

@@ -25,7 +25,7 @@ ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
 STATE = ROOT / "data" / "ig_sync" / "state.json"
 WINDOW_DAYS = 30                               # nur Shorts der letzten 30 Tage nachholen
-PER_DAY = {"calmhaven": 2}                     # Nachhol-Kontingent pro Lauf (Standard 1)
+PER_DAY = {"calmhaven": 3}                     # Nachhol-Kontingent pro Lauf (Standard 1)
 SINCE = {"whatif": "2026-10-01"}               # ältere Inhalte (früheres Kanal-Thema) nicht übernehmen
 CALM_WORDS = {"regen": r"rain|storm|thunder|drizzle", "kamin": r"fire|hearth|campfire|crackl|ember",
               "wasserfall": r"water|river|stream|ocean|wave|creek|brook|lake|sea"}
