@@ -12,12 +12,17 @@ import upload  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 chans = list(yaml.safe_load(open(ROOT / "config/channels.yaml"))["channels"].values()) + \
         list(yaml.safe_load(open(ROOT / "config/kids.yaml"))["channels"].values()) + \
-        [yaml.safe_load(open(ROOT / "config/whatif.yaml"))["channel"]]
+        [yaml.safe_load(open(ROOT / "config/whatif.yaml"))["channel"]] + \
+        [{"name": "Ruhige Gedanken", "token_secret": "YT_REFRESH_TOKEN_GEDANKEN"},
+         {"name": "*", "token_secret": "YT_REFRESH_TOKEN_TRUECRIME", "optional": True}]
 lines, bad = [], 0
 for ch in chans:
     tok = os.environ.get(ch["token_secret"])
     try:
         if not tok:
+            if ch.get("optional"):
+                lines.append(f"➖ {ch['token_secret']}: noch nicht angelegt")
+                continue
             raise RuntimeError("Secret fehlt")
         yt = upload.service(tok)
         res = yt.channels().list(part="snippet,status", mine=True).execute()
@@ -25,10 +30,14 @@ for ch in chans:
         title = it.get("snippet", {}).get("title", "?")
         long_ok = it.get("status", {}).get("longUploadsStatus", "?")
         norm = lambda s: "".join(c for c in s.lower() if c.isalnum())  # noqa: E731
-        ok = norm(ch["name"]) in norm(title) or norm(title) in norm(ch["name"])
+        ok = ch["name"] == "*" or norm(ch["name"]) in norm(title) or norm(title) in norm(ch["name"])
+        import requests
+        sc = requests.get("https://oauth2.googleapis.com/tokeninfo", timeout=30,
+                          params={"access_token": yt._http.credentials.token}).json().get("scope", "")
+        perms = (("💬" if "youtube.force-ssl" in sc else "–") + ("📊" if "yt-analytics" in sc else "–"))
         bad += not ok
-        lines.append(f"{'✅' if ok else '❌'} {ch['token_secret']}: Kanal »{title}« (erwartet »{ch['name']}«), "
-                     f"lange Videos: {long_ok}")
+        lines.append(f"{'✅' if ok else '❌'} {ch['token_secret']}: »{title}« (erwartet »{ch['name']}«) "
+                     f"Kommentare/Analytics {perms}, lange Videos: {long_ok}")
     except Exception as e:  # noqa: BLE001
         bad += 1
         lines.append(f"❌ {ch['token_secret']}: {str(e)[:150]}")

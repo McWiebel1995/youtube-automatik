@@ -11,7 +11,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install google-api-python-client google-auth pyyaml
+      - run: pip install google-api-python-client google-auth pyyaml requests
       - name: Prüfen
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
@@ -23,4 +23,6 @@ jobs:
           YT_REFRESH_TOKEN_LERNEN: ${{ secrets.YT_REFRESH_TOKEN_LERNEN }}
           YT_REFRESH_TOKEN_GESCHICHTEN: ${{ secrets.YT_REFRESH_TOKEN_GESCHICHTEN }}
           YT_REFRESH_TOKEN_WHATIF: ${{ secrets.YT_REFRESH_TOKEN_WHATIF }}
+          YT_REFRESH_TOKEN_GEDANKEN: ${{ secrets.YT_REFRESH_TOKEN_GEDANKEN }}
+          YT_REFRESH_TOKEN_TRUECRIME: ${{ secrets.YT_REFRESH_TOKEN_TRUECRIME }}
         run: python scripts/check_tokens.py
