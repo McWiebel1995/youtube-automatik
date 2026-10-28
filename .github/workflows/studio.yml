@@ -10,6 +10,7 @@ on:
       - "🌌 Beyond the If – What-if-Video"
       - "📸 Instagram-Reels posten"
       - "💬 Kommentar-Bot (YouTube & Instagram)"
+      - "🌿 Ruhige Gedanken"
     types: [completed]
   push:
     branches: [main]
@@ -48,6 +49,7 @@ jobs:
           YT_REFRESH_TOKEN_LERNEN: ${{ secrets.YT_REFRESH_TOKEN_LERNEN }}
           YT_REFRESH_TOKEN_GESCHICHTEN: ${{ secrets.YT_REFRESH_TOKEN_GESCHICHTEN }}
           YT_REFRESH_TOKEN_WHATIF: ${{ secrets.YT_REFRESH_TOKEN_WHATIF }}
+          YT_REFRESH_TOKEN_GEDANKEN: ${{ secrets.YT_REFRESH_TOKEN_GEDANKEN }}
           IG_TOKEN_CALMHAVEN: ${{ secrets.IG_TOKEN_CALMHAVEN }}
           IG_TOKEN_MONDMELODIE: ${{ secrets.IG_TOKEN_MONDMELODIE }}
           IG_TOKEN_LERNBAERCHEN: ${{ secrets.IG_TOKEN_LERNBAERCHEN }}

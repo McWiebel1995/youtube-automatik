@@ -1,6 +1,9 @@
 name: "🌿 Ruhige Gedanken"
+run-name: "Ruhige Gedanken${{ github.event.inputs.dry_run == 'true' && ' (Test)' || '' }}"
 
 on:
+  schedule:
+    - cron: "13 4 * * *"      # täglich 05:13 Uhr (Winterzeit) – online bis zum Morgen
   workflow_dispatch:
     inputs:
       voice:
@@ -20,7 +23,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 170
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -48,18 +51,18 @@ jobs:
           YT_REFRESH_TOKEN_GEDANKEN: ${{ secrets.YT_REFRESH_TOKEN_GEDANKEN }}
         run: |
           set -o pipefail
-          PUB=""; [ "${{ github.event.inputs.dry_run }}" = "false" ] && PUB="--publish"
+          PUB=""; [ "${{ github.event.inputs.dry_run }}" = "false" ] || [ "${{ github.event_name }}" = "schedule" ] && PUB="--publish"
           python scripts/gedanken.py --out output/gedanken --voice "$VOICE" --minutes "$MINUTES" $PUB 2>&1 | tee run.log || {
             echo "::error title=Fehler::$(tail -n 12 run.log | tr '\n' ' ' | cut -c1-1500)"; exit 1; }
       - name: Als Release ablegen
-        if: github.event.inputs.dry_run != 'false'
+        if: github.event.inputs.dry_run == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release delete preview-gedanken -y --cleanup-tag || true
           gh release create preview-gedanken output/gedanken/video.mp4 output/gedanken/short.mp4 output/gedanken/meta.json --title "Vorschau Ruhige Gedanken" --notes "Testlauf" --prerelease
       - name: Stand speichern
-        if: always() && github.event.inputs.dry_run == 'false'
+        if: always() && github.event.inputs.dry_run != 'true'
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"

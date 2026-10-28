@@ -265,7 +265,8 @@ const FLOORS = [
     { id: "post", name: "Instagram-Post", sub: "Reels ohne Freigabe", wf: "instagram-post.yml", match: () => true,
       crons: ["37 16 * * *"], prop: "post", color: "#ff7ac6", kind: "ig" },
     { id: "engine", name: "Maschinenraum", sub: "GitHub Actions · Modal-GPU", wf: "*", prop: "engine", color: "#8be08b", kind: "engine" },
-    { id: "gedanken", name: "Ruhige Gedanken", sub: "Kanal folgt", prop: "plant", color: "#a7d98a", kind: "soon" },
+    { id: "gedanken", name: "Ruhige Gedanken", sub: "täglich · 12 Min + Short", ch: "gedanken", lock: "gedanken", wf: "gedanken.yml",
+      match: () => true, crons: ["13 4 * * *"], prop: "plant", color: "#a7d98a" },
     { id: "anime", name: "Anime", sub: "pausiert", prop: "anime", color: "#ff6b9a", kind: "paused" },
   ]},
 ];

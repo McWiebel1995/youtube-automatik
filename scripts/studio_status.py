@@ -32,6 +32,8 @@ def channels():
                     "ig": {"schlaf": "mondmelodie", "lernen": "lernbaerchen", "geschichten": "gutenacht"}.get(k)})
     out.append({"key": "whatif", "group": "whatif", "cfg": wi, "locks": ["whatif", "whatif-news", "whatif-quiz"],
                 "ig": "whatif"})
+    out.append({"key": "gedanken", "group": "gedanken", "cfg": {"name": "Ruhige Gedanken",
+                "token_secret": "YT_REFRESH_TOKEN_GEDANKEN"}, "locks": ["gedanken"], "ig": None})
     return out
 
 
