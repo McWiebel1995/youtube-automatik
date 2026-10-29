@@ -92,32 +92,127 @@
   "ig": "18401066467206361"
  },
  "Fy-dIeGZnu8": {
-  "status": "retry",
-  "tries": 1,
-  "error": "Download: ERROR: unable to download video data: HTTP Error 403: Forbidden\n"
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
  },
  "PclW3lPQvPI": {
-  "status": "retry",
-  "tries": 1,
-  "error": "Download: See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies\n"
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
  },
  "LoasMmdrpoI": {
-  "status": "retry",
-  "tries": 1,
-  "error": "Download: See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies\n"
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
  },
  "zbCOyhAGpxU": {
-  "status": "retry",
-  "tries": 1,
-  "error": "Download: See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies\n"
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
  },
  "jjgKgirsIR4": {
-  "status": "retry",
-  "tries": 1,
-  "error": "Download: See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies\n"
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
  },
  "4cv3-pmJqUQ": {
   "status": "matched",
   "ig": "18401066467206361"
+ },
+ "e1jkda4PfAA": {
+  "status": "matched",
+  "ig": "17912475849552931"
+ },
+ "213s8Gnvgc0": {
+  "status": "matched",
+  "ig": "18120945070743811"
+ },
+ "RGaqo-_Dxac": {
+  "status": "matched",
+  "ig": "17913607395515730"
+ },
+ "6tXGBzJSobg": {
+  "status": "matched",
+  "ig": "17919216804530484"
+ },
+ "0hVKGWJ0Pk4": {
+  "status": "matched",
+  "ig": "18128309854870321"
+ },
+ "zXI1umBKVBA": {
+  "status": "matched",
+  "ig": "18641543011018685"
+ },
+ "N8L7BEtZcIA": {
+  "status": "matched",
+  "ig": "17993633709055986"
+ },
+ "WdLXAesicME": {
+  "status": "matched",
+  "ig": "17974443237148500"
+ },
+ "bfnGOiez7W8": {
+  "status": "matched",
+  "ig": "18130065668482413"
+ },
+ "W0Xd9kGitDc": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "bWFYe9qGFVQ": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "j_bdHcFm1DM": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "jmqSmQC5oOo": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "Z5ecfToQYQE": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "qU3s9PvZvlw": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "s8uwCLQ7tU4": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "hCThpHdglC0": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "Rhis7oAyP_A": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "DUGGI-l4rJk": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "YUvuoN0iUDs": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "a7jJwj48l6c": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "EE2kLBG8yt0": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "ZvG-Nxr0n6E": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "j0AhHhk9YBY": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
+ },
+ "WA3ub1wd9cs": {
+  "status": "failed",
+  "error": "keine Kopie (vor dem Archiv hochgeladen)"
  }
 }
