@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29T10:50:07+00:00",
+ "generated": "2026-10-29T10:51:31+00:00",
  "start": "2026-08-30",
  "end": "2026-10-29",
  "youtube": [
@@ -401,13 +401,13 @@
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,averageVie: <HttpError 403 when requesting https://youtubeanalytics.googleapis.com/v2/reports?ids=channel%3D%3DMINE&startDate=2026-08-30&endDate=2026-10-29&metrics=views%2C",
-    "videoThumbnailImpressions,videoThumbnail: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "viewerPercentage: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,subscribersGained: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'"
+    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
    ]
   },
   {
@@ -808,13 +808,13 @@
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,averageVie: <HttpError 403 when requesting https://youtubeanalytics.googleapis.com/v2/reports?ids=channel%3D%3DMINE&startDate=2026-08-30&endDate=2026-10-29&metrics=views%2C",
-    "videoThumbnailImpressions,videoThumbnail: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "viewerPercentage: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,subscribersGained: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'"
+    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
    ]
   },
   {
@@ -1215,13 +1215,13 @@
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,averageVie: <HttpError 403 when requesting https://youtubeanalytics.googleapis.com/v2/reports?ids=channel%3D%3DMINE&startDate=2026-08-30&endDate=2026-10-29&metrics=views%2C",
-    "videoThumbnailImpressions,videoThumbnail: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "viewerPercentage: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,subscribersGained: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'"
+    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
    ]
   },
   {
@@ -1668,13 +1668,13 @@
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,averageVie: <HttpError 403 when requesting https://youtubeanalytics.googleapis.com/v2/reports?ids=channel%3D%3DMINE&startDate=2026-08-30&endDate=2026-10-29&metrics=views%2C",
-    "videoThumbnailImpressions,videoThumbnail: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "viewerPercentage: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,subscribersGained: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'"
+    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
    ]
   },
   {
@@ -1743,13 +1743,13 @@
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,averageVie: <HttpError 403 when requesting https://youtubeanalytics.googleapis.com/v2/reports?ids=channel%3D%3DMINE&startDate=2026-08-30&endDate=2026-10-29&metrics=views%2C",
-    "videoThumbnailImpressions,videoThumbnail: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "viewerPercentage: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,subscribersGained: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'"
+    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
    ]
   },
   {
@@ -2161,13 +2161,13 @@
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,averageVie: <HttpError 403 when requesting https://youtubeanalytics.googleapis.com/v2/reports?ids=channel%3D%3DMINE&startDate=2026-08-30&endDate=2026-10-29&metrics=views%2C",
-    "videoThumbnailImpressions,videoThumbnail: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "viewerPercentage: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,subscribersGained: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'"
+    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
    ]
   },
   {
@@ -2499,13 +2499,13 @@
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,averageVie: <HttpError 403 when requesting https://youtubeanalytics.googleapis.com/v2/reports?ids=channel%3D%3DMINE&startDate=2026-08-30&endDate=2026-10-29&metrics=views%2C",
-    "videoThumbnailImpressions,videoThumbnail: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "viewerPercentage: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,subscribersGained: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'"
+    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
    ]
   },
   {
@@ -2516,13 +2516,13 @@
    "made_for_kids": null,
    "videos": [],
    "errors": [
-    "views,estimatedMinutesWatched,averageVie: <HttpError 403 when requesting https://youtubeanalytics.googleapis.com/v2/reports?ids=channel%3D%3DMINE&startDate=2026-08-30&endDate=2026-10-29&metrics=views%2C",
-    "videoThumbnailImpressions,videoThumbnail: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "viewerPercentage: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,estimatedMinutesWatched: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'",
-    "views,subscribersGained: googleapiclient.discovery.createMethod.<locals>.method() got multiple values for keyword argument 'sort'"
+    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
+    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
    ]
   }
  ],
