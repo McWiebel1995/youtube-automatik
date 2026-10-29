@@ -77,12 +77,24 @@ def yt_channel(key, name, secret, start, end):
            "made_for_kids": ch.get("status", {}).get("madeForKids"), "videos": list(vids.values()), "errors": []}
 
     def q(metrics, dims="video", extra=None):
+        kw = {"ids": "channel==MINE", "startDate": start, "endDate": end, "metrics": metrics, "dimensions": dims,
+              "maxResults": 200}
+        if "views" in metrics.split(","):
+            kw["sort"] = "-views"
+        for k, v in (extra or {}).items():
+            if v is None:
+                kw.pop(k, None)
+            else:
+                kw[k] = v
         try:
-            return ya.reports().query(ids="channel==MINE", startDate=start, endDate=end, metrics=metrics,
-                                      dimensions=dims, maxResults=200, sort="-views" if "views" in metrics else None,
-                                      **(extra or {})).execute()
+            return ya.reports().query(**kw).execute()
         except Exception as e:  # noqa: BLE001
-            res["errors"].append(f"{metrics[:40]}: {str(e)[:160]}")
+            detail = getattr(e, "content", b"")
+            try:
+                detail = json.loads(detail)["error"]["message"]
+            except Exception:  # noqa: BLE001
+                detail = str(e)
+            res["errors"].append(f"{metrics[:30]}/{dims}: {str(detail)[:220]}")
             return None
 
     r = q("views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained,likes,shares")
@@ -102,11 +114,11 @@ def yt_channel(key, name, secret, start, end):
     for dims, label in (("insightTrafficSourceType", "traffic"), ("country", "countries"), ("ageGroup", "age"),
                         ("creatorContentType", "content_type")):
         metrics = "viewerPercentage" if dims == "ageGroup" else "views,estimatedMinutesWatched"
-        r = q(metrics, dims, {"sort": None if dims == "ageGroup" else "-views"})
+        r = q(metrics, dims, {"sort": None, "maxResults": None} if dims == "ageGroup" else {"maxResults": 25})
         if r:
             cols = [h["name"] for h in r["columnHeaders"]]
             res[label] = [dict(zip(cols, row)) for row in r.get("rows", [])][:15]
-    r = q("views,subscribersGained", "day", {"sort": "day"})
+    r = q("views,subscribersGained", "day", {"sort": "day", "maxResults": None})
     if r:
         res["daily"] = [dict(zip([h["name"] for h in r["columnHeaders"]], row)) for row in r.get("rows", [])]
     res["videos"] = list(vids.values())
