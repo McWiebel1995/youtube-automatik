@@ -1,0 +1,47 @@
+name: "📊 Analytics sammeln"
+
+on:
+  schedule:
+    - cron: "41 6 * * 1"      # montags
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Daten holen (nur lesend)
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_REGEN: ${{ secrets.YT_REFRESH_TOKEN_REGEN }}
+          YT_REFRESH_TOKEN_KAMIN: ${{ secrets.YT_REFRESH_TOKEN_KAMIN }}
+          YT_REFRESH_TOKEN_WASSERFALL: ${{ secrets.YT_REFRESH_TOKEN_WASSERFALL }}
+          YT_REFRESH_TOKEN_SCHLAF: ${{ secrets.YT_REFRESH_TOKEN_SCHLAF }}
+          YT_REFRESH_TOKEN_LERNEN: ${{ secrets.YT_REFRESH_TOKEN_LERNEN }}
+          YT_REFRESH_TOKEN_GESCHICHTEN: ${{ secrets.YT_REFRESH_TOKEN_GESCHICHTEN }}
+          YT_REFRESH_TOKEN_WHATIF: ${{ secrets.YT_REFRESH_TOKEN_WHATIF }}
+          YT_REFRESH_TOKEN_GEDANKEN: ${{ secrets.YT_REFRESH_TOKEN_GEDANKEN }}
+          IG_TOKEN_CALMHAVEN: ${{ secrets.IG_TOKEN_CALMHAVEN }}
+          IG_TOKEN_MONDMELODIE: ${{ secrets.IG_TOKEN_MONDMELODIE }}
+          IG_TOKEN_LERNBAERCHEN: ${{ secrets.IG_TOKEN_LERNBAERCHEN }}
+          IG_TOKEN_GUTENACHT: ${{ secrets.IG_TOKEN_GUTENACHT }}
+          IG_TOKEN_WHATIF: ${{ secrets.IG_TOKEN_WHATIF }}
+          IG_WHATIF_ALT: ${{ secrets.IG_USER_WHATIF }}
+          IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
+        run: python scripts/analytics_report.py
+      - name: Speichern
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A data/analytics || true
+          git commit -m "Analytics" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep 5; done
