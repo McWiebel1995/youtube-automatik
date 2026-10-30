@@ -78,6 +78,13 @@ def make_thumb(video, out, big, small, at=0.35, channel=None, scene=None):
             bg = covers.background(channel, scene or big, "landscape", out.parent)
         except Exception as e:  # noqa: BLE001
             print(f"  ⚠ Titelbild-Suche: {e}")
+    if bg and channel in ("schlaf", "geschichten"):   # gestaltetes Thumbnail (thumbs.py)
+        try:
+            import thumbs
+            badge = {"schlaf": "15 MIN", "geschichten": "GUTE NACHT"}[channel]
+            return thumbs.kids(bg, channel, big, badge, out)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Thumbnail: {e}")
     if bg:
         import covers
         covers.fit(bg, 1280, 720).save(out.with_suffix(".png"))

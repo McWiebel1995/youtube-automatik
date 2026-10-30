@@ -25,7 +25,7 @@ def stock(q, name):
 
 
 thumbs.whatif(stock("planet earth from space dramatic", "w1"), "What If Earth Stopped Spinning?", OUT / "whatif_1.jpg")
-thumbs.whatif(stock("black hole space", "w2"), "BLACK HOLE IN YOU", OUT / "whatif_2.jpg")
+thumbs.whatif(stock("black hole space", "w2"), "What if a black hole passed through you?", OUT / "whatif_2.jpg")
 for ch, scene, h in (("regen", "Rain on Window", 3), ("kamin", "Cabin Fireplace", 2), ("wasserfall", "Forest Stream", 1)):
     bg = covers.background(ch, scene, "landscape", OUT, rnd)
     thumbs.calm(bg, ch, h, thumbs.calm_hook(ch, rnd), OUT / f"calm_{ch}.jpg")

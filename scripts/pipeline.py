@@ -92,7 +92,14 @@ def main():
     except Exception as e:  # noqa: BLE001
         print(f"  ⚠ Titelbild-Suche: {e}")
         bg = None
-    thumb = thumbnail.make(loop, work / "thumbnail.jpg", hours, meta["scene"], rnd, bg=bg)
+    thumb = None
+    if bg:
+        try:                                          # gestaltetes Thumbnail (thumbs.py)
+            import thumbs
+            thumb = thumbs.calm(bg, args.channel, hours, thumbs.calm_hook(args.channel, rnd), work / "thumbnail.jpg")
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Thumbnail: {e}")
+    thumb = thumb or thumbnail.make(loop, work / "thumbnail.jpg", hours, meta["scene"], rnd, bg=bg)
     publish_at = next_publish_time(ch["publish_time_utc"], args.publish_days)
 
     record = {"channel": args.channel, "seed": seed, "hours": hours, "publish_at": publish_at,

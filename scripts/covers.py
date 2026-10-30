@@ -44,6 +44,15 @@ CHANNEL = {
                                                     "mountain": "mountains mist", "wiese": "meadow sunrise",
                                                     "regen": "rain leaves calm", "schnee": "snow landscape calm"}),
 }
+ANIMALS = {"faultier": "sloth", "koala": "koala", "frosch": "frog", "seehund": "seal", "robbe": "seal",
+           "bärchen": "teddy bear", "bär": "bear", "glühwürmchen": "firefly", "igel": "hedgehog", "fuchs": "fox",
+           "hase": "bunny", "häschen": "bunny", "eichhörnchen": "squirrel", "eule": "owl", "maus": "mouse",
+           "mäuschen": "mouse", "schildkröte": "turtle", "pinguin": "penguin", "elefant": "elephant", "katze": "cat",
+           "kätzchen": "kitten", "hund": "puppy", "welpe": "puppy", "schaf": "sheep", "lamm": "lamb", "ente": "duck",
+           "küken": "chick", "löwe": "lion", "giraffe": "giraffe", "panda": "panda", "otter": "otter", "wal": "whale",
+           "delfin": "dolphin", "dino": "dinosaur", "drache": "dragon", "einhorn": "unicorn", "reh": "deer",
+           "hirsch": "deer", "biber": "beaver", "dachs": "badger", "schnecke": "snail", "marienkäfer": "ladybug",
+           "schmetterling": "butterfly", "biene": "bee", "raupe": "caterpillar", "affe": "monkey", "tiger": "tiger"}
 STYLE = {   # Schrift/Farbe für Instagram-Titelbilder
     "regen": ("PlayfairDisplay.ttf", (245, 242, 235)), "kamin": ("PlayfairDisplay.ttf", (255, 236, 205)),
     "wasserfall": ("PlayfairDisplay.ttf", (235, 248, 245)), "schlaf": ("Pacifico.ttf", (255, 246, 214)),
@@ -73,7 +82,11 @@ def query_for(channel, scene):
     for k, q in extra.items():
         if k in s:
             return kind, q
-    if channel == "geschichten" and scene:                  # Geschichte: Stichworte per Gemini (englisch)
+    if channel == "geschichten" and scene:                  # Geschichte: Hauptfigur aus dem Titel
+        for de, en in ANIMALS.items():
+            if de in s:
+                return kind, f"cute {en} illustration"
+    if channel == "geschichten" and scene:                  # sonst Stichworte per Gemini (englisch)
         try:
             import sys
             sys.path.insert(0, str(ROOT / "anime"))

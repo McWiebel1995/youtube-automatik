@@ -66,7 +66,9 @@ Also write 2 YouTube Shorts (each 60–85 words, standalone, strong hook in the 
 Answer ONLY JSON:
 {{"title": "max 70 chars, clickable, no clickbait lies", "segments": [{{"text": "...", "visual": {{"kind": "stock|ai",
   "query": "...", "prompt": "..."}}}}], "shorts": [{{"title": "max 80 chars incl #shorts", "text": "...",
-  "visuals": [0, 3, 5]}}], "description": "3–4 sentences", "tags": ["..."]}}"""
+  "visuals": [0, 3, 5]}}], "description": "3–4 sentences", "tags": ["..."],
+ "thumb_text": "2–4 punchy words for the thumbnail, NOT repeating 'What if', e.g. 'EARTH STOPS SPINNING' or 'NO MORE MOON'",
+ "thumb_prompt": "photorealistic cinematic hero image for the thumbnail: ONE clear, dramatic subject on the right side, strong contrast and color, dark empty left side for text, 16:9, no text"}}"""
 
 
 def now():
@@ -473,6 +475,14 @@ def build(out: Path, minutes=9.0, seed=None):
                 is_img = True
             sources.append((src, is_img))
             print(f"  Bild {i + 1}/{len(segs)} {'KI' if is_img else 'Stock'} ({_t.time() - t0:.0f} s)", flush=True)
+        print("▶ Thumbnail-Bild …")
+        try:
+            tp = sc.get("thumb_prompt") or (sc["question"] + ", dramatic hero shot")
+            (out / "thumb_hero.png").write_bytes(flux.generate.remote(
+                f"cinematic photorealistic, dramatic lighting, vivid colors, high contrast, 16:9. {tp}. "
+                "subject on the right, dark negative space on the left, no text, no watermark", seed=777))
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Thumbnail-Bild: {e}")
         print("▶ Shorts-Stimmen …")
         short_audio = []
         for k, sh in enumerate(sc.get("shorts", [])[:2]):
@@ -498,6 +508,13 @@ def build(out: Path, minutes=9.0, seed=None):
     brand(work / "main.mp4", out / "video.mp4", work, starts, len(voice_all) / SR)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "3", "-i", str(work / "main.mp4"), "-frames:v", "1",
                     str(out / "thumb_frame.png")], check=True)
+    try:                                              # gestaltetes Thumbnail (thumbs.py)
+        import thumbs
+        hero = out / "thumb_hero.png" if (out / "thumb_hero.png").exists() else out / "thumb_frame.png"
+        ttext = sc.get("thumb_text") or re.sub(r"(?i)^what if\s+", "", sc["title"]).rstrip("?")
+        thumbs.whatif(hero, ttext, out / "thumbnail.jpg")
+    except Exception as e:  # noqa: BLE001
+        print(f"  ⚠ Thumbnail: {e}")
 
     # ---- Shorts
     shorts_meta = []
@@ -540,7 +557,7 @@ def upload_all(out: Path, meta):
     m = {"title": meta["title"], "description": meta["full_description"], "tags": meta["tags"]}
     vid = upload.upload(yt, out / "video.mp4", m, ch)
     try:
-        upload.set_thumbnail(yt, vid, out / "thumb_frame.png")
+        upload.set_thumbnail(yt, vid, out / "thumbnail.jpg" if (out / "thumbnail.jpg").exists() else out / "thumb_frame.png")
     except Exception as e:  # noqa: BLE001
         print(f"  ⚠ Thumbnail: {e}")
     try:

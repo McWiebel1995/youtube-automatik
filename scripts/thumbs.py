@@ -108,8 +108,15 @@ def whatif(bg, text, out, badge="WHAT IF?"):
     im = ImageEnhance.Color(im).enhance(1.25)
     im = vignette(im, 0.82, "left")
     d = ImageDraw.Draw(im)
+    import re
+    text = re.sub(r"(?i)^\s*what\s+if\s+", "", text).strip(" .")
     text = " ".join(text.upper().split()[:5])
-    f, lines, size = fit(d, text, "Anton.ttf", 640, 3, 190, 90, variation=None)
+    size = 190
+    while True:                                   # Breite UND Höhe müssen passen
+        f, lines, size = fit(d, text, "Anton.ttf", 640, 3, size, 80, variation=None)
+        if len(lines) * size * 1.02 <= 470 or size <= 84:
+            break
+        size -= 6
     lh = int(size * 1.02)
     y0 = (H - lh * len(lines)) // 2 + 30
     words_last = lines[-1].split()
