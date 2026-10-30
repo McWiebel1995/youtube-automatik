@@ -1,14 +1,16 @@
 name: "🌌 Beyond the If – What-if-Video"
-run-name: "Beyond the If: ${{ (github.event.schedule == '45 11 * * *' || github.event.schedule == '45 14 * * *') && 'news' || (github.event.schedule == '5 17 * * *' || github.event.schedule == '5 19 * * *') && 'quiz' || github.event.schedule && 'video' || inputs.mode == 'news-short' && 'news' || inputs.mode || 'video' }}${{ inputs.dry_run && ' (Test)' || '' }}"
+run-name: "Beyond the If: ${{ (github.event.schedule == '45 11 * * *' || github.event.schedule == '45 14 * * *') && 'news' || (github.event.schedule == '5 17 * * *' || github.event.schedule == '5 19 * * *') && 'quiz' || (github.event.schedule == '35 20 * * *' || github.event.schedule == '35 22 * * *') && 'quiz 2' || github.event.schedule && 'video' || inputs.mode == 'news-short' && 'news' || inputs.mode || 'video' }}${{ inputs.dry_run && ' (Test)' || '' }}"
 
 on:
   schedule:
-    - cron: "15 13 * * 2,5"     # Di + Fr: langes Video + 2 Shorts
-    - cron: "15 16 * * 2,5"     # Absicherung
+    - cron: "15 13 * * 5"       # Fr: langes Video + 2 Shorts (1x pro Woche – lange Videos laufen kaum)
+    - cron: "15 16 * * 5"       # Absicherung
     - cron: "45 11 * * *"       # täglich: News-Short (Algorithmus-Test)
     - cron: "45 14 * * *"       # Absicherung
     - cron: "5 17 * * *"        # täglich: Quiz-Short
     - cron: "5 19 * * *"        # Absicherung
+    - cron: "35 20 * * *"       # täglich: 2. Quiz-Short (Quiz läuft am besten)
+    - cron: "35 22 * * *"       # Absicherung
   workflow_dispatch:
     inputs:
       dry_run:
@@ -23,12 +25,15 @@ on:
         type: choice
         options: [video, news-short, quiz]
         default: video
+      slot:
+        description: "Quiz-Platz (1 oder 2)"
+        default: "1"
 
 permissions:
   contents: write
 
 concurrency:
-  group: whatif
+  group: whatif-${{ github.event.schedule || inputs.mode || 'video' }}
   cancel-in-progress: false
 
 jobs:
@@ -69,6 +74,8 @@ jobs:
           [ "${{ github.event.inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
           SCRIPT=scripts/whatif.py
           case "${{ github.event.schedule }}" in "5 17 * * *"|"5 19 * * *") SCRIPT=scripts/quiz.py ;; esac
+          case "${{ github.event.schedule }}" in "35 20 * * *"|"35 22 * * *") SCRIPT=scripts/quiz.py; export QUIZ_LOCK=whatif-quiz2 ;; esac
+          [ "${{ github.event.inputs.slot }}" = "2" ] && export QUIZ_LOCK=whatif-quiz2
           [ "${{ github.event.inputs.mode }}" = "quiz" ] && SCRIPT=scripts/quiz.py
           [ "$SCRIPT" = scripts/quiz.py ] && ARGS="--out output/whatif$(echo "$ARGS" | grep -o ' --dry-run' || true)"
           python $SCRIPT $ARGS 2>&1 | tee run.log || {

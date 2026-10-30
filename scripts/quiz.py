@@ -254,7 +254,7 @@ def upload_quiz(out: Path, meta):
     if os.environ.get("IG_TOKEN_WHATIF") or os.environ.get("IG_WHATIF_ALT"):
         import ig_queue
         ig_queue.add("whatif", out / "quiz_short.mp4", meta["description"])
-    upload.mark_uploaded("whatif-quiz")
+    upload.mark_uploaded(os.environ.get("QUIZ_LOCK", "whatif-quiz"))
 
 
 if __name__ == "__main__":
@@ -264,7 +264,7 @@ if __name__ == "__main__":
     a = ap.parse_args()
     if not a.dry_run:
         import upload
-        if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_today("whatif-quiz"):
+        if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_today(os.environ.get("QUIZ_LOCK", "whatif-quiz")):
             print("Heute schon ein Quiz – übersprungen."); sys.exit(0)
     m = build(Path(a.out))
     if not a.dry_run:

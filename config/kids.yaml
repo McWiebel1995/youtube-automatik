@@ -18,6 +18,7 @@ channels:
 
   schlaf:
     name: "Mondmelodie"
+    yt_shorts: false          # Shorts nur auf Instagram (YouTube-Kinder-Shorts: ~0 Aufrufe)
     token_secret: YT_REFRESH_TOKEN_SCHLAF
     category_id: "10"           # Musik
     playlist_id: ""
@@ -62,6 +63,7 @@ channels:
 
   geschichten:
     name: "Gute-Nacht-Kiste"
+    yt_shorts: false          # Shorts nur auf Instagram (YouTube-Kinder-Shorts: ~0 Aufrufe)
     token_secret: YT_REFRESH_TOKEN_GESCHICHTEN
     category_id: "24"           # Unterhaltung
     playlist_id: ""

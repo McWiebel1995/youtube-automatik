@@ -215,9 +215,12 @@ def main():
             stories.mark_used(info["story"]["title"])
         os.remove(info["video_file"])
         for xinfo, xmeta in extra:
-            xvid = upload.upload(yt, xinfo["video_file"], xmeta, ch, publish_at=None)
-            record.setdefault("extra_uploads", []).append({"video_id": xvid, "title": xmeta["title"]})
-            print(f"  ✓ Short hochgeladen ({ch.get('privacy', 'private')}): https://youtu.be/{xvid}")
+            if ch.get("yt_shorts", True):                     # Kinder-Shorts bekommen auf YouTube kaum Reichweite
+                xvid = upload.upload(yt, xinfo["video_file"], xmeta, ch, publish_at=None)
+                record.setdefault("extra_uploads", []).append({"video_id": xvid, "title": xmeta["title"]})
+                print(f"  ✓ Short hochgeladen ({ch.get('privacy', 'private')}): https://youtu.be/{xvid}")
+            else:
+                print("  ↷ Short nur für Instagram (yt_shorts: false)")
             import ig_queue                                   # Short auch als Instagram-Reel (abends)
             igc = None
             try:

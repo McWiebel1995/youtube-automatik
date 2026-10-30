@@ -30,7 +30,7 @@ def channels():
     for k, c in kids.items():
         out.append({"key": k, "group": "kids", "cfg": c, "locks": ["kids-" + k],
                     "ig": {"schlaf": "mondmelodie", "lernen": "lernbaerchen", "geschichten": "gutenacht"}.get(k)})
-    out.append({"key": "whatif", "group": "whatif", "cfg": wi, "locks": ["whatif", "whatif-news", "whatif-quiz"],
+    out.append({"key": "whatif", "group": "whatif", "cfg": wi, "locks": ["whatif", "whatif-news", "whatif-quiz", "whatif-quiz2"],
                 "ig": "whatif"})
     out.append({"key": "gedanken", "group": "gedanken", "cfg": {"name": "Ruhige Gedanken",
                 "token_secret": "YT_REFRESH_TOKEN_GEDANKEN"}, "locks": ["gedanken"], "ig": None})
