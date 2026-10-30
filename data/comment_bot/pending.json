@@ -1,1 +1,58 @@
-[]
+[
+ {
+  "id": "UgxVTd2kGmgmWCeKOt54AaABAg",
+  "pf": "yt",
+  "ch": "Beyond the If",
+  "acct": "YT_REFRESH_TOKEN_WHATIF",
+  "author": "@JimPBarber",
+  "text": "I got them all!!!  The last one almost stumped me.",
+  "ctx": "The Ultimate Animal Science Quiz! 🐾 #shorts",
+  "t": "2026-10-30T18:38:18Z",
+  "url": "https://www.youtube.com/watch?v=dpTp4i8kqHU&lc=UgxVTd2kGmgmWCeKOt54AaABAg",
+  "action": "reply",
+  "reply": "Incredible job acing the whole quiz! That final question definitely tripped a lot of people up. 🐾",
+  "reason": "celebrates perfect quiz score"
+ },
+ {
+  "id": "UgxLr__2UiAjvs1gtB54AaABAg",
+  "pf": "yt",
+  "ch": "Beyond the If",
+  "acct": "YT_REFRESH_TOKEN_WHATIF",
+  "author": "@amandavasquez2307",
+  "text": "Sea otter",
+  "ctx": "The Ultimate Animal Science Quiz! 🐾 #shorts",
+  "t": "2026-10-30T18:01:16Z",
+  "url": "https://www.youtube.com/watch?v=dpTp4i8kqHU&lc=UgxLr__2UiAjvs1gtB54AaABAg",
+  "action": "skip",
+  "reply": "",
+  "reason": "simple quiz answer"
+ },
+ {
+  "id": "UgziYE96XllzoQqDixN4AaABAg",
+  "pf": "yt",
+  "ch": "Beyond the If",
+  "acct": "YT_REFRESH_TOKEN_WHATIF",
+  "author": "@amandavasquez2307",
+  "text": "Black",
+  "ctx": "The Ultimate Animal Science Quiz! 🐾 #shorts",
+  "t": "2026-10-30T18:00:27Z",
+  "url": "https://www.youtube.com/watch?v=dpTp4i8kqHU&lc=UgziYE96XllzoQqDixN4AaABAg",
+  "action": "skip",
+  "reply": "",
+  "reason": "simple quiz answer"
+ },
+ {
+  "id": "UgyEmM_bWGgkntvGfU94AaABAg",
+  "pf": "yt",
+  "ch": "Beyond the If",
+  "acct": "YT_REFRESH_TOKEN_WHATIF",
+  "author": "@amandavasquez2307",
+  "text": "Whale",
+  "ctx": "The Ultimate Animal Science Quiz! 🐾 #shorts",
+  "t": "2026-10-30T18:00:20Z",
+  "url": "https://www.youtube.com/watch?v=dpTp4i8kqHU&lc=UgyEmM_bWGgkntvGfU94AaABAg",
+  "action": "skip",
+  "reply": "",
+  "reason": "simple quiz answer"
+ }
+]
