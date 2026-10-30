@@ -17,7 +17,8 @@ rnd = random.Random(7)
 
 
 def stock(q, name):
-    c = covers._pexels(q, "landscape")
+    c = covers._pexels(q, "landscape") or covers._pixabay(q, "landscape", "photo")
+    print(f"{q}: {len(c)} Treffer")
     p = OUT / f"bg_{name}.jpg"
     p.write_bytes(requests.get(c[rnd.randrange(min(5, len(c)))][1], timeout=60).content)
     return p
