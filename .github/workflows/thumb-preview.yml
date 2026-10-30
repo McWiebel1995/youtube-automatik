@@ -25,7 +25,7 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python scripts/thumb_preview.py
+        run: python scripts/thumb_preview.py > t.log 2>&1 || { echo "::error::$(tail -n 15 t.log | tr "\n" " " | cut -c1-2000)"; exit 1; }
       - name: Ablegen
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
