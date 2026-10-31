@@ -1,22 +1,114 @@
 {
- "generated": "2026-10-29T10:51:31+00:00",
- "start": "2026-08-30",
- "end": "2026-10-29",
+ "generated": "2026-10-31T20:47:51+00:00",
+ "start": "2026-09-01",
+ "end": "2026-10-31",
  "youtube": [
   {
    "key": "regen",
    "name": "Calm Haven Rain",
    "subs": 1,
-   "views_total": 741,
+   "views_total": 1324,
    "made_for_kids": null,
    "videos": [
     {
-     "id": "RJbvQB6pAq8",
-     "title": "Close your eyes. Just rain. 🌧️ #shorts 💤",
-     "published": "2026-10-29T03:16:17Z",
+     "id": "7fhS1OvSq04",
+     "title": "Rain on the window – instant calm #shorts #rainsounds 🌙",
+     "published": "2026-10-31T03:19:26Z",
      "seconds": 41,
      "privacy": "private",
      "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "ambience",
+      "asmrsleep",
+      "cozyvibes",
+      "rain",
+      "rainonwindow",
+      "rainsounds",
+      "relaxingsounds",
+      "shorts",
+      "sleepsounds",
+      "studyambience"
+     ],
+     "has_desc": 180
+    },
+    {
+     "id": "5hdb2z8AzDg",
+     "title": "Rain on the Lake – 2 Hours of Rain Sounds for Sleeping",
+     "published": "2026-10-31T03:17:39Z",
+     "seconds": 7201,
+     "privacy": "private",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "ASMR",
+      "gentle rain",
+      "rain",
+      "rain on the lake",
+      "rain on the roof",
+      "rain sounds",
+      "rain sounds for sleeping",
+      "rainonroof",
+      "rainsounds",
+      "relaxing sounds"
+     ],
+     "has_desc": 444
+    },
+    {
+     "id": "KGw8fxpqurI",
+     "title": "This rain sound puts you to sleep in minutes #shorts 🎧",
+     "published": "2026-10-31T00:30:38Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 360,
+     "likes": 7,
+     "comments": 0,
+     "tags": [
+      "ambience",
+      "asmrsleep",
+      "cozyvibes",
+      "rain",
+      "rainsound",
+      "rainsounds",
+      "relaxingsounds",
+      "shorts",
+      "sleepsounds",
+      "studyambience"
+     ],
+     "has_desc": 169
+    },
+    {
+     "id": "EXoGtuh5yxI",
+     "title": "3 Hours of Gentle Rain – Rain on the Lake",
+     "published": "2026-10-31T00:30:23Z",
+     "seconds": 10801,
+     "privacy": "public",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "ASMR",
+      "gentle rain",
+      "rain",
+      "rain on the lake",
+      "rain sounds",
+      "rain sounds for sleeping",
+      "rainsounds",
+      "rainynight",
+      "relaxing sounds",
+      "sleep sounds"
+     ],
+     "has_desc": 435
+    },
+    {
+     "id": "RJbvQB6pAq8",
+     "title": "Close your eyes. Just rain. 🌧️ #shorts 💤",
+     "published": "2026-10-30T00:30:21Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 216,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -31,15 +123,21 @@
       "sleepsounds",
       "studyambience"
      ],
-     "has_desc": 202
+     "has_desc": 202,
+     "estimatedMinutesWatched": 16,
+     "averageViewDuration": 30,
+     "averageViewPercentage": 75.54,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 157
     },
     {
      "id": "DLnYg-aNe_0",
      "title": "1 Hour of Gentle Rain – Rainy Night in the City with Thunder",
-     "published": "2026-10-29T03:14:53Z",
+     "published": "2026-10-30T00:30:20Z",
      "seconds": 3601,
-     "privacy": "private",
-     "views": 0,
+     "privacy": "public",
+     "views": 5,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -54,7 +152,13 @@
       "rainy night in the city",
       "relaxing sounds"
      ],
-     "has_desc": 471
+     "has_desc": 471,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 23,
+     "averageViewPercentage": 0.64,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "LEaBPl8t8lU",
@@ -62,7 +166,7 @@
      "published": "2026-10-29T00:30:40Z",
      "seconds": 10801,
      "privacy": "public",
-     "views": 0,
+     "views": 22,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -77,7 +181,13 @@
       "relaxing sounds",
       "sleep sounds"
      ],
-     "has_desc": 407
+     "has_desc": 407,
+     "estimatedMinutesWatched": 86,
+     "averageViewDuration": 324,
+     "averageViewPercentage": 3,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 18
     },
     {
      "id": "e1jkda4PfAA",
@@ -100,7 +210,13 @@
       "sleepsounds",
       "studyambience"
      ],
-     "has_desc": 174
+     "has_desc": 174,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 7,
+     "averageViewPercentage": 17.32,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "xY1zX2en6hk",
@@ -108,8 +224,8 @@
      "published": "2026-10-28T00:30:27Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 346,
-     "likes": 7,
+     "views": 388,
+     "likes": 9,
      "comments": 0,
      "tags": [
       "ambience",
@@ -123,7 +239,13 @@
       "sleepsounds",
       "studyambience"
      ],
-     "has_desc": 187
+     "has_desc": 187,
+     "estimatedMinutesWatched": 43,
+     "averageViewDuration": 20,
+     "averageViewPercentage": 49.64,
+     "subscribersGained": 1,
+     "shares": 0,
+     "a_views": 398
     },
     {
      "id": "ZUkBad3hmFA",
@@ -131,7 +253,7 @@
      "published": "2026-10-28T00:30:08Z",
      "seconds": 10801,
      "privacy": "public",
-     "views": 2,
+     "views": 11,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -146,7 +268,13 @@
       "rainsounds",
       "relaxing sounds"
      ],
-     "has_desc": 474
+     "has_desc": 474,
+     "estimatedMinutesWatched": 10,
+     "averageViewDuration": 121,
+     "averageViewPercentage": 1.12,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 6
     },
     {
      "id": "PclW3lPQvPI",
@@ -154,7 +282,7 @@
      "published": "2026-10-27T00:30:33Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 216,
+     "views": 213,
      "likes": 4,
      "comments": 0,
      "tags": [
@@ -169,7 +297,13 @@
       "sleepsounds",
       "studyambience"
      ],
-     "has_desc": 175
+     "has_desc": 175,
+     "estimatedMinutesWatched": 9,
+     "averageViewDuration": 8,
+     "averageViewPercentage": 20.21,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 218
     },
     {
      "id": "GdPDhMtvs9g",
@@ -192,7 +326,13 @@
       "rainsounds",
       "relaxing sounds"
      ],
-     "has_desc": 463
+     "has_desc": 463,
+     "estimatedMinutesWatched": 19,
+     "averageViewDuration": 58,
+     "averageViewPercentage": 1.6200000000000003,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 20
     },
     {
      "id": "-GaSpP3TI4E",
@@ -215,7 +355,13 @@
       "rainsounds",
       "relaxing sounds"
      ],
-     "has_desc": 451
+     "has_desc": 451,
+     "estimatedMinutesWatched": 242,
+     "averageViewDuration": 2078,
+     "averageViewPercentage": 28.859999999999996,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 8
     },
     {
      "id": "j_bdHcFm1DM",
@@ -238,7 +384,13 @@
       "sleepsounds",
       "studyambience"
      ],
-     "has_desc": 198
+     "has_desc": 198,
+     "estimatedMinutesWatched": 2,
+     "averageViewDuration": 8,
+     "averageViewPercentage": 20.54,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 48
     },
     {
      "id": "DvdeEnrmIkk",
@@ -283,7 +435,13 @@
       "sleepsounds",
       "studyambience"
      ],
-     "has_desc": 253
+     "has_desc": 253,
+     "estimatedMinutesWatched": 11,
+     "averageViewDuration": 23,
+     "averageViewPercentage": 56.61000000000001,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 89
     },
     {
      "id": "pyu8iiSKSlE",
@@ -328,7 +486,13 @@
       "sleepsounds",
       "studyambience"
      ],
-     "has_desc": 251
+     "has_desc": 251,
+     "estimatedMinutesWatched": 78,
+     "averageViewDuration": 330,
+     "averageViewPercentage": 805.9300000000001,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 69
     },
     {
      "id": "_iEdLoxK4qM",
@@ -351,7 +515,13 @@
       "sleep sounds",
       "study"
      ],
-     "has_desc": 472
+     "has_desc": 472,
+     "estimatedMinutesWatched": 362,
+     "averageViewDuration": 1814,
+     "averageViewPercentage": 16.8,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 12
     },
     {
      "id": "IlHbMu-VBwQ",
@@ -359,7 +529,7 @@
      "published": "2026-10-21T18:00:35Z",
      "seconds": 3601,
      "privacy": "public",
-     "views": 19,
+     "views": 20,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -374,7 +544,13 @@
       "sleep sounds",
       "study"
      ],
-     "has_desc": 472
+     "has_desc": 472,
+     "estimatedMinutesWatched": 304,
+     "averageViewDuration": 1013,
+     "averageViewPercentage": 28.139999999999997,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 20
     },
     {
      "id": "tmjDWchyxDE",
@@ -397,34 +573,510 @@
       "sleep sounds",
       "study"
      ],
-     "has_desc": 487
+     "has_desc": 487,
+     "estimatedMinutesWatched": 21,
+     "averageViewDuration": 180,
+     "averageViewPercentage": 5,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 8
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
+    "videoThumbnailImpressions,vide/video: The query is not supported. Check the documentation at https://developers.google.com/youtube/analytics/v2/available_reports for a list of supported queries."
+   ],
+   "traffic": [
+    {
+     "insightTrafficSourceType": "SHORTS",
+     "views": 945,
+     "estimatedMinutesWatched": 150
+    },
+    {
+     "insightTrafficSourceType": "RELATED_VIDEO",
+     "views": 82,
+     "estimatedMinutesWatched": 975
+    },
+    {
+     "insightTrafficSourceType": "YT_SEARCH",
+     "views": 22,
+     "estimatedMinutesWatched": 1
+    },
+    {
+     "insightTrafficSourceType": "NO_LINK_OTHER",
+     "views": 5,
+     "estimatedMinutesWatched": 61
+    },
+    {
+     "insightTrafficSourceType": "SUBSCRIBER",
+     "views": 5,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "YT_OTHER_PAGE",
+     "views": 5,
+     "estimatedMinutesWatched": 10
+    },
+    {
+     "insightTrafficSourceType": "YT_CHANNEL",
+     "views": 2,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "EXT_URL",
+     "views": 0,
+     "estimatedMinutesWatched": 0
+    }
+   ],
+   "countries": [
+    {
+     "country": "US",
+     "views": 247,
+     "estimatedMinutesWatched": 38
+    },
+    {
+     "country": "ID",
+     "views": 72,
+     "estimatedMinutesWatched": 2
+    },
+    {
+     "country": "DE",
+     "views": 0,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "country": "PH",
+     "views": 0,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "country": "TR",
+     "views": 0,
+     "estimatedMinutesWatched": 0
+    }
+   ],
+   "age": [
+    {
+     "ageGroup": "age65-",
+     "viewerPercentage": 100
+    }
+   ],
+   "content_type": [
+    {
+     "creatorContentType": "shorts",
+     "views": 980,
+     "estimatedMinutesWatched": 161
+    },
+    {
+     "creatorContentType": "videoOnDemand",
+     "views": 93,
+     "estimatedMinutesWatched": 1046
+    }
+   ],
+   "daily": [
+    {
+     "day": "2026-09-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-20",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-21",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-22",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-23",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-24",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-25",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-26",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-27",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-28",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-29",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-30",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-20",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-21",
+     "views": 15,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-22",
+     "views": 16,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-23",
+     "views": 10,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-24",
+     "views": 62,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-25",
+     "views": 90,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-26",
+     "views": 94,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-27",
+     "views": 242,
+     "subscribersGained": 1
+    },
+    {
+     "day": "2026-10-28",
+     "views": 318,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-29",
+     "views": 226,
+     "subscribersGained": 0
+    }
    ]
   },
   {
    "key": "kamin",
    "name": "Calm Haven Fireside",
-   "subs": 2,
-   "views_total": 710,
+   "subs": 4,
+   "views_total": 785,
    "made_for_kids": null,
    "videos": [
     {
-     "id": "wCIJjAcfbe8",
-     "title": "Fireplace sounds – instant calm #shorts #cozy 🎧",
-     "published": "2026-10-29T03:20:28Z",
+     "id": "c7zqKdBONSg",
+     "title": "Warm fire, soft crackle, deep sleep #shorts ✨",
+     "published": "2026-10-31T03:21:38Z",
      "seconds": 41,
      "privacy": "private",
      "views": 0,
      "likes": 0,
+     "comments": 0,
+     "tags": [
+      "ambience",
+      "autumnvibes",
+      "cozy",
+      "cozyvibes",
+      "cracklingfire",
+      "fireplace",
+      "hygge",
+      "relaxingsounds",
+      "shorts",
+      "sleepsounds"
+     ],
+     "has_desc": 213
+    },
+    {
+     "id": "FEGPBGpU0Ns",
+     "title": "Relaxing Fireplace Ambience: Autumn Evening by the Fire (3 Hours)",
+     "published": "2026-10-31T03:18:11Z",
+     "seconds": 10801,
+     "privacy": "private",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "ambience",
+      "autumn evening by the fire",
+      "autumnvibes",
+      "cozy",
+      "crackling fire",
+      "crackling fireplace",
+      "cracklingfire",
+      "fire sounds",
+      "fireplace",
+      "fireplace sounds"
+     ],
+     "has_desc": 450
+    },
+    {
+     "id": "55ZHS9YZ6c8",
+     "title": "Fireplace sounds – instant calm #shorts #cozy ✨",
+     "published": "2026-10-31T00:30:20Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 25,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "ambience",
+      "autumnvibes",
+      "cozy",
+      "cozyvibes",
+      "cracklingfire",
+      "fireplace",
+      "hygge",
+      "relaxingsounds",
+      "shorts",
+      "sleepsounds"
+     ],
+     "has_desc": 213
+    },
+    {
+     "id": "Uqkng1O0yTs",
+     "title": "Relaxing Fireplace Ambience: Autumn Evening by the Fire (2 Hours)",
+     "published": "2026-10-31T00:30:04Z",
+     "seconds": 7201,
+     "privacy": "public",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "ambience",
+      "autumn evening by the fire",
+      "autumnvibes",
+      "cozy",
+      "crackling fire",
+      "crackling fireplace",
+      "fire sounds",
+      "fireplace",
+      "fireplace sounds",
+      "gentle rain"
+     ],
+     "has_desc": 482
+    },
+    {
+     "id": "wCIJjAcfbe8",
+     "title": "Fireplace sounds – instant calm #shorts #cozy 🎧",
+     "published": "2026-10-30T00:30:25Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 41,
+     "likes": 3,
      "comments": 0,
      "tags": [
       "ambience",
@@ -438,15 +1090,21 @@
       "shorts",
       "sleepsounds"
      ],
-     "has_desc": 192
+     "has_desc": 192,
+     "estimatedMinutesWatched": 2,
+     "averageViewDuration": 11,
+     "averageViewPercentage": 28.17,
+     "subscribersGained": 1,
+     "shares": 0,
+     "a_views": 26
     },
     {
      "id": "NkmoE0F4TWw",
      "title": "Cozy Fireplace | Country House Fireplace | 2 Hours",
-     "published": "2026-10-29T03:17:46Z",
+     "published": "2026-10-30T00:30:12Z",
      "seconds": 7201,
-     "privacy": "private",
-     "views": 0,
+     "privacy": "public",
+     "views": 1,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -469,7 +1127,7 @@
      "published": "2026-10-29T00:30:20Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 1,
+     "views": 2,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -484,7 +1142,13 @@
       "shorts",
       "sleepsounds"
      ],
-     "has_desc": 204
+     "has_desc": 204,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 0,
+     "averageViewPercentage": 0,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 2
     },
     {
      "id": "OxeoG7kdhtw",
@@ -492,7 +1156,7 @@
      "published": "2026-10-29T00:30:17Z",
      "seconds": 7201,
      "privacy": "public",
-     "views": 0,
+     "views": 3,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -507,7 +1171,13 @@
       "fireplace",
       "fireplace sounds"
      ],
-     "has_desc": 459
+     "has_desc": 459,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 16,
+     "averageViewPercentage": 0.22999999999999998,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 3
     },
     {
      "id": "W0Xd9kGitDc",
@@ -530,7 +1200,13 @@
       "relaxingsounds",
       "shorts"
      ],
-     "has_desc": 200
+     "has_desc": 200,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 0,
+     "averageViewPercentage": 0,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "-RALqqV15bc",
@@ -538,7 +1214,7 @@
      "published": "2026-10-28T00:30:31Z",
      "seconds": 3601,
      "privacy": "public",
-     "views": 2,
+     "views": 8,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -553,7 +1229,13 @@
       "fireplace sounds",
       "gentle rain"
      ],
-     "has_desc": 459
+     "has_desc": 459,
+     "estimatedMinutesWatched": 3,
+     "averageViewDuration": 32,
+     "averageViewPercentage": 0.91,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 8
     },
     {
      "id": "3SjkMxSo1RQ",
@@ -584,7 +1266,7 @@
      "published": "2026-10-27T00:30:34Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 249,
+     "views": 245,
      "likes": 4,
      "comments": 0,
      "tags": [
@@ -599,7 +1281,13 @@
       "shorts",
       "sleepsounds"
      ],
-     "has_desc": 197
+     "has_desc": 197,
+     "estimatedMinutesWatched": 16,
+     "averageViewDuration": 14,
+     "averageViewPercentage": 35.33,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 245
     },
     {
      "id": "pKTybwzW8pc",
@@ -622,7 +1310,13 @@
       "fireplace sounds",
       "gentle rain"
      ],
-     "has_desc": 475
+     "has_desc": 475,
+     "estimatedMinutesWatched": 30,
+     "averageViewDuration": 602,
+     "averageViewPercentage": 16.74,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 3
     },
     {
      "id": "LoasMmdrpoI",
@@ -645,7 +1339,13 @@
       "shorts",
       "sleepsounds"
      ],
-     "has_desc": 197
+     "has_desc": 197,
+     "estimatedMinutesWatched": 138,
+     "averageViewDuration": 249,
+     "averageViewPercentage": 608.49,
+     "subscribersGained": 0,
+     "shares": 1,
+     "a_views": 123
     },
     {
      "id": "9555oWVmhYo",
@@ -667,7 +1367,13 @@
       "shorts",
       "sleepsounds"
      ],
-     "has_desc": 256
+     "has_desc": 256,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 29,
+     "averageViewPercentage": 71.59,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 2
     },
     {
      "id": "49o_O1ak3tQ",
@@ -735,7 +1441,13 @@
       "shorts",
       "sleepsounds"
      ],
-     "has_desc": 265
+     "has_desc": 265,
+     "estimatedMinutesWatched": 23,
+     "averageViewDuration": 15,
+     "averageViewPercentage": 38.58,
+     "subscribersGained": 2,
+     "shares": 0,
+     "a_views": 329
     },
     {
      "id": "vcdUH9U4n3Y",
@@ -804,30 +1516,394 @@
       "hygge",
       "relaxing"
      ],
-     "has_desc": 414
+     "has_desc": 414,
+     "estimatedMinutesWatched": 1,
+     "averageViewDuration": 36,
+     "averageViewPercentage": 0.51,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 2
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
+    "videoThumbnailImpressions,vide/video: The query is not supported. Check the documentation at https://developers.google.com/youtube/analytics/v2/available_reports for a list of supported queries."
+   ],
+   "traffic": [
+    {
+     "insightTrafficSourceType": "SHORTS",
+     "views": 696,
+     "estimatedMinutesWatched": 50
+    },
+    {
+     "insightTrafficSourceType": "YT_SEARCH",
+     "views": 23,
+     "estimatedMinutesWatched": 1
+    },
+    {
+     "insightTrafficSourceType": "RELATED_VIDEO",
+     "views": 12,
+     "estimatedMinutesWatched": 34
+    },
+    {
+     "insightTrafficSourceType": "YT_OTHER_PAGE",
+     "views": 8,
+     "estimatedMinutesWatched": 129
+    },
+    {
+     "insightTrafficSourceType": "SUBSCRIBER",
+     "views": 2,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "NO_LINK_OTHER",
+     "views": 1,
+     "estimatedMinutesWatched": 1
+    },
+    {
+     "insightTrafficSourceType": "YT_CHANNEL",
+     "views": 1,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "EXT_URL",
+     "views": 1,
+     "estimatedMinutesWatched": 0
+    }
+   ],
+   "countries": [
+    {
+     "country": "US",
+     "views": 147,
+     "estimatedMinutesWatched": 146
+    },
+    {
+     "country": "UZ",
+     "views": 0,
+     "estimatedMinutesWatched": 0
+    }
+   ],
+   "age": [],
+   "content_type": [
+    {
+     "creatorContentType": "shorts",
+     "views": 728,
+     "estimatedMinutesWatched": 182
+    },
+    {
+     "creatorContentType": "videoOnDemand",
+     "views": 16,
+     "estimatedMinutesWatched": 35
+    }
+   ],
+   "daily": [
+    {
+     "day": "2026-09-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-20",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-21",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-22",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-23",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-24",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-25",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-26",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-27",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-28",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-29",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-30",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-20",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-21",
+     "views": 2,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-22",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-23",
+     "views": 54,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-24",
+     "views": 237,
+     "subscribersGained": 2
+    },
+    {
+     "day": "2026-10-25",
+     "views": 126,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-26",
+     "views": 256,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-27",
+     "views": 46,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-28",
+     "views": 4,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-29",
+     "views": 36,
+     "subscribersGained": 1
+    }
    ]
   },
   {
    "key": "wasserfall",
    "name": "Calm Haven Waters",
    "subs": 3,
-   "views_total": 367,
+   "views_total": 449,
    "made_for_kids": null,
    "videos": [
     {
-     "id": "FpiD-YWA6_Q",
-     "title": "Flowing water, quiet mind 🌊 #shorts 🎧",
-     "published": "2026-10-29T03:16:57Z",
+     "id": "wkna8Lcv9-U",
+     "title": "Forest stream for deep focus #shorts #naturesounds ✨",
+     "published": "2026-10-31T03:18:35Z",
      "seconds": 41,
      "privacy": "private",
      "views": 0,
@@ -836,7 +1912,53 @@
      "tags": [
       "calm",
       "focusmusic",
-      "forestsounds",
+      "meditation",
+      "naturesounds",
+      "relaxingsounds",
+      "shorts",
+      "sleepsounds",
+      "streamsounds",
+      "waterfall",
+      "waterfallsounds"
+     ],
+     "has_desc": 214
+    },
+    {
+     "id": "IbsCq51iBBY",
+     "title": "2 Hours of Misty Morning Waterfall – Nature Sounds with Birdsong",
+     "published": "2026-10-31T03:16:54Z",
+     "seconds": 7201,
+     "privacy": "private",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "birdsong",
+      "meditation",
+      "misty morning waterfall",
+      "nature sounds",
+      "naturesounds",
+      "relaxing",
+      "sleep",
+      "soft wind",
+      "stream",
+      "study"
+     ],
+     "has_desc": 503
+    },
+    {
+     "id": "__3qGKUlHNo",
+     "title": "Flowing water, quiet mind 🌊 #shorts ✨",
+     "published": "2026-10-31T00:30:35Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 7,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "birdsong",
+      "calm",
+      "focusmusic",
       "meditation",
       "naturesounds",
       "relaxingsounds",
@@ -845,15 +1967,38 @@
       "waterfall",
       "waterfallsounds"
      ],
-     "has_desc": 197
+     "has_desc": 204
+    },
+    {
+     "id": "puLppSCvel0",
+     "title": "1 Hour of Rainforest Waterfall – Nature Sounds with Birdsong",
+     "published": "2026-10-31T00:30:10Z",
+     "seconds": 3601,
+     "privacy": "public",
+     "views": 1,
+     "likes": 1,
+     "comments": 0,
+     "tags": [
+      "babbling stream",
+      "birdsong",
+      "meditation",
+      "nature sounds",
+      "naturesounds",
+      "rainforest waterfall",
+      "relaxing",
+      "sleep",
+      "stream",
+      "streamsounds"
+     ],
+     "has_desc": 512
     },
     {
      "id": "PFGW7XD2DUY",
      "title": "Rainforest Waterfall – 1 Hour of Waterfall Sounds",
-     "published": "2026-10-29T03:15:30Z",
+     "published": "2026-10-30T00:30:31Z",
      "seconds": 3601,
-     "privacy": "private",
-     "views": 0,
+     "privacy": "public",
+     "views": 4,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -871,12 +2016,41 @@
      "has_desc": 461
     },
     {
+     "id": "FpiD-YWA6_Q",
+     "title": "Flowing water, quiet mind 🌊 #shorts 🎧",
+     "published": "2026-10-30T00:30:26Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 36,
+     "likes": 1,
+     "comments": 0,
+     "tags": [
+      "calm",
+      "focusmusic",
+      "forestsounds",
+      "meditation",
+      "naturesounds",
+      "relaxingsounds",
+      "shorts",
+      "sleepsounds",
+      "waterfall",
+      "waterfallsounds"
+     ],
+     "has_desc": 197,
+     "estimatedMinutesWatched": 1,
+     "averageViewDuration": 11,
+     "averageViewPercentage": 28.850000000000005,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 11
+    },
+    {
      "id": "vyl9bTb1nYk",
      "title": "Waterfall sounds for instant calm 🌊 #shorts 🌙",
      "published": "2026-10-29T00:30:30Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 2,
+     "views": 3,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -891,7 +2065,13 @@
       "waterfall",
       "waterfallsounds"
      ],
-     "has_desc": 220
+     "has_desc": 220,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 1,
+     "averageViewPercentage": 3.9599999999999995,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 3
     },
     {
      "id": "XqExv1HH6Hs",
@@ -899,8 +2079,8 @@
      "published": "2026-10-29T00:30:28Z",
      "seconds": 3601,
      "privacy": "public",
-     "views": 1,
-     "likes": 0,
+     "views": 24,
+     "likes": 1,
      "comments": 0,
      "tags": [
       "birdsong",
@@ -914,7 +2094,13 @@
       "stream",
       "streamsounds"
      ],
-     "has_desc": 480
+     "has_desc": 480,
+     "estimatedMinutesWatched": 106,
+     "averageViewDuration": 582,
+     "averageViewPercentage": 16.18,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 11
     },
     {
      "id": "bWFYe9qGFVQ",
@@ -937,7 +2123,13 @@
       "waterfall",
       "waterfallsounds"
      ],
-     "has_desc": 193
+     "has_desc": 193,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 2,
+     "averageViewPercentage": 6.05,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 7
     },
     {
      "id": "c6tZ3tY4b8k",
@@ -960,7 +2152,13 @@
       "study",
       "water sounds"
      ],
-     "has_desc": 423
+     "has_desc": 423,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 26,
+     "averageViewPercentage": 0.72,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 2
     },
     {
      "id": "AuQPjYh_CXg",
@@ -983,7 +2181,13 @@
       "waterfall",
       "waterfallsounds"
      ],
-     "has_desc": 213
+     "has_desc": 213,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 17,
+     "averageViewPercentage": 42.32,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "9A4lwByaNEw",
@@ -991,7 +2195,7 @@
      "published": "2026-10-27T00:30:04Z",
      "seconds": 10801,
      "privacy": "public",
-     "views": 6,
+     "views": 33,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -1006,7 +2210,13 @@
       "stream",
       "streamsounds"
      ],
-     "has_desc": 449
+     "has_desc": 449,
+     "estimatedMinutesWatched": 202,
+     "averageViewDuration": 1733,
+     "averageViewPercentage": 16.05,
+     "subscribersGained": 1,
+     "shares": 0,
+     "a_views": 26
     },
     {
      "id": "cFoY_926UOs",
@@ -1029,7 +2239,13 @@
       "study",
       "water sounds"
      ],
-     "has_desc": 393
+     "has_desc": 393,
+     "estimatedMinutesWatched": 2,
+     "averageViewDuration": 13,
+     "averageViewPercentage": 0.37,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 11
     },
     {
      "id": "4cv3-pmJqUQ",
@@ -1052,7 +2268,13 @@
       "waterfall",
       "waterfallsounds"
      ],
-     "has_desc": 206
+     "has_desc": 206,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 0,
+     "averageViewPercentage": 0,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "chZqMlXEBoU",
@@ -1060,7 +2282,7 @@
      "published": "2026-10-25T00:30:13Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 237,
+     "views": 238,
      "likes": 3,
      "comments": 0,
      "tags": [
@@ -1074,7 +2296,13 @@
       "waterfall",
       "whitenoise"
      ],
-     "has_desc": 264
+     "has_desc": 264,
+     "estimatedMinutesWatched": 25,
+     "averageViewDuration": 22,
+     "averageViewPercentage": 55.169999999999995,
+     "subscribersGained": 1,
+     "shares": 0,
+     "a_views": 237
     },
     {
      "id": "kjw4ouKUNVw",
@@ -1097,7 +2325,13 @@
       "water sounds",
       "waterfall"
      ],
-     "has_desc": 426
+     "has_desc": 426,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 1,
+     "averageViewPercentage": 0.02,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "tg9vc9YqjLM",
@@ -1120,7 +2354,13 @@
       "waterfall",
       "waterfall sounds"
      ],
-     "has_desc": 400
+     "has_desc": 400,
+     "estimatedMinutesWatched": 7,
+     "averageViewDuration": 214,
+     "averageViewPercentage": 2.98,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 2
     },
     {
      "id": "rWXV65spSXI",
@@ -1128,7 +2368,7 @@
      "published": "2026-10-24T00:30:24Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 63,
+     "views": 64,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1142,7 +2382,13 @@
       "waterfall",
       "whitenoise"
      ],
-     "has_desc": 266
+     "has_desc": 266,
+     "estimatedMinutesWatched": 4,
+     "averageViewDuration": 19,
+     "averageViewPercentage": 47.71,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 64
     },
     {
      "id": "YrDCg9EEVzs",
@@ -1150,7 +2396,7 @@
      "published": "2026-10-22T18:00:03Z",
      "seconds": 7201,
      "privacy": "public",
-     "views": 7,
+     "views": 8,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1165,7 +2411,13 @@
       "water sounds",
       "waterfall"
      ],
-     "has_desc": 424
+     "has_desc": 424,
+     "estimatedMinutesWatched": 60,
+     "averageViewDuration": 519,
+     "averageViewPercentage": 7.21,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 7
     },
     {
      "id": "jqG7rUW3JUQ",
@@ -1188,7 +2440,13 @@
       "study",
       "water sounds"
      ],
-     "has_desc": 466
+     "has_desc": 466,
+     "estimatedMinutesWatched": 88,
+     "averageViewDuration": 408,
+     "averageViewPercentage": 11.34,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 17
     },
     {
      "id": "jIvW73xEKjU",
@@ -1196,7 +2454,7 @@
      "published": "2026-10-20T18:00:34Z",
      "seconds": 10801,
      "privacy": "public",
-     "views": 18,
+     "views": 21,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1211,33 +2469,420 @@
       "study",
       "water sounds"
      ],
-     "has_desc": 483
+     "has_desc": 483,
+     "estimatedMinutesWatched": 418,
+     "averageViewDuration": 1475,
+     "averageViewPercentage": 13.66,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 19
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
+    "videoThumbnailImpressions,vide/video: The query is not supported. Check the documentation at https://developers.google.com/youtube/analytics/v2/available_reports for a list of supported queries."
+   ],
+   "traffic": [
+    {
+     "insightTrafficSourceType": "SHORTS",
+     "views": 287,
+     "estimatedMinutesWatched": 31
+    },
+    {
+     "insightTrafficSourceType": "RELATED_VIDEO",
+     "views": 53,
+     "estimatedMinutesWatched": 551
+    },
+    {
+     "insightTrafficSourceType": "SUBSCRIBER",
+     "views": 36,
+     "estimatedMinutesWatched": 37
+    },
+    {
+     "insightTrafficSourceType": "YT_SEARCH",
+     "views": 35,
+     "estimatedMinutesWatched": 1
+    },
+    {
+     "insightTrafficSourceType": "PLAYLIST",
+     "views": 5,
+     "estimatedMinutesWatched": 289
+    },
+    {
+     "insightTrafficSourceType": "YT_CHANNEL",
+     "views": 3,
+     "estimatedMinutesWatched": 7
+    },
+    {
+     "insightTrafficSourceType": "YT_OTHER_PAGE",
+     "views": 1,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "NO_LINK_OTHER",
+     "views": 0,
+     "estimatedMinutesWatched": 0
+    }
+   ],
+   "countries": [
+    {
+     "country": "US",
+     "views": 35,
+     "estimatedMinutesWatched": 4
+    },
+    {
+     "country": "VN",
+     "views": 0,
+     "estimatedMinutesWatched": 0
+    }
+   ],
+   "age": [],
+   "content_type": [
+    {
+     "creatorContentType": "shorts",
+     "views": 324,
+     "estimatedMinutesWatched": 32
+    },
+    {
+     "creatorContentType": "videoOnDemand",
+     "views": 96,
+     "estimatedMinutesWatched": 887
+    }
+   ],
+   "daily": [
+    {
+     "day": "2026-09-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-20",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-21",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-22",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-23",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-24",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-25",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-26",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-27",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-28",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-29",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-30",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-20",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-21",
+     "views": 19,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-22",
+     "views": 7,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-23",
+     "views": 31,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-24",
+     "views": 82,
+     "subscribersGained": 1
+    },
+    {
+     "day": "2026-10-25",
+     "views": 144,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-26",
+     "views": 64,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-27",
+     "views": 18,
+     "subscribersGained": 1
+    },
+    {
+     "day": "2026-10-28",
+     "views": 12,
+     "subscribersGained": 1
+    },
+    {
+     "day": "2026-10-29",
+     "views": 46,
+     "subscribersGained": 0
+    }
    ]
   },
   {
    "key": "schlaf",
    "name": "Mondmelodie",
    "subs": 1,
-   "views_total": 307,
+   "views_total": 418,
    "made_for_kids": null,
    "videos": [
     {
-     "id": "qnW-jxwgaVc",
-     "title": "15 Minuten Einschlafmusik im Mondschein – sanfte Spieluhr für Babys",
-     "published": "2026-10-29T04:24:39Z",
+     "id": "ebfbJzsIou4",
+     "title": "Spieluhr zum Einschlafen – für ruhige Nächte (15 Minuten) + sanftes Rauschen",
+     "published": "2026-10-31T04:24:34Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 1,
+     "views": 2,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "Baby Schlafmusik",
+      "Baby schlafen",
+      "Babymusik",
+      "Einschlafmusik",
+      "Lullaby",
+      "Schlaflied",
+      "Spieluhr",
+      "einschlafmusik",
+      "schlaflied",
+      "spieluhr"
+     ],
+     "has_desc": 484
+    },
+    {
+     "id": "vxP_Qe_9UmA",
+     "title": "Babys Einschlafmusik im Mondschein | 15 Min. Spieluhr + sanftes Rauschen",
+     "published": "2026-10-30T04:24:18Z",
+     "seconds": 841,
+     "privacy": "public",
+     "views": 63,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1253,6 +2898,58 @@
       "spieluhr"
      ],
      "has_desc": 480
+    },
+    {
+     "id": "p2jkZu5n6lc",
+     "title": "Gute Nacht 🌙 Einschlafmusik für Babys #shorts",
+     "published": "2026-10-30T04:23:38Z",
+     "seconds": 46,
+     "privacy": "public",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "Baby Schlafmusik",
+      "Baby schlafen",
+      "Babymusik",
+      "Einschlafmusik",
+      "Lullaby",
+      "Schlaflied",
+      "Spieluhr",
+      "einschlafmusik",
+      "schlaflied",
+      "shorts"
+     ],
+     "has_desc": 187
+    },
+    {
+     "id": "qnW-jxwgaVc",
+     "title": "15 Minuten Einschlafmusik im Mondschein – sanfte Spieluhr für Babys",
+     "published": "2026-10-29T04:24:39Z",
+     "seconds": 841,
+     "privacy": "public",
+     "views": 24,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "Baby Schlafmusik",
+      "Baby schlafen",
+      "Babymusik",
+      "Einschlafmusik",
+      "Lullaby",
+      "Schlaflied",
+      "Spieluhr",
+      "einschlafmusik",
+      "schlaflied",
+      "spieluhr"
+     ],
+     "has_desc": 480,
+     "estimatedMinutesWatched": 3,
+     "averageViewDuration": 15,
+     "averageViewPercentage": 1.86,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 14
     },
     {
      "id": "RGaqo-_Dxac",
@@ -1283,7 +2980,7 @@
      "published": "2026-10-28T04:25:19Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 13,
+     "views": 17,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1298,7 +2995,13 @@
       "schlaflied",
       "spieluhr"
      ],
-     "has_desc": 465
+     "has_desc": 465,
+     "estimatedMinutesWatched": 24,
+     "averageViewDuration": 106,
+     "averageViewPercentage": 12.659999999999998,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 14
     },
     {
      "id": "gGLxMlORqS4",
@@ -1306,7 +3009,7 @@
      "published": "2026-10-28T04:25:04Z",
      "seconds": 46,
      "privacy": "public",
-     "views": 0,
+     "views": 2,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1321,7 +3024,13 @@
       "schlaflied",
       "shorts"
      ],
-     "has_desc": 162
+     "has_desc": 162,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 7,
+     "averageViewPercentage": 15.590000000000002,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "C-C3EFoQ-w0",
@@ -1329,7 +3038,7 @@
      "published": "2026-10-27T04:39:54Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 5,
+     "views": 11,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1344,7 +3053,13 @@
       "schlaflied",
       "spieluhr"
      ],
-     "has_desc": 480
+     "has_desc": 480,
+     "estimatedMinutesWatched": 28,
+     "averageViewDuration": 343,
+     "averageViewPercentage": 40.86,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 5
     },
     {
      "id": "iQBYK8aAu_0",
@@ -1375,7 +3090,7 @@
      "published": "2026-10-26T04:24:50Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 67,
+     "views": 78,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1390,7 +3105,13 @@
       "schlaflied",
       "spieluhr"
      ],
-     "has_desc": 468
+     "has_desc": 468,
+     "estimatedMinutesWatched": 59,
+     "averageViewDuration": 51,
+     "averageViewPercentage": 6.11,
+     "subscribersGained": 1,
+     "shares": 0,
+     "a_views": 70
     },
     {
      "id": "-VkWuFs-w8M",
@@ -1421,7 +3142,7 @@
      "published": "2026-10-25T07:10:45Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 32,
+     "views": 49,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -1436,7 +3157,13 @@
       "schlaflied",
       "spieluhr"
      ],
-     "has_desc": 490
+     "has_desc": 490,
+     "estimatedMinutesWatched": 63,
+     "averageViewDuration": 108,
+     "averageViewPercentage": 12.94,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 37
     },
     {
      "id": "M-dTtPXwuEM",
@@ -1467,7 +3194,7 @@
      "published": "2026-10-24T05:42:39Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 38,
+     "views": 47,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -1479,7 +3206,13 @@
       "Schlaflied",
       "Spieluhr"
      ],
-     "has_desc": 465
+     "has_desc": 465,
+     "estimatedMinutesWatched": 85,
+     "averageViewDuration": 127,
+     "averageViewPercentage": 15.21,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 40
     },
     {
      "id": "YfYKxhiE6AY",
@@ -1500,7 +3233,13 @@
       "Spieluhr",
       "shorts"
      ],
-     "has_desc": 186
+     "has_desc": 186,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 0,
+     "averageViewPercentage": 0,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 0
     },
     {
      "id": "SUS5N5HgfU0",
@@ -1508,7 +3247,7 @@
      "published": "2026-10-23T05:20:20Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 155,
+     "views": 157,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1520,7 +3259,13 @@
       "Schlaflied",
       "Spieluhr"
      ],
-     "has_desc": 490
+     "has_desc": 490,
+     "estimatedMinutesWatched": 92,
+     "averageViewDuration": 35,
+     "averageViewPercentage": 4.27,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 155
     },
     {
      "id": "Ajwsx3sekNQ",
@@ -1528,7 +3273,7 @@
      "published": "2026-10-23T05:20:03Z",
      "seconds": 46,
      "privacy": "public",
-     "views": 1,
+     "views": 2,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1541,7 +3286,13 @@
       "Spieluhr",
       "shorts"
      ],
-     "has_desc": 170
+     "has_desc": 170,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 3,
+     "averageViewPercentage": 6.59,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 2
     },
     {
      "id": "A_klyj4xZjo",
@@ -1549,7 +3300,7 @@
      "published": "2026-10-22T07:41:29Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 4,
+     "views": 8,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1561,7 +3312,13 @@
       "Schlaflied",
       "Spieluhr"
      ],
-     "has_desc": 468
+     "has_desc": 468,
+     "estimatedMinutesWatched": 2,
+     "averageViewDuration": 33,
+     "averageViewPercentage": 3.9699999999999998,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 4
     },
     {
      "id": "CeY2b-UiVm4",
@@ -1582,7 +3339,13 @@
       "Spieluhr",
       "shorts"
      ],
-     "has_desc": 170
+     "has_desc": 170,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 0,
+     "averageViewPercentage": 0,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 0
     },
     {
      "id": "kjWF7H-Vmog",
@@ -1603,7 +3366,13 @@
       "Spieluhr",
       "shorts"
      ],
-     "has_desc": 170
+     "has_desc": 170,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 0,
+     "averageViewPercentage": 0,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 0
     },
     {
      "id": "P9l18hhro44",
@@ -1624,7 +3393,13 @@
       "Spieluhr",
       "shorts"
      ],
-     "has_desc": 184
+     "has_desc": 184,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 6,
+     "averageViewPercentage": 14.89,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 2
     },
     {
      "id": "qJF4WvpfeNE",
@@ -1632,7 +3407,7 @@
      "published": "2026-10-21T07:22:45Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 12,
+     "views": 26,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1644,7 +3419,13 @@
       "Schlaflied",
       "Spieluhr"
      ],
-     "has_desc": 465
+     "has_desc": 465,
+     "estimatedMinutesWatched": 75,
+     "averageViewDuration": 265,
+     "averageViewPercentage": 31.58,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 17
     },
     {
      "id": "0JQNaqWeFt4",
@@ -1652,7 +3433,7 @@
      "published": "2026-10-21T07:22:40Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 2,
+     "views": 4,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1664,33 +3445,401 @@
       "Schlaflied",
       "Spieluhr"
      ],
-     "has_desc": 484
+     "has_desc": 484,
+     "estimatedMinutesWatched": 1,
+     "averageViewDuration": 43,
+     "averageViewPercentage": 5.12,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 2
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
+    "videoThumbnailImpressions,vide/video: The query is not supported. Check the documentation at https://developers.google.com/youtube/analytics/v2/available_reports for a list of supported queries."
+   ],
+   "traffic": [
+    {
+     "insightTrafficSourceType": "RELATED_VIDEO",
+     "views": 311,
+     "estimatedMinutesWatched": 340
+    },
+    {
+     "insightTrafficSourceType": "SUBSCRIBER",
+     "views": 21,
+     "estimatedMinutesWatched": 43
+    },
+    {
+     "insightTrafficSourceType": "YT_OTHER_PAGE",
+     "views": 9,
+     "estimatedMinutesWatched": 24
+    },
+    {
+     "insightTrafficSourceType": "NO_LINK_OTHER",
+     "views": 8,
+     "estimatedMinutesWatched": 14
+    },
+    {
+     "insightTrafficSourceType": "YT_SEARCH",
+     "views": 6,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "EXT_URL",
+     "views": 4,
+     "estimatedMinutesWatched": 1
+    },
+    {
+     "insightTrafficSourceType": "YT_CHANNEL",
+     "views": 2,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "PLAYLIST",
+     "views": 1,
+     "estimatedMinutesWatched": 14
+    }
+   ],
+   "countries": [
+    {
+     "country": "US",
+     "views": 14,
+     "estimatedMinutesWatched": 13
+    }
+   ],
+   "age": [
+    {
+     "ageGroup": "age25-34",
+     "viewerPercentage": 53.3
+    },
+    {
+     "ageGroup": "age35-44",
+     "viewerPercentage": 46.7
+    }
+   ],
+   "content_type": [
+    {
+     "creatorContentType": "videoOnDemand",
+     "views": 358,
+     "estimatedMinutesWatched": 437
+    },
+    {
+     "creatorContentType": "shorts",
+     "views": 5,
+     "estimatedMinutesWatched": 0
+    }
+   ],
+   "daily": [
+    {
+     "day": "2026-09-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-20",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-21",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-22",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-23",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-24",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-25",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-26",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-27",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-28",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-29",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-30",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-20",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-21",
+     "views": 7,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-22",
+     "views": 6,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-23",
+     "views": 5,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-24",
+     "views": 104,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-25",
+     "views": 89,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-26",
+     "views": 28,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-27",
+     "views": 63,
+     "subscribersGained": 1
+    },
+    {
+     "day": "2026-10-28",
+     "views": 16,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-29",
+     "views": 45,
+     "subscribersGained": 0
+    }
    ]
   },
   {
    "key": "lernen",
    "name": "dear.zodiac",
    "subs": 0,
-   "views_total": 22,
+   "views_total": 127,
    "made_for_kids": false,
    "videos": [
     {
-     "id": "qU3s9PvZvlw",
-     "title": "What The Universe Whispers At Midnight ✨ #zodiac #shorts",
-     "published": "2026-10-28T17:32:50Z",
+     "id": "lPs3bp-yCeY",
+     "title": "How Your Light Changes The Room ✨ #zodiac #shorts",
+     "published": "2026-10-31T17:36:34Z",
      "seconds": 43,
      "privacy": "public",
-     "views": 19,
+     "views": 8,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -1701,7 +3850,76 @@
       "zodiac",
       "zodiac signs"
      ],
-     "has_desc": 368
+     "has_desc": 385
+    },
+    {
+     "id": "DlLeU8AE8DA",
+     "title": "What Your Heart Forgets To Ask For ✨ #zodiac #shorts",
+     "published": "2026-10-30T17:32:10Z",
+     "seconds": 43,
+     "privacy": "public",
+     "views": 80,
+     "likes": 2,
+     "comments": 0,
+     "tags": [
+      "astrology",
+      "horoscope",
+      "message",
+      "shorts",
+      "zodiac",
+      "zodiac signs"
+     ],
+     "has_desc": 382
+    },
+    {
+     "id": "PRp1XRglujY",
+     "title": "The Secret Magic You Hold Inside ✨ #zodiac #shorts",
+     "published": "2026-10-29T17:31:14Z",
+     "seconds": 43,
+     "privacy": "public",
+     "views": 11,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "astrology",
+      "horoscope",
+      "months",
+      "shorts",
+      "zodiac",
+      "zodiac signs"
+     ],
+     "has_desc": 366,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 9,
+     "averageViewPercentage": 22.79,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 2
+    },
+    {
+     "id": "qU3s9PvZvlw",
+     "title": "What The Universe Whispers At Midnight ✨ #zodiac #shorts",
+     "published": "2026-10-28T17:32:50Z",
+     "seconds": 43,
+     "privacy": "public",
+     "views": 21,
+     "likes": 1,
+     "comments": 0,
+     "tags": [
+      "astrology",
+      "horoscope",
+      "shorts",
+      "signs",
+      "zodiac",
+      "zodiac signs"
+     ],
+     "has_desc": 368,
+     "estimatedMinutesWatched": 1,
+     "averageViewDuration": 10,
+     "averageViewPercentage": 24.47,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 19
     },
     {
      "id": "zbCOyhAGpxU",
@@ -1720,7 +3938,13 @@
       "zodiac",
       "zodiac signs"
      ],
-     "has_desc": 375
+     "has_desc": 375,
+     "estimatedMinutesWatched": 2,
+     "averageViewDuration": 30,
+     "averageViewPercentage": 71.49,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 14
     },
     {
      "id": "s8uwCLQ7tU4",
@@ -1739,26 +3963,431 @@
       "zodiac",
       "zodiac signs"
      ],
-     "has_desc": 371
+     "has_desc": 371,
+     "estimatedMinutesWatched": 1,
+     "averageViewDuration": 15,
+     "averageViewPercentage": 36.53,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 11
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
+    "videoThumbnailImpressions,vide/video: The query is not supported. Check the documentation at https://developers.google.com/youtube/analytics/v2/available_reports for a list of supported queries."
+   ],
+   "traffic": [
+    {
+     "insightTrafficSourceType": "SHORTS",
+     "views": 39,
+     "estimatedMinutesWatched": 5
+    },
+    {
+     "insightTrafficSourceType": "YT_CHANNEL",
+     "views": 2,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "YT_SEARCH",
+     "views": 2,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "YT_OTHER_PAGE",
+     "views": 1,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "EXT_URL",
+     "views": 1,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "NO_LINK_OTHER",
+     "views": 0,
+     "estimatedMinutesWatched": 0
+    }
+   ],
+   "countries": [],
+   "age": [],
+   "content_type": [
+    {
+     "creatorContentType": "shorts",
+     "views": 48,
+     "estimatedMinutesWatched": 6
+    }
+   ],
+   "daily": [
+    {
+     "day": "2026-09-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-20",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-21",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-22",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-23",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-24",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-25",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-26",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-27",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-28",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-29",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-30",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-20",
+     "views": 2,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-21",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-22",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-23",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-24",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-25",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-26",
+     "views": 11,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-27",
+     "views": 13,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-28",
+     "views": 20,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-29",
+     "views": 2,
+     "subscribersGained": 0
+    }
    ]
   },
   {
    "key": "geschichten",
    "name": "Gute-Nacht-Kiste",
    "subs": 1,
-   "views_total": 13,
+   "views_total": 48,
    "made_for_kids": null,
    "videos": [
+    {
+     "id": "0wfmzUNXFk4",
+     "title": "Sammy Seehund und das weiche Kissen im Sand – Einschlafgeschichte zum Zuhören",
+     "published": "2026-10-31T05:41:16Z",
+     "seconds": 774,
+     "privacy": "public",
+     "views": 2,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "Einschlafgeschichte",
+      "Geschichten für Kinder",
+      "Gute Nacht Geschichte",
+      "Hörgeschichte",
+      "Kindergeschichte",
+      "Vorlesen",
+      "einschlafgeschichte",
+      "gutenachtgeschichte",
+      "tiergeschichten"
+     ],
+     "has_desc": 683
+    },
+    {
+     "id": "BkOB50tsf04",
+     "title": "Piko Pinguin und der weiche Wolkentraum 🌙 Mini-Gute-Nacht-Geschichte #shorts",
+     "published": "2026-10-30T06:36:19Z",
+     "seconds": 39,
+     "privacy": "public",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "Einschlafgeschichte",
+      "Geschichten für Kinder",
+      "Gute Nacht Geschichte",
+      "Hörgeschichte",
+      "Kindergeschichte",
+      "Vorlesen",
+      "gutenachtgeschichte",
+      "shorts",
+      "tiergeschichten",
+      "traumreise"
+     ],
+     "has_desc": 194
+    },
+    {
+     "id": "soad7pn9m_Q",
+     "title": "Piko Pinguin und der weiche Wolkentraum – Einschlafgeschichte zum Zuhören",
+     "published": "2026-10-30T06:36:17Z",
+     "seconds": 686,
+     "privacy": "public",
+     "views": 1,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "Einschlafgeschichte",
+      "Geschichten für Kinder",
+      "Gute Nacht Geschichte",
+      "Hörgeschichte",
+      "Kindergeschichte",
+      "Vorlesen",
+      "gutenachtgeschichte",
+      "tiergeschichten",
+      "wintergeschichte"
+     ],
+     "has_desc": 588
+    },
     {
      "id": "L1nfEClW6BU",
      "title": "Bela Faultier und der glänzende Kieselstein am See – Einschlafgeschichte zum Zuhören",
@@ -1824,7 +4453,13 @@
       "gutenachtgeschichte",
       "meeresgeschichte"
      ],
-     "has_desc": 503
+     "has_desc": 503,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 14,
+     "averageViewPercentage": 2.06,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "6tXGBzJSobg",
@@ -1855,7 +4490,7 @@
      "published": "2026-10-27T05:31:01Z",
      "seconds": 898,
      "privacy": "public",
-     "views": 2,
+     "views": 19,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1869,7 +4504,13 @@
       "gutenachtgeschichte",
       "tiergeschichten"
      ],
-     "has_desc": 552
+     "has_desc": 552,
+     "estimatedMinutesWatched": 59,
+     "averageViewDuration": 599,
+     "averageViewPercentage": 66.73,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 6
     },
     {
      "id": "fKQ-RAshAXY",
@@ -1923,7 +4564,7 @@
      "published": "2026-10-26T05:21:17Z",
      "seconds": 682,
      "privacy": "public",
-     "views": 1,
+     "views": 10,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1937,7 +4578,13 @@
       "gutenachtgeschichte",
       "vorlesen"
      ],
-     "has_desc": 560
+     "has_desc": 560,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 14,
+     "averageViewPercentage": 2.11,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 2
     },
     {
      "id": "8J9FCg_YTLg",
@@ -1945,7 +4592,7 @@
      "published": "2026-10-25T07:41:10Z",
      "seconds": 749,
      "privacy": "public",
-     "views": 1,
+     "views": 5,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1959,7 +4606,13 @@
       "tiergeschichten",
       "traumreise"
      ],
-     "has_desc": 579
+     "has_desc": 579,
+     "estimatedMinutesWatched": 12,
+     "averageViewDuration": 193,
+     "averageViewPercentage": 25.840000000000003,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 4
     },
     {
      "id": "7l1lL3sDyiE",
@@ -1990,7 +4643,7 @@
      "published": "2026-10-24T06:06:38Z",
      "seconds": 881,
      "privacy": "public",
-     "views": 6,
+     "views": 11,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -2001,7 +4654,13 @@
       "Kindergeschichte",
       "Vorlesen"
      ],
-     "has_desc": 586
+     "has_desc": 586,
+     "estimatedMinutesWatched": 20,
+     "averageViewDuration": 134,
+     "averageViewPercentage": 15.289999999999997,
+     "subscribersGained": 1,
+     "shares": 1,
+     "a_views": 9
     },
     {
      "id": "iacTMA3L7pI",
@@ -2029,7 +4688,7 @@
      "published": "2026-10-23T07:30:14Z",
      "seconds": 772,
      "privacy": "public",
-     "views": 0,
+     "views": 1,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -2079,7 +4738,13 @@
       "Kindergeschichte",
       "Vorlesen"
      ],
-     "has_desc": 599
+     "has_desc": 599,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 7,
+     "averageViewPercentage": 1.02,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 2
     },
     {
      "id": "X-MMgCTO5BU",
@@ -2127,25 +4792,6 @@
      "published": "2026-10-21T17:04:54Z",
      "seconds": 535,
      "privacy": "public",
-     "views": 0,
-     "likes": 0,
-     "comments": 0,
-     "tags": [
-      "Einschlafgeschichte",
-      "Geschichten für Kinder",
-      "Gute Nacht Geschichte",
-      "Hörgeschichte",
-      "Kindergeschichte",
-      "Vorlesen"
-     ],
-     "has_desc": 567
-    },
-    {
-     "id": "FKwHgUw4wlY",
-     "title": "Der Fuchs, der die Stille suchte – Einschlafgeschichte zum Zuhören",
-     "published": "2026-10-20T16:20:40Z",
-     "seconds": 104,
-     "privacy": "public",
      "views": 1,
      "likes": 0,
      "comments": 0,
@@ -2157,34 +4803,611 @@
       "Kindergeschichte",
       "Vorlesen"
      ],
-     "has_desc": 435
+     "has_desc": 567,
+     "estimatedMinutesWatched": 1,
+     "averageViewDuration": 102,
+     "averageViewPercentage": 19.21,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
+    },
+    {
+     "id": "FKwHgUw4wlY",
+     "title": "Der Fuchs, der die Stille suchte – Einschlafgeschichte zum Zuhören",
+     "published": "2026-10-20T16:20:40Z",
+     "seconds": 104,
+     "privacy": "public",
+     "views": 2,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "Einschlafgeschichte",
+      "Geschichten für Kinder",
+      "Gute Nacht Geschichte",
+      "Hörgeschichte",
+      "Kindergeschichte",
+      "Vorlesen"
+     ],
+     "has_desc": 435,
+     "estimatedMinutesWatched": 1,
+     "averageViewDuration": 103,
+     "averageViewPercentage": 99.35,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
+    "videoThumbnailImpressions,vide/video: The query is not supported. Check the documentation at https://developers.google.com/youtube/analytics/v2/available_reports for a list of supported queries."
+   ],
+   "traffic": [
+    {
+     "insightTrafficSourceType": "RELATED_VIDEO",
+     "views": 16,
+     "estimatedMinutesWatched": 69
+    },
+    {
+     "insightTrafficSourceType": "YT_SEARCH",
+     "views": 4,
+     "estimatedMinutesWatched": 3
+    },
+    {
+     "insightTrafficSourceType": "EXT_URL",
+     "views": 3,
+     "estimatedMinutesWatched": 13
+    },
+    {
+     "insightTrafficSourceType": "NO_LINK_OTHER",
+     "views": 2,
+     "estimatedMinutesWatched": 9
+    },
+    {
+     "insightTrafficSourceType": "YT_CHANNEL",
+     "views": 1,
+     "estimatedMinutesWatched": 0
+    }
+   ],
+   "countries": [
+    {
+     "country": "DE",
+     "views": 10,
+     "estimatedMinutesWatched": 53
+    }
+   ],
+   "age": [],
+   "content_type": [
+    {
+     "creatorContentType": "videoOnDemand",
+     "views": 26,
+     "estimatedMinutesWatched": 97
+    }
+   ],
+   "daily": [
+    {
+     "day": "2026-09-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-20",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-21",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-22",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-23",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-24",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-25",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-26",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-27",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-28",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-29",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-30",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-20",
+     "views": 1,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-21",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-22",
+     "views": 2,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-23",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-24",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-25",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-26",
+     "views": 7,
+     "subscribersGained": 1
+    },
+    {
+     "day": "2026-10-27",
+     "views": 3,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-28",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-29",
+     "views": 13,
+     "subscribersGained": 0
+    }
    ]
   },
   {
    "key": "whatif",
    "name": "Beyond the If",
-   "subs": 136,
-   "views_total": 46182,
+   "subs": 157,
+   "views_total": 52301,
    "made_for_kids": false,
    "videos": [
+    {
+     "id": "T5FvqnSh9oM",
+     "title": "Black Holes & Stars Quiz! #shorts",
+     "published": "2026-10-31T18:45:19Z",
+     "seconds": 89,
+     "privacy": "public",
+     "views": 169,
+     "likes": 2,
+     "comments": 0,
+     "tags": [
+      "black holes and stars",
+      "blackhole",
+      "quiz",
+      "science quiz",
+      "shorts",
+      "space",
+      "trivia",
+      "whatif"
+     ],
+     "has_desc": 291
+    },
+    {
+     "id": "TuPilNsAU0c",
+     "title": "What If Hubble Crashed into Earth? #shorts",
+     "published": "2026-10-31T12:02:32Z",
+     "seconds": 40,
+     "privacy": "public",
+     "views": 1116,
+     "likes": 34,
+     "comments": 0,
+     "tags": [
+      "astronomy",
+      "hubble",
+      "nasa",
+      "science",
+      "shorts",
+      "space",
+      "technology",
+      "whatif"
+     ],
+     "has_desc": 937
+    },
+    {
+     "id": "SBbeOaY3pYE",
+     "title": "Ultimate Human Body Science Quiz! 🧬 #shorts",
+     "published": "2026-10-31T00:17:45Z",
+     "seconds": 79,
+     "privacy": "public",
+     "views": 1213,
+     "likes": 53,
+     "comments": 12,
+     "tags": [
+      "humanbody",
+      "quiz",
+      "science quiz",
+      "shorts",
+      "the human body",
+      "trivia",
+      "whatif"
+     ],
+     "has_desc": 281
+    },
+    {
+     "id": "mhe9tugOD-E",
+     "title": "What If We Permanently Eliminated Nighttime?",
+     "published": "2026-10-30T20:15:46Z",
+     "seconds": 649,
+     "privacy": "public",
+     "views": 1,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "astronomy",
+      "beyond the if",
+      "circadian rhythm",
+      "climate change",
+      "reflect orbital",
+      "science documentary",
+      "space",
+      "space mirrors",
+      "space technology",
+      "technology"
+     ],
+     "has_desc": 2143
+    },
+    {
+     "id": "mNR90ASAyDQ",
+     "title": "The Terrifying Cost of Orbital Mirrors #shorts",
+     "published": "2026-10-30T20:15:34Z",
+     "seconds": 30,
+     "privacy": "public",
+     "views": 233,
+     "likes": 16,
+     "comments": 0,
+     "tags": [
+      "science",
+      "shorts",
+      "solarsystem",
+      "space",
+      "whatif"
+     ],
+     "has_desc": 496
+    },
+    {
+     "id": "1SqmKABFSI8",
+     "title": "What If We Banished Nighttime Forever? #shorts",
+     "published": "2026-10-30T20:15:32Z",
+     "seconds": 35,
+     "privacy": "public",
+     "views": 517,
+     "likes": 37,
+     "comments": 2,
+     "tags": [
+      "brain",
+      "science",
+      "shorts",
+      "space",
+      "whatif"
+     ],
+     "has_desc": 537
+    },
+    {
+     "id": "dpTp4i8kqHU",
+     "title": "The Ultimate Animal Science Quiz! 🐾 #shorts",
+     "published": "2026-10-30T17:43:25Z",
+     "seconds": 72,
+     "privacy": "public",
+     "views": 965,
+     "likes": 25,
+     "comments": 8,
+     "tags": [
+      "animals",
+      "quiz",
+      "science quiz",
+      "shorts",
+      "trivia",
+      "whatif"
+     ],
+     "has_desc": 225
+    },
+    {
+     "id": "iYv155SBFWc",
+     "title": "What If a Giant Planet Is Hiding Beyond Neptune? #shorts",
+     "published": "2026-10-30T12:22:20Z",
+     "seconds": 33,
+     "privacy": "public",
+     "views": 455,
+     "likes": 21,
+     "comments": 0,
+     "tags": [
+      "astronomy",
+      "moon",
+      "planetnine",
+      "science",
+      "shorts",
+      "solarsystem",
+      "space",
+      "whatif"
+     ],
+     "has_desc": 887
+    },
+    {
+     "id": "U-ezuto1rg8",
+     "title": "Can You Ace This Earth and Ocean Quiz? 🌊 #shorts",
+     "published": "2026-10-29T18:45:52Z",
+     "seconds": 83,
+     "privacy": "public",
+     "views": 1005,
+     "likes": 28,
+     "comments": 2,
+     "tags": [
+      "Earth and oceans",
+      "ocean",
+      "quiz",
+      "science quiz",
+      "shorts",
+      "trivia",
+      "whatif"
+     ],
+     "has_desc": 246,
+     "estimatedMinutesWatched": 405,
+     "averageViewDuration": 42,
+     "averageViewPercentage": 51.12,
+     "subscribersGained": 1,
+     "shares": 0,
+     "a_views": 996
+    },
+    {
+     "id": "zILqoN_EY6Q",
+     "title": "What If Neutrinos Stopped Passing Through Us? #shorts",
+     "published": "2026-10-29T12:14:55Z",
+     "seconds": 40,
+     "privacy": "public",
+     "views": 148,
+     "likes": 9,
+     "comments": 0,
+     "tags": [
+      "neutrinos",
+      "physics",
+      "sciencefacts",
+      "shorts",
+      "solarsystem",
+      "space",
+      "whatif"
+     ],
+     "has_desc": 945,
+     "estimatedMinutesWatched": 41,
+     "averageViewDuration": 33,
+     "averageViewPercentage": 84.01,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 124
+    },
     {
      "id": "bfnGOiez7W8",
      "title": "Ultimate Space & Planet Quiz! 🪐 #shorts",
      "published": "2026-10-28T22:46:13Z",
      "seconds": 80,
      "privacy": "public",
-     "views": 933,
-     "likes": 30,
+     "views": 1166,
+     "likes": 31,
      "comments": 2,
      "tags": [
       "moon",
@@ -2196,7 +5419,13 @@
       "trivia",
       "whatif"
      ],
-     "has_desc": 309
+     "has_desc": 309,
+     "estimatedMinutesWatched": 379,
+     "averageViewDuration": 40,
+     "averageViewPercentage": 50.9,
+     "subscribersGained": 1,
+     "shares": 2,
+     "a_views": 977
     },
     {
      "id": "WdLXAesicME",
@@ -2204,9 +5433,9 @@
      "published": "2026-10-28T21:48:41Z",
      "seconds": 35,
      "privacy": "public",
-     "views": 489,
-     "likes": 41,
-     "comments": 10,
+     "views": 529,
+     "likes": 42,
+     "comments": 11,
      "tags": [
       "mars",
       "nasa",
@@ -2216,7 +5445,13 @@
       "space",
       "whatif"
      ],
-     "has_desc": 836
+     "has_desc": 836,
+     "estimatedMinutesWatched": 187,
+     "averageViewDuration": 39,
+     "averageViewPercentage": 112.31,
+     "subscribersGained": 2,
+     "shares": 0,
+     "a_views": 522
     },
     {
      "id": "jjgKgirsIR4",
@@ -2224,7 +5459,7 @@
      "published": "2026-10-27T17:48:59Z",
      "seconds": 94,
      "privacy": "public",
-     "views": 69,
+     "views": 71,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -2235,7 +5470,13 @@
       "trivia",
       "whatif"
      ],
-     "has_desc": 300
+     "has_desc": 300,
+     "estimatedMinutesWatched": 148,
+     "averageViewDuration": 189,
+     "averageViewPercentage": 201.54000000000002,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 71
     },
     {
      "id": "VO5bGiyxFxw",
@@ -2243,7 +5484,7 @@
      "published": "2026-10-27T14:59:20Z",
      "seconds": 565,
      "privacy": "public",
-     "views": 5,
+     "views": 6,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -2258,7 +5499,13 @@
       "primordial black hole",
       "quantum physics"
      ],
-     "has_desc": 2001
+     "has_desc": 2001,
+     "estimatedMinutesWatched": 10,
+     "averageViewDuration": 153,
+     "averageViewPercentage": 27.1,
+     "subscribersGained": 1,
+     "shares": 0,
+     "a_views": 5
     },
     {
      "id": "N8L7BEtZcIA",
@@ -2276,7 +5523,13 @@
       "space",
       "whatif"
      ],
-     "has_desc": 562
+     "has_desc": 562,
+     "estimatedMinutesWatched": 8,
+     "averageViewDuration": 26,
+     "averageViewPercentage": 76.89,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 37
     },
     {
      "id": "hCThpHdglC0",
@@ -2294,7 +5547,13 @@
       "shorts",
       "whatif"
      ],
-     "has_desc": 599
+     "has_desc": 599,
+     "estimatedMinutesWatched": 4,
+     "averageViewDuration": 27,
+     "averageViewPercentage": 75.35,
+     "subscribersGained": 1,
+     "shares": 0,
+     "a_views": 27
     },
     {
      "id": "zXI1umBKVBA",
@@ -2302,7 +5561,7 @@
      "published": "2026-10-27T12:26:31Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 121,
+     "views": 127,
      "likes": 4,
      "comments": 1,
      "tags": [
@@ -2316,7 +5575,13 @@
       "solarsystem",
       "whatif"
      ],
-     "has_desc": 926
+     "has_desc": 926,
+     "estimatedMinutesWatched": 26,
+     "averageViewDuration": 27,
+     "averageViewPercentage": 68.13,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 126
     },
     {
      "id": "Rhis7oAyP_A",
@@ -2324,7 +5589,7 @@
      "published": "2026-10-26T21:41:04Z",
      "seconds": 83,
      "privacy": "public",
-     "views": 207,
+     "views": 208,
      "likes": 6,
      "comments": 2,
      "tags": [
@@ -2335,7 +5600,13 @@
       "trivia",
       "whatif"
      ],
-     "has_desc": 265
+     "has_desc": 265,
+     "estimatedMinutesWatched": 63,
+     "averageViewDuration": 34,
+     "averageViewPercentage": 41.19,
+     "subscribersGained": 1,
+     "shares": 0,
+     "a_views": 209
     },
     {
      "id": "DUGGI-l4rJk",
@@ -2343,7 +5614,7 @@
      "published": "2026-10-26T12:15:43Z",
      "seconds": 38,
      "privacy": "public",
-     "views": 61,
+     "views": 63,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -2356,7 +5627,13 @@
       "space",
       "whatif"
      ],
-     "has_desc": 881
+     "has_desc": 881,
+     "estimatedMinutesWatched": 10,
+     "averageViewDuration": 21,
+     "averageViewPercentage": 57.43000000000001,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 61
     },
     {
      "id": "YUvuoN0iUDs",
@@ -2364,7 +5641,7 @@
      "published": "2026-10-25T17:17:22Z",
      "seconds": 78,
      "privacy": "public",
-     "views": 558,
+     "views": 559,
      "likes": 6,
      "comments": 0,
      "tags": [
@@ -2376,7 +5653,13 @@
       "trivia",
       "whatif"
      ],
-     "has_desc": 261
+     "has_desc": 261,
+     "estimatedMinutesWatched": 165,
+     "averageViewDuration": 32,
+     "averageViewPercentage": 41.83,
+     "subscribersGained": 2,
+     "shares": 0,
+     "a_views": 559
     },
     {
      "id": "utkID16N0Ys",
@@ -2398,7 +5681,13 @@
       "what if",
       "whatif"
      ],
-     "has_desc": 1404
+     "has_desc": 1404,
+     "estimatedMinutesWatched": 4,
+     "averageViewDuration": 133,
+     "averageViewPercentage": 26.33,
+     "subscribersGained": 0,
+     "shares": 1,
+     "a_views": 3
     },
     {
      "id": "a7jJwj48l6c",
@@ -2406,7 +5695,7 @@
      "published": "2026-10-25T16:11:02Z",
      "seconds": 19,
      "privacy": "public",
-     "views": 107,
+     "views": 108,
      "likes": 3,
      "comments": 0,
      "tags": [
@@ -2416,7 +5705,13 @@
       "shorts",
       "whatif"
      ],
-     "has_desc": 335
+     "has_desc": 335,
+     "estimatedMinutesWatched": 5,
+     "averageViewDuration": 10,
+     "averageViewPercentage": 54.90999999999999,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 107
     },
     {
      "id": "EE2kLBG8yt0",
@@ -2424,7 +5719,7 @@
      "published": "2026-10-25T16:11:01Z",
      "seconds": 23,
      "privacy": "public",
-     "views": 120,
+     "views": 118,
      "likes": 6,
      "comments": 0,
      "tags": [
@@ -2434,7 +5729,13 @@
       "solarsystem",
       "whatif"
      ],
-     "has_desc": 404
+     "has_desc": 404,
+     "estimatedMinutesWatched": 7,
+     "averageViewDuration": 9,
+     "averageViewPercentage": 43.1,
+     "subscribersGained": 1,
+     "shares": 0,
+     "a_views": 118
     },
     {
      "id": "ZvG-Nxr0n6E",
@@ -2457,7 +5758,13 @@
       "timetravel",
       "whatif"
      ],
-     "has_desc": 1013
+     "has_desc": 1013,
+     "estimatedMinutesWatched": 38,
+     "averageViewDuration": 34,
+     "averageViewPercentage": 78.67,
+     "subscribersGained": 2,
+     "shares": 0,
+     "a_views": 106
     },
     {
      "id": "j0AhHhk9YBY",
@@ -2475,7 +5782,13 @@
       "shorts",
       "trivia"
      ],
-     "has_desc": 315
+     "has_desc": 315,
+     "estimatedMinutesWatched": 8,
+     "averageViewDuration": 36,
+     "averageViewPercentage": 40.14,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 26
     },
     {
      "id": "WA3ub1wd9cs",
@@ -2495,17 +5808,441 @@
       "space",
       "whatif"
      ],
-     "has_desc": 944
+     "has_desc": 944,
+     "estimatedMinutesWatched": 8,
+     "averageViewDuration": 23,
+     "averageViewPercentage": 63.690000000000005,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 55
     }
    ],
    "errors": [
-    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
+    "videoThumbnailImpressions,vide/video: The query is not supported. Check the documentation at https://developers.google.com/youtube/analytics/v2/available_reports for a list of supported queries."
+   ],
+   "traffic": [
+    {
+     "insightTrafficSourceType": "SHORTS",
+     "views": 3858,
+     "estimatedMinutesWatched": 1425
+    },
+    {
+     "insightTrafficSourceType": "YT_SEARCH",
+     "views": 666,
+     "estimatedMinutesWatched": 122
+    },
+    {
+     "insightTrafficSourceType": "YT_OTHER_PAGE",
+     "views": 97,
+     "estimatedMinutesWatched": 38
+    },
+    {
+     "insightTrafficSourceType": "YT_CHANNEL",
+     "views": 37,
+     "estimatedMinutesWatched": 17
+    },
+    {
+     "insightTrafficSourceType": "EXT_URL",
+     "views": 22,
+     "estimatedMinutesWatched": 9
+    },
+    {
+     "insightTrafficSourceType": "NO_LINK_OTHER",
+     "views": 9,
+     "estimatedMinutesWatched": 15
+    },
+    {
+     "insightTrafficSourceType": "SUBSCRIBER",
+     "views": 4,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "RELATED_VIDEO",
+     "views": 2,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "PLAYLIST",
+     "views": 1,
+     "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "NOTIFICATION",
+     "views": 1,
+     "estimatedMinutesWatched": 0
+    }
+   ],
+   "countries": [
+    {
+     "country": "US",
+     "views": 2850,
+     "estimatedMinutesWatched": 1159
+    },
+    {
+     "country": "GB",
+     "views": 180,
+     "estimatedMinutesWatched": 68
+    },
+    {
+     "country": "CA",
+     "views": 84,
+     "estimatedMinutesWatched": 33
+    },
+    {
+     "country": "IN",
+     "views": 71,
+     "estimatedMinutesWatched": 17
+    },
+    {
+     "country": "PH",
+     "views": 51,
+     "estimatedMinutesWatched": 9
+    },
+    {
+     "country": "AU",
+     "views": 27,
+     "estimatedMinutesWatched": 4
+    },
+    {
+     "country": "NL",
+     "views": 26,
+     "estimatedMinutesWatched": 5
+    }
+   ],
+   "age": [
+    {
+     "ageGroup": "age13-17",
+     "viewerPercentage": 2.4
+    },
+    {
+     "ageGroup": "age25-34",
+     "viewerPercentage": 7.2
+    },
+    {
+     "ageGroup": "age35-44",
+     "viewerPercentage": 10
+    },
+    {
+     "ageGroup": "age45-54",
+     "viewerPercentage": 14
+    },
+    {
+     "ageGroup": "age55-64",
+     "viewerPercentage": 17.7
+    },
+    {
+     "ageGroup": "age65-",
+     "viewerPercentage": 48.6
+    }
+   ],
+   "content_type": [
+    {
+     "creatorContentType": "shorts",
+     "views": 4681,
+     "estimatedMinutesWatched": 1608
+    },
+    {
+     "creatorContentType": "videoOnDemand",
+     "views": 20,
+     "estimatedMinutesWatched": 23
+    }
+   ],
+   "daily": [
+    {
+     "day": "2026-09-01",
+     "views": 4,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-02",
+     "views": 4,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-03",
+     "views": 2,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-04",
+     "views": 7,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-05",
+     "views": 7,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-06",
+     "views": 13,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-07",
+     "views": 8,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-08",
+     "views": 9,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-09",
+     "views": 8,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-10",
+     "views": 13,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-11",
+     "views": 17,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-12",
+     "views": 13,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-13",
+     "views": 21,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-14",
+     "views": 13,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-15",
+     "views": 11,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-16",
+     "views": 10,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-17",
+     "views": 23,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-18",
+     "views": 28,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-19",
+     "views": 17,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-20",
+     "views": 13,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-21",
+     "views": 27,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-22",
+     "views": 11,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-23",
+     "views": 6,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-24",
+     "views": 10,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-25",
+     "views": 14,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-26",
+     "views": 17,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-27",
+     "views": 3,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-28",
+     "views": 13,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-29",
+     "views": 9,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-30",
+     "views": 8,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-01",
+     "views": 3,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-02",
+     "views": 10,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-03",
+     "views": 13,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-04",
+     "views": 3,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-05",
+     "views": 6,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-06",
+     "views": 4,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-07",
+     "views": 10,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-08",
+     "views": 10,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-09",
+     "views": 8,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-10",
+     "views": 13,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-11",
+     "views": 13,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-12",
+     "views": 11,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-13",
+     "views": 6,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-14",
+     "views": 2,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-15",
+     "views": 4,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-16",
+     "views": 1,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-17",
+     "views": 6,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-18",
+     "views": 3,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-19",
+     "views": 1,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-20",
+     "views": 6,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-21",
+     "views": 3,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-22",
+     "views": 3,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-23",
+     "views": 26,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-24",
+     "views": 32,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-25",
+     "views": 193,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-26",
+     "views": 878,
+     "subscribersGained": 6
+    },
+    {
+     "day": "2026-10-27",
+     "views": 400,
+     "subscribersGained": 3
+    },
+    {
+     "day": "2026-10-28",
+     "views": 1461,
+     "subscribersGained": 3
+    },
+    {
+     "day": "2026-10-29",
+     "views": 1221,
+     "subscribersGained": 1
+    }
    ]
   },
   {
@@ -2516,13 +6253,308 @@
    "made_for_kids": null,
    "videos": [],
    "errors": [
-    "views,estimatedMinutesWatched,/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "videoThumbnailImpressions,vide/video: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/insightTrafficSourceType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/country: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "viewerPercentage/ageGroup: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,estimatedMinutesWatched/creatorContentType: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464",
-    "views,subscribersGained/day: YouTube Analytics API has not been used in project 751174805464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=751174805464"
+    "videoThumbnailImpressions,vide/video: The query is not supported. Check the documentation at https://developers.google.com/youtube/analytics/v2/available_reports for a list of supported queries."
+   ],
+   "traffic": [],
+   "countries": [],
+   "age": [],
+   "content_type": [],
+   "daily": [
+    {
+     "day": "2026-09-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-20",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-21",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-22",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-23",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-24",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-25",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-26",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-27",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-28",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-29",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-09-30",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-01",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-02",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-03",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-06",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-07",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-08",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-09",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-10",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-11",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-12",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-13",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-14",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-15",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-16",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-17",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-18",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-19",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-20",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-21",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-22",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-23",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-24",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-25",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-26",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-27",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-28",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-10-29",
+     "views": 0,
+     "subscribersGained": 0
+    }
    ]
   }
  ],
@@ -2531,8 +6563,80 @@
    "key": "calmhaven",
    "username": "calmhavenig",
    "followers": 5,
-   "posts": 7,
+   "posts": 11,
    "media": [
+    {
+     "id": "18115529582272777",
+     "caption": "Flowing water, quiet mind 🌊 🎧\n\nRainforest waterfall – a calm moment from today's full video.\n\n▶️ Full 1-hour version on the channel: Rainforest Waterfall – 1 Hour of Waterfall Sounds\n\n#naturesounds #w",
+     "timestamp": "2026-10-31T17:51:21+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfKu_FBCdsa/",
+     "insights": {
+      "reach": 2,
+      "views": 2,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2516
+     }
+    },
+    {
+     "id": "18152511550517109",
+     "caption": "Close your eyes. Just the rain. 🌧️\nRain on the lake – 2 hours of calm for sleep, study or a quiet evening.\n\n💾 Save this for tonight\n▶️ Full 2-hour version on YouTube (link in bio)\n\n#rainsounds #rainyn",
+     "timestamp": "2026-10-31T16:41:05+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 1,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfKm8UskrZy/",
+     "insights": {
+      "reach": 30,
+      "views": 37,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 3833
+     }
+    },
+    {
+     "id": "18250702612310980",
+     "caption": "Let the water carry your thoughts away. 🌊\nRainforest waterfall – 1 hour of natural water sounds.\n\n💾 Save this for tonight\n▶️ Full 1-hour version on YouTube (link in bio)\n\n#naturesounds #waterfallsound",
+     "timestamp": "2026-10-30T16:41:05+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfICJqNgCgB/",
+     "insights": {
+      "reach": 9,
+      "views": 8,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3018
+     }
+    },
+    {
+     "id": "18120945070743811",
+     "caption": "Crackling fire, warm light, nowhere to be. 🔥\nCountry house fireplace – 2 hours of cozy fireplace sounds.\n\n💾 Save this for tonight\n▶️ Full 2-hour version on YouTube (link in bio)\n\n#fireplace #cozyhome ",
+     "timestamp": "2026-10-29T16:41:04+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfFdWd2lJXB/",
+     "insights": {
+      "reach": 10,
+      "views": 11,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3418
+     }
+    },
     {
      "id": "17912475849552931",
      "caption": "Close your eyes. Just the rain. 🌧️\nRain in the forest – 3 hours of calm for sleep, study or a quiet evening.\n\n💾 Save this for tonight\n▶️ Full 3-hour version on YouTube (link in bio)\n\n#rainsounds #fore",
@@ -2543,12 +6647,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfC4o1GkUsY/",
      "insights": {
-      "reach": 15,
-      "views": 16,
+      "reach": 18,
+      "views": 18,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2744
+      "ig_reels_avg_watch_time": 2559
      }
     },
     {
@@ -2566,7 +6670,7 @@
       "saved": 1,
       "shares": 2,
       "total_interactions": 11,
-      "ig_reels_avg_watch_time": 4714
+      "ig_reels_avg_watch_time": 4706
      }
     },
     {
@@ -2663,8 +6767,62 @@
    "key": "mondmelodie",
    "username": "mondmelodieig",
    "followers": 2,
-   "posts": 12,
+   "posts": 15,
    "media": [
+    {
+     "id": "18099003254554404",
+     "caption": "Psst … Zeit zum Träumen 🌙\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n💤 Speichern für heute ",
+     "timestamp": "2026-10-31T16:41:48+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfKnBiUku7k/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0
+     }
+    },
+    {
+     "id": "18442626199180342",
+     "caption": "Sanft ins Traumland ☁️\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n💤 Speichern für heute Abe",
+     "timestamp": "2026-10-30T16:41:44+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfICOynCqC6/",
+     "insights": {
+      "reach": 4,
+      "views": 4,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1360
+     }
+    },
+    {
+     "id": "18137196382641366",
+     "caption": "Die Spieluhr spielt nur für dich 🎶\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n💤 Speichern f",
+     "timestamp": "2026-10-29T16:41:44+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfFdbaok6Z1/",
+     "insights": {
+      "reach": 6,
+      "views": 6,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 763
+     }
+    },
     {
      "id": "17913607395515730",
      "caption": "Psst … 🌙\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n💤 Speichern für heute Abend\n🎵 15 Minute",
@@ -2886,8 +7044,77 @@
    "key": "astro",
    "username": "dear.zodiac22",
    "followers": 2,
-   "posts": 3,
+   "posts": 7,
    "media": [
+    {
+     "id": "17952699228286514",
+     "caption": "Every sign carries a distinct frequency that shifts the atmosphere before they even speak a word. Notice the quiet miracle of the presence you bring wherever you go. Which energy feels most true to yo",
+     "timestamp": "2026-10-31T17:36:01+0000",
+     "media_type": "CAROUSEL_ALBUM",
+     "media_product_type": "FEED",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/p/DfKtRNPlJqz/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0
+     }
+    },
+    {
+     "id": "17865246066693479",
+     "caption": "The Secret Magic You Hold Inside ✨\n\nEvery soul carries a subtle aura that quietens the noise of the world. Tap into your birth month to rediscover the silent wonder you bring to those around you. Whic",
+     "timestamp": "2026-10-30T18:43:00+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfIQGWIEUN9/",
+     "insights": {
+      "reach": 2,
+      "views": 2,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2572
+     }
+    },
+    {
+     "id": "17979269859132043",
+     "caption": "We spend so much time giving what we secretly wish someone would offer us in return. Let these words be a mirror for the tenderness you keep denying yourself. Which slide found you right when you need",
+     "timestamp": "2026-10-30T17:31:35+0000",
+     "media_type": "CAROUSEL_ALBUM",
+     "media_product_type": "FEED",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/p/DfIH9vnlT8S/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0
+     }
+    },
+    {
+     "id": "17986077339109279",
+     "caption": "Every soul carries a subtle aura that quietens the noise of the world. Tap into your birth month to rediscover the silent wonder you bring to those around you. Which month speaks to your heart? 🌙\n\n#as",
+     "timestamp": "2026-10-29T17:30:45+0000",
+     "media_type": "CAROUSEL_ALBUM",
+     "media_product_type": "FEED",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/p/DfFjE2ViZOt/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0
+     }
+    },
     {
      "id": "18109628972219032",
      "caption": "The night sky speaks in quiet truths when the rest of the world falls asleep. Save this post for whenever you need a gentle reminder of your magic. Which message was meant for you tonight? 🌙\n\n#astrolo",
@@ -2946,8 +7173,62 @@
    "key": "gutenacht",
    "username": "gutenachtgeschichteig",
    "followers": 0,
-   "posts": 9,
+   "posts": 12,
    "media": [
+    {
+     "id": "18146059162598203",
+     "caption": "Sammy Seehund und das weiche Kissen im Sand ✨\nEine Mini-Gute-Nacht-Geschichte für euer Abendritual. Kuscheln, zuhören, einschlafen. 🌙\n\n📖 Die ganze Geschichte (ca. 10 Minuten) hörst du auf unserem YouT",
+     "timestamp": "2026-10-31T16:42:58+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfKnLCZBuEU/",
+     "insights": {
+      "reach": 40,
+      "views": 54,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1576
+     }
+    },
+    {
+     "id": "17876120988638064",
+     "caption": "Piko Pinguin und der weiche Wolkentraum ✨\nEine Mini-Gute-Nacht-Geschichte für euer Abendritual. Kuscheln, zuhören, einschlafen. 🌙\n\n📖 Die ganze Geschichte (ca. 10 Minuten) hörst du auf unserem YouTube-",
+     "timestamp": "2026-10-30T16:43:22+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfICZ8Iidps/",
+     "insights": {
+      "reach": 46,
+      "views": 50,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2874
+     }
+    },
+    {
+     "id": "18128309854870321",
+     "caption": "Bela Faultier und der glänzende Kieselstein am See ✨\nEine Mini-Gute-Nacht-Geschichte für euer Abendritual. Kuscheln, zuhören, einschlafen. 🌙\n\n📖 Die ganze Geschichte (ca. 10 Minuten) hörst du auf unser",
+     "timestamp": "2026-10-29T16:42:25+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfFdgmrh5u1/",
+     "insights": {
+      "reach": 46,
+      "views": 51,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2000
+     }
+    },
     {
      "id": "17919216804530484",
      "caption": "Frosch Ferdinand und der leise Inselwind ✨\nEine Mini-Gute-Nacht-Geschichte für euer Abendritual. Kuscheln, zuhören, einschlafen. 🌙\n\n📖 Die ganze Geschichte (ca. 10 Minuten) hörst du auf unserem YouTube",
@@ -2958,12 +7239,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfDYGFGqYVH/",
      "insights": {
-      "reach": 50,
-      "views": 48,
+      "reach": 61,
+      "views": 59,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1822
+      "ig_reels_avg_watch_time": 1778
      }
     },
     {
@@ -3117,8 +7398,134 @@
    "key": "whatif",
    "username": "facts_mcwiebel",
    "followers": 2,
-   "posts": 4,
+   "posts": 11,
    "media": [
+    {
+     "id": "18000174021044044",
+     "caption": "Test yourself! What primarily causes the varying strengths of spectral lines in stars? | What is the boundary in spacetime beyond which no signal can reach an observer? | What can a progenitor star co",
+     "timestamp": "2026-10-31T18:46:22+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfK1OfQD6L2/",
+     "insights": {
+      "reach": 101,
+      "views": 111,
+      "saved": 1,
+      "shares": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 4520
+     }
+    },
+    {
+     "id": "18080087825392421",
+     "caption": "NASA is officially seeking rescue missions to save the Hubble Space Telescope before atmospheric drag pulls it to its doom. Hubble lacks thrusters, so upper atmospheric friction is continuously degrad",
+     "timestamp": "2026-10-31T12:02:48+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfKHGSwjK8C/",
+     "insights": {
+      "reach": 3,
+      "views": 4,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3860
+     }
+    },
+    {
+     "id": "18104957204375536",
+     "caption": "Test yourself! Which organ is the largest in the human integumentary system? | Where is the smallest bone in the human body located? | Which part of the eye accounts for approximately two-thirds of it",
+     "timestamp": "2026-10-31T00:17:55+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfI2bdDgI7U/",
+     "insights": {
+      "reach": 111,
+      "views": 128,
+      "saved": 0,
+      "shares": 1,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 15425
+     }
+    },
+    {
+     "id": "18119459233969075",
+     "caption": "Test yourself! What is the largest animal ever known to have lived? | What color is a polar bear's skin under its fur? | Which mammal has the densest fur of any animal?\n\nAnswers explained in the video",
+     "timestamp": "2026-10-30T17:44:06+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfIJTgUiO9B/",
+     "insights": {
+      "reach": 113,
+      "views": 127,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 10580
+     }
+    },
+    {
+     "id": "18571447372072711",
+     "caption": "Astronomers have found peculiar clues lurking far beyond Neptune. What if a massive, undiscovered world is quietly shepherding the clustered, tilted orbits of extreme trans-Neptunian objects over 250 ",
+     "timestamp": "2026-10-30T12:22:51+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfHkk7Sgokg/",
+     "insights": {
+      "reach": 10,
+      "views": 10,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 5384
+     }
+    },
+    {
+     "id": "18130065668482413",
+     "caption": "Test yourself! Which ocean covers over 30% of Earth's surface? | What does the name 'phytoplankton' literally translate to in Ancient Greek? | Where is Earth's longest mountain chain located?\n\nAnswers",
+     "timestamp": "2026-10-29T18:46:13+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfFrpJKFHTz/",
+     "insights": {
+      "reach": 7,
+      "views": 8,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 10306
+     }
+    },
+    {
+     "id": "17974443237148500",
+     "caption": "Scientists are still unraveling neutrinos—ghostly particles that pass straight through your body by the trillions every second. What if neutrinos suddenly interacted with matter like light does? Right",
+     "timestamp": "2026-10-29T12:15:11+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfE-7GTjxuA/",
+     "insights": {
+      "reach": 3,
+      "views": 3,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 10817
+     }
+    },
     {
      "id": "17993633709055986",
      "caption": "Test yourself! Which planet is the first planet from the Sun and the smallest in the Solar System? | Which is the hottest planet in the solar system? | Which moon is the only one known to have a dense",
@@ -3129,12 +7536,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfDiYWjFGyf/",
      "insights": {
-      "reach": 109,
-      "views": 124,
+      "reach": 110,
+      "views": 125,
       "saved": 0,
       "shares": 0,
       "total_interactions": 1,
-      "ig_reels_avg_watch_time": 9986
+      "ig_reels_avg_watch_time": 10540
      }
     },
     {
@@ -3147,12 +7554,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfDbzPpiC8a/",
      "insights": {
-      "reach": 18,
-      "views": 16,
+      "reach": 38,
+      "views": 39,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 6857
+      "ig_reels_avg_watch_time": 10333
      }
     },
     {
@@ -3165,12 +7572,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DDpUSaPhfED/",
      "insights": {
-      "reach": 5,
-      "views": 13,
+      "reach": 6,
+      "views": 14,
       "saved": 2,
       "shares": 0,
       "total_interactions": 4,
-      "ig_reels_avg_watch_time": 9599
+      "ig_reels_avg_watch_time": 9186
      }
     },
     {
