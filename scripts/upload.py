@@ -96,6 +96,15 @@ def upload(yt, video_path, meta, channel, publish_at=None):
         },
         "status": status,
     }
+    cover_thumb = None
+    if _is_short(meta, video_path) and os.environ.get("SHORT_COVER", "1") == "1" \
+            and "quiz" not in meta["title"].lower():
+        try:                                          # Titelzeile in den ersten Sekunden + Thumbnail (shortcover.py)
+            import shortcover
+            video_path, cover_thumb = shortcover.apply(video_path, meta["title"],
+                                                       shortcover.channel_key(channel.get("name", "")))
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Short-Titelbild: {e}")
     media = MediaFileUpload(str(video_path), chunksize=16 * 1024 * 1024, resumable=True,
                             mimetype="video/mp4")
     req = yt.videos().insert(part="snippet,status", body=body, media_body=media)
@@ -121,7 +130,24 @@ def upload(yt, video_path, meta, channel, publish_at=None):
             print(f"  Verbindung unterbrochen ({type(e).__name__}), setze Upload in {wait:.0f}s fort")
             time.sleep(wait)
     _archive_short(video_path, response["id"], meta)
+    if cover_thumb:
+        try:
+            set_thumbnail(yt, response["id"], cover_thumb)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Short-Thumbnail: {e}")
     return response["id"]
+
+
+def _is_short(meta, path):
+    if "#shorts" in (meta.get("title", "") + " " + meta.get("description", "")).lower():
+        return True
+    try:
+        import subprocess
+        d = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                  str(path)], capture_output=True, text=True).stdout or 999)
+        return d <= 60
+    except Exception:  # noqa: BLE001
+        return False
 
 
 def _archive_short(path, vid, meta):
