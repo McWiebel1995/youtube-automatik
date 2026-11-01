@@ -31,11 +31,11 @@ Video title: {title}
 Video description: {desc}
 Language for all output: {lang_name}.
 Give:
-1. "keywords": 25 real search phrases people type into YouTube to find exactly this kind of video (mix of short
+1. "keywords": {nkw} real search phrases people type into YouTube to find exactly this kind of video (mix of short
    head terms and long-tail phrases with duration/purpose, e.g. "rain sounds for sleeping", "3 hours rain no thunder").
    No channel names of competitors, no misleading terms.
-2. "hashtags": 8 relevant hashtags (without #, no spaces, most important first).
-3. "intro": 1–2 natural sentences (max 200 characters) for the START of the description that contain the 2 most
+2. "hashtags": {nhash} relevant hashtags (without #, no spaces, most important first).
+3. "intro": {nintro} natural sentence(s) (max {nchars} characters) for the START of the description that contain the 2 most
    important search phrases. Friendly, not spammy.{kids}
 Answer ONLY JSON: {{"keywords": ["..."], "hashtags": ["..."], "intro": "..."}}"""
 
@@ -54,7 +54,7 @@ def _fit_tags(tags, limit=480):
     return out
 
 
-def enrich(meta, ch, core_hashtags=()):
+def enrich(meta, ch, core_hashtags=(), short=False):
     if ch not in NICHE:
         return meta
     lang, niche = NICHE[ch]
@@ -62,7 +62,9 @@ def enrich(meta, ch, core_hashtags=()):
     kids = ("\n   This is a channel for parents of small children: no claims about health or medical sleep effects."
             if ch in ("schlaf", "geschichten") else "")
     js = gemini.ask_json(TASK.format(niche=niche, title=meta.get("title", ""), desc=meta.get("description", "")[:1500],
-                                     lang_name="German" if lang == "de" else "English", kids=kids), temperature=0.4)
+                                     lang_name="German" if lang == "de" else "English", kids=kids,
+                                     nkw=15 if short else 25, nhash=5 if short else 8, nintro="1" if short else "1–2",
+                                     nchars=120 if short else 200), temperature=0.4)
     kw = [k for k in js.get("keywords", []) if isinstance(k, str)]
     meta = dict(meta)
     meta["tags"] = _fit_tags(list(meta.get("tags") or []) + kw)
@@ -75,6 +77,9 @@ def enrich(meta, ch, core_hashtags=()):
         h = "#" + re.sub(r"[^\wäöüÄÖÜß]", "", str(h).lstrip("#"))
         if len(h) > 2 and h.lower() not in {x.lower() for x in hs}:
             hs.append(h)
-    meta["description"] = f"{desc.strip()}\n\n{' '.join(hs[:8])}"[:4900]
-    meta["seo"] = {"keywords": len(meta["tags"]), "hashtags": len(hs[:8])}
+    if short and "#shorts" not in [h.lower() for h in hs]:
+        hs.insert(min(2, len(hs)), "#shorts")
+    hs = hs[:6 if short else 8]
+    meta["description"] = f"{desc.strip()}\n\n{' '.join(hs)}"[:4900]
+    meta["seo"] = {"keywords": len(meta["tags"]), "hashtags": len(hs)}
     return meta

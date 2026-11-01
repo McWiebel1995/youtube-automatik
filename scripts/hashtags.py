@@ -10,6 +10,7 @@ Regeln (Stand 2026):
 Der Inhalt wird aus Titel/Beschreibung erkannt (z. B. "forest", "Zahlen", "Koala", "black hole").
 Welche Nischen-Tags gerade getestet werden, wechselt zufällig -> data/stats kann später zeigen, was zieht.
 """
+import os
 import random
 import re
 
@@ -171,10 +172,10 @@ def yt_meta(meta, channel_name):
             title = title.replace(t, "")
         title = re.sub(r"\s{2,}", " ", title).strip()
     tags = yt(ch, f"{title}\n{desc}", short, exclude=title)
-    if not short:                                     # lange Videos: volle Suchoptimierung (seo.py)
+    if os.environ.get("SEO", "1") == "1":            # Suchoptimierung (seo.py) – lange Videos voll, Shorts kompakt
         try:
             import seo
-            m = seo.enrich(dict(meta, title=title, description=strip(desc)), ch, core_hashtags=tags)
+            m = seo.enrich(dict(meta, title=title, description=strip(desc)), ch, core_hashtags=tags, short=short)
             print(f"  🔎 SEO: {m['seo']['keywords']} Stichwörter, {m['seo']['hashtags']} Hashtags")
             m.pop("seo", None)
             return m

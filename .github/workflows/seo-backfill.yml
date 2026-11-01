@@ -1,4 +1,4 @@
-name: "🔎 SEO nachträglich (lange Videos)"
+name: "🔎 SEO nachträglich (lange Videos & Shorts)"
 
 on:
   workflow_dispatch:
@@ -6,6 +6,10 @@ on:
       days:
         description: "lange Videos der letzten X Tage"
         default: "30"
+      shorts:
+        description: "auch Shorts"
+        type: boolean
+        default: true
       dry_run:
         description: "nur anzeigen"
         type: boolean
@@ -17,7 +21,7 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -37,7 +41,7 @@ jobs:
           YT_REFRESH_TOKEN_WHATIF: ${{ secrets.YT_REFRESH_TOKEN_WHATIF }}
           YT_REFRESH_TOKEN_GEDANKEN: ${{ secrets.YT_REFRESH_TOKEN_GEDANKEN }}
         run: |
-          ARGS="--days ${{ inputs.days }}"; [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          ARGS="--days ${{ inputs.days }}"; [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"; [ "${{ inputs.shorts }}" = "true" ] && ARGS="$ARGS --shorts"
           python scripts/seo_backfill.py $ARGS > s.log 2>&1 || { echo "::error::$(tail -n 15 s.log | tr '\n' ' ' | cut -c1-2000)"; exit 1; }
           cat s.log
           [ "${{ inputs.dry_run }}" = "true" ] && echo "::notice title=Probe::$(grep -A4 '^---' s.log | head -n 24 | tr '\n' ' ' | cut -c1-3800)" || true

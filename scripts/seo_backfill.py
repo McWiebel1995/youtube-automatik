@@ -27,6 +27,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=30)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--shorts", action="store_true", help="auch Shorts")
     a = ap.parse_args()
     import analytics_report
     import hashtags
@@ -50,7 +51,8 @@ def main():
         cnt = 0
         for v in vids:
             sn = v["snippet"]
-            if secs(v["contentDetails"]["duration"]) <= 180 or sn["publishedAt"][:19] < since or v["id"] in done:
+            if (secs(v["contentDetails"]["duration"]) <= 180 and not a.shorts) or sn["publishedAt"][:19] < since \
+                    or v["id"] in done:
                 continue
             meta = {"title": sn["title"], "description": sn.get("description", ""), "tags": sn.get("tags", [])}
             try:
@@ -73,7 +75,7 @@ def main():
             except Exception as e:  # noqa: BLE001
                 report.append(f"❌ {name} · {sn['title'][:40]}: {str(e)[:150]}")
         n_ok += cnt
-        report.append(f"✅ {name}: {cnt} lange Videos {'(Probe)' if a.dry_run else 'optimiert'}")
+        report.append(f"✅ {name}: {cnt} Videos {'(Probe)' if a.dry_run else 'optimiert'}")
     if not a.dry_run:
         DONE.write_text(json.dumps(sorted(done), indent=0))
     print("\n".join(report))
