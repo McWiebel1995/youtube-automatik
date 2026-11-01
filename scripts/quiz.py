@@ -299,6 +299,8 @@ if __name__ == "__main__":
         import upload
         if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_today(os.environ.get("QUIZ_LOCK", "whatif-quiz")):
             print("Heute schon ein Quiz – übersprungen."); sys.exit(0)
+        if not upload.quota_ok(wi.CFG["token_secret"]):
+            sys.exit(0)
     m = build(Path(a.out))
     if not a.dry_run:
         upload_quiz(Path(a.out), m)

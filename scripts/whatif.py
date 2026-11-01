@@ -688,6 +688,8 @@ if __name__ == "__main__":
             import upload
             if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_today("whatif-news"):
                 print("Heute schon gepostet – übersprungen."); sys.exit(0)
+            if not upload.quota_ok(CFG["token_secret"]):
+                sys.exit(0)
         m = news_short(Path(a.out))
         if not a.dry_run:
             upload_news_short(Path(a.out), m)
@@ -696,6 +698,8 @@ if __name__ == "__main__":
         import upload
         if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_today("whatif"):
             print("Heute schon hochgeladen – übersprungen."); sys.exit(0)
+        if not upload.quota_ok(CFG["token_secret"]):
+            sys.exit(0)
     meta = build(Path(a.out), a.minutes)
     if not a.dry_run:
         upload_all(Path(a.out), meta)

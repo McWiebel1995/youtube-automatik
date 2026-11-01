@@ -37,7 +37,9 @@ def add(text, channel_name=""):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--max", type=int, default=60, help="max. Video-Änderungen pro Lauf (je 50 Kontingent-Einheiten)")
     a = ap.parse_args()
+    budget = [a.max]
     import analytics_report
     import upload
     report = []
@@ -67,7 +69,10 @@ def main():
                     sn = v["snippet"]
                     if MARK in sn.get("description", ""):
                         continue
+                    if budget[0] <= 0:
+                        break
                     n += 1
+                    budget[0] -= 1
                     if a.dry_run:
                         continue
                     body = {"id": v["id"], "snippet": {"title": sn["title"], "categoryId": sn["categoryId"],

@@ -28,6 +28,7 @@ def main():
     ap.add_argument("--days", type=int, default=30)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--shorts", action="store_true", help="auch Shorts")
+    ap.add_argument("--max", type=int, default=60, help="max. Änderungen pro Lauf (YouTube-Kontingent)")
     a = ap.parse_args()
     import analytics_report
     import hashtags
@@ -51,6 +52,8 @@ def main():
         cnt = 0
         for v in vids:
             sn = v["snippet"]
+            if n_ok + cnt >= a.max:
+                break
             if (secs(v["contentDetails"]["duration"]) <= 180 and not a.shorts) or sn["publishedAt"][:19] < since \
                     or v["id"] in done:
                 continue

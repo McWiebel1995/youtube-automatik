@@ -2,7 +2,7 @@ name: "⚖ Impressum in alle Kanäle & Videos"
 
 on:
   schedule:
-    - cron: "33 5 * * 0"      # sonntags nachprüfen
+    - cron: "33 9 * * *"      # täglich kurz nach dem Kontingent-Reset: fehlende Impressum-Zeilen (max. 60)
   workflow_dispatch:
     inputs:
       dry_run:

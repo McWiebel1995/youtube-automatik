@@ -29,7 +29,14 @@ def service(refresh_token):
 
 def check_channel(yt, channel):
     """Sicherheitscheck: bricht ab, wenn das Token zu einem anderen Kanal gehört."""
-    res = yt.channels().list(part="snippet", mine=True).execute()
+    try:
+        res = yt.channels().list(part="snippet", mine=True).execute()
+    except HttpError as e:
+        if e.resp.status == 403 and b"quota" in (e.content or b"").lower():
+            import sys
+            print("⏸ YouTube-Tageskontingent aufgebraucht – übersprungen, der nächste Absicherungs-Lauf holt es nach.")
+            sys.exit(0)
+        raise
     title = (res.get("items") or [{}])[0].get("snippet", {}).get("title", "")
     norm = lambda s: "".join(ch for ch in s.lower() if ch.isalnum())  # noqa: E731
     if not title or (norm(channel["name"]) not in norm(title) and norm(title) not in norm(channel["name"])):
@@ -51,6 +58,18 @@ def uploaded_today(channel_key):
     verspäteter Zeitplan-Lauf nach einem manuellen Lauf doch noch startet). Eine Datei pro Kanal."""
     f = LAST_DIR / f"{channel_key}.txt"
     return f.exists() and f.read_text().strip() == _today()
+
+
+def quota_ok(token_secret):
+    """Billiger Test (1 Einheit), ob das tägliche YouTube-Kontingent noch reicht – VOR teurer Produktion prüfen."""
+    try:
+        service(os.environ[token_secret]).channels().list(part="id", mine=True).execute()
+        return True
+    except HttpError as e:
+        if e.resp.status == 403 and b"quota" in (e.content or b"").lower():
+            print("⏸ YouTube-Tageskontingent aufgebraucht – Produktion übersprungen (wird nach 9:00 Uhr nachgeholt).")
+            return False
+        raise
 
 
 def mark_uploaded(channel_key):
