@@ -1,0 +1,51 @@
+name: "🔎 SEO nachträglich (lange Videos)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "lange Videos der letzten X Tage"
+        default: "30"
+      dry_run:
+        description: "nur anzeigen"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Optimieren
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_REGEN: ${{ secrets.YT_REFRESH_TOKEN_REGEN }}
+          YT_REFRESH_TOKEN_KAMIN: ${{ secrets.YT_REFRESH_TOKEN_KAMIN }}
+          YT_REFRESH_TOKEN_WASSERFALL: ${{ secrets.YT_REFRESH_TOKEN_WASSERFALL }}
+          YT_REFRESH_TOKEN_SCHLAF: ${{ secrets.YT_REFRESH_TOKEN_SCHLAF }}
+          YT_REFRESH_TOKEN_GESCHICHTEN: ${{ secrets.YT_REFRESH_TOKEN_GESCHICHTEN }}
+          YT_REFRESH_TOKEN_WHATIF: ${{ secrets.YT_REFRESH_TOKEN_WHATIF }}
+          YT_REFRESH_TOKEN_GEDANKEN: ${{ secrets.YT_REFRESH_TOKEN_GEDANKEN }}
+        run: |
+          ARGS="--days ${{ inputs.days }}"; [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          python scripts/seo_backfill.py $ARGS > s.log 2>&1 || { echo "::error::$(tail -n 15 s.log | tr '\n' ' ' | cut -c1-2000)"; exit 1; }
+          cat s.log
+          [ "${{ inputs.dry_run }}" = "true" ] && echo "::notice title=Probe::$(grep -A4 '^---' s.log | head -n 24 | tr '\n' ' ' | cut -c1-3800)" || true
+      - name: Speichern
+        if: inputs.dry_run != true
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A data/seo_done.json || true
+          git commit -m "SEO nachträglich" || exit 0
+          for i in 1 2 3; do git pull --rebase -X theirs && git push && break; sleep 5; done
