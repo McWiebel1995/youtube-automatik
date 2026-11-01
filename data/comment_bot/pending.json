@@ -1,19 +1,5 @@
 [
  {
-  "id": "UgwUKJXQIUk_8sEDQ4F4AaABAg",
-  "pf": "yt",
-  "ch": "Beyond the If",
-  "acct": "YT_REFRESH_TOKEN_WHATIF",
-  "author": "@lysasmith9444",
-  "text": "2 😊",
-  "ctx": "How Well Do You Know the Human Body? 🧬 #shorts",
-  "t": "2026-11-01T03:26:17Z",
-  "url": "https://www.youtube.com/watch?v=kJg4zsldM24&lc=UgwUKJXQIUk_8sEDQ4F4AaABAg",
-  "action": "reply",
-  "reply": "Nice job getting two! Which question was the trickiest for you? 🧠",
-  "reason": "quiz score response"
- },
- {
   "id": "UgwSkWwhsH5R-nRLqTB4AaABAg",
   "pf": "yt",
   "ch": "Beyond the If",
@@ -26,20 +12,6 @@
   "action": "reply",
   "reply": "A perfect score, amazing work! You really know your biology. 🎉🧬",
   "reason": "perfect score response"
- },
- {
-  "id": "UgxKm0bNVfs0ZnkBsi54AaABAg",
-  "pf": "yt",
-  "ch": "Beyond the If",
-  "acct": "YT_REFRESH_TOKEN_WHATIF",
-  "author": "@johnstiffler6216",
-  "text": "3",
-  "ctx": "How Well Do You Know the Human Body? 🧬 #shorts",
-  "t": "2026-11-01T02:22:05Z",
-  "url": "https://www.youtube.com/watch?v=kJg4zsldM24&lc=UgxKm0bNVfs0ZnkBsi54AaABAg",
-  "action": "reply",
-  "reply": "Awesome job getting three right! Did any of the facts surprise you? 😊",
-  "reason": "quiz score response"
  },
  {
   "id": "UgzhZyWHxa2n6FqAlI14AaABAg",
