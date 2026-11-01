@@ -15,6 +15,13 @@ import re
 
 # Kanal -> Kern, Zielgruppe, Nischen (Rotation), Inhalts-Stichwörter -> Hashtag
 RULES = {
+    "gedanken": {
+        "core": "#ruhigegedanken", "audience": "#achtsamkeit",
+        "niche": ["#entspannung", "#innereruhe", "#meditation", "#gedanken", "#einschlafen"],
+        "content": [(r"schlaf|nacht|abend", "#einschlafen"), (r"mut|kraft|stark", "#mutmacher"),
+                    (r"natur|wald|see|meer", "#natur"), (r"dankbar", "#dankbarkeit")],
+        "fallback": ["#entspannung", "#innereruhe"],
+    },
     "regen": {
         "core": "#rainsounds", "audience": "#sleepsounds",
         "niche": ["#asmrsleep", "#studyambience", "#rainyday", "#cozyvibes", "#relaxingsounds"],
@@ -81,7 +88,7 @@ RULES = {
 ACCOUNT_CHANNEL = {"mondmelodie": "schlaf", "lernbaerchen": "lernen", "gutenacht": "geschichten", "whatif": "whatif"}
 NAME_CHANNEL = [(r"rain", "regen"), (r"fireside|fire", "kamin"), (r"waters|water", "wasserfall"),
                 (r"mondmelodie", "schlaf"), (r"lernbär", "lernen"), (r"gute-nacht|gutenacht", "geschichten"),
-                (r"beyond", "whatif")]
+                (r"beyond", "whatif"), (r"gedanken", "gedanken")]
 TAG_RE = re.compile(r"(?<!\w)#[\wäöüÄÖÜß]+")
 
 
@@ -164,6 +171,15 @@ def yt_meta(meta, channel_name):
             title = title.replace(t, "")
         title = re.sub(r"\s{2,}", " ", title).strip()
     tags = yt(ch, f"{title}\n{desc}", short, exclude=title)
+    if not short:                                     # lange Videos: volle Suchoptimierung (seo.py)
+        try:
+            import seo
+            m = seo.enrich(dict(meta, title=title, description=strip(desc)), ch, core_hashtags=tags)
+            print(f"  🔎 SEO: {m['seo']['keywords']} Stichwörter, {m['seo']['hashtags']} Hashtags")
+            m.pop("seo", None)
+            return m
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ SEO: {e}")
     meta = dict(meta, title=title, description=f"{strip(desc)}\n\n{' '.join(tags)}".strip())
     kw = [t.lstrip("#") for t in tags]
     meta["tags"] = list(dict.fromkeys((meta.get("tags") or []) + kw))[:30]
