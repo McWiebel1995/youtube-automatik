@@ -16,3 +16,4 @@ desktop/clipwerk/build/
 desktop/clipwerk/dist/
 *.spec
 site/comments.json
+desktop/zentrale/web/catalog.json

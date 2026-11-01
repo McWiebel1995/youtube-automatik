@@ -1,0 +1,50 @@
+name: "🏝 Cicco Zentrale (Windows-Programm) bauen"
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["desktop/zentrale/**", ".github/workflows/zentrale.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Abhängigkeiten
+        run: pip install pywebview keyring requests pillow pyinstaller
+      - name: Katalog & Symbol
+        working-directory: desktop/zentrale
+        run: |
+          python -c "import json,jobs;json.dump(jobs.DEPTS,open('web/catalog.json','w',encoding='utf-8'),ensure_ascii=False)"
+          python make_icon.py zentrale.ico
+      - name: Programm bauen
+        working-directory: desktop/zentrale
+        run: >
+          pyinstaller --noconfirm --windowed --name CiccoZentrale --icon zentrale.ico
+          --add-data "web;web" --add-data "jobs.py;." --collect-all webview --hidden-import keyring.backends.Windows
+          app.py
+      - name: Selbsttest
+        shell: pwsh
+        working-directory: desktop/zentrale
+        timeout-minutes: 3
+        run: |
+          $p = Start-Process dist/CiccoZentrale/CiccoZentrale.exe -ArgumentList "--selftest" -PassThru
+          if (-not $p.WaitForExit(90000)) { $p.Kill(); Write-Warning "Selbsttest hing" }
+          if (Test-Path selftest.log) { $log = Get-Content selftest.log -Raw; Write-Output $log; Write-Output "::notice title=Selbsttest::$($log -replace "`r?`n", ' | ')" }
+          else { Write-Output "::warning title=Selbsttest::kein Protokoll" }
+      - name: Download bereitstellen
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: desktop/zentrale
+        run: |
+          Compress-Archive dist/CiccoZentrale CiccoZentrale-Windows.zip
+          gh release delete zentrale -y --cleanup-tag 2>$null
+          gh release create zentrale CiccoZentrale-Windows.zip --title "Cicco Zentrale für Windows" --notes "ZIP herunterladen, entpacken, CiccoZentrale.exe starten. Beim ersten Start: Weitere Informationen -> Trotzdem ausführen. Danach in den Einstellungen den GitHub-Schlüssel eintragen."

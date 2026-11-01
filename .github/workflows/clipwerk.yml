@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["desktop/**", ".github/workflows/clipwerk.yml"]
+    paths: ["desktop/clipwerk/**", "desktop/modal_voice.py", "desktop/make_icon.py", ".github/workflows/clipwerk.yml"]
 
 permissions:
   contents: write
