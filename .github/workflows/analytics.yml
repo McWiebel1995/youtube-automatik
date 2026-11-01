@@ -38,10 +38,12 @@ jobs:
           IG_WHATIF_ALT: ${{ secrets.IG_USER_WHATIF }}
           IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
         run: python scripts/analytics_report.py
+      - name: Quiz-Themen bewerten
+        run: python scripts/quiz_learn.py || true
       - name: Speichern
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add -A data/analytics || true
+          git add -A data/analytics data/quiz_themes.json || true
           git commit -m "Analytics" || exit 0
           for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep 5; done

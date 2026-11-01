@@ -1,0 +1,18 @@
+{
+ "Earth and oceans": {
+  "n": 1,
+  "score": 1.0
+ },
+ "space and planets": {
+  "n": 1,
+  "score": 0.977
+ },
+ "dinosaurs": {
+  "n": 2,
+  "score": 0.37
+ },
+ "animals": {
+  "n": 1,
+  "score": 0.169
+ }
+}

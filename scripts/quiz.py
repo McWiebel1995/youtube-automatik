@@ -40,8 +40,36 @@ options max 4 words. Add a one-sentence surprising explanation (max 14 words) fo
 Avoid these questions already used: {used}
 Answer ONLY JSON: {{"hook": "max 8 words, e.g. 'Only 1% get all 3 right!'", "title": "max 80 chars incl #shorts",
  "questions": [{{"q": "...", "options": ["...", "...", "..."], "correct": 0, "explain": "...", "wiki": "Wikipedia article title to verify"}}]}}"""
-THEMES = ["space and planets", "the human body", "animals", "Earth and oceans", "physics in everyday life",
-          "dinosaurs", "inventions", "the Moon", "black holes and stars", "weather and climate", "the brain"]
+THEMES = [
+    # bisher
+    "space and planets", "the human body", "animals", "Earth and oceans", "physics in everyday life",
+    "dinosaurs", "inventions", "the Moon", "black holes and stars", "weather and climate", "the brain",
+    # neu zum Testen (Publikum: vor allem USA, viele über 55)
+    "US geography and national parks", "world geography and capitals", "famous landmarks", "ancient civilizations",
+    "volcanoes and earthquakes", "the deep sea", "birds", "insects", "trees and plants", "the solar system",
+    "astronauts and space missions", "science in the kitchen", "the five senses", "rivers and mountains",
+    "mammals", "sea creatures", "electricity and energy", "famous scientists", "everyday chemistry", "the Arctic and Antarctica",
+]
+THEME_STATS = ROOT / "data" / "quiz_themes.json"     # wird montags aus den Analytics berechnet (quiz_learn.py)
+QUIZ_LOG = ROOT / "data" / "quiz_log.json"
+
+
+def pick_theme(rnd):
+    """Lernende Auswahl: neue Themen zuerst je 2x testen, danach meist die besten, aber immer etwas Neues."""
+    stats = json.loads(THEME_STATS.read_text()) if THEME_STATS.exists() else {}
+    log = json.loads(QUIZ_LOG.read_text()) if QUIZ_LOG.exists() else []
+    recent = [x["theme"] for x in log[-3:]]
+    pool = [t for t in THEMES if t not in recent] or THEMES
+    tested = {t: s for t, s in stats.items() if s.get("n", 0) >= 1 and t in pool}
+    untested = [t for t in pool if stats.get(t, {}).get("n", 0) + sum(1 for x in log[-20:] if x["theme"] == t) < 2]
+    r = rnd.random()
+    if untested and (r < 0.4 or not tested):
+        return rnd.choice(untested), "Test"
+    if tested and r < 0.85:
+        top = sorted(tested, key=lambda t: -tested[t]["score"])[:5]
+        weights = [max(0.1, tested[t]["score"]) for t in top]
+        return rnd.choices(top, weights=weights)[0], "Gewinner"
+    return rnd.choice(pool), "Zufall"
 
 
 def font(size, bold=True):
@@ -71,7 +99,8 @@ def wrap(d, text, f, maxw):
 # ----------------------------------------------------------------- Inhalt
 def make_quiz(rnd):
     used = json.loads(USED.read_text(encoding="utf-8")) if USED.exists() else []
-    theme = rnd.choice(THEMES)
+    theme, why = pick_theme(rnd)
+    print(f"  Thema: {theme} ({why})")
     qz = gemini.ask_json(QUIZ_TASK.format(theme=theme, used="; ".join(used[-80:]) or "none"), temperature=0.9)
     facts = []
     for q in qz["questions"][:3]:
@@ -248,6 +277,10 @@ def upload_quiz(out: Path, meta):
     ch = {"category_id": "28", "made_for_kids": False, "privacy": "public", "name": wi.CFG["name"]}
     vid = upload.upload(yt, out / "quiz_short.mp4", meta, ch)
     print(f"  ✓ Quiz: https://youtu.be/{vid}")
+    log = json.loads(QUIZ_LOG.read_text()) if QUIZ_LOG.exists() else []
+    import datetime as _dt
+    log.append({"id": vid, "theme": meta["theme"], "title": meta["title"], "date": _dt.date.today().isoformat()})
+    QUIZ_LOG.write_text(json.dumps(log[-400:], ensure_ascii=False, indent=1), encoding="utf-8")
     used = json.loads(USED.read_text(encoding="utf-8")) if USED.exists() else []
     USED.write_text(json.dumps((used + [q["q"] for q in meta["questions"]])[-500:], ensure_ascii=False, indent=1),
                     encoding="utf-8")
