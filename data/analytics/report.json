@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02T16:33:08+00:00",
+ "generated": "2026-11-02T18:24:50+00:00",
  "start": "2026-09-03",
  "end": "2026-11-02",
  "youtube": [
@@ -131,7 +131,7 @@
      "published": "2026-11-01T00:30:03Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 67,
+     "views": 72,
      "likes": 3,
      "comments": 0,
      "tags": [
@@ -154,7 +154,7 @@
      "published": "2026-10-31T00:30:38Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 650,
+     "views": 647,
      "likes": 6,
      "comments": 0,
      "tags": [
@@ -1170,7 +1170,7 @@
      "published": "2026-11-01T00:30:20Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 127,
+     "views": 129,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -2194,7 +2194,7 @@
      "published": "2026-11-01T00:30:31Z",
      "seconds": 7201,
      "privacy": "public",
-     "views": 29,
+     "views": 34,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -3277,7 +3277,7 @@
      "published": "2026-10-29T04:24:39Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 24,
+     "views": 25,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4208,12 +4208,31 @@
    "made_for_kids": false,
    "videos": [
     {
+     "id": "CMWBOSsf2Ng",
+     "title": "How You Love When Unseen ✨ #zodiac #shorts",
+     "published": "2026-11-02T17:37:59Z",
+     "seconds": 43,
+     "privacy": "public",
+     "views": 10,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "astrology",
+      "horoscope",
+      "message",
+      "shorts",
+      "zodiac",
+      "zodiac signs"
+     ],
+     "has_desc": 536
+    },
+    {
      "id": "PcE01oCelKU",
      "title": "The Peace You Bring Without Realizing ✨ #zodiac #shorts",
      "published": "2026-11-01T17:31:27Z",
      "seconds": 43,
      "privacy": "public",
-     "views": 14,
+     "views": 15,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4232,7 +4251,7 @@
      "published": "2026-10-31T17:36:34Z",
      "seconds": 43,
      "privacy": "public",
-     "views": 46,
+     "views": 47,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -4262,13 +4281,7 @@
       "zodiac",
       "zodiac signs"
      ],
-     "has_desc": 484,
-     "estimatedMinutesWatched": 10,
-     "averageViewDuration": 25,
-     "averageViewPercentage": 58.15,
-     "subscribersGained": 0,
-     "shares": 0,
-     "a_views": 77
+     "has_desc": 484
     },
     {
      "id": "PRp1XRglujY",
@@ -4287,13 +4300,7 @@
       "zodiac",
       "zodiac signs"
      ],
-     "has_desc": 468,
-     "estimatedMinutesWatched": 1,
-     "averageViewDuration": 19,
-     "averageViewPercentage": 44.75,
-     "subscribersGained": 0,
-     "shares": 0,
-     "a_views": 8
+     "has_desc": 468
     },
     {
      "id": "qU3s9PvZvlw",
@@ -4312,13 +4319,7 @@
       "zodiac",
       "zodiac signs"
      ],
-     "has_desc": 470,
-     "estimatedMinutesWatched": 1,
-     "averageViewDuration": 11,
-     "averageViewPercentage": 26.009999999999998,
-     "subscribersGained": 0,
-     "shares": 0,
-     "a_views": 20
+     "has_desc": 470
     },
     {
      "id": "zbCOyhAGpxU",
@@ -4337,13 +4338,7 @@
       "zodiac",
       "zodiac signs"
      ],
-     "has_desc": 477,
-     "estimatedMinutesWatched": 2,
-     "averageViewDuration": 30,
-     "averageViewPercentage": 71.49,
-     "subscribersGained": 0,
-     "shares": 0,
-     "a_views": 11
+     "has_desc": 477
     },
     {
      "id": "s8uwCLQ7tU4",
@@ -4362,16 +4357,11 @@
       "zodiac",
       "zodiac signs"
      ],
-     "has_desc": 473,
-     "estimatedMinutesWatched": 1,
-     "averageViewDuration": 15,
-     "averageViewPercentage": 36.53,
-     "subscribersGained": 0,
-     "shares": 0,
-     "a_views": 11
+     "has_desc": 473
     }
    ],
    "errors": [
+    "views,estimatedMinutesWatched,/video: Internal error encountered.",
     "videoThumbnailImpressions,vide/video: The query is not supported. Check the documentation at https://developers.google.com/youtube/analytics/v2/available_reports for a list of supported queries."
    ],
    "traffic": [
@@ -5102,7 +5092,7 @@
      "published": "2026-10-24T06:06:38Z",
      "seconds": 881,
      "privacy": "public",
-     "views": 14,
+     "views": 16,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -5674,6 +5664,29 @@
    "made_for_kids": false,
    "videos": [
     {
+     "id": "7wPPRk88SlI",
+     "title": "Solar System Planets Quiz! 🪐 #shorts",
+     "published": "2026-11-02T17:36:09Z",
+     "seconds": 76,
+     "privacy": "public",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "astronomy quiz questions",
+      "astronomy trivia quiz with answers",
+      "hard space trivia questions",
+      "planet quiz for adults",
+      "planets of the solar system quiz",
+      "quick space trivia for curious adults",
+      "quiz",
+      "science quiz",
+      "science quiz shorts",
+      "shorts"
+     ],
+     "has_desc": 505
+    },
+    {
      "id": "tyNnH4fnLu4",
      "title": "What If Science Didn't Need Humans? #shorts",
      "published": "2026-11-02T12:31:09Z",
@@ -5702,7 +5715,7 @@
      "published": "2026-11-02T02:10:41Z",
      "seconds": 84,
      "privacy": "public",
-     "views": 1048,
+     "views": 1057,
      "likes": 29,
      "comments": 2,
      "tags": [
@@ -5725,8 +5738,8 @@
      "published": "2026-11-01T17:46:24Z",
      "seconds": 84,
      "privacy": "public",
-     "views": 161,
-     "likes": 5,
+     "views": 178,
+     "likes": 6,
      "comments": 0,
      "tags": [
       "biology quiz for adults",
@@ -5748,7 +5761,7 @@
      "published": "2026-11-01T12:05:59Z",
      "seconds": 40,
      "privacy": "public",
-     "views": 402,
+     "views": 403,
      "likes": 6,
      "comments": 1,
      "tags": [
@@ -5771,7 +5784,7 @@
      "published": "2026-11-01T01:35:48Z",
      "seconds": 88,
      "privacy": "public",
-     "views": 1135,
+     "views": 1141,
      "likes": 44,
      "comments": 5,
      "tags": [
@@ -5840,7 +5853,7 @@
      "published": "2026-10-31T00:17:45Z",
      "seconds": 79,
      "privacy": "public",
-     "views": 1254,
+     "views": 1255,
      "likes": 53,
      "comments": 14,
      "tags": [
@@ -6095,7 +6108,7 @@
      "published": "2026-10-28T21:48:41Z",
      "seconds": 35,
      "privacy": "public",
-     "views": 533,
+     "views": 534,
      "likes": 42,
      "comments": 11,
      "tags": [
@@ -7273,8 +7286,26 @@
    "key": "calmhaven",
    "username": "calmhavenig",
    "followers": 5,
-   "posts": 12,
+   "posts": 13,
    "media": [
+    {
+     "id": "17911645065595542",
+     "caption": "Let the water carry your thoughts away. 🌊\nRainforest waterfall – 1 hour of natural water sounds.\n\n💾 Save this for tonight\n▶️ Full 1-hour version on YouTube (link in bio)\n\n#naturesounds #waterfallsound",
+     "timestamp": "2026-11-02T16:41:11+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfPwi6lAKxF/",
+     "insights": {
+      "reach": 1,
+      "views": 2,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0
+     }
+    },
     {
      "id": "18109930820225115",
      "caption": "Crackling fire, warm light, nowhere to be. 🔥\nAutumn evening by the fire – 1 hour of cozy fireplace sounds.\n\n💾 Save this for tonight\n▶️ Full 1-hour version on YouTube (link in bio)\n\n#fireplace #autumnv",
@@ -7495,8 +7526,26 @@
    "key": "mondmelodie",
    "username": "mondmelodieig",
    "followers": 2,
-   "posts": 16,
+   "posts": 17,
    "media": [
+    {
+     "id": "18115703084017155",
+     "caption": "Psst … Zeit zum Träumen 🌙\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n💤 Speichern für heute ",
+     "timestamp": "2026-11-02T16:41:52+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfPwoFcER-e/",
+     "insights": {
+      "reach": 2,
+      "views": 2,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2093
+     }
+    },
     {
      "id": "18116155502124292",
      "caption": "Sanft ins Traumland ☁️\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n💤 Speichern für heute Abe",
@@ -7790,8 +7839,25 @@
    "key": "astro",
    "username": "dear.zodiac22",
    "followers": 2,
-   "posts": 8,
+   "posts": 9,
    "media": [
+    {
+     "id": "17912440947305656",
+     "caption": "Love is not always a grand public gesture; often, it lives in the quiet choices we make for others in the dark. Your heart carries a rare kind of unseen magic. Send this to someone who loves you softl",
+     "timestamp": "2026-11-02T17:37:36+0000",
+     "media_type": "CAROUSEL_ALBUM",
+     "media_product_type": "FEED",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/p/DfP3CiFmE3I/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0
+     }
+    },
     {
      "id": "17966525607018897",
      "caption": "We rarely notice the quiet ways we soften the world just by showing up as ourselves. Your presence is an anchor for someone who needed your exact frequency today. Does this resonate with your birth mo",
@@ -7936,8 +8002,26 @@
    "key": "gutenacht",
    "username": "gutenachtgeschichteig",
    "followers": 0,
-   "posts": 13,
+   "posts": 14,
    "media": [
+    {
+     "id": "17910293298327836",
+     "caption": "Fuchs Fiete und das sanfte Leuchten am Berggipfel ✨\nEine Mini-Gute-Nacht-Geschichte für euer Abendritual. Kuscheln, zuhören, einschlafen. 🌙\n\n📖 Die ganze Geschichte (ca. 10 Minuten) hörst du auf unsere",
+     "timestamp": "2026-11-02T16:42:47+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfPwvS-s5Em/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0
+     }
+    },
     {
      "id": "17944757520376185",
      "caption": "Waschbär Mio und das sanfte Warten auf der Wattebällchenwolke ✨\nEine Mini-Gute-Nacht-Geschichte für euer Abendritual. Kuscheln, zuhören, einschlafen. 🌙\n\n📖 Die ganze Geschichte (ca. 10 Minuten) hörst d",
@@ -7948,12 +8032,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfNL7jJh_ig/",
      "insights": {
-      "reach": 52,
-      "views": 56,
+      "reach": 53,
+      "views": 57,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1806
+      "ig_reels_avg_watch_time": 1831
      }
     },
     {
@@ -8179,8 +8263,26 @@
    "key": "whatif",
    "username": "facts_mcwiebel",
    "followers": 2,
-   "posts": 16,
+   "posts": 17,
    "media": [
+    {
+     "id": "18095149952181426",
+     "caption": "Test yourself! Which planet is the largest in the Solar System? | Which planet has the lowest minimum temperature of all Solar System planets? | Which planet is the densest giant planet in the Solar S",
+     "timestamp": "2026-11-02T17:36:28+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfP217-l_Yh/",
+     "insights": {
+      "reach": 21,
+      "views": 38,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 8032
+     }
+    },
     {
      "id": "18133081618827809",
      "caption": "Headlines are asking if science is possible without scientists as AI begins solving major problems in physics and math. What if artificial intelligence completely replaced human researchers? Automated",
@@ -8210,7 +8312,7 @@
      "permalink": "https://www.instagram.com/reel/DfOM_k3DiFP/",
      "insights": {
       "reach": 16,
-      "views": 17,
+      "views": 18,
       "saved": 0,
       "shares": 0,
       "total_interactions": 1,
@@ -8227,12 +8329,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfNTPKslFGc/",
      "insights": {
-      "reach": 31,
-      "views": 36,
+      "reach": 33,
+      "views": 38,
       "saved": 0,
       "shares": 0,
       "total_interactions": 1,
-      "ig_reels_avg_watch_time": 12847
+      "ig_reels_avg_watch_time": 13457
      }
     },
     {
