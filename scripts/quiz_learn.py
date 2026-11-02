@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
-GUESS = [(r"earth|ocean", "Earth and oceans"), (r"space|planet", "space and planets"), (r"dino", "dinosaurs"),
+GUESS = [(r"earth|ocean", "oceans and sea life"), (r"space|planet", "space and planets"), (r"dino", "dinosaurs"),
          (r"animal", "animals"), (r"invent", "inventions"), (r"moon", "the Moon"), (r"black hole|star", "black holes and stars"),
          (r"body|human", "the human body"), (r"brain", "the brain"), (r"weather|climate", "weather and climate"),
          (r"physic", "physics in everyday life")]

@@ -37,12 +37,15 @@ QUIZ_TASK = """Create a 3-question science quiz for a YouTube Short of the chann
 Theme: {theme}. Difficulty rising: easy, medium, hard. Each question has exactly 3 answer options (A, B, C),
 exactly one correct, plausible wrong options. Questions must be 100% factually correct, short (max 12 words),
 options max 4 words. Add a one-sentence surprising explanation (max 14 words) for each.
+ALL 3 questions must clearly belong to the theme – a viewer must instantly see why each question fits the title.
+The title must name exactly what the questions are about (if the questions are about oceans, the title says oceans;
+never promise a topic the questions don't cover). Prefer ONE narrow topic over a broad mix.
 Avoid these questions already used: {used}
-Answer ONLY JSON: {{"hook": "max 8 words, e.g. 'Only 1% get all 3 right!'", "title": "max 80 chars incl #shorts",
+Answer ONLY JSON: {{"hook": "max 8 words, e.g. 'Only 1% get all 3 right!'", "title": "max 80 chars incl #shorts, names the exact topic",
  "questions": [{{"q": "...", "options": ["...", "...", "..."], "correct": 0, "explain": "...", "wiki": "Wikipedia article title to verify"}}]}}"""
 THEMES = [
     # bisher
-    "space and planets", "the human body", "animals", "Earth and oceans", "physics in everyday life",
+    "space and planets", "the human body", "animals", "oceans and sea life", "physics in everyday life",
     "dinosaurs", "inventions", "the Moon", "black holes and stars", "weather and climate", "the brain",
     # neu zum Testen (Publikum: vor allem USA, viele über 55)
     "US geography and national parks", "world geography and capitals", "famous landmarks", "ancient civilizations",
@@ -108,7 +111,9 @@ def make_quiz(rnd):
             facts.append(f"[{t}] {x[:900]}")
     if facts:                                            # Faktencheck
         qz = gemini.ask_json("Verify this quiz against the facts. If an answer is wrong or doubtful, replace that "
-                             "question with a correct one. Keep the exact JSON format.\nFacts:\n" + "\n".join(facts) +
+                             "question with a correct one. Also check that the title matches ALL questions exactly – "
+                             "if a question does not fit the title, replace the question (or make the title match all "
+                             "three). Keep the exact JSON format.\nFacts:\n" + "\n".join(facts) +
                              "\n\nQuiz JSON:\n" + json.dumps(qz, ensure_ascii=False), temperature=0.2)
     qz["theme"] = theme
     return qz
