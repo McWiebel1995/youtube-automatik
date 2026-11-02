@@ -8,6 +8,7 @@ Impressum & Datenschutz: Pflichtangaben für geschäftsmäßige Kanäle (Abmahns
 """
 import argparse
 import os
+import re
 import sys
 import time
 from pathlib import Path
@@ -34,10 +35,17 @@ def add(text, channel_name=""):
     return f"{text.rstrip()}\n\n{footer(channel_name)}".strip()[:4990]
 
 
+def strip(text):
+    """Impressum-Zeile wieder entfernen."""
+    lines = [ln for ln in (text or "").split("\n") if MARK not in ln]
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).strip()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--max", type=int, default=60, help="max. Video-Änderungen pro Lauf (je 50 Kontingent-Einheiten)")
+    ap.add_argument("--remove", action="store_true", help="Impressum-Zeile überall wieder entfernen")
+    ap.add_argument("--max", type=int, default=50, help="max. Video-Änderungen pro Lauf (je 50 Kontingent-Einheiten)")
     a = ap.parse_args()
     budget = [a.max]
     import analytics_report
@@ -51,9 +59,9 @@ def main():
             ch = yt.channels().list(part="brandingSettings,contentDetails", mine=True).execute()["items"][0]
             bs = ch.get("brandingSettings", {})
             desc = bs.get("channel", {}).get("description", "")
-            ch_done = MARK in desc
+            ch_done = (MARK not in desc) if a.remove else (MARK in desc)
             if not ch_done and not a.dry_run:
-                bs.setdefault("channel", {})["description"] = add(desc, name)[:1000]
+                bs.setdefault("channel", {})["description"] = (strip(desc) if a.remove else add(desc, name))[:1000]
                 yt.channels().update(part="brandingSettings", body={"id": ch["id"], "brandingSettings": bs}).execute()
             pl = ch["contentDetails"]["relatedPlaylists"]["uploads"]
             ids, tok = [], None
@@ -67,7 +75,8 @@ def main():
             for k in range(0, len(ids), 50):
                 for v in yt.videos().list(part="snippet", id=",".join(ids[k:k + 50])).execute().get("items", []):
                     sn = v["snippet"]
-                    if MARK in sn.get("description", ""):
+                    has = MARK in sn.get("description", "")
+                    if has != a.remove:
                         continue
                     if budget[0] <= 0:
                         break
@@ -76,15 +85,17 @@ def main():
                     if a.dry_run:
                         continue
                     body = {"id": v["id"], "snippet": {"title": sn["title"], "categoryId": sn["categoryId"],
-                                                      "description": add(sn.get("description", ""), name),
+                                                      "description": strip(sn.get("description", "")) if a.remove
+                                                      else add(sn.get("description", ""), name),
                                                       "tags": sn.get("tags", [])}}
                     for f in ("defaultLanguage", "defaultAudioLanguage"):
                         if sn.get(f):
                             body["snippet"][f] = sn[f]
                     yt.videos().update(part="snippet", body=body).execute()
                     time.sleep(0.5)
-            report.append(f"✅ {name}: Kanal {'hatte es schon' if ch_done else 'ergänzt'}, {n} Videos "
-                          f"{'würden ergänzt' if a.dry_run else 'ergänzt'}")
+            verb = "entfernt" if a.remove else "ergänzt"
+            report.append(f"✅ {name}: Kanal {'schon erledigt' if ch_done else verb}, {n} Videos "
+                          f"{'würden ' + verb if a.dry_run else verb}")
         except Exception as e:  # noqa: BLE001
             report.append(f"❌ {name}: {str(e)[:200]}")
     print("\n".join(report))

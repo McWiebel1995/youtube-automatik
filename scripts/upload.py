@@ -97,11 +97,12 @@ def upload(yt, video_path, meta, channel, publish_at=None):
         meta = hashtags.yt_meta(meta, channel.get("name", ""))
     except Exception as e:  # noqa: BLE001
         print(f"  ⚠ Hashtags: {e}")
-    try:                                              # Impressum & Datenschutz in jede Beschreibung (legal.py)
-        import legal
-        meta = dict(meta, description=legal.add(meta.get("description", ""), channel.get("name", "")))
-    except Exception as e:  # noqa: BLE001
-        print(f"  ⚠ Impressum-Zeile: {e}")
+    if os.environ.get("IMPRESSUM", "0") == "1":     # Impressum-Zeile (legal.py) – auf Wunsch vorerst aus
+        try:
+            import legal
+            meta = dict(meta, description=legal.add(meta.get("description", ""), channel.get("name", "")))
+        except Exception as e:  # noqa: BLE001
+            print(f"  ⚠ Impressum-Zeile: {e}")
     status = {
         "privacyStatus": "private" if publish_at else channel.get("privacy", "private"),
         "selfDeclaredMadeForKids": bool(channel.get("made_for_kids", False)),

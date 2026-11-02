@@ -1,8 +1,8 @@
-name: "⚖ Impressum in alle Kanäle & Videos"
+name: "⚖ Impressum aus Kanälen & Videos entfernen"
 
 on:
   schedule:
-    - cron: "33 9 * * *"      # täglich kurz nach dem Kontingent-Reset: fehlende Impressum-Zeilen (max. 60)
+    - cron: "33 9 * * *"      # täglich nach dem Kontingent-Reset: Impressum-Zeilen ENTFERNEN (max. 60), bis überall weg
   workflow_dispatch:
     inputs:
       dry_run:
@@ -36,6 +36,6 @@ jobs:
           YT_REFRESH_TOKEN_WHATIF: ${{ secrets.YT_REFRESH_TOKEN_WHATIF }}
           YT_REFRESH_TOKEN_GEDANKEN: ${{ secrets.YT_REFRESH_TOKEN_GEDANKEN }}
         run: |
-          ARGS=""; [ "${{ inputs.dry_run }}" = "true" ] && ARGS="--dry-run"
+          ARGS="--remove"; [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
           python scripts/legal.py $ARGS > l.log 2>&1 || { echo "::error::$(tail -n 15 l.log | tr '\n' ' ' | cut -c1-2000)"; exit 1; }
           cat l.log
