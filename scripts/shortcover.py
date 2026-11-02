@@ -64,6 +64,23 @@ def card(text, channel, w, h):
     return lay
 
 
+def thumb_only(video, title, channel):
+    """Nur ein Vorschaubild (Bild aus dem Video + Titel) – das Video selbst bleibt unverändert."""
+    video = Path(video)
+    text = clean(title)
+    if not text or channel not in STYLE:
+        return None
+    frame = video.with_name(video.stem + "_frame.png")
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "1.5", "-i", str(video), "-frames:v", "1", str(frame)],
+                   check=False)
+    if not frame.exists():
+        return None
+    im = Image.open(frame).convert("RGBA")
+    out = video.with_name(video.stem + "_thumb.jpg")
+    Image.alpha_composite(im, card(text, channel, im.width, im.height)).convert("RGB").save(out, quality=92)
+    return out
+
+
 def apply(video, title, channel):
     video = Path(video)
     text = clean(title)

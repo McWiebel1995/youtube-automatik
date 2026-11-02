@@ -121,12 +121,14 @@ def upload(yt, video_path, meta, channel, publish_at=None):
         "status": status,
     }
     cover_thumb = None
-    if _is_short(meta, video_path) and os.environ.get("SHORT_COVER", "1") == "1" \
-            and "quiz" not in meta["title"].lower():
-        try:                                          # Titelzeile in den ersten Sekunden + Thumbnail (shortcover.py)
+    if _is_short(meta, video_path) and "quiz" not in meta["title"].lower():
+        try:                                          # Shorts: Video bleibt unverändert, nur Vorschaubild mit Titel
             import shortcover
-            video_path, cover_thumb = shortcover.apply(video_path, meta["title"],
-                                                       shortcover.channel_key(channel.get("name", "")))
+            key = shortcover.channel_key(channel.get("name", ""))
+            if os.environ.get("SHORT_COVER", "0") == "1":     # Titelzeile im Video: abgeschaltet (Test 2.11. schlecht)
+                video_path, cover_thumb = shortcover.apply(video_path, meta["title"], key)
+            else:
+                cover_thumb = shortcover.thumb_only(video_path, meta["title"], key)
         except Exception as e:  # noqa: BLE001
             print(f"  ⚠ Short-Titelbild: {e}")
     media = MediaFileUpload(str(video_path), chunksize=16 * 1024 * 1024, resumable=True,
