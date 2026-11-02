@@ -75,7 +75,7 @@ RULES = {
     },
     "whatif": {
         "core": "#whatif", "audience": "#sciencefacts",
-        "niche": ["#science", "#didyouknow", "#curiosity", "#learnontiktok", "#mindblown"],
+        "niche": ["#science", "#didyouknow", "#curiosity", "#mindblown"],
         "content": [(r"black hole", "#blackhole"), (r"moon", "#moon"), (r"\bsun\b|solar", "#solarsystem"),
                     (r"space|planet|galaxy|orbit|astronaut|mars", "#space"), (r"ocean|sea|tsunami", "#ocean"),
                     (r"dinosaur", "#dinosaurs"), (r"\bmatter\b", "#physics"), (r"\bbrain", "#brain"), (r"human body|\bblood\b|\bheart\b|\bcells?\b|\borgans?\b", "#humanbody"),

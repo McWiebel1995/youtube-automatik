@@ -40,6 +40,13 @@ Give:
 Answer ONLY JSON: {{"keywords": ["..."], "hashtags": ["..."], "intro": "..."}}"""
 
 
+# Riesige Sammel-Hashtags bringen nichts (Video geht darin unter) und wirken spammy -> nie verwenden
+GENERIC = {"shortsfeed", "shortsviral", "shortsvideo", "shortsvideos", "shortsyoutube", "shortsbeta", "shortsindia",
+           "shortstory", "shortsfunny", "ytshorts", "youtubeshorts", "viral", "viralvideo", "viralshorts", "fyp",
+           "foryou", "foryoupage", "trending", "trend", "explore", "explorepage", "subscribe", "like", "follow",
+           "reels", "reel", "instagood", "tiktok", "learnontiktok"}
+
+
 def _fit_tags(tags, limit=480):
     out, used = [], 0
     for t in tags:
@@ -75,6 +82,8 @@ def enrich(meta, ch, core_hashtags=(), short=False):
     hs = [h if h.startswith("#") else "#" + h for h in core_hashtags]
     for h in js.get("hashtags", []):
         h = "#" + re.sub(r"[^\wäöüÄÖÜß]", "", str(h).lstrip("#"))
+        if h[1:].lower() in GENERIC:
+            continue
         if len(h) > 2 and h.lower() not in {x.lower() for x in hs}:
             hs.append(h)
     if short and "#shorts" not in [h.lower() for h in hs]:
