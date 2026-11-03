@@ -213,18 +213,26 @@ def set_thumbnail(yt, video_id, thumb_path):
         return False
 
 
-def recent_titles(yt, n=40):
+def recent_titles(yt, n=50):
     c = yt.channels().list(part="contentDetails", mine=True).execute()["items"][0]
     pl = c["contentDetails"]["relatedPlaylists"]["uploads"]
     items = yt.playlistItems().list(part="snippet", playlistId=pl, maxResults=min(50, n)).execute().get("items", [])
     return {i["snippet"]["title"].strip().lower() for i in items}
 
 
+def _norm_title(t):
+    """Titel ohne Emojis/Hashtags/Satzzeichen – 'Rain … calm 🌙' und 'Rain … calm 💤' gelten als gleich."""
+    import re as _re
+    t = _re.sub(r"#\S+", "", t or "").lower()
+    return _re.sub(r"[^a-z0-9äöüß]+", " ", t).strip()
+
+
 def unique_title(make, recent, rnd, suffixes, tries=15):
-    """make() liefert ein Metadaten-Dict mit 'title'. Wiederholt, bis der Titel neu ist; sonst Zusatz anhängen."""
+    """make() liefert ein Metadaten-Dict mit 'title'. Wiederholt, bis der Titel (ohne Emojis) neu ist."""
+    recent_n = {_norm_title(t) for t in recent}
     meta = make()
     for _ in range(tries):
-        if meta["title"].strip().lower() not in recent:
+        if _norm_title(meta["title"]) not in recent_n:
             return meta
         meta = make()
     for suf in rnd.sample(suffixes, len(suffixes)):

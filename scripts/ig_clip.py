@@ -66,7 +66,20 @@ SHORT_TITLES = {
 
 def short_meta(channel, hours, scene, rnd, full_title):
     h = f"{hours:g}"
-    title = rnd.choice(SHORT_TITLES[channel])
+    title = None
+    try:                                              # jeden Tag ein neuer, zur Szene passender Titel (keine Wiederholung)
+        import sys as _s
+        _s.path.insert(0, str(Path(__file__).resolve().parent.parent / "anime"))
+        import gemini
+        js = gemini.ask_json(
+            f"Write ONE YouTube Shorts title (max 60 characters, English) for a 40-second relaxing ambience clip. "
+            f"Scene: '{scene}'. Style: calm, sensory, a small promise (sleep, calm, focus), like 'Rain in the forest – "
+            f"close your eyes'. Must NOT resemble any of these: {', '.join(SHORT_TITLES[channel][:8])}. "
+            "At most 1 emoji, no hashtags. JSON: {\"title\": \"...\"}", temperature=1.0)
+        title = js["title"].strip().strip('"') + " #shorts"
+    except Exception:  # noqa: BLE001
+        pass
+    title = title or rnd.choice(SHORT_TITLES[channel])
     desc = (f"{scene.capitalize()} – a calm moment from today's full video.\n\n"
             f"▶️ Full {h}-hour version on the channel: {full_title}\n\n{TAGS[channel]} #shorts")
     tags = [t.lstrip("#") for t in TAGS[channel].split()] + ["shorts"]
