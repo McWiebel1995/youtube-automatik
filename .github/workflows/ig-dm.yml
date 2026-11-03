@@ -2,8 +2,8 @@ name: "📩 Kommentar-Stichwort → DM (Instagram)"
 run-name: "Kommentar-DMs${{ inputs.probe && ' (Prüfung)' || '' }}"
 
 on:
-  # schedule:
-    # - cron: "*/20 * * * *"   # alle 20 Min. – wird eingeschaltet, sobald die Prüfung grün ist
+  schedule:
+    - cron: "*/20 * * * *"     # alle 20 Min. (nur Instagram, kein YouTube-Kontingent)
   workflow_dispatch:
     inputs:
       probe:

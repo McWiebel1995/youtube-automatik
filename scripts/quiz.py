@@ -291,7 +291,8 @@ def upload_quiz(out: Path, meta):
                     encoding="utf-8")
     if os.environ.get("IG_TOKEN_WHATIF") or os.environ.get("IG_WHATIF_ALT"):
         import ig_queue
-        ig_queue.add("whatif", out / "quiz_short.mp4", meta["description"])
+        cta = "💬 Comment QUIZ and I'll DM you 3 bonus questions!\n\n"   # -> ig_dm.py beantwortet automatisch
+        ig_queue.add("whatif", out / "quiz_short.mp4", cta + meta["description"])
     upload.mark_uploaded(os.environ.get("QUIZ_LOCK", "whatif-quiz"))
 
 
