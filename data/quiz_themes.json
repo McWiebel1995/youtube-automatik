@@ -5,18 +5,22 @@
  },
  "space and planets": {
   "n": 1,
-  "score": 0.724
+  "score": 0.66
  },
  "oceans and sea life": {
   "n": 1,
-  "score": 0.638
+  "score": 0.578
  },
  "animals": {
   "n": 2,
-  "score": 0.494
+  "score": 0.482
  },
  "dinosaurs": {
   "n": 2,
-  "score": 0.233
+  "score": 0.212
+ },
+ "black holes and stars": {
+  "n": 1,
+  "score": 0.102
  }
 }
