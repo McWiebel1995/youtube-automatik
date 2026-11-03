@@ -1,0 +1,45 @@
+name: "📩 Kommentar-Stichwort → DM (Instagram)"
+run-name: "Kommentar-DMs${{ inputs.probe && ' (Prüfung)' || '' }}"
+
+on:
+  # schedule:
+    # - cron: "*/20 * * * *"   # alle 20 Min. – wird eingeschaltet, sobald die Prüfung grün ist
+  workflow_dispatch:
+    inputs:
+      probe:
+        description: "nur prüfen, ob Nachrichten erlaubt sind"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ig-dm
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: DMs
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          IG_TOKEN_WHATIF: ${{ secrets.IG_TOKEN_WHATIF }}
+          IG_WHATIF_ALT: ${{ secrets.IG_USER_WHATIF }}
+          IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
+        run: python scripts/ig_dm.py ${{ inputs.probe && '--probe' || '' }}
+      - name: Stand speichern
+        if: ${{ !inputs.probe }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          for p in data/ig_dm; do [ -e "$p" ] && git add -A "$p" || true; done
+          git commit -m "Kommentar-DMs" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep 5; done
