@@ -3,24 +3,32 @@
   "n": 1,
   "score": 1.0
  },
- "space and planets": {
+ "Earth and oceans": {
   "n": 1,
-  "score": 0.66
+  "score": 0.584
  },
  "oceans and sea life": {
   "n": 1,
-  "score": 0.578
+  "score": 0.568
  },
  "animals": {
   "n": 2,
-  "score": 0.482
+  "score": 0.532
  },
- "dinosaurs": {
+ "space and planets": {
   "n": 2,
-  "score": 0.212
+  "score": 0.329
+ },
+ "trees and plants": {
+  "n": 1,
+  "score": 0.239
  },
  "black holes and stars": {
   "n": 1,
-  "score": 0.102
+  "score": 0.214
+ },
+ "dinosaurs": {
+  "n": 2,
+  "score": 0.207
  }
 }
