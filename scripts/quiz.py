@@ -307,6 +307,8 @@ if __name__ == "__main__":
             print("Heute schon ein Quiz – übersprungen."); sys.exit(0)
         if not upload.quota_ok(wi.CFG["token_secret"]):
             sys.exit(0)
+        if not upload.pace_ok(wi.CFG["token_secret"], label="Quiz"):
+            sys.exit(0)
     m = build(Path(a.out))
     if not a.dry_run:
         upload_quiz(Path(a.out), m)
