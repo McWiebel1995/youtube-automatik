@@ -307,6 +307,9 @@ if __name__ == "__main__":
             print("Heute schon ein Quiz – übersprungen."); sys.exit(0)
         if not upload.quota_ok(wi.CFG["token_secret"]):
             sys.exit(0)
+        import datetime as _dt
+        if _dt.datetime.now(_dt.timezone.utc).weekday() == 4 and os.environ.get("FORCE_UPLOAD") != "1":
+            print("⏸ Freitag: kein Quiz (Freitag = langes Video + 2 Shorts)."); sys.exit(0)
         if not upload.pace_ok(wi.CFG["token_secret"], label="Quiz"):
             sys.exit(0)
     m = build(Path(a.out))

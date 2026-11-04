@@ -692,7 +692,7 @@ if __name__ == "__main__":
                 sys.exit(0)
             import datetime as _dt
             if _dt.datetime.now(_dt.timezone.utc).weekday() == 4 and os.environ.get("FORCE_UPLOAD") != "1":
-                print("⏸ Freitag: kein News-Short (langes Video + 2 Shorts + Quiz reichen)."); sys.exit(0)
+                print("⏸ Freitag: kein News-Short (Freitag = langes Video + 2 Shorts)."); sys.exit(0)
             if not upload.pace_ok(CFG["token_secret"], label="News"):
                 sys.exit(0)
         m = news_short(Path(a.out))
@@ -708,6 +708,8 @@ if __name__ == "__main__":
         import datetime as _dt
         if _dt.datetime.now(_dt.timezone.utc).weekday() != 4 and os.environ.get("FORCE_UPLOAD") != "1":
             print("⏸ Langes Video nur freitags – übersprungen (z. B. alter Dienstags-Weckruf)."); sys.exit(0)
+        if not upload.pace_ok(CFG["token_secret"], label="Langes Video", need=3, min_gap_h=0):
+            sys.exit(0)
     meta = build(Path(a.out), a.minutes)
     if not a.dry_run:
         upload_all(Path(a.out), meta)

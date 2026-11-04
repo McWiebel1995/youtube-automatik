@@ -60,9 +60,10 @@ def uploaded_today(channel_key):
     return f.exists() and f.read_text().strip() == _today()
 
 
-def pace_ok(token_secret, max_shorts=3, min_gap_h=3.0, label=""):
-    """Upload-Bremse je Kanal: höchstens max_shorts Shorts pro Tag (deutsche Zeit) und mind. min_gap_h Stunden
-    Abstand zum letzten Upload. Wird VOR der Produktion geprüft (spart Rechenzeit). FORCE_UPLOAD=1 umgeht sie."""
+def pace_ok(token_secret, max_total=3, min_gap_h=3.0, label="", need=1):
+    """Upload-Bremse je Kanal: höchstens max_total Videos pro Tag INSGESAMT (lang + Shorts, deutsche Zeit) und mind.
+    min_gap_h Stunden Abstand zum letzten Upload. need = wie viele Videos dieser Lauf hochladen will.
+    Wird VOR der Produktion geprüft (spart Rechenzeit). FORCE_UPLOAD=1 umgeht sie."""
     if os.environ.get("FORCE_UPLOAD") == "1":
         return True
     import datetime as _dt
@@ -78,14 +79,12 @@ def pace_ok(token_secret, max_shorts=3, min_gap_h=3.0, label=""):
     shorts_today, last = 0, None
     for v in vids:
         t = _dt.datetime.fromisoformat((v["status"].get("publishAt") or v["snippet"]["publishedAt"]).replace("Z", "+00:00"))
-        m = _re.match(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", v["contentDetails"]["duration"])
-        secs = 0 if not m else int(m[1] or 0) * 3600 + int(m[2] or 0) * 60 + int(m[3] or 0)
-        if secs <= 180 and t.astimezone(berlin).date() == today:
+        if t.astimezone(berlin).date() == today:
             shorts_today += 1
         if t <= now and (last is None or t > last):
             last = t
-    if shorts_today >= max_shorts:
-        print(f"⏸ {label}: heute schon {shorts_today} Shorts – mehr nicht (Upload-Bremse).")
+    if shorts_today + need > max_total:
+        print(f"⏸ {label}: heute schon {shorts_today} Videos, max. {max_total} pro Tag (Upload-Bremse).")
         return False
     if last and (now - last).total_seconds() < min_gap_h * 3600:
         print(f"⏸ {label}: letzter Upload erst vor {(now - last).total_seconds() / 3600:.1f} Std – zu dicht (Upload-Bremse).")
