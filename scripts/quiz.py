@@ -102,7 +102,16 @@ def wrap(d, text, f, maxw):
 # ----------------------------------------------------------------- Inhalt
 def make_quiz(rnd):
     used = json.loads(USED.read_text(encoding="utf-8")) if USED.exists() else []
-    theme, why = pick_theme(rnd)
+    theme, why, asked = None, "", []
+    try:                                              # Zuschauerwünsche aus den Kommentaren (topic_requests.py)
+        import topic_requests
+        top = topic_requests.top_open(topic_requests.collect())
+        if top and rnd.random() < 0.4:
+            theme, why, asked = top["topic"], f"Zuschauerwunsch ({top['count']}x)", top["users"][:2]
+    except Exception as e:  # noqa: BLE001
+        print(f"  ⚠ Themenwünsche: {str(e)[:120]}")
+    if not theme:
+        theme, why = pick_theme(rnd)
     print(f"  Thema: {theme} ({why})")
     qz = gemini.ask_json(QUIZ_TASK.format(theme=theme, used="; ".join(used[-80:]) or "none"), temperature=0.9)
     facts = []
@@ -116,6 +125,13 @@ def make_quiz(rnd):
                              "three). Keep the exact JSON format.\nFacts:\n" + "\n".join(facts) +
                              "\n\nQuiz JSON:\n" + json.dumps(qz, ensure_ascii=False), temperature=0.2)
     qz["theme"] = theme
+    qz["asked_by"] = asked
+    log = json.loads(QUIZ_LOG.read_text()) if QUIZ_LOG.exists() else []
+    qz["episode"] = len(log) + 1
+    if asked:                                         # "You asked for it!" – Wunsch sichtbar machen
+        qz["hook"] = f"You asked for it: {theme}!"
+        t = re.sub(r"(?i)#shorts", "", qz["title"]).strip()
+        qz["title"] = f"You Asked For It: {t}"[:90] + " #shorts"
     return qz
 
 
@@ -139,19 +155,55 @@ def card(d, box, fill, radius=34, outline=None):
     d.rounded_rectangle(box, radius, fill=fill, outline=outline, width=6 if outline else 0)
 
 
-def frame(bg, q, idx, state, t_count, hook=None):
+LEVEL = [("EASY", (46, 204, 113)), ("MEDIUM", (255, 176, 59)), ("HARD", (255, 92, 92))]
+
+
+def header(d, episode):
+    if episode:
+        d.text((W / 2, 95), f"BEYOND THE IF  ·  QUIZ #{episode}", font=font(40), fill=(255, 255, 255, 170), anchor="mm")
+
+
+def score_dots(d, done):
+    """Punktestand zum Mitzählen (oben – unten verdeckt die Shorts-Oberfläche): aufgedeckte Fragen gefüllt."""
+    d.text((W / 2 - 70, 170), "KEEP SCORE", font=font(36), fill=(255, 255, 255, 190), anchor="rm")
+    for k in range(3):
+        x = W / 2 - 20 + k * 62
+        col = (255, 210, 90, 255) if k < done else (255, 255, 255, 60)
+        d.ellipse((x - 20, 150, x + 20, 190), fill=col)
+
+
+def frame(bg, q, idx, state, t_count, hook=None, episode=None):
     """state: 'hook' | 'ask' | 'count' | 'reveal' | 'outro'"""
     im = bg.copy()
     d = ImageDraw.Draw(im, "RGBA")
-    if state in ("hook", "outro"):
+    header(d, episode)
+    if state == "hook":
         f = font(96)
         lines = wrap(d, hook, f, W - 160)
-        y = H // 2 - len(lines) * 60
+        y = H // 2 - len(lines) * 60 - 60
         for ln in lines:
             d.text((W / 2, y), ln, font=f, fill="white", anchor="mm")
             y += 120
+        d.text((W / 2, y + 80), "Question 3 is the hardest...", font=font(56, bold=False), fill=(255, 210, 90), anchor="mm")
+        score_dots(d, 0)
         return im
-    d.text((W / 2, 220), f"QUESTION {idx + 1}/3", font=font(54), fill=(255, 210, 90), anchor="mm")
+    if state == "outro":
+        f = font(88)
+        y = H // 2 - 260
+        for ln in wrap(d, "Got 3/3?", f, W - 160) + wrap(d, "Comment 3/3!", f, W - 160):
+            d.text((W / 2, y), ln, font=f, fill="white", anchor="mm")
+            y += 115
+        y += 90
+        for ln in wrap(d, "Next quiz topic? Comment it below and I'll make it!", font(58, bold=False), W - 200):
+            d.text((W / 2, y), ln, font=font(58, bold=False), fill=(255, 210, 90), anchor="mm")
+            y += 78
+        score_dots(d, 3)
+        return im
+    lvl, lcol = LEVEL[min(idx, 2)]
+    d.text((W / 2 - 40, 262), f"QUESTION {idx + 1}/3", font=font(52), fill=(255, 210, 90), anchor="rm")
+    card(d, (W / 2 - 10, 232, W / 2 + 40 + len(lvl) * 34, 292), lcol + (235,), radius=30)
+    d.text((W / 2 + 15 + len(lvl) * 17, 262), lvl, font=font(38), fill="white", anchor="mm")
+    score_dots(d, idx + (1 if state == "reveal" else 0))
     fq = font(72)
     lines = wrap(d, q["q"], fq, W - 180)
     card(d, (70, 320, W - 70, 380 + len(lines) * 92 + 60), (255, 255, 255, 235))
@@ -213,12 +265,12 @@ def build(out: Path, seed=None):
 
         def say(text, tag):
             return wi.to_sr(v.speak.remote(text, ref, exaggeration=0.65, cfg_weight=0.45, seed=5), work, tag + ".wav")
-        a_hook = say(qz["hook"], "hook")
+        a_hook = say(qz["hook"] + " Question three is the hardest. Keep score!", "hook")
         a_q = [say(f"{q['q']} A: {q['options'][0]}. B: {q['options'][1]}. Or C: {q['options'][2]}?", f"q{i}")
                for i, q in enumerate(qs)]
         a_r = [say(f"It's {'ABC'[q['correct']]}! {q['options'][q['correct']]}. {q.get('explain', '')}", f"r{i}")
                for i, q in enumerate(qs)]
-        a_out = say("How many did you get right? Tell me in the comments, and follow for more!", "out")
+        a_out = say("Got all three? Comment three out of three! And tell me the topic for my next quiz, I read every comment.", "out")
     # Zeitplan
     timeline, t = [], 0.0
     timeline.append(("hook", None, 0, t, t + len(a_hook) / SR + 0.4, a_hook))
@@ -259,15 +311,18 @@ def build(out: Path, seed=None):
         key = (state, i) if state != "count" else (state, i, int((tt - t0) * 10))
         if key not in cache:
             cache.clear() if len(cache) > 50 else None
-            hook = qz["hook"] if state == "hook" else "How many did you get right?"
-            cache[key] = np.asarray(frame(bg, q, i, state, tt - t0, hook).convert("RGB")).tobytes()
+            cache[key] = np.asarray(frame(bg, q, i, state, tt - t0, qz["hook"], qz.get("episode")).convert("RGB")).tobytes()
         p.stdin.write(cache[key])
     p.stdin.close()
     p.wait()
     wi.ass([], work / "none.ass", W, H, 10, 0)
     wi.mix_and_render(work / "v.mp4", vo[: int(total * SR)], out / "quiz_short.mp4", work, work / "none.ass", music_db=-24)
     meta = {"title": qz["title"][:100], "theme": qz["theme"], "questions": qs,
-            "description": "Test yourself! " + " | ".join(q["q"] for q in qs) +
+            "episode": qz.get("episode"), "asked_by": qz.get("asked_by", []),
+            "description": (f"Topic requested by {' & '.join(qz['asked_by'])} – thanks! 🙌\n\n" if qz.get("asked_by") else "") +
+                           "Test yourself! " + " | ".join(q["q"] for q in qs) +
+                           "\n\n✅ Every answer fact-checked with Wikipedia." +
+                           "\n💬 Comment your score and the topic for the next quiz!" +
                            "\n\nAnswers explained in the video.\n#shorts #quiz #science #trivia #beyondtheif",
             "tags": ["shorts", "quiz", "science quiz", "trivia", qz["theme"]]}
     (out / "quiz_meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -284,7 +339,14 @@ def upload_quiz(out: Path, meta):
     print(f"  ✓ Quiz: https://youtu.be/{vid}")
     log = json.loads(QUIZ_LOG.read_text()) if QUIZ_LOG.exists() else []
     import datetime as _dt
-    log.append({"id": vid, "theme": meta["theme"], "title": meta["title"], "date": _dt.date.today().isoformat()})
+    log.append({"id": vid, "theme": meta["theme"], "title": meta["title"], "date": _dt.date.today().isoformat(),
+                "episode": meta.get("episode"), "asked_by": meta.get("asked_by", [])})
+    if meta.get("asked_by"):
+        try:
+            import topic_requests
+            topic_requests.mark_used(meta["theme"])
+        except Exception:  # noqa: BLE001
+            pass
     QUIZ_LOG.write_text(json.dumps(log[-400:], ensure_ascii=False, indent=1), encoding="utf-8")
     used = json.loads(USED.read_text(encoding="utf-8")) if USED.exists() else []
     USED.write_text(json.dumps((used + [q["q"] for q in meta["questions"]])[-500:], ensure_ascii=False, indent=1),

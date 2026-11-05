@@ -101,6 +101,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          for p in data/whatif_used.json data/quiz_used.json data/quiz_log.json data/last_upload data/playlists data/ig_queue; do [ -e "$p" ] && git add -A "$p" || true; done
+          for p in data/whatif_used.json data/quiz_used.json data/quiz_log.json data/topic_requests.json data/topic_requests_seen.json data/last_upload data/playlists data/ig_queue; do [ -e "$p" ] && git add -A "$p" || true; done
           git commit -m "Beyond the If: Stand" || exit 0
           for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep 5; done
