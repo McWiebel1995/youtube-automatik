@@ -49,7 +49,7 @@ THEMES = [
     "dinosaurs", "inventions", "the Moon", "black holes and stars", "weather and climate", "the brain",
     # neu zum Testen (Publikum: vor allem USA, viele über 55)
     "US geography and national parks", "world geography and capitals", "famous landmarks", "ancient civilizations",
-    "volcanoes and earthquakes", "the deep sea", "birds", "insects", "trees and plants", "the solar system",
+    "ancient Rome and its engineering", "ancient Egypt and the pyramids", "volcanoes and earthquakes", "the deep sea", "birds", "insects", "trees and plants", "the solar system",
     "astronauts and space missions", "science in the kitchen", "the five senses", "rivers and mountains",
     "mammals", "sea creatures", "electricity and energy", "famous scientists", "everyday chemistry", "the Arctic and Antarctica",
 ]
@@ -66,7 +66,7 @@ def pick_theme(rnd):
     tested = {t: s for t, s in stats.items() if s.get("n", 0) >= 1 and t in pool}
     untested = [t for t in pool if stats.get(t, {}).get("n", 0) + sum(1 for x in log[-20:] if x["theme"] == t) < 2]
     r = rnd.random()
-    if untested and (r < 0.4 or not tested):
+    if untested and (r < 0.25 or not tested):        # ~1 von 4 Quiz testet ein neues Thema
         return rnd.choice(untested), "Test"
     if tested and r < 0.85:
         top = sorted(tested, key=lambda t: -tested[t]["score"])[:5]

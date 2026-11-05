@@ -242,9 +242,9 @@ const FLOORS = [
     { id: "whatif-video", name: "Lange Videos", sub: "freitags · mit Intro & Outro", ch: "whatif", lock: "whatif", wf: "whatif.yml",
       match: r => /: video/.test(r.display_title), crons: ["15 13 * * 5"], days: [5], prop: "space", color: "#9d7bff" },
     { id: "whatif-news", name: "News-Short", sub: "täglich · Google News", ch: "whatif", lock: "whatif-news", wf: "whatif.yml",
-      match: r => /: news/.test(r.display_title), crons: ["45 11 * * *"], prop: "news", color: "#ff9f5a" },
+      match: r => /: news/.test(r.display_title), crons: ["0 15 * * *"], prop: "news", color: "#ff9f5a" },
     { id: "whatif-quiz", name: "Quiz-Shorts", sub: "2× täglich · 3 Fragen", ch: "whatif", lock: "whatif-quiz", wf: "whatif.yml",
-      match: r => /: quiz/.test(r.display_title), crons: ["5 17 * * *", "35 20 * * *"], prop: "quiz", color: "#5ce0c0" },
+      match: r => /: quiz/.test(r.display_title), crons: ["0 21 * * *", "0 1 * * *"], prop: "quiz", color: "#5ce0c0" },
   ]},
   { title: "Kinder-Etage", sub: "2. OG · direkt öffentlich", rooms: [
     { id: "schlaf", name: "Mondmelodie", sub: "Spieluhr 14 Min + Short", ch: "schlaf", lock: "kids-schlaf", wf: "kids.yml",

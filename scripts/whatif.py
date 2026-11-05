@@ -581,6 +581,12 @@ def upload_all(out: Path, meta):
 NEWS_TASK = """You run "Beyond the If" (science what-if scenarios). Here are today's top science/tech headlines:
 {news}
 Pick the ONE headline with the most viral what-if potential and turn it into a YouTube Short / Instagram Reel.
+What works on this channel (audience: curious adults in the US, many 55+): CONCRETE, instantly imaginable scenarios
+with one physical object, place or event you can picture in a second – e.g. "What if Hubble crashed into Earth?",
+"What if a giant planet is hiding beyond Neptune?", "What if we banished nighttime forever?" (1,000+ views each).
+What fails: abstract or hard-to-picture ideas – e.g. "What if science didn't need humans?", "What if humans traveled
+one light-day into space?", "What if oceans became heavy water?" (under 40 views). If no headline gives a concrete,
+visual scenario, pick the closest one and make the what-if concrete (a thing, a place, a visible consequence).
 Facts you may use (Wikipedia): {facts}
 Rules: 70–90 words, first sentence is a scroll-stopping hook that references the real news briefly,
 then the what-if scenario with real science, end with a question to the viewer + "Follow for more what-ifs."

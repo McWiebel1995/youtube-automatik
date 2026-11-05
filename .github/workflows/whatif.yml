@@ -1,16 +1,17 @@
 name: "🌌 Beyond the If – What-if-Video"
-run-name: "Beyond the If: ${{ (github.event.schedule == '45 11 * * *' || github.event.schedule == '45 14 * * *') && 'news' || (github.event.schedule == '5 17 * * *' || github.event.schedule == '5 19 * * *') && 'quiz' || (github.event.schedule == '35 20 * * *' || github.event.schedule == '35 22 * * *') && 'quiz 2' || github.event.schedule && 'video' || inputs.mode == 'news-short' && 'news' || inputs.mode || 'video' }}${{ inputs.dry_run && ' (Test)' || '' }}"
+run-name: "Beyond the If: ${{ (github.event.schedule == '0 15 * * *' || github.event.schedule == '40 16 * * *') && 'news' || (github.event.schedule == '0 21 * * *' || github.event.schedule == '40 22 * * *') && 'quiz' || (github.event.schedule == '0 1 * * *' || github.event.schedule == '40 2 * * *') && 'quiz 2' || github.event.schedule && 'video' || inputs.mode == 'news-short' && 'news' || inputs.mode || 'video' }}${{ inputs.dry_run && ' (Test)' || '' }}"
 
 on:
   schedule:
     - cron: "15 13 * * 5"       # Fr: langes Video + 2 Shorts (1x pro Woche – lange Videos laufen kaum)
     - cron: "15 16 * * 5"       # Absicherung
-    - cron: "45 11 * * *"       # täglich: News-Short (Algorithmus-Test)
-    - cron: "45 14 * * *"       # Absicherung
-    - cron: "5 17 * * *"        # täglich: Quiz-Short
-    - cron: "5 19 * * *"        # Absicherung
-    - cron: "35 20 * * *"       # täglich: 2. Quiz-Short (Quiz läuft am besten)
-    - cron: "35 22 * * *"       # Absicherung
+    # Zeiten nach US-Publikum (65 % USA): News 16:00, Quiz 22:00, Quiz 02:00 deutscher Zeit (Winterzeit, UTC+1)
+    - cron: "0 15 * * *"        # täglich: News-Short (US-Vormittag)
+    - cron: "40 16 * * *"       # Absicherung
+    - cron: "0 21 * * *"        # täglich: Quiz-Short (US-Nachmittag)
+    - cron: "40 22 * * *"       # Absicherung
+    - cron: "0 1 * * *"         # täglich: 2. Quiz-Short (US-Abend – lief bisher am besten)
+    - cron: "40 2 * * *"        # Absicherung
   workflow_dispatch:
     inputs:
       dry_run:
@@ -69,12 +70,12 @@ jobs:
         run: |
           set -o pipefail
           ARGS="--out output/whatif --minutes ${{ github.event.inputs.minutes || '9' }}"
-          case "${{ github.event.schedule }}" in "45 11 * * *"|"45 14 * * *") ARGS="$ARGS --news-short" ;; esac
+          case "${{ github.event.schedule }}" in "0 15 * * *"|"40 16 * * *") ARGS="$ARGS --news-short" ;; esac
           [ "${{ github.event.inputs.mode }}" = "news-short" ] && ARGS="$ARGS --news-short"
           [ "${{ github.event.inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
           SCRIPT=scripts/whatif.py
-          case "${{ github.event.schedule }}" in "5 17 * * *"|"5 19 * * *") SCRIPT=scripts/quiz.py ;; esac
-          case "${{ github.event.schedule }}" in "35 20 * * *"|"35 22 * * *") SCRIPT=scripts/quiz.py; export QUIZ_LOCK=whatif-quiz2 ;; esac
+          case "${{ github.event.schedule }}" in "0 21 * * *"|"40 22 * * *") SCRIPT=scripts/quiz.py ;; esac
+          case "${{ github.event.schedule }}" in "0 1 * * *"|"40 2 * * *") SCRIPT=scripts/quiz.py; export QUIZ_LOCK=whatif-quiz2 ;; esac
           [ "${{ github.event.inputs.slot }}" = "2" ] && export QUIZ_LOCK=whatif-quiz2
           [ "${{ github.event.inputs.mode }}" = "quiz" ] && SCRIPT=scripts/quiz.py
           [ "$SCRIPT" = scripts/quiz.py ] && ARGS="--out output/whatif$(echo "$ARGS" | grep -o ' --dry-run' || true)"
