@@ -1,0 +1,47 @@
+name: "💶 Modal-Verbrauch abfragen"
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 7 * * *"      # täglich morgens
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -U modal
+      - name: Verbrauch
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+        run: |
+          modal --version
+          START=$(date -u +%Y-%m-01)
+          (modal billing report --start "$START" --resolution d --json > usage.json 2> err.txt) || (modal billing report --help > err.txt 2>&1; true)
+          python - <<'PY'
+          import json, pathlib, collections
+          p = pathlib.Path("usage.json")
+          if p.exists() and p.stat().st_size > 2:
+              rows = json.loads(p.read_text())
+              rows = rows if isinstance(rows, list) else rows.get("data", rows.get("rows", []))
+              tot = collections.Counter(); day = collections.Counter()
+              for r in rows:
+                  c = float(r.get("cost") or r.get("Cost") or 0)
+                  tot[r.get("description") or r.get("object") or r.get("app") or "?"] += c
+                  day[str(r.get("interval_start") or r.get("date") or "")[:10]] += c
+              msg = f"Seit Monatsbeginn: {sum(tot.values()):.2f} $ ⏎ " + " ⏎ ".join(f"{k}: {v:.2f} $" for k, v in tot.most_common(8)) + " ⏎ Tage: " + ", ".join(f"{k[5:]}: {v:.2f}" for k, v in sorted(day.items()))
+              pathlib.Path("data").mkdir(exist_ok=True)
+              pathlib.Path("data/modal_usage.json").write_text(json.dumps({"total": round(sum(tot.values()), 2), "by": dict(tot), "days": dict(day)}, indent=1))
+          else:
+              msg = "Keine Daten: " + pathlib.Path("err.txt").read_text()[:1500].replace("\n", " ⏎ ")
+          print(f"::notice title=Modal::{msg[:3900]}")
+          PY
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          [ -e data/modal_usage.json ] && git add data/modal_usage.json && git commit -m "Modal-Verbrauch" && for i in 1 2 3; do git pull --rebase -X theirs && git push && break; sleep 5; done || true
