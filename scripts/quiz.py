@@ -365,12 +365,12 @@ if __name__ == "__main__":
     a = ap.parse_args()
     if not a.dry_run:
         import upload
-        if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_today(os.environ.get("QUIZ_LOCK", "whatif-quiz")):
+        if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_within(os.environ.get("QUIZ_LOCK", "whatif-quiz"), 16):
             print("Heute schon ein Quiz – übersprungen."); sys.exit(0)
         if not upload.quota_ok(wi.CFG["token_secret"]):
             sys.exit(0)
         import datetime as _dt
-        if _dt.datetime.now(_dt.timezone.utc).weekday() == 4 and os.environ.get("FORCE_UPLOAD") != "1":
+        if upload.channel_day().weekday() == 4 and os.environ.get("FORCE_UPLOAD") != "1":
             print("⏸ Freitag: kein Quiz (Freitag = langes Video + 2 Shorts)."); sys.exit(0)
         if not upload.pace_ok(wi.CFG["token_secret"], label="Quiz"):
             sys.exit(0)

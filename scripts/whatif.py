@@ -692,12 +692,12 @@ if __name__ == "__main__":
     if a.news_short:
         if not a.dry_run:
             import upload
-            if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_today("whatif-news"):
+            if os.environ.get("FORCE_UPLOAD") != "1" and upload.uploaded_within("whatif-news", 16):
                 print("Heute schon gepostet – übersprungen."); sys.exit(0)
             if not upload.quota_ok(CFG["token_secret"]):
                 sys.exit(0)
             import datetime as _dt
-            if _dt.datetime.now(_dt.timezone.utc).weekday() == 4 and os.environ.get("FORCE_UPLOAD") != "1":
+            if upload.channel_day().weekday() == 4 and os.environ.get("FORCE_UPLOAD") != "1":
                 print("⏸ Freitag: kein News-Short (Freitag = langes Video + 2 Shorts)."); sys.exit(0)
             if not upload.pace_ok(CFG["token_secret"], label="News"):
                 sys.exit(0)
@@ -712,7 +712,7 @@ if __name__ == "__main__":
         if not upload.quota_ok(CFG["token_secret"]):
             sys.exit(0)
         import datetime as _dt
-        if _dt.datetime.now(_dt.timezone.utc).weekday() != 4 and os.environ.get("FORCE_UPLOAD") != "1":
+        if upload.channel_day().weekday() != 4 and os.environ.get("FORCE_UPLOAD") != "1":
             print("⏸ Langes Video nur freitags – übersprungen (z. B. alter Dienstags-Weckruf)."); sys.exit(0)
         if not upload.pace_ok(CFG["token_secret"], label="Langes Video", need=3, min_gap_h=0):
             sys.exit(0)

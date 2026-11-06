@@ -60,6 +60,30 @@ def uploaded_today(channel_key):
     return f.exists() and f.read_text().strip() == _today()
 
 
+def channel_day(t=None):
+    """'Kanaltag' für Beyond the If: deutsche Zeit minus 6 Std. Ein Quiz um 2 Uhr nachts (US-Abend) zählt so noch
+    zum Vortag; der Freitag läuft von Freitag 6 Uhr bis Samstag 6 Uhr."""
+    import datetime as _dt
+    t = t or _dt.datetime.now(_dt.timezone.utc)
+    return (t.astimezone(_dt.timezone(_dt.timedelta(hours=1))) - _dt.timedelta(hours=6)).date()
+
+
+def uploaded_within(channel_key, hours):
+    """True, wenn dieser Platz in den letzten `hours` Stunden schon hochgeladen hat (statt Kalendertag)."""
+    import datetime as _dt
+    f = LAST_DIR / f"{channel_key}.txt"
+    if not f.exists():
+        return False
+    raw = f.read_text().strip()
+    try:
+        t = _dt.datetime.fromisoformat(raw)
+    except ValueError:
+        return raw == _today()                        # alte Dateien: nur Datum
+    if t.tzinfo is None:
+        t = t.replace(tzinfo=_dt.timezone.utc)
+    return (_dt.datetime.now(_dt.timezone.utc) - t).total_seconds() < hours * 3600
+
+
 def pace_ok(token_secret, max_total=3, min_gap_h=3.0, label="", need=1):
     """Upload-Bremse je Kanal: höchstens max_total Videos pro Tag INSGESAMT (lang + Shorts, deutsche Zeit) und mind.
     min_gap_h Stunden Abstand zum letzten Upload. need = wie viele Videos dieser Lauf hochladen will.
@@ -73,13 +97,12 @@ def pace_ok(token_secret, max_total=3, min_gap_h=3.0, label="", need=1):
     items = yt.playlistItems().list(part="contentDetails", playlistId=pl, maxResults=15).execute().get("items", [])
     ids = [i["contentDetails"]["videoId"] for i in items]
     vids = yt.videos().list(part="snippet,contentDetails,status", id=",".join(ids)).execute().get("items", []) if ids else []
-    berlin = _dt.timezone(_dt.timedelta(hours=1))
     now = _dt.datetime.now(_dt.timezone.utc)
-    today = now.astimezone(berlin).date()
+    today = channel_day(now)
     shorts_today, last = 0, None
     for v in vids:
         t = _dt.datetime.fromisoformat((v["status"].get("publishAt") or v["snippet"]["publishedAt"]).replace("Z", "+00:00"))
-        if t.astimezone(berlin).date() == today:
+        if channel_day(t) == today:
             shorts_today += 1
         if t <= now and (last is None or t > last):
             last = t
@@ -105,8 +128,10 @@ def quota_ok(token_secret):
 
 
 def mark_uploaded(channel_key):
+    import datetime as _dt
     LAST_DIR.mkdir(parents=True, exist_ok=True)
-    (LAST_DIR / f"{channel_key}.txt").write_text(_today() + "\n")
+    stamp = _dt.datetime.now(_dt.timezone.utc).isoformat(timespec="seconds") if channel_key.startswith("whatif") else _today()
+    (LAST_DIR / f"{channel_key}.txt").write_text(stamp + "\n")
 
 
 SYNTHETIC = {"whatif", "lernen", "geschichten"}   # KI-Stimme erzählt bzw. realistische KI-Szenen -> YouTube-Kennzeichnung
