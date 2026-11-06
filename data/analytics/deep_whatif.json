@@ -1,17 +1,9 @@
 {
  "channel": "Beyond the If",
- "start": "2026-10-08",
- "end": "2026-11-05",
+ "start": "2026-10-09",
+ "end": "2026-11-06",
  "errors": [],
  "daily": [
-  {
-   "day": "2026-10-08",
-   "views": 10,
-   "estimatedMinutesWatched": 1,
-   "averageViewPercentage": 36.73,
-   "subscribersGained": 0,
-   "likes": 0
-  },
   {
    "day": "2026-10-09",
    "views": 8,
@@ -182,24 +174,24 @@
   },
   {
    "day": "2026-10-30",
-   "views": 3441,
-   "estimatedMinutesWatched": 1505,
+   "views": 3419,
+   "estimatedMinutesWatched": 1501,
    "averageViewPercentage": 71.34,
    "subscribersGained": 19,
    "likes": 150
   },
   {
    "day": "2026-10-31",
-   "views": 3056,
-   "estimatedMinutesWatched": 1038,
+   "views": 3044,
+   "estimatedMinutesWatched": 1034,
    "averageViewPercentage": 50.39,
    "subscribersGained": 3,
    "likes": 104
   },
   {
    "day": "2026-11-01",
-   "views": 3373,
-   "estimatedMinutesWatched": 1355,
+   "views": 3352,
+   "estimatedMinutesWatched": 1352,
    "averageViewPercentage": 75.73,
    "subscribersGained": 7,
    "likes": 107
@@ -211,19 +203,17 @@
    "averageViewPercentage": 66.52,
    "subscribersGained": 4,
    "likes": 24
+  },
+  {
+   "day": "2026-11-03",
+   "views": 583,
+   "estimatedMinutesWatched": 86,
+   "averageViewPercentage": 35.55,
+   "subscribersGained": 0,
+   "likes": 12
   }
  ],
  "daily_traffic": [
-  {
-   "day": "2026-10-08",
-   "insightTrafficSourceType": "YT_SEARCH",
-   "views": 8
-  },
-  {
-   "day": "2026-10-08",
-   "insightTrafficSourceType": "SHORTS",
-   "views": 2
-  },
   {
    "day": "2026-10-09",
    "insightTrafficSourceType": "NO_LINK_OTHER",
@@ -733,13 +723,38 @@
    "day": "2026-11-02",
    "insightTrafficSourceType": "SHORTS",
    "views": 691
+  },
+  {
+   "day": "2026-11-03",
+   "insightTrafficSourceType": "NO_LINK_OTHER",
+   "views": 1
+  },
+  {
+   "day": "2026-11-03",
+   "insightTrafficSourceType": "SUBSCRIBER",
+   "views": 6
+  },
+  {
+   "day": "2026-11-03",
+   "insightTrafficSourceType": "YT_SEARCH",
+   "views": 35
+  },
+  {
+   "day": "2026-11-03",
+   "insightTrafficSourceType": "YT_OTHER_PAGE",
+   "views": 3
+  },
+  {
+   "day": "2026-11-03",
+   "insightTrafficSourceType": "SHORTS",
+   "views": 538
   }
  ],
  "videos": [
   {
    "video": "TuPilNsAU0c",
-   "views": 1463,
-   "averageViewPercentage": 62.55,
+   "views": 1454,
+   "averageViewPercentage": 62.59,
    "averageViewDuration": 25,
    "subscribersGained": 0,
    "likes": 44,
@@ -748,12 +763,12 @@
    "title": "What If Hubble Crashed into Earth? #shorts",
    "published": "2026-10-31T12:02:32Z",
    "dur": "PT40S",
-   "views_now": 1455
+   "views_now": 1459
   },
   {
    "video": "SBbeOaY3pYE",
    "views": 1266,
-   "averageViewPercentage": 71.81,
+   "averageViewPercentage": 71.76,
    "averageViewDuration": 56,
    "subscribersGained": 8,
    "likes": 57,
@@ -780,8 +795,8 @@
   },
   {
    "video": "kJg4zsldM24",
-   "views": 1165,
-   "averageViewPercentage": 45.75,
+   "views": 1166,
+   "averageViewPercentage": 45.7,
    "averageViewDuration": 40,
    "subscribersGained": 1,
    "likes": 44,
@@ -793,9 +808,23 @@
    "views_now": 1174
   },
   {
+   "video": "SnzS6AWO7rc",
+   "views": 1069,
+   "averageViewPercentage": 49.48,
+   "averageViewDuration": 41,
+   "subscribersGained": 1,
+   "likes": 31,
+   "shares": 0,
+   "comments": 2,
+   "title": "Earth & Oceans Quiz: Test Your Planet Knowledge! #shorts",
+   "published": "2026-11-02T02:10:41Z",
+   "dur": "PT1M24S",
+   "views_now": 1082
+  },
+  {
    "video": "dpTp4i8kqHU",
-   "views": 1071,
-   "averageViewPercentage": 82.5,
+   "views": 1069,
+   "averageViewPercentage": 82.53,
    "averageViewDuration": 59,
    "subscribersGained": 3,
    "likes": 27,
@@ -807,22 +836,8 @@
    "views_now": 1069
   },
   {
-   "video": "SnzS6AWO7rc",
-   "views": 1069,
-   "averageViewPercentage": 49.63,
-   "averageViewDuration": 41,
-   "subscribersGained": 1,
-   "likes": 29,
-   "shares": 0,
-   "comments": 2,
-   "title": "Earth & Oceans Quiz: Test Your Planet Knowledge! #shorts",
-   "published": "2026-11-02T02:10:41Z",
-   "dur": "PT1M24S",
-   "views_now": 1080
-  },
-  {
    "video": "1SqmKABFSI8",
-   "views": 1055,
+   "views": 1047,
    "averageViewPercentage": 120.87,
    "averageViewDuration": 42,
    "subscribersGained": 6,
@@ -850,8 +865,8 @@
   },
   {
    "video": "iYv155SBFWc",
-   "views": 1001,
-   "averageViewPercentage": 127.99000000000001,
+   "views": 1006,
+   "averageViewPercentage": 130.24,
    "averageViewDuration": 42,
    "subscribersGained": 4,
    "likes": 44,
@@ -860,11 +875,11 @@
    "title": "What If a Giant Planet Is Hiding Beyond Neptune? #shorts",
    "published": "2026-10-30T12:22:20Z",
    "dur": "PT33S",
-   "views_now": 1008
+   "views_now": 1010
   },
   {
    "video": "T5FvqnSh9oM",
-   "views": 589,
+   "views": 590,
    "averageViewPercentage": 33.01,
    "averageViewDuration": 29,
    "subscribersGained": 1,
@@ -875,6 +890,20 @@
    "published": "2026-10-31T18:45:19Z",
    "dur": "PT1M29S",
    "views_now": 591
+  },
+  {
+   "video": "7-LkP0f3Jc4",
+   "views": 580,
+   "averageViewPercentage": 45.66,
+   "averageViewDuration": 41,
+   "subscribersGained": 2,
+   "likes": 20,
+   "shares": 0,
+   "comments": 0,
+   "title": "Ancient Roman Engineering Quiz #shorts",
+   "published": "2026-11-03T02:48:03Z",
+   "dur": "PT1M30S",
+   "views_now": 588
   },
   {
    "video": "YUvuoN0iUDs",
@@ -891,20 +920,6 @@
    "views_now": 559
   },
   {
-   "video": "7-LkP0f3Jc4",
-   "views": 538,
-   "averageViewPercentage": 46.28,
-   "averageViewDuration": 41,
-   "subscribersGained": 2,
-   "likes": 14,
-   "shares": 0,
-   "comments": 0,
-   "title": "Ancient Roman Engineering Quiz #shorts",
-   "published": "2026-11-03T02:48:03Z",
-   "dur": "PT1M30S",
-   "views_now": 588
-  },
-  {
    "video": "WdLXAesicME",
    "views": 534,
    "averageViewPercentage": 111.25,
@@ -916,11 +931,25 @@
    "title": "Nuclear Power on Mars? #shorts",
    "published": "2026-10-28T21:48:41Z",
    "dur": "PT35S",
-   "views_now": 534
+   "views_now": 535
+  },
+  {
+   "video": "OPjeZ-WtwFU",
+   "views": 413,
+   "averageViewPercentage": 130.79,
+   "averageViewDuration": 52,
+   "subscribersGained": 0,
+   "likes": 6,
+   "shares": 0,
+   "comments": 1,
+   "title": "What If Matter Never Survived the Big Bang? #shorts",
+   "published": "2026-11-01T12:05:59Z",
+   "dur": "PT40S",
+   "views_now": 415
   },
   {
    "video": "mNR90ASAyDQ",
-   "views": 418,
+   "views": 411,
    "averageViewPercentage": 62.67,
    "averageViewDuration": 18,
    "subscribersGained": 4,
@@ -933,26 +962,26 @@
    "views_now": 411
   },
   {
-   "video": "OPjeZ-WtwFU",
-   "views": 414,
-   "averageViewPercentage": 131.01,
-   "averageViewDuration": 52,
+   "video": "DdRFagFTnDU",
+   "views": 401,
+   "averageViewPercentage": 26.21,
+   "averageViewDuration": 20,
    "subscribersGained": 0,
-   "likes": 6,
+   "likes": 1,
    "shares": 0,
-   "comments": 1,
-   "title": "What If Matter Never Survived the Big Bang? #shorts",
-   "published": "2026-11-01T12:05:59Z",
-   "dur": "PT40S",
-   "views_now": 415
+   "comments": 0,
+   "title": "Can You Pass This Ant Science Quiz? #shorts",
+   "published": "2026-11-04T02:00:18Z",
+   "dur": "PT1M19S",
+   "views_now": 437
   },
   {
    "video": "7iMgfdiBT1E",
-   "views": 239,
-   "averageViewPercentage": 90.85,
-   "averageViewDuration": 76,
+   "views": 248,
+   "averageViewPercentage": 86.51,
+   "averageViewDuration": 72,
    "subscribersGained": 0,
-   "likes": 14,
+   "likes": 16,
    "shares": 0,
    "comments": 0,
    "title": "The Ultimate Trees & Plants Quiz! 🌿 #shorts",
@@ -989,20 +1018,6 @@
    "views_now": 148
   },
   {
-   "video": "fGTSrM2OWFc",
-   "views": 130,
-   "averageViewPercentage": 51.85999999999999,
-   "averageViewDuration": 21,
-   "subscribersGained": 0,
-   "likes": 3,
-   "shares": 2,
-   "comments": 0,
-   "title": "Life Without Technology: A Simple Existence",
-   "published": "2024-11-13T11:00:50Z",
-   "dur": "PT42S",
-   "views_now": 2397
-  },
-  {
    "video": "zXI1umBKVBA",
    "views": 127,
    "averageViewPercentage": 68.68,
@@ -1015,6 +1030,20 @@
    "published": "2026-10-27T12:26:31Z",
    "dur": "PT41S",
    "views_now": 127
+  },
+  {
+   "video": "fGTSrM2OWFc",
+   "views": 124,
+   "averageViewPercentage": 52.73,
+   "averageViewDuration": 22,
+   "subscribersGained": 0,
+   "likes": 3,
+   "shares": 2,
+   "comments": 0,
+   "title": "Life Without Technology: A Simple Existence",
+   "published": "2024-11-13T11:00:50Z",
+   "dur": "PT42S",
+   "views_now": 2397
   },
   {
    "video": "EE2kLBG8yt0",
@@ -1112,6 +1141,34 @@
    "title": "Can You Survive a Primordial Black Hole? #shorts",
    "published": "2026-10-27T14:59:08Z",
    "dur": "PT34S",
+   "views_now": 38
+  },
+  {
+   "video": "7wPPRk88SlI",
+   "views": 34,
+   "averageViewPercentage": 56.57,
+   "averageViewDuration": 42,
+   "subscribersGained": 0,
+   "likes": 1,
+   "shares": 0,
+   "comments": 0,
+   "title": "Solar System Planets Quiz! 🪐 #shorts",
+   "published": "2026-11-02T17:36:09Z",
+   "dur": "PT1M16S",
+   "views_now": 44
+  },
+  {
+   "video": "QiMsOnu_xKY",
+   "views": 31,
+   "averageViewPercentage": 28.21,
+   "averageViewDuration": 21,
+   "subscribersGained": 0,
+   "likes": 0,
+   "shares": 0,
+   "comments": 0,
+   "title": "How Well Do You Know Cephalopods? 🦑 #shorts",
+   "published": "2026-11-03T03:15:11Z",
+   "dur": "PT1M17S",
    "views_now": 37
   },
   {
@@ -1129,6 +1186,20 @@
    "views_now": 28
   },
   {
+   "video": "zBg71S4XRm8",
+   "views": 28,
+   "averageViewPercentage": 62.11,
+   "averageViewDuration": 23,
+   "subscribersGained": 0,
+   "likes": 0,
+   "shares": 0,
+   "comments": 0,
+   "title": "What If Humans Traveled One Light-Day into Space? #shorts",
+   "published": "2026-11-03T13:31:50Z",
+   "dur": "PT38S",
+   "views_now": 34
+  },
+  {
    "video": "j0AhHhk9YBY",
    "views": 26,
    "averageViewPercentage": 40.14,
@@ -1143,32 +1214,32 @@
    "views_now": 26
   },
   {
-   "video": "QiMsOnu_xKY",
-   "views": 21,
-   "averageViewPercentage": 35.26,
-   "averageViewDuration": 27,
+   "video": "NuoMSQQ61Kw",
+   "views": 24,
+   "averageViewPercentage": 52.800000000000004,
+   "averageViewDuration": 16,
    "subscribersGained": 0,
    "likes": 0,
    "shares": 0,
    "comments": 0,
-   "title": "How Well Do You Know Cephalopods? 🦑 #shorts",
-   "published": "2026-11-03T03:15:11Z",
-   "dur": "PT1M17S",
-   "views_now": 37
+   "title": "One Neutron Could Destroy the Earth #shorts",
+   "published": "2026-11-03T15:22:44Z",
+   "dur": "PT31S",
+   "views_now": 27
   },
   {
-   "video": "7wPPRk88SlI",
-   "views": 19,
-   "averageViewPercentage": 57.64,
-   "averageViewDuration": 43,
+   "video": "8CYakKwH7Yg",
+   "views": 12,
+   "averageViewPercentage": 67.81,
+   "averageViewDuration": 19,
    "subscribersGained": 0,
    "likes": 0,
    "shares": 0,
    "comments": 0,
-   "title": "Solar System Planets Quiz! 🪐 #shorts",
-   "published": "2026-11-02T17:36:09Z",
-   "dur": "PT1M16S",
-   "views_now": 44
+   "title": "What If Earth’s Oceans Became Heavy Water? #shorts",
+   "published": "2026-11-03T15:22:21Z",
+   "dur": "PT29S",
+   "views_now": 29
   },
   {
    "video": "QBQa7vovgE0",
@@ -1211,6 +1282,20 @@
    "published": "2024-12-17T11:00:38Z",
    "dur": "PT37S",
    "views_now": 74
+  },
+  {
+   "video": "3J0X0PmOsx0",
+   "views": 5,
+   "averageViewPercentage": 8.5,
+   "averageViewDuration": 28,
+   "subscribersGained": 0,
+   "likes": 0,
+   "shares": 0,
+   "comments": 0,
+   "title": "What If Dinosaurs Never Went Extinct?",
+   "published": "2024-12-22T22:31:23Z",
+   "dur": "PT5M34S",
+   "views_now": 317
   },
   {
    "video": "MOknB-qqcbY",
@@ -1283,20 +1368,6 @@
    "views_now": 512
   },
   {
-   "video": "3J0X0PmOsx0",
-   "views": 4,
-   "averageViewPercentage": 11.02,
-   "averageViewDuration": 36,
-   "subscribersGained": 0,
-   "likes": 0,
-   "shares": 0,
-   "comments": 0,
-   "title": "What If Dinosaurs Never Went Extinct?",
-   "published": "2024-12-22T22:31:23Z",
-   "dur": "PT5M34S",
-   "views_now": 317
-  },
-  {
    "video": "GLcWSwtb5ww",
    "views": 4,
    "averageViewPercentage": 101.95,
@@ -1325,20 +1396,6 @@
    "views_now": 3
   },
   {
-   "video": "jpi25tsepAc",
-   "views": 3,
-   "averageViewPercentage": 12.83,
-   "averageViewDuration": 4,
-   "subscribersGained": 0,
-   "likes": 0,
-   "shares": 0,
-   "comments": 0,
-   "title": "What if Everyone Had Superpowers",
-   "published": "2024-12-01T10:30:30Z",
-   "dur": "PT33S",
-   "views_now": 497
-  },
-  {
    "video": "UJ7fi9yeSDA",
    "views": 3,
    "averageViewPercentage": 10.35,
@@ -1351,6 +1408,20 @@
    "published": "2025-01-05T08:33:09Z",
    "dur": "PT7M28S",
    "views_now": 160
+  },
+  {
+   "video": "jpi25tsepAc",
+   "views": 3,
+   "averageViewPercentage": 12.83,
+   "averageViewDuration": 4,
+   "subscribersGained": 0,
+   "likes": 0,
+   "shares": 0,
+   "comments": 0,
+   "title": "What if Everyone Had Superpowers",
+   "published": "2024-12-01T10:30:30Z",
+   "dur": "PT33S",
+   "views_now": 497
   },
   {
    "video": "XkVxBE8hH_o",
@@ -1395,6 +1466,20 @@
    "views_now": 10
   },
   {
+   "video": "2jG1AzMkWRQ",
+   "views": 2,
+   "averageViewPercentage": 0,
+   "averageViewDuration": 0,
+   "subscribersGained": 0,
+   "likes": 0,
+   "shares": 0,
+   "comments": 0,
+   "title": "What If Humans Could Fly?",
+   "published": "2024-10-25T16:24:19Z",
+   "dur": "PT28S",
+   "views_now": 1043
+  },
+  {
    "video": "ZqBQDDcA9IU",
    "views": 2,
    "averageViewPercentage": 0,
@@ -1423,20 +1508,6 @@
    "views_now": 418
   },
   {
-   "video": "2jG1AzMkWRQ",
-   "views": 2,
-   "averageViewPercentage": 0,
-   "averageViewDuration": 0,
-   "subscribersGained": 0,
-   "likes": 0,
-   "shares": 0,
-   "comments": 0,
-   "title": "What If Humans Could Fly?",
-   "published": "2024-10-25T16:24:19Z",
-   "dur": "PT28S",
-   "views_now": 1043
-  },
-  {
    "video": "iRou2ptOh3U",
    "views": 2,
    "averageViewPercentage": 104.29000000000002,
@@ -1451,18 +1522,32 @@
    "views_now": 3250
   },
   {
-   "video": "j-8TyW3O_qU",
-   "views": 1,
-   "averageViewPercentage": 0,
-   "averageViewDuration": 0,
+   "video": "mhe9tugOD-E",
+   "views": 2,
+   "averageViewPercentage": 0.64,
+   "averageViewDuration": 4,
    "subscribersGained": 0,
    "likes": 0,
    "shares": 0,
    "comments": 0,
-   "title": "Part 5 Top 10 Superfood",
-   "published": "2024-12-20T20:30:06Z",
-   "dur": "PT1M26S",
-   "views_now": 408
+   "title": "What If We Permanently Eliminated Nighttime?",
+   "published": "2026-10-30T20:15:46Z",
+   "dur": "PT10M49S",
+   "views_now": 3
+  },
+  {
+   "video": "zlACHUe99-E",
+   "views": 1,
+   "averageViewPercentage": 53.61,
+   "averageViewDuration": 168,
+   "subscribersGained": 0,
+   "likes": 0,
+   "shares": 0,
+   "comments": 0,
+   "title": "What If Humans Could Breathe Underwater? 🌊#whatif",
+   "published": "2024-12-12T20:53:14Z",
+   "dur": "PT5M15S",
+   "views_now": 277
   },
   {
    "video": "-qnCPb_6peE",
@@ -1479,18 +1564,32 @@
    "views_now": 515
   },
   {
-   "video": "fYyvCG3d9Cw",
+   "video": "tyNnH4fnLu4",
    "views": 1,
-   "averageViewPercentage": 16.41,
-   "averageViewDuration": 6,
+   "averageViewPercentage": 32.95,
+   "averageViewDuration": 14,
    "subscribersGained": 0,
    "likes": 0,
    "shares": 0,
    "comments": 0,
-   "title": "What if dreams could predict the future? #facts",
-   "published": "2024-12-08T23:00:23Z",
-   "dur": "PT39S",
-   "views_now": 9
+   "title": "What If Science Didn't Need Humans? #shorts",
+   "published": "2026-11-02T12:31:09Z",
+   "dur": "PT44S",
+   "views_now": 1
+  },
+  {
+   "video": "j-8TyW3O_qU",
+   "views": 1,
+   "averageViewPercentage": 0,
+   "averageViewDuration": 0,
+   "subscribersGained": 0,
+   "likes": 0,
+   "shares": 0,
+   "comments": 0,
+   "title": "Part 5 Top 10 Superfood",
+   "published": "2024-12-20T20:30:06Z",
+   "dur": "PT1M26S",
+   "views_now": 408
   },
   {
    "video": "FvfBxOUBLhg",
@@ -1505,6 +1604,20 @@
    "published": "2024-12-13T11:20:36Z",
    "dur": "PT4M51S",
    "views_now": 55
+  },
+  {
+   "video": "fYyvCG3d9Cw",
+   "views": 1,
+   "averageViewPercentage": 16.41,
+   "averageViewDuration": 6,
+   "subscribersGained": 0,
+   "likes": 0,
+   "shares": 0,
+   "comments": 0,
+   "title": "What if dreams could predict the future? #facts",
+   "published": "2024-12-08T23:00:23Z",
+   "dur": "PT39S",
+   "views_now": 9
   },
   {
    "video": "BE8VE6N2hXE",
@@ -1533,48 +1646,6 @@
    "published": "2024-12-20T22:50:45Z",
    "dur": "PT5M40S",
    "views_now": 193
-  },
-  {
-   "video": "lmXWOy0NtGQ",
-   "views": 1,
-   "averageViewPercentage": 0,
-   "averageViewDuration": 0,
-   "subscribersGained": 0,
-   "likes": 0,
-   "shares": 0,
-   "comments": 0,
-   "title": "What if the Sun Never Set #facts #doomsdayscenario #space #beyondgravity #motivation  #science",
-   "published": "2024-11-29T11:00:58Z",
-   "dur": "PT33S",
-   "views_now": 433
-  },
-  {
-   "video": "zlACHUe99-E",
-   "views": 1,
-   "averageViewPercentage": 53.61,
-   "averageViewDuration": 168,
-   "subscribersGained": 0,
-   "likes": 0,
-   "shares": 0,
-   "comments": 0,
-   "title": "What If Humans Could Breathe Underwater? 🌊#whatif",
-   "published": "2024-12-12T20:53:14Z",
-   "dur": "PT5M15S",
-   "views_now": 277
-  },
-  {
-   "video": "_O8_d-NxNYg",
-   "views": 1,
-   "averageViewPercentage": 4.96,
-   "averageViewDuration": 2,
-   "subscribersGained": 0,
-   "likes": 0,
-   "shares": 0,
-   "comments": 0,
-   "title": "Who Owns the Moon  The Legal Dilemma",
-   "published": "2025-01-04T14:51:33Z",
-   "dur": "PT47S",
-   "views_now": 1
   },
   {
    "video": "12C9IM-sKzg",
@@ -1647,20 +1718,6 @@
    "views_now": 41
   },
   {
-   "video": "fPg_DX1md0M",
-   "views": 1,
-   "averageViewPercentage": 10.71,
-   "averageViewDuration": 32,
-   "subscribersGained": 0,
-   "likes": 0,
-   "shares": 0,
-   "comments": 0,
-   "title": "What If Trump’s Tariffs Broke the World Economy?",
-   "published": "2024-12-14T13:54:39Z",
-   "dur": "PT5M5S",
-   "views_now": 133
-  },
-  {
    "video": "5MUeCLGLwrw",
    "views": 1,
    "averageViewPercentage": 0,
@@ -1675,46 +1732,18 @@
    "views_now": 53
   },
   {
-   "video": "nm80P5OFlso",
+   "video": "fPg_DX1md0M",
    "views": 1,
-   "averageViewPercentage": 65.92,
+   "averageViewPercentage": 10.71,
    "averageViewDuration": 32,
    "subscribersGained": 0,
    "likes": 0,
    "shares": 0,
    "comments": 0,
-   "title": "#1 Did Assads Fall Just Spark World War 3!",
-   "published": "2024-12-14T21:19:38Z",
-   "dur": "PT49S",
-   "views_now": 29
-  },
-  {
-   "video": "5c41Yf3STq0",
-   "views": 1,
-   "averageViewPercentage": 31.5,
-   "averageViewDuration": 12,
-   "subscribersGained": 0,
-   "likes": 0,
-   "shares": 0,
-   "comments": 0,
-   "title": "What if humans could live forever?",
-   "published": "2024-12-02T23:00:04Z",
-   "dur": "PT40S",
-   "views_now": 461
-  },
-  {
-   "video": "rlw6g-LOH6E",
-   "views": 1,
-   "averageViewPercentage": 0.45000000000000007,
-   "averageViewDuration": 0,
-   "subscribersGained": 0,
-   "likes": 0,
-   "shares": 0,
-   "comments": 0,
-   "title": "What Would a Lunar Colony Look Like",
-   "published": "2025-01-04T14:51:26Z",
-   "dur": "PT44S",
-   "views_now": 1
+   "title": "What If Trump’s Tariffs Broke the World Economy?",
+   "published": "2024-12-14T13:54:39Z",
+   "dur": "PT5M5S",
+   "views_now": 133
   },
   {
    "video": "Dir17IqzMLA",
@@ -1729,6 +1758,20 @@
    "published": "2024-12-14T20:56:09Z",
    "dur": "PT30S",
    "views_now": 535
+  },
+  {
+   "video": "nm80P5OFlso",
+   "views": 1,
+   "averageViewPercentage": 65.92,
+   "averageViewDuration": 32,
+   "subscribersGained": 0,
+   "likes": 0,
+   "shares": 0,
+   "comments": 0,
+   "title": "#1 Did Assads Fall Just Spark World War 3!",
+   "published": "2024-12-14T21:19:38Z",
+   "dur": "PT49S",
+   "views_now": 29
   },
   {
    "video": "UOtInj9iei0",
@@ -1759,6 +1802,34 @@
    "views_now": 72
   },
   {
+   "video": "5c41Yf3STq0",
+   "views": 1,
+   "averageViewPercentage": 31.5,
+   "averageViewDuration": 12,
+   "subscribersGained": 0,
+   "likes": 0,
+   "shares": 0,
+   "comments": 0,
+   "title": "What if humans could live forever?",
+   "published": "2024-12-02T23:00:04Z",
+   "dur": "PT40S",
+   "views_now": 461
+  },
+  {
+   "video": "rlw6g-LOH6E",
+   "views": 1,
+   "averageViewPercentage": 0.45000000000000007,
+   "averageViewDuration": 0,
+   "subscribersGained": 0,
+   "likes": 0,
+   "shares": 0,
+   "comments": 0,
+   "title": "What Would a Lunar Colony Look Like",
+   "published": "2025-01-04T14:51:26Z",
+   "dur": "PT44S",
+   "views_now": 1
+  },
+  {
    "video": "V8Kx9KZxQV8",
    "views": 1,
    "averageViewPercentage": 4.61,
@@ -1771,6 +1842,20 @@
    "published": "2024-11-18T17:00:36Z",
    "dur": "PT46S",
    "views_now": 586
+  },
+  {
+   "video": "_O8_d-NxNYg",
+   "views": 1,
+   "averageViewPercentage": 4.96,
+   "averageViewDuration": 2,
+   "subscribersGained": 0,
+   "likes": 0,
+   "shares": 0,
+   "comments": 0,
+   "title": "Who Owns the Moon  The Legal Dilemma",
+   "published": "2025-01-04T14:51:33Z",
+   "dur": "PT47S",
+   "views_now": 1
   },
   {
    "video": "rBUTnnac_3w",
@@ -1801,18 +1886,18 @@
    "views_now": 407
   },
   {
-   "video": "mhe9tugOD-E",
+   "video": "lmXWOy0NtGQ",
    "views": 1,
-   "averageViewPercentage": 0.64,
-   "averageViewDuration": 4,
+   "averageViewPercentage": 0,
+   "averageViewDuration": 0,
    "subscribersGained": 0,
    "likes": 0,
    "shares": 0,
    "comments": 0,
-   "title": "What If We Permanently Eliminated Nighttime?",
-   "published": "2026-10-30T20:15:46Z",
-   "dur": "PT10M49S",
-   "views_now": 3
+   "title": "What if the Sun Never Set #facts #doomsdayscenario #space #beyondgravity #motivation  #science",
+   "published": "2024-11-29T11:00:58Z",
+   "dur": "PT33S",
+   "views_now": 433
   },
   {
    "video": "ijcnuSmcUKc",
@@ -1827,20 +1912,6 @@
    "published": "2024-12-25T17:28:13Z",
    "dur": "PT39S",
    "views_now": 443
-  },
-  {
-   "video": "tyNnH4fnLu4",
-   "views": 0,
-   "averageViewPercentage": 0,
-   "averageViewDuration": 0,
-   "subscribersGained": 0,
-   "likes": 0,
-   "shares": 0,
-   "comments": 0,
-   "title": "What If Science Didn't Need Humans? #shorts",
-   "published": "2026-11-02T12:31:09Z",
-   "dur": "PT44S",
-   "views_now": 1
   }
  ],
  "video_daily": []
