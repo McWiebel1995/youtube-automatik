@@ -5,15 +5,11 @@
  },
  "Earth and oceans": {
   "n": 1,
-  "score": 0.584
+  "score": 0.582
  },
  "oceans and sea life": {
   "n": 1,
   "score": 0.568
- },
- "ancient Rome and its engineering": {
-  "n": 1,
-  "score": 0.55
  },
  "animals": {
   "n": 2,
@@ -21,11 +17,11 @@
  },
  "space and planets": {
   "n": 2,
-  "score": 0.329
+  "score": 0.334
  },
  "trees and plants": {
   "n": 1,
-  "score": 0.239
+  "score": 0.236
  },
  "black holes and stars": {
   "n": 1,
@@ -34,5 +30,9 @@
  "dinosaurs": {
   "n": 2,
   "score": 0.207
+ },
+ "insects": {
+  "n": 1,
+  "score": 0.116
  }
 }
