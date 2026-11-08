@@ -1,19 +1,19 @@
 {
- "generated": "2026-11-06T12:46:11+00:00",
- "start": "2026-09-07",
- "end": "2026-11-06",
+ "generated": "2026-11-08T22:50:22+00:00",
+ "start": "2026-09-09",
+ "end": "2026-11-08",
  "youtube": [
   {
    "key": "regen",
    "name": "Calm Haven Rain",
    "subs": 4,
-   "views_total": 2370,
+   "views_total": 2597,
    "made_for_kids": null,
    "videos": [
     {
-     "id": "l9EZXQczbig",
-     "title": "Soft rain on the porch – let your mind rest 🌧️ #shorts",
-     "published": "2026-11-06T03:24:57Z",
+     "id": "swh-R2KoHc0",
+     "title": "Rain on the porch – exhale and let your mind rest 🌧 #shorts",
+     "published": "2026-11-08T03:18:06Z",
      "seconds": 41,
      "privacy": "private",
      "views": 0,
@@ -22,24 +22,93 @@
      "tags": [
       "ambience",
       "asmrsleep",
-      "cozy rain on porch",
+      "cozy rain porch",
       "cozyvibes",
-      "gentle rain on porch",
-      "heavy rain on porch",
-      "porch rain ambience",
+      "gentle rain sounds",
+      "peaceful rain sounds",
+      "porch rain sounds",
       "rain",
-      "rain ambience for study",
+      "rain ambience for sleep",
+      "rain on porch roof"
+     ],
+     "has_desc": 313
+    },
+    {
+     "id": "ctTBBBy4K0w",
+     "title": "Rain on the Porch – 1 Hour of Rain Sounds for Sleeping",
+     "published": "2026-11-08T03:14:03Z",
+     "seconds": 3601,
+     "privacy": "private",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "1 hour rain sounds",
+      "ASMR",
+      "cozy porch rain",
+      "distant thunder",
+      "distant thunder and rain",
+      "gentle rain",
+      "gentle rain sounds",
+      "rain",
+      "rain ambience 1 hour",
       "rain on porch"
      ],
-     "has_desc": 343
+     "has_desc": 676
+    },
+    {
+     "id": "rN7FFFcCfrE",
+     "title": "Rain Sounds for Sleep | Rain on Window | 3 Hours with Thunder",
+     "published": "2026-11-08T00:30:28Z",
+     "seconds": 10801,
+     "privacy": "public",
+     "views": 1,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "3 hours rain sounds",
+      "ASMR",
+      "cozy rain sounds",
+      "distant thunder",
+      "distant thunder and rain",
+      "gentle rain",
+      "gentle rain sounds for sleeping",
+      "heavy rain on window",
+      "rain",
+      "rain noise for sleep"
+     ],
+     "has_desc": 762
+    },
+    {
+     "id": "kdlcs6YpY08",
+     "title": "Rain on glass - breathe and let go #shorts",
+     "published": "2026-11-08T00:30:10Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "ambience",
+      "ambient rain noise",
+      "asmrsleep",
+      "breathe and let go",
+      "calming rain sounds",
+      "cozyvibes",
+      "natural rain sounds",
+      "rain",
+      "rain ambience for study",
+      "rain background noise"
+     ],
+     "has_desc": 304
     },
     {
      "id": "jLoZuCcLcGA",
      "title": "Rain Sounds for Sleep | Rain on the Porch | 2 Hours with Thunder",
-     "published": "2026-11-06T03:20:18Z",
+     "published": "2026-11-07T00:30:35Z",
      "seconds": 7201,
-     "privacy": "private",
-     "views": 0,
+     "privacy": "public",
+     "views": 8,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -57,13 +126,42 @@
      "has_desc": 750
     },
     {
+     "id": "l9EZXQczbig",
+     "title": "Soft rain on the porch – let your mind rest 🌧️ #shorts",
+     "published": "2026-11-07T00:30:12Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 92,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "ambience",
+      "asmrsleep",
+      "cozy rain on porch",
+      "cozyvibes",
+      "gentle rain on porch",
+      "heavy rain on porch",
+      "porch rain ambience",
+      "rain",
+      "rain ambience for study",
+      "rain on porch"
+     ],
+     "has_desc": 343,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 9,
+     "averageViewPercentage": 22.6,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 12
+    },
+    {
      "id": "M54MO4X1JFQ",
      "title": "Rain in the forest, breathe and let go 🌲 #shorts",
      "published": "2026-11-06T00:30:38Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 13,
-     "likes": 1,
+     "views": 56,
+     "likes": 3,
      "comments": 0,
      "tags": [
       "2 hours rain sounds",
@@ -77,7 +175,13 @@
       "gentle forest rain",
       "heavy rain in the forest"
      ],
-     "has_desc": 338
+     "has_desc": 338,
+     "estimatedMinutesWatched": 3,
+     "averageViewDuration": 36,
+     "averageViewPercentage": 89.27,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 36
     },
     {
      "id": "GWYjSSbS0d4",
@@ -85,7 +189,7 @@
      "published": "2026-11-06T00:30:31Z",
      "seconds": 7201,
      "privacy": "public",
-     "views": 1,
+     "views": 4,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -100,7 +204,13 @@
       "peaceful rain sounds",
       "rain"
      ],
-     "has_desc": 686
+     "has_desc": 686,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 12,
+     "averageViewPercentage": 0.18,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 4
     },
     {
      "id": "EgGDoeszOA8",
@@ -131,8 +241,8 @@
      "published": "2026-11-05T00:30:15Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 79,
-     "likes": 3,
+     "views": 92,
+     "likes": 4,
      "comments": 0,
      "tags": [
       "ambience",
@@ -146,7 +256,13 @@
       "peaceful rain audio",
       "rain"
      ],
-     "has_desc": 310
+     "has_desc": 310,
+     "estimatedMinutesWatched": 114,
+     "averageViewDuration": 233,
+     "averageViewPercentage": 569.97,
+     "subscribersGained": 1,
+     "shares": 0,
+     "a_views": 92
     },
     {
      "id": "Alqov-fp4JM",
@@ -154,7 +270,7 @@
      "published": "2026-11-04T00:30:28Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 119,
+     "views": 120,
      "likes": 3,
      "comments": 0,
      "tags": [
@@ -170,12 +286,12 @@
       "rain"
      ],
      "has_desc": 298,
-     "estimatedMinutesWatched": 101,
-     "averageViewDuration": 549,
-     "averageViewPercentage": 1341.1,
+     "estimatedMinutesWatched": 111,
+     "averageViewDuration": 160,
+     "averageViewPercentage": 390.34,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 30
+     "a_views": 120
     },
     {
      "id": "Frk1AgTk33o",
@@ -183,7 +299,7 @@
      "published": "2026-11-04T00:30:15Z",
      "seconds": 3601,
      "privacy": "public",
-     "views": 27,
+     "views": 34,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -199,12 +315,12 @@
       "nature sounds for sleeping"
      ],
      "has_desc": 660,
-     "estimatedMinutesWatched": 0,
-     "averageViewDuration": 17,
-     "averageViewPercentage": 0.4699999999999999,
+     "estimatedMinutesWatched": 133,
+     "averageViewDuration": 381,
+     "averageViewPercentage": 10.59,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 1
+     "a_views": 34
     },
     {
      "id": "R0devDuk4VE",
@@ -212,7 +328,7 @@
      "published": "2026-11-03T00:30:38Z",
      "seconds": 10801,
      "privacy": "public",
-     "views": 8,
+     "views": 9,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -258,11 +374,11 @@
      ],
      "has_desc": 318,
      "estimatedMinutesWatched": 6,
-     "averageViewDuration": 19,
-     "averageViewPercentage": 48.2,
+     "averageViewDuration": 17,
+     "averageViewPercentage": 42.81,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 84
+     "a_views": 115
     },
     {
      "id": "ZSBnhV5kbLE",
@@ -270,7 +386,7 @@
      "published": "2026-11-02T00:30:20Z",
      "seconds": 10801,
      "privacy": "public",
-     "views": 27,
+     "views": 34,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -286,12 +402,12 @@
       "rain and thunder for sleep"
      ],
      "has_desc": 694,
-     "estimatedMinutesWatched": 114,
-     "averageViewDuration": 458,
-     "averageViewPercentage": 4.25,
+     "estimatedMinutesWatched": 140,
+     "averageViewDuration": 526,
+     "averageViewPercentage": 4.88,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 25
+     "a_views": 28
     },
     {
      "id": "-DNiKVi4mis",
@@ -299,7 +415,7 @@
      "published": "2026-11-02T00:30:08Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 67,
+     "views": 68,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -317,10 +433,10 @@
      "has_desc": 302,
      "estimatedMinutesWatched": 3,
      "averageViewDuration": 9,
-     "averageViewPercentage": 23.86,
+     "averageViewPercentage": 23.22,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 70
+     "a_views": 68
     },
     {
      "id": "5hdb2z8AzDg",
@@ -346,10 +462,10 @@
      "has_desc": 664,
      "estimatedMinutesWatched": 169,
      "averageViewDuration": 339,
-     "averageViewPercentage": 4.72,
+     "averageViewPercentage": 4.71,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 39
+     "a_views": 40
     },
     {
      "id": "7fhS1OvSq04",
@@ -357,7 +473,7 @@
      "published": "2026-11-01T00:30:03Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 83,
+     "views": 84,
      "likes": 3,
      "comments": 0,
      "tags": [
@@ -374,11 +490,11 @@
      ],
      "has_desc": 320,
      "estimatedMinutesWatched": 8,
-     "averageViewDuration": 17,
-     "averageViewPercentage": 42.16,
+     "averageViewDuration": 16,
+     "averageViewPercentage": 40.92,
      "subscribersGained": 1,
      "shares": 0,
-     "a_views": 83
+     "a_views": 84
     },
     {
      "id": "KGw8fxpqurI",
@@ -386,8 +502,8 @@
      "published": "2026-10-31T00:30:38Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 651,
-     "likes": 8,
+     "views": 653,
+     "likes": 10,
      "comments": 0,
      "tags": [
       "ambience",
@@ -404,10 +520,10 @@
      "has_desc": 306,
      "estimatedMinutesWatched": 43,
      "averageViewDuration": 14,
-     "averageViewPercentage": 34.53,
+     "averageViewPercentage": 34.33,
      "subscribersGained": 0,
      "shares": 1,
-     "a_views": 650
+     "a_views": 652
     },
     {
      "id": "EXoGtuh5yxI",
@@ -444,8 +560,8 @@
      "published": "2026-10-30T00:30:21Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 233,
-     "likes": 1,
+     "views": 235,
+     "likes": 2,
      "comments": 0,
      "tags": [
       "ambience",
@@ -461,11 +577,11 @@
      ],
      "has_desc": 313,
      "estimatedMinutesWatched": 20,
-     "averageViewDuration": 25,
-     "averageViewPercentage": 61.79,
+     "averageViewDuration": 24,
+     "averageViewPercentage": 59.43999999999999,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 228
+     "a_views": 234
     },
     {
      "id": "DLnYg-aNe_0",
@@ -518,12 +634,12 @@
       "rain"
      ],
      "has_desc": 616,
-     "estimatedMinutesWatched": 264,
-     "averageViewDuration": 643,
-     "averageViewPercentage": 5.96,
+     "estimatedMinutesWatched": 266,
+     "averageViewDuration": 638,
+     "averageViewPercentage": 5.91,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 27
+     "a_views": 28
     },
     {
      "id": "e1jkda4PfAA",
@@ -531,8 +647,8 @@
      "published": "2026-10-29T00:30:02Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 3,
-     "likes": 0,
+     "views": 8,
+     "likes": 1,
      "comments": 0,
      "tags": [
       "ambience",
@@ -548,11 +664,11 @@
      ],
      "has_desc": 273,
      "estimatedMinutesWatched": 0,
-     "averageViewDuration": 7,
-     "averageViewPercentage": 17.32,
+     "averageViewDuration": 6,
+     "averageViewPercentage": 15.98,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 3
+     "a_views": 4
     },
     {
      "id": "xY1zX2en6hk",
@@ -605,12 +721,12 @@
       "rain"
      ],
      "has_desc": 675,
-     "estimatedMinutesWatched": 75,
-     "averageViewDuration": 450,
-     "averageViewPercentage": 4.17,
+     "estimatedMinutesWatched": 107,
+     "averageViewDuration": 534,
+     "averageViewPercentage": 4.95,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 17
+     "a_views": 20
     },
     {
      "id": "PclW3lPQvPI",
@@ -618,7 +734,7 @@
      "published": "2026-10-27T00:30:33Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 215,
+     "views": 217,
      "likes": 4,
      "comments": 0,
      "tags": [
@@ -639,7 +755,7 @@
      "averageViewPercentage": 20.21,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 215
+     "a_views": 216
     },
     {
      "id": "GdPDhMtvs9g",
@@ -693,11 +809,11 @@
      ],
      "has_desc": 645,
      "estimatedMinutesWatched": 242,
-     "averageViewDuration": 2078,
-     "averageViewPercentage": 28.859999999999996,
+     "averageViewDuration": 1820,
+     "averageViewPercentage": 25.28,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 8
+     "a_views": 9
     },
     {
      "id": "j_bdHcFm1DM",
@@ -705,7 +821,7 @@
      "published": "2026-10-26T00:30:29Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 50,
+     "views": 52,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -722,11 +838,11 @@
      ],
      "has_desc": 332,
      "estimatedMinutesWatched": 2,
-     "averageViewDuration": 8,
-     "averageViewPercentage": 20.54,
+     "averageViewDuration": 10,
+     "averageViewPercentage": 24.75,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 49
+     "a_views": 50
     },
     {
      "id": "DvdeEnrmIkk",
@@ -757,7 +873,7 @@
      "published": "2026-10-25T00:30:19Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 92,
+     "views": 99,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -773,12 +889,12 @@
       "rain"
      ],
      "has_desc": 297,
-     "estimatedMinutesWatched": 11,
-     "averageViewDuration": 23,
-     "averageViewPercentage": 56.61000000000001,
+     "estimatedMinutesWatched": 17,
+     "averageViewDuration": 35,
+     "averageViewPercentage": 87.05,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 92
+     "a_views": 97
     },
     {
      "id": "pyu8iiSKSlE",
@@ -825,12 +941,12 @@
       "rain ambience for sleep"
      ],
      "has_desc": 286,
-     "estimatedMinutesWatched": 78,
-     "averageViewDuration": 330,
-     "averageViewPercentage": 805.9300000000001,
+     "estimatedMinutesWatched": 120,
+     "averageViewDuration": 476,
+     "averageViewPercentage": 1162.05,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 69
+     "a_views": 75
     },
     {
      "id": "_iEdLoxK4qM",
@@ -838,7 +954,7 @@
      "published": "2026-10-22T18:00:22Z",
      "seconds": 10801,
      "privacy": "public",
-     "views": 12,
+     "views": 14,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -854,12 +970,12 @@
       "rain ambience 3 hours"
      ],
      "has_desc": 690,
-     "estimatedMinutesWatched": 362,
-     "averageViewDuration": 1814,
-     "averageViewPercentage": 16.8,
+     "estimatedMinutesWatched": 430,
+     "averageViewDuration": 1987,
+     "averageViewPercentage": 18.41,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 12
+     "a_views": 13
     },
     {
      "id": "IlHbMu-VBwQ",
@@ -883,12 +999,12 @@
       "porch rain soundscape"
      ],
      "has_desc": 668,
-     "estimatedMinutesWatched": 442,
-     "averageViewDuration": 1062,
-     "averageViewPercentage": 29.51,
+     "estimatedMinutesWatched": 443,
+     "averageViewDuration": 986,
+     "averageViewPercentage": 27.390000000000004,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 27
+     "a_views": 29
     },
     {
      "id": "tmjDWchyxDE",
@@ -926,28 +1042,28 @@
    "traffic": [
     {
      "insightTrafficSourceType": "SHORTS",
-     "views": 1874,
-     "estimatedMinutesWatched": 312
+     "views": 2125,
+     "estimatedMinutesWatched": 441
     },
     {
      "insightTrafficSourceType": "RELATED_VIDEO",
-     "views": 150,
-     "estimatedMinutesWatched": 1521
+     "views": 178,
+     "estimatedMinutesWatched": 1722
     },
     {
      "insightTrafficSourceType": "YT_SEARCH",
-     "views": 69,
+     "views": 80,
      "estimatedMinutesWatched": 3
     },
     {
      "insightTrafficSourceType": "SUBSCRIBER",
-     "views": 34,
-     "estimatedMinutesWatched": 3
+     "views": 58,
+     "estimatedMinutesWatched": 66
     },
     {
      "insightTrafficSourceType": "YT_CHANNEL",
-     "views": 23,
-     "estimatedMinutesWatched": 2
+     "views": 39,
+     "estimatedMinutesWatched": 50
     },
     {
      "insightTrafficSourceType": "NO_LINK_OTHER",
@@ -956,7 +1072,7 @@
     },
     {
      "insightTrafficSourceType": "YT_OTHER_PAGE",
-     "views": 9,
+     "views": 10,
      "estimatedMinutesWatched": 15
     },
     {
@@ -968,8 +1084,8 @@
    "countries": [
     {
      "country": "US",
-     "views": 323,
-     "estimatedMinutesWatched": 206
+     "views": 349,
+     "estimatedMinutesWatched": 208
     },
     {
      "country": "ID",
@@ -1011,26 +1127,16 @@
    "content_type": [
     {
      "creatorContentType": "shorts",
-     "views": 1997,
-     "estimatedMinutesWatched": 318
+     "views": 2250,
+     "estimatedMinutesWatched": 497
     },
     {
      "creatorContentType": "videoOnDemand",
-     "views": 205,
-     "estimatedMinutesWatched": 1721
+     "views": 253,
+     "estimatedMinutesWatched": 1979
     }
    ],
    "daily": [
-    {
-     "day": "2026-09-07",
-     "views": 0,
-     "subscribersGained": 0
-    },
-    {
-     "day": "2026-09-08",
-     "views": 0,
-     "subscribersGained": 0
-    },
     {
      "day": "2026-09-09",
      "views": 0,
@@ -1303,12 +1409,27 @@
     },
     {
      "day": "2026-11-02",
-     "views": 128,
+     "views": 124,
      "subscribersGained": 0
     },
     {
      "day": "2026-11-03",
-     "views": 147,
+     "views": 145,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-04",
+     "views": 155,
+     "subscribersGained": 1
+    },
+    {
+     "day": "2026-11-05",
+     "views": 97,
+     "subscribersGained": 1
+    },
+    {
+     "day": "2026-11-06",
+     "views": 85,
      "subscribersGained": 0
     }
    ]
@@ -1317,38 +1438,107 @@
    "key": "kamin",
    "name": "Calm Haven Fireside",
    "subs": 5,
-   "views_total": 1018,
+   "views_total": 1072,
    "made_for_kids": null,
    "videos": [
     {
-     "id": "-JajdVNc53U",
-     "title": "Quiet country hearth – close your eyes 🕯️ #shorts",
-     "published": "2026-11-06T03:21:49Z",
+     "id": "lOgTSFQFodQ",
+     "title": "Quiet autumn hearth – close your eyes 🍂 #shorts",
+     "published": "2026-11-08T03:21:38Z",
      "seconds": 41,
      "privacy": "private",
      "views": 0,
      "likes": 0,
      "comments": 0,
      "tags": [
-      "2 hours fireplace sounds",
       "ambience",
-      "country house fireplace",
+      "autumn fireplace ambience",
+      "autumn hearth ambience",
       "cozy",
       "cozy fireplace ambience",
-      "cozy hearth ambience",
+      "cozy fireplace with wind",
       "cozyvibes",
-      "crackling fire for relaxation",
-      "crackling fireplace sounds",
-      "cracklingfire"
+      "crackling fire and wind",
+      "crackling fire sounds for sleeping",
+      "crackling fireplace"
      ],
      "has_desc": 354
     },
     {
+     "id": "EAmhXXI-uFg",
+     "title": "Cozy Fireplace | Autumn Evening by the Fire | 3 Hours with Wind",
+     "published": "2026-11-08T03:19:18Z",
+     "seconds": 10801,
+     "privacy": "private",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "3 hours fireplace",
+      "ambience",
+      "autumn evening by the fire",
+      "autumn fireplace ambience",
+      "cozy",
+      "cozy autumn evening ambience",
+      "cozy fireplace",
+      "crackling fire",
+      "crackling fire sounds",
+      "crackling fireplace"
+     ],
+     "has_desc": 670
+    },
+    {
+     "id": "plX9qfu_BT0",
+     "title": "Cozy Fireplace | Country House Fireplace | 1 Hour",
+     "published": "2026-11-08T00:30:39Z",
+     "seconds": 3601,
+     "privacy": "public",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "ambience",
+      "country house fireplace",
+      "cozy",
+      "cozy fireplace",
+      "cozy winter fire",
+      "crackling fire",
+      "crackling fire 1 hour",
+      "crackling fireplace",
+      "crackling fireplace sounds",
+      "fire sounds"
+     ],
+     "has_desc": 659
+    },
+    {
+     "id": "zuIBbXyJuhs",
+     "title": "Country hearth, pure peace – breathe deep #shorts",
+     "published": "2026-11-08T00:30:14Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 1,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "ambience",
+      "ambient fireplace noise",
+      "country hearth fireplace",
+      "country house fireplace ambience",
+      "cozy",
+      "cozy fireplace sleep",
+      "cozyvibes",
+      "crackling fireplace sounds",
+      "cracklingfire",
+      "fireplace"
+     ],
+     "has_desc": 324
+    },
+    {
      "id": "R7SoK0VpcCk",
      "title": "2 Hours of Crackling Fire Sounds – Country House Fireplace",
-     "published": "2026-11-06T03:19:10Z",
+     "published": "2026-11-07T00:30:26Z",
      "seconds": 7201,
-     "privacy": "private",
+     "privacy": "public",
      "views": 0,
      "likes": 0,
      "comments": 0,
@@ -1367,12 +1557,41 @@
      "has_desc": 699
     },
     {
+     "id": "-JajdVNc53U",
+     "title": "Quiet country hearth – close your eyes 🕯️ #shorts",
+     "published": "2026-11-07T00:30:21Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 45,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "2 hours fireplace sounds",
+      "ambience",
+      "country house fireplace",
+      "cozy",
+      "cozy fireplace ambience",
+      "cozy hearth ambience",
+      "cozyvibes",
+      "crackling fire for relaxation",
+      "crackling fireplace sounds",
+      "cracklingfire"
+     ],
+     "has_desc": 354,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 9,
+     "averageViewPercentage": 23.04,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 19
+    },
+    {
      "id": "a8RrpYHLro0",
      "title": "Snowy cabin, soft fire – breathe out #shorts",
      "published": "2026-11-06T00:30:26Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 7,
+     "views": 12,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1387,7 +1606,13 @@
       "fireplace",
       "fireplace ambience for sleep"
      ],
-     "has_desc": 310
+     "has_desc": 310,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 8,
+     "averageViewPercentage": 19.72,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 6
     },
     {
      "id": "8-kRLuAo4sA",
@@ -1485,7 +1710,7 @@
      "averageViewPercentage": 17.56,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 11
+     "a_views": 14
     },
     {
      "id": "nFStHV4CJaU",
@@ -1537,7 +1762,7 @@
      "averageViewPercentage": 132.89,
      "subscribersGained": 1,
      "shares": 0,
-     "a_views": 21
+     "a_views": 20
     },
     {
      "id": "tXLl8lzuAms",
@@ -1742,7 +1967,7 @@
      "has_desc": 298,
      "estimatedMinutesWatched": 2,
      "averageViewDuration": 11,
-     "averageViewPercentage": 27.33,
+     "averageViewPercentage": 27.24,
      "subscribersGained": 2,
      "shares": 0,
      "a_views": 42
@@ -1943,12 +2168,12 @@
       "crackling fire sounds for sleeping"
      ],
      "has_desc": 346,
-     "estimatedMinutesWatched": 16,
+     "estimatedMinutesWatched": 17,
      "averageViewDuration": 14,
-     "averageViewPercentage": 35.33,
+     "averageViewPercentage": 35.27,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 246
+     "a_views": 247
     },
     {
      "id": "pKTybwzW8pc",
@@ -2006,7 +2231,7 @@
      "averageViewPercentage": 608.49,
      "subscribersGained": 0,
      "shares": 1,
-     "a_views": 124
+     "a_views": 126
     },
     {
      "id": "9555oWVmhYo",
@@ -2197,7 +2422,7 @@
      "averageViewPercentage": 0.51,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 2
+     "a_views": 3
     }
    ],
    "errors": [
@@ -2206,12 +2431,12 @@
    "traffic": [
     {
      "insightTrafficSourceType": "SHORTS",
-     "views": 938,
-     "estimatedMinutesWatched": 63
+     "views": 965,
+     "estimatedMinutesWatched": 64
     },
     {
      "insightTrafficSourceType": "YT_SEARCH",
-     "views": 48,
+     "views": 52,
      "estimatedMinutesWatched": 3
     },
     {
@@ -2261,26 +2486,16 @@
    "content_type": [
     {
      "creatorContentType": "shorts",
-     "views": 1001,
-     "estimatedMinutesWatched": 196
+     "views": 1024,
+     "estimatedMinutesWatched": 198
     },
     {
      "creatorContentType": "videoOnDemand",
-     "views": 21,
+     "views": 22,
      "estimatedMinutesWatched": 96
     }
    ],
    "daily": [
-    {
-     "day": "2026-09-07",
-     "views": 0,
-     "subscribersGained": 0
-    },
-    {
-     "day": "2026-09-08",
-     "views": 0,
-     "subscribersGained": 0
-    },
     {
      "day": "2026-09-09",
      "views": 0,
@@ -2508,7 +2723,7 @@
     },
     {
      "day": "2026-10-24",
-     "views": 233,
+     "views": 237,
      "subscribersGained": 2
     },
     {
@@ -2553,12 +2768,27 @@
     },
     {
      "day": "2026-11-02",
-     "views": 25,
+     "views": 24,
      "subscribersGained": 1
     },
     {
      "day": "2026-11-03",
-     "views": 53,
+     "views": 51,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-04",
+     "views": 9,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-05",
+     "views": 6,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-06",
+     "views": 19,
      "subscribersGained": 0
     }
    ]
@@ -2567,16 +2797,108 @@
    "key": "wasserfall",
    "name": "Calm Haven Waters",
    "subs": 3,
-   "views_total": 1633,
+   "views_total": 1696,
    "made_for_kids": null,
    "videos": [
     {
-     "id": "OHJVq44wwwg",
-     "title": "Gentle woodland stream – close your eyes 🍃 #shorts",
-     "published": "2026-11-06T03:27:02Z",
+     "id": "HmH9XUfoDWk",
+     "title": "Misty morning waterfall – let yourself drift 🌫️ #shorts",
+     "published": "2026-11-08T03:22:39Z",
      "seconds": 41,
      "privacy": "private",
      "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "calm",
+      "calming nature sounds",
+      "deep sleep water sounds",
+      "focusmusic",
+      "meditation",
+      "misty morning waterfall",
+      "natural water sounds for meditation",
+      "nature sounds for sleeping",
+      "naturesounds",
+      "peaceful waterfall sounds"
+     ],
+     "has_desc": 336
+    },
+    {
+     "id": "NScxspPOSqQ",
+     "title": "Waterfall Sounds for Sleep | Misty Morning Waterfall | 3 Hours",
+     "published": "2026-11-08T03:19:50Z",
+     "seconds": 10801,
+     "privacy": "private",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "3 hours waterfall sounds",
+      "meditation",
+      "misty morning waterfall",
+      "nature sounds",
+      "nature sounds 3 hours",
+      "nature sounds for sleeping",
+      "relaxing",
+      "relaxing waterfall sounds",
+      "sleep",
+      "sleep sounds waterfall"
+     ],
+     "has_desc": 655
+    },
+    {
+     "id": "ZilwvYWcxNc",
+     "title": "Misty morning waterfall – close your eyes 🌫️ #shorts",
+     "published": "2026-11-08T00:30:37Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 11,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "calm",
+      "calming water sounds",
+      "deep sleep water sounds",
+      "focusmusic",
+      "forest stream sounds",
+      "gentle waterfall sounds",
+      "meditation",
+      "misty morning waterfall",
+      "nature sounds for sleeping",
+      "nature sounds for study and focus"
+     ],
+     "has_desc": 344
+    },
+    {
+     "id": "cCwg6wTB3JM",
+     "title": "Waterfall Sounds for Sleep | Misty Morning Waterfall | 1 Hour",
+     "published": "2026-11-08T00:30:03Z",
+     "seconds": 3601,
+     "privacy": "public",
+     "views": 1,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "calming water sounds",
+      "deep sleep nature sounds",
+      "forest stream sounds",
+      "masking tinnitus sounds",
+      "meditation",
+      "misty morning waterfall",
+      "nature sounds",
+      "nature sounds for sleeping",
+      "relaxing",
+      "relaxing waterfall noise"
+     ],
+     "has_desc": 604
+    },
+    {
+     "id": "OHJVq44wwwg",
+     "title": "Gentle woodland stream – close your eyes 🍃 #shorts",
+     "published": "2026-11-07T00:30:26Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 38,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -2591,14 +2913,20 @@
       "meditation",
       "nature sounds for sleep"
      ],
-     "has_desc": 340
+     "has_desc": 340,
+     "estimatedMinutesWatched": 1,
+     "averageViewDuration": 9,
+     "averageViewPercentage": 24.26,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 33
     },
     {
      "id": "NtkRlNcbxW8",
      "title": "3 Hours of Gentle Forest Stream – Nature Sounds with Birdsong",
-     "published": "2026-11-06T03:18:41Z",
+     "published": "2026-11-07T00:30:03Z",
      "seconds": 10801,
-     "privacy": "private",
+     "privacy": "public",
      "views": 0,
      "likes": 0,
      "comments": 0,
@@ -2622,7 +2950,7 @@
      "published": "2026-11-06T00:30:37Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 0,
+     "views": 1,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -2637,7 +2965,13 @@
       "nature sounds for focus",
       "naturesounds"
      ],
-     "has_desc": 325
+     "has_desc": 325,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 0,
+     "averageViewPercentage": 0,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "HcDFixjks2M",
@@ -2730,12 +3064,12 @@
       "naturesounds"
      ],
      "has_desc": 354,
-     "estimatedMinutesWatched": 0,
-     "averageViewDuration": 8,
-     "averageViewPercentage": 21.46,
+     "estimatedMinutesWatched": 1,
+     "averageViewDuration": 20,
+     "averageViewPercentage": 50.17,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 4
+     "a_views": 9
     },
     {
      "id": "xAK0EajNWNo",
@@ -2766,7 +3100,7 @@
      "published": "2026-11-03T00:30:32Z",
      "seconds": 3601,
      "privacy": "public",
-     "views": 0,
+     "views": 2,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -2781,7 +3115,13 @@
       "nature sounds for sleeping 1 hour",
       "rainforest waterfall"
      ],
-     "has_desc": 718
+     "has_desc": 718,
+     "estimatedMinutesWatched": 60,
+     "averageViewDuration": 3600,
+     "averageViewPercentage": 99.98,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "rq3GbqgewXU",
@@ -2805,12 +3145,12 @@
       "rainforest waterfall sounds"
      ],
      "has_desc": 351,
-     "estimatedMinutesWatched": 0,
-     "averageViewDuration": 4,
-     "averageViewPercentage": 10.53,
+     "estimatedMinutesWatched": 1,
+     "averageViewDuration": 8,
+     "averageViewPercentage": 20.1,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 12
+     "a_views": 15
     },
     {
      "id": "EpOl4AGz3wQ",
@@ -2818,7 +3158,7 @@
      "published": "2026-11-02T00:30:16Z",
      "seconds": 10801,
      "privacy": "public",
-     "views": 0,
+     "views": 1,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -2833,7 +3173,13 @@
       "rainforest waterfall",
       "rainforest waterfall sounds"
      ],
-     "has_desc": 674
+     "has_desc": 674,
+     "estimatedMinutesWatched": 22,
+     "averageViewDuration": 1373,
+     "averageViewPercentage": 12.710000000000003,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "Qxff8AxwqZI",
@@ -2870,7 +3216,7 @@
      "published": "2026-11-01T00:30:31Z",
      "seconds": 7201,
      "privacy": "public",
-     "views": 39,
+     "views": 43,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -2886,12 +3232,12 @@
       "naturesounds"
      ],
      "has_desc": 709,
-     "estimatedMinutesWatched": 216,
-     "averageViewDuration": 499,
-     "averageViewPercentage": 6.94,
+     "estimatedMinutesWatched": 217,
+     "averageViewDuration": 481,
+     "averageViewPercentage": 6.69,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 39
+     "a_views": 41
     },
     {
      "id": "wkna8Lcv9-U",
@@ -2957,7 +3303,7 @@
      "published": "2026-10-31T00:30:10Z",
      "seconds": 3601,
      "privacy": "public",
-     "views": 9,
+     "views": 11,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -2973,12 +3319,12 @@
       "rainforest waterfall"
      ],
      "has_desc": 715,
-     "estimatedMinutesWatched": 128,
-     "averageViewDuration": 858,
-     "averageViewPercentage": 23.84,
+     "estimatedMinutesWatched": 188,
+     "averageViewDuration": 1132,
+     "averageViewPercentage": 31.46,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 9
+     "a_views": 10
     },
     {
      "id": "PFGW7XD2DUY",
@@ -2986,7 +3332,7 @@
      "published": "2026-10-30T00:30:31Z",
      "seconds": 3601,
      "privacy": "public",
-     "views": 5,
+     "views": 10,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -3002,12 +3348,12 @@
       "water sounds"
      ],
      "has_desc": 461,
-     "estimatedMinutesWatched": 2,
-     "averageViewDuration": 48,
-     "averageViewPercentage": 1.34,
+     "estimatedMinutesWatched": 237,
+     "averageViewDuration": 1781,
+     "averageViewPercentage": 49.47,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 4
+     "a_views": 9
     },
     {
      "id": "FpiD-YWA6_Q",
@@ -3073,7 +3419,7 @@
      "published": "2026-10-29T00:30:28Z",
      "seconds": 3601,
      "privacy": "public",
-     "views": 30,
+     "views": 31,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -3123,7 +3469,7 @@
      "averageViewPercentage": 6.05,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 8
+     "a_views": 7
     },
     {
      "id": "c6tZ3tY4b8k",
@@ -3189,7 +3535,7 @@
      "published": "2026-10-27T00:30:04Z",
      "seconds": 10801,
      "privacy": "public",
-     "views": 41,
+     "views": 42,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -3205,12 +3551,12 @@
       "nature sounds for focus"
      ],
      "has_desc": 663,
-     "estimatedMinutesWatched": 427,
-     "averageViewDuration": 1843,
-     "averageViewPercentage": 17.07,
+     "estimatedMinutesWatched": 587,
+     "averageViewDuration": 2514,
+     "averageViewPercentage": 23.28,
      "subscribersGained": 1,
      "shares": 0,
-     "a_views": 40
+     "a_views": 41
     },
     {
      "id": "cFoY_926UOs",
@@ -3305,7 +3651,7 @@
      "published": "2026-10-25T00:30:01Z",
      "seconds": 10801,
      "privacy": "public",
-     "views": 1,
+     "views": 2,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -3334,7 +3680,7 @@
      "published": "2026-10-24T00:30:34Z",
      "seconds": 7201,
      "privacy": "public",
-     "views": 2,
+     "views": 3,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -3438,8 +3784,8 @@
      ],
      "has_desc": 647,
      "estimatedMinutesWatched": 88,
-     "averageViewDuration": 354,
-     "averageViewPercentage": 9.84,
+     "averageViewDuration": 379,
+     "averageViewPercentage": 10.53,
      "subscribersGained": 0,
      "shares": 0,
      "a_views": 18
@@ -3450,7 +3796,7 @@
      "published": "2026-10-20T18:00:34Z",
      "seconds": 10801,
      "privacy": "public",
-     "views": 27,
+     "views": 28,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -3471,7 +3817,7 @@
      "averageViewPercentage": 14.510000000000002,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 26
+     "a_views": 27
     }
    ],
    "errors": [
@@ -3480,23 +3826,28 @@
    "traffic": [
     {
      "insightTrafficSourceType": "SHORTS",
-     "views": 1363,
-     "estimatedMinutesWatched": 263
+     "views": 1401,
+     "estimatedMinutesWatched": 265
     },
     {
      "insightTrafficSourceType": "RELATED_VIDEO",
-     "views": 96,
-     "estimatedMinutesWatched": 1351
+     "views": 105,
+     "estimatedMinutesWatched": 1829
     },
     {
      "insightTrafficSourceType": "SUBSCRIBER",
-     "views": 85,
+     "views": 86,
      "estimatedMinutesWatched": 41
     },
     {
      "insightTrafficSourceType": "YT_SEARCH",
-     "views": 77,
-     "estimatedMinutesWatched": 5
+     "views": 80,
+     "estimatedMinutesWatched": 6
+    },
+    {
+     "insightTrafficSourceType": "PLAYLIST",
+     "views": 8,
+     "estimatedMinutesWatched": 290
     },
     {
      "insightTrafficSourceType": "YT_OTHER_PAGE",
@@ -3504,19 +3855,14 @@
      "estimatedMinutesWatched": 0
     },
     {
-     "insightTrafficSourceType": "PLAYLIST",
-     "views": 7,
-     "estimatedMinutesWatched": 290
+     "insightTrafficSourceType": "NO_LINK_OTHER",
+     "views": 4,
+     "estimatedMinutesWatched": 180
     },
     {
      "insightTrafficSourceType": "YT_CHANNEL",
      "views": 4,
      "estimatedMinutesWatched": 9
-    },
-    {
-     "insightTrafficSourceType": "NO_LINK_OTHER",
-     "views": 3,
-     "estimatedMinutesWatched": 120
     }
    ],
    "countries": [
@@ -3578,26 +3924,16 @@
    "content_type": [
     {
      "creatorContentType": "shorts",
-     "views": 1453,
-     "estimatedMinutesWatched": 270
+     "views": 1472,
+     "estimatedMinutesWatched": 273
     },
     {
      "creatorContentType": "videoOnDemand",
-     "views": 200,
-     "estimatedMinutesWatched": 1815
+     "views": 205,
+     "estimatedMinutesWatched": 2350
     }
    ],
    "daily": [
-    {
-     "day": "2026-09-07",
-     "views": 0,
-     "subscribersGained": 0
-    },
-    {
-     "day": "2026-09-08",
-     "views": 0,
-     "subscribersGained": 0
-    },
     {
      "day": "2026-09-09",
      "views": 0,
@@ -3825,7 +4161,7 @@
     },
     {
      "day": "2026-10-24",
-     "views": 79,
+     "views": 82,
      "subscribersGained": 1
     },
     {
@@ -3870,12 +4206,27 @@
     },
     {
      "day": "2026-11-02",
-     "views": 126,
+     "views": 125,
      "subscribersGained": 0
     },
     {
      "day": "2026-11-03",
      "views": 18,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-04",
+     "views": 10,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-05",
+     "views": 1,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-06",
+     "views": 43,
      "subscribersGained": 0
     }
    ]
@@ -3884,16 +4235,62 @@
    "key": "schlaf",
    "name": "Mondmelodie",
    "subs": 1,
-   "views_total": 773,
+   "views_total": 942,
    "made_for_kids": null,
    "videos": [
+    {
+     "id": "cZcVYUTzXfM",
+     "title": "Babys Einschlafmusik für ruhige Nächte | 15 Min. Spieluhr + sanftes Rauschen",
+     "published": "2026-11-08T04:23:27Z",
+     "seconds": 841,
+     "privacy": "public",
+     "views": 5,
+     "likes": 1,
+     "comments": 0,
+     "tags": [
+      "Baby Schlafmusik",
+      "Baby schlafen",
+      "Babymusik",
+      "Einschlafmusik",
+      "Lullaby",
+      "Schlaflied",
+      "Spieluhr",
+      "baby einschlafen musik",
+      "baby musik zum einschlafen",
+      "baby schlafmusik rauschen"
+     ],
+     "has_desc": 730
+    },
+    {
+     "id": "Wl8GhfOyDmo",
+     "title": "Spieluhr zum Einschlafen – für süße Träume (15 Minuten)",
+     "published": "2026-11-07T04:30:06Z",
+     "seconds": 841,
+     "privacy": "public",
+     "views": 6,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "Baby Schlafmusik",
+      "Baby schlafen",
+      "Babymusik",
+      "Einschlafmusik",
+      "Lullaby",
+      "Schlaflied",
+      "Spieluhr",
+      "baby einschlafmusik 15 minuten",
+      "baby entspannungsmusik",
+      "baby schlafen musik"
+     ],
+     "has_desc": 678
+    },
     {
      "id": "9TxgRrk5rIw",
      "title": "Spieluhr zum Einschlafen – im Mondschein (15 Minuten)",
      "published": "2026-11-06T04:25:51Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 2,
+     "views": 8,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -3908,7 +4305,13 @@
       "Einschlafmusik",
       "Einschlafmusik Baby 15 Minuten"
      ],
-     "has_desc": 627
+     "has_desc": 627,
+     "estimatedMinutesWatched": 23,
+     "averageViewDuration": 237,
+     "averageViewPercentage": 28.199999999999996,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 6
     },
     {
      "id": "v4t6k1VwasM",
@@ -3916,7 +4319,7 @@
      "published": "2026-11-05T04:24:01Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 10,
+     "views": 44,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -3931,7 +4334,13 @@
       "Einschlafmusik",
       "Einschlafmusik Kleinkinder"
      ],
-     "has_desc": 698
+     "has_desc": 698,
+     "estimatedMinutesWatched": 29,
+     "averageViewDuration": 45,
+     "averageViewPercentage": 5.36,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 39
     },
     {
      "id": "zu3YL-Q-A3M",
@@ -3939,7 +4348,7 @@
      "published": "2026-11-04T04:25:14Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 92,
+     "views": 94,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -3954,7 +4363,13 @@
       "baby beruhigen zum schlafen",
       "baby einschlafmusik 15 minuten"
      ],
-     "has_desc": 667
+     "has_desc": 667,
+     "estimatedMinutesWatched": 60,
+     "averageViewDuration": 39,
+     "averageViewPercentage": 4.74,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 92
     },
     {
      "id": "bqrlrYgP11I",
@@ -3962,7 +4377,7 @@
      "published": "2026-11-03T04:25:14Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 86,
+     "views": 102,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -3978,12 +4393,12 @@
       "baby spieluhr musik"
      ],
      "has_desc": 749,
-     "estimatedMinutesWatched": 14,
-     "averageViewDuration": 840,
-     "averageViewPercentage": 99.91,
+     "estimatedMinutesWatched": 66,
+     "averageViewDuration": 43,
+     "averageViewPercentage": 5.13,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 1
+     "a_views": 92
     },
     {
      "id": "JLnz4ZfMz3o",
@@ -3991,7 +4406,7 @@
      "published": "2026-11-02T12:26:35Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 8,
+     "views": 12,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4007,12 +4422,12 @@
       "beruhigende musik für babys"
      ],
      "has_desc": 691,
-     "estimatedMinutesWatched": 14,
-     "averageViewDuration": 173,
-     "averageViewPercentage": 20.59,
+     "estimatedMinutesWatched": 15,
+     "averageViewDuration": 102,
+     "averageViewPercentage": 12.21,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 5
+     "a_views": 8
     },
     {
      "id": "7jV6-iLUoXo",
@@ -4020,7 +4435,7 @@
      "published": "2026-11-01T04:24:44Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 5,
+     "views": 6,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4036,12 +4451,12 @@
       "spieluhr"
      ],
      "has_desc": 487,
-     "estimatedMinutesWatched": 0,
-     "averageViewDuration": 2,
-     "averageViewPercentage": 0.34,
+     "estimatedMinutesWatched": 5,
+     "averageViewDuration": 57,
+     "averageViewPercentage": 6.890000000000001,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 1
+     "a_views": 6
     },
     {
      "id": "ebfbJzsIou4",
@@ -4049,7 +4464,7 @@
      "published": "2026-10-31T04:24:34Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 8,
+     "views": 11,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4066,11 +4481,11 @@
      ],
      "has_desc": 484,
      "estimatedMinutesWatched": 28,
-     "averageViewDuration": 244,
-     "averageViewPercentage": 29.020000000000003,
+     "averageViewDuration": 213,
+     "averageViewPercentage": 25.39,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 7
+     "a_views": 8
     },
     {
      "id": "vxP_Qe_9UmA",
@@ -4078,7 +4493,7 @@
      "published": "2026-10-30T04:24:18Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 73,
+     "views": 75,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4094,12 +4509,12 @@
       "baby entspannung musik"
      ],
      "has_desc": 673,
-     "estimatedMinutesWatched": 71,
-     "averageViewDuration": 61,
-     "averageViewPercentage": 7.3,
+     "estimatedMinutesWatched": 78,
+     "averageViewDuration": 64,
+     "averageViewPercentage": 7.7,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 70
+     "a_views": 73
     },
     {
      "id": "p2jkZu5n6lc",
@@ -4122,7 +4537,13 @@
       "abendroutine baby musik",
       "baby beruhigungsmusik"
      ],
-     "has_desc": 299
+     "has_desc": 299,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 3,
+     "averageViewPercentage": 6.52,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "qnW-jxwgaVc",
@@ -4130,7 +4551,7 @@
      "published": "2026-10-29T04:24:39Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 30,
+     "views": 33,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4146,12 +4567,12 @@
       "baby schlafmusik ohne gesang"
      ],
      "has_desc": 692,
-     "estimatedMinutesWatched": 5,
-     "averageViewDuration": 11,
-     "averageViewPercentage": 1.41,
+     "estimatedMinutesWatched": 47,
+     "averageViewDuration": 92,
+     "averageViewPercentage": 11,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 25
+     "a_views": 31
     },
     {
      "id": "RGaqo-_Dxac",
@@ -4182,7 +4603,7 @@
      "published": "2026-10-28T04:25:19Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 23,
+     "views": 26,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4198,12 +4619,12 @@
       "Einschlafmusik Babys 15 Minuten"
      ],
      "has_desc": 679,
-     "estimatedMinutesWatched": 26,
-     "averageViewDuration": 75,
-     "averageViewPercentage": 8.92,
+     "estimatedMinutesWatched": 27,
+     "averageViewDuration": 70,
+     "averageViewPercentage": 8.39,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 21
+     "a_views": 23
     },
     {
      "id": "gGLxMlORqS4",
@@ -4240,7 +4661,7 @@
      "published": "2026-10-27T04:39:54Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 21,
+     "views": 31,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4256,12 +4677,12 @@
       "Einschlafmusik mit Rauschen"
      ],
      "has_desc": 712,
-     "estimatedMinutesWatched": 73,
-     "averageViewDuration": 293,
-     "averageViewPercentage": 34.95,
+     "estimatedMinutesWatched": 116,
+     "averageViewDuration": 268,
+     "averageViewPercentage": 31.91,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 15
+     "a_views": 26
     },
     {
      "id": "iQBYK8aAu_0",
@@ -4292,7 +4713,7 @@
      "published": "2026-10-26T04:24:50Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 93,
+     "views": 103,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -4308,12 +4729,12 @@
       "baby musik zum einschlafen"
      ],
      "has_desc": 648,
-     "estimatedMinutesWatched": 149,
-     "averageViewDuration": 105,
-     "averageViewPercentage": 12.54,
+     "estimatedMinutesWatched": 202,
+     "averageViewDuration": 125,
+     "averageViewPercentage": 14.91,
      "subscribersGained": 1,
      "shares": 0,
-     "a_views": 86
+     "a_views": 99
     },
     {
      "id": "-VkWuFs-w8M",
@@ -4344,7 +4765,7 @@
      "published": "2026-10-25T07:10:45Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 53,
+     "views": 57,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -4360,12 +4781,12 @@
       "baby einschlafen musik"
      ],
      "has_desc": 710,
-     "estimatedMinutesWatched": 87,
-     "averageViewDuration": 105,
-     "averageViewPercentage": 12.55,
+     "estimatedMinutesWatched": 102,
+     "averageViewDuration": 117,
+     "averageViewPercentage": 14.01,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 52
+     "a_views": 54
     },
     {
      "id": "M-dTtPXwuEM",
@@ -4390,11 +4811,11 @@
      ],
      "has_desc": 297,
      "estimatedMinutesWatched": 0,
-     "averageViewDuration": 4,
-     "averageViewPercentage": 9.59,
+     "averageViewDuration": 2,
+     "averageViewPercentage": 5.77,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 2
+     "a_views": 3
     },
     {
      "id": "a460abwWkeg",
@@ -4402,7 +4823,7 @@
      "published": "2026-10-24T05:42:39Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 75,
+     "views": 105,
      "likes": 2,
      "comments": 0,
      "tags": [
@@ -4418,12 +4839,12 @@
       "Einschlafmusik Baby"
      ],
      "has_desc": 653,
-     "estimatedMinutesWatched": 220,
-     "averageViewDuration": 224,
-     "averageViewPercentage": 26.68,
+     "estimatedMinutesWatched": 299,
+     "averageViewDuration": 230,
+     "averageViewPercentage": 27.37,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 61
+     "a_views": 81
     },
     {
      "id": "YfYKxhiE6AY",
@@ -4460,7 +4881,7 @@
      "published": "2026-10-23T05:20:20Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 162,
+     "views": 165,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4478,10 +4899,10 @@
      "has_desc": 670,
      "estimatedMinutesWatched": 98,
      "averageViewDuration": 36,
-     "averageViewPercentage": 4.36,
+     "averageViewPercentage": 4.31,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 161
+     "a_views": 163
     },
     {
      "id": "Ajwsx3sekNQ",
@@ -4634,7 +5055,7 @@
      "published": "2026-10-21T07:22:45Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 37,
+     "views": 39,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4651,11 +5072,11 @@
      ],
      "has_desc": 662,
      "estimatedMinutesWatched": 149,
-     "averageViewDuration": 248,
-     "averageViewPercentage": 29.56,
+     "averageViewDuration": 236,
+     "averageViewPercentage": 28.110000000000003,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 37
+     "a_views": 39
     },
     {
      "id": "0JQNaqWeFt4",
@@ -4663,7 +5084,7 @@
      "published": "2026-10-21T07:22:40Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 9,
+     "views": 13,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4679,12 +5100,12 @@
       "babymusik zum einschlafen"
      ],
      "has_desc": 673,
-     "estimatedMinutesWatched": 15,
-     "averageViewDuration": 188,
-     "averageViewPercentage": 22.4,
+     "estimatedMinutesWatched": 44,
+     "averageViewDuration": 224,
+     "averageViewPercentage": 26.66,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 6
+     "a_views": 13
     }
    ],
    "errors": [
@@ -4693,38 +5114,38 @@
    "traffic": [
     {
      "insightTrafficSourceType": "RELATED_VIDEO",
-     "views": 477,
-     "estimatedMinutesWatched": 883
+     "views": 748,
+     "estimatedMinutesWatched": 1271
     },
     {
      "insightTrafficSourceType": "SUBSCRIBER",
-     "views": 34,
-     "estimatedMinutesWatched": 57
+     "views": 48,
+     "estimatedMinutesWatched": 60
     },
     {
      "insightTrafficSourceType": "YT_OTHER_PAGE",
-     "views": 25,
-     "estimatedMinutesWatched": 44
+     "views": 37,
+     "estimatedMinutesWatched": 81
     },
     {
      "insightTrafficSourceType": "YT_SEARCH",
-     "views": 13,
+     "views": 16,
      "estimatedMinutesWatched": 1
     },
     {
      "insightTrafficSourceType": "NO_LINK_OTHER",
-     "views": 12,
+     "views": 13,
      "estimatedMinutesWatched": 15
     },
     {
      "insightTrafficSourceType": "EXT_URL",
-     "views": 8,
+     "views": 10,
      "estimatedMinutesWatched": 1
     },
     {
      "insightTrafficSourceType": "YT_CHANNEL",
-     "views": 2,
-     "estimatedMinutesWatched": 0
+     "views": 6,
+     "estimatedMinutesWatched": 14
     },
     {
      "insightTrafficSourceType": "PLAYLIST",
@@ -4735,18 +5156,23 @@
    "countries": [
     {
      "country": "US",
-     "views": 25,
-     "estimatedMinutesWatched": 48
+     "views": 40,
+     "estimatedMinutesWatched": 50
     },
     {
      "country": "TH",
-     "views": 16,
-     "estimatedMinutesWatched": 2
+     "views": 30,
+     "estimatedMinutesWatched": 20
+    },
+    {
+     "country": "TR",
+     "views": 30,
+     "estimatedMinutesWatched": 161
     },
     {
      "country": "PH",
-     "views": 11,
-     "estimatedMinutesWatched": 16
+     "views": 23,
+     "estimatedMinutesWatched": 18
     },
     {
      "country": "JP",
@@ -4757,36 +5183,26 @@
    "age": [
     {
      "ageGroup": "age25-34",
-     "viewerPercentage": 48.4
+     "viewerPercentage": 62.3
     },
     {
      "ageGroup": "age35-44",
-     "viewerPercentage": 51.6
+     "viewerPercentage": 37.7
     }
    ],
    "content_type": [
     {
      "creatorContentType": "videoOnDemand",
-     "views": 566,
-     "estimatedMinutesWatched": 1017
+     "views": 869,
+     "estimatedMinutesWatched": 1459
     },
     {
      "creatorContentType": "shorts",
-     "views": 9,
+     "views": 11,
      "estimatedMinutesWatched": 0
     }
    ],
    "daily": [
-    {
-     "day": "2026-09-07",
-     "views": 0,
-     "subscribersGained": 0
-    },
-    {
-     "day": "2026-09-08",
-     "views": 0,
-     "subscribersGained": 0
-    },
     {
      "day": "2026-09-09",
      "views": 0,
@@ -5059,12 +5475,27 @@
     },
     {
      "day": "2026-11-02",
-     "views": 24,
+     "views": 23,
      "subscribersGained": 0
     },
     {
      "day": "2026-11-03",
      "views": 23,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-04",
+     "views": 23,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-05",
+     "views": 213,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-06",
+     "views": 72,
      "subscribersGained": 0
     }
    ]
@@ -5073,54 +5504,16 @@
    "key": "lernen",
    "name": "dear.zodiac",
    "subs": 0,
-   "views_total": 378,
+   "views_total": 417,
    "made_for_kids": false,
    "videos": [
     {
-     "id": "63ue6M0whzc",
-     "title": "The Grace You Never Give Yourself ✨ #zodiac #shorts",
-     "published": "2026-11-05T17:32:12Z",
+     "id": "EL_k_r0NeSA",
+     "title": "What Your Soul Is Rebuilding Now ✨ #zodiac #shorts",
+     "published": "2026-11-06T17:42:24Z",
      "seconds": 43,
      "privacy": "public",
-     "views": 33,
-     "likes": 1,
-     "comments": 0,
-     "tags": [
-      "astrology",
-      "horoscope",
-      "message",
-      "shorts",
-      "zodiac",
-      "zodiac signs"
-     ],
-     "has_desc": 386
-    },
-    {
-     "id": "H39SiG4Nzt4",
-     "title": "The Quiet Blessing You Are To Others ✨ #zodiac #shorts",
-     "published": "2026-11-04T17:39:08Z",
-     "seconds": 43,
-     "privacy": "public",
-     "views": 50,
-     "likes": 2,
-     "comments": 0,
-     "tags": [
-      "astrology",
-      "horoscope",
-      "months",
-      "shorts",
-      "zodiac",
-      "zodiac signs"
-     ],
-     "has_desc": 415
-    },
-    {
-     "id": "fjNaDs1Uhgw",
-     "title": "What Your Soul Refuses To Lose ✨ #zodiac #shorts",
-     "published": "2026-11-03T17:30:38Z",
-     "seconds": 43,
-     "privacy": "public",
-     "views": 47,
+     "views": 29,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -5131,13 +5524,88 @@
       "zodiac",
       "zodiac signs"
      ],
-     "has_desc": 347,
-     "estimatedMinutesWatched": 3,
-     "averageViewDuration": 16,
-     "averageViewPercentage": 38.21,
+     "has_desc": 405,
+     "estimatedMinutesWatched": 2,
+     "averageViewDuration": 11,
+     "averageViewPercentage": 26.150000000000002,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 31
+     "a_views": 26
+    },
+    {
+     "id": "63ue6M0whzc",
+     "title": "The Grace You Never Give Yourself ✨ #zodiac #shorts",
+     "published": "2026-11-05T17:32:12Z",
+     "seconds": 43,
+     "privacy": "public",
+     "views": 36,
+     "likes": 1,
+     "comments": 0,
+     "tags": [
+      "astrology",
+      "horoscope",
+      "message",
+      "shorts",
+      "zodiac",
+      "zodiac signs"
+     ],
+     "has_desc": 386,
+     "estimatedMinutesWatched": 5,
+     "averageViewDuration": 21,
+     "averageViewPercentage": 49.09,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 36
+    },
+    {
+     "id": "H39SiG4Nzt4",
+     "title": "The Quiet Blessing You Are To Others ✨ #zodiac #shorts",
+     "published": "2026-11-04T17:39:08Z",
+     "seconds": 43,
+     "privacy": "public",
+     "views": 51,
+     "likes": 2,
+     "comments": 0,
+     "tags": [
+      "astrology",
+      "horoscope",
+      "months",
+      "shorts",
+      "zodiac",
+      "zodiac signs"
+     ],
+     "has_desc": 415,
+     "estimatedMinutesWatched": 5,
+     "averageViewDuration": 14,
+     "averageViewPercentage": 32.86,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 51
+    },
+    {
+     "id": "fjNaDs1Uhgw",
+     "title": "What Your Soul Refuses To Lose ✨ #zodiac #shorts",
+     "published": "2026-11-03T17:30:38Z",
+     "seconds": 43,
+     "privacy": "public",
+     "views": 47,
+     "likes": 1,
+     "comments": 0,
+     "tags": [
+      "astrology",
+      "horoscope",
+      "shorts",
+      "signs",
+      "zodiac",
+      "zodiac signs"
+     ],
+     "has_desc": 347,
+     "estimatedMinutesWatched": 4,
+     "averageViewDuration": 15,
+     "averageViewPercentage": 35.35,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 47
     },
     {
      "id": "CMWBOSsf2Ng",
@@ -5162,7 +5630,7 @@
      "averageViewPercentage": 37.68,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 45
+     "a_views": 49
     },
     {
      "id": "PcE01oCelKU",
@@ -5346,8 +5814,13 @@
    "traffic": [
     {
      "insightTrafficSourceType": "SHORTS",
-     "views": 272,
-     "estimatedMinutesWatched": 32
+     "views": 399,
+     "estimatedMinutesWatched": 45
+    },
+    {
+     "insightTrafficSourceType": "YT_OTHER_PAGE",
+     "views": 6,
+     "estimatedMinutesWatched": 0
     },
     {
      "insightTrafficSourceType": "YT_CHANNEL",
@@ -5360,12 +5833,12 @@
      "estimatedMinutesWatched": 0
     },
     {
-     "insightTrafficSourceType": "YT_OTHER_PAGE",
-     "views": 3,
+     "insightTrafficSourceType": "NO_LINK_OTHER",
+     "views": 2,
      "estimatedMinutesWatched": 0
     },
     {
-     "insightTrafficSourceType": "NO_LINK_OTHER",
+     "insightTrafficSourceType": "SUBSCRIBER",
      "views": 1,
      "estimatedMinutesWatched": 0
     },
@@ -5373,34 +5846,29 @@
      "insightTrafficSourceType": "EXT_URL",
      "views": 1,
      "estimatedMinutesWatched": 0
+    },
+    {
+     "insightTrafficSourceType": "SOUND_PAGE",
+     "views": 1,
+     "estimatedMinutesWatched": 0
     }
    ],
    "countries": [
     {
      "country": "US",
-     "views": 97,
-     "estimatedMinutesWatched": 12
+     "views": 125,
+     "estimatedMinutesWatched": 15
     }
    ],
    "age": [],
    "content_type": [
     {
      "creatorContentType": "shorts",
-     "views": 288,
-     "estimatedMinutesWatched": 34
+     "views": 416,
+     "estimatedMinutesWatched": 47
     }
    ],
    "daily": [
-    {
-     "day": "2026-09-07",
-     "views": 0,
-     "subscribersGained": 0
-    },
-    {
-     "day": "2026-09-08",
-     "views": 0,
-     "subscribersGained": 0
-    },
     {
      "day": "2026-09-09",
      "views": 0,
@@ -5680,6 +6148,21 @@
      "day": "2026-11-03",
      "views": 36,
      "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-04",
+     "views": 59,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-05",
+     "views": 44,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-06",
+     "views": 30,
+     "subscribersGained": 0
     }
    ]
   },
@@ -5687,16 +6170,68 @@
    "key": "geschichten",
    "name": "Gute-Nacht-Kiste",
    "subs": 1,
-   "views_total": 174,
+   "views_total": 206,
    "made_for_kids": null,
    "videos": [
+    {
+     "id": "G2W2nxz9T6w",
+     "title": "Frosch Benni und das schaukelnde Seerosenblatt – Einschlafgeschichte zum Zuhören",
+     "published": "2026-11-08T05:23:56Z",
+     "seconds": 711,
+     "privacy": "public",
+     "views": 8,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "Einschlafgeschichte",
+      "Einschlafgeschichte ab 2 Jahren",
+      "Einschlafgeschichte ab 3 Jahren",
+      "Einschlafgeschichte für Kinder",
+      "Einschlafgeschichten für Kinder",
+      "Geschichten für Kinder",
+      "Geschichten zum Einschlafen",
+      "Gute Nacht Geschichte",
+      "Gute Nacht Geschichte 4 Jahre",
+      "Gute Nacht Geschichte zum Zuhören"
+     ],
+     "has_desc": 761
+    },
+    {
+     "id": "0zrsztXjXs8",
+     "title": "Koko Koala und das sanfte Summen im Blätterwald – Einschlafgeschichte zum Zuhören",
+     "published": "2026-11-07T05:15:26Z",
+     "seconds": 668,
+     "privacy": "public",
+     "views": 7,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "Einschlafgeschichte",
+      "Geschichten für Kinder",
+      "Gute Nacht Geschichte",
+      "Hörgeschichte",
+      "Kindergeschichte",
+      "Vorlesen",
+      "einschlafgeschichte 3 jahre",
+      "einschlafgeschichte kinder",
+      "einschlafgeschichte kita kinder",
+      "einschlafgeschichte koala"
+     ],
+     "has_desc": 938,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 4,
+     "averageViewPercentage": 0.63,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 4
+    },
     {
      "id": "XaqMrUjB8bg",
      "title": "Glühwürmchen Finn und das schlummernde Bergbuch – Einschlafgeschichte zum Zuhören",
      "published": "2026-11-06T05:20:33Z",
      "seconds": 554,
      "privacy": "public",
-     "views": 0,
+     "views": 1,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -5711,7 +6246,13 @@
       "einschlafgeschichte 4 jahre",
       "einschlafgeschichte kinder"
      ],
-     "has_desc": 834
+     "has_desc": 834,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 4,
+     "averageViewPercentage": 0.73,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "jiO9-LJuBvo",
@@ -5733,7 +6274,13 @@
       "gutenachtgeschichte",
       "tiergeschichten"
      ],
-     "has_desc": 575
+     "has_desc": 575,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 17,
+     "averageViewPercentage": 2.4,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "vyWbuE5cPEU",
@@ -5741,7 +6288,7 @@
      "published": "2026-11-04T05:44:54Z",
      "seconds": 792,
      "privacy": "public",
-     "views": 1,
+     "views": 4,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -5793,7 +6340,7 @@
      "published": "2026-11-02T14:49:13Z",
      "seconds": 747,
      "privacy": "public",
-     "views": 2,
+     "views": 3,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -5838,12 +6385,12 @@
       "gute nacht geschichten zum einschlafen"
      ],
      "has_desc": 774,
-     "estimatedMinutesWatched": 0,
-     "averageViewDuration": 16,
-     "averageViewPercentage": 2.24,
+     "estimatedMinutesWatched": 1,
+     "averageViewDuration": 20,
+     "averageViewPercentage": 2.9,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 3
+     "a_views": 4
     },
     {
      "id": "0wfmzUNXFk4",
@@ -5909,7 +6456,7 @@
      "published": "2026-10-30T06:36:17Z",
      "seconds": 686,
      "privacy": "public",
-     "views": 12,
+     "views": 16,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -5925,12 +6472,12 @@
       "einschlafgeschichte 5 jahre"
      ],
      "has_desc": 809,
-     "estimatedMinutesWatched": 38,
-     "averageViewDuration": 228,
-     "averageViewPercentage": 33.34,
+     "estimatedMinutesWatched": 47,
+     "averageViewDuration": 235,
+     "averageViewPercentage": 34.33,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 10
+     "a_views": 12
     },
     {
      "id": "L1nfEClW6BU",
@@ -5938,7 +6485,7 @@
      "published": "2026-10-29T06:01:15Z",
      "seconds": 700,
      "privacy": "public",
-     "views": 5,
+     "views": 7,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -5990,7 +6537,7 @@
      "published": "2026-10-28T19:22:30Z",
      "seconds": 718,
      "privacy": "public",
-     "views": 4,
+     "views": 7,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -6036,11 +6583,11 @@
      ],
      "has_desc": 366,
      "estimatedMinutesWatched": 0,
-     "averageViewDuration": 3,
-     "averageViewPercentage": 7.32,
+     "averageViewDuration": 12,
+     "averageViewPercentage": 29.43,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 1
+     "a_views": 3
     },
     {
      "id": "H-_m3suW9Bg",
@@ -6048,7 +6595,7 @@
      "published": "2026-10-27T05:31:01Z",
      "seconds": 898,
      "privacy": "public",
-     "views": 42,
+     "views": 43,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -6064,12 +6611,12 @@
       "gute nacht geschichten ab 2 jahre"
      ],
      "has_desc": 775,
-     "estimatedMinutesWatched": 297,
-     "averageViewDuration": 457,
-     "averageViewPercentage": 50.97999999999999,
+     "estimatedMinutesWatched": 327,
+     "averageViewDuration": 467,
+     "averageViewPercentage": 52.12,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 39
+     "a_views": 42
     },
     {
      "id": "fKQ-RAshAXY",
@@ -6077,7 +6624,7 @@
      "published": "2026-10-27T05:30:55Z",
      "seconds": 35,
      "privacy": "public",
-     "views": 1,
+     "views": 2,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -6092,7 +6639,13 @@
       "gute nacht geschichten",
       "gute nacht geschichten zum vorlesen"
      ],
-     "has_desc": 375
+     "has_desc": 375,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 8,
+     "averageViewPercentage": 23.67,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "ai5Cy6z6WY8",
@@ -6115,7 +6668,13 @@
       "einschlafhilfe kleinkind",
       "geschichte zum einschlafen"
      ],
-     "has_desc": 332
+     "has_desc": 332,
+     "estimatedMinutesWatched": 0,
+     "averageViewDuration": 3,
+     "averageViewPercentage": 8.65,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "S5EJa-7Fzn0",
@@ -6123,7 +6682,7 @@
      "published": "2026-10-26T05:21:17Z",
      "seconds": 682,
      "privacy": "public",
-     "views": 27,
+     "views": 29,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -6140,11 +6699,11 @@
      ],
      "has_desc": 785,
      "estimatedMinutesWatched": 150,
-     "averageViewDuration": 360,
-     "averageViewPercentage": 52.83,
+     "averageViewDuration": 334,
+     "averageViewPercentage": 49.04,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 26
+     "a_views": 28
     },
     {
      "id": "8J9FCg_YTLg",
@@ -6152,7 +6711,7 @@
      "published": "2026-10-25T07:41:10Z",
      "seconds": 749,
      "privacy": "public",
-     "views": 7,
+     "views": 8,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -6204,7 +6763,7 @@
      "published": "2026-10-24T06:06:38Z",
      "seconds": 881,
      "privacy": "public",
-     "views": 23,
+     "views": 31,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -6220,12 +6779,12 @@
       "gute nacht geschichte ab 2 jahren"
      ],
      "has_desc": 835,
-     "estimatedMinutesWatched": 53,
-     "averageViewDuration": 170,
-     "averageViewPercentage": 19.34,
+     "estimatedMinutesWatched": 71,
+     "averageViewDuration": 186,
+     "averageViewPercentage": 21.2,
      "subscribersGained": 1,
      "shares": 1,
-     "a_views": 19
+     "a_views": 23
     },
     {
      "id": "iacTMA3L7pI",
@@ -6256,7 +6815,7 @@
      "published": "2026-10-23T07:30:14Z",
      "seconds": 772,
      "privacy": "public",
-     "views": 11,
+     "views": 13,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -6272,12 +6831,12 @@
       "einschlafritual kleinkind audio"
      ],
      "has_desc": 797,
-     "estimatedMinutesWatched": 27,
-     "averageViewDuration": 235,
-     "averageViewPercentage": 30.53,
+     "estimatedMinutesWatched": 40,
+     "averageViewDuration": 188,
+     "averageViewPercentage": 24.48,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 7
+     "a_views": 13
     },
     {
      "id": "2IMVG7parXw",
@@ -6308,7 +6867,7 @@
      "published": "2026-10-22T08:35:05Z",
      "seconds": 769,
      "privacy": "public",
-     "views": 9,
+     "views": 11,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -6434,12 +6993,12 @@
       "einschlafgeschichten 4 jahre"
      ],
      "has_desc": 640,
-     "estimatedMinutesWatched": 2,
-     "averageViewDuration": 41,
-     "averageViewPercentage": 39.58,
+     "estimatedMinutesWatched": 4,
+     "averageViewDuration": 32,
+     "averageViewPercentage": 31.06,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 4
+     "a_views": 9
     }
    ],
    "errors": [
@@ -6448,32 +7007,32 @@
    "traffic": [
     {
      "insightTrafficSourceType": "RELATED_VIDEO",
-     "views": 119,
-     "estimatedMinutesWatched": 648
+     "views": 141,
+     "estimatedMinutesWatched": 719
     },
     {
      "insightTrafficSourceType": "YT_SEARCH",
-     "views": 11,
-     "estimatedMinutesWatched": 4
+     "views": 17,
+     "estimatedMinutesWatched": 6
     },
     {
      "insightTrafficSourceType": "SUBSCRIBER",
-     "views": 9,
+     "views": 10,
      "estimatedMinutesWatched": 11
     },
     {
      "insightTrafficSourceType": "NO_LINK_OTHER",
-     "views": 6,
+     "views": 7,
      "estimatedMinutesWatched": 10
     },
     {
      "insightTrafficSourceType": "EXT_URL",
-     "views": 4,
+     "views": 6,
      "estimatedMinutesWatched": 14
     },
     {
      "insightTrafficSourceType": "YT_CHANNEL",
-     "views": 1,
+     "views": 2,
      "estimatedMinutesWatched": 0
     }
    ],
@@ -6488,26 +7047,16 @@
    "content_type": [
     {
      "creatorContentType": "videoOnDemand",
-     "views": 147,
-     "estimatedMinutesWatched": 689
+     "views": 176,
+     "estimatedMinutesWatched": 763
     },
     {
      "creatorContentType": "shorts",
-     "views": 3,
-     "estimatedMinutesWatched": 0
+     "views": 7,
+     "estimatedMinutesWatched": 1
     }
    ],
    "daily": [
-    {
-     "day": "2026-09-07",
-     "views": 0,
-     "subscribersGained": 0
-    },
-    {
-     "day": "2026-09-08",
-     "views": 0,
-     "subscribersGained": 0
-    },
     {
      "day": "2026-09-09",
      "views": 0,
@@ -6787,6 +7336,21 @@
      "day": "2026-11-03",
      "views": 35,
      "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-04",
+     "views": 14,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-05",
+     "views": 10,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-06",
+     "views": 9,
+     "subscribersGained": 0
     }
    ]
   },
@@ -6794,16 +7358,247 @@
    "key": "whatif",
    "name": "Beyond the If",
    "subs": 169,
-   "views_total": 60334,
+   "views_total": 60815,
    "made_for_kids": false,
    "videos": [
+    {
+     "id": "pL4aGos76jc",
+     "title": "The Five Senses Quiz #shorts",
+     "published": "2026-11-08T21:22:50Z",
+     "seconds": 84,
+     "privacy": "public",
+     "views": 31,
+     "likes": 9,
+     "comments": 0,
+     "tags": [
+      "5 senses test",
+      "anatomy and physiology quiz",
+      "biology trivia for adults",
+      "five senses quiz",
+      "general science quiz with answers",
+      "hard science trivia",
+      "human biology quiz shorts",
+      "human body facts quiz",
+      "human body quiz",
+      "neuroscience quiz shorts"
+     ],
+     "has_desc": 465
+    },
+    {
+     "id": "by6hzgPb1KA",
+     "title": "What If a Space Telescope Survived Reentry? #shorts",
+     "published": "2026-11-08T15:37:41Z",
+     "seconds": 33,
+     "privacy": "public",
+     "views": 2,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "astronomy",
+      "nasa",
+      "nasa satellite falling",
+      "satellite crash",
+      "satellite falling to earth",
+      "satellite surviving reentry",
+      "science",
+      "shorts",
+      "space",
+      "space debris"
+     ],
+     "has_desc": 1048
+    },
+    {
+     "id": "Zdbn2t9ZAGg",
+     "title": "Atmospheric Electricity & Lightning Quiz! #shorts",
+     "published": "2026-11-08T07:08:39Z",
+     "seconds": 107,
+     "privacy": "public",
+     "views": 9,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "atmospheric electricity quiz",
+      "atmospheric science questions",
+      "earth science trivia",
+      "electricity and energy",
+      "lightning bolts trivia",
+      "lightning plasma discharge",
+      "lightning trivia short",
+      "mesosphere electrical discharge",
+      "physics short quiz",
+      "quiz"
+     ],
+     "has_desc": 616
+    },
+    {
+     "id": "62ANUNPE9Uc",
+     "title": "The Insect Biology Quiz #shorts",
+     "published": "2026-11-07T21:16:01Z",
+     "seconds": 80,
+     "privacy": "public",
+     "views": 64,
+     "likes": 7,
+     "comments": 0,
+     "tags": [
+      "60 second science quiz",
+      "basic biology test",
+      "biology quiz with answers",
+      "biology trivia quiz",
+      "daily science trivia challenge",
+      "entomology quiz",
+      "fast science trivia questions",
+      "general science quiz shorts",
+      "insect anatomy quiz",
+      "insect biology quiz"
+     ],
+     "has_desc": 463
+    },
+    {
+     "id": "uE0wfjTlubM",
+     "title": "What If Our Sun Has a Hidden Twin Star? #shorts",
+     "published": "2026-11-07T15:19:03Z",
+     "seconds": 36,
+     "privacy": "public",
+     "views": 22,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "astronomy",
+      "binary star system",
+      "brown dwarf solar system",
+      "dark star solar system",
+      "does the sun have a twin",
+      "hidden twin of the sun",
+      "hypothetical twin star nemesis",
+      "nemesis star",
+      "nemesis star documentary",
+      "oort cloud nemesis"
+     ],
+     "has_desc": 1060
+    },
+    {
+     "id": "0EoD6DE-ZvQ",
+     "title": "Tree and Plant Science Quiz #shorts",
+     "published": "2026-11-07T06:52:25Z",
+     "seconds": 77,
+     "privacy": "public",
+     "views": 102,
+     "likes": 5,
+     "comments": 0,
+     "tags": [
+      "biology quiz shorts",
+      "botany trivia",
+      "easy biology quiz",
+      "education shorts science",
+      "fun science quiz shorts",
+      "gardening science quiz",
+      "nature trivia questions",
+      "photosynthesis quiz",
+      "plant biology test",
+      "plant science quiz"
+     ],
+     "has_desc": 458,
+     "estimatedMinutesWatched": 6,
+     "averageViewDuration": 27,
+     "averageViewPercentage": 35.7,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 29
+    },
+    {
+     "id": "04Q3qffmPks",
+     "title": "What Happens If Earth Goes Silent? #shorts",
+     "published": "2026-11-06T15:18:38Z",
+     "seconds": 30,
+     "privacy": "public",
+     "views": 124,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "earth atmosphere without lightning",
+      "earth catastrophe scenarios",
+      "earth without lightning documentary",
+      "lightning strikes per second earth",
+      "natural nitrates from lightning",
+      "physics of lightning strikes",
+      "science",
+      "science what if shorts",
+      "shorts",
+      "silent earth science video"
+     ],
+     "has_desc": 582,
+     "estimatedMinutesWatched": 3,
+     "averageViewDuration": 6,
+     "averageViewPercentage": 21.5,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 96
+    },
+    {
+     "id": "dncnPmWFGDg",
+     "title": "What If Lightning Stopped Striking Earth? #shorts",
+     "published": "2026-11-06T15:11:00Z",
+     "seconds": 32,
+     "privacy": "public",
+     "views": 5,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "can earth survive without lightning",
+      "crazy science hypotheticals",
+      "earth science documentary shorts",
+      "earth without lightning",
+      "importance of lightning earth",
+      "lightning nitrogen cycle explained",
+      "nitrogen fixation explained",
+      "physics of lightning explained",
+      "science",
+      "science what if shorts"
+     ],
+     "has_desc": 653,
+     "estimatedMinutesWatched": 1,
+     "averageViewDuration": 21,
+     "averageViewPercentage": 67.99,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 4
+    },
+    {
+     "id": "7p9iQuWSioI",
+     "title": "What If Lightning Permanently Stopped Striking Earth?",
+     "published": "2026-11-06T15:08:23Z",
+     "seconds": 655,
+     "privacy": "public",
+     "views": 1,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "atmosphere",
+      "beyond the if",
+      "earth documentary",
+      "earth science",
+      "earth without lightning",
+      "global electric circuit",
+      "how lightning affects the atmosphere",
+      "importance of lightning on earth",
+      "lightning",
+      "nitrogen cycle"
+     ],
+     "has_desc": 2012,
+     "estimatedMinutesWatched": 3,
+     "averageViewDuration": 198,
+     "averageViewPercentage": 30.260000000000005,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
+    },
     {
      "id": "lfjNp-2BN4k",
      "title": "What If We Built Tech in the Zeptoverse? #shorts",
      "published": "2026-11-05T12:09:35Z",
      "seconds": 37,
      "privacy": "public",
-     "views": 142,
+     "views": 195,
      "likes": 5,
      "comments": 0,
      "tags": [
@@ -6818,7 +7613,13 @@
       "quantum realm documentary",
       "quantum technology future"
      ],
-     "has_desc": 914
+     "has_desc": 914,
+     "estimatedMinutesWatched": 35,
+     "averageViewDuration": 25,
+     "averageViewPercentage": 69.63,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 183
     },
     {
      "id": "lUqxscdTof8",
@@ -6826,7 +7627,7 @@
      "published": "2026-11-05T00:42:35Z",
      "seconds": 95,
      "privacy": "public",
-     "views": 54,
+     "views": 56,
      "likes": 5,
      "comments": 0,
      "tags": [
@@ -6841,7 +7642,13 @@
       "neutron star mass limit",
       "physics quiz shorts"
      ],
-     "has_desc": 403
+     "has_desc": 403,
+     "estimatedMinutesWatched": 32,
+     "averageViewDuration": 49,
+     "averageViewPercentage": 52.09,
+     "subscribersGained": 1,
+     "shares": 0,
+     "a_views": 56
     },
     {
      "id": "UjONq7Nu9Vk",
@@ -6864,7 +7671,13 @@
       "ai neural network evolution",
       "ai rewriting itself"
      ],
-     "has_desc": 1056
+     "has_desc": 1056,
+     "estimatedMinutesWatched": 2,
+     "averageViewDuration": 27,
+     "averageViewPercentage": 70.93,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 7
     },
     {
      "id": "k6v7pxtE5oE",
@@ -6872,7 +7685,7 @@
      "published": "2026-11-04T18:20:34Z",
      "seconds": 84,
      "privacy": "public",
-     "views": 93,
+     "views": 94,
      "likes": 8,
      "comments": 0,
      "tags": [
@@ -6887,7 +7700,13 @@
       "dinosaurs",
       "fun dinosaur facts"
      ],
-     "has_desc": 444
+     "has_desc": 444,
+     "estimatedMinutesWatched": 48,
+     "averageViewDuration": 66,
+     "averageViewPercentage": 78.66,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 94
     },
     {
      "id": "DdRFagFTnDU",
@@ -6895,8 +7714,8 @@
      "published": "2026-11-04T02:00:18Z",
      "seconds": 79,
      "privacy": "public",
-     "views": 437,
-     "likes": 1,
+     "views": 435,
+     "likes": 2,
      "comments": 0,
      "tags": [
       "ant anatomy and facts",
@@ -6911,12 +7730,12 @@
       "insect quiz"
      ],
      "has_desc": 417,
-     "estimatedMinutesWatched": 33,
-     "averageViewDuration": 20,
-     "averageViewPercentage": 26.21,
+     "estimatedMinutesWatched": 40,
+     "averageViewDuration": 21,
+     "averageViewPercentage": 27.200000000000003,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 401
+     "a_views": 435
     },
     {
      "id": "ELxLrPcbwnw",
@@ -6924,7 +7743,7 @@
      "published": "2026-11-03T15:23:19Z",
      "seconds": 599,
      "privacy": "public",
-     "views": 0,
+     "views": 2,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -6939,7 +7758,13 @@
       "heavy water",
       "heavy water earth ocean"
      ],
-     "has_desc": 1918
+     "has_desc": 1918,
+     "estimatedMinutesWatched": 1,
+     "averageViewDuration": 97,
+     "averageViewPercentage": 16.26,
+     "subscribersGained": 0,
+     "shares": 0,
+     "a_views": 1
     },
     {
      "id": "NuoMSQQ61Kw",
@@ -6947,7 +7772,7 @@
      "published": "2026-11-03T15:22:44Z",
      "seconds": 31,
      "privacy": "public",
-     "views": 27,
+     "views": 28,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -6963,12 +7788,12 @@
       "science hypothetical scenarios"
      ],
      "has_desc": 598,
-     "estimatedMinutesWatched": 3,
-     "averageViewDuration": 16,
-     "averageViewPercentage": 52.800000000000004,
+     "estimatedMinutesWatched": 4,
+     "averageViewDuration": 17,
+     "averageViewPercentage": 56.76,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 24
+     "a_views": 28
     },
     {
      "id": "8CYakKwH7Yg",
@@ -6977,7 +7802,7 @@
      "seconds": 29,
      "privacy": "public",
      "views": 29,
-     "likes": 0,
+     "likes": 1,
      "comments": 0,
      "tags": [
       "deuterium oxide explained",
@@ -6992,12 +7817,12 @@
       "shorts"
      ],
      "has_desc": 604,
-     "estimatedMinutesWatched": 2,
-     "averageViewDuration": 19,
-     "averageViewPercentage": 67.81,
+     "estimatedMinutesWatched": 6,
+     "averageViewDuration": 33,
+     "averageViewPercentage": 115.06999999999998,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 12
+     "a_views": 29
     },
     {
      "id": "zBg71S4XRm8",
@@ -7021,12 +7846,12 @@
       "science"
      ],
      "has_desc": 1076,
-     "estimatedMinutesWatched": 5,
-     "averageViewDuration": 23,
-     "averageViewPercentage": 62.11,
+     "estimatedMinutesWatched": 6,
+     "averageViewDuration": 25,
+     "averageViewPercentage": 67.94,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 28
+     "a_views": 34
     },
     {
      "id": "QiMsOnu_xKY",
@@ -7035,7 +7860,7 @@
      "seconds": 77,
      "privacy": "public",
      "views": 37,
-     "likes": 0,
+     "likes": 1,
      "comments": 0,
      "tags": [
       "cephalopod facts short video",
@@ -7050,12 +7875,12 @@
       "oceans and sea life"
      ],
      "has_desc": 397,
-     "estimatedMinutesWatched": 6,
+     "estimatedMinutesWatched": 8,
      "averageViewDuration": 21,
-     "averageViewPercentage": 28.21,
+     "averageViewPercentage": 27.399999999999995,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 31
+     "a_views": 37
     },
     {
      "id": "7-LkP0f3Jc4",
@@ -7063,7 +7888,7 @@
      "published": "2026-11-03T02:48:03Z",
      "seconds": 90,
      "privacy": "public",
-     "views": 588,
+     "views": 593,
      "likes": 20,
      "comments": 0,
      "tags": [
@@ -7079,12 +7904,12 @@
       "how roman aqueducts worked"
      ],
      "has_desc": 400,
-     "estimatedMinutesWatched": 268,
+     "estimatedMinutesWatched": 274,
      "averageViewDuration": 41,
-     "averageViewPercentage": 45.66,
+     "averageViewPercentage": 45.7,
      "subscribersGained": 2,
      "shares": 0,
-     "a_views": 580
+     "a_views": 593
     },
     {
      "id": "7wPPRk88SlI",
@@ -7108,12 +7933,12 @@
       "shorts"
      ],
      "has_desc": 403,
-     "estimatedMinutesWatched": 15,
-     "averageViewDuration": 42,
-     "averageViewPercentage": 56.57,
+     "estimatedMinutesWatched": 19,
+     "averageViewDuration": 43,
+     "averageViewPercentage": 57.09000000000001,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 34
+     "a_views": 44
     },
     {
      "id": "tyNnH4fnLu4",
@@ -7151,7 +7976,7 @@
      "seconds": 84,
      "privacy": "public",
      "views": 1082,
-     "likes": 31,
+     "likes": 32,
      "comments": 4,
      "tags": [
       "Earth and oceans",
@@ -7166,12 +7991,12 @@
       "ocean geography quiz"
      ],
      "has_desc": 385,
-     "estimatedMinutesWatched": 441,
+     "estimatedMinutesWatched": 446,
      "averageViewDuration": 41,
-     "averageViewPercentage": 49.48,
+     "averageViewPercentage": 49.76,
      "subscribersGained": 1,
      "shares": 0,
-     "a_views": 1069
+     "a_views": 1082
     },
     {
      "id": "7iMgfdiBT1E",
@@ -7197,10 +8022,10 @@
      "has_desc": 410,
      "estimatedMinutesWatched": 159,
      "averageViewDuration": 72,
-     "averageViewPercentage": 86.51,
+     "averageViewPercentage": 85.83,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 248
+     "a_views": 254
     },
     {
      "id": "OPjeZ-WtwFU",
@@ -7224,12 +8049,12 @@
       "physics what if scenarios"
      ],
      "has_desc": 1045,
-     "estimatedMinutesWatched": 135,
+     "estimatedMinutesWatched": 136,
      "averageViewDuration": 52,
-     "averageViewPercentage": 130.79,
+     "averageViewPercentage": 131.33,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 413
+     "a_views": 415
     },
     {
      "id": "kJg4zsldM24",
@@ -7253,12 +8078,12 @@
       "interesting facts about human body"
      ],
      "has_desc": 379,
-     "estimatedMinutesWatched": 494,
+     "estimatedMinutesWatched": 496,
      "averageViewDuration": 40,
-     "averageViewPercentage": 45.7,
+     "averageViewPercentage": 45.79,
      "subscribersGained": 1,
      "shares": 1,
-     "a_views": 1166
+     "a_views": 1174
     },
     {
      "id": "T5FvqnSh9oM",
@@ -7282,12 +8107,12 @@
       "quiz"
      ],
      "has_desc": 416,
-     "estimatedMinutesWatched": 153,
+     "estimatedMinutesWatched": 154,
      "averageViewDuration": 29,
-     "averageViewPercentage": 33.01,
+     "averageViewPercentage": 33.02,
      "subscribersGained": 1,
      "shares": 0,
-     "a_views": 590
+     "a_views": 591
     },
     {
      "id": "TuPilNsAU0c",
@@ -7311,12 +8136,12 @@
       "nasa news today hubble"
      ],
      "has_desc": 1095,
-     "estimatedMinutesWatched": 403,
+     "estimatedMinutesWatched": 407,
      "averageViewDuration": 25,
-     "averageViewPercentage": 62.59,
+     "averageViewPercentage": 62.71,
      "subscribersGained": 0,
      "shares": 1,
-     "a_views": 1454
+     "a_views": 1459
     },
     {
      "id": "SBbeOaY3pYE",
@@ -7324,7 +8149,7 @@
      "published": "2026-10-31T00:17:45Z",
      "seconds": 79,
      "privacy": "public",
-     "views": 1268,
+     "views": 1270,
      "likes": 57,
      "comments": 14,
      "tags": [
@@ -7342,10 +8167,10 @@
      "has_desc": 404,
      "estimatedMinutesWatched": 726,
      "averageViewDuration": 56,
-     "averageViewPercentage": 71.76,
+     "averageViewPercentage": 71.93,
      "subscribersGained": 8,
      "shares": 0,
-     "a_views": 1266
+     "a_views": 1270
     },
     {
      "id": "mhe9tugOD-E",
@@ -7353,7 +8178,7 @@
      "published": "2026-10-30T20:15:46Z",
      "seconds": 649,
      "privacy": "public",
-     "views": 3,
+     "views": 4,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -7370,11 +8195,11 @@
      ],
      "has_desc": 2334,
      "estimatedMinutesWatched": 0,
-     "averageViewDuration": 4,
-     "averageViewPercentage": 0.64,
+     "averageViewDuration": 23,
+     "averageViewPercentage": 3.55,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 2
+     "a_views": 3
     },
     {
      "id": "mNR90ASAyDQ",
@@ -7400,7 +8225,7 @@
      "has_desc": 603,
      "estimatedMinutesWatched": 64,
      "averageViewDuration": 18,
-     "averageViewPercentage": 62.67,
+     "averageViewPercentage": 62.89,
      "subscribersGained": 4,
      "shares": 0,
      "a_views": 411
@@ -7429,7 +8254,7 @@
      "has_desc": 682,
      "estimatedMinutesWatched": 439,
      "averageViewDuration": 42,
-     "averageViewPercentage": 120.87,
+     "averageViewPercentage": 121.63999999999999,
      "subscribersGained": 6,
      "shares": 0,
      "a_views": 1047
@@ -7458,7 +8283,7 @@
      "has_desc": 363,
      "estimatedMinutesWatched": 615,
      "averageViewDuration": 59,
-     "averageViewPercentage": 82.53,
+     "averageViewPercentage": 82.48,
      "subscribersGained": 3,
      "shares": 2,
      "a_views": 1069
@@ -7485,12 +8310,12 @@
       "moon"
      ],
      "has_desc": 989,
-     "estimatedMinutesWatched": 357,
+     "estimatedMinutesWatched": 358,
      "averageViewDuration": 42,
-     "averageViewPercentage": 130.24,
+     "averageViewPercentage": 130.08,
      "subscribersGained": 4,
      "shares": 0,
-     "a_views": 1006
+     "a_views": 1010
     },
     {
      "id": "U-ezuto1rg8",
@@ -7498,7 +8323,7 @@
      "published": "2026-10-29T18:45:52Z",
      "seconds": 83,
      "privacy": "public",
-     "views": 1011,
+     "views": 1012,
      "likes": 29,
      "comments": 2,
      "tags": [
@@ -7514,12 +8339,12 @@
       "ocean"
      ],
      "has_desc": 371,
-     "estimatedMinutesWatched": 410,
+     "estimatedMinutesWatched": 411,
      "averageViewDuration": 42,
-     "averageViewPercentage": 51.1,
+     "averageViewPercentage": 50.9,
      "subscribersGained": 2,
      "shares": 0,
-     "a_views": 1010
+     "a_views": 1012
     },
     {
      "id": "zILqoN_EY6Q",
@@ -7545,7 +8370,7 @@
      "has_desc": 1063,
      "estimatedMinutesWatched": 51,
      "averageViewDuration": 33,
-     "averageViewPercentage": 84.71,
+     "averageViewPercentage": 84.74,
      "subscribersGained": 0,
      "shares": 0,
      "a_views": 148
@@ -7556,7 +8381,7 @@
      "published": "2026-10-28T22:46:13Z",
      "seconds": 80,
      "privacy": "public",
-     "views": 1168,
+     "views": 1169,
      "likes": 35,
      "comments": 2,
      "tags": [
@@ -7603,10 +8428,10 @@
      "has_desc": 943,
      "estimatedMinutesWatched": 189,
      "averageViewDuration": 38,
-     "averageViewPercentage": 111.25,
+     "averageViewPercentage": 110.94,
      "subscribersGained": 2,
      "shares": 0,
-     "a_views": 534
+     "a_views": 535
     },
     {
      "id": "jjgKgirsIR4",
@@ -7614,7 +8439,7 @@
      "published": "2026-10-27T17:48:59Z",
      "seconds": 94,
      "privacy": "public",
-     "views": 71,
+     "views": 72,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -7673,7 +8498,7 @@
      "seconds": 34,
      "privacy": "public",
      "views": 38,
-     "likes": 3,
+     "likes": 4,
      "comments": 0,
      "tags": [
       "astronomy shorts",
@@ -7688,12 +8513,12 @@
       "primordial black holes explained"
      ],
      "has_desc": 710,
-     "estimatedMinutesWatched": 8,
-     "averageViewDuration": 26,
-     "averageViewPercentage": 76.89,
+     "estimatedMinutesWatched": 10,
+     "averageViewDuration": 30,
+     "averageViewPercentage": 88.86,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 37
+     "a_views": 38
     },
     {
      "id": "hCThpHdglC0",
@@ -7846,7 +8671,7 @@
      "published": "2026-10-25T16:11:12Z",
      "seconds": 507,
      "privacy": "public",
-     "views": 3,
+     "views": 5,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -7863,11 +8688,11 @@
      ],
      "has_desc": 1466,
      "estimatedMinutesWatched": 4,
-     "averageViewDuration": 133,
-     "averageViewPercentage": 26.33,
+     "averageViewDuration": 89,
+     "averageViewPercentage": 17.55,
      "subscribersGained": 0,
      "shares": 1,
-     "a_views": 3
+     "a_views": 4
     },
     {
      "id": "a7jJwj48l6c",
@@ -7875,7 +8700,7 @@
      "published": "2026-10-25T16:11:02Z",
      "seconds": 19,
      "privacy": "public",
-     "views": 110,
+     "views": 111,
      "likes": 3,
      "comments": 0,
      "tags": [
@@ -7893,10 +8718,10 @@
      "has_desc": 450,
      "estimatedMinutesWatched": 5,
      "averageViewDuration": 10,
-     "averageViewPercentage": 54.90999999999999,
+     "averageViewPercentage": 55.7,
      "subscribersGained": 0,
      "shares": 0,
-     "a_views": 109
+     "a_views": 110
     },
     {
      "id": "EE2kLBG8yt0",
@@ -8019,32 +8844,32 @@
    "traffic": [
     {
      "insightTrafficSourceType": "SHORTS",
-     "views": 14273,
-     "estimatedMinutesWatched": 5604
+     "views": 14692,
+     "estimatedMinutesWatched": 5731
     },
     {
      "insightTrafficSourceType": "YT_SEARCH",
-     "views": 1091,
-     "estimatedMinutesWatched": 239
+     "views": 1235,
+     "estimatedMinutesWatched": 269
     },
     {
      "insightTrafficSourceType": "YT_OTHER_PAGE",
-     "views": 290,
-     "estimatedMinutesWatched": 119
+     "views": 303,
+     "estimatedMinutesWatched": 125
     },
     {
      "insightTrafficSourceType": "YT_CHANNEL",
-     "views": 102,
-     "estimatedMinutesWatched": 45
+     "views": 114,
+     "estimatedMinutesWatched": 46
     },
     {
      "insightTrafficSourceType": "EXT_URL",
-     "views": 38,
-     "estimatedMinutesWatched": 16
+     "views": 41,
+     "estimatedMinutesWatched": 17
     },
     {
      "insightTrafficSourceType": "SUBSCRIBER",
-     "views": 24,
+     "views": 26,
      "estimatedMinutesWatched": 9
     },
     {
@@ -8053,31 +8878,31 @@
      "estimatedMinutesWatched": 16
     },
     {
+     "insightTrafficSourceType": "RELATED_VIDEO",
+     "views": 7,
+     "estimatedMinutesWatched": 15
+    },
+    {
      "insightTrafficSourceType": "NOTIFICATION",
      "views": 6,
      "estimatedMinutesWatched": 1
     },
     {
-     "insightTrafficSourceType": "RELATED_VIDEO",
-     "views": 4,
-     "estimatedMinutesWatched": 10
-    },
-    {
      "insightTrafficSourceType": "PLAYLIST",
-     "views": 3,
-     "estimatedMinutesWatched": 0
+     "views": 5,
+     "estimatedMinutesWatched": 2
     },
     {
      "insightTrafficSourceType": "HASHTAGS",
-     "views": 1,
-     "estimatedMinutesWatched": 0
+     "views": 2,
+     "estimatedMinutesWatched": 1
     }
    ],
    "countries": [
     {
      "country": "US",
-     "views": 11259,
-     "estimatedMinutesWatched": 4747
+     "views": 11600,
+     "estimatedMinutesWatched": 4861
     },
     {
      "country": "GB",
@@ -8091,8 +8916,8 @@
     },
     {
      "country": "IN",
-     "views": 303,
-     "estimatedMinutesWatched": 73
+     "views": 328,
+     "estimatedMinutesWatched": 79
     },
     {
      "country": "CA",
@@ -8161,48 +8986,38 @@
     },
     {
      "ageGroup": "age25-34",
-     "viewerPercentage": 10.2
+     "viewerPercentage": 10.1
     },
     {
      "ageGroup": "age35-44",
-     "viewerPercentage": 13
+     "viewerPercentage": 12.9
     },
     {
      "ageGroup": "age45-54",
-     "viewerPercentage": 12.3
+     "viewerPercentage": 12.2
     },
     {
      "ageGroup": "age55-64",
-     "viewerPercentage": 15.1
+     "viewerPercentage": 14.9
     },
     {
      "ageGroup": "age65-",
-     "viewerPercentage": 42.3
+     "viewerPercentage": 42.9
     }
    ],
    "content_type": [
     {
      "creatorContentType": "shorts",
-     "views": 15858,
-     "estimatedMinutesWatched": 6039
+     "views": 16408,
+     "estimatedMinutesWatched": 6193
     },
     {
      "creatorContentType": "videoOnDemand",
-     "views": 28,
-     "estimatedMinutesWatched": 36
+     "views": 32,
+     "estimatedMinutesWatched": 42
     }
    ],
    "daily": [
-    {
-     "day": "2026-09-07",
-     "views": 8,
-     "subscribersGained": 0
-    },
-    {
-     "day": "2026-09-08",
-     "views": 9,
-     "subscribersGained": 0
-    },
     {
      "day": "2026-09-09",
      "views": 8,
@@ -8475,12 +9290,27 @@
     },
     {
      "day": "2026-11-02",
-     "views": 778,
+     "views": 776,
      "subscribersGained": 4
     },
     {
      "day": "2026-11-03",
-     "views": 583,
+     "views": 568,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-04",
+     "views": 237,
+     "subscribersGained": 1
+    },
+    {
+     "day": "2026-11-05",
+     "views": 206,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-06",
+     "views": 190,
      "subscribersGained": 0
     }
    ]
@@ -8500,16 +9330,6 @@
    "age": [],
    "content_type": [],
    "daily": [
-    {
-     "day": "2026-09-07",
-     "views": 0,
-     "subscribersGained": 0
-    },
-    {
-     "day": "2026-09-08",
-     "views": 0,
-     "subscribersGained": 0
-    },
     {
      "day": "2026-09-09",
      "views": 0,
@@ -8789,6 +9609,21 @@
      "day": "2026-11-03",
      "views": 0,
      "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-04",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-05",
+     "views": 0,
+     "subscribersGained": 0
+    },
+    {
+     "day": "2026-11-06",
+     "views": 0,
+     "subscribersGained": 0
     }
    ]
   }
@@ -8798,8 +9633,62 @@
    "key": "calmhaven",
    "username": "calmhavenig",
    "followers": 5,
-   "posts": 17,
+   "posts": 20,
    "media": [
+    {
+     "id": "17973772368186914",
+     "caption": "Let the water carry your thoughts away. 🌊\nMisty morning waterfall – 3 hours of natural water sounds.\n\n💾 Save this for tonight\n▶️ Full 3-hour version on YouTube (link in bio)\n\n#naturesounds #waterfalls",
+     "timestamp": "2026-11-08T16:41:23+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DffNVyYDLdD/",
+     "insights": {
+      "reach": 3,
+      "views": 3,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2137
+     }
+    },
+    {
+     "id": "18113024348186984",
+     "caption": "Crackling fire, warm light, nowhere to be. 🔥\nCountry house fireplace – 1 hour of cozy fireplace sounds.\n\n💾 Save this for tonight\n▶️ Full 1-hour version on YouTube (link in bio)\n\n#fireplace #cozyhome #",
+     "timestamp": "2026-11-07T16:41:21+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfcoiFaDPB6/",
+     "insights": {
+      "reach": 16,
+      "views": 15,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2304
+     }
+    },
+    {
+     "id": "18104908484037155",
+     "caption": "Close your eyes. Just the rain. 🌧️\nRain on the porch – 2 hours of calm for sleep, study or a quiet evening.\n\n💾 Save this for tonight\n▶️ Full 2-hour version on YouTube (link in bio)\n\n#rainsounds #raino",
+     "timestamp": "2026-11-06T16:41:25+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfaDuC-EecA/",
+     "insights": {
+      "reach": 58,
+      "views": 61,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3085
+     }
+    },
     {
      "id": "18108475256202360",
      "caption": "Rainforest waterfall – breathe and let go\n\nEnjoy calming waterfall sounds for sleep and focus with this relaxing nature video.\n\nRainforest waterfall – a calm moment from today's full video.\n\n▶️ Full 2",
@@ -8810,12 +9699,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfX7Bqyjb7M/",
      "insights": {
-      "reach": 2,
-      "views": 2,
+      "reach": 3,
+      "views": 3,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 10898
+      "ig_reels_avg_watch_time": 7957
      }
     },
     {
@@ -8828,12 +9717,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfXe7dDjWRF/",
      "insights": {
-      "reach": 9,
-      "views": 11,
+      "reach": 12,
+      "views": 13,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2753
+      "ig_reels_avg_watch_time": 2355
      }
     },
     {
@@ -9110,8 +9999,62 @@
    "key": "mondmelodie",
    "username": "mondmelodieig",
    "followers": 2,
-   "posts": 20,
+   "posts": 23,
    "media": [
+    {
+     "id": "17991131148077747",
+     "caption": "Gute Nacht 🌙\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n💤 Speichern für heute Abend\n🎵 15 Mi",
+     "timestamp": "2026-11-08T16:42:01+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DffNaQOjKkN/",
+     "insights": {
+      "reach": 9,
+      "views": 9,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1524
+     }
+    },
+    {
+     "id": "18420874564080806",
+     "caption": "Schlaf schön, mein Schatz 🌙\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n💤 Speichern für heut",
+     "timestamp": "2026-11-07T16:41:59+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfconYSiFW1/",
+     "insights": {
+      "reach": 50,
+      "views": 54,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1440
+     }
+    },
+    {
+     "id": "17950384176357484",
+     "caption": "Ganz leise jetzt … 💫\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n💤 Speichern für heute Abend",
+     "timestamp": "2026-11-06T16:42:23+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfaD3I5iC3a/",
+     "insights": {
+      "reach": 18,
+      "views": 20,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 1588
+     }
+    },
     {
      "id": "18156499588551020",
      "caption": "Schlaf gut 🌙\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n💤 Speichern für heute Abend\n🎵 15 Mi",
@@ -9477,8 +10420,93 @@
    "key": "astro",
    "username": "dear.zodiac22",
    "followers": 2,
-   "posts": 14,
+   "posts": 19,
    "media": [
+    {
+     "id": "18146733802593698",
+     "caption": "The universe speaks to us in silent shifts and tender lessons. Take a deep breath and let your spirit absorb what it needs today. Which sign's lesson resonated most with you? 🌙\n\n#astrology #zodiacsign",
+     "timestamp": "2026-11-08T21:23:21+0000",
+     "media_type": "CAROUSEL_ALBUM",
+     "media_product_type": "FEED",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/p/DfftpBxCaBB/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0
+     }
+    },
+    {
+     "id": "18105726608160483",
+     "caption": "Healing doesn't always look like a grand awakening. Sometimes it is just the quiet decision to bring your own heart home. Which sign's slide resonated with your soul today? 🌙\n\n#astrology #zodiacsigns ",
+     "timestamp": "2026-11-08T17:33:13+0000",
+     "media_type": "CAROUSEL_ALBUM",
+     "media_product_type": "FEED",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/p/DffTTvkGgT4/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0
+     }
+    },
+    {
+     "id": "18150880804561110",
+     "caption": "Each month carries a unique cosmic imprint, a gentle power etched into your spirit since the day you arrived. May this remind you of the hidden wonder you bring into the world every single day. Which ",
+     "timestamp": "2026-11-07T21:12:02+0000",
+     "media_type": "CAROUSEL_ALBUM",
+     "media_product_type": "FEED",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/p/DfdHjjFIGv-/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0
+     }
+    },
+    {
+     "id": "18129987244866160",
+     "caption": "Before you arrived, a quiet truth was etched into your spirit. The stars never forget the promises you made in secret. Which month resonates most deeply with your journey? 🌙\n\n#birthmonth #celestialast",
+     "timestamp": "2026-11-07T17:36:50+0000",
+     "media_type": "CAROUSEL_ALBUM",
+     "media_product_type": "FEED",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/p/Dfcu7XnGnup/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0
+     }
+    },
+    {
+     "id": "17924769408223337",
+     "caption": "Deep within, unseen by the world, a quiet alchemy is taking place. You are gathering the scattered pieces of yourself and crafting something softer, stronger, and entirely whole. Which element’s messa",
+     "timestamp": "2026-11-06T17:41:58+0000",
+     "media_type": "CAROUSEL_ALBUM",
+     "media_product_type": "FEED",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/p/DfaKuEJlkUI/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0
+     }
+    },
     {
      "id": "18115808555156833",
      "caption": "The Quiet Blessing You Are To Others ✨\n\nEvery soul brings a quiet light to the world, often without realizing how deeply it touches those around them. Here is a small gentle reminder of the grace your",
@@ -9727,8 +10755,62 @@
    "key": "gutenacht",
    "username": "gutenachtgeschichteig",
    "followers": 0,
-   "posts": 17,
+   "posts": 20,
    "media": [
+    {
+     "id": "18021291887737278",
+     "caption": "Frosch Benni und das schaukelnde Seerosenblatt ✨\nEine Mini-Gute-Nacht-Geschichte für euer Abendritual. Kuscheln, zuhören, einschlafen. 🌙\n\n📖 Die ganze Geschichte (ca. 10 Minuten) hörst du auf unserem Y",
+     "timestamp": "2026-11-08T16:43:12+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DffNghlMNA0/",
+     "insights": {
+      "reach": 100,
+      "views": 107,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3013
+     }
+    },
+    {
+     "id": "18061165715559874",
+     "caption": "Koko Koala und das sanfte Summen im Blätterwald ✨\nEine Mini-Gute-Nacht-Geschichte für euer Abendritual. Kuscheln, zuhören, einschlafen. 🌙\n\n📖 Die ganze Geschichte (ca. 10 Minuten) hörst du auf unserem ",
+     "timestamp": "2026-11-07T16:43:36+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/Dfcox3fiXkc/",
+     "insights": {
+      "reach": 98,
+      "views": 111,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2964
+     }
+    },
+    {
+     "id": "18377816143214969",
+     "caption": "Glühwürmchen Finn und das schlummernde Bergbuch ✨\nEine Mini-Gute-Nacht-Geschichte für euer Abendritual. Kuscheln, zuhören, einschlafen. 🌙\n\n📖 Die ganze Geschichte (ca. 10 Minuten) hörst du auf unserem ",
+     "timestamp": "2026-11-06T16:43:06+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 4,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfaD8SlAHRG/",
+     "insights": {
+      "reach": 101,
+      "views": 106,
+      "saved": 1,
+      "shares": 0,
+      "total_interactions": 5,
+      "ig_reels_avg_watch_time": 2031
+     }
+    },
     {
      "id": "18121216222990457",
      "caption": "Piet Pinguin und das sanfte Mooslied im Tannengrün ✨\nEine Mini-Gute-Nacht-Geschichte für euer Abendritual. Kuscheln, zuhören, einschlafen. 🌙\n\n📖 Die ganze Geschichte (ca. 10 Minuten) hörst du auf unser",
@@ -9739,12 +10821,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfXfLPxoEbH/",
      "insights": {
-      "reach": 103,
-      "views": 103,
+      "reach": 104,
+      "views": 104,
       "saved": 1,
       "shares": 0,
       "total_interactions": 2,
-      "ig_reels_avg_watch_time": 1846
+      "ig_reels_avg_watch_time": 1889
      }
     },
     {
@@ -9757,12 +10839,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfU6dshTNlR/",
      "insights": {
-      "reach": 97,
-      "views": 100,
+      "reach": 98,
+      "views": 101,
       "saved": 2,
       "shares": 0,
       "total_interactions": 3,
-      "ig_reels_avg_watch_time": 2573
+      "ig_reels_avg_watch_time": 2568
      }
     },
     {
@@ -9775,12 +10857,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfSVqlVsliK/",
      "insights": {
-      "reach": 100,
-      "views": 111,
+      "reach": 101,
+      "views": 112,
       "saved": 1,
       "shares": 0,
       "total_interactions": 2,
-      "ig_reels_avg_watch_time": 1919
+      "ig_reels_avg_watch_time": 1921
      }
     },
     {
@@ -9794,11 +10876,11 @@
      "permalink": "https://www.instagram.com/reel/DfPwvS-s5Em/",
      "insights": {
       "reach": 51,
-      "views": 51,
+      "views": 52,
       "saved": 1,
       "shares": 0,
       "total_interactions": 1,
-      "ig_reels_avg_watch_time": 1891
+      "ig_reels_avg_watch_time": 2200
      }
     },
     {
@@ -9811,12 +10893,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfNL7jJh_ig/",
      "insights": {
-      "reach": 53,
-      "views": 57,
+      "reach": 54,
+      "views": 58,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1831
+      "ig_reels_avg_watch_time": 1830
      }
     },
     {
@@ -9829,12 +10911,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfKnLCZBuEU/",
      "insights": {
-      "reach": 62,
-      "views": 71,
+      "reach": 63,
+      "views": 72,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1768
+      "ig_reels_avg_watch_time": 1770
      }
     },
     {
@@ -9847,12 +10929,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfICZ8Iidps/",
      "insights": {
-      "reach": 46,
-      "views": 50,
+      "reach": 47,
+      "views": 51,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2874
+      "ig_reels_avg_watch_time": 3014
      }
     },
     {
@@ -9865,12 +10947,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfFdgmrh5u1/",
      "insights": {
-      "reach": 46,
-      "views": 51,
+      "reach": 47,
+      "views": 52,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2000
+      "ig_reels_avg_watch_time": 2251
      }
     },
     {
@@ -9883,12 +10965,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfDYGFGqYVH/",
      "insights": {
-      "reach": 61,
-      "views": 59,
+      "reach": 62,
+      "views": 60,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1778
+      "ig_reels_avg_watch_time": 1787
      }
     },
     {
@@ -9901,12 +10983,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfAUErbPf86/",
      "insights": {
-      "reach": 59,
-      "views": 60,
+      "reach": 60,
+      "views": 61,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 3001
+      "ig_reels_avg_watch_time": 2979
      }
     },
     {
@@ -10041,9 +11123,117 @@
   {
    "key": "whatif",
    "username": "facts_mcwiebel",
-   "followers": 2,
-   "posts": 25,
+   "followers": 3,
+   "posts": 31,
    "media": [
+    {
+     "id": "18129390683492195",
+     "caption": "💬 Comment QUIZ and I'll DM you 3 bonus questions!\n\nTest yourself! Which sense relies on photoreceptor cells in the retina? | Which cranial nerve transmits sensory signals for smell? | Which skin recep",
+     "timestamp": "2026-11-08T21:23:47+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfftmwkD5fK/",
+     "insights": {
+      "reach": 12,
+      "views": 27,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 19949
+     }
+    },
+    {
+     "id": "17865782526695848",
+     "caption": "NASA just confirmed a massive space telescope plunged into Earth's atmosphere after twenty-two years in orbit. But what if one didn't burn up completely? Most spacecraft vaporize during reentry, but h",
+     "timestamp": "2026-11-08T15:38:37+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DffGGl9iqPT/",
+     "insights": {
+      "reach": 12,
+      "views": 16,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 17410
+     }
+    },
+    {
+     "id": "18031124189913866",
+     "caption": "💬 Comment QUIZ and I'll DM you 3 bonus questions!\n\nTest yourself! What phenomenon consists of atmospheric electrostatic discharges that partially or wholly neutralize charged regions? | What weather p",
+     "timestamp": "2026-11-08T07:09:14+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 1,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfeLzkVikMp/",
+     "insights": {
+      "reach": 119,
+      "views": 127,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 8734
+     }
+    },
+    {
+     "id": "18139024477780172",
+     "caption": "💬 Comment QUIZ and I'll DM you 3 bonus questions!\n\nTest yourself! How many legs do adult insects typically have? | How many main parts make up an insect's body? | What structural polysaccharide forms ",
+     "timestamp": "2026-11-07T21:16:35+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 7,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfdIAilk-gh/",
+     "insights": {
+      "reach": 369,
+      "views": 418,
+      "saved": 1,
+      "shares": 0,
+      "total_interactions": 8,
+      "ig_reels_avg_watch_time": 17182
+     }
+    },
+    {
+     "id": "18076154084725708",
+     "caption": "Physicists are reviving the search for Nemesis, a hypothetical twin star hiding at the edge of our solar system. What if it actually exists? If a dim red or brown dwarf orbits our Sun over a light-yea",
+     "timestamp": "2026-11-07T15:19:21+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfcfJ_blC11/",
+     "insights": {
+      "reach": 22,
+      "views": 22,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 3242
+     }
+    },
+    {
+     "id": "18153108835557570",
+     "caption": "💬 Comment QUIZ and I'll DM you 3 bonus questions!\n\nTest yourself! Which green pigment is essential for plant photosynthesis? | Through which tissue do trees transport water upward? | Which microscopic",
+     "timestamp": "2026-11-07T06:52:59+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 1,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfblJk3CtNp/",
+     "insights": {
+      "reach": 108,
+      "views": 129,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 8587
+     }
+    },
     {
      "id": "18352577242250799",
      "caption": "Physicists at the Large Hadron Collider just got their first glimpse into the zeptoverse—the subatomic realm of a sextillionth of a meter! But what if we could actually build technology at this micros",
@@ -10059,7 +11249,7 @@
       "saved": 0,
       "shares": 0,
       "total_interactions": 3,
-      "ig_reels_avg_watch_time": 5286
+      "ig_reels_avg_watch_time": 5695
      }
     },
     {
@@ -10077,7 +11267,7 @@
       "saved": 0,
       "shares": 0,
       "total_interactions": 12,
-      "ig_reels_avg_watch_time": 16361
+      "ig_reels_avg_watch_time": 16287
      }
     },
     {
@@ -10162,12 +11352,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfQ5Jk8AZmS/",
      "insights": {
-      "reach": 93,
-      "views": 117,
+      "reach": 94,
+      "views": 118,
       "saved": 0,
       "shares": 0,
       "total_interactions": 2,
-      "ig_reels_avg_watch_time": 4727
+      "ig_reels_avg_watch_time": 4688
      }
     },
     {
