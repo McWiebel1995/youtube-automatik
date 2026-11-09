@@ -19,10 +19,6 @@
   "n": 2,
   "score": 0.335
  },
- "trees and plants": {
-  "n": 1,
-  "score": 0.239
- },
  "dinosaurs": {
   "n": 2,
   "score": 0.206
@@ -30,6 +26,10 @@
  "insects": {
   "n": 1,
   "score": 0.13
+ },
+ "trees and plants": {
+  "n": 2,
+  "score": 0.125
  },
  "black holes and stars": {
   "n": 2,

@@ -1,44 +1,67 @@
 {
- "generated": "2026-11-08T22:50:22+00:00",
- "start": "2026-09-09",
- "end": "2026-11-08",
+ "generated": "2026-11-09T16:51:38+00:00",
+ "start": "2026-09-10",
+ "end": "2026-11-09",
  "youtube": [
   {
    "key": "regen",
    "name": "Calm Haven Rain",
    "subs": 4,
-   "views_total": 2597,
+   "views_total": 2629,
    "made_for_kids": null,
    "videos": [
     {
-     "id": "swh-R2KoHc0",
-     "title": "Rain on the porch – exhale and let your mind rest 🌧 #shorts",
-     "published": "2026-11-08T03:18:06Z",
+     "id": "A6DbBGla6UI",
+     "title": "Soft window rain to still your restless mind 🌧️ #shorts",
+     "published": "2026-11-09T03:19:22Z",
      "seconds": 41,
      "privacy": "private",
      "views": 0,
      "likes": 0,
      "comments": 0,
      "tags": [
+      "1 hour rain sounds",
       "ambience",
       "asmrsleep",
-      "cozy rain porch",
       "cozyvibes",
+      "gentle rain and thunder",
       "gentle rain sounds",
       "peaceful rain sounds",
-      "porch rain sounds",
       "rain",
-      "rain ambience for sleep",
-      "rain on porch roof"
+      "rain ambience",
+      "rain for deep sleep"
      ],
-     "has_desc": 313
+     "has_desc": 304
+    },
+    {
+     "id": "Mu1reLHvoA8",
+     "title": "1 Hour of Gentle Rain – Rain on Window with Thunder",
+     "published": "2026-11-09T03:15:57Z",
+     "seconds": 3601,
+     "privacy": "private",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "1 hour rain sounds",
+      "ASMR",
+      "calming rain sounds",
+      "cozy rain on window",
+      "distant thunder",
+      "distant thunder and rain",
+      "gentle rain",
+      "gentle rain and thunder",
+      "gentle rain sounds",
+      "rain"
+     ],
+     "has_desc": 723
     },
     {
      "id": "ctTBBBy4K0w",
      "title": "Rain on the Porch – 1 Hour of Rain Sounds for Sleeping",
-     "published": "2026-11-08T03:14:03Z",
+     "published": "2026-11-09T00:30:11Z",
      "seconds": 3601,
-     "privacy": "private",
+     "privacy": "public",
      "views": 0,
      "likes": 0,
      "comments": 0,
@@ -55,6 +78,29 @@
       "rain on porch"
      ],
      "has_desc": 676
+    },
+    {
+     "id": "swh-R2KoHc0",
+     "title": "Rain on the porch – exhale and let your mind rest 🌧 #shorts",
+     "published": "2026-11-09T00:30:09Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 27,
+     "likes": 3,
+     "comments": 0,
+     "tags": [
+      "ambience",
+      "asmrsleep",
+      "cozy rain porch",
+      "cozyvibes",
+      "gentle rain sounds",
+      "peaceful rain sounds",
+      "porch rain sounds",
+      "rain",
+      "rain ambience for sleep",
+      "rain on porch roof"
+     ],
+     "has_desc": 313
     },
     {
      "id": "rN7FFFcCfrE",
@@ -131,7 +177,7 @@
      "published": "2026-11-07T00:30:12Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 92,
+     "views": 102,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -189,7 +235,7 @@
      "published": "2026-11-06T00:30:31Z",
      "seconds": 7201,
      "privacy": "public",
-     "views": 4,
+     "views": 5,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -241,7 +287,7 @@
      "published": "2026-11-05T00:30:15Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 92,
+     "views": 93,
      "likes": 4,
      "comments": 0,
      "tags": [
@@ -270,7 +316,7 @@
      "published": "2026-11-04T00:30:28Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 120,
+     "views": 121,
      "likes": 3,
      "comments": 0,
      "tags": [
@@ -299,7 +345,7 @@
      "published": "2026-11-04T00:30:15Z",
      "seconds": 3601,
      "privacy": "public",
-     "views": 34,
+     "views": 32,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -618,7 +664,7 @@
      "published": "2026-10-29T00:30:40Z",
      "seconds": 10801,
      "privacy": "public",
-     "views": 28,
+     "views": 30,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -983,7 +1029,7 @@
      "published": "2026-10-21T18:00:35Z",
      "seconds": 3601,
      "privacy": "public",
-     "views": 29,
+     "views": 30,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -1042,8 +1088,8 @@
    "traffic": [
     {
      "insightTrafficSourceType": "SHORTS",
-     "views": 2125,
-     "estimatedMinutesWatched": 441
+     "views": 2123,
+     "estimatedMinutesWatched": 515
     },
     {
      "insightTrafficSourceType": "RELATED_VIDEO",
@@ -1057,7 +1103,7 @@
     },
     {
      "insightTrafficSourceType": "SUBSCRIBER",
-     "views": 58,
+     "views": 56,
      "estimatedMinutesWatched": 66
     },
     {
@@ -1067,7 +1113,7 @@
     },
     {
      "insightTrafficSourceType": "NO_LINK_OTHER",
-     "views": 11,
+     "views": 10,
      "estimatedMinutesWatched": 176
     },
     {
@@ -1137,11 +1183,6 @@
     }
    ],
    "daily": [
-    {
-     "day": "2026-09-09",
-     "views": 0,
-     "subscribersGained": 0
-    },
     {
      "day": "2026-09-10",
      "views": 0,
@@ -1438,13 +1479,13 @@
    "key": "kamin",
    "name": "Calm Haven Fireside",
    "subs": 5,
-   "views_total": 1072,
+   "views_total": 1077,
    "made_for_kids": null,
    "videos": [
     {
-     "id": "lOgTSFQFodQ",
-     "title": "Quiet autumn hearth – close your eyes 🍂 #shorts",
-     "published": "2026-11-08T03:21:38Z",
+     "id": "1_wGR5IUBtM",
+     "title": "Country hearth at dusk – let the world fade #shorts",
+     "published": "2026-11-09T03:22:50Z",
      "seconds": 41,
      "privacy": "private",
      "views": 0,
@@ -1452,24 +1493,47 @@
      "comments": 0,
      "tags": [
       "ambience",
-      "autumn fireplace ambience",
-      "autumn hearth ambience",
+      "country house fireplace",
       "cozy",
-      "cozy fireplace ambience",
-      "cozy fireplace with wind",
+      "cozy fire sounds for study",
+      "cozy fireplace for reading",
+      "cozy fireplace sounds",
+      "cozy hearth ambience",
       "cozyvibes",
-      "crackling fire and wind",
-      "crackling fire sounds for sleeping",
+      "crackling fire sounds",
+      "crackling fireplace ambience"
+     ],
+     "has_desc": 359
+    },
+    {
+     "id": "3XxFOv4_hKA",
+     "title": "Cozy Fireplace | Country House Fireplace | 3 Hours with Wind",
+     "published": "2026-11-09T03:20:50Z",
+     "seconds": 10801,
+     "privacy": "private",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "3 hours crackling fireplace",
+      "3 hours fireplace sounds",
+      "ambience",
+      "burning fireplace sound effect",
+      "country house fireplace",
+      "cozy",
+      "cozy fireplace",
+      "cozy fireplace with wind",
+      "crackling fire",
       "crackling fireplace"
      ],
-     "has_desc": 354
+     "has_desc": 679
     },
     {
      "id": "EAmhXXI-uFg",
      "title": "Cozy Fireplace | Autumn Evening by the Fire | 3 Hours with Wind",
-     "published": "2026-11-08T03:19:18Z",
+     "published": "2026-11-09T00:30:39Z",
      "seconds": 10801,
-     "privacy": "private",
+     "privacy": "public",
      "views": 0,
      "likes": 0,
      "comments": 0,
@@ -1486,6 +1550,29 @@
       "crackling fireplace"
      ],
      "has_desc": 670
+    },
+    {
+     "id": "lOgTSFQFodQ",
+     "title": "Quiet autumn hearth – close your eyes 🍂 #shorts",
+     "published": "2026-11-09T00:30:01Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 6,
+     "likes": 1,
+     "comments": 0,
+     "tags": [
+      "ambience",
+      "autumn fireplace ambience",
+      "autumn hearth ambience",
+      "cozy",
+      "cozy fireplace ambience",
+      "cozy fireplace with wind",
+      "cozyvibes",
+      "crackling fire and wind",
+      "crackling fire sounds for sleeping",
+      "crackling fireplace"
+     ],
+     "has_desc": 354
     },
     {
      "id": "plX9qfu_BT0",
@@ -1562,7 +1649,7 @@
      "published": "2026-11-07T00:30:21Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 45,
+     "views": 46,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -2123,7 +2210,7 @@
      "published": "2026-10-27T00:30:35Z",
      "seconds": 3601,
      "privacy": "public",
-     "views": 1,
+     "views": 2,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -2497,11 +2584,6 @@
    ],
    "daily": [
     {
-     "day": "2026-09-09",
-     "views": 0,
-     "subscribersGained": 0
-    },
-    {
      "day": "2026-09-10",
      "views": 0,
      "subscribersGained": 0
@@ -2797,16 +2879,62 @@
    "key": "wasserfall",
    "name": "Calm Haven Waters",
    "subs": 3,
-   "views_total": 1696,
+   "views_total": 1704,
    "made_for_kids": null,
    "videos": [
     {
-     "id": "HmH9XUfoDWk",
-     "title": "Misty morning waterfall – let yourself drift 🌫️ #shorts",
-     "published": "2026-11-08T03:22:39Z",
+     "id": "q4C3XDN_8jg",
+     "title": "Rainforest waterfall – close your eyes and rest 🌿 #shorts",
+     "published": "2026-11-09T03:26:33Z",
      "seconds": 41,
      "privacy": "private",
      "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "calm",
+      "calm water sounds",
+      "focusmusic",
+      "forest stream sounds",
+      "meditation",
+      "meditation waterfall sounds",
+      "nature sounds for deep sleep",
+      "naturesounds",
+      "rainforest noise for sleeping",
+      "rainforest sounds for study"
+     ],
+     "has_desc": 335
+    },
+    {
+     "id": "7tRR66P8sOg",
+     "title": "Rainforest Waterfall – 3 Hours of Waterfall Sounds",
+     "published": "2026-11-09T03:19:20Z",
+     "seconds": 10801,
+     "privacy": "private",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "3 hours waterfall sounds",
+      "babbling stream",
+      "babbling stream sound effect",
+      "birdsong",
+      "forest stream sound for studying",
+      "jungle rain and waterfall",
+      "meditation",
+      "nature sounds",
+      "nature sounds for sleep",
+      "rainforest waterfall"
+     ],
+     "has_desc": 793
+    },
+    {
+     "id": "HmH9XUfoDWk",
+     "title": "Misty morning waterfall – let yourself drift 🌫️ #shorts",
+     "published": "2026-11-09T00:30:13Z",
+     "seconds": 41,
+     "privacy": "public",
+     "views": 6,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -2826,10 +2954,10 @@
     {
      "id": "NScxspPOSqQ",
      "title": "Waterfall Sounds for Sleep | Misty Morning Waterfall | 3 Hours",
-     "published": "2026-11-08T03:19:50Z",
+     "published": "2026-11-09T00:30:12Z",
      "seconds": 10801,
-     "privacy": "private",
-     "views": 0,
+     "privacy": "public",
+     "views": 1,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -2852,7 +2980,7 @@
      "published": "2026-11-08T00:30:37Z",
      "seconds": 41,
      "privacy": "public",
-     "views": 11,
+     "views": 16,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -3100,7 +3228,7 @@
      "published": "2026-11-03T00:30:32Z",
      "seconds": 3601,
      "privacy": "public",
-     "views": 2,
+     "views": 3,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -3935,11 +4063,6 @@
    ],
    "daily": [
     {
-     "day": "2026-09-09",
-     "views": 0,
-     "subscribersGained": 0
-    },
-    {
      "day": "2026-09-10",
      "views": 0,
      "subscribersGained": 0
@@ -4235,16 +4358,39 @@
    "key": "schlaf",
    "name": "Mondmelodie",
    "subs": 1,
-   "views_total": 942,
+   "views_total": 962,
    "made_for_kids": null,
    "videos": [
+    {
+     "id": "OaI13yuWa34",
+     "title": "Spieluhr zum Einschlafen – für ruhige Nächte (15 Minuten) + sanftes Rauschen | für süße Träume",
+     "published": "2026-11-09T04:24:43Z",
+     "seconds": 841,
+     "privacy": "public",
+     "views": 35,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "Baby Schlafmusik",
+      "Baby schlafen",
+      "Babymusik",
+      "Einschlafmusik",
+      "Lullaby",
+      "Schlaflied",
+      "Spieluhr",
+      "baby einschlafen musik",
+      "baby schlafmusik spieluhr",
+      "baby zum einschlafen bringen musik"
+     ],
+     "has_desc": 737
+    },
     {
      "id": "cZcVYUTzXfM",
      "title": "Babys Einschlafmusik für ruhige Nächte | 15 Min. Spieluhr + sanftes Rauschen",
      "published": "2026-11-08T04:23:27Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 5,
+     "views": 8,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -4267,7 +4413,7 @@
      "published": "2026-11-07T04:30:06Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 6,
+     "views": 9,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4290,7 +4436,7 @@
      "published": "2026-11-06T04:25:51Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 8,
+     "views": 10,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4319,7 +4465,7 @@
      "published": "2026-11-05T04:24:01Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 44,
+     "views": 49,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4406,7 +4552,7 @@
      "published": "2026-11-02T12:26:35Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 12,
+     "views": 13,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4435,7 +4581,7 @@
      "published": "2026-11-01T04:24:44Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 6,
+     "views": 9,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4464,7 +4610,7 @@
      "published": "2026-10-31T04:24:34Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 11,
+     "views": 12,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4522,7 +4668,7 @@
      "published": "2026-10-30T04:23:38Z",
      "seconds": 46,
      "privacy": "public",
-     "views": 1,
+     "views": 2,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4580,7 +4726,7 @@
      "published": "2026-10-29T04:23:30Z",
      "seconds": 46,
      "privacy": "public",
-     "views": 0,
+     "views": 1,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4632,7 +4778,7 @@
      "published": "2026-10-28T04:25:04Z",
      "seconds": 46,
      "privacy": "public",
-     "views": 2,
+     "views": 3,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4661,7 +4807,7 @@
      "published": "2026-10-27T04:39:54Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 31,
+     "views": 35,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4713,7 +4859,7 @@
      "published": "2026-10-26T04:24:50Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 103,
+     "views": 104,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -4765,7 +4911,7 @@
      "published": "2026-10-25T07:10:45Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 57,
+     "views": 58,
      "likes": 1,
      "comments": 0,
      "tags": [
@@ -4794,7 +4940,7 @@
      "published": "2026-10-25T07:10:26Z",
      "seconds": 46,
      "privacy": "public",
-     "views": 3,
+     "views": 4,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4823,7 +4969,7 @@
      "published": "2026-10-24T05:42:39Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 105,
+     "views": 111,
      "likes": 2,
      "comments": 0,
      "tags": [
@@ -4852,7 +4998,7 @@
      "published": "2026-10-24T05:42:24Z",
      "seconds": 46,
      "privacy": "public",
-     "views": 0,
+     "views": 1,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4881,7 +5027,7 @@
      "published": "2026-10-23T05:20:20Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 165,
+     "views": 169,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -4910,7 +5056,7 @@
      "published": "2026-10-23T05:20:03Z",
      "seconds": 46,
      "privacy": "public",
-     "views": 2,
+     "views": 3,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -5026,7 +5172,7 @@
      "published": "2026-10-21T07:22:56Z",
      "seconds": 46,
      "privacy": "public",
-     "views": 2,
+     "views": 3,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -5055,7 +5201,7 @@
      "published": "2026-10-21T07:22:45Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 39,
+     "views": 40,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -5084,7 +5230,7 @@
      "published": "2026-10-21T07:22:40Z",
      "seconds": 841,
      "privacy": "public",
-     "views": 13,
+     "views": 14,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -5114,8 +5260,8 @@
    "traffic": [
     {
      "insightTrafficSourceType": "RELATED_VIDEO",
-     "views": 748,
-     "estimatedMinutesWatched": 1271
+     "views": 749,
+     "estimatedMinutesWatched": 1272
     },
     {
      "insightTrafficSourceType": "SUBSCRIBER",
@@ -5203,11 +5349,6 @@
     }
    ],
    "daily": [
-    {
-     "day": "2026-09-09",
-     "views": 0,
-     "subscribersGained": 0
-    },
     {
      "day": "2026-09-10",
      "views": 0,
@@ -5870,11 +6011,6 @@
    ],
    "daily": [
     {
-     "day": "2026-09-09",
-     "views": 0,
-     "subscribersGained": 0
-    },
-    {
      "day": "2026-09-10",
      "views": 0,
      "subscribersGained": 0
@@ -6170,9 +6306,32 @@
    "key": "geschichten",
    "name": "Gute-Nacht-Kiste",
    "subs": 1,
-   "views_total": 206,
+   "views_total": 224,
    "made_for_kids": null,
    "videos": [
+    {
+     "id": "5lnDui_l7jk",
+     "title": "Häschen Lio und der warme Mutstein im Abendlicht – Einschlafgeschichte zum Zuhören",
+     "published": "2026-11-09T05:25:33Z",
+     "seconds": 766,
+     "privacy": "public",
+     "views": 0,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "Einschlafgeschichte",
+      "Geschichten für Kinder",
+      "Gute Nacht Geschichte",
+      "Hörgeschichte",
+      "Kindergeschichte",
+      "Vorlesen",
+      "einschlafgeschichte zum zuhören",
+      "einschlafgeschichten 10 minuten",
+      "einschlafgeschichten für kinder",
+      "geschichten zum einschlafen für kinder"
+     ],
+     "has_desc": 791
+    },
     {
      "id": "G2W2nxz9T6w",
      "title": "Frosch Benni und das schaukelnde Seerosenblatt – Einschlafgeschichte zum Zuhören",
@@ -6485,7 +6644,7 @@
      "published": "2026-10-29T06:01:15Z",
      "seconds": 700,
      "privacy": "public",
-     "views": 7,
+     "views": 8,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -6595,7 +6754,7 @@
      "published": "2026-10-27T05:31:01Z",
      "seconds": 898,
      "privacy": "public",
-     "views": 43,
+     "views": 47,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -6682,7 +6841,7 @@
      "published": "2026-10-26T05:21:17Z",
      "seconds": 682,
      "privacy": "public",
-     "views": 29,
+     "views": 30,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -7058,11 +7217,6 @@
    ],
    "daily": [
     {
-     "day": "2026-09-09",
-     "views": 0,
-     "subscribersGained": 0
-    },
-    {
      "day": "2026-09-10",
      "views": 0,
      "subscribersGained": 0
@@ -7358,17 +7512,58 @@
    "key": "whatif",
    "name": "Beyond the If",
    "subs": 169,
-   "views_total": 60815,
+   "views_total": 60844,
    "made_for_kids": false,
    "videos": [
+    {
+     "id": "_Bl7xfmsE3E",
+     "title": "What If You Lived on the Moon? #shorts",
+     "published": "2026-11-09T16:00:03Z",
+     "seconds": 37,
+     "privacy": "public",
+     "views": 6,
+     "likes": 0,
+     "comments": 0,
+     "tags": [
+      "astronomy",
+      "moon",
+      "moonbase",
+      "nasa",
+      "sciencefacts",
+      "shorts",
+      "space",
+      "whatif"
+     ],
+     "has_desc": 931
+    },
+    {
+     "id": "vXESc671Jjs",
+     "title": "Shark Trivia Quiz! #shorts",
+     "published": "2026-11-09T07:41:30Z",
+     "seconds": 89,
+     "privacy": "public",
+     "views": 292,
+     "likes": 23,
+     "comments": 0,
+     "tags": [
+      "animals",
+      "humanbody",
+      "quiz",
+      "science quiz",
+      "shorts",
+      "trivia",
+      "whatif"
+     ],
+     "has_desc": 288
+    },
     {
      "id": "pL4aGos76jc",
      "title": "The Five Senses Quiz #shorts",
      "published": "2026-11-08T21:22:50Z",
      "seconds": 84,
      "privacy": "public",
-     "views": 31,
-     "likes": 9,
+     "views": 204,
+     "likes": 20,
      "comments": 0,
      "tags": [
       "5 senses test",
@@ -7390,7 +7585,7 @@
      "published": "2026-11-08T15:37:41Z",
      "seconds": 33,
      "privacy": "public",
-     "views": 2,
+     "views": 7,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -7413,7 +7608,7 @@
      "published": "2026-11-08T07:08:39Z",
      "seconds": 107,
      "privacy": "public",
-     "views": 9,
+     "views": 12,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -7436,8 +7631,8 @@
      "published": "2026-11-07T21:16:01Z",
      "seconds": 80,
      "privacy": "public",
-     "views": 64,
-     "likes": 7,
+     "views": 94,
+     "likes": 10,
      "comments": 0,
      "tags": [
       "60 second science quiz",
@@ -7459,7 +7654,7 @@
      "published": "2026-11-07T15:19:03Z",
      "seconds": 36,
      "privacy": "public",
-     "views": 22,
+     "views": 23,
      "likes": 0,
      "comments": 0,
      "tags": [
@@ -7482,7 +7677,7 @@
      "published": "2026-11-07T06:52:25Z",
      "seconds": 77,
      "privacy": "public",
-     "views": 102,
+     "views": 106,
      "likes": 5,
      "comments": 0,
      "tags": [
@@ -7598,7 +7793,7 @@
      "published": "2026-11-05T12:09:35Z",
      "seconds": 37,
      "privacy": "public",
-     "views": 195,
+     "views": 200,
      "likes": 5,
      "comments": 0,
      "tags": [
@@ -7701,7 +7896,7 @@
       "fun dinosaur facts"
      ],
      "has_desc": 444,
-     "estimatedMinutesWatched": 48,
+     "estimatedMinutesWatched": 49,
      "averageViewDuration": 66,
      "averageViewPercentage": 78.66,
      "subscribersGained": 0,
@@ -8033,7 +8228,7 @@
      "published": "2026-11-01T12:05:59Z",
      "seconds": 40,
      "privacy": "public",
-     "views": 415,
+     "views": 416,
      "likes": 6,
      "comments": 2,
      "tags": [
@@ -8149,7 +8344,7 @@
      "published": "2026-10-31T00:17:45Z",
      "seconds": 79,
      "privacy": "public",
-     "views": 1270,
+     "views": 1272,
      "likes": 57,
      "comments": 14,
      "tags": [
@@ -8294,7 +8489,7 @@
      "published": "2026-10-30T12:22:20Z",
      "seconds": 33,
      "privacy": "public",
-     "views": 1010,
+     "views": 1009,
      "likes": 44,
      "comments": 1,
      "tags": [
@@ -8724,35 +8919,6 @@
      "a_views": 110
     },
     {
-     "id": "EE2kLBG8yt0",
-     "title": "What if Earth's magnetic field flipped in 24 hours? #shorts",
-     "published": "2026-10-25T16:11:01Z",
-     "seconds": 23,
-     "privacy": "public",
-     "views": 118,
-     "likes": 6,
-     "comments": 0,
-     "tags": [
-      "compass spinning out of control science",
-      "earth",
-      "earth magnetic field 24 hours",
-      "earth magnetic field disappearance",
-      "earth magnetic pole reversal shorts",
-      "geomagnetic reversal explained",
-      "magnetic pole flip effects on earth",
-      "polar reversal consequences",
-      "science",
-      "science shorts earth magnetic field"
-     ],
-     "has_desc": 542,
-     "estimatedMinutesWatched": 7,
-     "averageViewDuration": 9,
-     "averageViewPercentage": 43.1,
-     "subscribersGained": 1,
-     "shares": 0,
-     "a_views": 118
-    },
-    {
      "id": "ZvG-Nxr0n6E",
      "title": "What If We Sent Data Backward in Time? #shorts",
      "published": "2026-10-25T07:31:42Z",
@@ -8844,23 +9010,23 @@
    "traffic": [
     {
      "insightTrafficSourceType": "SHORTS",
-     "views": 14692,
-     "estimatedMinutesWatched": 5731
+     "views": 14666,
+     "estimatedMinutesWatched": 5723
     },
     {
      "insightTrafficSourceType": "YT_SEARCH",
-     "views": 1235,
-     "estimatedMinutesWatched": 269
+     "views": 1234,
+     "estimatedMinutesWatched": 274
     },
     {
      "insightTrafficSourceType": "YT_OTHER_PAGE",
-     "views": 303,
-     "estimatedMinutesWatched": 125
+     "views": 300,
+     "estimatedMinutesWatched": 124
     },
     {
      "insightTrafficSourceType": "YT_CHANNEL",
-     "views": 114,
-     "estimatedMinutesWatched": 46
+     "views": 115,
+     "estimatedMinutesWatched": 47
     },
     {
      "insightTrafficSourceType": "EXT_URL",
@@ -9008,8 +9174,8 @@
    "content_type": [
     {
      "creatorContentType": "shorts",
-     "views": 16408,
-     "estimatedMinutesWatched": 6193
+     "views": 16400,
+     "estimatedMinutesWatched": 6192
     },
     {
      "creatorContentType": "videoOnDemand",
@@ -9018,11 +9184,6 @@
     }
    ],
    "daily": [
-    {
-     "day": "2026-09-09",
-     "views": 8,
-     "subscribersGained": 0
-    },
     {
      "day": "2026-09-10",
      "views": 13,
@@ -9331,11 +9492,6 @@
    "content_type": [],
    "daily": [
     {
-     "day": "2026-09-09",
-     "views": 0,
-     "subscribersGained": 0
-    },
-    {
      "day": "2026-09-10",
      "views": 0,
      "subscribersGained": 0
@@ -9633,24 +9789,42 @@
    "key": "calmhaven",
    "username": "calmhavenig",
    "followers": 5,
-   "posts": 20,
+   "posts": 21,
    "media": [
+    {
+     "id": "18084100658357891",
+     "caption": "Close your eyes. Just the rain. 🌧️\nRain on window – 1 hour of calm for sleep, study or a quiet evening.\n\n💾 Save this for tonight\n▶️ Full 1-hour version on YouTube (link in bio)\n\n#rainsounds #rainonwin",
+     "timestamp": "2026-11-09T16:41:10+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfhyHHOAGD8/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0
+     }
+    },
     {
      "id": "17973772368186914",
      "caption": "Let the water carry your thoughts away. 🌊\nMisty morning waterfall – 3 hours of natural water sounds.\n\n💾 Save this for tonight\n▶️ Full 3-hour version on YouTube (link in bio)\n\n#naturesounds #waterfalls",
      "timestamp": "2026-11-08T16:41:23+0000",
      "media_type": "VIDEO",
      "media_product_type": "REELS",
-     "like_count": 0,
+     "like_count": 1,
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DffNVyYDLdD/",
      "insights": {
-      "reach": 3,
-      "views": 3,
+      "reach": 8,
+      "views": 11,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2137
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 2315
      }
     },
     {
@@ -9999,8 +10173,26 @@
    "key": "mondmelodie",
    "username": "mondmelodieig",
    "followers": 2,
-   "posts": 23,
+   "posts": 24,
    "media": [
+    {
+     "id": "17960684061253238",
+     "caption": "Schlaf schön, mein Schatz 🌙\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n💤 Speichern für heut",
+     "timestamp": "2026-11-09T16:42:05+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfhyLrljIjy/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0
+     }
+    },
     {
      "id": "17991131148077747",
      "caption": "Gute Nacht 🌙\nWenn dein Baby abends nicht zur Ruhe kommt: Eine sanfte Spieluhr-Melodie hilft beim Runterkommen. Jeden Tag ein neues, selbst komponiertes Schlaflied.\n\n💤 Speichern für heute Abend\n🎵 15 Mi",
@@ -10011,12 +10203,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DffNaQOjKkN/",
      "insights": {
-      "reach": 9,
-      "views": 9,
+      "reach": 12,
+      "views": 12,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 1524
+      "ig_reels_avg_watch_time": 1345
      }
     },
     {
@@ -10755,8 +10947,26 @@
    "key": "gutenacht",
    "username": "gutenachtgeschichteig",
    "followers": 0,
-   "posts": 20,
+   "posts": 21,
    "media": [
+    {
+     "id": "18141913885621133",
+     "caption": "Häschen Lio und der warme Mutstein im Abendlicht ✨\nEine Mini-Gute-Nacht-Geschichte für euer Abendritual. Kuscheln, zuhören, einschlafen. 🌙\n\n📖 Die ganze Geschichte (ca. 10 Minuten) hörst du auf unserem",
+     "timestamp": "2026-11-09T16:42:45+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfhySvGKBWe/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0
+     }
+    },
     {
      "id": "18021291887737278",
      "caption": "Frosch Benni und das schaukelnde Seerosenblatt ✨\nEine Mini-Gute-Nacht-Geschichte für euer Abendritual. Kuscheln, zuhören, einschlafen. 🌙\n\n📖 Die ganze Geschichte (ca. 10 Minuten) hörst du auf unserem Y",
@@ -11123,9 +11333,45 @@
   {
    "key": "whatif",
    "username": "facts_mcwiebel",
-   "followers": 3,
-   "posts": 31,
+   "followers": 4,
+   "posts": 33,
    "media": [
+    {
+     "id": "18109209964952318",
+     "caption": "NASA just awarded billions to build permanent bases on the Moon, but what if you actually lived there? For starters, day and night each last two entire weeks. During the brutal lunar night, temperatur",
+     "timestamp": "2026-11-09T16:01:19+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 0,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfhtjUpEziU/",
+     "insights": {
+      "reach": 0,
+      "views": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 0
+     }
+    },
+    {
+     "id": "18414480391090059",
+     "caption": "💬 Comment QUIZ and I'll DM you 3 bonus questions!\n\nTest yourself! What material makes up a shark's skeleton instead of bone? | Which organs allow sharks to detect electrical fields of prey? | Which sh",
+     "timestamp": "2026-11-09T10:19:38+0000",
+     "media_type": "VIDEO",
+     "media_product_type": "REELS",
+     "like_count": 4,
+     "comments_count": 0,
+     "permalink": "https://www.instagram.com/reel/DfhGY6lCn4T/",
+     "insights": {
+      "reach": 102,
+      "views": 108,
+      "saved": 1,
+      "shares": 0,
+      "total_interactions": 5,
+      "ig_reels_avg_watch_time": 5490
+     }
+    },
     {
      "id": "18129390683492195",
      "caption": "💬 Comment QUIZ and I'll DM you 3 bonus questions!\n\nTest yourself! Which sense relies on photoreceptor cells in the retina? | Which cranial nerve transmits sensory signals for smell? | Which skin recep",
@@ -11136,12 +11382,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfftmwkD5fK/",
      "insights": {
-      "reach": 12,
-      "views": 27,
+      "reach": 112,
+      "views": 127,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 19949
+      "ig_reels_avg_watch_time": 8454
      }
     },
     {
@@ -11154,12 +11400,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DffGGl9iqPT/",
      "insights": {
-      "reach": 12,
-      "views": 16,
+      "reach": 15,
+      "views": 19,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 17410
+      "ig_reels_avg_watch_time": 14694
      }
     },
     {
@@ -11172,12 +11418,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfeLzkVikMp/",
      "insights": {
-      "reach": 119,
-      "views": 127,
+      "reach": 121,
+      "views": 129,
       "saved": 0,
       "shares": 0,
       "total_interactions": 1,
-      "ig_reels_avg_watch_time": 8734
+      "ig_reels_avg_watch_time": 8965
      }
     },
     {
@@ -11190,12 +11436,12 @@
      "comments_count": 0,
      "permalink": "https://www.instagram.com/reel/DfdIAilk-gh/",
      "insights": {
-      "reach": 369,
-      "views": 418,
+      "reach": 373,
+      "views": 423,
       "saved": 1,
       "shares": 0,
       "total_interactions": 8,
-      "ig_reels_avg_watch_time": 17182
+      "ig_reels_avg_watch_time": 17035
      }
     },
     {
