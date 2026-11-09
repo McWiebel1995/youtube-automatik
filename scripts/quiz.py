@@ -57,7 +57,15 @@ THEME_STATS = ROOT / "data" / "quiz_themes.json"     # wird montags aus den Anal
 QUIZ_LOG = ROOT / "data" / "quiz_log.json"
 
 
+PROVEN = ["the human body", "oceans and sea life", "space and planets", "animals", "dinosaurs",
+          "ancient Rome and its engineering"]          # liefen mit 550–1.270 Aufrufen
+
+
 def pick_theme(rnd):
+    if os.environ.get("QUIZ_EXPLORE", "0") != "1":   # Erholungsphase: nur Bewährtes, nicht 2x hintereinander dasselbe
+        log = json.loads(QUIZ_LOG.read_text()) if QUIZ_LOG.exists() else []
+        recent = [x["theme"] for x in log[-2:]]
+        return rnd.choice([t for t in PROVEN if t not in recent] or PROVEN), "bewährt"
     """Lernende Auswahl: neue Themen zuerst je 2x testen, danach meist die besten, aber immer etwas Neues."""
     stats = json.loads(THEME_STATS.read_text()) if THEME_STATS.exists() else {}
     log = json.loads(QUIZ_LOG.read_text()) if QUIZ_LOG.exists() else []
@@ -106,7 +114,7 @@ def make_quiz(rnd):
     try:                                              # Zuschauerwünsche aus den Kommentaren (topic_requests.py)
         import topic_requests
         top = topic_requests.top_open(topic_requests.collect())
-        if top and rnd.random() < 0.4:
+        if top and rnd.random() < float(os.environ.get("QUIZ_REQUEST_SHARE", "0")):   # pausiert, bis Kanal erholt
             theme, why, asked = top["topic"], f"Zuschauerwunsch ({top['count']}x)", top["users"][:2]
     except Exception as e:  # noqa: BLE001
         print(f"  ⚠ Themenwünsche: {str(e)[:120]}")
@@ -265,7 +273,7 @@ def build(out: Path, seed=None):
 
         def say(text, tag):
             return wi.to_sr(v.speak.remote(text, ref, exaggeration=0.65, cfg_weight=0.45, seed=5), work, tag + ".wav")
-        a_hook = say(qz["hook"] + " Question three is the hardest. Keep score!", "hook")
+        a_hook = say(qz["hook"], "hook")             # Einstieg kurz halten – erste Frage nach ~2 s
         a_q = [say(f"{q['q']} A: {q['options'][0]}. B: {q['options'][1]}. Or C: {q['options'][2]}?", f"q{i}")
                for i, q in enumerate(qs)]
         a_r = [say(f"It's {'ABC'[q['correct']]}! {q['options'][q['correct']]}. {q.get('explain', '')}", f"r{i}")
@@ -321,8 +329,7 @@ def build(out: Path, seed=None):
             "episode": qz.get("episode"), "asked_by": qz.get("asked_by", []),
             "description": (f"Topic requested by {' & '.join(qz['asked_by'])} – thanks! 🙌\n\n" if qz.get("asked_by") else "") +
                            "Test yourself! " + " | ".join(q["q"] for q in qs) +
-                           "\n\n✅ Every answer fact-checked with Wikipedia." +
-                           "\n💬 Comment your score and the topic for the next quiz!" +
+
                            "\n\nAnswers explained in the video.\n#shorts #quiz #science #trivia #beyondtheif",
             "tags": ["shorts", "quiz", "science quiz", "trivia", qz["theme"]]}
     (out / "quiz_meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")

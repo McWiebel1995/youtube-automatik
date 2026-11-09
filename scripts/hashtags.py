@@ -172,7 +172,8 @@ def yt_meta(meta, channel_name):
             title = title.replace(t, "")
         title = re.sub(r"\s{2,}", " ", title).strip()
     tags = yt(ch, f"{title}\n{desc}", short, exclude=title)
-    if os.environ.get("SEO", "1") == "1":            # Suchoptimierung (seo.py) – lange Videos voll, Shorts kompakt
+    if not short and os.environ.get("SEO", "1") == "1":   # Suchoptimierung nur für lange Videos; Shorts wieder
+                                                      # im alten, kurzen Stil (bis 31.10. lief es damit am besten)
         try:
             import seo
             m = seo.enrich(dict(meta, title=title, description=strip(desc)), ch, core_hashtags=tags, short=short)
