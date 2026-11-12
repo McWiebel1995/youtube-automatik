@@ -236,7 +236,7 @@ def cmd_post(ids, edits=None):
     posted = load(POSTED, [])
     report = []
     for item in pend:
-        if item["id"] not in ids or item["status"] != "pending":
+        if item["id"] not in ids or item["status"] not in ("pending", "approved"):
             continue
         if edits and edits.get(item["id"]):
             item["caption"] = edits[item["id"]]
@@ -267,6 +267,27 @@ def cmd_post(ids, edits=None):
     save(PENDING, pend)
     save(POSTED, posted[-500:])
     note("Clip Lab – Gepostet", " ⏎ ".join(report) or "nichts freigegeben")
+
+
+def cmd_approve(ids, edits=None):
+    """Freigeben -> wird zur nächsten US-Postzeit (Cron) automatisch gepostet."""
+    pend = load(PENDING, [])
+    for item in pend:
+        if item["id"] in ids and item["status"] == "pending":
+            item["status"] = "approved"
+            if edits and edits.get(item["id"]):
+                item["caption"] = edits[item["id"]]
+    save(PENDING, pend)
+    note("Clip Lab – Freigegeben", ", ".join(ids))
+
+
+def cmd_post_due():
+    """US-Postzeit: alle freigegebenen Clips posten (max. 2 pro Lauf, Rest beim nächsten Termin)."""
+    ids = [p["id"] for p in load(PENDING, []) if p["status"] == "approved"][:2]
+    if ids:
+        cmd_post(ids)
+    else:
+        note("Clip Lab", "nichts freigegeben")
 
 
 def cmd_reject(ids):
@@ -329,7 +350,7 @@ def cmd_probe():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("mode", choices=["probe", "cut", "post", "reject", "fetch"])
+    ap.add_argument("mode", choices=["probe", "cut", "post", "reject", "fetch", "approve", "due"])
     ap.add_argument("--ids", default="")
     ap.add_argument("--only", default="")
     ap.add_argument("--edits", default="")              # JSON {id: caption}
@@ -343,6 +364,10 @@ def main():
         cmd_cut([x for x in a.only.split(",") if x] or None)
     elif a.mode == "fetch":
         cmd_fetch(a.url or os.environ.get("FETCH_URL", ""), a.name)
+    elif a.mode == "approve":
+        cmd_approve(ids, json.loads(a.edits) if a.edits else None)
+    elif a.mode == "due":
+        cmd_post_due()
     elif a.mode == "post":
         cmd_post(ids, json.loads(a.edits) if a.edits else None)
     else:

@@ -1,12 +1,12 @@
 name: "🎬 The Clip Lab (Autopilot)"
-run-name: "Clip Lab: ${{ inputs.mode || 'cut' }}"
+run-name: "Clip Lab: ${{ inputs.mode || (github.event.schedule == '3 23 * * *' && 'due') || 'cut' }}"
 
 on:
   workflow_dispatch:
     inputs:
       mode:
         type: choice
-        options: [cut, post, reject, probe, fetch]
+        options: [cut, approve, post, due, reject, probe, fetch]
         default: cut
       ids:
         description: "Clip-IDs (Komma) für post/reject"
@@ -21,10 +21,11 @@ on:
         description: "fetch: Download-Link des Kampagnen-Materials"
         default: ""
   schedule:
-    - cron: "17 13 * * *"      # schneiden -> Freigabe am Nachmittag, Posten zur US-Zeit
+    - cron: "17 13 * * *"      # schneiden -> Freigabe am Nachmittag
+    - cron: "3 23 * * *"       # freigegebene Clips posten: 18:03 New York / 15:03 Los Angeles (US-Abend)
 
 concurrency:
-  group: cliplab-${{ inputs.mode || 'cut' }}
+  group: cliplab-${{ inputs.mode || github.event.schedule || 'cut' }}
   cancel-in-progress: false
 
 permissions:
@@ -53,7 +54,7 @@ jobs:
           EDITS: ${{ inputs.edits }}
           ONLY: ${{ inputs.only }}
           FETCH_URL: ${{ inputs.url }}
-        run: python scripts/cliplab.py "${{ inputs.mode || 'cut' }}" --ids "$IDS" --edits "$EDITS" --only "$ONLY" --name "$ONLY"
+        run: python scripts/cliplab.py "${{ inputs.mode || (github.event.schedule == '3 23 * * *' && 'due') || 'cut' }}" --ids "$IDS" --edits "$EDITS" --only "$ONLY" --name "$ONLY"
       - name: Stand speichern
         if: always()
         run: |
