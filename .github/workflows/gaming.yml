@@ -1,0 +1,59 @@
+name: "🎮 Gaming-News-Short"
+run-name: "Gaming${{ inputs.publish && '' || ' (Test)' }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: "hochladen (erst wenn Kanal + Token da sind)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gaming
+  cancel-in-progress: false
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+      - run: pip install -r requirements.txt modal faster-whisper
+      - name: Schriften laden
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/fetch_fonts.py
+      - name: Produzieren
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_GAMING: ${{ secrets.YT_REFRESH_TOKEN_GAMING }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/gaming.py --out output/gaming ${{ inputs.publish && '--publish' || '' }}
+      - name: Vorschau ablegen
+        if: ${{ !inputs.publish }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete preview-gaming -y --cleanup-tag || true
+          files=""; for f in output/gaming/gaming_short.mp4 output/gaming/gaming_meta.json; do [ -e "$f" ] && files="$files $f"; done
+          gh release create preview-gaming $files --title "Gaming-Vorschau" --notes "Testlauf" --prerelease
+      - name: Stand speichern
+        if: ${{ inputs.publish }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          for p in data/gaming_used.json data/last_upload; do [ -e "$p" ] && git add -A "$p" || true; done
+          git commit -m "Gaming: Upload-Stand" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep 5; done
