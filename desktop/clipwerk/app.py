@@ -207,7 +207,7 @@ class CutPage(QWidget):
         self.credit = QLineEdit(main.settings.get("clip_credit", ""))
         self.credit.setPlaceholderText("Creator nennen, z. B. @streamername (wird im Bild + Text angezeigt)")
         self.required = QLineEdit(main.settings.get("clip_required", ""))
-        self.required.setPlaceholderText("Pflichttext der Kampagne, z. B. Link oder #ad / #clipping")
+        self.required.setPlaceholderText("Pflichtzeilen der Kampagne, mit | trennen, z. B. @callofduty | Season 1 out now")
         cg.addWidget(label("Creator", wrap=False), 1, 0)
         cg.addWidget(self.credit, 1, 1)
         cg.addWidget(label("Pflichttext", wrap=False), 2, 0)
@@ -241,9 +241,21 @@ class CutPage(QWidget):
         frow.addWidget(self.cam_box)
         cg.addWidget(label("Bild", wrap=False), 4, 0)
         cg.addLayout(frow, 4, 1)
-        self.cb_ad = QCheckBox("Werbehinweis „#ad“ am Anfang des Clips und vorne in der Caption (Pflicht bei bezahlten Kampagnen)")
+        self.cb_ad = QCheckBox("Werbehinweis „#Ad“ am Anfang des Clips und in eigener Zeile in der Caption (Pflicht bei Kampagnen)")
         self.cb_ad.setChecked(bool(main.settings.get("clip_ad", True)))
         cg.addWidget(self.cb_ad, 5, 0, 1, 2)
+        lgrow = QHBoxLayout()
+        self.logo = QLineEdit(main.settings.get("clip_logo", ""))
+        self.logo.setPlaceholderText("Optional: Logo der Kampagne (PNG) – wird oben rechts eingeblendet, falls verlangt")
+        lb = QPushButton("Auswählen")
+        lb.clicked.connect(lambda: self.logo.setText(QFileDialog.getOpenFileName(
+            self, "Logo auswählen", str(Path.home()), "Bilder (*.png *.webp *.jpg)")[0] or self.logo.text()))
+        lgrow.addWidget(self.logo, 1)
+        lgrow.addWidget(lb)
+        cg.addWidget(label("Logo", wrap=False), 6, 0)
+        cg.addLayout(lgrow, 6, 1)
+        cg.addWidget(label("Hinweis: Im Clipping-Modus wird keine Musik hinzugefügt – Kampagnen verbieten das.", "muted"),
+                     7, 0, 1, 2)
         lay.addWidget(self.clipbox)
         self.style_group.buttonClicked.connect(lambda _b: self.toggle_clip())
         # Ablage
@@ -363,7 +375,7 @@ class CutPage(QWidget):
                  subtitles=self.cb_subs.isChecked(), hook=self.cb_hook.isChecked(), music=self.cb_music.isChecked(),
                  long_version=self.cb_long.isChecked(), clip_credit=self.credit.text().strip(),
                  clip_required=self.required.text().strip(), clip_layout=self.layout_box.currentData(),
-                 facecam=self.cam_box.currentData(), clip_ad=self.cb_ad.isChecked())
+                 facecam=self.cam_box.currentData(), clip_ad=self.cb_ad.isChecked(), clip_logo=self.logo.text().strip())
         if s["style"] == "clipping" and not s.get("gemini_key"):
             QMessageBox.information(self, "ClipWerk", "Für Clipping braucht ClipWerk den Gemini-Schlüssel "
                                     "(Einstellungen) – er findet damit die viralen Momente.")

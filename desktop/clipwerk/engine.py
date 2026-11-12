@@ -79,7 +79,7 @@ DEFAULTS = {
     "clip_layout": "auto",                           # auto | face (Gesicht folgen) | split (Facecam oben, Spiel unten) | full
     "facecam": "tr",                                 # Ecke der Facecam im Stream: tl | tr | bl | br
     "facecam_size": 0.30,                            # Anteil der Bildbreite, den die Facecam einnimmt
-    "clip_ad": True, "clip_ad_text": "#ad",          # Werbehinweis (Pflicht bei bezahlten Kampagnen)
+    "clip_ad": True, "clip_ad_text": "#Ad", "clip_logo": "",  # Werbehinweis + Pflicht-Logo (PNG)
 }
 
 
@@ -108,6 +108,13 @@ def download(url: str, dest: Path, log=print) -> Path:
             "no_warnings": True, "format": "bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080]/b",
             "merge_output_format": "mp4", "ffmpeg_location": str(Path(tool("ffmpeg")).parent),
             "restrictfilenames": True}
+    m = re.search(r"[?&#]t=(?:(\d+)h)?(?:(\d+)m)?(\d+)s?\b", url)
+    if m:                                            # Link mit Startzeit (z. B. Stream-VOD ab 2:56:29) -> nur ab dort laden
+        start = int(m[1] or 0) * 3600 + int(m[2] or 0) * 60 + int(m[3])
+        from yt_dlp.utils import download_range_func
+        opts["download_ranges"] = download_range_func(None, [(start, float("inf"))])
+        opts["force_keyframes_at_cuts"] = True
+        log(f"Lade ab {start // 3600}:{start % 3600 // 60:02d}:{start % 60:02d} …")
     log(f"Lade {url} …")
     with yt_dlp.YoutubeDL(opts) as y:
         info = y.extract_info(url, download=True)
@@ -590,16 +597,25 @@ def render(clips, units_sel: list[Unit], out: Path, work: Path, settings: dict, 
     karaoke_ass(words, ass, w, h, hook if settings.get("hook", True) else "",
                 color=settings.get("highlight_color", "#FFD700"), subtitles=settings.get("subtitles", True),
                 credit=(f"Credit: {credit}" if credit else ""), total=t,
-                ad=(settings.get("clip_ad_text", "#ad").strip() if settings.get("style") == "clipping"
+                ad=(settings.get("clip_ad_text", "#Ad").strip() if settings.get("style") == "clipping"
                     and settings.get("clip_ad", True) else ""))
     if font_file():                                  # Schrift in den Arbeitsordner -> keine Windows-Pfadprobleme
         (work / "fonts").mkdir(exist_ok=True)
         shutil.copy(font_file(), work / "fonts" / font_file().name)
-    vf = "[0:v]subtitles=subs.ass" + (":fontsdir=fonts" if font_file() else "") + "[v]"
-    music = _music(settings) if settings.get("music", True) else None
+    clipping = settings.get("style") == "clipping"
+    logo = Path(settings.get("clip_logo") or "") if clipping else Path("")
+    sub = "subtitles=subs.ass" + (":fontsdir=fonts" if font_file() else "")
+    music = _music(settings) if settings.get("music", True) and not clipping else None   # Kampagnen: keine Musik erlaubt
     args = [tool("ffmpeg"), "-y", "-loglevel", "error", "-i", joined.name]
     if music:
         args += ["-stream_loop", "-1", "-i", str(music)]
+    if logo.is_file():                               # Pflicht-Logo oben rechts, gut sichtbar
+        args += ["-i", str(logo)]
+        li = 2 if music else 1
+        vf = (f"[{li}:v]scale={int(w * 0.24)}:-1[lg];[0:v][lg]overlay=W-w-{int(w * 0.05)}:{int(h * 0.04)},{sub}[v]")
+    else:
+        vf = f"[0:v]{sub}[v]"
+    if music:
         db = float(settings.get("music_db", -22))
         fa = (f"[1:a]volume={db}dB,aformat=channel_layouts=stereo[m];[m][0:a]sidechaincompress=threshold=0.03:"
               f"ratio=6:attack=20:release=400[md];[0:a][md]amix=inputs=2:duration=first:normalize=0,"
@@ -672,11 +688,13 @@ def process(paths: list[Path], out_dir: Path, settings: dict, progress=lambda p,
             dur = render(clips, [byid[i] for i in r["ids"]], mp4, work / f"r{k}", settings, r.get("hook", ""), True, log)
             caption = (r.get("caption", "").strip() + "\n\n" + " ".join(r.get("hashtags", [])[:5])).strip()
             if settings.get("style") == "clipping":     # Pflichtangaben der Kampagne / des Creators
-                extra = [x for x in (f"🎥 {settings.get('clip_credit', '').strip()}" if settings.get("clip_credit") else "",
-                                     settings.get("clip_required", "").strip()) if x]
-                ad = settings.get("clip_ad_text", "#ad").strip() if settings.get("clip_ad", True) else ""
-                caption = ((ad + " " if ad else "") + r.get("caption", "").strip() + "\n\n" + "\n".join(extra) +
-                           "\n\n" + " ".join(r.get("hashtags", [])[:5])).strip()   # Hinweis ganz vorne = sofort sichtbar
+                extra = [x.strip() for x in ([f"🎥 {settings.get('clip_credit', '').strip()}"] if settings.get("clip_credit") else [])
+                         + settings.get("clip_required", "").split("|") if x.strip()]   # "|" = neue Zeile
+                ad = settings.get("clip_ad_text", "#Ad").strip() if settings.get("clip_ad", True) else ""
+                # Kampagnen-Format: Text, Pflichtzeilen, #Ad als erster Hashtag in eigener Zeile, max. 3 weitere Hashtags
+                tags = [t for t in r.get("hashtags", []) if t.lower().lstrip("#") not in ("ad", "advertisement", "sponsored")]
+                caption = "\n".join(x for x in (r.get("caption", "").strip(), *extra, ad,
+                                                  " ".join(tags[:3])) if x).strip()
             mp4.with_suffix(".txt").write_text(caption, encoding="utf-8")
             thumbnail(mp4, mp4.with_suffix(".jpg"), at=min(1.5, dur / 3), width=360)
             results["reels"].append({"file": mp4.name, "duration": round(dur, 1), "hook": r.get("hook", ""),
