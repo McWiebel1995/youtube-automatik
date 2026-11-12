@@ -586,22 +586,58 @@ def _music(settings) -> Path | None:
     return random.choice(files) if files else None
 
 
+def _merge_contiguous(units_sel):
+    """Direkt aufeinanderfolgende Stücke derselben Aufnahme zu einem Abschnitt zusammenfassen (kein harter Schnitt)."""
+    out = []
+    for u in units_sel:
+        if out and out[-1].clip == u.clip and 0 <= u.start - out[-1].end < 0.25:
+            prev = out[-1]
+            out[-1] = Unit(prev.id, prev.clip, prev.start, u.end, (prev.text + " " + u.text).strip(), prev.speech or u.speech,
+                           max(prev.interest, u.interest), max(prev.quality, u.quality), prev.seen, max(prev.loud, u.loud))
+        else:
+            out.append(u)
+    return out
+
+
 def render(clips, units_sel: list[Unit], out: Path, work: Path, settings: dict, hook="", vertical=True, log=print):
     w, h = (W, H) if vertical else (H, W)
     work.mkdir(parents=True, exist_ok=True)
-    parts, words, t = [], [], 0.0
+    clipping = settings.get("style") == "clipping"
+    if clipping:
+        units_sel = _merge_contiguous(units_sel)
+    xf = float(settings.get("transition", 0.3)) if clipping and len(units_sel) > 1 else 0.0   # weiche Übergänge
+    parts, durs, words, t = [], [], [], 0.0
     for k, u in enumerate(units_sel):
         p = work / f"seg_{k:03d}.mp4"
         _segment(clips[u.clip], u, p, w, h, settings)
+        d = probe(p).duration or u.dur
+        if xf:
+            d = max(d, 2 * xf + 0.1)
         parts.append(p)
+        durs.append(d)
         for (x, a, b) in clips[u.clip].words:
             if a >= u.start - 0.02 and b <= u.end + 0.05 and _norm(x) not in FILLERS:
                 words.append((x, t + a - u.start, t + b - u.start))
-        t += u.dur
-    lst = work / "list.txt"
-    lst.write_text("".join(f"file '{p.as_posix()}'\n" for p in parts), encoding="utf-8")
+        t += d - (xf if k < len(units_sel) - 1 else 0)
     joined = work / "joined.mp4"
-    run([tool("ffmpeg"), "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", joined])
+    if xf:                                            # Überblendung Bild + Ton zwischen den Szenen
+        args = [tool("ffmpeg"), "-y", "-loglevel", "error"]
+        for p in parts:
+            args += ["-i", p]
+        fc, vprev, aprev, acc = [], "[0:v]", "[0:a]", durs[0]
+        for k in range(1, len(parts)):
+            off = acc - xf
+            fc.append(f"{vprev}[{k}:v]xfade=transition=fade:duration={xf:.3f}:offset={off:.3f}[v{k}]")
+            fc.append(f"{aprev}[{k}:a]acrossfade=d={xf:.3f}:c1=tri:c2=tri[a{k}]")
+            vprev, aprev = f"[v{k}]", f"[a{k}]"
+            acc = off + durs[k]
+        args += ["-filter_complex", ";".join(fc), "-map", vprev, "-map", aprev, "-c:v", "libx264", "-preset", "veryfast",
+                 "-crf", "17", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", joined]
+        run(args)
+    else:
+        lst = work / "list.txt"
+        lst.write_text("".join(f"file '{p.as_posix()}'\n" for p in parts), encoding="utf-8")
+        run([tool("ffmpeg"), "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", joined])
     ass = work / "subs.ass"
     credit = settings.get("clip_credit", "").strip() if settings.get("style") == "clipping" else ""
     karaoke_ass(words, ass, w, h, hook if settings.get("hook", True) else "",
