@@ -225,7 +225,7 @@ class CutPage(QWidget):
         # Bildaufteilung für Querformat-Streams
         frow = QHBoxLayout()
         self.layout_box = QComboBox()
-        for key, txt in (("auto", "Automatisch (Person folgen, sonst ganzes Bild)"), ("face", "Person folgen"),
+        for key, txt in (("auto", "Automatisch (Person folgen, sonst ganzes Bild)"), ("face", "Person folgen"), ("center", "Mitte ausschneiden (Trailer)"),
                          ("split", "Facecam oben + Spiel unten"), ("full", "Ganzes Bild mit Unschärfe-Rand")):
             self.layout_box.addItem(txt, key)
         self.layout_box.setCurrentIndex(max(0, self.layout_box.findData(main.settings.get("clip_layout", "auto"))))

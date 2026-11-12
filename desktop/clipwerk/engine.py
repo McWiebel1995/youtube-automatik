@@ -76,7 +76,7 @@ DEFAULTS = {
     "style": "hof", "instagram": "", "highlight_color": "#FFD700", "projects_dir": "",
     "modal_token_id": "", "modal_token_secret": "", "vision": True,
     "clip_credit": "", "clip_required": "",          # Clipping: Creator-Nennung + Pflichttext der Kampagne
-    "clip_layout": "auto",                           # auto | face (Gesicht folgen) | split (Facecam oben, Spiel unten) | full
+    "clip_layout": "auto",                           # auto | face (Gesicht folgen) | center | split (Facecam oben, Spiel unten) | full
     "facecam": "tr",                                 # Ecke der Facecam im Stream: tl | tr | bl | br
     "facecam_size": 0.30,                            # Anteil der Bildbreite, den die Facecam einnimmt
     "clip_ad": True, "clip_ad_text": "#Ad", "clip_logo": "",  # Werbehinweis + Pflicht-Logo (PNG)
@@ -433,6 +433,10 @@ def select(units: list[Unit], settings: dict, log=print) -> dict:
             if settings["style"] == "clipping":
                 lst = "\n".join(f"{u.id} | {u.dur:.1f}s | {u.text[:160]} | {u.loud:.0f}" for u in units)
                 prompt = CLIP_TASK.format(n=n, rmin=rmin, rmax=rmax, units=lst[:90000])
+                if settings.get("clip_brief"):          # Regeln der Kampagne (Autopilot) – Captions müssen stimmen
+                    prompt += ("\n\nCAMPAIGN RULES – follow exactly. Captions/hooks in ENGLISH, only true facts that are "
+                               "visible/audible in the clip, no exaggerated hooks, no rage bait. Do NOT add #Ad or the "
+                               "required lines yourself (they are appended automatically):\n" + settings["clip_brief"])
             else:
                 lst = "\n".join(f"{u.id} | {u.dur:.1f}s | {u.text[:200]} | Bild: {u.seen or '-'} | {u.interest:.0f} | {u.quality:.2f}"
                                 for u in units)
@@ -548,7 +552,8 @@ def _segment(clip: Clip, u: Unit, out: Path, w=W, h=H, settings=None):
               f"crop={w}:{top}[cam];[b]scale=-2:{bot},crop={w}:{bot}[game];[cam][game]vstack,"
               f"setsar=1,fps={FPS},format=yuv420p[v]")
     else:
-        fx = face_x(clip, u.start, u.end) if (h > w and layout in ("auto", "face")) else None
+        fx = 0.5 if (h > w and layout == "center") else (
+            face_x(clip, u.start, u.end) if (h > w and layout in ("auto", "face")) else None)
         if fx is not None:                          # mitlaufender Ausschnitt um die Person
             cw = min(clip.width, int(clip.height * w / h)) // 2 * 2
             x0 = int(min(max(0, fx * clip.width - cw / 2), clip.width - cw))

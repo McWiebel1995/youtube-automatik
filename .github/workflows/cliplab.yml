@@ -1,0 +1,60 @@
+name: "🎬 The Clip Lab (Autopilot)"
+run-name: "Clip Lab: ${{ inputs.mode || 'cut' }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [cut, post, reject, probe]
+        default: cut
+      ids:
+        description: "Clip-IDs (Komma) für post/reject"
+        default: ""
+      edits:
+        description: "Optional: JSON {id: caption}"
+        default: ""
+      only:
+        description: "Nur diese Kampagnen (Komma)"
+        default: ""
+  schedule:
+    - cron: "17 13 * * *"      # schneiden -> Freigabe am Nachmittag, Posten zur US-Zeit
+
+concurrency:
+  group: cliplab-${{ inputs.mode || 'cut' }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core >/dev/null
+      - run: pip install -r requirements.txt faster-whisper numpy "opencv-python-headless<5" pyyaml requests
+      - name: Clip Lab
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          IG_TOKEN_CLIPLAB: ${{ secrets.IG_TOKEN_CLIPLAB }}
+          YT_REFRESH_TOKEN_CLIPLAB: ${{ secrets.YT_REFRESH_TOKEN_CLIPLAB }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          IDS: ${{ inputs.ids }}
+          EDITS: ${{ inputs.edits }}
+          ONLY: ${{ inputs.only }}
+        run: python scripts/cliplab.py "${{ inputs.mode || 'cut' }}" --ids "$IDS" --edits "$EDITS" --only "$ONLY"
+      - name: Stand speichern
+        if: always()
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add data/cliplab || true
+          git commit -m "Clip Lab: Stand" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep 5; done

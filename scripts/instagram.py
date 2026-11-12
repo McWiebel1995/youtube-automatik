@@ -28,6 +28,8 @@ if not os.environ.get("IG_TOKEN_WHATIF") and len(os.environ.get("IG_WHATIF_ALT",
 if os.environ.get("IG_TOKEN_WHATIF"):
     _u = os.environ.get("IG_USER_WHATIF", "")
     ACCOUNTS["whatif"] = ("IG_TOKEN_WHATIF", _u if 0 < len(_u) <= 40 else None)
+if os.environ.get("IG_TOKEN_CLIPLAB"):                 # The Clip Lab (Clipping-Kampagnen)
+    ACCOUNTS["cliplab"] = ("IG_TOKEN_CLIPLAB", "thecliplabhd")
 
 
 class IGError(RuntimeError):

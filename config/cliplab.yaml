@@ -1,0 +1,52 @@
+# The Clip Lab – Autopilot. Nur Kampagnen, denen wir beigetreten sind (Bedingungen akzeptiert vom Inhaber).
+# Material ausschließlich aus der Kampagne. Jeder Clip wird im Studio freigegeben, bevor er gepostet wird.
+accounts:
+  instagram: cliplab            # instagram.py-Schlüssel (Secret IG_TOKEN_CLIPLAB)
+  youtube: YT_REFRESH_TOKEN_CLIPLAB
+  per_day_total: 6              # max. Clips pro Tag über alle Kampagnen (Spam-Regeln!)
+
+campaigns:
+  warzone:
+    name: "Call of Duty – Warzone Season 1"
+    active: true
+    url: https://contentrewards.com/c/campaigns/db285bc6-9a06-43ff-ae4b-4b5ebf149b8b
+    source: {mediasilo: 6aecbbe3d341897e31115b46}
+    platforms: [instagram, tiktok]          # kein YouTube in dieser Kampagne
+    per_day: 2
+    reels: 2
+    length: [15, 35]
+    layout: center
+    hook: false                              # übertriebene Hooks verboten
+    ad: "#Ad"
+    required: ["@callofduty", "Season 1 out now", "🎵 Agust D (Suga from BTS) - \"Haegeum\""]
+    hashtags: ["#Warzone", "#CallofDuty", "#Gaming"]
+    logo: warzone_logo.png                   # Release cliplab-material (Pflicht-Wasserzeichen)
+    brief: |
+      Official Call of Duty: Warzone Season 1 trailer + developer briefing. New maps Hajin and Zodiac, Zipline Launcher,
+      Grabber Drone, Elite Perks, Warzone integrated with Modern Warfare 4. A trailer is NOT gameplay – never call it gameplay.
+      Write like a genuine fan, short. No made-up facts, stats or dates.
+  ishowspeed:
+    name: "IShowSpeed × Expedia"
+    active: true
+    url: https://contentrewards.com/c/campaigns/afeca1a0-f44c-46ad-8194-09d62b56589e
+    source: {release_prefix: ishowspeed}      # Stream ab 2:56:29 – wird vom PC hochgeladen (YouTube sperrt Server)
+    platforms: [instagram, youtube, tiktok]
+    per_day: 2
+    reels: 3
+    length: [20, 45]
+    layout: face
+    hook: false
+    ad: "#Ad"
+    required: ["#IShowSpeed"]
+    hashtags: ["#Expedia", "#travel"]
+    min_views: 10000
+    brief: |
+      IShowSpeed's Expedia segment (stream 6 Nov 2026). Every caption MUST mention "Expedia" and Expedia must be a
+      major focus. Name the travel destination ONLY if it is clearly said in the clip – if unsure, do not name a place.
+      Never portray IShowSpeed or Expedia negatively. No other brands/logos. English, US audience.
+  dmz:
+    name: "Call of Duty – MW4 DMZ"
+    active: false                            # Pflichtzeile "free until Nov 11" ist abgelaufen – erst klären
+    url: https://contentrewards.com/c/campaigns/a1cefc3b-4533-438f-8e70-a7299550f1cf
+    source: {mediasilo: 6aee70ddb93f5a144f86aadf}
+    platforms: [instagram, tiktok]
