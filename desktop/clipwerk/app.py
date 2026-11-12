@@ -212,6 +212,38 @@ class CutPage(QWidget):
         cg.addWidget(self.credit, 1, 1)
         cg.addWidget(label("Pflichttext", wrap=False), 2, 0)
         cg.addWidget(self.required, 2, 1)
+        # Link zum freigegebenen Material (Kampagnen-Ordner, Stream-VOD) -> wird geladen und zur Liste hinzugefügt
+        lrow = QHBoxLayout()
+        self.link = QLineEdit()
+        self.link.setPlaceholderText("Link zum freigegebenen Video (aus der Kampagne) einfügen")
+        self.btn_load = QPushButton("⬇  Laden")
+        self.btn_load.clicked.connect(self.load_link)
+        lrow.addWidget(self.link, 1)
+        lrow.addWidget(self.btn_load)
+        cg.addWidget(label("Link", wrap=False), 3, 0)
+        cg.addLayout(lrow, 3, 1)
+        # Bildaufteilung für Querformat-Streams
+        frow = QHBoxLayout()
+        self.layout_box = QComboBox()
+        for key, txt in (("auto", "Automatisch (Person folgen, sonst ganzes Bild)"), ("face", "Person folgen"),
+                         ("split", "Facecam oben + Spiel unten"), ("full", "Ganzes Bild mit Unschärfe-Rand")):
+            self.layout_box.addItem(txt, key)
+        self.layout_box.setCurrentIndex(max(0, self.layout_box.findData(main.settings.get("clip_layout", "auto"))))
+        self.cam_box = QComboBox()
+        for key, txt in (("tl", "Facecam oben links"), ("tr", "Facecam oben rechts"),
+                         ("bl", "Facecam unten links"), ("br", "Facecam unten rechts")):
+            self.cam_box.addItem(txt, key)
+        self.cam_box.setCurrentIndex(max(0, self.cam_box.findData(main.settings.get("facecam", "tr"))))
+        self.layout_box.currentIndexChanged.connect(
+            lambda _i: self.cam_box.setVisible(self.layout_box.currentData() == "split"))
+        self.cam_box.setVisible(self.layout_box.currentData() == "split")
+        frow.addWidget(self.layout_box, 1)
+        frow.addWidget(self.cam_box)
+        cg.addWidget(label("Bild", wrap=False), 4, 0)
+        cg.addLayout(frow, 4, 1)
+        self.cb_ad = QCheckBox("Werbehinweis „#ad“ am Anfang des Clips und vorne in der Caption (Pflicht bei bezahlten Kampagnen)")
+        self.cb_ad.setChecked(bool(main.settings.get("clip_ad", True)))
+        cg.addWidget(self.cb_ad, 5, 0, 1, 2)
         lay.addWidget(self.clipbox)
         self.style_group.buttonClicked.connect(lambda _b: self.toggle_clip())
         # Ablage
@@ -289,6 +321,31 @@ class CutPage(QWidget):
         self.clipbox.setVisible(on)
         self.cb_long.setEnabled(not on)
 
+    def load_link(self):
+        url = self.link.text().strip()
+        if not url.startswith("http"):
+            QMessageBox.information(self, "ClipWerk", "Bitte einen vollständigen Link einfügen (https://…).")
+            return
+        dest = Path(self.main.settings["projects_dir"]) / "_downloads"
+        self.btn_load.setEnabled(False)
+        self.status.setText("Lade Video …")
+        w = Worker(engine.download, url, dest)
+        w.log.connect(self.logbox.appendPlainText)
+        w.done.connect(self._loaded)
+        w.failed.connect(self._load_failed)
+        start_thread(self, w)
+
+    def _loaded(self, path):
+        self.btn_load.setEnabled(True)
+        self.link.clear()
+        self.drop.add([Path(path)])
+        self.status.setText(f"Geladen: {Path(path).name}")
+
+    def _load_failed(self, msg):
+        self.btn_load.setEnabled(True)
+        self.status.setText("Download fehlgeschlagen.")
+        self.logbox.appendPlainText(msg[-600:])
+
     def pick(self):
         files, _ = QFileDialog.getOpenFileNames(self, "Videos auswählen", str(Path.home()),
                                                 "Videos (*.mp4 *.mov *.m4v *.mkv *.avi *.3gp *.webm)")
@@ -305,7 +362,8 @@ class CutPage(QWidget):
                  reels=self.n_reels.value(), reel_max=self.len_max.value(), reel_min=max(10, self.len_max.value() - 30),
                  subtitles=self.cb_subs.isChecked(), hook=self.cb_hook.isChecked(), music=self.cb_music.isChecked(),
                  long_version=self.cb_long.isChecked(), clip_credit=self.credit.text().strip(),
-                 clip_required=self.required.text().strip())
+                 clip_required=self.required.text().strip(), clip_layout=self.layout_box.currentData(),
+                 facecam=self.cam_box.currentData(), clip_ad=self.cb_ad.isChecked())
         if s["style"] == "clipping" and not s.get("gemini_key"):
             QMessageBox.information(self, "ClipWerk", "Für Clipping braucht ClipWerk den Gemini-Schlüssel "
                                     "(Einstellungen) – er findet damit die viralen Momente.")

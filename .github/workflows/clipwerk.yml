@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Abhängigkeiten
-        run: pip install pyside6 faster-whisper requests modal pillow pyinstaller
+        run: pip install pyside6 faster-whisper requests modal pillow pyinstaller yt-dlp "opencv-python-headless<5"
       - name: ffmpeg, Schrift und Symbol holen
         shell: pwsh
         run: |
@@ -36,6 +36,7 @@ jobs:
           --add-data "assets;assets" --add-binary "bin/ffmpeg.exe;bin" --add-binary "bin/ffprobe.exe;bin"
           --collect-all faster_whisper --collect-all ctranslate2 --collect-all av --collect-all tokenizers
           --collect-submodules modal --collect-data modal --collect-data grpclib --collect-data certifi
+          --collect-submodules yt_dlp --collect-data cv2
           app.py
       - name: Download bereitstellen
         shell: pwsh

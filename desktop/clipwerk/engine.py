@@ -76,6 +76,10 @@ DEFAULTS = {
     "style": "hof", "instagram": "", "highlight_color": "#FFD700", "projects_dir": "",
     "modal_token_id": "", "modal_token_secret": "", "vision": True,
     "clip_credit": "", "clip_required": "",          # Clipping: Creator-Nennung + Pflichttext der Kampagne
+    "clip_layout": "auto",                           # auto | face (Gesicht folgen) | split (Facecam oben, Spiel unten) | full
+    "facecam": "tr",                                 # Ecke der Facecam im Stream: tl | tr | bl | br
+    "facecam_size": 0.30,                            # Anteil der Bildbreite, den die Facecam einnimmt
+    "clip_ad": True, "clip_ad_text": "#ad",          # Werbehinweis (Pflicht bei bezahlten Kampagnen)
 }
 
 
@@ -93,6 +97,69 @@ def load_settings() -> dict:
 
 def save_settings(s: dict):
     (data_dir() / "settings.json").write_text(json.dumps(s, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+# ----------------------------------------------------------------------------- Kampagnen-Material laden
+def download(url: str, dest: Path, log=print) -> Path:
+    """Video über einen Link laden (nur Material, das die Kampagne / der Creator freigegeben hat)."""
+    import yt_dlp
+    dest.mkdir(parents=True, exist_ok=True)
+    opts = {"outtmpl": str(dest / "%(title).60B [%(id)s].%(ext)s"), "noplaylist": True, "quiet": True,
+            "no_warnings": True, "format": "bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080]/b",
+            "merge_output_format": "mp4", "ffmpeg_location": str(Path(tool("ffmpeg")).parent),
+            "restrictfilenames": True}
+    log(f"Lade {url} …")
+    with yt_dlp.YoutubeDL(opts) as y:
+        info = y.extract_info(url, download=True)
+        fn = Path(y.prepare_filename(info))
+    if not fn.exists():
+        cand = sorted(dest.glob(f"*{info.get('id', '')}*"), key=lambda p: p.stat().st_mtime)
+        if not cand:
+            raise RuntimeError("Download fehlgeschlagen.")
+        fn = cand[-1]
+    log(f"✓ geladen: {fn.name}")
+    return fn
+
+
+# ----------------------------------------------------------------------------- Gesichter finden (mitlaufender Ausschnitt)
+_CASCADE = None
+
+
+def _faces(img_gray):
+    global _CASCADE
+    import cv2
+    if _CASCADE is None:
+        _CASCADE = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+    return _CASCADE.detectMultiScale(img_gray, scaleFactor=1.15, minNeighbors=5, minSize=(24, 24))
+
+
+def face_x(clip, start: float, end: float, samples=6):
+    """Mittlere horizontale Gesichtsposition (0..1) im Abschnitt – None, wenn kein Gesicht gefunden wird."""
+    try:
+        import cv2
+        import numpy as np
+        if not hasattr(cv2, "CascadeClassifier"):
+            return None
+    except Exception:  # noqa: BLE001
+        return None
+    xs = []
+    gw = 480
+    gh = max(2, int(round(gw * clip.height / max(1, clip.width) / 2)) * 2)
+    for k in range(samples):
+        t = start + (end - start) * (k + 0.5) / samples
+        r = run([tool("ffmpeg"), "-loglevel", "error", "-ss", f"{t:.2f}", "-i", clip.path, "-frames:v", "1",
+                 "-vf", f"scale={gw}:{gh},format=gray", "-f", "rawvideo", "-"], check=False)
+        if r.returncode or len(r.stdout) < gw * gh:
+            continue
+        img = np.frombuffer(r.stdout[:gw * gh], np.uint8).reshape(gh, gw)
+        f = _faces(img)
+        if len(f):
+            x, y, fw, fh = max(f, key=lambda b: b[2] * b[3])          # größtes Gesicht = Hauptperson
+            xs.append((x + fw / 2) / gw)
+    if len(xs) < max(2, samples // 3):
+        return None
+    xs.sort()
+    return xs[len(xs) // 2]
 
 
 # ----------------------------------------------------------------------------- Video-Infos
@@ -407,7 +474,7 @@ def _hex_to_ass(hex_color: str) -> str:
     return f"&H00{b}{g}{r}&".upper()
 
 
-def karaoke_ass(words, path: Path, w, h, hook="", hook_until=2.6, color="#FFD700", subtitles=True, credit="", total=0.0):
+def karaoke_ass(words, path: Path, w, h, hook="", hook_until=2.6, color="#FFD700", subtitles=True, credit="", total=0.0, ad=""):
     fnt = "Poppins ExtraBold" if font_file() else "Arial"
     size = int(w * 0.075)
     hi = _hex_to_ass(color)
@@ -425,9 +492,13 @@ def karaoke_ass(words, path: Path, w, h, hook="", hook_until=2.6, color="#FFD700
             f"Style: Hook,{fnt},{int(size * 1.05)},&H00FFFFFF,&H000000FF,&H00000000,&HB4000000,0,0,0,0,100,100,1,0,3,"
             f"18,0,8,70,70,{int(h * 0.12)},1\n"
             f"Style: Credit,{fnt},{int(size * 0.5)},&H00FFFFFF,&H000000FF,&H00000000,&H78000000,0,0,0,0,100,100,1,0,3,"
-            f"10,0,8,70,70,{int(h * 0.055)},1\n\n"
+            f"10,0,8,70,70,{int(h * 0.055)},1\n"
+            f"Style: Ad,{fnt},{int(size * 0.55)},&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,3,"
+            f"12,0,7,48,48,{int(h * 0.035)},1\n\n"
             "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n")
     ev = []
+    if ad:                                           # Werbehinweis oben links in den ersten Sekunden
+        ev.append(f"Dialogue: 3,{ts(0)},{ts(min(total or 3.5, 3.5))},Ad,,0,0,0,,{{\\fad(0,250)}}{ad.replace('{', '(')}")
     if credit:
         ev.append(f"Dialogue: 2,{ts(0)},{ts(total or 3600)},Credit,,0,0,0,,{credit.replace('{', '(').replace('}', ')')}")
     if hook:
@@ -452,14 +523,33 @@ def karaoke_ass(words, path: Path, w, h, hook="", hook_until=2.6, color="#FFD700
     path.write_text(head + "\n".join(ev) + "\n", encoding="utf-8")
 
 
-def _segment(clip: Clip, u: Unit, out: Path, w=W, h=H):
+def _segment(clip: Clip, u: Unit, out: Path, w=W, h=H, settings=None):
+    settings = settings or {}
+    layout = settings.get("clip_layout", "auto") if settings.get("style") == "clipping" else "full"
+    fc = vf = None
     if clip.vertical == (h >= w):
         vf = f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},setsar=1,fps={FPS},format=yuv420p"
-        fc = None
-    else:                                           # Querformat in Hochformat: unscharfer Hintergrund + Bild in der Mitte
-        fc = (f"[0:v]split[a][b];[a]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},boxblur=30:3[bg];"
-              f"[b]scale={w}:{h}:force_original_aspect_ratio=decrease[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2,"
+    elif h > w and layout == "split":               # Stream: Facecam oben, Spiel unten
+        fs = float(settings.get("facecam_size", 0.30))
+        corner = settings.get("facecam", "tr")
+        cw, ch = f"iw*{fs:.3f}", f"ih*{fs:.3f}"
+        cx = "0" if corner[1] == "l" else f"iw-iw*{fs:.3f}"
+        cy = "0" if corner[0] == "t" else f"ih-ih*{fs:.3f}"
+        top = int(h * 0.40) // 2 * 2
+        bot = h - top
+        fc = (f"[0:v]split[a][b];[a]crop={cw}:{ch}:{cx}:{cy},scale={w}:{top}:force_original_aspect_ratio=increase,"
+              f"crop={w}:{top}[cam];[b]scale=-2:{bot},crop={w}:{bot}[game];[cam][game]vstack,"
               f"setsar=1,fps={FPS},format=yuv420p[v]")
+    else:
+        fx = face_x(clip, u.start, u.end) if (h > w and layout in ("auto", "face")) else None
+        if fx is not None:                          # mitlaufender Ausschnitt um die Person
+            cw = min(clip.width, int(clip.height * w / h)) // 2 * 2
+            x0 = int(min(max(0, fx * clip.width - cw / 2), clip.width - cw))
+            vf = f"crop={cw}:{clip.height}:{x0}:0,scale={w}:{h},setsar=1,fps={FPS},format=yuv420p"
+        else:                                       # Querformat in Hochformat: unscharfer Hintergrund + Bild in der Mitte
+            fc = (f"[0:v]split[a][b];[a]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},boxblur=30:3[bg];"
+                  f"[b]scale={w}:{h}:force_original_aspect_ratio=decrease[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2,"
+                  f"setsar=1,fps={FPS},format=yuv420p[v]")
     args = [tool("ffmpeg"), "-y", "-loglevel", "error", "-ss", f"{u.start:.3f}", "-to", f"{u.end:.3f}", "-i", clip.path]
     if not clip.has_audio:
         args += ["-f", "lavfi", "-t", f"{u.dur:.3f}", "-i", "anullsrc=r=48000:cl=stereo"]
@@ -485,7 +575,7 @@ def render(clips, units_sel: list[Unit], out: Path, work: Path, settings: dict, 
     parts, words, t = [], [], 0.0
     for k, u in enumerate(units_sel):
         p = work / f"seg_{k:03d}.mp4"
-        _segment(clips[u.clip], u, p, w, h)
+        _segment(clips[u.clip], u, p, w, h, settings)
         parts.append(p)
         for (x, a, b) in clips[u.clip].words:
             if a >= u.start - 0.02 and b <= u.end + 0.05 and _norm(x) not in FILLERS:
@@ -499,7 +589,9 @@ def render(clips, units_sel: list[Unit], out: Path, work: Path, settings: dict, 
     credit = settings.get("clip_credit", "").strip() if settings.get("style") == "clipping" else ""
     karaoke_ass(words, ass, w, h, hook if settings.get("hook", True) else "",
                 color=settings.get("highlight_color", "#FFD700"), subtitles=settings.get("subtitles", True),
-                credit=(f"Credit: {credit}" if credit else ""), total=t)
+                credit=(f"Credit: {credit}" if credit else ""), total=t,
+                ad=(settings.get("clip_ad_text", "#ad").strip() if settings.get("style") == "clipping"
+                    and settings.get("clip_ad", True) else ""))
     if font_file():                                  # Schrift in den Arbeitsordner -> keine Windows-Pfadprobleme
         (work / "fonts").mkdir(exist_ok=True)
         shutil.copy(font_file(), work / "fonts" / font_file().name)
@@ -582,9 +674,9 @@ def process(paths: list[Path], out_dir: Path, settings: dict, progress=lambda p,
             if settings.get("style") == "clipping":     # Pflichtangaben der Kampagne / des Creators
                 extra = [x for x in (f"🎥 {settings.get('clip_credit', '').strip()}" if settings.get("clip_credit") else "",
                                      settings.get("clip_required", "").strip()) if x]
-                if extra:
-                    caption = (r.get("caption", "").strip() + "\n\n" + "\n".join(extra) + "\n\n" +
-                               " ".join(r.get("hashtags", [])[:5])).strip()
+                ad = settings.get("clip_ad_text", "#ad").strip() if settings.get("clip_ad", True) else ""
+                caption = ((ad + " " if ad else "") + r.get("caption", "").strip() + "\n\n" + "\n".join(extra) +
+                           "\n\n" + " ".join(r.get("hashtags", [])[:5])).strip()   # Hinweis ganz vorne = sofort sichtbar
             mp4.with_suffix(".txt").write_text(caption, encoding="utf-8")
             thumbnail(mp4, mp4.with_suffix(".jpg"), at=min(1.5, dur / 3), width=360)
             results["reels"].append({"file": mp4.name, "duration": round(dur, 1), "hook": r.get("hook", ""),
