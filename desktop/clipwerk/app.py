@@ -185,7 +185,8 @@ class CutPage(QWidget):
         row = QHBoxLayout()
         row.addWidget(label("Worum geht's?", wrap=False))
         self.style_group = QButtonGroup(self)
-        for key, txt in (("hof", "🚜  Hof && Selbstgemacht"), ("kochen", "🍳  Kochen"), ("allgemein", "📱  Alltag")):
+        for key, txt in (("hof", "🚜  Hof && Selbstgemacht"), ("kochen", "🍳  Kochen"), ("allgemein", "📱  Alltag"),
+                         ("clipping", "🎮  Clipping (Streams && Vlogs)")):
             b = QPushButton(txt)
             b.setObjectName("chip")
             b.setCheckable(True)
@@ -196,6 +197,23 @@ class CutPage(QWidget):
                 b.setChecked(True)
         row.addStretch()
         lay.addLayout(row)
+        # Clipping: nur Material mit Erlaubnis (Kampagne / Creator) – Pflichtangaben landen automatisch in jedem Clip
+        self.clipbox = QFrame()
+        self.clipbox.setObjectName("card")
+        cg = QGridLayout(self.clipbox)
+        cg.setContentsMargins(16, 12, 16, 12)
+        cg.addWidget(label("Nur Videos clippen, für die du eine Erlaubnis hast (Clipping-Kampagne oder Zusage des Creators).",
+                           "muted"), 0, 0, 1, 2)
+        self.credit = QLineEdit(main.settings.get("clip_credit", ""))
+        self.credit.setPlaceholderText("Creator nennen, z. B. @streamername (wird im Bild + Text angezeigt)")
+        self.required = QLineEdit(main.settings.get("clip_required", ""))
+        self.required.setPlaceholderText("Pflichttext der Kampagne, z. B. Link oder #ad / #clipping")
+        cg.addWidget(label("Creator", wrap=False), 1, 0)
+        cg.addWidget(self.credit, 1, 1)
+        cg.addWidget(label("Pflichttext", wrap=False), 2, 0)
+        cg.addWidget(self.required, 2, 1)
+        lay.addWidget(self.clipbox)
+        self.style_group.buttonClicked.connect(lambda _b: self.toggle_clip())
         # Ablage
         self.drop = DropList()
         self.drop.changed.connect(self.update_state)
@@ -221,7 +239,7 @@ class CutPage(QWidget):
         g.setHorizontalSpacing(18)
         s = main.settings
         self.n_reels = QSpinBox()
-        self.n_reels.setRange(1, 5)
+        self.n_reels.setRange(1, 10)
         self.n_reels.setValue(int(s["reels"]))
         self.len_max = QSpinBox()
         self.len_max.setRange(15, 90)
@@ -263,6 +281,13 @@ class CutPage(QWidget):
         self.logbox.setPlaceholderText("Protokoll")
         lay.addWidget(self.logbox)
         self.update_state()
+        self.toggle_clip()
+
+    def toggle_clip(self):
+        b = self.style_group.checkedButton()
+        on = bool(b and b.property("key") == "clipping")
+        self.clipbox.setVisible(on)
+        self.cb_long.setEnabled(not on)
 
     def pick(self):
         files, _ = QFileDialog.getOpenFileNames(self, "Videos auswählen", str(Path.home()),
@@ -279,7 +304,12 @@ class CutPage(QWidget):
         s.update(style=self.style_group.checkedButton().property("key") if self.style_group.checkedButton() else "hof",
                  reels=self.n_reels.value(), reel_max=self.len_max.value(), reel_min=max(10, self.len_max.value() - 30),
                  subtitles=self.cb_subs.isChecked(), hook=self.cb_hook.isChecked(), music=self.cb_music.isChecked(),
-                 long_version=self.cb_long.isChecked())
+                 long_version=self.cb_long.isChecked(), clip_credit=self.credit.text().strip(),
+                 clip_required=self.required.text().strip())
+        if s["style"] == "clipping" and not s.get("gemini_key"):
+            QMessageBox.information(self, "ClipWerk", "Für Clipping braucht ClipWerk den Gemini-Schlüssel "
+                                    "(Einstellungen) – er findet damit die viralen Momente.")
+            return
         engine.save_settings(s)
         if not s.get("gemini_key"):
             self.logbox.appendPlainText("Hinweis: Ohne Gemini-Schlüssel wählt ClipWerk die Momente nur der Reihe nach aus. "

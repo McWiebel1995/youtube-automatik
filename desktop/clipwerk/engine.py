@@ -75,6 +75,7 @@ DEFAULTS = {
     "music": True, "music_dir": "", "music_db": -22, "subtitles": True, "hook": True, "long_version": True,
     "style": "hof", "instagram": "", "highlight_color": "#FFD700", "projects_dir": "",
     "modal_token_id": "", "modal_token_secret": "", "vision": True,
+    "clip_credit": "", "clip_required": "",          # Clipping: Creator-Nennung + Pflichttext der Kampagne
 }
 
 
@@ -164,8 +165,45 @@ def transcribe(clip: Clip, cache_dir: Path, model="small", language="de", log=pr
                                          vad_filter=True, beam_size=5)
     words = [(w.word.strip(), float(w.start), float(w.end)) for s in segs for w in (s.words or []) if w.word.strip()]
     cache.write_text(json.dumps(words, ensure_ascii=False), encoding="utf-8")
+    sec = 16000                                      # Lautstärke pro Sekunde (für Clipping: Schreie, Lacher, Hype)
+    n = len(audio) // sec
+    rms = [float(np.sqrt(np.mean(audio[i * sec:(i + 1) * sec] ** 2))) for i in range(n)]
+    cache.with_suffix(".loud.json").write_text(json.dumps([round(x, 5) for x in rms]), encoding="utf-8")
     wav.unlink(missing_ok=True)
     return words
+
+
+def loudness(clip: Clip, cache_dir: Path, model="small") -> list:
+    st = clip.path.stat()
+    key = hashlib.md5(f"{clip.path}|{st.st_size}|{st.st_mtime}|{model}".encode()).hexdigest()
+    f = cache_dir / f"{key}.loud.json"
+    if f.exists():
+        return json.loads(f.read_text())
+    if not clip.has_audio:
+        return []
+    import numpy as np
+    wav = cache_dir / f"{key}_l.wav"
+    run([tool("ffmpeg"), "-y", "-loglevel", "error", "-i", clip.path, "-vn", "-ac", "1", "-ar", "8000", wav])
+    import wave
+    with wave.open(str(wav)) as wf:
+        a = np.frombuffer(wf.readframes(wf.getnframes()), np.int16).astype(np.float32) / 32768.0
+    wav.unlink(missing_ok=True)
+    rms = [round(float(np.sqrt(np.mean(a[i * 8000:(i + 1) * 8000] ** 2))), 5) for i in range(len(a) // 8000)]
+    f.write_text(json.dumps(rms))
+    return rms
+
+
+def clip_candidates(units: list, max_units=600) -> list:
+    """Lange Streams: nur die Umgebung der lautesten / dichtesten Stellen behalten (Setup davor, Reaktion danach)."""
+    if len(units) <= max_units:
+        return units
+    score = sorted(range(len(units)), key=lambda i: units[i].loud + 2 * min(1, len(units[i].text) / 120), reverse=True)
+    keep = set()
+    for i in score[:80]:
+        keep.update(range(max(0, i - 6), min(len(units), i + 4)))
+        if len(keep) >= max_units:
+            break
+    return [units[i] for i in sorted(keep)]
 
 
 # ----------------------------------------------------------------------------- 2. Sprechstellen & B-Roll
@@ -180,6 +218,7 @@ class Unit:
     interest: float = 5.0
     quality: float = 0.5
     seen: str = ""
+    loud: float = 0.0
 
     @property
     def dur(self):
@@ -243,7 +282,28 @@ STYLES = {
                ["#kochen", "#rezept", "#selbstgekocht", "#foodie", "#hausmannskost"]),
     "allgemein": ("Persönlicher Instagram-Account mit Alltagsvideos. Ton: locker und authentisch.",
                   ["#alltag", "#reels", "#authentisch", "#daily", "#leben"]),
+    "clipping": ("Clipping-Account (Gen Z): die viralsten Momente aus Streams, Gaming, Vlogs und Podcasts – "
+                 "Reaktionen, Lacher, Fails, Clutches, Hot Takes.",
+                 ["#clips", "#viral", "#gaming", "#streamer", "#fyp"]),
 }
+CLIP_TASK = """You are a top short-form editor for a Gen-Z clipping account (TikTok / Reels / Shorts).
+The source is a long stream/vlog/podcast with permission to clip. Below are the pieces:
+id | length | spoken text | loudness 0–10 (screams/laughs/hype are loud).
+Find the {n} most viral moments. Each clip:
+- {rmin}–{rmax} seconds, ONE self-contained moment that makes sense without context (setup -> payoff),
+- mostly CONSECUTIVE ids (keep the original order; skip only boring parts in between),
+- starts right before the action/punchline, ends right after the payoff/reaction,
+- no slurs, no hate, no sexual content, nothing that could hurt someone.
+For each clip:
+  hook = on-screen context line for the first 2 seconds, max 7 words, curiosity, in the video's language
+         (e.g. "He did NOT expect this…", "Chat broke after this"),
+  caption = 1–2 short sentences in the video's language + 1 emoji,
+  hashtags = 5 fitting (mix broad + specific), title = short file name.
+Answer ONLY JSON: {{"reels":[{{"title":"...","hook":"...","caption":"...","hashtags":["#..."],"ids":[1,2,3]}}],
+"long":{{"title":"","caption":""}}}}
+
+Pieces:
+{units}"""
 SELECT_TASK = """Du bist Video-Editor für Instagram-Reels.
 Account: {style}
 Unten stehen die Stücke aus den Rohaufnahmen: id | Länge | gesprochener Text („[Bild ohne Sprache]“ = nur Bild)
@@ -296,10 +356,14 @@ def select(units: list[Unit], settings: dict, log=print) -> dict:
     n, rmin, rmax = int(settings["reels"]), int(settings["reel_min"]), int(settings["reel_max"])
     if settings.get("gemini_key"):
         try:
-            lst = "\n".join(f"{u.id} | {u.dur:.1f}s | {u.text[:200]} | Bild: {u.seen or '-'} | {u.interest:.0f} | {u.quality:.2f}"
-                            for u in units)
-            js = gemini_json(settings["gemini_key"], SELECT_TASK.format(style=style, n=n, rmin=rmin, rmax=rmax,
-                                                                        units=lst[:60000]), log)
+            if settings["style"] == "clipping":
+                lst = "\n".join(f"{u.id} | {u.dur:.1f}s | {u.text[:160]} | {u.loud:.0f}" for u in units)
+                prompt = CLIP_TASK.format(n=n, rmin=rmin, rmax=rmax, units=lst[:90000])
+            else:
+                lst = "\n".join(f"{u.id} | {u.dur:.1f}s | {u.text[:200]} | Bild: {u.seen or '-'} | {u.interest:.0f} | {u.quality:.2f}"
+                                for u in units)
+                prompt = SELECT_TASK.format(style=style, n=n, rmin=rmin, rmax=rmax, units=lst[:60000])
+            js = gemini_json(settings["gemini_key"], prompt, log)
             byid = {u.id: u for u in units}
             for r in js.get("reels", []):
                 r["ids"] = [i for i in r.get("ids", []) if i in byid]
@@ -343,7 +407,7 @@ def _hex_to_ass(hex_color: str) -> str:
     return f"&H00{b}{g}{r}&".upper()
 
 
-def karaoke_ass(words, path: Path, w, h, hook="", hook_until=2.6, color="#FFD700", subtitles=True):
+def karaoke_ass(words, path: Path, w, h, hook="", hook_until=2.6, color="#FFD700", subtitles=True, credit="", total=0.0):
     fnt = "Poppins ExtraBold" if font_file() else "Arial"
     size = int(w * 0.075)
     hi = _hex_to_ass(color)
@@ -359,9 +423,13 @@ def karaoke_ass(words, path: Path, w, h, hook="", hook_until=2.6, color="#FFD700
             f"Style: K,{fnt},{size},&H00FFFFFF,&H000000FF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,1,"
             f"{max(3, size // 14)},{max(2, size // 22)},2,60,60,{int(h * 0.22)},1\n"
             f"Style: Hook,{fnt},{int(size * 1.05)},&H00FFFFFF,&H000000FF,&H00000000,&HB4000000,0,0,0,0,100,100,1,0,3,"
-            f"18,0,8,70,70,{int(h * 0.12)},1\n\n"
+            f"18,0,8,70,70,{int(h * 0.12)},1\n"
+            f"Style: Credit,{fnt},{int(size * 0.5)},&H00FFFFFF,&H000000FF,&H00000000,&H78000000,0,0,0,0,100,100,1,0,3,"
+            f"10,0,8,70,70,{int(h * 0.055)},1\n\n"
             "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n")
     ev = []
+    if credit:
+        ev.append(f"Dialogue: 2,{ts(0)},{ts(total or 3600)},Credit,,0,0,0,,{credit.replace('{', '(').replace('}', ')')}")
     if hook:
         ev.append(f"Dialogue: 1,{ts(0)},{ts(hook_until)},Hook,,0,0,0,,{{\\fad(120,250)}}{hook.upper()}")
     if subtitles and words:
@@ -428,8 +496,10 @@ def render(clips, units_sel: list[Unit], out: Path, work: Path, settings: dict, 
     joined = work / "joined.mp4"
     run([tool("ffmpeg"), "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", joined])
     ass = work / "subs.ass"
+    credit = settings.get("clip_credit", "").strip() if settings.get("style") == "clipping" else ""
     karaoke_ass(words, ass, w, h, hook if settings.get("hook", True) else "",
-                color=settings.get("highlight_color", "#FFD700"), subtitles=settings.get("subtitles", True))
+                color=settings.get("highlight_color", "#FFD700"), subtitles=settings.get("subtitles", True),
+                credit=(f"Credit: {credit}" if credit else ""), total=t)
     if font_file():                                  # Schrift in den Arbeitsordner -> keine Windows-Pfadprobleme
         (work / "fonts").mkdir(exist_ok=True)
         shutil.copy(font_file(), work / "fonts" / font_file().name)
@@ -465,9 +535,13 @@ def process(paths: list[Path], out_dir: Path, settings: dict, progress=lambda p,
         clips = [probe(p) for p in paths]
         for i, c in enumerate(clips):
             progress(5 + 25 * i / len(clips), f"Höre zu: {c.path.name} ({i + 1}/{len(clips)})")
-            c.words = transcribe(c, cache, settings.get("whisper_model", "small"), settings.get("language", "de"), log)
+            clipping = settings.get("style") == "clipping"
+            lang = None if clipping else settings.get("language", "de")      # Streams: Sprache automatisch erkennen
+            c.words = transcribe(c, cache, settings.get("whisper_model", "small"), lang, log)
+            if clipping:
+                c.loud = loudness(c, cache, settings.get("whisper_model", "small"))
             log(f"  {c.path.name}: {c.duration:.0f} s, {len(c.words)} Wörter")
-        if settings.get("vision", True):
+        if settings.get("vision", True) and settings.get("style") != "clipping":   # Streams: Ton/Text reicht
             import vision
             for i, c in enumerate(clips):
                 progress(30 + 14 * i / len(clips), f"Schaue mir die Bilder an: {c.path.name}")
@@ -484,6 +558,15 @@ def process(paths: list[Path], out_dir: Path, settings: dict, progress=lambda p,
         units = units_for(clips)
         if not units:
             raise RuntimeError("In den Videos wurde nichts Verwertbares gefunden.")
+        if settings.get("style") == "clipping":
+            import numpy as np
+            allv = [x for c in clips for x in (getattr(c, "loud", None) or [])]
+            ref = float(np.percentile(allv, 99)) if allv else 1.0
+            for u in units:
+                lv = (getattr(clips[u.clip], "loud", None) or [])[int(u.start):int(u.end) + 1]
+                u.loud = min(10.0, 10 * max(lv) / ref) if lv and ref else 0.0
+            units = clip_candidates(units)
+            log(f"  Clipping: {len(units)} Kandidaten-Stücke um die stärksten Momente")
         progress(50, "Beste Momente auswählen …")
         plan = select(units, settings, log)
         byid = {u.id: u for u in units}
@@ -496,12 +579,18 @@ def process(paths: list[Path], out_dir: Path, settings: dict, progress=lambda p,
             mp4 = out_dir / f"{k + 1:02d}_{name}.mp4"
             dur = render(clips, [byid[i] for i in r["ids"]], mp4, work / f"r{k}", settings, r.get("hook", ""), True, log)
             caption = (r.get("caption", "").strip() + "\n\n" + " ".join(r.get("hashtags", [])[:5])).strip()
+            if settings.get("style") == "clipping":     # Pflichtangaben der Kampagne / des Creators
+                extra = [x for x in (f"🎥 {settings.get('clip_credit', '').strip()}" if settings.get("clip_credit") else "",
+                                     settings.get("clip_required", "").strip()) if x]
+                if extra:
+                    caption = (r.get("caption", "").strip() + "\n\n" + "\n".join(extra) + "\n\n" +
+                               " ".join(r.get("hashtags", [])[:5])).strip()
             mp4.with_suffix(".txt").write_text(caption, encoding="utf-8")
             thumbnail(mp4, mp4.with_suffix(".jpg"), at=min(1.5, dur / 3), width=360)
             results["reels"].append({"file": mp4.name, "duration": round(dur, 1), "hook": r.get("hook", ""),
                                      "caption": caption, "thumb": mp4.with_suffix(".jpg").name})
             log(f"✓ {mp4.name} ({dur:.0f} s)")
-        if settings.get("long_version", True):
+        if settings.get("long_version", True) and settings.get("style") != "clipping":
             progress(55 + 40 * (n - 1) / n, "Lange Fassung schneiden …")
             mp4 = out_dir / "00_lange_fassung.mp4"
             sp = [u for u in units if u.speech] or units
