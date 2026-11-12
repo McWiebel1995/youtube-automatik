@@ -35,7 +35,7 @@
   "id": "warzone-11121838-002",
   "campaign": "warzone",
   "campaign_name": "Call of Duty – Warzone Season 1",
-  "status": "pending",
+  "status": "posted",
   "created": "2026-11-12T18:39:00+00:00",
   "video": "https://github.com/McWiebel1995/youtube-automatik/releases/download/cliplab-pending/warzone-11121838-002.mp4",
   "thumb": "https://github.com/McWiebel1995/youtube-automatik/releases/download/cliplab-pending/warzone-11121838-002.jpg",
@@ -45,7 +45,13 @@
    "instagram",
    "tiktok"
   ],
-  "source_window": "Warzone Season 1 trailer just dropped"
+  "source_window": "Warzone Season 1 trailer just dropped",
+  "posted": "2026-11-12T18:51:44+00:00",
+  "links": {
+   "instagram": "https://www.instagram.com/reel/DfpvbByCbBA/",
+   "tiktok": "manuell"
+  },
+  "submit_by": "2026-11-12T19:21+00:00"
  },
  {
   "id": "warzone-11121839-003",
