@@ -292,6 +292,24 @@ def cmd_probe():
         except Exception as e:  # noqa: BLE001
             out.append(f"{key}: ✗ {str(e)[:200]}")
     out.append("Material-Release: " + ", ".join(release_assets(MAT_REL))[:500])
+    try:                                                 # Zugänge prüfen (ohne Token-Inhalt)
+        import upload
+        tok = os.environ.get(CFG["accounts"]["youtube"])
+        if tok:
+            ch = upload.service(tok).channels().list(part="snippet", mine=True).execute()["items"][0]["snippet"]
+            out.append(f"YouTube: ✓ Kanal „{ch['title']}“")
+        else:
+            out.append("YouTube: Secret fehlt")
+    except Exception as e:  # noqa: BLE001
+        out.append(f"YouTube: ✗ {str(e)[:200]}")
+    try:
+        import instagram
+        if "cliplab" in instagram.ACCOUNTS:
+            out.append(f"Instagram: ✓ @{instagram.me(instagram.token_for('cliplab')).get('username')}")
+        else:
+            out.append("Instagram: Secret fehlt")
+    except Exception as e:  # noqa: BLE001
+        out.append(f"Instagram: ✗ {str(e)[:200]}")
     note("Clip Lab – Probe", " ⏎ ".join(out))
 
 
