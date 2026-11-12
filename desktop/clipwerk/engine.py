@@ -303,7 +303,25 @@ def _norm(w):
     return re.sub(r"[^\wäöüß]", "", w.lower())
 
 
-def units_for(clips: list[Clip]) -> list[Unit]:
+def scene_windows(c: Clip, max_len=5.0, min_len=0.8):
+    """Videos ohne Sprache (Trailer): an den echten Schnitten teilen -> natürliche Übergänge, jede Szene einzeln wählbar."""
+    r = run([tool("ffmpeg"), "-hide_banner", "-i", c.path, "-vf", "scale=320:-2,select='gt(scene,0.3)',showinfo",
+             "-an", "-f", "null", "-"], check=False)
+    err = r.stderr.decode("utf-8", "replace") if isinstance(r.stderr, bytes) else (r.stderr or "")
+    cuts = sorted({round(float(m), 2) for m in re.findall(r"pts_time:([0-9.]+)", err)})
+    edges = [0.0] + [x for x in cuts if 0.3 < x < c.duration - 0.3] + [c.duration]
+    wins = []
+    for a, b in zip(edges, edges[1:]):
+        if b - a < min_len and wins:                 # Mini-Schnipsel an die vorige Szene hängen
+            wins[-1] = (wins[-1][0], b)
+            continue
+        n = max(1, int((b - a) // max_len) + (1 if (b - a) % max_len > 0.5 else 0))
+        step = (b - a) / n
+        wins += [(a + k * step, a + (k + 1) * step) for k in range(n)]
+    return wins
+
+
+def units_for(clips: list[Clip], dense=False) -> list[Unit]:
     """Zerlegt alle Clips in Sätze (Sprache) bzw. kurze Bildstücke (ohne Sprache). Füllwörter & Pausen fliegen raus."""
     units, uid = [], 0
     for ci, c in enumerate(clips):
@@ -327,7 +345,9 @@ def units_for(clips: list[Clip]) -> list[Unit]:
         else:                                       # B-Roll: die stärksten Bildmomente (oder gleichmäßig verteilt)
             n = max(1, min(8, int(c.duration // 4)))
             shots = getattr(c, "shots", None)
-            if shots:
+            if dense:                                # Clipping: ganzes Video in Szenen (nicht nur 8 Stichproben)
+                wins = scene_windows(c)
+            elif shots:
                 import vision
                 wins = vision.best_windows(shots, c.duration, n)
             else:
@@ -432,7 +452,8 @@ def select(units: list[Unit], settings: dict, log=print) -> dict:
     if settings.get("gemini_key"):
         try:
             if settings["style"] == "clipping":
-                lst = "\n".join(f"{u.id} | {u.dur:.1f}s | {u.text[:160]} | {u.loud:.0f}" for u in units)
+                lst = "\n".join(f"{u.id} | {u.dur:.1f}s | {u.text[:160]}" + (f" (seen: {u.seen[:120]})" if u.seen else "")
+                                + f" | {u.loud:.0f}" for u in units)
                 prompt = CLIP_TASK.format(n=n, rmin=rmin, rmax=rmax, units=lst[:90000])
                 if settings.get("clip_brief"):          # Regeln der Kampagne (Autopilot) – Captions müssen stimmen
                     prompt += ("\n\nCAMPAIGN RULES – follow exactly. Captions/hooks in ENGLISH, only true facts that are "
@@ -695,9 +716,13 @@ def process(paths: list[Path], out_dir: Path, settings: dict, progress=lambda p,
             if clipping:
                 c.loud = loudness(c, cache, settings.get("whisper_model", "small"))
             log(f"  {c.path.name}: {c.duration:.0f} s, {len(c.words)} Wörter")
-        if settings.get("vision", True) and settings.get("style") != "clipping":   # Streams: Ton/Text reicht
-            import vision
+        def _low_speech(c):
+            return sum(e - s0 for _, s0, e in c.words) / max(1.0, c.duration) <= 0.15
+        if settings.get("vision", True) and (settings.get("style") != "clipping" or any(_low_speech(c) for c in clips)):
+            import vision                            # Streams: Ton/Text reicht – Trailer ohne Sprache: Bilder ansehen
             for i, c in enumerate(clips):
+                if settings.get("style") == "clipping" and not _low_speech(c):
+                    continue
                 progress(30 + 14 * i / len(clips), f"Schaue mir die Bilder an: {c.path.name}")
                 c.shots = vision.measure(c, log)
                 if settings.get("gemini_key"):
@@ -709,10 +734,14 @@ def process(paths: list[Path], out_dir: Path, settings: dict, progress=lambda p,
                 top = sorted(c.shots, key=lambda s: s.interest, reverse=True)[:2]
                 log(f"  Bilder {c.path.name}: " + "; ".join(f"{s.t:.0f}s {s.desc or ''} ({s.interest:.0f}/10)" for s in top))
         progress(46, "Pausen und Füllwörter entfernen …")
-        units = units_for(clips)
+        units = units_for(clips, dense=settings.get("style") == "clipping")
         skip = float(settings.get("clip_skip_start", 0) or 0)    # z. B. Alterseinstufung am Trailer-Anfang
         if skip:
             units = [u for u in units if u.start >= skip]
+        excl = settings.get("clip_exclude") or []          # schon verwendete Stellen [datei, von, bis] -> nicht wiederholen
+        if excl:
+            units = [u for u in units if not any(
+                n == clips[u.clip].path.name and u.start < b - 0.3 and u.end > a + 0.3 for n, a, b in excl)]
         if not units:
             raise RuntimeError("In den Videos wurde nichts Verwertbares gefunden.")
         if settings.get("style") == "clipping":
@@ -747,7 +776,9 @@ def process(paths: list[Path], out_dir: Path, settings: dict, progress=lambda p,
             mp4.with_suffix(".txt").write_text(caption, encoding="utf-8")
             thumbnail(mp4, mp4.with_suffix(".jpg"), at=min(1.5, dur / 3), width=360)
             results["reels"].append({"file": mp4.name, "duration": round(dur, 1), "hook": r.get("hook", ""),
-                                     "caption": caption, "thumb": mp4.with_suffix(".jpg").name})
+                                     "caption": caption, "thumb": mp4.with_suffix(".jpg").name,
+                                     "ranges": [[clips[byid[i].clip].path.name, round(byid[i].start, 2),
+                                                 round(byid[i].end, 2)] for i in r["ids"]]})
             log(f"✓ {mp4.name} ({dur:.0f} s)")
         if settings.get("long_version", True) and settings.get("style") != "clipping":
             progress(55 + 40 * (n - 1) / n, "Lange Fassung schneiden …")

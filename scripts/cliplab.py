@@ -168,10 +168,13 @@ def cmd_cut(only=None):
                 continue
             rmin, rmax = camp.get("length", [20, 45])
             used = {p.get("source_window") for p in pend if p["campaign"] == key and p["status"] != "rejected"}
+            exclude = [r for p in pend if p["campaign"] == key and p["status"] != "rejected"
+                       for r in p.get("ranges", [])] + camp.get("exclude", [])
             s = dict(engine.DEFAULTS, style="clipping", gemini_key=os.environ.get("GEMINI_API_KEY", ""),
                      reels=n, reel_min=rmin, reel_max=rmax, music=False, hook=bool(camp.get("hook", False)),
                      subtitles=True, long_version=False, clip_layout=camp.get("layout", "auto"),
                      clip_ad=True, clip_ad_text=camp.get("ad", "#Ad"), clip_skip_start=camp.get("skip_start", 0),
+                     clip_exclude=exclude,
                      clip_required=" | ".join(camp.get("required", [])), clip_credit="",
                      clip_logo=logo_file(camp, work), whisper_model="small",
                      clip_brief=camp.get("brief", "") + ("\nAlready used (pick DIFFERENT moments): " +
@@ -199,7 +202,7 @@ def cmd_cut(only=None):
                              "created": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
                              "video": asset_url(PEND_REL, name), "thumb": asset_url(PEND_REL, f"{cid}.jpg"),
                              "duration": r["duration"], "caption": cap, "platforms": camp.get("platforms", []),
-                             "source_window": r.get("hook") or r["file"]})
+                             "source_window": r.get("hook") or r["file"], "ranges": r.get("ranges", [])})
                 save(PENDING, pend)
                 budget -= 1
                 report.append(f"{key}: ✓ {cid} ({r['duration']:.0f}s)")

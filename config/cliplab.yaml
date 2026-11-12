@@ -17,6 +17,13 @@ campaigns:
     length: [15, 35]
     layout: full                             # ganzes Trailerbild (sonst wird Schrift im Bild abgeschnitten)
     skip_start: 9                            # Alterseinstufung (ESRB) am Anfang überspringen
+    exclude:                                 # schon gepostet (Reel 12.11.) – nicht wiederholen
+      - [MW4_S1_WARZONE_TRAILER_FULL_COD_Channel_ESRB_16x9_4K_REV01.mp4, 21.5, 24.25]
+      - [MW4_S1_WARZONE_TRAILER_FULL_COD_Channel_ESRB_16x9_4K_REV01.mp4, 42.75, 45.5]
+      - [MW4_S1_WARZONE_TRAILER_FULL_COD_Channel_ESRB_16x9_4K_REV01.mp4, 63.75, 66.75]
+      - [MW4_S1_WARZONE_TRAILER_FULL_COD_Channel_ESRB_16x9_4K_REV01.mp4, 84.75, 87.75]
+      - [MW4_S1_WARZONE_TRAILER_FULL_COD_Channel_ESRB_16x9_4K_REV01.mp4, 106, 109]
+      - [MW4_S1_WARZONE_TRAILER_FULL_COD_Channel_ESRB_16x9_4K_REV01.mp4, 127, 130]
     hook: false                              # übertriebene Hooks verboten
     ad: "#Ad"
     required: ["@callofduty", "Season 1 out now", "🎵 Agust D (Suga from BTS) - \"Haegeum\""]
