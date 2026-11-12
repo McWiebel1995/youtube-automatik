@@ -267,6 +267,19 @@ def cmd_reject(ids):
     save(PENDING, pend)
 
 
+def cmd_fetch(url, name):
+    """Freigegebenes Kampagnen-Material (signierter Download-Link aus dem Kampagnen-Ordner) im Release ablegen."""
+    work = Path(tempfile.mkdtemp())
+    p = work / name
+    with requests.get(url, stream=True, timeout=900) as r:
+        r.raise_for_status()
+        with open(p, "wb") as f:
+            for chunk in r.iter_content(1 << 20):
+                f.write(chunk)
+    release_upload(MAT_REL, p, "The Clip Lab – Kampagnen-Material")
+    note("Clip Lab – Material", f"{name}: {p.stat().st_size / 1e6:.0f} MB gespeichert")
+
+
 def cmd_probe():
     out = []
     for key, camp in CFG["campaigns"].items():
@@ -284,16 +297,20 @@ def cmd_probe():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("mode", choices=["probe", "cut", "post", "reject"])
+    ap.add_argument("mode", choices=["probe", "cut", "post", "reject", "fetch"])
     ap.add_argument("--ids", default="")
     ap.add_argument("--only", default="")
     ap.add_argument("--edits", default="")              # JSON {id: caption}
+    ap.add_argument("--url", default="")
+    ap.add_argument("--name", default="")
     a = ap.parse_args()
     ids = [x for x in a.ids.split(",") if x]
     if a.mode == "probe":
         cmd_probe()
     elif a.mode == "cut":
         cmd_cut([x for x in a.only.split(",") if x] or None)
+    elif a.mode == "fetch":
+        cmd_fetch(a.url or os.environ.get("FETCH_URL", ""), a.name)
     elif a.mode == "post":
         cmd_post(ids, json.loads(a.edits) if a.edits else None)
     else:

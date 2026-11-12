@@ -6,7 +6,7 @@ on:
     inputs:
       mode:
         type: choice
-        options: [cut, post, reject, probe]
+        options: [cut, post, reject, probe, fetch]
         default: cut
       ids:
         description: "Clip-IDs (Komma) für post/reject"
@@ -15,7 +15,10 @@ on:
         description: "Optional: JSON {id: caption}"
         default: ""
       only:
-        description: "Nur diese Kampagnen (Komma)"
+        description: "Nur diese Kampagnen (Komma) / bei fetch: Dateiname"
+        default: ""
+      url:
+        description: "fetch: Download-Link des Kampagnen-Materials"
         default: ""
   schedule:
     - cron: "17 13 * * *"      # schneiden -> Freigabe am Nachmittag, Posten zur US-Zeit
@@ -49,7 +52,8 @@ jobs:
           IDS: ${{ inputs.ids }}
           EDITS: ${{ inputs.edits }}
           ONLY: ${{ inputs.only }}
-        run: python scripts/cliplab.py "${{ inputs.mode || 'cut' }}" --ids "$IDS" --edits "$EDITS" --only "$ONLY"
+          FETCH_URL: ${{ inputs.url }}
+        run: python scripts/cliplab.py "${{ inputs.mode || 'cut' }}" --ids "$IDS" --edits "$EDITS" --only "$ONLY" --name "$ONLY"
       - name: Stand speichern
         if: always()
         run: |
