@@ -103,7 +103,9 @@ def material(key, camp, work: Path):
     have = release_assets(MAT_REL)
     files = []
     prefix = src.get("release_prefix") or key
-    cached = [n for n in have if n.startswith(prefix + "_") and n.lower().endswith(".mp4")]
+    words = [w.lower() for w in (src.get("match") or [prefix])]   # Dateiname enthält eines dieser Wörter
+    cached = [n for n in have if n.lower().endswith((".mp4", ".mov", ".m4v"))
+              and any(w in n.lower() for w in words)]
     if not cached and src.get("mediasilo"):
         for title, url in mediasilo_assets(src["mediasilo"]):
             name = f"{prefix}_{re.sub(r'[^A-Za-z0-9]+', '_', title).strip('_')[:50]}.mp4"
@@ -127,8 +129,13 @@ def logo_file(camp, work: Path):
     name = camp.get("logo")
     if not name:
         return ""
-    if name not in release_assets(MAT_REL):
-        raise RuntimeError(f"Pflicht-Logo {name} fehlt im Release {MAT_REL}")
+    have = release_assets(MAT_REL)
+    if name not in have:                             # sonst: Bild, dessen Name alle Wörter enthält (z. B. "warzone logo")
+        hits = [n for n in have if n.lower().endswith((".png", ".webp", ".jpg", ".jpeg"))
+                and all(w in n.lower() for w in name.lower().replace(".png", "").split())]
+        if not hits:
+            raise RuntimeError(f"Pflicht-Logo „{name}“ fehlt im Release {MAT_REL}")
+        name = hits[0]
     gh("release", "download", MAT_REL, "--repo", REPO, "--pattern", name, "--dir", str(work), "--clobber")
     return str(work / name)
 
@@ -282,6 +289,10 @@ def cmd_fetch(url, name):
 
 def cmd_probe():
     out = []
+    if gh("release", "view", MAT_REL, "--repo", REPO, check=False).returncode:
+        gh("release", "create", MAT_REL, "--repo", REPO, "--prerelease", "--title", "The Clip Lab – Kampagnen-Material",
+           "--notes", "Nur freigegebenes Kampagnen-Material (Content Rewards). Dateien einfach hierher ziehen.")
+        out.append("Material-Release angelegt")
     for key, camp in CFG["campaigns"].items():
         q = (camp.get("source") or {}).get("mediasilo")
         if not q:
