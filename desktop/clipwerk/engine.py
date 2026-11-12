@@ -366,6 +366,7 @@ id | length | spoken text | loudness 0–10 (screams/laughs/hype are loud).
 Find the {n} most viral moments. Each clip:
 - {rmin}–{rmax} seconds, ONE self-contained moment that makes sense without context (setup -> payoff),
 - mostly CONSECUTIVE ids (keep the original order; skip only boring parts in between),
+- every clip uses DIFFERENT ids – clips must never overlap or repeat the same moment,
 - starts right before the action/punchline, ends right after the payoff/reaction,
 - no slurs, no hate, no sexual content, nothing that could hurt someone.
 For each clip:
@@ -457,7 +458,8 @@ def select(units: list[Unit], settings: dict, log=print) -> dict:
                 r["ids"] = keep
                 used += [(byid[i].clip, byid[i].start, byid[i].end) for i in keep]
                 r["hashtags"] = (r.get("hashtags") or tags)[:5]
-            js["reels"] = [r for r in js.get("reels", []) if r["ids"]][:n]
+            js["reels"] = [r for r in js.get("reels", []) if r["ids"] and
+                           sum(byid[i].dur for i in r["ids"]) >= max(10.0, rmin * 0.75)][:n]   # zu kurze Reste weg
             if js["reels"]:
                 return js
         except Exception as e:  # noqa: BLE001
