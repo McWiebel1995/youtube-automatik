@@ -148,7 +148,7 @@ def today():
 def cmd_cut(only=None):
     import engine
     pend = load(PENDING, [])
-    made_today = [p for p in pend if p["created"][:10] == today()]
+    made_today = [p for p in pend if p["created"][:10] == today() and p["status"] != "rejected"]
     budget = int(CFG["accounts"].get("per_day_total", 6)) - len(made_today)
     report = []
     for key, camp in CFG["campaigns"].items():
@@ -167,11 +167,11 @@ def cmd_cut(only=None):
                 report.append(f"{key}: ⚠ kein Material (bitte hochladen: Release {MAT_REL}, Name {key}_….mp4)")
                 continue
             rmin, rmax = camp.get("length", [20, 45])
-            used = {p.get("source_window") for p in pend if p["campaign"] == key}
+            used = {p.get("source_window") for p in pend if p["campaign"] == key and p["status"] != "rejected"}
             s = dict(engine.DEFAULTS, style="clipping", gemini_key=os.environ.get("GEMINI_API_KEY", ""),
                      reels=n, reel_min=rmin, reel_max=rmax, music=False, hook=bool(camp.get("hook", False)),
                      subtitles=True, long_version=False, clip_layout=camp.get("layout", "auto"),
-                     clip_ad=True, clip_ad_text=camp.get("ad", "#Ad"),
+                     clip_ad=True, clip_ad_text=camp.get("ad", "#Ad"), clip_skip_start=camp.get("skip_start", 0),
                      clip_required=" | ".join(camp.get("required", [])), clip_credit="",
                      clip_logo=logo_file(camp, work), whisper_model="small",
                      clip_brief=camp.get("brief", "") + ("\nAlready used (pick DIFFERENT moments): " +

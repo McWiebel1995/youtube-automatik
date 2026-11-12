@@ -15,7 +15,8 @@ campaigns:
     per_day: 2
     reels: 2
     length: [15, 35]
-    layout: center
+    layout: full                             # ganzes Trailerbild (sonst wird Schrift im Bild abgeschnitten)
+    skip_start: 9                            # Alterseinstufung (ESRB) am Anfang überspringen
     hook: false                              # übertriebene Hooks verboten
     ad: "#Ad"
     required: ["@callofduty", "Season 1 out now", "🎵 Agust D (Suga from BTS) - \"Haegeum\""]

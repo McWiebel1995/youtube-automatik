@@ -443,8 +443,10 @@ def select(units: list[Unit], settings: dict, log=print) -> dict:
                 prompt = SELECT_TASK.format(style=style, n=n, rmin=rmin, rmax=rmax, units=lst[:60000])
             js = gemini_json(settings["gemini_key"], prompt, log)
             byid = {u.id: u for u in units}
+            used = []                                # (clip, start, end) – Reels dürfen sich nicht überschneiden
             for r in js.get("reels", []):
-                r["ids"] = [i for i in r.get("ids", []) if i in byid]
+                r["ids"] = [i for i in r.get("ids", []) if i in byid and not any(
+                    c == byid[i].clip and byid[i].start < b - 0.3 and byid[i].end > a + 0.3 for c, a, b in used)]
                 tot = 0
                 keep = []
                 for i in r["ids"]:                  # Länge absichern
@@ -453,6 +455,7 @@ def select(units: list[Unit], settings: dict, log=print) -> dict:
                     keep.append(i)
                     tot += byid[i].dur
                 r["ids"] = keep
+                used += [(byid[i].clip, byid[i].start, byid[i].end) for i in keep]
                 r["hashtags"] = (r.get("hashtags") or tags)[:5]
             js["reels"] = [r for r in js.get("reels", []) if r["ids"]][:n]
             if js["reels"]:
@@ -504,7 +507,7 @@ def karaoke_ass(words, path: Path, w, h, hook="", hook_until=2.6, color="#FFD700
             f"18,0,8,70,70,{int(h * 0.12)},1\n"
             f"Style: Credit,{fnt},{int(size * 0.5)},&H00FFFFFF,&H000000FF,&H00000000,&H78000000,0,0,0,0,100,100,1,0,3,"
             f"10,0,8,70,70,{int(h * 0.055)},1\n"
-            f"Style: Ad,{fnt},{int(size * 0.55)},&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,3,"
+            f"Style: Ad,{fnt},{int(size * 0.75)},&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,3,"
             f"12,0,7,48,48,{int(h * 0.035)},1\n\n"
             "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n")
     ev = []
@@ -669,6 +672,9 @@ def process(paths: list[Path], out_dir: Path, settings: dict, progress=lambda p,
                 log(f"  Bilder {c.path.name}: " + "; ".join(f"{s.t:.0f}s {s.desc or ''} ({s.interest:.0f}/10)" for s in top))
         progress(46, "Pausen und Füllwörter entfernen …")
         units = units_for(clips)
+        skip = float(settings.get("clip_skip_start", 0) or 0)    # z. B. Alterseinstufung am Trailer-Anfang
+        if skip:
+            units = [u for u in units if u.start >= skip]
         if not units:
             raise RuntimeError("In den Videos wurde nichts Verwertbares gefunden.")
         if settings.get("style") == "clipping":
