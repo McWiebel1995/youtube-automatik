@@ -25,7 +25,7 @@ on:
     - cron: "3 23 * * *"       # freigegebene Clips posten: 18:03 New York / 15:03 Los Angeles (US-Abend)
 
 concurrency:
-  group: cliplab-${{ inputs.mode || github.event.schedule || 'cut' }}
+  group: cliplab-${{ ((inputs.mode == 'due' || inputs.mode == 'post' || github.event.schedule == '3 23 * * *') && 'post') || inputs.mode || 'cut' }}
   cancel-in-progress: false
 
 permissions:
