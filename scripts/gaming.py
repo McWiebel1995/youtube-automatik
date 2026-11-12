@@ -46,6 +46,65 @@ Answer ONLY JSON: {{"headline": "...", "game": "...", "title": "max 70 chars, pu
  "text": "...", "visuals": ["prompt 1", "prompt 2", "prompt 3", "prompt 4"], "hashtags": ["gaming", "..."]}}"""
 
 
+PRESS_PREFIX = "press-"            # GitHub-Releases "press-<spiel>" mit freigegebenen Pressevideos + license.txt
+
+
+def press_footage(game, work: Path):
+    """Freigegebenes Pressevideo zum Spiel holen (aus Release 'press-<slug>'). -> (Pfad, Hinweistext) oder (None, None).
+    license.txt im Release: 1. Zeile = Hersteller/Copyright, 2. Zeile = Quelle/Bedingungen."""
+    repo = os.environ.get("GITHUB_REPOSITORY", "McWiebel1995/youtube-automatik")
+    try:
+        rels = json.loads(subprocess.run(["gh", "api", f"repos/{repo}/releases?per_page=100"], capture_output=True,
+                                         text=True).stdout or "[]")
+    except Exception:  # noqa: BLE001
+        return None, None
+    words = set(re.findall(r"[a-z0-9]+", (game or "").lower()))
+    best = None
+    for r in rels:
+        tag = r.get("tag_name", "")
+        if not tag.startswith(PRESS_PREFIX):
+            continue
+        tw = set(tag[len(PRESS_PREFIX):].split("-"))
+        score = len(words & tw)
+        if score and (not best or score > best[0]):
+            best = (score, r)
+    if not best:
+        return None, None
+    r = best[1]
+    vids = [a for a in r.get("assets", []) if a["name"].lower().endswith((".mp4", ".mov", ".webm", ".mkv"))]
+    lic = next((a for a in r.get("assets", []) if a["name"].lower() == "license.txt"), None)
+    if not vids or not lic:                           # ohne Freigabe-Notiz wird nichts verwendet
+        print(f"  ⚠ Pressematerial {r['tag_name']}: kein Video oder keine license.txt – übersprungen")
+        return None, None
+    d = work / "press"
+    d.mkdir(exist_ok=True)
+    pick = random.choice(vids)
+    for a in (pick, lic):
+        subprocess.run(["gh", "release", "download", r["tag_name"], "--repo", repo, "-p", a["name"], "-D", str(d), "--clobber"],
+                       capture_output=True)
+    note = (d / "license.txt").read_text(encoding="utf-8", errors="ignore").strip().splitlines() if (d / "license.txt").exists() else []
+    src = d / pick["name"]
+    return (src if src.exists() else None), (note[0] if note else r["tag_name"])
+
+
+def press_segments(src: Path, work: Path, n, seconds, rnd):
+    """n stumme, hochkant zugeschnittene Ausschnitte (je `seconds` s) aus verschiedenen Stellen des Pressevideos."""
+    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(src)],
+                               capture_output=True, text=True).stdout or 0)
+    out = []
+    if dur < seconds + 2:
+        return out
+    starts = sorted(rnd.uniform(1, dur - seconds - 1) for _ in range(n))
+    for k, st in enumerate(starts):
+        dst = work / f"p{k}.mp4"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{st:.2f}", "-i", str(src), "-t", f"{seconds:.2f}", "-an",
+                        "-vf", "scale=-2:1920,crop=1080:1920,setsar=1,fps=30", "-c:v", "libx264", "-preset", "veryfast",
+                        "-crf", "20", "-pix_fmt", "yuv420p", str(dst)], capture_output=True)
+        if dst.exists():
+            out.append(dst)
+    return out
+
+
 def used():
     try:
         return json.loads(USED.read_text())
@@ -88,13 +147,23 @@ def news_short(out: Path, seed=None):
         dst = work / f"c{j}.mp4"
         wi.segment_video(src, dst, per, True, w=1080, h=1920, seed=j)
         clips.append(dst)
+    credit = None
+    pv, credit = press_footage(sc.get("game"), work)  # freigegebenes Pressevideo: max. ~40 %, ohne Originalton
+    if pv:
+        segs = press_segments(pv, work, n=2, seconds=per, rnd=rnd)
+        for k, sg in enumerate(segs):                 # ersetzt jedes 2. KI-Bild
+            idx = 1 + 2 * k
+            if idx < len(clips):
+                clips[idx] = sg
+        print(f"  🎞 Pressematerial: {len(segs)} Ausschnitte ({credit})")
     wi.xfade_concat(clips, [per] * len(clips), work / "short.mp4", fade)
     wi.karaoke_ass(wi.word_times(a, subs), work / "s.ass", 1080, 1920, 92, 0, align=5, upper=True)
     wi.mix_and_render(work / "short.mp4", a, out / "gaming_short.mp4", work, work / "s.ass", music_db=-20)
     tags = [h.lstrip("#") for h in sc.get("hashtags", [])][:3]
     meta = {"title": f"{sc['title'][:90]} #shorts", "headline": sc.get("headline"),
-            "description": f"{sc['text']}\n\nSource: {sc.get('headline')}\nImages are AI-generated illustrations, "
-                           "not in-game footage.\n" + " ".join("#" + t for t in tags),
+            "description": f"{sc['text']}\n\nSource: {sc.get('headline')}\n" +
+                           (f"Footage: {credit} – official press material, used for news coverage.\n" if credit else "") +
+                           "Other images are AI-generated illustrations, not in-game footage.\n" + " ".join("#" + t for t in tags),
             "tags": tags + ["gaming", "gaming news", "shorts"]}
     (out / "gaming_meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
     subprocess.run(["rm", "-rf", str(work)])
