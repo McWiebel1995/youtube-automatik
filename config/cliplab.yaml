@@ -20,7 +20,7 @@ campaigns:
     ad: "#Ad"
     required: ["@callofduty", "Season 1 out now", "🎵 Agust D (Suga from BTS) - \"Haegeum\""]
     hashtags: ["#Warzone", "#CallofDuty", "#Gaming"]
-    logo: logo                               # Bild im Release cliplab-material mit „logo“ im Namen (Pflicht)
+    logo: COD_WZ_Stacked_WHT.png             # offizielles Warzone-Logo (Pflicht-Wasserzeichen)
     brief: |
       Official Call of Duty: Warzone Season 1 trailer + developer briefing. New maps Hajin and Zodiac, Zipline Launcher,
       Grabber Drone, Elite Perks, Warzone integrated with Modern Warfare 4. A trailer is NOT gameplay – never call it gameplay.
