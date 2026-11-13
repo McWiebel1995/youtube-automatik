@@ -226,9 +226,24 @@ def selftest():
     print("\n".join(lines))
 
 
+def _unblock():
+    """Windows markiert entpackte Dateien aus dem Internet (Zone.Identifier). .NET lädt solche DLLs nicht
+    ("Failed to resolve Python.Runtime.Loader.Initialize") -> Markierung bei unseren eigenen Dateien entfernen."""
+    if sys.platform != "win32":
+        return
+    for root, _dirs, files in os.walk(HERE):
+        for f in files:
+            if f.lower().endswith((".dll", ".pyd", ".exe")):
+                try:
+                    os.remove(os.path.join(root, f) + ":Zone.Identifier")
+                except OSError:
+                    pass
+
+
 def main():
     if "--selftest" in sys.argv:
         return selftest()
+    _unblock()
     import webview
     webview.create_window("Cicco Zentrale", str(HERE / "web" / "index.html"), js_api=Api(),
                           width=1440, height=900, min_size=(900, 600), background_color="#0f1424")
