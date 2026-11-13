@@ -20,6 +20,12 @@ const bridge = {
   async reply(n, t) { return inApp() ? P().order_reply(n, t) : { ok: false, msg: "Nur im Programm" }; },
   async setToken(t) { return inApp() ? P().set_token(t) : { ok: false, msg: "Nur im Programm" }; },
   async clearToken() { return inApp() ? P().clear_token() : true; },
+  async mailCfg() { return inApp() ? P().mail_config() : { ready: false, host: "", port: 993, user: "" }; },
+  async mailSetup(h, p, u, pw) { return inApp() ? P().mail_setup(h, p, u, pw) : { ok: false, msg: "Nur im Programm" }; },
+  async mailRemove() { return inApp() ? P().mail_remove() : true; },
+  async mailList() { return inApp() ? P().mail_list(60) : { error: "Nur im Programm" }; },
+  async mailRead(uid) { return inApp() ? P().mail_read(uid) : { error: "Nur im Programm" }; },
+  notify(t, m) { if (inApp()) P().notify(t, m); },
   async access() { return inApp() ? P().access_list() : { local: [], secrets: [] }; },
   async accessAdd(k, l, p, n, v, u) { return inApp() ? P().access_add(k, l, p, n, v, u) : { ok: false, msg: "Nur im Programm" }; },
   async accessRemove(l) { return inApp() ? P().access_remove(l) : true; },
@@ -32,6 +38,7 @@ const fmt = n => n == null ? "–" : new Intl.NumberFormat("de-DE").format(n);
 const hm = d => new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Berlin" }).format(new Date(d));
 function ago(t) { const m = Math.round((Date.now() - new Date(t)) / 60000); return m < 1 ? "gerade" : m < 60 ? `vor ${m} Min` : m < 1440 ? `vor ${Math.round(m / 60)} Std` : `vor ${Math.round(m / 1440)} T`; }
 
+const M = { cfg: null, items: [], known: null, sel: null, cur: null, q: "", err: "", opened: new Set() };
 const S = { depts: [], hasToken: false, runs: [], status: null, comments: [], accounts: [], clips: [], orders: null, view: "home", arg: null, flash: null };
 const wf = r => (r.path || "").split("/").pop();
 
@@ -62,6 +69,7 @@ function badges() {
   set("#n-approve", pendingClips().length + S.comments.length);
   set("#n-orders", askOrders().length || "", true);
   set("#n-acc", badAccounts().length, true);
+  set("#n-mail", M.items.filter(m => !m.seen && !M.opened.has(m.uid)).length);
 }
 
 /* ------------------------------------------------------------ Navigation */
@@ -73,7 +81,8 @@ function go(view, arg) {
 document.querySelectorAll(".nav[data-v]").forEach(b => b.addEventListener("click", () => go(b.dataset.v, b.dataset.a)));
 function render() {
   badges();
-  ({ home, orders, order, approve, accounts, dept, settings })[S.view]();   // accounts ist async – rendert selbst
+  document.body.classList.toggle("wide", S.view === "mail");
+  ({ home, orders, order, approve, accounts, dept, settings, mail })[S.view]();   // accounts ist async – rendert selbst
 }
 const flashHtml = () => S.flash ? `<p class="msg ${S.flash.ok ? "ok" : "err"}">${esc(S.flash.text)}</p>` : "";
 const projOpts = sel => [["", "Allgemein"], ...S.depts.map(d => [d.id, d.name])].map(([v, t]) => `<option value="${v}" ${v === sel ? "selected" : ""}>${esc(t)}</option>`).join("");
@@ -252,6 +261,79 @@ function confirmInline(b) {      // zweiter Klick bestätigt Handgriffe, die nac
   return false;
 }
 
+
+/* ------------------------------------------------------------ Posteingang (wie Outlook: Ordner | Liste | Lesebereich) */
+async function loadMail(notifyNew) {
+  if (!M.cfg) M.cfg = await bridge.mailCfg();
+  if (!M.cfg.ready) return;
+  const r = await bridge.mailList();
+  if (r.error) { M.err = r.error; return; }
+  M.err = ""; const before = M.known; M.items = r.items;
+  if (before && notifyNew) {
+    const fresh = r.items.filter(m => !before.has(m.uid) && !m.seen);
+    if (fresh.length === 1) bridge.notify(`Neue Mail: ${fresh[0].from}`, fresh[0].subject);
+    else if (fresh.length > 1) bridge.notify(`${fresh.length} neue Mails`, fresh.map(m => m.from).slice(0, 3).join(", "));
+  }
+  M.known = new Set(r.items.map(m => m.uid));
+}
+function dayLabel(d) {
+  if (!d) return ""; const t = new Date(d), now = new Date();
+  if (t.toDateString() === now.toDateString()) return new Intl.DateTimeFormat("de-DE", { hour: "2-digit", minute: "2-digit" }).format(t);
+  return new Intl.DateTimeFormat("de-DE", { weekday: "short", day: "2-digit", month: "2-digit" }).format(t);
+}
+async function mail() {
+  if (!M.cfg) M.cfg = await bridge.mailCfg();
+  if (!M.cfg.ready) {
+    main.innerHTML = `<h1>Posteingang</h1><p class="sub">Einmal einrichten – das Passwort bleibt nur auf diesem PC (Windows-Anmeldeinformationen).</p>${flashHtml()}
+      <div class="card" style="max-width:560px"><div class="field"><label class="muted">Posteingangsserver (IMAP, SSL)</label><input id="m-host" value="${esc(M.cfg.host)}"></div>
+      <div class="field"><label class="muted">Port</label><input id="m-port" value="${esc(M.cfg.port)}" inputmode="numeric"></div>
+      <div class="field"><label class="muted">Benutzername</label><input id="m-user" value="${esc(M.cfg.user)}"></div>
+      <div class="field"><label class="muted">Passwort des Postfachs</label><input id="m-pw" type="password" autocomplete="off"></div>
+      <button class="btn main" id="m-save">Verbinden</button></div>`;
+    $("#m-save").addEventListener("click", async () => {
+      const b = $("#m-save"); b.disabled = true; b.textContent = "Prüfe …";
+      const r = await bridge.mailSetup($("#m-host").value, $("#m-port").value, $("#m-user").value, $("#m-pw").value);
+      $("#m-pw").value = "";
+      if (r.ok) { M.cfg = null; S.flash = null; await loadMail(false); badges(); mail(); } else { S.flash = { ok: false, text: r.msg }; mail(); }
+    });
+    return;
+  }
+  const q = M.q.toLowerCase(), list = M.items.filter(m => !q || (m.from + " " + m.subject + " " + m.addr).toLowerCase().includes(q));
+  const unread = M.items.filter(m => !m.seen && !M.opened.has(m.uid)).length;
+  main.innerHTML = `<div class="ol">
+    <aside class="ol-folders"><div class="ol-acc">${esc(M.cfg.user)}</div>
+      <button class="ol-folder on">📥 Posteingang <b>${unread || ""}</b></button>
+      <button class="btn" id="m-refresh" style="margin-top:auto">↻ Aktualisieren</button>
+      <button class="btn" id="m-off" style="margin-top:6px;font-size:12px">Postfach trennen</button></aside>
+    <section class="ol-list"><div class="ol-search"><input id="m-q" placeholder="Suchen" value="${esc(M.q)}" aria-label="Mails durchsuchen"></div>
+      ${M.err ? `<p class="msg err" style="margin:10px">${esc(M.err)}</p>` : ""}
+      <div class="ol-items">${list.map(m => `<button class="ol-item ${M.sel === m.uid ? "sel" : ""} ${!m.seen && !M.opened.has(m.uid) ? "unread" : ""}" data-uid="${esc(m.uid)}">
+        <span class="ol-from">${esc(m.from)}</span><span class="ol-date">${esc(dayLabel(m.date))}</span><span class="ol-subj">${esc(m.subject)}</span></button>`).join("")
+        || `<p class="empty" style="padding:14px">${M.items.length ? "Nichts gefunden." : "Lade …"}</p>`}</div></section>
+    <section class="ol-read">${readPane()}</section></div>`;
+  main.querySelectorAll(".ol-item").forEach(b => b.addEventListener("click", async () => {
+    M.sel = b.dataset.uid; M.opened.add(M.sel); M.cur = { loading: true }; badges(); mail();
+    M.cur = await bridge.mailRead(M.sel); if (S.view === "mail") mail();
+  }));
+  const qi = $("#m-q"); qi.addEventListener("input", () => { M.q = qi.value; const p = qi.selectionStart; mail(); const n = $("#m-q"); n.focus(); n.setSelectionRange(p, p); });
+  $("#m-refresh").addEventListener("click", async () => { await loadMail(false); badges(); mail(); });
+  $("#m-off").addEventListener("click", async () => { if (!confirmInline($("#m-off"))) return; await bridge.mailRemove(); M.cfg = null; M.items = []; M.known = null; mail(); });
+  const rep = $("#m-reply"); if (rep) rep.addEventListener("click", () => bridge.open(`mailto:${encodeURIComponent(rep.dataset.to)}?subject=${encodeURIComponent("AW: " + rep.dataset.subj)}`));
+  if (!M.items.length && !M.err) { await loadMail(false); badges(); if (M.items.length || M.err) mail(); }
+}
+function readPane() {
+  const c = M.cur, m = M.items.find(x => x.uid === M.sel);
+  if (!M.sel) return `<p class="empty ol-pad">Wähle eine Mail aus.</p>`;
+  if (!c || c.loading) return `<p class="empty ol-pad">Lade …</p>`;
+  if (c.error) return `<p class="msg err" style="margin:16px">${esc(c.error)}</p>`;
+  return `<div class="ol-pad"><h2 class="ol-h">${esc(c.subject)}</h2>
+    <div class="ol-meta"><span class="ol-av">${esc((c.from || "?").replace(/["<].*/, "").trim().charAt(0) || "?")}</span>
+      <span class="grow"><b>${esc(c.from)}</b><br><small class="muted">An: ${esc(c.to)} · ${esc(m ? hm(m.date) : c.date)}</small></span>
+      <button class="btn" id="m-reply" data-to="${esc(m ? m.addr : "")}" data-subj="${esc(c.subject)}">↩ Antworten</button></div>
+    ${c.files.length ? `<div class="ol-files">${c.files.map(f => `<span class="pill">📎 ${esc(f)}</span>`).join(" ")}</div>` : ""}
+    <div class="ol-body">${esc(c.text) || `<span class="muted">(kein Text)</span>`}</div></div>`;
+}
+
 /* ------------------------------------------------------------ Einstellungen */
 function settings() {
   main.innerHTML = `<h1>Einstellungen</h1><p class="sub">${inApp() ? "Programm" : "Browser-Vorschau – nur lesend"}</p>${flashHtml()}
@@ -273,8 +355,9 @@ async function start() {
   document.querySelectorAll("#projnav .nav").forEach(b => b.addEventListener("click", () => go("dept", b.dataset.a)));
   $("#mode").textContent = inApp() ? (S.hasToken ? "verbunden" : "nur lesend – Schlüssel fehlt") : "Browser-Vorschau";
   render();
-  await Promise.all([loadRuns(), loadPages(), loadOrders()]);
+  await Promise.all([loadRuns(), loadPages(), loadOrders(), loadMail(false)]);
   render();
+  setInterval(async () => { await loadMail(true); badges(); if (S.view === "mail" && !document.activeElement.matches("textarea,input")) mail(); }, 120000);
   setInterval(async () => { await loadRuns(); if (["home", "dept"].includes(S.view) && !document.activeElement.matches("textarea,input")) render(); else badges(); }, 45000);
   setInterval(async () => { await Promise.all([loadPages(), loadOrders()]); badges(); }, 300000);
 }

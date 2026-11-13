@@ -25,6 +25,7 @@ DATA = Path(os.environ.get("APPDATA", Path.home() / ".config")) / "CiccoZentrale
 DATA.mkdir(parents=True, exist_ok=True)
 TASKS = DATA / "tasks.json"
 HISTORY = DATA / "history.json"
+MAILCFG = DATA / "postfach.json"                        # Server, Port, Benutzer – Passwort nur in Windows (keyring)
 LOCAL_ACC = DATA / "zugaenge.json"                      # nur Namen/Links/Art – NIE Schlüssel oder Passwörter
 API = f"https://api.github.com/repos/{jobs.REPO}"
 PAGES = "https://mcwiebel1995.github.io/youtube-automatik"
@@ -172,6 +173,136 @@ class Api:
         _save(LOCAL_ACC, [a for a in _load(LOCAL_ACC, []) if a.get("label") != label])
         return True
 
+    # --- Posteingang (IMAP, nur lesend: Mails bleiben ungelesen)
+    def _imap(self):
+        import imaplib
+        cfg = _load(MAILCFG, {})
+        if not cfg.get("host"):
+            return None, None, "nicht eingerichtet"
+        import keyring
+        pw = keyring.get_password("CiccoZentrale", "mail:" + cfg["user"])
+        if not pw:
+            return None, cfg, "Passwort fehlt"
+        try:
+            m = imaplib.IMAP4_SSL(cfg["host"], int(cfg.get("port", 993)), timeout=25)
+            m.login(cfg["user"], pw)
+            m.select("INBOX", readonly=True)
+            return m, cfg, None
+        except Exception as e:  # noqa: BLE001
+            return None, cfg, f"Anmeldung fehlgeschlagen: {str(e)[:120]}"
+
+    def mail_config(self):
+        cfg = _load(MAILCFG, {})
+        return {"host": cfg.get("host", "ha01s007-cl.org-dns.com"), "port": cfg.get("port", 993),
+                "user": cfg.get("user", "info@cicco-fam.de"), "ready": bool(cfg.get("host"))}
+
+    def mail_setup(self, host, port, user, password):
+        import imaplib
+        host, user = (host or "").strip(), (user or "").strip()
+        try:
+            m = imaplib.IMAP4_SSL(host, int(port or 993), timeout=25)
+            m.login(user, password)
+            m.logout()
+        except Exception as e:  # noqa: BLE001
+            return {"ok": False, "msg": f"Anmeldung fehlgeschlagen: {str(e)[:150]}"}
+        import keyring
+        keyring.set_password("CiccoZentrale", "mail:" + user, password)
+        _save(MAILCFG, {"host": host, "port": int(port or 993), "user": user})
+        return {"ok": True}
+
+    def mail_remove(self):
+        cfg = _load(MAILCFG, {})
+        try:
+            import keyring
+            keyring.delete_password("CiccoZentrale", "mail:" + cfg.get("user", ""))
+        except Exception:  # noqa: BLE001
+            pass
+        MAILCFG.unlink(missing_ok=True)
+        return True
+
+    def mail_list(self, n=40):
+        import email
+        from email.header import decode_header, make_header
+        from email.utils import parsedate_to_datetime, parseaddr
+        m, cfg, err = self._imap()
+        if err:
+            return {"error": err}
+        try:
+            _, data = m.uid("search", None, "ALL")
+            uids = data[0].split()[-int(n):]
+            out = []
+            if uids:
+                _, rows = m.uid("fetch", b",".join(uids), "(FLAGS BODY.PEEK[HEADER.FIELDS (FROM SUBJECT DATE)])")
+                for i in range(0, len(rows)):
+                    r = rows[i]
+                    if not isinstance(r, tuple):
+                        continue
+                    meta = r[0].decode(errors="replace")
+                    uid = meta.split("UID ")[1].split()[0] if "UID " in meta else ""
+                    h = email.message_from_bytes(r[1])
+                    dec = lambda v: str(make_header(decode_header(v or "")))  # noqa: E731
+                    name, addr = parseaddr(dec(h.get("From")))
+                    try:
+                        when = parsedate_to_datetime(h.get("Date")).isoformat()
+                    except Exception:  # noqa: BLE001
+                        when = ""
+                    out.append({"uid": uid, "from": name or addr, "addr": addr, "subject": dec(h.get("Subject")) or "(kein Betreff)",
+                                "date": when, "seen": "\\Seen" in meta})
+            out.sort(key=lambda x: int(x["uid"] or 0), reverse=True)
+            return {"items": out, "user": cfg["user"]}
+        except Exception as e:  # noqa: BLE001
+            return {"error": str(e)[:200]}
+        finally:
+            try:
+                m.logout()
+            except Exception:  # noqa: BLE001
+                pass
+
+    def mail_read(self, uid):
+        import email
+        import html as H
+        import re
+        from email.header import decode_header, make_header
+        m, cfg, err = self._imap()
+        if err:
+            return {"error": err}
+        try:
+            _, rows = m.uid("fetch", str(int(uid)).encode(), "(BODY.PEEK[])")
+            msg = email.message_from_bytes(rows[0][1])
+            text, html_part, files = "", "", []
+            for part in msg.walk():
+                ct, disp = part.get_content_type(), str(part.get("Content-Disposition") or "")
+                if "attachment" in disp:
+                    files.append(str(make_header(decode_header(part.get_filename() or "Anhang"))))
+                elif ct == "text/plain" and not text:
+                    text = part.get_payload(decode=True).decode(part.get_content_charset() or "utf-8", "replace")
+                elif ct == "text/html" and not html_part:
+                    html_part = part.get_payload(decode=True).decode(part.get_content_charset() or "utf-8", "replace")
+            if not text and html_part:               # HTML nur als Text zeigen (keine Skripte, keine Tracking-Bilder)
+                t = re.sub(r"(?is)<(script|style).*?</\1>", "", html_part)
+                t = re.sub(r"(?i)<br\s*/?>|</p>|</div>|</tr>", "\n", t)
+                text = H.unescape(re.sub(r"<[^>]+>", "", t))
+            text = re.sub(r"\n{3,}", "\n\n", text).strip()[:30000]
+            dec = lambda v: str(make_header(decode_header(v or "")))  # noqa: E731
+            return {"from": dec(msg.get("From")), "to": dec(msg.get("To")), "subject": dec(msg.get("Subject")),
+                    "date": msg.get("Date"), "text": text, "files": files}
+        except Exception as e:  # noqa: BLE001
+            return {"error": str(e)[:200]}
+        finally:
+            try:
+                m.logout()
+            except Exception:  # noqa: BLE001
+                pass
+
+    def notify(self, title, text):
+        """Windows-Benachrichtigung (unten rechts)."""
+        try:
+            from winotify import Notification
+            Notification(app_id="Cicco Zentrale", title=str(title)[:80], msg=str(text)[:200]).show()
+        except Exception:  # noqa: BLE001
+            pass
+        return True
+
     # --- Clip-Freigabe (The Clip Lab): nur diese zwei festen Aktionen
     def clip_decide(self, ids, action, edits=None):
         if action not in ("approve", "reject") or not ids or not all(isinstance(i, str) and len(i) < 60 for i in ids):
@@ -252,7 +383,7 @@ class Api:
 
     def open(self, url):
         if url.startswith(("https://github.com/", "https://www.youtube.com/", "https://youtu.be/", "https://www.instagram.com/",
-                           "https://studio.youtube.com/", "https://contentrewards.com/", "https://www.tiktok.com/", "https://lovable.dev/", PAGES)):
+                           "https://studio.youtube.com/", "https://contentrewards.com/", "https://www.tiktok.com/", "https://lovable.dev/", "mailto:", PAGES)):
             webbrowser.open(url)
         return True
 
