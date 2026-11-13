@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Cicco Zentrale – Windows-Programm: 3D-Insel mit allen Projekten, Mitarbeitern und Aufträgen.
+Cicco Zentrale – Windows-Programm: Cockpit für alle Projekte, Konten, Freigaben und Freitext-Aufträge (+ 3D-Stadt).
 
   python app.py              # Programm starten
   python app.py --selftest   # ohne Fenster: Katalog + GitHub-Verbindung prüfen (für den Build)
@@ -29,6 +29,8 @@ API = f"https://api.github.com/repos/{jobs.REPO}"
 PAGES = "https://mcwiebel1995.github.io/youtube-automatik"
 ALLOWED = ("https://api.github.com/", PAGES + "/")
 KEYRING = ("CiccoZentrale", "github")
+ORDERS = "McWiebel1995/cicco-zentrale"                 # privates Repo: jeder Auftrag ist ein Ticket (Issue)
+OAPI = f"https://api.github.com/repos/{ORDERS}"
 
 
 def _token():
@@ -62,7 +64,77 @@ class Api:
     """Wird von der Oberfläche (web/index.html) über window.pywebview.api aufgerufen."""
 
     def catalog(self):
-        return {"depts": jobs.DEPTS, "has_token": bool(_token())}
+        return {"depts": jobs.DEPTS, "has_token": bool(_token()), "orders_repo": ORDERS}
+
+    # --- Freitext-Aufträge (Issues im privaten Repo, Claude arbeitet sie stündlich ab)
+    def _gh(self, method, url, **kw):
+        if not _token():
+            return None, "Kein GitHub-Schlüssel hinterlegt (Einstellungen)"
+        try:
+            r = requests.request(method, url, headers=_headers(), timeout=20, **kw)
+        except Exception as e:  # noqa: BLE001
+            return None, f"Keine Verbindung: {str(e)[:120]}"
+        if r.status_code in (401, 403):
+            return None, "Schlüssel hat keinen Zugriff auf cicco-zentrale (Issues: Lesen & Schreiben)"
+        if r.status_code == 404:
+            return None, "Repo cicco-zentrale nicht gefunden – bitte anlegen (privat)"
+        if not r.ok:
+            return None, f"GitHub {r.status_code}"
+        return (r.json() if r.content else {}), None
+
+    def orders(self):
+        js, err = self._gh("GET", f"{OAPI}/issues", params={"labels": "auftrag", "state": "all", "per_page": 50})
+        if err:
+            return {"error": err}
+        items = [{"number": i["number"], "title": i["title"], "state": i["state"], "created_at": i["created_at"],
+                  "comments": i["comments"], "labels": [l["name"] for l in i["labels"]],
+                  "project": next((l["name"][8:] for l in i["labels"] if l["name"].startswith("projekt:")), "")}
+                 for i in js if "pull_request" not in i]
+        return {"items": items}
+
+    def order_create(self, title, body, project=""):
+        title, body = (title or "").strip()[:120], (body or "").strip()[:8000]
+        if not title:
+            return {"ok": False, "msg": "Leerer Auftrag"}
+        labels = ["auftrag"] + ([f"projekt:{project}"] if project else [])
+        js, err = self._gh("POST", f"{OAPI}/issues", json={"title": title, "body": body, "labels": labels})
+        return {"ok": True, "number": js["number"]} if not err else {"ok": False, "msg": err}
+
+    def order_thread(self, number):
+        i, err = self._gh("GET", f"{OAPI}/issues/{int(number)}")
+        if err:
+            return {"error": err}
+        cs, err = self._gh("GET", f"{OAPI}/issues/{int(number)}/comments", params={"per_page": 100})
+        if err:
+            return {"error": err}
+        me = i["user"]["login"]
+        return {"number": i["number"], "title": i["title"], "state": i["state"], "created_at": i["created_at"],
+                "body": i.get("body") or "", "comments": [{"body": c["body"], "created_at": c["created_at"],
+                                                          "mine": c["user"]["login"] == me and not c["body"].startswith("🤖")}
+                                                         for c in cs]}
+
+    def order_reply(self, number, text):
+        text = (text or "").strip()[:8000]
+        if not text:
+            return {"ok": False, "msg": "Leer"}
+        _, err = self._gh("POST", f"{OAPI}/issues/{int(number)}/comments", json={"body": text})
+        if err:
+            return {"ok": False, "msg": err}
+        self._gh("DELETE", f"{OAPI}/issues/{int(number)}/labels/r%C3%BCckfrage")   # Antwort da -> wieder bei Claude
+        self._gh("PATCH", f"{OAPI}/issues/{int(number)}", json={"state": "open"})
+        return {"ok": True}
+
+    # --- Clip-Freigabe (The Clip Lab): nur diese zwei festen Aktionen
+    def clip_decide(self, ids, action, edits=None):
+        if action not in ("approve", "reject") or not ids or not all(isinstance(i, str) and len(i) < 60 for i in ids):
+            return {"ok": False, "msg": "Ungültig"}
+        inputs = {"mode": action, "ids": ",".join(ids)}
+        if edits:
+            inputs["edits"] = json.dumps(edits, ensure_ascii=False)
+        _, err = self._gh("POST", f"{API}/actions/workflows/cliplab.yml/dispatches", json={"ref": "main", "inputs": inputs})
+        if err == "Repo cicco-zentrale nicht gefunden – bitte anlegen (privat)":
+            err = "Workflow nicht gefunden"
+        return {"ok": not err, "msg": err or ""}
 
     # --- Live-Daten (nur lesend)
     def fetch(self, url):
@@ -132,7 +204,7 @@ class Api:
 
     def open(self, url):
         if url.startswith(("https://github.com/", "https://www.youtube.com/", "https://youtu.be/", "https://www.instagram.com/",
-                           "https://studio.youtube.com/", PAGES)):
+                           "https://studio.youtube.com/", "https://contentrewards.com/", "https://www.tiktok.com/", PAGES)):
             webbrowser.open(url)
         return True
 
@@ -145,7 +217,10 @@ def selftest():
     s = api.fetch(f"{PAGES}/status.json")
     lines.append(f"Studio-Daten: {'OK, ' + str(len(s.get('channels', []))) + ' Kanäle' if 'channels' in s else s}")
     lines.append(f"Aufgaben: {len(api.tasks())}")
-    lines.append(f"Oberfläche: {'OK' if (HERE / 'web' / 'index.html').exists() else 'FEHLT'}, "
+    a = api.fetch(f"{PAGES}/accounts.json")
+    lines.append(f"Konten-Ampel: {'OK, ' + str(len(a.get('accounts', []))) + ' Konten' if 'accounts' in a else a}")
+    lines.append(f"Aufträge: {api.orders().get('error', 'OK')}")
+    lines.append(f"Oberfläche: {'OK' if all((HERE / 'web' / f).exists() for f in ('index.html', 'cockpit.js', 'stadt.html')) else 'FEHLT'}, "
                  f"three.js: {'OK' if (HERE / 'web' / 'vendor' / 'three.min.js').exists() else 'FEHLT'}")
     Path("selftest.log").write_text("\n".join(lines), encoding="utf-8")
     print("\n".join(lines))

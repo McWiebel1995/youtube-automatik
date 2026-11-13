@@ -11,10 +11,11 @@ on:
       - "📸 Instagram-Reels posten"
       - "💬 Kommentar-Bot (YouTube & Instagram)"
       - "🌿 Ruhige Gedanken"
+      - "🎬 The Clip Lab (Autopilot)"
     types: [completed]
   push:
     branches: [main]
-    paths: ["site/**", "scripts/studio_status.py", ".github/workflows/studio.yml"]
+    paths: ["site/**", "scripts/studio_status.py", "scripts/accounts_status.py", ".github/workflows/studio.yml", "data/cliplab/**"]
   workflow_dispatch:
 
 permissions:
@@ -58,6 +59,31 @@ jobs:
           IG_WHATIF_ALT: ${{ secrets.IG_USER_WHATIF }}
           IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
         run: python scripts/studio_status.py
+      - name: Konten-Ampel für die Zentrale (nur lesend, ohne Tokens)
+        continue-on-error: true
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN_REGEN: ${{ secrets.YT_REFRESH_TOKEN_REGEN }}
+          YT_REFRESH_TOKEN_KAMIN: ${{ secrets.YT_REFRESH_TOKEN_KAMIN }}
+          YT_REFRESH_TOKEN_WASSERFALL: ${{ secrets.YT_REFRESH_TOKEN_WASSERFALL }}
+          YT_REFRESH_TOKEN_SCHLAF: ${{ secrets.YT_REFRESH_TOKEN_SCHLAF }}
+          YT_REFRESH_TOKEN_LERNEN: ${{ secrets.YT_REFRESH_TOKEN_LERNEN }}
+          YT_REFRESH_TOKEN_GESCHICHTEN: ${{ secrets.YT_REFRESH_TOKEN_GESCHICHTEN }}
+          YT_REFRESH_TOKEN_WHATIF: ${{ secrets.YT_REFRESH_TOKEN_WHATIF }}
+          YT_REFRESH_TOKEN_GEDANKEN: ${{ secrets.YT_REFRESH_TOKEN_GEDANKEN }}
+          YT_REFRESH_TOKEN_CLIPLAB: ${{ secrets.YT_REFRESH_TOKEN_CLIPLAB }}
+          IG_TOKEN_CALMHAVEN: ${{ secrets.IG_TOKEN_CALMHAVEN }}
+          IG_TOKEN_MONDMELODIE: ${{ secrets.IG_TOKEN_MONDMELODIE }}
+          IG_TOKEN_LERNBAERCHEN: ${{ secrets.IG_TOKEN_LERNBAERCHEN }}
+          IG_TOKEN_GUTENACHT: ${{ secrets.IG_TOKEN_GUTENACHT }}
+          IG_TOKEN_WHATIF: ${{ secrets.IG_TOKEN_WHATIF }}
+          IG_TOKEN_CLIPLAB: ${{ secrets.IG_TOKEN_CLIPLAB }}
+          IG_WHATIF_ALT: ${{ secrets.IG_USER_WHATIF }}
+          IG_USER_WHATIF: ${{ vars.IG_USER_WHATIF }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+        run: python scripts/accounts_status.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

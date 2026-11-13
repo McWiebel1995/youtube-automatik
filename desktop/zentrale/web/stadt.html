@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cicco Zentrale</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="scene" aria-label="3D-Ansicht der Firmenzentrale"></canvas>
+<div id="labels"></div>
+<header class="top">
+  <div class="brand">
+    <h1>Cicco Zentrale</h1>
+    <p id="sub">Klick auf ein Gebäude öffnet es: Team und Aufträge. Ziehen dreht, Scrollen zoomt.</p>
+  </div>
+  <div style="display:grid;gap:8px;justify-items:end">
+    <div class="kpis" id="kpis"></div>
+    <div class="toolbar">
+      <button class="tbtn" id="btn-tasks">Aufgaben <b id="ntasks">–</b></button>
+      <button class="tbtn" id="btn-comments">Kommentare <b id="ncomments">–</b></button>
+      <button class="tbtn" id="btn-settings">Einstellungen</button>
+      <a class="tbtn" href="index.html">← Cockpit</a>
+    </div>
+  </div>
+</header>
+<div class="demo" id="mode">verbinde …</div>
+<aside id="panel" aria-hidden="true" aria-labelledby="ptitle"></aside>
+
+<script src="vendor/three.min.js"></script>
+<script src="vendor/OrbitControls.js"></script>
+<script src="stadt.js"></script>
+</body>
+</html>

@@ -11,7 +11,7 @@ def job(id, label, workflow, inputs=None, external=False, hint=""):
 
 
 DEPTS = [
-    {"id": "media", "name": "Medienhaus", "sub": "YouTube & Instagram · 9 Kanäle", "state": "live",
+    {"id": "media", "name": "Medienhaus", "sub": "YouTube & Instagram · 10 Kanäle", "state": "live",
      "team": [
          {"name": "Lena", "role": "Calm-Haven-Produktion", "job": "Regen, Kamin, Wasser", "color": "#7cc4ff",
           "watch": ["produce.yml"],
@@ -61,12 +61,25 @@ DEPTS = [
      "team": [{"name": "Paul", "role": "Belegprüfung", "job": "Sortieren, an lexoffice", "color": "#d8d3c4", "jobs": []},
               {"name": "Ute", "role": "Fristen", "job": "USt, Abschluss, Offenlegung", "color": "#ffb454", "jobs": []},
               {"name": "Rolf", "role": "Kostenwächter", "job": "Modal, Abos, Domains", "color": "#8be08b", "jobs": []}]},
+    {"id": "cliplab", "name": "The Clip Lab", "sub": "Clipping-Kampagnen · TikTok, Instagram, YouTube", "state": "live",
+     "team": [{"name": "Nico", "role": "Cutter", "job": "Clips aus Kampagnen-Material", "color": "#ff9f6b",
+               "watch": ["cliplab.yml"],
+               "jobs": [job("cl-cut", "Neue Clips schneiden (zur Freigabe)", "cliplab.yml", {"mode": "cut"}),
+                        job("cl-due", "Freigegebene Clips jetzt posten", "cliplab.yml", {"mode": "due"}, True,
+                            "sonst automatisch zur US-Abendzeit"),
+                        job("cl-probe", "Zugänge & Material prüfen", "cliplab.yml", {"mode": "probe"})]},
+              {"name": "Lia", "role": "Kampagnen & Einreichung", "job": "Content Rewards, Whop", "color": "#ffd36b",
+               "jobs": []}]},
+    {"id": "gaming", "name": "Gaming-Studio", "sub": "News-Shorts zu Spielen", "state": "plan",
+     "team": [{"name": "Finn", "role": "Gaming-Redaktion", "job": "News-Shorts (Test)", "color": "#7bdcff",
+               "watch": ["gaming.yml"],
+               "jobs": [job("gm-test", "News-Short als Test bauen", "gaming.yml", {"publish": "false"})]}]},
     {"id": "legal", "name": "Rechtsabteilung", "sub": "Impressum, Kennzeichnung, Rechtstexte", "state": "warn",
      "team": [{"name": "Clara", "role": "Impressum-Wächter", "job": "Kanäle & Videos prüfen", "color": "#c9b6ff",
                "watch": ["legal.yml"],
-               "jobs": [job("lg-check", "Impressum prüfen (nur zählen)", "legal.yml", {"dry_run": "true"}),
-                        job("lg-fix", "Fehlende Impressum-Zeilen nachtragen", "legal.yml", {"dry_run": "false"}, True,
-                            "ändert Videobeschreibungen, max. 60 pro Lauf")]},
+               "jobs": [job("lg-check", "Impressum-Zeilen zählen", "legal.yml", {"dry_run": "true"}),
+                        job("lg-fix", "Impressum-Zeilen entfernen (nächste 50)", "legal.yml", {"dry_run": "false"}, True,
+                            "ändert Videobeschreibungen, max. 50 pro Lauf")]},
               {"name": "Felix", "role": "Suchoptimierung & Texte", "job": "Beschreibungen, Stichwörter", "color": "#a5b4fc",
                "watch": ["seo-backfill.yml"],
                "jobs": [job("seo-test", "Suchbegriffe-Probe (letzte 7 Tage)", "seo-backfill.yml",
@@ -82,9 +95,9 @@ DEPTS = [
 
 START_TASKS = [
     {"t": "cicco-fam.de auf UG mit MwSt umstellen", "dept": "cicco", "who": "du"},
-    {"t": "Impressum-Link in 5 Instagram-Konten eintragen", "dept": "media", "who": "du"},
+
     {"t": "tacticn.de-Impressum auf UG-Angaben prüfen", "dept": "legal", "who": "du"},
-    {"t": "Impressum bei Beyond the If nachtragen", "dept": "legal", "who": "Clara"},
+
     {"t": "Ruhige Gedanken: Testlauf, Ursache für Zeitüberschreitung finden", "dept": "media", "who": "Jonas"},
     {"t": "Shopsystem für Tacticn aufsetzen (Phase 3)", "dept": "shop", "who": "Max"},
 ]

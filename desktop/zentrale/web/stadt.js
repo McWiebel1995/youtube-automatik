@@ -12,6 +12,8 @@ const LAYOUT = {
   legal:   { pos:[1.6,0,1.6],  size:[3.4,2.8,3],   color:0x4a3a5c, roof:0x6c568a },
   lab:     { pos:[-6.8,0,4],   size:[3,2.2,3],     color:0x7a3e6a, roof:0xa4558e },
   engine:  { pos:[-2,0,-0.4],  size:[2.6,1.8,2.6], color:0x3a3f52, roof:0x5b6380 },
+  cliplab: { pos:[-9.6,0,-0.6], size:[3.2,2.6,3],  color:0x8a4a2e, roof:0xc06a3c },
+  gaming:  { pos:[9.6,0,2.4],   size:[3,2.4,2.8],  color:0x2b4f7a, roof:0x3f74b0 },
 };
 const inApp = () => !!(window.pywebview && window.pywebview.api);
 const bridge = {
@@ -106,7 +108,7 @@ function makeWorker(color) {
 }
 
 function buildDept(d) {
-  Object.assign(d, LAYOUT[d.id]);
+  Object.assign(d, LAYOUT[d.id] || { pos:[0, 0, 9 + Object.keys(byId).length], size:[3, 2.4, 3], color:0x555a70, roof:0x7a7f99 });
   const g = new THREE.Group(); g.position.set(d.pos[0], 0, d.pos[2]);
   const [w, h, dep] = d.size;
   const em = winTex.clone(); em.needsUpdate = true; em.repeat.set(w / 1.6, h / 1.4);
