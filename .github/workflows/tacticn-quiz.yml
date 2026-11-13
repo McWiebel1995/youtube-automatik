@@ -1,0 +1,42 @@
+name: "🎯 Tacticn – Zeichen-Quiz (Reel)"
+run-name: "Tacticn-Quiz: ${{ inputs.symbol }}${{ inputs.probe == 'true' && ' (Probe)' || '' }}"
+on:
+  workflow_dispatch:
+    inputs:
+      symbol:
+        description: "Zeichen aus dem Pool (oder 'zufall')"
+        default: zufall
+      probe:
+        description: "Nur Baukasten untersuchen (kein Video)"
+        default: "false"
+permissions:
+  contents: write
+jobs:
+  quiz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+          pip install playwright requests pillow
+          python -m playwright install --with-deps chromium
+          mkdir -p fonts && curl -sSL -o fonts/Oswald.ttf "https://github.com/google/fonts/raw/main/ofl/oswald/Oswald%5Bwght%5D.ttf"
+      - name: Baukasten untersuchen
+        if: inputs.probe == 'true'
+        run: python scripts/tacticn_quiz.py --probe
+      - name: Quiz-Reel bauen
+        if: inputs.probe != 'true'
+        env:
+          FREESOUND_API_KEY: ${{ secrets.FREESOUND_API_KEY }}
+        run: python scripts/tacticn_quiz.py --symbol "${{ inputs.symbol }}" --out out --fonts fonts
+      - name: Vorschau hochladen
+        if: inputs.probe != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view tacticn-preview >/dev/null 2>&1 || gh release create tacticn-preview --prerelease --title "Tacticn – Vorschau" --notes "Reels zur Freigabe"
+          gh release upload tacticn-preview out/*.mp4 out/*.txt --clobber
