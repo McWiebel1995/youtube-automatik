@@ -38,7 +38,7 @@ SKIP_OPT = re.compile(r"Versorgungsklasse|^US|Bundes|Behörde|Ministerium|Marsha
 def pool(symbol_set="10"):
     xml = requests.get(f"{BASE}/sitemap.xml", timeout=30).text
     codes = sorted(set(re.findall(rf"/baukasten/({symbol_set}-\d{{4}})<", xml)))
-    return [c for c in codes if not c.endswith("-0000")]
+    return [c for c in codes if not c.endswith("00")]   # xx00 = Oberbegriff (leeres Rechteck) – nicht ratbar
 
 
 def load_used():
