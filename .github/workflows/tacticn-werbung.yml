@@ -1,0 +1,31 @@
+name: "🎯 Tacticn – Werbeclip (zur Freigabe)"
+run-name: "Tacticn-Werbeclip"
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  werbung:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+          pip install playwright requests pillow
+          python -m playwright install --with-deps chromium
+          mkdir -p fonts && curl -sSL -o fonts/Oswald.ttf "https://github.com/google/fonts/raw/main/ofl/oswald/Oswald%5Bwght%5D.ttf"
+      - name: Werbeclip bauen
+        env:
+          FREESOUND_API_KEY: ${{ secrets.FREESOUND_API_KEY }}
+        run: python scripts/tacticn_werbung.py --out out --fonts fonts
+      - name: Vorschau hochladen (nichts wird gepostet)
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view tacticn-preview >/dev/null 2>&1 || gh release create tacticn-preview --prerelease --title "Tacticn – Vorschau" --notes "Reels zur Freigabe"
+          gh release upload tacticn-preview out/tacticn_werbeclip* --clobber || true
