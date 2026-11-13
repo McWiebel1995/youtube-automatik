@@ -86,8 +86,14 @@ def shots(ep, work: Path):
         for label, value in ep.get("setup", []):
             choose(label, value)
         symbol("friend")
+        for txt in ("Nur notwendige", "Verstanden"):       # Cookie-Hinweis kommt verzögert – sparsam schließen
+            try:
+                page.get_by_role("button", name=txt).first.click(timeout=2500)
+                break
+            except Exception:  # noqa: BLE001
+                pass
         page.evaluate("window.scrollTo(0, 0)")
-        page.wait_for_timeout(400)
+        page.wait_for_timeout(1500)
         page.screenshot(path=str(work / "page.png"))
         out["page"] = work / "page.png"
         choose("Zugehörigkeit", "6")
