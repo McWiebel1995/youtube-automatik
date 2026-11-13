@@ -1,0 +1,24 @@
+name: "🎯 Tacticn – Produktbilder"
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  img:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+          mkdir -p fonts && curl -sSL -o fonts/Oswald.ttf "https://github.com/google/fonts/raw/main/ofl/oswald/Oswald%5Bwght%5D.ttf"
+      - run: python scripts/tacticn_product_images.py out fonts
+      - if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view tacticn-preview >/dev/null 2>&1 || gh release create tacticn-preview --prerelease --title "Tacticn – Vorschau" --notes "Vorschau"
+          gh release upload tacticn-preview out/*.jpg --clobber || true
