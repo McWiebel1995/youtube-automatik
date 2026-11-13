@@ -294,6 +294,55 @@ class Api:
             except Exception:  # noqa: BLE001
                 pass
 
+    def mail_send(self, to, subject, body, reply_uid=None):
+        """Antwort/Neue Mail von der Postfach-Adresse senden (SMTP SSL 465) + Kopie in „Gesendet“."""
+        import email.utils
+        import smtplib
+        import time
+        from email.message import EmailMessage
+        import keyring
+        cfg = _load(MAILCFG, {})
+        to, subject, body = (to or "").strip(), (subject or "").strip()[:200], body or ""
+        if not cfg.get("host"):
+            return {"ok": False, "msg": "Postfach nicht eingerichtet"}
+        if "@" not in to or "\n" in to or len(to) > 200 or not body.strip():
+            return {"ok": False, "msg": "Empfänger oder Text fehlt"}
+        pw = keyring.get_password("CiccoZentrale", "mail:" + cfg["user"])
+        msg = EmailMessage()
+        msg["From"], msg["To"], msg["Subject"] = cfg["user"], to, subject
+        msg["Date"], msg["Message-ID"] = email.utils.formatdate(localtime=True), email.utils.make_msgid(domain=cfg["user"].split("@")[1])
+        if reply_uid:                                   # Antwort sauber an den Verlauf hängen
+            m, _, err = self._imap()
+            if not err:
+                try:
+                    _, rows = m.uid("fetch", str(int(reply_uid)).encode(), "(BODY.PEEK[HEADER.FIELDS (MESSAGE-ID REFERENCES)])")
+                    h = email.message_from_bytes(rows[0][1])
+                    if h.get("Message-ID"):
+                        msg["In-Reply-To"] = h["Message-ID"]
+                        msg["References"] = ((h.get("References") or "") + " " + h["Message-ID"]).strip()
+                finally:
+                    m.logout()
+        msg.set_content(body)
+        try:
+            with smtplib.SMTP_SSL(cfg.get("smtp_host", cfg["host"]), int(cfg.get("smtp_port", 465)), timeout=30) as sm:
+                sm.login(cfg["user"], pw)
+                sm.send_message(msg)
+        except Exception as e:  # noqa: BLE001
+            return {"ok": False, "msg": f"Senden fehlgeschlagen: {str(e)[:150]}"}
+        try:                                            # Kopie in den Gesendet-Ordner (wie Outlook)
+            import imaplib
+            m = imaplib.IMAP4_SSL(cfg["host"], int(cfg.get("port", 993)), timeout=25)
+            m.login(cfg["user"], pw)
+            _, boxes = m.list()
+            names = [b.decode(errors="replace").split(' "/" ')[-1].split(' "." ')[-1].strip('"') for b in boxes or []]
+            sent = next((n for n in names if n.lower().split(".")[-1] in ("sent", "gesendet", "sent items", "sent messages")), None)
+            if sent:
+                m.append(f'"{sent}"', "\\Seen", imaplib.Time2Internaldate(time.time()), msg.as_bytes())
+            m.logout()
+        except Exception:  # noqa: BLE001
+            pass
+        return {"ok": True}
+
     def notify(self, title, text):
         """Windows-Benachrichtigung (unten rechts)."""
         try:
