@@ -8,5 +8,15 @@
    "Personalersatz-Sammelstelle"
   ],
   "skip": true
+ },
+ {
+  "code": "10-1508",
+  "name": "Störung",
+  "no": 1,
+  "options": [
+   "Schutz",
+   "Wäscherei/Bad",
+   "Störung"
+  ]
  }
 ]
