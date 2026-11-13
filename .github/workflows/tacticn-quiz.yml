@@ -40,3 +40,11 @@ jobs:
         run: |
           gh release view tacticn-preview >/dev/null 2>&1 || gh release create tacticn-preview --prerelease --title "Tacticn – Vorschau" --notes "Reels zur Freigabe"
           gh release upload tacticn-preview out/*.mp4 out/*.txt --clobber
+      - name: Benutzte Zeichen merken
+        if: inputs.probe != 'true'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add data/tacticn_quiz_used.json
+          git commit -m "Tacticn-Quiz: Zeichen benutzt" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs -q origin main && git push -q origin HEAD:main && break; sleep $((i*5)); done
