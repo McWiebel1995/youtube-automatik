@@ -63,6 +63,10 @@ def main():
             ("Outlook", "Clip-Lab-Postfach", "Clip Lab", "über dein Chrome – PC muss an sein"),
             ("Whop / Content Rewards", "thecliplab", "Clip Lab", "über dein Chrome – PC muss an sein")):
         acc.append({"platform": platform, "name": name, "project": proj, "via": "Chrome", "state": "chrome", "note": note})
+    for name, repo, proj in (("tacticn.de", "tactical-symbol-hub", "Tacticn Shop"),
+                             ("cicco-fam.de", "ciccone-kitchen-stories", "CICCO Feinkost")):
+        acc.append({"platform": "Webseiten (Lovable)", "name": name, "account": f"{name} · GitHub {repo}", "project": proj,
+                    "via": "GitHub-Sync", "state": "ok", "note": "Änderungen am Code gehen automatisch live"})
     for platform, env, note in (("Gemini (KI)", "GEMINI_API_KEY", "Texte, Auswahl"),
                                 ("Modal (GPU)", "MODAL_TOKEN_ID", "Bilder, Stimmen")):
         acc.append({"platform": platform, "name": note, "project": "Maschinenraum", "via": "Schnittstelle",

@@ -20,6 +20,9 @@ const bridge = {
   async reply(n, t) { return inApp() ? P().order_reply(n, t) : { ok: false, msg: "Nur im Programm" }; },
   async setToken(t) { return inApp() ? P().set_token(t) : { ok: false, msg: "Nur im Programm" }; },
   async clearToken() { return inApp() ? P().clear_token() : true; },
+  async access() { return inApp() ? P().access_list() : { local: [], secrets: [] }; },
+  async accessAdd(k, l, p, n, v, u) { return inApp() ? P().access_add(k, l, p, n, v, u) : { ok: false, msg: "Nur im Programm" }; },
+  async accessRemove(l) { return inApp() ? P().access_remove(l) : true; },
   open(u) { if (inApp()) P().open(u); else window.open(u, "_blank", "noopener"); },
 };
 const $ = s => document.querySelector(s);
@@ -70,7 +73,7 @@ function go(view, arg) {
 document.querySelectorAll(".nav[data-v]").forEach(b => b.addEventListener("click", () => go(b.dataset.v, b.dataset.a)));
 function render() {
   badges();
-  ({ home, orders, order, approve, accounts, dept, settings })[S.view]();
+  ({ home, orders, order, approve, accounts, dept, settings })[S.view]();   // accounts ist async – rendert selbst
 }
 const flashHtml = () => S.flash ? `<p class="msg ${S.flash.ok ? "ok" : "err"}">${esc(S.flash.text)}</p>` : "";
 const projOpts = sel => [["", "Allgemein"], ...S.depts.map(d => [d.id, d.name])].map(([v, t]) => `<option value="${v}" ${v === sel ? "selected" : ""}>${esc(t)}</option>`).join("");
@@ -189,15 +192,37 @@ function approve() {
 }
 
 /* ------------------------------------------------------------ Konten */
-function accounts() {
+async function accounts() {
   const pill = a => ({ ok: ["ok", "verbunden"], err: ["err", "Problem"], off: ["", "nicht verbunden"], chrome: ["chrome", "über Chrome"], unknown: ["", "unbekannt"] })[a.state] || ["", a.state];
+  const loc = await bridge.access();
+  const extra = (loc.local || []).map(a => ({ platform: "Eigene Zugänge", name: a.label, project: (S.depts.find(d => d.id === a.project) || {}).name || "",
+    state: a.kind === "chrome" ? "chrome" : (loc.secrets || []).includes(a.secret) ? "ok" : "unknown",
+    note: a.kind === "key" ? `Schlüssel als ${a.secret} gespeichert` : (a.url || "über Chrome"), mine: a.label }));
   const groups = {};
-  S.accounts.forEach(a => (groups[a.platform] = groups[a.platform] || []).push(a));
-  main.innerHTML = `<h1>Konten</h1><p class="sub">Alle verbundenen Konten. Passwörter und Schlüssel liegen nie hier – nur der Status.</p>
+  [...S.accounts, ...extra].forEach(a => (groups[a.platform] = groups[a.platform] || []).push(a));
+  main.innerHTML = `<h1>Konten</h1><p class="sub">Alle verbundenen Konten. Passwörter und Schlüssel liegen nie hier – nur der Status.</p>${flashHtml()}
+    <div class="card"><b>+ Zugang hinzufügen</b>
+      <div class="field"><select id="a-kind" aria-label="Art"><option value="key">Schnittstelle mit Schlüssel (API-Key) – läuft auch ohne PC</option><option value="chrome">Konto über Chrome (ohne Passwort) – PC muss an sein</option></select></div>
+      <div class="field"><input id="a-label" placeholder="Name, z. B. lexoffice oder Amazon KDP" aria-label="Name"></div>
+      <div class="field"><select id="a-proj" aria-label="Projekt">${projOpts("")}</select></div>
+      <div class="field" id="a-keyrow"><input id="a-secret" placeholder="Secret-Name, z. B. LEXOFFICE_API_KEY" aria-label="Secret-Name" style="text-transform:uppercase">
+        <input id="a-value" type="password" autocomplete="off" placeholder="Schlüssel einfügen – wird verschlüsselt an GitHub gesendet und nie wieder angezeigt" aria-label="Schlüssel"></div>
+      <div class="field" id="a-urlrow" hidden><input id="a-url" placeholder="Link zur Anmeldeseite, z. B. https://kdp.amazon.com" aria-label="Link"></div>
+      <button class="btn main" id="a-add">Hinzufügen</button>
+      <p class="muted" style="margin:8px 0 0;font-size:12.5px">Keine Passwörter, Bankdaten, ELSTER-Zertifikate oder Wiederherstellungscodes eintragen – die gehören in einen Passwort-Manager.</p></div>
     ${Object.entries(groups).map(([p, list]) => `<h2>${esc(p)}</h2><div class="card">${list.map(a => { const [c, t] = pill(a);
-      return `<div class="row"><span class="dot ${c === "chrome" ? "plan" : c}"></span><span class="grow"><b>${esc(a.account || a.name)}</b><br><small>${esc(a.project || "")}${a.note ? " · " + esc(a.note) : ""}</small></span><span class="pill ${c}">${t}</span></div>`; }).join("")}</div>`).join("")
-      || `<div class="card"><p class="empty">Noch keine Daten – das Studio aktualisiert alle 30 Minuten.</p></div>`}
+      return `<div class="row"><span class="dot ${c === "chrome" ? "plan" : c}"></span><span class="grow"><b>${esc(a.account || a.name)}</b><br><small>${esc(a.project || "")}${a.note ? " · " + esc(a.note) : ""}</small></span><span class="pill ${c}">${t}</span>${a.mine ? `<button class="btn" data-rm="${esc(a.mine)}" aria-label="Eintrag entfernen">✕</button>` : ""}</div>`; }).join("")}</div>`).join("")}
     <p class="muted" style="margin-top:14px">„Über Chrome“ heißt: Claude erledigt es in deinem Chrome (mit deinen Anmeldungen) – dafür muss der PC an und Chrome offen sein.</p>`;
+  const kind = $("#a-kind");
+  kind.addEventListener("change", () => { $("#a-keyrow").hidden = kind.value !== "key"; $("#a-urlrow").hidden = kind.value !== "chrome"; });
+  $("#a-add").addEventListener("click", async () => {
+    const b = $("#a-add"); b.disabled = true;
+    const r = await bridge.accessAdd(kind.value, $("#a-label").value, $("#a-proj").value, $("#a-secret").value, $("#a-value").value, $("#a-url").value);
+    $("#a-value").value = "";
+    S.flash = r.ok ? { ok: true, text: "Zugang hinzugefügt." } : { ok: false, text: r.msg };
+    accounts();
+  });
+  main.querySelectorAll("[data-rm]").forEach(b => b.addEventListener("click", async () => { await bridge.accessRemove(b.dataset.rm); accounts(); }));
 }
 
 /* ------------------------------------------------------------ Projekt */
@@ -206,7 +231,7 @@ function dept() {
   const watch = new Set(d.team.flatMap(w => w.watch || []));
   const rr = S.runs.filter(r => watch.has(wf(r))).slice(0, 8);
   const pod = (S.orders && S.orders.items || []).filter(o => o.project === d.id).slice(0, 6);
-  main.innerHTML = `<h1>${esc(d.name)}</h1><p class="sub">${esc(d.sub)}</p>${orderBox(d.id)}${flashHtml()}
+  main.innerHTML = `<h1>${esc(d.name)}</h1><p class="sub">${esc(d.sub)}${d.repo ? ` · <a href="#" data-url="https://github.com/${esc(d.repo)}">Code</a> · <a href="#" data-url="https://lovable.dev/projects">Lovable</a>` : ""}</p>${orderBox(d.id)}${flashHtml()}
     <h2>Team</h2><div class="grid">${d.team.map(w => `<div class="card"><b>${esc(w.name)}</b> <span class="muted">· ${esc(w.role)}</span><p class="muted" style="margin:2px 0 8px">${esc(w.job)}</p>
       ${(w.jobs || []).map(j => `<button class="btn" style="margin:0 6px 6px 0" data-job="${esc(j.id)}" data-ext="${j.external ? 1 : ""}" title="${esc(j.hint || "")}">${esc(j.label)}${j.external ? " ↗" : ""}</button>`).join("") || `<small class="muted">Aufgaben per Freitext-Auftrag.</small>`}</div>`).join("")}</div>
     <h2>Letzte Abläufe</h2><div class="card">${rr.map(r => `<div class="row"><span class="dot ${r.status !== "completed" ? "busy" : r.conclusion === "success" ? "ok" : r.conclusion === "failure" ? "err" : ""}"></span><span class="grow">${esc(r.display_title)}<br><small>${esc(r.name)} · ${ago(r.created_at)}</small></span><button class="btn" data-url="${esc(r.html_url)}">↗</button></div>`).join("") || `<p class="empty">Noch keine.</p>`}</div>
@@ -230,7 +255,7 @@ function confirmInline(b) {      // zweiter Klick bestätigt Handgriffe, die nac
 /* ------------------------------------------------------------ Einstellungen */
 function settings() {
   main.innerHTML = `<h1>Einstellungen</h1><p class="sub">${inApp() ? "Programm" : "Browser-Vorschau – nur lesend"}</p>${flashHtml()}
-    <div class="card"><b>GitHub-Schlüssel</b><p class="muted">${S.hasToken ? "Hinterlegt ✓ – sicher in der Windows-Anmeldeinformationsverwaltung." : "Nötig für Aufträge, Freigaben und Handgriffe (beginnt mit github_pat_). Braucht: Actions (youtube-automatik) und Issues (cicco-zentrale)."}</p>
+    <div class="card"><b>GitHub-Schlüssel</b><p class="muted">${S.hasToken ? "Hinterlegt ✓ – sicher in der Windows-Anmeldeinformationsverwaltung." : "Nötig für Aufträge, Freigaben und Handgriffe (beginnt mit github_pat_). Braucht: Actions + Secrets (youtube-automatik) und Issues (cicco-zentrale)."}</p>
       <div class="field"><input id="tok" type="password" autocomplete="off" placeholder="github_pat_…" aria-label="GitHub-Schlüssel"></div>
       <div style="display:flex;gap:8px"><button class="btn main" id="tok-save">Speichern</button>${S.hasToken ? `<button class="btn" id="tok-del">Entfernen</button>` : ""}</div></div>`;
   $("#tok-save").addEventListener("click", async () => {

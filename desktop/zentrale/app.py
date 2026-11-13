@@ -25,6 +25,7 @@ DATA = Path(os.environ.get("APPDATA", Path.home() / ".config")) / "CiccoZentrale
 DATA.mkdir(parents=True, exist_ok=True)
 TASKS = DATA / "tasks.json"
 HISTORY = DATA / "history.json"
+LOCAL_ACC = DATA / "zugaenge.json"                      # nur Namen/Links/Art – NIE Schlüssel oder Passwörter
 API = f"https://api.github.com/repos/{jobs.REPO}"
 PAGES = "https://mcwiebel1995.github.io/youtube-automatik"
 ALLOWED = ("https://api.github.com/", PAGES + "/")
@@ -124,6 +125,53 @@ class Api:
         self._gh("PATCH", f"{OAPI}/issues/{int(number)}", json={"state": "open"})
         return {"ok": True}
 
+    # --- Zugänge: Schlüssel gehen verschlüsselt als GitHub-Secret raus, lokal bleibt nur die Beschreibung
+    def access_list(self):
+        names = []
+        js, err = self._gh("GET", f"{API}/actions/secrets", params={"per_page": 100})
+        if not err:
+            names = [x["name"] for x in js.get("secrets", [])]
+        return {"local": _load(LOCAL_ACC, []), "secrets": names, "secrets_error": err or ""}
+
+    def access_add(self, kind, label, project, secret_name="", value="", url=""):
+        import re
+        label = (label or "").strip()[:80]
+        if not label:
+            return {"ok": False, "msg": "Name fehlt"}
+        entry = {"kind": kind, "label": label, "project": project or "", "added": dt.date.today().isoformat()}
+        if kind == "key":
+            secret_name = (secret_name or "").strip().upper()
+            if not re.fullmatch(r"[A-Z][A-Z0-9_]{2,60}", secret_name) or secret_name.startswith("GITHUB_"):
+                return {"ok": False, "msg": "Secret-Name: nur A–Z, 0–9 und _ (z. B. LEXOFFICE_API_KEY)"}
+            if not value or len(value) > 20000:
+                return {"ok": False, "msg": "Schlüssel fehlt"}
+            pk, err = self._gh("GET", f"{API}/actions/secrets/public-key")
+            if err:
+                return {"ok": False, "msg": err if "Schlüssel" in err else "Dein Zentrale-Schlüssel braucht das Recht „Secrets: Read and write“"}
+            from base64 import b64decode, b64encode
+            from nacl import encoding, public    # libsodium – wie von GitHub verlangt
+            box = public.SealedBox(public.PublicKey(pk["key"].encode(), encoding.Base64Encoder()))
+            enc = b64encode(box.encrypt(value.encode("utf-8"))).decode()
+            _, err = self._gh("PUT", f"{API}/actions/secrets/{secret_name}", json={"encrypted_value": enc, "key_id": pk["key_id"]})
+            del value, enc
+            if err:
+                return {"ok": False, "msg": "Speichern fehlgeschlagen: " + err}
+            entry["secret"] = secret_name
+        elif kind == "chrome":
+            url = (url or "").strip()
+            if url and not url.startswith("https://"):
+                return {"ok": False, "msg": "Link muss mit https:// beginnen"}
+            entry["url"] = url
+        else:
+            return {"ok": False, "msg": "Unbekannte Art"}
+        acc = [a for a in _load(LOCAL_ACC, []) if a.get("label") != label]
+        _save(LOCAL_ACC, acc + [entry])
+        return {"ok": True}
+
+    def access_remove(self, label):
+        _save(LOCAL_ACC, [a for a in _load(LOCAL_ACC, []) if a.get("label") != label])
+        return True
+
     # --- Clip-Freigabe (The Clip Lab): nur diese zwei festen Aktionen
     def clip_decide(self, ids, action, edits=None):
         if action not in ("approve", "reject") or not ids or not all(isinstance(i, str) and len(i) < 60 for i in ids):
@@ -204,7 +252,7 @@ class Api:
 
     def open(self, url):
         if url.startswith(("https://github.com/", "https://www.youtube.com/", "https://youtu.be/", "https://www.instagram.com/",
-                           "https://studio.youtube.com/", "https://contentrewards.com/", "https://www.tiktok.com/", PAGES)):
+                           "https://studio.youtube.com/", "https://contentrewards.com/", "https://www.tiktok.com/", "https://lovable.dev/", PAGES)):
             webbrowser.open(url)
         return True
 

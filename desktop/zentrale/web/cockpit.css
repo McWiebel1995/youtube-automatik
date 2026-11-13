@@ -67,3 +67,5 @@ h2{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3
 .empty{color:var(--ink-3);padding:6px 0}
 @media (max-width:760px){.shell{grid-template-columns:1fr}.side{display:none}.clip{grid-template-columns:1fr}.clip video{width:100%;max-width:260px}}
 @media (prefers-reduced-motion:no-preference){.card,.btn,.nav{transition:border-color .15s,background .15s}}
+[hidden]{display:none!important}
+.field select{background:var(--card-2);border:1px solid var(--line);border-radius:8px;padding:8px 10px}

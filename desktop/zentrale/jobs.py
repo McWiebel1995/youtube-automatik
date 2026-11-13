@@ -46,11 +46,13 @@ DEPTS = [
           "jobs": [job("gd-test", "Testlauf (ohne Upload)", "gedanken.yml", {"dry_run": "true"}),
                    job("gd-pub", "Video veröffentlichen", "gedanken.yml", {"dry_run": "false"}, True)]},
      ]},
-    {"id": "shop", "name": "Tacticn Shop", "sub": "tacticn.de · eigenes Shopsystem", "state": "plan",
+    {"id": "shop", "name": "Tacticn Shop", "sub": "tacticn.de · Lovable ↔ GitHub (tactical-symbol-hub)", "state": "live",
+     "repo": "McWiebel1995/tactical-symbol-hub",
      "team": [{"name": "Max", "role": "Shop-Entwickler", "job": "Neues Shopsystem", "color": "#9bc46b", "jobs": []},
               {"name": "Jan", "role": "Produktpflege", "job": "Symbole & Sets", "color": "#c9d48a", "jobs": []},
               {"name": "Sara", "role": "Kundenservice", "job": "Fragen & Downloads", "color": "#8fd1a8", "jobs": []}]},
-    {"id": "cicco", "name": "CICCO Feinkost", "sub": "cicco-fam.de · Manufaktur", "state": "plan",
+    {"id": "cicco", "name": "CICCO Feinkost", "sub": "cicco-fam.de · Lovable ↔ GitHub (ciccone-kitchen-stories)", "state": "live",
+     "repo": "McWiebel1995/ciccone-kitchen-stories",
      "team": [{"name": "Gio", "role": "Shop-Pflege", "job": "Produkte, Preise, Allergene", "color": "#e0a96b", "jobs": []},
               {"name": "Rosa", "role": "Rezepte & Journal", "job": "Inhalte für Instagram", "color": "#f2c38b", "jobs": []}]},
     {"id": "kdp", "name": "KDP-Verlag", "sub": "Amazon-Bücher", "state": "plan",
@@ -99,7 +101,7 @@ START_TASKS = [
     {"t": "tacticn.de-Impressum auf UG-Angaben prüfen", "dept": "legal", "who": "du"},
 
     {"t": "Ruhige Gedanken: Testlauf, Ursache für Zeitüberschreitung finden", "dept": "media", "who": "Jonas"},
-    {"t": "Shopsystem für Tacticn aufsetzen (Phase 3)", "dept": "shop", "who": "Max"},
+
 ]
 
 
