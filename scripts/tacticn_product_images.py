@@ -68,9 +68,13 @@ def base(fonts, title, sub):
     return im, d
 
 
-def card(im, d, img, x, y, w):
+def card(im, d, img, x, y, w, hmax=None):
     s = Image.open(img).convert("RGB")
     s = s.resize((w, int(s.height * w / s.width)))
+    if hmax and s.height > hmax:                     # hohe Zeichen (Raute) einpassen, mittig auf weißer Karte
+        t = s.resize((int(s.width * hmax / s.height), hmax))
+        s = Image.new("RGB", (w, hmax), t.getpixel((2, 2)))
+        s.paste(t, ((w - t.width) // 2, 0))
     d.rounded_rectangle([x - 24, y - 24, x + s.width + 24, y + s.height + 24], radius=40, fill=DARK)
     im.paste(s, (x, y))
     return s.height
@@ -94,7 +98,7 @@ def main(out_dir="out", fonts="fonts"):
     w, gap = 560, 70
     x0 = (S - (3 * w + 2 * gap)) // 2
     for i, k in enumerate(keys):
-        card(im, d, sh[k], x0 + (i % 3) * (w + gap), 470 + (i // 3) * 560, w)
+        card(im, d, sh[k], x0 + (i % 3) * (w + gap), 450 + (i // 3) * 560, w, hmax=470)
     im.save(out / "tacticn_produkt_set.jpg", quality=92)
     print("::notice title=Produktbilder::3 Bilder erstellt")
 
