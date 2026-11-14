@@ -79,9 +79,19 @@ class Voice:
             f.write(ref_wav)
         out = []
         for i, (text, lang) in enumerate(lines):
-            torch.manual_seed(11 + i)
-            wav = self.model.generate(text, language_id=lang, audio_prompt_path="/tmp/ref.wav",
-                                      exaggeration=exaggeration, cfg_weight=cfg_weight)
+            wav = None
+            # sehr kurze Texte (ein Wort) bringen Chatterbox manchmal aus dem Tritt -> mit anderem Seed/Füllung neu
+            for k, t in enumerate([text, text, f"{text.rstrip('.!?')}… {text}"]):
+                try:
+                    torch.manual_seed(11 + i + 100 * k)
+                    wav = self.model.generate(t, language_id=lang, audio_prompt_path="/tmp/ref.wav",
+                                              exaggeration=exaggeration, cfg_weight=cfg_weight)
+                    break
+                except Exception as e:  # noqa: BLE001
+                    print("Stimme, neuer Versuch:", text, repr(e)[:120])
+            if wav is None:
+                out.append(b"")
+                continue
             buf = io.BytesIO()
             sf.write(buf, wav.squeeze(0).cpu().numpy(), self.model.sr, format="WAV")
             out.append(buf.getvalue())

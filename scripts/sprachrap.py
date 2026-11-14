@@ -188,14 +188,16 @@ def build(ep_no, out: Path):
     cache = work / "art.json"
     import modal
     from sprachrap_modal import Art, Voice, app
+    have_art = all((work / f"{k}{s}.png").exists() for k in "AB" for s in ("", "_m0", "_m1", "_m2"))
     with modal.enable_output(), app.run():
         voice_call = Voice().speak_many.spawn([(l[2], l[3]) for l in ep["lines"]], ref)
-        art = Art().make.remote(BASE, SCENE_B, MOUTHS)
+        if not have_art:
+            art = Art().make.remote(BASE, SCENE_B, MOUTHS)
+            for k in ("A", "B"):
+                (work / f"{k}.png").write_bytes(art[k])
+                for i, b in enumerate(art[f"{k}_m"]):
+                    (work / f"{k}_m{i}.png").write_bytes(b)
         wavs = voice_call.get()
-    for k in ("A", "B"):
-        (work / f"{k}.png").write_bytes(art[k])
-        for i, b in enumerate(art[f"{k}_m"]):
-            (work / f"{k}_m{i}.png").write_bytes(b)
     cache.write_text(json.dumps({"ok": True}))
 
     # Figurbilder: Basis + 3 Mundstellungen, nur der Mundbereich wird aus der Variante übernommen
@@ -212,6 +214,9 @@ def build(ep_no, out: Path):
     voice, spans, t = [], [], 0.6
     gap = lambda rap: 0.18 if rap else 0.42  # noqa: E731
     for line, wb in zip(ep["lines"], wavs):
+        if not wb:
+            print("Zeile ohne Stimme:", line[2])
+            continue
         a = load_wav(wb)
         spans.append((t, t + len(a) / SR, line))
         voice.append((int(t * SR), a))

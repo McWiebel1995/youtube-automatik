@@ -17,6 +17,9 @@ jobs:
           pip install -q modal requests numpy scipy soundfile pillow
       - env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
         run: python scripts/fetch_fonts.py
+      - name: Vorhandene Figurbilder wiederverwenden
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: mkdir -p out/work && (gh release download sprachrap-preview -p 'A*.png' -p 'B*.png' -D out/work || true)
       - name: Folge bauen
         env:
           MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
