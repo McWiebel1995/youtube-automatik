@@ -175,8 +175,19 @@ def draw_text(im, big, small, frac):
         d.text((W // 2, y), ln, font=f, fill=col, anchor="ma", stroke_width=5, stroke_fill=PAPER)
         y += int(size * 1.22)
     if small:
-        fs = font(44)
-        d.text((W // 2, y + 18), small, font=fs, fill=(140, 72, 46), anchor="ma", stroke_width=4, stroke_fill=PAPER)
+        fs, y = font(46), y + 18
+        cur, rows = "", []
+        for w in small.split():
+            t = (cur + " " + w).strip()
+            if d.textlength(t, font=fs) > W - 170 and cur:
+                rows.append(cur)
+                cur = w
+            else:
+                cur = t
+        rows.append(cur)
+        for r in rows:
+            d.text((W // 2, y), r, font=fs, fill=(140, 72, 46), anchor="ma", stroke_width=4, stroke_fill=PAPER)
+            y += 58
 
 
 def build(ep_no, out: Path):
@@ -203,10 +214,11 @@ def build(ep_no, out: Path):
     # Figurbilder: Basis + 3 Mundstellungen, nur der Mundbereich wird aus der Variante übernommen
     scenes = {}
     for k in ("A", "B"):
-        base = Image.open(work / f"{k}.png").convert("RGB")
-        vars_ = [Image.open(work / f"{k}_m{i}.png").convert("RGB").resize(base.size) for i in range(3)]
+        # Grundbild ist die Variante „Mund zu“ (die Edit-Varianten sind untereinander stimmiger als zum Original)
+        base = Image.open(work / f"{k}_m0.png").convert("RGB")
+        vars_ = [Image.open(work / f"{k}_m{i}.png").convert("RGB").resize(base.size) for i in (1, 2)]
         mask = mouth_mask(base, vars_)
-        frames = [Image.composite(v, base, mask) if mask is not None else base for v in vars_]
+        frames = [base] + [Image.composite(v, base, mask) if mask is not None else base for v in vars_]
         scale = W * 1.04 / base.width                     # etwas größer für sanften Zoom
         scenes[k] = [f.resize((int(base.width * scale), int(base.height * scale)), Image.LANCZOS) for f in frames]
 
@@ -245,7 +257,10 @@ def build(ep_no, out: Path):
         ts = i / FPS
         cur = next((s for s in spans if s[0] - 0.05 <= ts < s[1] + gap(s[2][5])), None) or (spans[-1] if ts > spans[-1][0] else spans[0])
         line = cur[2]
-        img = scenes[line[4]][int(lvl[i])]
+        lv = int(lvl[i])
+        if lv == 2 and not (line[5] and line[4] == "B"):   # weit offener Mund nur beim Rappen, sonst wirkt es wie Schreien
+            lv = 1
+        img = scenes[line[4]][lv]
         z = 1.0 + 0.012 * np.sin(ts * 2 * np.pi / 6)      # langsames Atmen
         cw, ch = int(W / z * 1.0), int(H / z * 1.0)
         ox = (img.width - cw) // 2
