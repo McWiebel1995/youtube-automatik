@@ -279,9 +279,9 @@ def build(ep_no, out: Path):
 
 # ================================================================ Rap-Version: ganzer Song mit Flow (ACE-Step 1.5)
 RAP_STYLE = ("playful lofi hip hop rap, cute charismatic young male rapper with a clear, bright voice, confident rhythmic flow, "
-             "boom bap drums, warm vinyl crackle, mellow piano chords, deep bass, clean dry vocals upfront, catchy hook")
+             "boom bap drums, warm vinyl crackle, mellow piano chords, deep bass, clean dry vocals upfront, vocals start immediately with no intro, catchy hook")
 RAP = {
-    1: {"bpm": 92, "duration": 26, "lang": "de", "lines": [
+    1: {"bpm": 96, "duration": 32, "lang": "de", "lines": [
         # (Liedzeile, große Anzeige, kleine Übersetzung, Szene)
         ("Französisch ist einfach, das sagt jeder hier", "Französisch ist einfach, das sagt jeder hier", "", "A"),
         ("Wurm heißt ver – okay, ich glaub's dir", "Wurm heißt „ver“ – okay, ich glaub's dir", "ver = Wurm", "A"),
