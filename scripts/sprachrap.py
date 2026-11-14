@@ -329,7 +329,8 @@ def align_whisper(vocals_wav: Path, lines, lang):
     import re
     from faster_whisper import WhisperModel
     m = WhisperModel("small", device="cpu", compute_type="int8")
-    segs, _ = m.transcribe(str(vocals_wav), language=lang, word_timestamps=True, vad_filter=False)
+    pcm = read_audio(Path(vocals_wav).read_bytes(), 16000)       # als Array übergeben (umgeht PyAV)
+    segs, _ = m.transcribe(pcm, language=lang, word_timestamps=True, vad_filter=False)
     words = [(w.word.strip().lower(), w.start) for sg in segs for w in (sg.words or [])]
     print("Gehört:", " ".join(w for w, _ in words))
     norm = lambda x: re.sub(r"[^a-zäöüßéèêàç']", "", x.lower())  # noqa: E731
