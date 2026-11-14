@@ -184,7 +184,7 @@ def build(ep_no, out: Path):
     ep = EPISODES[ep_no]
     work = out / "work"
     work.mkdir(parents=True, exist_ok=True)
-    ref = (ROOT / "data/voices/male_high.wav").read_bytes()
+    ref = (ROOT / "data/voices/anime/male_high.wav").read_bytes()
     cache = work / "art.json"
     import modal
     from sprachrap_modal import Art, Voice, app
