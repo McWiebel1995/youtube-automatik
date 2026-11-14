@@ -1,0 +1,32 @@
+name: "Sprachrap – Französisch ist einfach"
+on:
+  workflow_dispatch:
+    inputs:
+      episode: { description: "Folge", default: "1" }
+permissions: { contents: write }
+jobs:
+  make:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+          pip install -q modal requests numpy scipy soundfile pillow
+      - env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: python scripts/fetch_fonts.py
+      - name: Folge bauen
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+          FREESOUND_API_KEY: ${{ secrets.FREESOUND_API_KEY }}
+        run: python scripts/sprachrap.py --episode "${{ github.event.inputs.episode }}" --out out
+      - name: Vorschau hochladen
+        if: always()
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          gh release view sprachrap-preview >/dev/null 2>&1 || gh release create sprachrap-preview --title "Sprachrap Vorschau" --notes "Entwürfe"
+          ls out out/work || true
+          gh release upload sprachrap-preview out/*.mp4 out/*.txt out/work/*.png --clobber || true
