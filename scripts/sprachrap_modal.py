@@ -96,3 +96,61 @@ class Voice:
             sf.write(buf, wav.squeeze(0).cpu().numpy(), self.model.sr, format="WAV")
             out.append(buf.getvalue())
         return out
+
+
+# ================================================================ Rap-Song: ACE-Step 1.5 (MIT) – echter Flow im Takt
+ace_image = (
+    modal.Image.debian_slim(python_version="3.11")
+    .apt_install("git", "ffmpeg", "libsndfile1", "build-essential", "curl")
+    .pip_install("uv")
+    .run_commands(
+        "git clone --depth 1 https://github.com/ACE-Step/ACE-Step-1.5.git /app",
+        "cd /app && uv sync --frozen --no-dev --python python3.11",
+        "uv pip install --python /app/.venv/bin/python demucs",
+    )
+    .env({"ACESTEP_CHECKPOINTS_DIR": "/models/acestep", "HF_HOME": "/models/hf", "TOKENIZERS_PARALLELISM": "false"})
+)
+
+ACE_RUN = r'''
+import json, sys, os, subprocess
+sys.path.insert(0, "/app")
+from acestep.handler import AceStepHandler
+from acestep.llm_inference import LLMHandler
+from acestep.inference import GenerationParams, GenerationConfig, generate_music
+job = json.load(open(sys.argv[1]))
+dit = AceStepHandler(); dit.initialize_service(project_root="/app", config_path="acestep-v15-turbo", device="cuda")
+llm = LLMHandler(); llm.initialize(checkpoint_dir="/models/acestep", lm_model_path="acestep-5Hz-lm-1.7B", backend="pt", device="cuda")
+p = GenerationParams(caption=job["caption"], lyrics=job["lyrics"], vocal_language=job["lang"], bpm=job["bpm"], duration=job["duration"])
+c = GenerationConfig(batch_size=job["n"], audio_format="wav")
+r = generate_music(dit, llm, p, c, save_dir="/tmp/ace_out")
+if not r.success: raise SystemExit("ACE-Step: " + str(r.error))
+ex = r.extra_outputs or {}
+out = []
+for i, a in enumerate(r.audios):
+    lrc = ""
+    try:
+        lr = dit.get_lyric_timestamp(pred_latent=ex["pred_latents"][i:i+1], encoder_hidden_states=ex["encoder_hidden_states"][i:i+1],
+            encoder_attention_mask=ex["encoder_attention_mask"][i:i+1], context_latents=ex["context_latents"][i:i+1],
+            lyric_token_ids=ex["lyric_token_idss"][i:i+1], total_duration_seconds=float(job["duration"]), vocal_language=job["lang"], seed=42)
+        lrc = lr.get("lrc_text", "") if lr.get("success") else ""
+    except Exception as e:
+        print("LRC fehlgeschlagen:", repr(e)[:200])
+    subprocess.run([sys.executable, "-m", "demucs", "--two-stems=vocals", "-n", "htdemucs", "-o", "/tmp/sep", a["path"]], check=True)
+    stem = os.path.splitext(os.path.basename(a["path"]))[0]
+    out.append({"mix": a["path"], "vocals": f"/tmp/sep/htdemucs/{stem}/vocals.wav", "lrc": lrc})
+json.dump(out, open("/tmp/ace_result.json", "w"))
+'''
+
+
+@app.function(gpu="L40S", image=ace_image, volumes={"/models": models}, timeout=3600, memory=32768)
+def rap(caption: str, lyrics: str, lang: str = "de", bpm: int = 92, duration: float = 26.0, n: int = 2) -> list:
+    import json
+    import subprocess
+    with open("/tmp/job.json", "w") as f:
+        json.dump({"caption": caption, "lyrics": lyrics, "lang": lang, "bpm": bpm, "duration": duration, "n": n}, f)
+    with open("/tmp/ace_run.py", "w") as f:
+        f.write(ACE_RUN)
+    subprocess.run(["/app/.venv/bin/python", "/tmp/ace_run.py", "/tmp/job.json"], check=True, cwd="/app")
+    models.commit()
+    res = json.load(open("/tmp/ace_result.json"))
+    return [{"mix": open(r["mix"], "rb").read(), "vocals": open(r["vocals"], "rb").read(), "lrc": r["lrc"]} for r in res]

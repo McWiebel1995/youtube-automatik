@@ -7,7 +7,7 @@ permissions: { contents: write }
 jobs:
   make:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,4 +32,4 @@ jobs:
         run: |
           gh release view sprachrap-preview >/dev/null 2>&1 || gh release create sprachrap-preview --title "Sprachrap Vorschau" --notes "Entwürfe"
           ls out out/work || true
-          gh release upload sprachrap-preview out/*.mp4 out/*.txt out/work/*.png --clobber || true
+          gh release upload sprachrap-preview out/*.mp4 out/*.txt out/work/*.png out/work/*.wav --clobber || true

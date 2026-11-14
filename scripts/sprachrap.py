@@ -277,11 +277,125 @@ def build(ep_no, out: Path):
     print(f"::notice title=Sprachrap::Folge {ep_no}: {total:.1f} s")
 
 
+# ================================================================ Rap-Version: ganzer Song mit Flow (ACE-Step 1.5)
+RAP_STYLE = ("playful lofi hip hop rap, cute charismatic young male rapper with a clear, bright voice, confident rhythmic flow, "
+             "boom bap drums, warm vinyl crackle, mellow piano chords, deep bass, clean dry vocals upfront, catchy hook")
+RAP = {
+    1: {"bpm": 92, "duration": 26, "lang": "de", "lines": [
+        # (Liedzeile, große Anzeige, kleine Übersetzung, Szene)
+        ("Französisch ist einfach, das sagt jeder hier", "Französisch ist einfach, das sagt jeder hier", "", "A"),
+        ("Wurm heißt ver – okay, ich glaub's dir", "Wurm heißt „ver“ – okay, ich glaub's dir", "ver = Wurm", "A"),
+        ("Grün heißt vert, und Glas heißt verre", "Grün heißt „vert“, und Glas heißt „verre“", "vert = grün · verre = Glas", "B"),
+        ("Richtung heißt vers – und jetzt hör mal her:", "Richtung heißt „vers“ – und jetzt hör mal her:", "vers = Richtung", "A"),
+        ("Un ver vert va vers un verre vert", "Un ver vert va vers un verre vert", "Ein grüner Wurm geht zu einem grünen Glas.", "B"),
+        ("Un ver vert va vers un verre vert", "Un ver vert va vers un verre vert!", "", "B"),
+        ("Französisch ist einfach … oder?", "Französisch ist einfach … oder?", "", "A"),
+    ], "sections": ["[verse]", None, None, None, "[chorus]", None, "[outro]"]},
+}
+
+
+def parse_lrc(lrc):
+    import re
+    out = []
+    for ln in (lrc or "").splitlines():
+        m = re.match(r"\[(\d+):(\d+(?:\.\d+)?)\](.*)", ln.strip())
+        if m and m.group(3).strip() and not m.group(3).strip().startswith("["):
+            out.append((int(m.group(1)) * 60 + float(m.group(2)), m.group(3).strip()))
+    return out
+
+
+def scenes_from(work):
+    from PIL import Image
+    scenes = {}
+    for k in ("A", "B"):
+        base = Image.open(work / f"{k}_m0.png").convert("RGB")
+        vars_ = [Image.open(work / f"{k}_m{i}.png").convert("RGB").resize(base.size) for i in (1, 2)]
+        mask = mouth_mask(base, vars_)
+        frames = [base] + [Image.composite(v, base, mask) if mask is not None else base for v in vars_]
+        scale = W * 1.04 / base.width
+        scenes[k] = [f.resize((int(base.width * scale), int(base.height * scale)), Image.LANCZOS) for f in frames]
+    return scenes
+
+
+def read_audio(b, sr=SR):
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", "-", "-ac", "1", "-ar", str(sr), "-f", "f32le", "-"],
+                         input=b, capture_output=True, check=True).stdout
+    return np.frombuffer(raw, dtype=np.float32).copy()
+
+
+def render_rap(ep_no, ep, song, scenes, work, out_mp4):
+    (work / "song.wav").write_bytes(song["mix"])
+    voc = read_audio(song["vocals"])
+    total = len(read_audio(song["mix"])) / SR
+    lines = ep["lines"]
+    lrc = parse_lrc(song["lrc"])
+    print("LRC:", lrc)
+    if len(lrc) >= len(lines):
+        starts = [t for t, _ in lrc[:len(lines)]]
+    else:                                              # ohne Zeitstempel: Gesangsabschnitt gleichmäßig aufteilen
+        act = np.where(np.abs(voc) > 0.05)[0]
+        a0, a1 = (act[0] / SR, act[-1] / SR) if len(act) else (1.0, total - 1)
+        starts = list(np.linspace(a0, a1, len(lines) + 1)[:-1])
+    hop = SR // FPS
+    env = np.array([np.sqrt(np.mean(voc[i * hop:(i + 1) * hop] ** 2) + 1e-9) for i in range(int(total * FPS))])
+    env = np.convolve(env, np.ones(2) / 2, "same")
+    ref = np.percentile(env[env > 0.01], 80) if (env > 0.01).any() else 1.0
+    lvl = np.where(env > ref * 0.85, 2, np.where(env > ref * 0.3, 1, 0))
+    proc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
+                             "-r", str(FPS), "-i", "-", "-i", str(work / "song.wav"), "-c:v", "libx264", "-preset", "medium",
+                             "-crf", "19", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-shortest",
+                             "-movflags", "+faststart", str(out_mp4)], stdin=subprocess.PIPE)
+    for i in range(int(total * FPS)):
+        ts = i / FPS
+        k = max([j for j, st in enumerate(starts) if st - 0.08 <= ts] or [-1])
+        line = lines[k] if k >= 0 else lines[0]
+        lv = int(lvl[i])
+        if line[3] == "A" and lv == 2:
+            lv = 1
+        img = scenes[line[3]][lv]
+        z = 1.0 + 0.012 * np.sin(ts * 2 * np.pi / 6)
+        cw, ch = int(W / z), int(H / z)
+        ox, oy = (img.width - cw) // 2, max(0, (img.height - ch) // 2)
+        fr = img.crop((ox, oy, ox + cw, oy + ch)).resize((W, H))
+        if k < 0:
+            draw_text(fr, f"Französisch ist einfach, oder? · Teil {ep_no}", "", 1.0)
+        else:
+            draw_text(fr, line[1], line[2], (ts - starts[k]) / 1.0)
+        proc.stdin.write(fr.tobytes())
+    proc.stdin.close()
+    proc.wait()
+    return total
+
+
+def build_rap(ep_no, out: Path):
+    ep = RAP[ep_no]
+    work = out / "work"
+    work.mkdir(parents=True, exist_ok=True)
+    lyr = []
+    for sec, line in zip(ep["sections"], ep["lines"]):
+        if sec:
+            lyr.append(("\n" if lyr else "") + sec)
+        lyr.append(line[0])
+    lyrics = "\n".join(lyr)
+    print(lyrics)
+    import modal
+    from sprachrap_modal import app, rap
+    with modal.enable_output(), app.run():
+        songs = rap.remote(RAP_STYLE, lyrics, ep["lang"], ep["bpm"], float(ep["duration"]), 2)
+    scenes = scenes_from(work)
+    for v, song in enumerate(songs, start=1):
+        (work / f"rap_v{v}_vocals.wav").write_bytes(song["vocals"])
+        total = render_rap(ep_no, ep, song, scenes, work, out / f"sprachrap_{ep_no:02d}_rap_v{v}.mp4")
+        print(f"::notice title=Sprachrap::Folge {ep_no} Rap Version {v}: {total:.1f} s")
+    (out / f"sprachrap_{ep_no:02d}.txt").write_text(EPISODES[ep_no]["caption"], encoding="utf-8")
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--episode", type=int, default=1)
     ap.add_argument("--out", default="out")
+    ap.add_argument("--mode", default="rap", choices=["rap", "speak"])
     a = ap.parse_args()
     import sys
     sys.path.insert(0, str(Path(__file__).resolve().parent))
-    build(a.episode, Path(a.out).resolve())
+    (build_rap if a.mode == "rap" else build)(a.episode, Path(a.out).resolve())
