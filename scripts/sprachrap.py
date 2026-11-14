@@ -323,19 +323,55 @@ def read_audio(b, sr=SR):
     return np.frombuffer(raw, dtype=np.float32).copy()
 
 
+def align_whisper(vocals_wav: Path, lines, lang):
+    """Zeilenanfänge über Spracherkennung der Gesangsspur (zuverlässiger als die LRC-Schätzung)."""
+    import difflib
+    import re
+    from faster_whisper import WhisperModel
+    m = WhisperModel("small", device="cpu", compute_type="int8")
+    segs, _ = m.transcribe(str(vocals_wav), language=lang, word_timestamps=True, vad_filter=False)
+    words = [(w.word.strip().lower(), w.start) for sg in segs for w in (sg.words or [])]
+    print("Gehört:", " ".join(w for w, _ in words))
+    norm = lambda x: re.sub(r"[^a-zäöüßéèêàç']", "", x.lower())  # noqa: E731
+    tw = [(norm(w), t) for w, t in words if norm(w)]
+    starts, p = [], 0
+    for line in lines:
+        lw = [norm(x) for x in line[0].split() if norm(x)][:3]
+        best, bi = 0.0, None
+        for i in range(p, min(len(tw), p + 45)):
+            sc = sum(difflib.SequenceMatcher(None, a, tw[i + j][0]).ratio() for j, a in enumerate(lw) if i + j < len(tw))
+            if sc > best:
+                best, bi = sc, i
+        if bi is None or best < 1.2:
+            starts.append(None)
+            continue
+        starts.append(tw[bi][1])
+        p = bi + max(1, len(line[0].split()) - 2)
+    print("Zeilenstarts:", starts)
+    return starts
+
+
 def render_rap(ep_no, ep, song, scenes, work, out_mp4):
     (work / "song.wav").write_bytes(song["mix"])
     voc = read_audio(song["vocals"])
     total = len(read_audio(song["mix"])) / SR
     lines = ep["lines"]
+    vw = work / "voc_tmp.wav"
+    vw.write_bytes(song["vocals"])
+    try:
+        starts = align_whisper(vw, lines, ep["lang"])
+    except Exception as e:  # noqa: BLE001
+        print("Ausrichtung fehlgeschlagen:", e)
+        starts = [None] * len(lines)
     lrc = parse_lrc(song["lrc"])
-    print("LRC:", lrc)
-    if len(lrc) >= len(lines):
-        starts = [t for t, _ in lrc[:len(lines)]]
-    else:                                              # ohne Zeitstempel: Gesangsabschnitt gleichmäßig aufteilen
-        act = np.where(np.abs(voc) > 0.05)[0]
-        a0, a1 = (act[0] / SR, act[-1] / SR) if len(act) else (1.0, total - 1)
-        starts = list(np.linspace(a0, a1, len(lines) + 1)[:-1])
+    for j in range(len(lines)):                       # Lücken: LRC, sonst zwischen Nachbarn
+        if starts[j] is None and j < len(lrc):
+            starts[j] = lrc[j][0]
+    for j in range(len(lines)):
+        if starts[j] is None:
+            starts[j] = (starts[j - 1] + 2.5) if j else 0.3
+    for j in range(1, len(starts)):                   # monoton halten
+        starts[j] = max(starts[j], starts[j - 1] + 0.8)
     hop = SR // FPS
     env = np.array([np.sqrt(np.mean(voc[i * hop:(i + 1) * hop] ** 2) + 1e-9) for i in range(int(total * FPS))])
     env = np.convolve(env, np.ones(2) / 2, "same")
