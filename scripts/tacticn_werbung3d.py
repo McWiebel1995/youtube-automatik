@@ -4,7 +4,7 @@ Tacticn – Werbeclip „3D“ (9:16, ~20 s, ohne Stimme, CC0-Musik): das echte 
 
   python scripts/tacticn_werbung3d.py --out out/ --fonts fonts
 
-Ablauf: Hook mit drehendem 3D-Modell → Name des Zeichens → Unterseite mit Magnet-Aussparung → feindliche Truppe in 3D →
+Ablauf: Hook mit drehendem 3D-Modell → Name des Zeichens → Unterseite mit Prägung (Magnet innen) → feindliche Truppe in 3D →
 fertige Sets → Abspann. Nur Aussagen, die auf tacticn.de stehen, keine Preise. Ergebnis kommt zur Freigabe nach
 Releases (tacticn-preview), gepostet wird hier nichts.
 """
@@ -101,11 +101,17 @@ def capture(work: Path):
     return cap
 
 
+def crop_model(s):
+    """Modell größer zeigen und den Knopf „Unterseite/Oberseite zeigen“ unten rechts abschneiden."""
+    w, h = s.size
+    return s.crop((int(w * 0.13), int(h * 0.10), int(w * 0.87), int(h * 0.84)))
+
+
 def model_frame(img_path, caption, small=None, fonts_dir="fonts", title="TACTICN · 3D-DRUCKMODELL"):
     from PIL import Image
     im, d = canvas()
     tag(d, fonts_dir, title)
-    s = Image.open(img_path).convert("RGB")
+    s = crop_model(Image.open(img_path).convert("RGB"))
     k = min(960 / s.width, 1000 / s.height)
     s = s.resize((int(s.width * k), int(s.height * k)), Image.LANCZOS)
     x, y = (W - s.width) // 2, 230 + (1000 - s.height) // 2
@@ -128,7 +134,7 @@ def build(cap, out: Path, fonts_dir):
     segs.append((2.6, lambda t, f=spin(fr): model_frame(f(t), "Dein Lagezeichen.\nIn 3D.", None, fonts_dir)))
     segs.append((3.0, lambda t, f=spin(fr): model_frame(f(t + 2.6), name, "nach NATO APP-6(D)", fonts_dir)))
     if cap.get("under"):
-        segs.append((3.0, lambda t, f=spin(cap["under"]): model_frame(f(t), "Mit Magnet-Aussparung", "auf der Unterseite", fonts_dir)))
+        segs.append((3.0, lambda t, f=spin(cap["under"]): model_frame(f(t), "Mit TACTICN-Prägung\nauf der Unterseite", "Magnet-Aussparung im Inneren", fonts_dir)))
     if cap.get("hostile"):
         segs.append((3.0, lambda t, f=spin(cap["hostile"]): model_frame(f(t), "Eigene oder\nfeindliche Truppe", "ein Klick im Baukasten", fonts_dir)))
     sets = Image.open(cap["sets"]).convert("RGB")
@@ -151,7 +157,7 @@ def build(cap, out: Path, fonts_dir):
 
     def end_frame(t, f=spin(fr)):
         im, d = canvas()
-        s = Image.open(f(t)).convert("RGB")
+        s = crop_model(Image.open(f(t)).convert("RGB"))
         k = 520 / s.width
         s = s.resize((520, int(s.height * k)), Image.LANCZOS)
         im.paste(s, ((W - 520) // 2, 260))
@@ -193,7 +199,7 @@ def build(cap, out: Path, fonts_dir):
 
 CAPTION = ("Dein Lagezeichen. In 3D. 🎯\n\n"
            "Jedes taktische Zeichen nach NATO APP-6(D) wird im Tacticn-Baukasten direkt zum 3D-Druckmodell – "
-           "mit Magnet-Aussparung auf der Unterseite. Eigene oder feindliche Truppe, einzeln oder als komplettes Set "
+           "mit Magnet-Aussparung im Inneren und TACTICN-Prägung auf der Unterseite. Eigene oder feindliche Truppe, einzeln oder als komplettes Set "
            "von der Jägerkompanie bis zur Feinddarstellung.\n\n"
            "Als STL herunterladen, selbst drucken, auf die Lagekarte stellen.\n\n"
            "👉 tacticn.de (Link in Bio)\n\n"
