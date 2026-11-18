@@ -56,8 +56,14 @@ def capture(work: Path, code: str = CODE):
             files = []
             for i in range(n):
                 f = work / f"{prefix}_{i:03d}.png"
-                page.screenshot(path=str(f), clip=clip)
-                files.append(f)
+                for k in range(3):                    # SwiftShader hängt bei manchen Modellen kurz -> neu versuchen
+                    try:
+                        page.screenshot(path=str(f), clip=clip, timeout=90000, animations="disabled", caret="hide")
+                        files.append(f)
+                        break
+                    except Exception as e:  # noqa: BLE001
+                        print("Aufnahme hängt, neuer Versuch:", i, repr(e)[:80])
+                        page.wait_for_timeout(2000)
                 page.mouse.move(cx, cy)
                 page.mouse.down()
                 page.mouse.move(cx + step, cy, steps=3)
