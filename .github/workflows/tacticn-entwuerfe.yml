@@ -1,0 +1,56 @@
+name: "🎯 Tacticn – Entwürfe (Stapel, nichts wird gepostet)"
+run-name: "Tacticn-Entwürfe"
+on:
+  workflow_dispatch:
+    inputs:
+      quiz:
+        description: "Quiz-Zeichen (Codes, Leerzeichen getrennt)"
+        default: "10-1205 10-1206 10-1213 10-1301 10-1308 10-1401 10-1407 10-1408 10-1412 10-1613 10-1110 10-1215"
+      drei_d:
+        description: "3D-Clips: code|Hook;code|Hook (\\n = Zeilenumbruch)"
+        default: "10-1205|Panzertruppe.\\nZum Anfassen.;10-1213|Aufklärung.\\nIn 3D.;10-1407|Pioniere.\\nFür deinen Sandkasten.;10-1613|Sanitätsdienst.\\nAls 3D-Druck.;10-1301|Flugabwehr.\\nIn 3D.;10-1206|Heeresflieger.\\nZum Anfassen.;10-1217|Spezialkräfte.\\nFür deine Lagekarte.;10-1308|Mörser.\\nIn 3D."
+permissions:
+  contents: write
+concurrency: { group: tacticn-entwuerfe }
+jobs:
+  stapel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+          pip install playwright requests pillow
+          python -m playwright install --with-deps chromium
+          mkdir -p fonts && curl -sSL -o fonts/Oswald.ttf "https://github.com/google/fonts/raw/main/ofl/oswald/Oswald%5Bwght%5D.ttf"
+      - name: Quiz-Reels
+        env: { FREESOUND_API_KEY: "${{ secrets.FREESOUND_API_KEY }}" }
+        run: |
+          for c in ${{ inputs.quiz }}; do
+            python scripts/tacticn_quiz.py --symbol "$c" --out out --fonts fonts || echo "::warning::Quiz $c fehlgeschlagen"
+          done
+      - name: 3D-Clips
+        env: { FREESOUND_API_KEY: "${{ secrets.FREESOUND_API_KEY }}", LIST: "${{ inputs.drei_d }}" }
+        run: |
+          i=1
+          IFS=';' read -ra ITEMS <<< "$LIST"
+          for it in "${ITEMS[@]}"; do
+            code="${it%%|*}"; hook="${it#*|}"
+            python scripts/tacticn_werbung3d.py --code "$code" --hook "$hook" --stem "tacticn_3d_$(printf %02d $i)_$code" --out out --fonts fonts || echo "::warning::3D $code fehlgeschlagen"
+            i=$((i+1))
+          done
+      - name: Entwürfe hochladen
+        if: always()
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          gh release view tacticn-entwuerfe >/dev/null 2>&1 || gh release create tacticn-entwuerfe --prerelease --title "Tacticn – Entwürfe" --notes "Fertige Reels, noch nicht gepostet"
+          ls out/*.mp4 out/*.txt
+          gh release upload tacticn-entwuerfe out/*.mp4 out/*.txt --clobber
+      - name: Quiz-Liste sichern
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/tacticn_quiz_used.json && git commit -m "Tacticn-Quiz: Entwürfe" || exit 0
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done

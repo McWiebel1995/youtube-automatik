@@ -23,7 +23,7 @@ CODE = "10-1211"                 # Infanterie (Grundgefecht) – im Baukasten vo
 TURN = 60                        # Aufnahmen pro volle Drehung
 
 
-def capture(work: Path):
+def capture(work: Path, code: str = CODE):
     from playwright.sync_api import sync_playwright
     cap = {}
     with sync_playwright() as p:
@@ -65,7 +65,7 @@ def capture(work: Path):
                 page.wait_for_timeout(120)
             return files
 
-        page.goto(f"{BASE}/baukasten/{CODE}", wait_until="networkidle", timeout=60000)
+        page.goto(f"{BASE}/baukasten/{code}", wait_until="networkidle", timeout=60000)
         cookies()
         page.wait_for_timeout(1500)
         cookies()
@@ -75,7 +75,7 @@ def capture(work: Path):
             print("Einheitsebene nicht gesetzt:", e)
         page.wait_for_timeout(5000)                   # 3D-Modell wird im Browser berechnet
         name = page.evaluate("() => (document.querySelector('h1')||{}).innerText || ''").strip()
-        cap["name"] = re.sub(r"\s*[–|-]\s*Tacticn.*$", "", name)[:30] or "Infanterie"
+        cap["name"] = re.sub(r"\s*[–|-]\s*Tacticn.*$", "", name).split("/")[0].strip()[:30] or "Infanterie"
         cap["friend"] = turntable("fr", TURN)
         try:
             page.get_by_role("button", name="Unterseite zeigen").click(timeout=4000)
@@ -123,7 +123,7 @@ def model_frame(img_path, caption, small=None, fonts_dir="fonts", title="TACTICN
     return im
 
 
-def build(cap, out: Path, fonts_dir):
+def build(cap, out: Path, fonts_dir, hook="Dein Lagezeichen.\nIn 3D.", stem="tacticn_werbeclip_3d"):
     from PIL import Image
     segs = []                                          # (Dauer s, Funktion t->Bild)
     fr = cap["friend"]
@@ -131,7 +131,7 @@ def build(cap, out: Path, fonts_dir):
 
     def spin(files, fps_cap=12):
         return lambda t: files[int(t * fps_cap) % len(files)]
-    segs.append((2.6, lambda t, f=spin(fr): model_frame(f(t), "Dein Lagezeichen.\nIn 3D.", None, fonts_dir)))
+    segs.append((2.6, lambda t, f=spin(fr): model_frame(f(t), hook, None, fonts_dir)))
     segs.append((3.0, lambda t, f=spin(fr): model_frame(f(t + 2.6), name, "nach NATO APP-6(D)", fonts_dir)))
     if cap.get("under"):
         segs.append((3.0, lambda t, f=spin(cap["under"]): model_frame(f(t), "Mit TACTICN-Prägung\nauf der Unterseite", "Magnet-Aussparung im Inneren", fonts_dir)))
@@ -168,7 +168,7 @@ def build(cap, out: Path, fonts_dir):
     segs.append((3.4, end_frame))
 
     total = sum(s[0] for s in segs)
-    mp4 = out / "tacticn_werbeclip_3d.mp4"
+    mp4 = out / f"{stem}.mp4"
     work = out / "work"
     mus = music(work)
     args = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-"]
@@ -210,19 +210,22 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="out")
     ap.add_argument("--fonts", default="fonts")
+    ap.add_argument("--code", default=CODE)
+    ap.add_argument("--hook", default="Dein Lagezeichen.\\nIn 3D.")
+    ap.add_argument("--stem", default="tacticn_werbeclip_3d")
     a = ap.parse_args()
+    hook = a.hook.replace("\\n", "\n")
     out = Path(a.out).resolve()
     work = out / "work"
+    import shutil
+    shutil.rmtree(work, ignore_errors=True)
     work.mkdir(parents=True, exist_ok=True)
-    cap = capture(work)
-    mp4, total = build(cap, out, a.fonts)
-    (out / "tacticn_werbeclip_3d.txt").write_text(CAPTION, encoding="utf-8")
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "1.2", "-i", str(mp4), "-frames:v", "1",
-                    str(out / "tacticn_werbeclip_3d_vorschau.jpg")], check=False)
-    for k in ("friend", "under", "hostile"):
-        if cap.get(k):
-            (out / f"tacticn_3d_debug_{k}.png").write_bytes(cap[k][0].read_bytes())
-    print(f"::notice title=Tacticn-Werbeclip 3D::{mp4.name} {total:.1f} s")
+    cap = capture(work, a.code)
+    mp4, total = build(cap, out, a.fonts, hook, a.stem)
+    name = cap["name"]
+    cap_txt = CAPTION.replace("Dein Lagezeichen. In 3D. 🎯", f"{hook.replace(chr(10), ' ')} 🎯\n\n{name} als 3D-Druckmodell.")
+    (out / f"{a.stem}.txt").write_text(cap_txt, encoding="utf-8")
+    print(f"::notice title=Tacticn-Werbeclip 3D::{mp4.name} {name} {total:.1f} s")
 
 
 if __name__ == "__main__":
