@@ -1,0 +1,37 @@
+name: "🎯 Tacticn – Story-Bilder (nichts wird gepostet)"
+run-name: "Tacticn-Storys"
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  storys:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+          pip install pillow requests
+          mkdir -p fonts && curl -sSL -o fonts/Oswald.ttf "https://github.com/google/fonts/raw/main/ofl/oswald/Oswald%5Bwght%5D.ttf"
+      - name: Reels holen
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          mkdir -p entwuerfe && cd entwuerfe
+          for s in quiz_002_10-1205 quiz_003_10-1206 quiz_004_10-1213 quiz_005_10-1301 quiz_006_10-1308 quiz_007_10-1401 \
+                   quiz_008_10-1407 quiz_009_10-1408 quiz_010_10-1412 quiz_011_10-1613 quiz_012_10-1110 quiz_013_10-1215 \
+                   3d_01_10-1205 3d_02_10-1213 3d_03_10-1407 3d_04_10-1613 3d_05_10-1301 3d_07_10-1217 3d_08_10-1308; do
+            gh release download tacticn-entwuerfe -p "tacticn_$s.mp4" -p "tacticn_$s.txt" --clobber
+          done
+          # Heeresflieger-3D kam aus dem Nachlauf als 3d_01_10-1206 -> als Nr. 06 führen
+          gh release download tacticn-entwuerfe -p "tacticn_3d_01_10-1206.mp4" -p "tacticn_3d_01_10-1206.txt" --clobber
+          mv tacticn_3d_01_10-1206.mp4 tacticn_3d_06_10-1206.mp4; mv tacticn_3d_01_10-1206.txt tacticn_3d_06_10-1206.txt
+          ls | wc -l
+      - run: python scripts/tacticn_storys.py --reels entwuerfe --out storys --fonts fonts
+      - name: Hochladen
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          gh release view tacticn-storys >/dev/null 2>&1 || gh release create tacticn-storys --prerelease --title "Tacticn – Storys" --notes "Story-Bilder zu den eingeplanten Reels, noch nicht gepostet"
+          gh release upload tacticn-storys storys/*.png --clobber
