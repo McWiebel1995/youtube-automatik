@@ -1,1 +1,11 @@
-{}
+{
+ "whales": {
+  "topic": "Whales",
+  "users": [
+   "@amandavasquez2307"
+  ],
+  "count": 1,
+  "used": false,
+  "first": "2026-11-21"
+ }
+}
