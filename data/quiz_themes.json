@@ -1,50 +1,50 @@
 {
- "the human body": {
+ "Earth and oceans": {
   "n": 1,
   "score": 1.0
  },
- "Earth and oceans": {
-  "n": 1,
-  "score": 0.588
- },
- "ancient Rome and its engineering": {
-  "n": 2,
-  "score": 0.575
- },
- "oceans and sea life": {
-  "n": 2,
-  "score": 0.508
- },
- "animals": {
-  "n": 4,
-  "score": 0.467
+ "the human body": {
+  "n": 3,
+  "score": 0.75
  },
  "space and planets": {
+  "n": 6,
+  "score": 0.67
+ },
+ "animals": {
   "n": 5,
-  "score": 0.408
+  "score": 0.636
+ },
+ "ancient Rome and its engineering": {
+  "n": 5,
+  "score": 0.634
+ },
+ "oceans and sea life": {
+  "n": 4,
+  "score": 0.545
  },
  "the five senses": {
   "n": 1,
-  "score": 0.235
- },
- "dinosaurs": {
-  "n": 3,
-  "score": 0.175
+  "score": 0.398
  },
  "trees and plants": {
   "n": 2,
-  "score": 0.152
+  "score": 0.259
+ },
+ "dinosaurs": {
+  "n": 5,
+  "score": 0.236
  },
  "black holes and stars": {
   "n": 2,
-  "score": 0.123
+  "score": 0.209
  },
  "insects": {
   "n": 2,
-  "score": 0.103
+  "score": 0.174
  },
  "electricity and energy": {
   "n": 1,
-  "score": 0.008
+  "score": 0.013
  }
 }
